@@ -104,13 +104,13 @@ def login_form(request):
             user =  User_db.objects.get(email=email)
             password = request.POST['password']
 
-            if(check_password(password,user.password)):
+            if(check_password(password,user.password) and user.role!="admin"):
                 request.session['user']=user.id
                 request.session['role']=user.role
                 request.session['name']=user.name
                 request.session['photo']=user.photo.url
                 
-                return redirect('/admin-dashboard')
+                return redirect('/user-dashboard')
                 
 
             else:
@@ -134,12 +134,18 @@ def login_form(request):
 # -------------------------------------- Admin pages --------------------------------------------
 
 
+
+                                # Admin Login page
+def admin_login(request):
+    return render(request,'admin-login.html')
+
+
                                 # Admin dashboard page
 def admin_dashboard(request):
 
     if(request.session.get('user')):
-        user = User_db.objects.filter(id=request.session['user']).count()
-        if(user):
+        user = User_db.objects.filter(id=request.session['user']).get()
+        if(user and user.role=="admin"):
             total = User_db.objects.all().count()
             return render(request,'admin-dashboard.html',{'total_users':total})
         else:
@@ -181,8 +187,8 @@ def admin_add_user(request):
                                 # Admin All users page
 def admin_all_users(request):
     if(request.session.get('user')):
-        user = User_db.objects.filter(id=request.session['user']).count()
-        if(user):
+        user = User_db.objects.filter(id=request.session['user']).get()
+        if(user and user.role=="admin"):
             users = User_db.objects.all()
             return render(request,'admin-all-users.html',{'users':users})
         else:
@@ -196,10 +202,8 @@ def admin_all_users(request):
                                 # Admin profile update page
 def admin_profile_update(request):
     if(request.session.get('user')):
-        user = User_db.objects.filter(id=request.session['user']).count()
-        if(user):
-            user =  User_db.objects.get(id=request.session['user'])
-            
+        user = User_db.objects.filter(id=request.session['user']).get()
+        if(user and user.role=="admin"):
             return render(request,'admin-profile-update.html',{'name':user.name,'mobile':user.mobile,'email':user.email,'address':user.address,'photo':user.photo.url})
         else:
             return render(request,'login.html')
@@ -223,11 +227,56 @@ def admin_update_user(request):
 # -------------------------------------- Admin tasks --------------------------------------------
 
 
+
+
+
+                                # Admin Login Form Submit
+def admin_login_form(request):
+
+    if(request.method=="POST"):
+        email = request.POST['email']
+        user = User_db.objects.filter(email=email).get()
+        if(user and user.role=="admin"):
+            password = request.POST['password']
+
+            if(check_password(password,user.password)):
+                request.session['user']=user.id
+                request.session['role']=user.role
+                request.session['name']=user.name
+                request.session['photo']=user.photo.url
+                
+                return redirect('/admin-dashboard')
+                
+
+            else:
+                
+                messages.info(request,"Invalid user id or password !")
+                return render(request,'admin-login.html')
+
+        else:
+            
+            messages.info(request,"Invalid user id or password !")
+            return render(request,'admin-login.html')
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 def admin_profile_update_form(request):
     
     if(request.session.get('user')):
-        user = User_db.objects.filter(id=request.session['user']).count()
-        if(user and request.method=="POST"):
+        user = User_db.objects.filter(id=request.session['user']).get()
+        if(user and user.role=="admin" and request.method=="POST"):
             user =  User_db.objects.get(id=request.session['user'])
             
             user.name=request.POST["name"]
@@ -253,9 +302,9 @@ def admin_profile_update_form(request):
 def admin_profile_photo_update(request):
 
     if(request.session.get('user')):
-        user = User_db.objects.filter(id=request.session['user']).count()
-        if(user and request.method=="POST"):
-            user =  User_db.objects.get(id=request.session['user'])
+        user = User_db.objects.filter(id=request.session['user']).get()
+        if(user and user.role=="admin" and request.method=="POST"):
+            
             photo = request.FILES["photo"]
             user.photo = photo
             user.save()
@@ -274,8 +323,8 @@ def admin_profile_photo_update(request):
 
 def ajax_call_delete_user(request):
     if(request.session.get('user')):
-        user = User_db.objects.filter(id=request.session['user']).count()
-        if(user and request.method=="POST"):
+        user = User_db.objects.filter(id=request.session['user']).get()
+        if(user and user.role=="admin" and request.method=="POST"):
             user = User_db.objects.filter(id=request.POST['id']).count()
             if(user):
                 id = request.POST['id']
@@ -300,10 +349,9 @@ def ajax_call_delete_user(request):
 def profile_edit_by_get(request,id):
 
     if(request.session.get('user')):
-        user = User_db.objects.filter(id=request.session['user']).count()
-        if(user):
+        user = User_db.objects.filter(id=request.session['user']).get()
+        if(user and user.role=="admin"):
             user =  User_db.objects.get(id=id)
-            
             return render(request,'admin-update-user.html',{'id':id,'name':user.name,'mobile':user.mobile,'email':user.email,'address':user.address,'role':user.role,'photo':user.photo.url})
         else:
             return render(request,'login.html')
@@ -319,13 +367,13 @@ def profile_edit_by_get(request,id):
 
 
 
-def user_profile_update_form(request):
+def admin_user_profile_update_form(request):
     
     if(request.session.get('user')):
-        user = User_db.objects.filter(id=request.session['user']).count()
+        user = User_db.objects.filter(id=request.session['user']).get()
         inp_user = User_db.objects.filter(id=request.POST['id']).count()
 
-        if(user and inp_user and request.method=="POST"):
+        if(user and user.role=="admin" and inp_user and request.method=="POST"):
             user =  User_db.objects.get(id=request.POST['id'])
             
             user.name=request.POST["name"]
@@ -349,12 +397,12 @@ def user_profile_update_form(request):
 
 
 
-def user_profile_photo_update(request):         
+def admin_user_profile_photo_update(request):         
 
     if(request.session.get('user')):
-        user = User_db.objects.filter(id=request.session['user']).count()
+        user = User_db.objects.filter(id=request.session['user']).get()
         inp_user = User_db.objects.filter(id=request.POST['id']).count()
-        if(user and inp_user and request.method=="POST"):
+        if(user and user.role=="admin" and inp_user and request.method=="POST"):
             user =  User_db.objects.get(id=request.POST['id'])
             photo = request.FILES["photo"]
             user.photo = photo
@@ -382,14 +430,14 @@ def user_profile_photo_update(request):
 def admin_new_user_profile_form(request):
     
     if(request.session.get('user')):
-        user = User_db.objects.filter(id=request.session['user']).count()
+        user = User_db.objects.filter(id=request.session['user']).get()
 
         user2 = User_db.objects.filter(email=request.POST["email"]).count()
         if(user2):
             messages.info(request,"Email id already exists !")
             return redirect('/admin-add-user')
 
-        if(user and request.method=="POST"):
+        if(user and user.role=="admin" and request.method=="POST"):
             user =  User_db()
             
             user.email=request.POST["email"]
@@ -411,3 +459,87 @@ def admin_new_user_profile_form(request):
     else:
         return render(request,'login.html')
 
+
+
+
+
+#----------------------------------------- USER's Page and Tasks---------------
+
+
+def user_dashboard(request):
+
+    if(request.session.get('user')):
+        user = User_db.objects.filter(id=request.session['user']).get()
+        if(user and user.role!="admin"):
+            return render(request,'user-dashboard.html')
+        else:
+            return render(request,'login.html')
+    else:
+        return render(request,'login.html')
+
+
+def user_profile_update(request):
+
+    if(request.session.get('user')):
+        user = User_db.objects.filter(id=request.session['user']).get()
+        if(user and user.role!="admin"):
+            user =  User_db.objects.get(id=request.session['user'])
+            
+            return render(request,'user-profile-update.html',{'name':user.name,'mobile':user.mobile,'email':user.email,'address':user.address,'photo':user.photo.url})
+        else:
+            return render(request,'login.html')
+    else:
+        return render(request,'login.html')
+
+
+
+
+
+
+
+
+
+
+
+def user_profile_update_form(request):
+    
+    if(request.session.get('user')):
+        user = User_db.objects.filter(id=request.session['user']).get()
+
+        if(user and user.role!="admin" and request.method=="POST"):
+
+            user.name=request.POST["name"]
+            user.mobile=request.POST["mobile"]
+            user.address=request.POST["address"]
+
+            if(request.POST['password']!=""):
+                user.password = make_password(request.POST['password'])
+            user.save()
+            return redirect("/user-dashboard")
+        else:
+            return render(request,'login.html')
+    else:
+        return render(request,'login.html')
+
+
+
+
+
+
+
+
+
+def user_profile_photo_update(request):         
+
+    if(request.session.get('user')):
+        user = User_db.objects.filter(id=request.session['user']).get()
+
+        if(user and user.role!="admin" and request.method=="POST"):
+            photo = request.FILES["photo"]
+            user.photo = photo
+            user.save()
+            return redirect("/user-dashboard")
+        else:
+            return render(request,'login.html')
+    else:
+        return render(request,'login.html')

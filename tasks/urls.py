@@ -12,6 +12,7 @@ urlpatterns = [
     path("reg_form",views.reg_form,name="reg_form"),
     path("login_form",views.login_form,name="login_form"),
     path("success",views.success,name="success"),
+
     path("admin-dashboard",views.admin_dashboard,name="admin-dashboard"),
     path("admin-add-user",views.admin_add_user,name="admin-add-user"),
     path("admin-all-users",views.admin_all_users,name="admin-all-users"),
@@ -21,8 +22,17 @@ urlpatterns = [
     path("admin_profile_photo_update",views.admin_profile_photo_update,name="admin_profile_photo_update"),
     path("ajax_call_delete_user",views.ajax_call_delete_user,name="ajax_call_delete_user"),
     path("profile_edit_by_get/<int:id>", views.profile_edit_by_get, name='profile_edit_by_get'),
+    path("admin_user_profile_update_form",views.admin_user_profile_update_form,name="admin_user_profile_update_form"),
+    path("admin_user_profile_photo_update",views.admin_user_profile_photo_update,name="admin_user_profile_photo_update"),
+    path("admin_new_user_profile_form",views.admin_new_user_profile_form,name="admin_new_user_profile_form"),
+    path("admin-login",views.admin_login,name="admin-login"),
+    path("admin_login_form",views.admin_login_form,name="admin_login_form"),
+
+    path("user-dashboard",views.user_dashboard,name="user-dashboard"),
+    path("user-profile-update",views.user_profile_update,name="user-profile-update"),
+    
     path("user_profile_update_form",views.user_profile_update_form,name="user_profile_update_form"),
     path("user_profile_photo_update",views.user_profile_photo_update,name="user_profile_photo_update"),
-    path("admin_new_user_profile_form",views.admin_new_user_profile_form,name="admin_new_user_profile_form"),
-    
+
+
 ]
