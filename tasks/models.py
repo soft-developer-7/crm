@@ -38,3 +38,34 @@ class Posts(models.Model):
     class Meta:
         ordering = ['title']
 
+
+
+class Pages(models.Model):
+    title = models.CharField(max_length=300)
+    
+    meta = models.CharField(max_length=500)
+    slug = models.CharField(max_length=500)
+    keywords = models.CharField(max_length=300)
+
+    post = models.CharField(max_length=3000)
+
+    body_photo = models.ImageField(upload_to='page/',null=True,blank=True)
+    date = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return self.title
+
+
+
+
+class Banners(models.Model):
+
+    title = models.CharField(max_length=300)
+    desc = models.CharField(max_length=500,null=True)
+    alt = models.CharField(max_length=100,default='banner image')
+    category = models.CharField(max_length=100,default='uncategorized')
+    photo = models.ImageField(upload_to='banner/')
+    date = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return self.title

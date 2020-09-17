@@ -13,11 +13,14 @@ urlpatterns = [
     path("login_form",views.login_form,name="login_form"),
     path("success",views.success,name="success"),
 
+
+    path("auth_admin",views.auth_admin,name="authadmin"),
+
     path("admin-dashboard",views.admin_dashboard,name="admin-dashboard"),
     path("admin-add-user",views.admin_add_user,name="admin-add-user"),
     path("admin-all-users",views.admin_all_users,name="admin-all-users"),
     path("admin-profile-update",views.admin_profile_update,name="admin-profile-update"),
-    path("admin-update-user",views.admin_update_user,name="admin-update-user"),
+ 
     path("admin_profile_update_form",views.admin_profile_update_form,name="admin_profile_update_form"),
     path("admin_profile_photo_update",views.admin_profile_photo_update,name="admin_profile_photo_update"),
     path("ajax_call_delete_user",views.ajax_call_delete_user,name="ajax_call_delete_user"),
@@ -28,11 +31,27 @@ urlpatterns = [
     path("admin-login",views.admin_login,name="admin-login"),
     path("admin_login_form",views.admin_login_form,name="admin_login_form"),
 
+
+    path("auth_user",views.auth_user,name="auth_user"),
+
     path("user-dashboard",views.user_dashboard,name="user-dashboard"),
     path("user-profile-update",views.user_profile_update,name="user-profile-update"),
     
+
+
     path("user_profile_update_form",views.user_profile_update_form,name="user_profile_update_form"),
     path("user_profile_photo_update",views.user_profile_photo_update,name="user_profile_photo_update"),
 
+
+
+    path("admin-add-page",views.admin_add_page,name="admin-add-page"),
+    path("admin_new_page_form",views.admin_new_page_form,name="admin_new_page_form"),
+
+    path("admin-all-pages",views.admin_all_pages,name="admin-all-pages"),
+    path("page_update_by_get/<int:id>",views.page_update_by_get,name="page_update_by_get"),
+    path("admin_page_update_form",views.admin_page_update_form,name="admin_page_update_form"),
+    path("ajax_call_delete_page",views.ajax_call_delete_page,name="ajax_call_delete_page"),
+
+    
 
 ]

@@ -3,7 +3,7 @@ from django.http import HttpResponse,request
 from django.contrib import messages
 from django.contrib.auth.hashers import make_password,check_password
 from django.http import JsonResponse
-from .models import User_db
+from .models import User_db,Pages
 from django.core.paginator import Paginator
 
 # Create your views here.
@@ -134,6 +134,18 @@ def login_form(request):
 # -------------------------------------- Admin pages --------------------------------------------
 
 
+def auth_admin(request):
+    if(request.session.get('user')):
+        user = User_db.objects.filter(id=request.session['user']).get()
+        if(user and user.role=="admin"):
+            return True
+        else:
+            return False
+    else:
+        return False
+
+
+
 
                                 # Admin Login page
 def admin_login(request):
@@ -143,13 +155,9 @@ def admin_login(request):
                                 # Admin dashboard page
 def admin_dashboard(request):
 
-    if(request.session.get('user')):
-        user = User_db.objects.filter(id=request.session['user']).get()
-        if(user and user.role=="admin"):
-            total = User_db.objects.all().count()
-            return render(request,'admin-dashboard.html',{'total_users':total})
-        else:
-            return render(request,'login.html')
+    if(auth_admin(request)):
+        total = User_db.objects.all().count()
+        return render(request,'admin-dashboard.html',{'total_users':total})
     else:
         return render(request,'login.html')
 
@@ -175,8 +183,10 @@ def logout(request):
 
                                 # Admin Add user page
 def admin_add_user(request):
-    return render(request,'admin-add-user.html')
-
+    if(auth_admin(request)):
+        return render(request,'admin-add-user.html')
+    else:
+        return render(request,'login.html')
 
 
 
@@ -186,13 +196,9 @@ def admin_add_user(request):
 
                                 # Admin All users page
 def admin_all_users(request):
-    if(request.session.get('user')):
-        user = User_db.objects.filter(id=request.session['user']).get()
-        if(user and user.role=="admin"):
-            users = User_db.objects.all()
-            return render(request,'admin-all-users.html',{'users':users})
-        else:
-            return render(request,'login.html')
+    if(auth_admin(request)):
+        users = User_db.objects.exclude(role="admin").all()
+        return render(request,'admin-all-users.html',{'users':users})
     else:
         return render(request,'login.html')
 
@@ -218,9 +224,31 @@ def admin_profile_update(request):
 
 
 
-                                # Admin USER profile update page
-def admin_update_user(request):
-    return render(request,'admin-update-user.html')
+
+
+
+                                # Admin Add PAGE page
+def admin_add_page(request):
+    if(auth_admin(request)):
+        return render(request,'admin-add-page.html')
+    else:
+        return render(request,'login.html')
+
+
+
+
+
+                                # Admin all PAGES page
+def admin_all_pages(request):
+    if(auth_admin(request)):
+        pages = Pages.objects.all()
+        return render(request,'admin-all-pages.html',{"pages":pages})
+    else:
+        return render(request,'login.html')       
+
+
+
+
 
 
 
@@ -325,8 +353,8 @@ def ajax_call_delete_user(request):
     if(request.session.get('user')):
         user = User_db.objects.filter(id=request.session['user']).get()
         if(user and user.role=="admin" and request.method=="POST"):
-            user = User_db.objects.filter(id=request.POST['id']).count()
-            if(user):
+            user = User_db.objects.filter(id=request.POST['id']).get()
+            if(user and user.role !="admin"):
                 id = request.POST['id']
                 User_db.objects.filter(id=id).delete()
                 return JsonResponse({"value":id},status=200)
@@ -347,11 +375,9 @@ def ajax_call_delete_user(request):
 
 
 def profile_edit_by_get(request,id):
-
-    if(request.session.get('user')):
-        user = User_db.objects.filter(id=request.session['user']).get()
-        if(user and user.role=="admin"):
-            user =  User_db.objects.get(id=id)
+    if(auth_admin(request)):
+        user =  User_db.objects.get(id=id)
+        if(user.role !="admin"):
             return render(request,'admin-update-user.html',{'id':id,'name':user.name,'mobile':user.mobile,'email':user.email,'address':user.address,'role':user.role,'photo':user.photo.url})
         else:
             return render(request,'login.html')
@@ -368,25 +394,20 @@ def profile_edit_by_get(request,id):
 
 
 def admin_user_profile_update_form(request):
-    
-    if(request.session.get('user')):
-        user = User_db.objects.filter(id=request.session['user']).get()
-        inp_user = User_db.objects.filter(id=request.POST['id']).count()
+    inp_user = User_db.objects.filter(id=request.POST['id']).count()
+    if(auth_admin(request) and inp_user and request.method=="POST"):
 
-        if(user and user.role=="admin" and inp_user and request.method=="POST"):
-            user =  User_db.objects.get(id=request.POST['id'])
+        user =  User_db.objects.get(id=request.POST['id'])
             
-            user.name=request.POST["name"]
-            user.mobile=request.POST["mobile"]
-            user.address=request.POST["address"]
-            user.role=request.POST["role"]
+        user.name=request.POST["name"]
+        user.mobile=request.POST["mobile"]
+        user.address=request.POST["address"]
+        user.role=request.POST["role"]
 
-            if(request.POST['password']!=""):
-                user.password = make_password(request.POST['password'])
-            user.save()
-            return redirect("/admin-all-users")
-        else:
-            return render(request,'login.html')
+        if(request.POST['password']!=""):
+            user.password = make_password(request.POST['password'])
+        user.save()
+        return redirect("/admin-all-users")
     else:
         return render(request,'login.html')
 
@@ -397,19 +418,15 @@ def admin_user_profile_update_form(request):
 
 
 
-def admin_user_profile_photo_update(request):         
+def admin_user_profile_photo_update(request):
 
-    if(request.session.get('user')):
-        user = User_db.objects.filter(id=request.session['user']).get()
-        inp_user = User_db.objects.filter(id=request.POST['id']).count()
-        if(user and user.role=="admin" and inp_user and request.method=="POST"):
-            user =  User_db.objects.get(id=request.POST['id'])
-            photo = request.FILES["photo"]
-            user.photo = photo
-            user.save()
-            return redirect("/admin-all-users")
-        else:
-            return render(request,'login.html')
+    inp_user = User_db.objects.filter(id=request.POST['id']).count()
+    if(auth_admin(request) and inp_user and request.method=="POST"):
+        user =  User_db.objects.get(id=request.POST['id'])
+        photo = request.FILES["photo"]
+        user.photo = photo
+        user.save()
+        return redirect("/admin-all-users")
     else:
         return render(request,'login.html')
 
@@ -428,54 +445,158 @@ def admin_user_profile_photo_update(request):
 
 
 def admin_new_user_profile_form(request):
+    user2 = User_db.objects.filter(email=request.POST["email"]).count()
+
+    if(user2):
+        messages.info(request,"Email id already exists !")
+        return redirect('/admin-add-user')
+
+    if(auth_admin(request) and request.method=="POST"):
+        user =  User_db()
+        user.email=request.POST["email"]
+        user.name=request.POST["name"]
+        user.mobile=request.POST["mobile"]
+        user.address=request.POST["address"]
+        user.role=request.POST["role"]
+        user.password = make_password(request.POST['password'])
+        
+        if(request.FILES):
+            user.photo = request.FILES["photo"]
+
+        user.save()
+
+        return redirect("/admin-all-users")
+    else:
+        return render(request,'login.html')
+
+
+
+
+
+
+
+
+
+
+def admin_new_page_form(request):
     
-    if(request.session.get('user')):
-        user = User_db.objects.filter(id=request.session['user']).get()
+    page = Pages.objects.filter(slug=request.POST["slug"]).count()
+    if(page):
+        messages.info(request,"Slug is already exists !")
+        return redirect('/admin-add-page')
 
-        user2 = User_db.objects.filter(email=request.POST["email"]).count()
-        if(user2):
-            messages.info(request,"Email id already exists !")
-            return redirect('/admin-add-user')
+    if(auth_admin(request) and request.method=="POST"):
+        new_page =  Pages()
+        
+        new_page.title=request.POST["title"]
+        new_page.meta=request.POST["meta"]
+        new_page.slug=request.POST["slug"]
+        new_page.keywords=request.POST["keywords"]
+        new_page.post=request.POST["post"]
+        
+        if(request.FILES):
+            new_page.body_photo = request.FILES["photo"]
 
-        if(user and user.role=="admin" and request.method=="POST"):
-            user =  User_db()
-            
-            user.email=request.POST["email"]
-            user.name=request.POST["name"]
-            user.mobile=request.POST["mobile"]
-            user.address=request.POST["address"]
-            user.role=request.POST["role"]
-            user.password = make_password(request.POST['password'])
+        new_page.save()
 
-            
-            if(request.FILES):
-                user.photo = request.FILES["photo"]
+        return redirect("/admin-all-pages")
 
-            user.save()
+    else:
+        return render(request,'login.html')
 
-            return redirect("/admin-all-users")
+
+
+
+
+
+def page_update_by_get(request,id):
+    if(auth_admin(request)):
+        page =  Pages.objects.get(id=id)
+        if(page):
+            if(page.body_photo):
+                return render(request,'admin-page-update.html',{'id':id,'title':page.title,'meta':page.meta,
+                'slug':page.slug,'keywords':page.keywords,'post':page.post,'photo':page.body_photo.url})
+            else:
+                return render(request,'admin-page-update.html',{'id':id,'title':page.title,'meta':page.meta,
+                'slug':page.slug,'keywords':page.keywords,'post':page.post})
+
         else:
             return render(request,'login.html')
     else:
         return render(request,'login.html')
 
 
+
+
+
+
+
+
+def admin_page_update_form(request):
+
+    page = Pages.objects.filter(id=request.POST['id']).get()
+    if(page.slug!=request.POST["slug"]):
+        c = Pages.objects.filter(slug=request.POST["slug"]).count()
+        if(c):
+            messages.info(request,"Slug is already exists !")
+            return redirect('/admin-add-page')
+
+
+    if(auth_admin(request) and page and request.method=="POST"):            
+        page.title=request.POST["title"]
+        page.meta=request.POST["meta"]
+        page.slug=request.POST["slug"]
+        page.keywords=request.POST["keywords"]
+        page.post=request.POST["post"]
+    
+        if(request.FILES):
+            page.body_photo = request.FILES["photo"]
+        page.save()
+        return redirect("/admin-all-pages")
+    else:
+        return render(request,'login.html')
+
+
+
+
+
+def ajax_call_delete_page(request):
+    if(auth_admin(request) and request.method=="POST"):
+        page = Pages.objects.filter(id=request.POST['id']).get()
+        if(page):
+            page.delete()
+            return JsonResponse({"value":request.POST['id']},status=200)
+        else:
+            return JsonResponse({"value":0})
+    else:
+        return JsonResponse({"value":0})
 
 
 
 #----------------------------------------- USER's Page and Tasks---------------
 
 
-def user_dashboard(request):
-
+def auth_user(request):
     if(request.session.get('user')):
         user = User_db.objects.filter(id=request.session['user']).get()
         if(user and user.role!="admin"):
-            return render(request,'user-dashboard.html')
+            return True
         else:
-            return render(request,'login.html')
+            return False
+    else:
+        return False
+
+
+
+
+def user_dashboard(request):
+
+    if(auth_user(request)):
+        return render(request,'user-dashboard.html')
     else:
         return render(request,'login.html')
+
+
 
 
 def user_profile_update(request):
