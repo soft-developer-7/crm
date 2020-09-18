@@ -1,8 +1,8 @@
 {% extends "base-admin.html" %}
 {% load static %}
 
-{% block title %}Page Upadte{% endblock%}
-{% block page_heading %}Page Update{% endblock%}
+{% block title %}Update banner{% endblock%}
+{% block page_heading %}Update Banner{% endblock%}
 {% block content %}
 
 {% if messages %}
@@ -19,21 +19,21 @@
 		<div class="col-lg-4">
 			<div class="card mb-3">
 				<div class="card-body shadow">
-					<form method="POST" action="/admin_page_update_form" enctype="multipart/form-data">
+					<form method="POST" action="/admin_banner_update_form" enctype="multipart/form-data">
 					{% csrf_token %}
-
-					<input type="text" name="id" value="{{id}}" hidden />
-					<label>Body Image</label><br>
-					<small>(Optional) </small><br><br>
+                    <input type="text" name="id" value="{{id}}" hidden required />
+					<label>Image</label><br>
+					<small> Must be within 1 Mb and JPEG/JPG/PNG </small><br><br>
 						
-						<input id="profile_photo" type="file" name="photo" value="" accept="image/jpeg,image/png" />
+						<input id="photo" type="file" name="photo" value="" accept="image/jpeg,image/png" />
 					<br><br>
-					
-					{% if photo %}
-						<a href="{{photo}}" target="_blank"><img  class="mb-3 mt-4" src="{{photo}}" alt="profile image" width="160" height="160"></a>
-					{% endif %}
+
+                <a href="{{photo}}" target="_blank"><img  class="mb-3 mt-4" src="{{photo}}" alt="image" width="160" height="160"></a>
+						<br>Current Banner Photo<br>
 				</div>
 			</div>
+			
+			
 		</div>
 		
 		
@@ -43,7 +43,7 @@
 				
 					<div class="card shadow mb-3">
 						<div class="card-header py-3">
-						<p class="text-primary m-0 font-weight-bold">Page details</p>
+						<p class="text-primary m-0 font-weight-bold">Banner details</p>
 						</div>
 					<div class="card-body">
 					
@@ -61,8 +61,8 @@
 						
 					<div class="col">
 						<div class="form-group">
-							<label ><strong>2. Meta</strong></label>
-							<input class="form-control" type="text"  name="meta" value="{{meta}}"  minlength="10" maxlength="500" required>
+							<label ><strong>2. Short description (optional)</strong></label>
+							<input class="form-control" type="text"  name="desc" {%if desc %}  value="{{desc}}" {% endif %}  minlength="10" maxlength="500" >
 						</div>
 					</div>
 						
@@ -73,8 +73,8 @@
 			<div class="form-row">
 				<div class="col">
 					<div class="form-group"><label>
-						<strong>3. Slug</strong></label>
-						<input class="form-control" type="text" name="slug" value="{{slug}}"  minlength="4" maxlength="500" required >
+						<strong>3. Alt-text</strong></label>
+						<input class="form-control" type="text" name="alt"  minlength="4" maxlength="500"  value="{{alt}}" required >
 					</div>
 				</div>
 				</div>
@@ -83,25 +83,11 @@
 				<div class="form-row">
 				<div class="col">
 				<div class="form-group"><label >
-					<strong>4. Keywords (comma separated)</strong></label>
-					<input class="form-control" type="text"  minlength="4" maxlength="300" name="keywords" value="{{keywords}}" required></div>
+					<strong>4. Category (Default value - Uncategorized)</strong></label>
+					<input class="form-control" type="text"  minlength="4" maxlength="300" name="category"  value="{{category}}"></div>
 				</div>
 				
 			</div>
-						
-									
-			<div class="form-row">
-				
-				<div class="col">
-				<div class="form-group"><label >
-					<strong>5. Page post</strong></label>
-					<textarea class="form-control" name="post" minlength="4" maxlength="3000" required rows="10">{{post}}</textarea>
-						</div>
-				</div>
-				
-			
-
-				</div>	
 						
 						
 			<div class="form-group">
@@ -121,7 +107,7 @@
 
 <script>
 
-    $("#profile_photo").change(function() {
+    $("#photo").change(function() {
     var imgPath = $(this)[0].value;
     var extn = imgPath.substring(imgPath.lastIndexOf('.') + 1).toLowerCase();
     var size=Math.round((this.files[0].size)/1024);
@@ -133,7 +119,7 @@
                 }
             else
                 {
-                    $("#profile_photo").val('');
+                    $("#photo").val('');
 
 					swal({
 						title: "Oops !",
@@ -148,7 +134,7 @@
     else
         {
             
-			$("#profile_photo").val('');
+			$("#photo").val('');
 
 			swal({
 				title: "Oops !",

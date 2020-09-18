@@ -52,6 +52,25 @@ urlpatterns = [
     path("admin_page_update_form",views.admin_page_update_form,name="admin_page_update_form"),
     path("ajax_call_delete_page",views.ajax_call_delete_page,name="ajax_call_delete_page"),
 
+
+
+    path("admin-add-post",views.admin_add_post,name="admin-add-post"),
+    path("admin_new_post_form",views.admin_new_post_form,name="admin_new_post_form"),
+
+    path("admin-all-posts",views.admin_all_posts,name="admin-all-posts"),
+    path("post_update_by_get/<int:id>",views.post_update_by_get,name="post_update_by_get"),
+    path("admin_post_update_form",views.admin_post_update_form,name="admin_post_update_form"),
+    path("ajax_call_delete_post",views.ajax_call_delete_post,name="ajax_call_delete_post"),
+
+
+
+    path("admin-add-banner",views.admin_add_banner,name="admin-add-banner"),
+    path("admin_new_banner_form",views.admin_new_banner_form,name="admin_new_banner_form"),
+
+    path("admin-all-banners",views.admin_all_banners,name="admin-all-banners"),
+    path("banner_update_by_get/<int:id>",views.banner_update_by_get,name="banner_update_by_get"),
+    path("admin_banner_update_form",views.admin_banner_update_form,name="admin_banner_update_form"),
+    path("ajax_call_delete_banner",views.ajax_call_delete_banner,name="ajax_call_delete_banner"),
     
 
 ]

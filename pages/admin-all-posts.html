@@ -1,36 +1,35 @@
 {% extends "base-admin.html" %}
 {% load static %}
 
-{% block title %}All users{% endblock%}
-{% block page_heading %}All users{% endblock%}
+{% block title %}All posts{% endblock%}
+{% block page_heading %}All posts{% endblock%}
 {% block content %}
 			
 	          <!-- DataTales Example -->
           <div class="card shadow mb-4">
             <div class="card-header py-3">
-              <h6 class="m-0 font-weight-bold text-primary">All users list</h6>
+              <h6 class="m-0 font-weight-bold text-primary">All posts list</h6>
             </div>
             <div class="card-body">
               <div class="table-responsive">
-                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0" style="table-layout: fixed;">
                   <thead>
                     <tr>
-						          <th>id</th>
-                      <th>Name</th>
-                      <th>Role</th>
-                      <th>Email</th>
-                      <th>Mobile</th>
+					  <th>id</th>
+                      <th>Banner</th>
+                      <th>Title</th>
+                      <th>Article</th>
                       <th>Edit</th>
                       <th>Delete</th>
                     </tr>
                   </thead>
                   <tfoot>
                     <tr>
-						<th>id</th>
-                      <th>Name</th>
-                      <th>Role</th>
-                      <th>Email</th>
-                      <th>Mobile</th>
+			
+					   <th>id</th>
+                      <th>Banner</th>
+                      <th>Title</th>
+                      <th>Article</th>
                       <th>Edit</th>
                       <th>Delete</th>
                     </tr>
@@ -40,16 +39,16 @@
 
 
 
-{% for user in users %}
+{% for post in posts %}
 <tr>
-<td>{{user.id}}</td>
-<td><a href="{{user.photo.url}}" target="_blank"><img src="{{user.photo.url}}" alt="img" class="rounded-circle border" height=50 width=50></a> &nbsp;  {{user.name}}</td>
-<td>{{user.role}}</td>
-<td>{{user.email}}</td>
-<td>{{user.mobile}}</td>
+<td>{{post.id}}</td>
+<td><a href="{{post.banner_photo.url}}" target="_blank"><img src="{{post.banner_photo.url}}" alt="img" class="img-thumbnail" height=50 width=50></a></td>
+<td class="text-truncate" >{{post.title}}</td>
+<td class="text-truncate" >{{post.post}}</td>
 
-<td><a class="btn btn-primary" href="profile_edit_by_get/{{user.id}}">Edit</a></td>
-<td><button class="btn btn-danger" type="button" onclick="delete_user({{user.id}})">Delete</button></td>
+
+<td><a class="btn btn-primary" href="post_update_by_get/{{post.id}}">Edit</a></td>
+<td><button class="btn btn-danger" type="button" onclick="delete_post({{post.id}})">Delete</button></td>
 </tr>
 
 {% endfor %}
@@ -93,31 +92,31 @@
 
 <script>
 
-function delete_user(id)
+function delete_post(id)
 {
       swal({
       title: "Are you sure?",
-      text: "Once deleted, you will not be able to recover the user !",
+      text: "Once deleted, you will not be able to recover the Post !",
       icon: "warning",
       buttons: true,
       dangerMode: true,
     })
     .then((willDelete) => {
       if (willDelete) {
-        ajax_call_delete_user(id);
+        ajax_call_delete_post(id);
       } else {
-        swal("User is safe!");
+        swal("Post is safe!");
       }
     });
 }
 
 
 
-function ajax_call_delete_user(id)
+function ajax_call_delete_post(id)
 {
-
+    
       $.ajax({
-        url: '/ajax_call_delete_user',
+        url: '/ajax_call_delete_post',
         type:'POST',
         data: {
           'id': id,
@@ -127,7 +126,7 @@ function ajax_call_delete_user(id)
         success: function (data) {
           if (data["value"]) {
             
-            swal("User has been deleted!", {
+            swal("Post has been deleted!", {
                   icon: "success",
                 });
 

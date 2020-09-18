@@ -1,9 +1,9 @@
 from django.shortcuts import render,redirect
-from django.http import HttpResponse,request
+from django.http import HttpResponse,request,HttpResponseRedirect
 from django.contrib import messages
 from django.contrib.auth.hashers import make_password,check_password
 from django.http import JsonResponse
-from .models import User_db,Pages
+from .models import User_db,Pages,Posts,Banners
 from django.core.paginator import Paginator
 
 # Create your views here.
@@ -134,7 +134,7 @@ def login_form(request):
 # -------------------------------------- Admin pages --------------------------------------------
 
 
-def auth_admin(request):
+def auth_admin(request):                                # Admin authentication
     if(request.session.get('user')):
         user = User_db.objects.filter(id=request.session['user']).get()
         if(user and user.role=="admin"):
@@ -152,6 +152,10 @@ def admin_login(request):
     return render(request,'admin-login.html')
 
 
+
+
+
+
                                 # Admin dashboard page
 def admin_dashboard(request):
 
@@ -165,19 +169,10 @@ def admin_dashboard(request):
 
 
 
-
-
-
                                 # Logout
 def logout(request):
     request.session.clear()
     return redirect('/login')
-
-
-
-
-
-
 
 
 
@@ -187,9 +182,6 @@ def admin_add_user(request):
         return render(request,'admin-add-user.html')
     else:
         return render(request,'login.html')
-
-
-
 
 
 
@@ -204,24 +196,17 @@ def admin_all_users(request):
 
 
 
-
                                 # Admin profile update page
 def admin_profile_update(request):
     if(request.session.get('user')):
         user = User_db.objects.filter(id=request.session['user']).get()
         if(user and user.role=="admin"):
-            return render(request,'admin-profile-update.html',{'name':user.name,'mobile':user.mobile,'email':user.email,'address':user.address,'photo':user.photo.url})
+            return render(request,'admin-profile-update.html',{'name':user.name,'mobile':user.mobile,
+            'email':user.email,'address':user.address,'photo':user.photo.url})
         else:
             return render(request,'login.html')
     else:
         return render(request,'login.html')
-
-
-
-
-
-
-
 
 
 
@@ -251,8 +236,58 @@ def admin_all_pages(request):
 
 
 
+                                # Admin Add Post page
+def admin_add_post(request):
+    if(auth_admin(request)):
+        return render(request,'admin-add-post.html')
+    else:
+        return render(request,'login.html')
 
-# -------------------------------------- Admin tasks --------------------------------------------
+
+
+
+                                # Admin all Posts page
+def admin_all_posts(request):
+    if(auth_admin(request)):
+        posts = Posts.objects.order_by('-pub_date')
+        return render(request,'admin-all-posts.html',{"posts":posts})
+    else:
+        return render(request,'login.html')    
+
+
+
+
+
+
+
+                                # Admin Add Banner page
+def admin_add_banner(request):
+    if(auth_admin(request)):
+        return render(request,'admin-add-banner.html')
+    else:
+        return render(request,'login.html')
+
+
+
+
+                                # Admin all Banners page
+def admin_all_banners(request):
+    if(auth_admin(request)):
+        banners = Banners.objects.order_by('-date')
+        return render(request,'admin-all-banners.html',{"banners":banners})
+    else:
+        return render(request,'login.html')    
+
+
+
+
+
+
+# -------------------------------------- Admin tasks -----------------------------------------------------------------
+
+
+
+
 
 
 
@@ -294,13 +329,7 @@ def admin_login_form(request):
 
 
 
-
-
-
-
-
-
-def admin_profile_update_form(request):
+def admin_profile_update_form(request):                                # Admin Profile Update Form
     
     if(request.session.get('user')):
         user = User_db.objects.filter(id=request.session['user']).get()
@@ -327,7 +356,7 @@ def admin_profile_update_form(request):
 
 
 
-def admin_profile_photo_update(request):
+def admin_profile_photo_update(request):                                # Admin Profile Photo Update Form
 
     if(request.session.get('user')):
         user = User_db.objects.filter(id=request.session['user']).get()
@@ -349,7 +378,7 @@ def admin_profile_photo_update(request):
 
 
 
-def ajax_call_delete_user(request):
+def ajax_call_delete_user(request):                                # AJAX - Delete User by Admin
     if(request.session.get('user')):
         user = User_db.objects.filter(id=request.session['user']).get()
         if(user and user.role=="admin" and request.method=="POST"):
@@ -374,7 +403,7 @@ def ajax_call_delete_user(request):
 
 
 
-def profile_edit_by_get(request,id):
+def profile_edit_by_get(request,id):                                # Profile Edit by GET method
     if(auth_admin(request)):
         user =  User_db.objects.get(id=id)
         if(user.role !="admin"):
@@ -393,7 +422,7 @@ def profile_edit_by_get(request,id):
 
 
 
-def admin_user_profile_update_form(request):
+def admin_user_profile_update_form(request):                                # Admin USER profile update Form
     inp_user = User_db.objects.filter(id=request.POST['id']).count()
     if(auth_admin(request) and inp_user and request.method=="POST"):
 
@@ -418,7 +447,7 @@ def admin_user_profile_update_form(request):
 
 
 
-def admin_user_profile_photo_update(request):
+def admin_user_profile_photo_update(request):                               # Admin USER profile PHOTO update Form
 
     inp_user = User_db.objects.filter(id=request.POST['id']).count()
     if(auth_admin(request) and inp_user and request.method=="POST"):
@@ -444,7 +473,7 @@ def admin_user_profile_photo_update(request):
 
 
 
-def admin_new_user_profile_form(request):
+def admin_new_user_profile_form(request):                                   # Admin NEW USER Form
     user2 = User_db.objects.filter(email=request.POST["email"]).count()
 
     if(user2):
@@ -478,7 +507,7 @@ def admin_new_user_profile_form(request):
 
 
 
-def admin_new_page_form(request):
+def admin_new_page_form(request):                                   # Admin New Page Form
     
     page = Pages.objects.filter(slug=request.POST["slug"]).count()
     if(page):
@@ -509,7 +538,7 @@ def admin_new_page_form(request):
 
 
 
-def page_update_by_get(request,id):
+def page_update_by_get(request,id):                                   # page by GET method by Admin
     if(auth_admin(request)):
         page =  Pages.objects.get(id=id)
         if(page):
@@ -532,14 +561,14 @@ def page_update_by_get(request,id):
 
 
 
-def admin_page_update_form(request):
+def admin_page_update_form(request):                                   # Admin PAGE update Form
 
     page = Pages.objects.filter(id=request.POST['id']).get()
     if(page.slug!=request.POST["slug"]):
         c = Pages.objects.filter(slug=request.POST["slug"]).count()
         if(c):
             messages.info(request,"Slug is already exists !")
-            return redirect('/admin-add-page')
+            return redirect('/page_update_by_get/'+str(request.POST['id']))
 
 
     if(auth_admin(request) and page and request.method=="POST"):            
@@ -560,7 +589,7 @@ def admin_page_update_form(request):
 
 
 
-def ajax_call_delete_page(request):
+def ajax_call_delete_page(request):                                   # AJAX call DELETE Page - By Admin
     if(auth_admin(request) and request.method=="POST"):
         page = Pages.objects.filter(id=request.POST['id']).get()
         if(page):
@@ -573,10 +602,223 @@ def ajax_call_delete_page(request):
 
 
 
+
+
+
+
+
+
+
+
+
+def admin_new_post_form(request):                                   # Admin New Post Form
+    
+    post = Posts.objects.filter(slug=request.POST["slug"]).count()
+    if(post):
+        messages.info(request,"Slug is already exists !")
+        return redirect('/admin-add-post')
+
+    if(auth_admin(request) and request.method=="POST"):
+        new_post =  Posts()
+        
+        new_post.title=request.POST["title"]
+        new_post.meta=request.POST["meta"]
+        new_post.slug=request.POST["slug"]
+        new_post.keywords=request.POST["keywords"]
+        new_post.post=request.POST["post"]
+        
+        if(request.FILES.get("banner_photo")):
+            new_post.banner_photo = request.FILES["banner_photo"]
+
+        if(request.FILES.get("body_photo")):
+            new_post.body_photo = request.FILES["body_photo"]
+
+        new_post.author_id = request.session["user"] 
+        new_post.save()
+
+        return redirect("/admin-all-posts")
+
+    else:
+        return render(request,'login.html')
+
+
+
+
+
+
+
+
+def post_update_by_get(request,id):                                   # Post by GET method by Admin
+    if(auth_admin(request)):
+        post =  Posts.objects.get(id=id)
+        if(post):
+            if(post.body_photo):
+                return render(request,'admin-post-update.html',{'id':id,'title':post.title,'meta':post.meta,
+                'slug':post.slug,'keywords':post.keywords,'post':post.post,'banner_photo':post.banner_photo.url,
+                'body_photo':post.body_photo.url})
+            else:
+                 return render(request,'admin-post-update.html',{'id':id,'title':post.title,'meta':post.meta,
+                'slug':post.slug,'keywords':post.keywords,'post':post.post,'banner_photo':post.banner_photo.url})
+
+        else:
+            return render(request,'login.html')
+    else:
+        return render(request,'login.html')
+
+
+
+
+
+
+def admin_post_update_form(request):                                   # Admin Post update Form
+
+    post = Posts.objects.filter(id=request.POST['id']).get()
+    if(post.slug!=request.POST["slug"]):
+        c = Posts.objects.filter(slug=request.POST["slug"]).count()
+        if(c):
+            messages.info(request,"Slug is already exists !")
+            return redirect('/post_update_by_get/'+str(request.POST['id']))
+
+
+    if(auth_admin(request) and post and request.method=="POST"):            
+        post.title=request.POST["title"]
+        post.meta=request.POST["meta"]
+        post.slug=request.POST["slug"]
+        post.keywords=request.POST["keywords"]
+        post.post=request.POST["post"]
+    
+        if(request.FILES.get("banner_photo")):
+            post.banner_photo = request.FILES["banner_photo"]
+
+        if(request.FILES.get("body_photo")):
+            post.body_photo = request.FILES["body_photo"]
+
+        post.save()
+        return redirect("/admin-all-posts")
+    else:
+        return render(request,'login.html')
+
+
+
+
+def ajax_call_delete_post(request):                                   # AJAX call DELETE Post - By Admin
+    if(auth_admin(request) and request.method=="POST"):
+        post = Posts.objects.filter(id=request.POST['id']).get()
+        if(post):
+            post.delete()
+            return JsonResponse({"value":request.POST['id']},status=200)
+        else:
+            return JsonResponse({"value":0})
+    else:
+        return JsonResponse({"value":0})
+
+
+
+
+
+
+
+
+
+def admin_new_banner_form(request):                                   # Admin New Banner Form
+    
+    banner = Banners.objects.filter(title=request.POST["title"]).count()
+    if(banner):
+        messages.info(request,"Title is already exists !")
+        return redirect('/admin-add-banner')
+
+    if(auth_admin(request) and request.method=="POST"):
+        new_banner =  Banners()
+        
+        new_banner.title=request.POST["title"]
+
+        if(request.POST.get("desc")):
+            new_banner.desc=request.POST["desc"]
+        
+        new_banner.alt=request.POST["alt"]
+
+        if(request.POST.get("category")):
+            new_banner.category=request.POST["category"]
+
+        new_banner.photo = request.FILES["photo"]
+
+        new_banner.save()
+
+        return redirect("/admin-all-banners")
+
+    else:
+        return render(request,'login.html')
+
+
+
+
+
+
+def banner_update_by_get(request,id):                                   # Banner by GET method by Admin
+    if(auth_admin(request)):
+        banner =  Banners.objects.get(id=id)
+        if(banner):
+            return render(request,'admin-banner-update.html',{'id':id,'title':banner.title,'desc':banner.desc,
+            'alt':banner.alt,'category':banner.category,'photo':banner.photo.url})
+        else:
+            return render(request,'login.html')
+    else:
+        return render(request,'login.html')
+
+
+
+
+
+def admin_banner_update_form(request):                                   # Admin Banner update Form
+    banner = Banners.objects.filter(id=request.POST['id']).get()
+    if(banner and auth_admin(request) and request.method=="POST"):            
+        banner.title=request.POST["title"]
+        if(request.POST.get("desc")):
+            banner.desc=request.POST["desc"]
+        banner.alt=request.POST["alt"]
+        if(request.POST.get("category")):
+            banner.category=request.POST["category"]
+        if(request.FILES):
+            banner.photo = request.FILES["photo"]
+        banner.save()
+        return redirect("/admin-all-banners")
+    else:
+        return render(request,'login.html')
+
+
+
+
+
+
+
+
+
+
+
+def ajax_call_delete_banner(request):                                   # AJAX call DELETE Banner - By Admin
+    if(auth_admin(request) and request.method=="POST"):
+        banner = Banners.objects.filter(id=request.POST['id']).get()
+        if(banner):
+            banner.delete()
+            return JsonResponse({"value":request.POST['id']},status=200)
+        else:
+            return JsonResponse({"value":0})
+    else:
+        return JsonResponse({"value":0})
+
+
+
+
+
+
+
+
+
+
 #----------------------------------------- USER's Page and Tasks---------------
 
 
-def auth_user(request):
+def auth_user(request):                                   # User authentication
     if(request.session.get('user')):
         user = User_db.objects.filter(id=request.session['user']).get()
         if(user and user.role!="admin"):
@@ -589,7 +831,7 @@ def auth_user(request):
 
 
 
-def user_dashboard(request):
+def user_dashboard(request):                                # User Dashboard
 
     if(auth_user(request)):
         return render(request,'user-dashboard.html')
@@ -599,14 +841,15 @@ def user_dashboard(request):
 
 
 
-def user_profile_update(request):
+def user_profile_update(request):                                # User Profile Update Page
 
     if(request.session.get('user')):
         user = User_db.objects.filter(id=request.session['user']).get()
         if(user and user.role!="admin"):
             user =  User_db.objects.get(id=request.session['user'])
             
-            return render(request,'user-profile-update.html',{'name':user.name,'mobile':user.mobile,'email':user.email,'address':user.address,'photo':user.photo.url})
+            return render(request,'user-profile-update.html',{'name':user.name,'mobile':user.mobile,
+            'email':user.email,'address':user.address,'photo':user.photo.url})
         else:
             return render(request,'login.html')
     else:
@@ -622,7 +865,7 @@ def user_profile_update(request):
 
 
 
-def user_profile_update_form(request):
+def user_profile_update_form(request):                                # User Profile Update Form
     
     if(request.session.get('user')):
         user = User_db.objects.filter(id=request.session['user']).get()
@@ -650,7 +893,7 @@ def user_profile_update_form(request):
 
 
 
-def user_profile_photo_update(request):         
+def user_profile_photo_update(request):                                         # User Profile PHOTO Update Form
 
     if(request.session.get('user')):
         user = User_db.objects.filter(id=request.session['user']).get()
