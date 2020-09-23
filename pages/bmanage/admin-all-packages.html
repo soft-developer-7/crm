@@ -1,0 +1,146 @@
+{% extends "../base-admin.html" %}
+{% load static %}
+
+{% block title %}All packages{% endblock%}
+{% block page_heading %}All Packages{% endblock%}
+{% block content %}
+			
+	          <!-- DataTales Example -->
+          <div class="card shadow mb-4">
+            <div class="card-header py-3">
+              <h6 class="m-0 font-weight-bold text-primary">All Package list</h6>
+            </div>
+            <div class="card-body">
+              <div class="table-responsive">
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0" style="table-layout: fixed;">
+                  <thead>
+                    <tr>
+					  <th>id</th>
+                      <th>Name</th>
+                      <th>Price</th>
+                      <th>Validity</th>
+                      <th>Edit</th>
+                      <th>Delete</th>
+                    </tr>
+                  </thead>
+                  <tfoot>
+                    <tr>
+			
+					   <th>id</th>
+                      <th>Name</th>
+                      <th>Price</th>
+                      <th>Validity</th>
+                      <th>Edit</th>
+                      <th>Delete</th>
+                    </tr>
+                  </tfoot>
+                  <tbody>
+                    
+
+
+
+{% for package in packs %}
+<tr>
+<td>{{package.id}}</td>
+<td class="text-truncate" >{{package.title}}</td>
+<td class="text-truncate" >{{package.price}}</td>
+<td class="text-truncate" >{{package.validity}}</td>
+
+
+<td><a class="btn btn-primary" href="package_update_by_get/{{package.id}}">Edit</a></td>
+<td><button class="btn btn-danger" type="button" onclick="delete_package({{package.id}})">Delete</button></td>
+</tr>
+
+{% endfor %}
+                    
+                    
+                  </tbody>
+                </table>
+
+
+
+		<!--	  
+		<nav aria-label="Page navigation example">
+		  <ul class="pagination">
+			<li class="page-item">
+			  <a class="page-link" href="#" aria-label="Previous">
+				<span aria-hidden="true">&laquo;</span>
+				<span class="sr-only">Previous</span>
+			  </a>
+			</li>
+			<li class="page-item"><a class="page-link" href="#">1</a></li>
+			<li class="page-item"><a class="page-link" href="#">2</a></li>
+			<li class="page-item"><a class="page-link" href="#">3</a></li>
+			<li class="page-item">
+			  <a class="page-link" href="#" aria-label="Next">
+				<span aria-hidden="true">&raquo;</span>
+				<span class="sr-only">Next</span>
+			  </a>
+			</li>
+		  </ul>
+		</nav>
+			-->
+				  
+				  
+              </div>
+            </div>
+          </div>		
+
+
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+
+<script>
+
+function delete_package(id)
+{
+      swal({
+      title: "Are you sure?",
+      text: "Once deleted, you will not be able to recover the Package !",
+      icon: "warning",
+      buttons: true,
+      dangerMode: true,
+    })
+    .then((willDelete) => {
+      if (willDelete) {
+        ajax_call_delete_package(id);
+      } else {
+        swal("Package is safe!");
+      }
+    });
+}
+
+
+
+function ajax_call_delete_package(id)
+{
+    
+      $.ajax({
+        url: '/ajax_call_delete_package',
+        type:'POST',
+        data: {
+          'id': id,
+          'csrfmiddlewaretoken': '{{ csrf_token }}',
+        },
+        dataType: 'json',
+        success: function (data) {
+          if (data["value"]) {
+            
+            swal("Package has been deleted!", {
+                  icon: "success",
+                });
+
+              window.location.reload() ;
+          }
+        else{
+          swal("Failed !", {
+              icon: "error",
+            });
+        }
+        }
+      });
+}
+
+</script>
+			
+{% endblock %}

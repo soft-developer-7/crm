@@ -1,0 +1,165 @@
+{% extends "base-admin.html" %}
+{% load static %}
+
+{% block title %}Update package{% endblock%}
+{% block page_heading %}Update Package{% endblock%}
+{% block content %}
+
+{% if messages %}
+<div class="alert alert-danger" role="alert">
+  <ul class="text-center">
+    {% for message in messages%}
+      <li> {{message}} </li>
+    {% endfor%}
+    </ul>
+</div>
+{% endif %}
+
+	<div class="row mb-3">
+		<div class="col-lg-4">
+			<div class="card mb-3">
+				<div class="card-body shadow">
+					<form method="POST" action="/admin_package_update_form" enctype="multipart/form-data">
+					{% csrf_token %}
+                    <input name="id" value="{{id}}" required hidden />
+
+
+					<label>Package Image</label><br>
+					<small>(Optional) </small><br><br>
+						
+						<input id="banner_photo" type="file" name="photo" value="" accept="image/jpeg,image/png" />
+					<br><br>
+                    {% if photo %}
+                    <a href="{{photo}}" target="_blank"><img  class="mb-3 mt-4" src="{{photo}}" alt="No image" width="160" height="160"></a>
+						<br>Current Banner Photo<br>
+                    {% else %}
+                        <br>Banner photo is not set<br>
+                    {% endif %}
+				</div>				
+			</div>			
+			
+		</div>
+		
+		
+	<div class="col-lg-8">
+		<div class="row">
+			<div class="col">		
+				
+					<div class="card shadow mb-3">
+						<div class="card-header py-3">
+						<p class="text-primary m-0 font-weight-bold">Package details</p>
+						</div>
+					<div class="card-body">
+					
+					<div class="form-row">
+						
+						<div class="col">
+							<div class="form-group">
+								<label ><strong>1. Title</strong></label>
+								<input class="form-control" type="text" name="title" value="{{title}}"  minlength="4" maxlength="300" required> 
+								</div>
+						</div>
+						</div>
+
+					<div class="form-row">
+						
+					<div class="col">
+						<div class="form-group">
+							<label ><strong>2. Price</strong></label>
+							<input class="form-control" type="text"  name="price" value="{{price}}"  minlength="2" maxlength="100" required>
+						</div>
+					</div>
+						
+				</div>
+						
+						
+						
+			<div class="form-row">
+				<div class="col">
+					<div class="form-group"><label>
+						<strong>3. Validity</strong></label>
+						<input class="form-control" type="text" name="validity" value="{{validity}}"   minlength="4" maxlength="100" required >
+					</div>
+				</div>
+				</div>
+
+
+						
+									
+			<div class="form-row">
+				
+				<div class="col">
+				<div class="form-group"><label >
+					<strong>4. Plan details</strong></label>
+					<textarea class="form-control" name="plan"  minlength="4" maxlength="3000" required rows="10">{{plan}}</textarea>
+						</div>
+				</div>
+				
+			
+
+				</div>	
+						
+						
+			<div class="form-group">
+				<button class="btn btn-primary btn-sm" type="submit">Submit</button>
+			</div>
+					
+		</div>
+	</div>
+</form>
+</div>
+</div>
+</div>
+</div>
+
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+
+<script>
+
+
+    $("#banner_photo").change(function() {
+    var imgPath = $(this)[0].value;
+    var extn = imgPath.substring(imgPath.lastIndexOf('.') + 1).toLowerCase();
+    var size=Math.round((this.files[0].size)/1024);
+    if(extn == "jpg" || extn == "jpeg" || extn == "png")
+        {
+            if(size<1024)
+                {
+                    pass;
+                }
+            else
+                {
+                    $("#banner_photo").val('');
+
+					swal({
+						title: "Oops !",
+						text: "Image size is larger than 1MB !",
+						icon: "error",
+						button: "ok",
+						});
+                    
+                }
+        }
+
+    else
+        {
+            
+			$("#banner_photo").val('');
+
+			swal({
+				title: "Oops !",
+				text: "Image format must be in JPG/JPEG/PNG !",
+				icon: "error",
+				button: "ok",
+				});
+                    
+                
+        }
+    });
+
+
+
+</script>
+
+{% endblock %}
