@@ -1,4 +1,5 @@
 from django.db import models
+from tasks.models import User_db
 
 # Create your models here.
 class Packs(models.Model):
@@ -24,3 +25,27 @@ class Industries(models.Model):
 
     def __str__(self):
         return self.name
+
+
+
+
+class Templates(models.Model):
+    name = models.CharField(max_length=300)
+    code = models.CharField(max_length=50)
+    pack = models.ForeignKey(Packs, on_delete=models.CASCADE)
+    ind = models.ForeignKey(Industries, on_delete=models.CASCADE)
+    date = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return self.name
+
+
+class User_bookings(models.Model):
+
+    title = models.CharField(max_length=300)
+    user = models.ForeignKey(User_db, on_delete=models.CASCADE)
+    template = models.ForeignKey(Templates, on_delete=models.CASCADE)
+    date = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return self.title

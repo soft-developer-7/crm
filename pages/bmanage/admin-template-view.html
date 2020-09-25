@@ -1,0 +1,79 @@
+{% extends "base-admin.html" %}
+{% load static %}
+
+{% block title %}Template view{% endblock%}
+{% block page_heading %}Template view{% endblock%}
+{% block content %}
+
+
+
+<div class="row">
+        <div class="col-lg-4">   
+            <div class="card shadow mb-4">
+            <div class="card-header py-3">
+                <h6 class="m-0 font-weight-bold text-primary">Template details</h6>
+            </div>
+            <div class="card-body text-dark">
+                <ul>
+                    <li><b>Template id : </b>{{tmp.id}}</li>
+                    <li><b>Template code : </b>{{tmp.code}}</li>
+                    <li><b>Name : </b>{{tmp}}</li>
+                </ul>
+            </div>
+            </div>
+        </div>
+
+
+        <div class="col-lg-4">   
+            <div class="card shadow mb-4">
+            <div class="card-header py-3">
+                <h6 class="m-0 font-weight-bold text-primary">Industry details</h6>
+            </div>
+            <div class="card-body text-dark">
+
+            {% if tmp.ind.photo %}
+              <a href="{{tmp.ind.photo.url}}" target="_blank">  <img src="{{tmp.ind.photo.url}}" width="100%" class="img-thumbnail" /></a>
+            {% endif %}
+            <br/><br/>
+            <ul>
+                <li><b> ID : </b>{{tmp.ind.id}}</li>
+                <li><b>Name    : </b>{{tmp.ind}}</li>
+                <li><b>Owner   : </b>{{tmp.ind.owner}}</li>
+                <li><b>Email   : </b>{{tmp.ind.email}}</li>
+                <li><b>Mobile  : </b>{{tmp.ind.mobile}}</li>
+                <li><b>Address : </b>{{tmp.ind.address}}</li>
+            </ul>
+            </div>
+            </div>
+        </div>
+
+
+     <div class="col-lg-4">   
+            <div class="card shadow mb-4">
+            <div class="card-header py-3">
+                <h6 class="m-0 font-weight-bold text-primary">Package details</h6>
+            </div>
+            <div class="card-body text-dark">
+
+            {% if tmp.pack.photo %}
+              <a href="{{tmp.pack.photo.url}}" target="_blank">  <img src="{{tmp.pack.photo.url}}" width="100%" class="img-thumbnail" /></a>
+            {% endif %}
+            <br/><br/>
+            <ul>
+               <li><b> ID</b> : </b>{{tmp.pack.id}}</li>
+                <li><b>Name  : </b>{{tmp.pack}}</li>
+                <li><b>price : </b>{{tmp.pack.price}}</li>
+               <li><b> Validity : </b>{{tmp.pack.validity}}</li>
+               <li><b> Plan : </b>{{tmp.pack.plan}}</li>
+            </ul>
+            </div>
+            </div>
+        </div>
+
+
+</div>
+
+
+
+
+{% endblock %}

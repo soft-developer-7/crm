@@ -1,0 +1,128 @@
+{% extends "base-admin.html" %}
+{% load static %}
+
+{% block title %}Update template{% endblock%}
+{% block page_heading %}Update Template{% endblock%}
+{% block content %}
+
+{% if messages %}
+<div class="alert alert-danger" role="alert">
+  <ul class="text-center">
+    {% for message in messages%}
+      <li> {{message}} </li>
+    {% endfor%}
+    </ul>
+</div>
+{% endif %}
+
+	<div class="row mb-3">
+
+
+		<div class="col-lg-5">
+			<div class="card mb-3">
+				<div class="card-body shadow">
+					<form method="POST" action="/admin_template_update_form">
+					{% csrf_token %}
+
+
+                    <input type="text" name="id" value="{{data.id}}" hidden required />
+
+
+					<label>1. Industry</label><br>
+					<select class="form-control" name="ind" required>
+                        <option value="">Select industry name</option>
+
+                        {% for indx in inds %}
+                            <option value="{{indx.id}}" 
+                            
+                            {% if indx.id == data.ind.id %}
+                                selected=""
+                            {% endif %}
+                            
+                                     >{{indx.name}}</option>
+                        {% endfor %}
+                    </select>
+					<br><br>
+
+				</div>				
+			</div>
+
+            <div class="card mb-3">
+				<div class="card-body shadow">
+					
+					<label>2. Package</label><br>
+					<select class="form-control" name="pack" required>
+                    
+                        <option value=""> Select package name</option>
+
+                         {% for packx in packs %}
+                            <option value="{{packx.id}}"
+                            
+                            
+                            {% if packx.id == data.pack.id %}
+                                selected=""
+                            {% endif %}
+
+
+                            
+                            >{{packx.title}}</option>
+                        {% endfor %}
+                    
+                    </select>
+					<br><br>
+
+				</div>				
+			</div>
+
+
+
+		</div>
+		
+		
+	<div class="col-lg-7">
+		<div class="row">
+			<div class="col">		
+				
+					<div class="card shadow mb-3">
+						<div class="card-header py-3">
+						<p class="text-primary m-0 font-weight-bold">Package details</p>
+						</div>
+					<div class="card-body">
+					
+					<div class="form-row">
+						
+						<div class="col">
+							<div class="form-group">
+								<label ><strong>3. Template Name</strong></label>
+								<input class="form-control" type="text" name="name" value="{{data.name}}" minlength="4" maxlength="300" required> 
+								</div>
+						</div>
+						</div>
+
+					<div class="form-row">
+						
+					<div class="col">
+						<div class="form-group">
+							<label ><strong>4. Template Code</strong></label>
+							<input class="form-control" type="text"  name="code" value="{{data.code}}"  minlength="2" maxlength="50" required>
+						</div>
+					</div>
+						
+				</div>
+						
+						
+						
+			<div class="form-group">
+				<button class="btn btn-primary btn-sm" type="submit">Submit</button>
+			</div>
+					
+		</div>
+	</div>
+</form>
+</div>
+</div>
+</div>
+</div>
+
+
+{% endblock %}

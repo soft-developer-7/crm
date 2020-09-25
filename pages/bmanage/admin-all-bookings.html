@@ -1,24 +1,27 @@
-{% extends "base-admin.html" %}
+{% extends "../base-admin.html" %}
 {% load static %}
 
-{% block title %}All posts{% endblock%}
-{% block page_heading %}All posts{% endblock%}
+{% block title %}All bookings{% endblock%}
+{% block page_heading %}All bookings{% endblock%}
 {% block content %}
 			
 	          <!-- DataTales Example -->
           <div class="card shadow mb-4">
             <div class="card-header py-3">
-              <h6 class="m-0 font-weight-bold text-primary">All posts list</h6>
+              <h6 class="m-0 font-weight-bold text-primary">All booking list</h6>
             </div>
             <div class="card-body">
               <div class="table-responsive">
-                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0" style="table-layout: fixed;">
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0" >
                   <thead>
                     <tr>
-					  <th>id</th>
-                      <th>Banner</th>
-                      <th>Title</th>
-                      <th>Article</th>
+                      <th>id</th>
+                      <th> name</th>
+                      <th> User email</th>
+                      <th>Template Name</th>
+                      <th>Booking date time</th>
+                      
+                      <th>View</th>
                       <th>Edit</th>
                       <th>Delete</th>
                     </tr>
@@ -26,10 +29,13 @@
                   <tfoot>
                     <tr>
 			
-					   <th>id</th>
-                      <th>Banner</th>
-                      <th>Title</th>
-                      <th>Article</th>
+                      <th>id</th>
+                      <th> name</th>
+                      <th> User email</th>
+                      <th>Template Name</th>
+                      <th>Booking date time</th>
+                      
+                      <th>View</th>
                       <th>Edit</th>
                       <th>Delete</th>
                     </tr>
@@ -39,16 +45,17 @@
 
 
 
-{% for post in posts %}
+{% for booking in bookings %}
 <tr>
-<td>{{post.id}}</td>
-<td><a href="{{post.banner_photo.url}}" target="_blank"><img src="{{post.banner_photo.url}}" alt="img" class="img-thumbnail" height=50 width=50></a></td>
-<td class="text-truncate" >{{post.title}}</td>
-<td class="text-truncate" >{{post.post}}</td>
+<td>{{booking.id}}</td>
+<td> {{booking}} </td>
+<td class="text-truncate" >{{booking.user.email}}</td>
+<td class="text-truncate" >{{booking.template}}</td>
+<td class="text-truncate" >{{booking.date}}</td>
 
-
-<td><a class="btn btn-primary" href="post_update_by_get/{{post.id}}">Edit</a></td>
-<td><button class="btn btn-danger" type="button" onclick="delete_post({{post.id}})">Delete</button></td>
+<td><a class="btn btn-success" href="booking_view_by_get/{{booking.id}}">View</a></td>
+<td><a class="btn btn-primary" href="booking_update_by_get/{{booking.id}}">Edit</a></td>
+<td><button class="btn btn-danger" type="button" onclick="delete_booking({{booking.id}})">Delete</button></td>
 </tr>
 
 {% endfor %}
@@ -92,31 +99,31 @@
 
 <script>
 
-function delete_post(id)
+function delete_booking(id)
 {
       swal({
       title: "Are you sure?",
-      text: "Once deleted, you will not be able to recover the Post !",
+      text: "Once deleted, you will not be able to recover the booking record !",
       icon: "warning",
       buttons: true,
       dangerMode: true,
     })
     .then((willDelete) => {
       if (willDelete) {
-        ajax_call_delete_post(id);
+        ajax_call_delete_booking(id);
       } else {
-        swal("Post is safe!");
+        swal("Booking record is safe!");
       }
     });
 }
 
 
 
-function ajax_call_delete_post(id)
+function ajax_call_delete_booking(id)
 {
     
       $.ajax({
-        url: '/ajax_call_delete_post',
+        url: '/ajax_call_delete_booking',
         type:'POST',
         data: {
           'id': id,
@@ -126,7 +133,7 @@ function ajax_call_delete_post(id)
         success: function (data) {
           if (data["value"]) {
             
-            swal("Post has been deleted!", {
+            swal("Booking record has been deleted!", {
                   icon: "success",
                 });
 

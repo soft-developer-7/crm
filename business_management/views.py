@@ -5,7 +5,7 @@ from django.contrib.auth.hashers import make_password,check_password
 from django.http import JsonResponse
 from tasks.models import User_db,Pages,Posts,Banners
 from django.core.paginator import Paginator
-from .models import Packs,Industries
+from .models import Packs,Industries,Templates,User_bookings
 
 
 
@@ -77,11 +77,48 @@ def admin_add_industry(request):                        # Admin Add industry pag
 
 
 
+def admin_all_templates(request):                        # Admin All Templates page
+    if(auth_admin(request)):
+        tmp = Templates.objects.all()
+        return render(request,"bmanage/admin-all-templates.html",{"templates":tmp})
+    else:
+        return render(request,'login.html')
 
 
 
 
 
+def admin_add_template(request):                        # Admin Add Template page
+    if(auth_admin(request)):
+        packs = Packs.objects.all()
+        inds = Industries.objects.all()
+        return render(request,"bmanage/admin-add-template.html",{"packs":packs,"inds":inds})
+    else:
+        return render(request,'login.html')
+
+
+
+
+
+
+
+
+def admin_all_bookings(request):                        # Admin All Bookings page
+    if(auth_admin(request)):
+        bookings = User_bookings.objects.all()
+        return render(request,"bmanage/admin-all-bookings.html",{"bookings":bookings})
+    else:
+        return render(request,'login.html')
+
+
+
+
+def admin_add_booking(request):                        # Admin Add booking page
+    if(auth_admin(request)):
+        tmps = Templates.objects.all()
+        return render(request,"bmanage/admin-add-booking.html",{"tmps":tmps})
+    else:
+        return render(request,'login.html')
 
 #--------------------------------------------------------------- Tasks ------------------------------------------------
 
@@ -167,8 +204,9 @@ def admin_package_update_form(request):                                   # Admi
 
 def ajax_call_delete_package(request):                                   # AJAX call DELETE Package - By Admin
     if(auth_admin(request) and request.method=="POST"):
-        pack = Packs.objects.filter(id=request.POST['id']).get()
+        pack = Packs.objects.filter(id=request.POST['id']).count()
         if(pack):
+            pack = Packs.objects.filter(id=request.POST['id']).get()
             pack.delete()
             return JsonResponse({"value":request.POST['id']},status=200)
         else:
@@ -186,7 +224,6 @@ def ajax_call_delete_package(request):                                   # AJAX 
 
 
 
-# +++++++++++++++++   * ////////////////// ---------++++++++++++++ ]]]]]]]]][[[[[[[[[[]]]]]]]]]]
 
 
 
@@ -275,9 +312,307 @@ def admin_industry_update_form(request):                                   # Adm
 
 def ajax_call_delete_industry(request):                                   # AJAX call DELETE industry - By Admin
     if(auth_admin(request) and request.method=="POST"):
-        ind = Industries.objects.filter(id=request.POST['id']).get()
+        ind = Industries.objects.filter(id=request.POST['id']).count()
         if(ind):
+            ind = Industries.objects.filter(id=request.POST['id']).get()
             ind.delete()
+            return JsonResponse({"value":request.POST['id']},status=200)
+        else:
+            return JsonResponse({"value":0})
+    else:
+        return JsonResponse({"value":0})
+
+
+
+
+
+
+
+
+def admin_new_template_form(request):                                   # Admin add new template Form
+
+    if(Templates.objects.filter(code=request.POST["code"]).count()):
+        messages.add_message(request, messages.INFO,"Template Code already exists !")
+
+    if(Templates.objects.filter(name=request.POST["name"]).count()):
+        messages.add_message(request, messages.INFO,"Template Name already exists !")
+    
+    if(Templates.objects.filter(pack=request.POST["pack"],ind=request.POST["ind"]).count()):
+        messages.add_message(request, messages.INFO,"Template Package and Industry combination already exists !")
+    
+    if(messages.get_messages(request)):
+        return redirect('/admin-add-template')
+
+
+    if(auth_admin(request) and request.method=="POST"):
+       
+        tmp =  Templates()
+        tmp.name=request.POST["name"]
+        tmp.ind= Industries.objects.get(id=request.POST["ind"])
+        tmp.pack= Packs.objects.get(id=request.POST["pack"])
+        tmp.code=request.POST["code"]
+        tmp.save()
+
+       
+
+        return redirect("/admin-all-templates")
+    else:
+        return render(request,'login.html')
+
+
+
+
+
+
+def template_view_by_get(request,id):                                   # Template view by GET method by Admin
+    if(auth_admin(request)):
+        tmp =  Templates.objects.get(id=id)
+        if(tmp):
+            return render(request,'bmanage/admin-template-view.html',{'tmp':tmp})  
+
+        else:
+            return render(request,'login.html')
+    else:
+        return render(request,'login.html')
+
+
+
+
+
+
+
+
+def template_update_by_get(request,id):                                   # Template Update by GET method by Admin
+    if(auth_admin(request)):
+        tmp =  Templates.objects.get(id=id)
+        packs = Packs.objects.all()
+        inds = Industries.objects.all()
+
+        if(tmp):
+            return render(request,'bmanage/admin-template-update.html',{'data':tmp,'packs':packs,'inds':inds})  
+
+        else:
+            return render(request,'login.html')
+    else:
+        return render(request,'login.html')
+
+
+
+
+
+
+
+
+
+def admin_template_update_form(request):                                   # Admin template update Form
+
+    id = request.POST["id"]
+
+    if(not Templates.objects.filter(id=id,code=request.POST["code"]).count()  and Templates.objects.filter(code=request.POST["code"]).count()):
+        messages.add_message(request, messages.INFO,"Template Code already exists !")
+
+    if(not Templates.objects.filter(id=id,name=request.POST["name"]).count() and Templates.objects.filter(name=request.POST["name"]).count()):
+        messages.add_message(request, messages.INFO,"Template Name already exists !")
+    
+    if(not Templates.objects.filter(id=id,pack=request.POST["pack"],ind=request.POST["ind"]).count() and Templates.objects.filter(pack=request.POST["pack"],ind=request.POST["ind"]).count()):
+        messages.add_message(request, messages.INFO,"Template Package and Industry combination already exists !")
+    
+    if(messages.get_messages(request)):
+        return redirect('/template_update_by_get/'+str(id))
+
+
+    if(auth_admin(request) and request.method=="POST"):
+       
+        tmp =  Templates.objects.filter(id=id).get()
+        tmp.name=request.POST["name"]
+        tmp.ind= Industries.objects.get(id=request.POST["ind"])
+        tmp.pack= Packs.objects.get(id=request.POST["pack"])
+        tmp.code=request.POST["code"]
+        tmp.save()
+
+        
+
+        return redirect("/admin-all-templates")
+    else:
+        return render(request,'login.html')
+
+
+
+
+
+
+
+
+
+def ajax_call_delete_template(request):                                   # AJAX call DELETE template - By Admin
+    if(auth_admin(request) and request.method=="POST"):
+        tmp = Templates.objects.filter(id=request.POST['id']).count()
+        if(tmp):
+            tmp = Templates.objects.filter(id=request.POST['id']).get()
+            tmp.delete()
+            return JsonResponse({"value":request.POST['id']},status=200)
+        else:
+            return JsonResponse({"value":0})
+    else:
+        return JsonResponse({"value":0})
+
+
+
+
+
+
+
+
+def ajax_call_fetch_template(request):                                   # AJAX call Fetch template - By Admin
+    if(auth_admin(request) and request.method=="POST"):
+        tmp = Templates.objects.filter(id=request.POST['id']).count()
+        if(tmp):
+            tmp = Templates.objects.filter(id=request.POST['id']).get()
+            ind = tmp.ind
+            pack = tmp.pack
+            return JsonResponse({"ind":str(ind),"pack":str(pack)},status=200)
+        else:
+            return JsonResponse({"value":0})
+    else:
+        return JsonResponse({"value":0})
+
+
+
+
+
+def ajax_call_fetch_user(request):                                   # AJAX call Fetch user - By Admin
+    if(auth_admin(request) and request.method=="POST"):
+        user = User_db.objects.filter(email=request.POST['email']).count()
+        if(user):
+            return JsonResponse({"value":"found"},status=200)
+        else:
+            return JsonResponse({"value":0})
+    else:
+        return JsonResponse({"value":0})
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+def admin_new_booking_form(request):                                   # Admin add new Booking Form
+
+    if(not Templates.objects.filter(id=request.POST["tmp_id"]).count()):
+        messages.add_message(request, messages.INFO,"Template not exists !")
+
+    if(not User_db.objects.filter(email=request.POST["email"]).count()):
+        messages.add_message(request, messages.INFO,"User (email id) not exists !")
+    
+    if(messages.get_messages(request)):
+        return redirect('/admin-add-booking')
+
+
+    if(auth_admin(request) and request.method=="POST"):
+       
+        book =  User_bookings()
+        book.title=request.POST["name"]
+        book.user = User_db.objects.get(email=request.POST["email"])
+        book.template= Templates.objects.get(id=request.POST["tmp_id"])
+        book.save()
+
+        return redirect("/admin-all-bookings")
+    else:
+        return render(request,'login.html')
+
+
+
+
+
+
+def booking_view_by_get(request,id):                                   # Booking Update by GET method by Admin
+    if(auth_admin(request)):
+        data =  User_bookings.objects.get(id=id)
+        if(data):
+            return render(request,'bmanage/admin-booking-view.html',{'data':data})  
+
+        else:
+            return render(request,'login.html')
+    else:
+        return render(request,'login.html')
+
+
+
+
+
+
+
+
+
+
+def booking_update_by_get(request,id):                                   # Booking Update by GET method by Admin
+    if(auth_admin(request)):
+
+        book =  User_bookings.objects.get(id=id)
+        tmps = Templates.objects.all()
+
+        if(book):
+            return render(request,'bmanage/admin-booking-update.html',{'data':book,'tmps':tmps})  
+        else:
+            return render(request,'login.html')
+    else:
+        return render(request,'login.html')
+
+
+
+
+
+
+
+
+def admin_booking_update_form(request):                                   # Admin Booking update Form
+
+
+    id=request.POST["id"]
+
+    if(not Templates.objects.filter(id=request.POST["tmp_id"]).count()):
+        messages.add_message(request, messages.INFO,"Template not exists !")
+
+    if(not User_db.objects.filter(email=request.POST["email"]).count()):
+        messages.add_message(request, messages.INFO,"User (email id) not exists !")
+    
+    if(messages.get_messages(request)):
+        return redirect('/booking_update_by_get/'+str(id))
+
+
+    book = User_bookings.objects.get(id=id)
+
+    if(auth_admin(request) and book and request.method=="POST"):
+       
+        book.title=request.POST["name"]
+        book.user = User_db.objects.get(email=request.POST["email"])
+        book.template= Templates.objects.get(id=request.POST["tmp_id"])
+        book.save()
+
+        return redirect("/admin-all-bookings")
+    else:
+        return render(request,'login.html')
+
+
+
+
+
+
+
+
+
+def ajax_call_delete_booking(request):                                   # AJAX call DELETE Booking - By Admin
+    if(auth_admin(request) and request.method=="POST"):
+        book = User_bookings.objects.get(id=request.POST['id'])
+        if(book):
+            book.delete()
             return JsonResponse({"value":request.POST['id']},status=200)
         else:
             return JsonResponse({"value":0})

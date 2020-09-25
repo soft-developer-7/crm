@@ -1,0 +1,123 @@
+{% extends "base-admin.html" %}
+{% load static %}
+
+{% block title %}Booking view{% endblock%}
+{% block page_heading %}Booking view{% endblock%}
+{% block content %}
+
+
+
+<div class="row">
+
+
+        <div class="col-lg-4">   
+            <div class="card shadow mb-4">
+            <div class="card-header py-3">
+                <h6 class="m-0 font-weight-bold text-primary">Booking details</h6>
+            </div>
+            <div class="card-body text-dark">
+                <ul>
+                    <li><b>Booking id : </b>{{data.id}}</li>
+                    <li><b>Name : </b>{{data}}</li>
+                    <li><b>Date & Time : </b>{{data.date}}</li>
+                </ul>
+            </div>
+            </div>
+ 
+
+
+
+
+            <div class="card shadow mb-4">
+            <div class="card-header py-3">
+                <h6 class="m-0 font-weight-bold text-primary">Template details</h6>
+            </div>
+            <div class="card-body text-dark">
+                <ul>
+                    <li><b>Template id : </b>{{data.template.id}}</li>
+                    <li><b>Template code : </b>{{data.template.code}}</li>
+                    <li><b>Name : </b>{{data.template}}</li>
+                </ul>
+            </div>
+            </div>
+
+
+        <div class="card shadow mb-4">
+            <div class="card-header py-3">
+                <h6 class="m-0 font-weight-bold text-primary">Package details</h6>
+            </div>
+            <div class="card-body text-dark">
+
+            {% if data.template.pack.photo %}
+              <a href="{{data.template.pack.photo.url}}" target="_blank">  <img src="{{data.template.pack.photo.url}}" width="100%" class="img-thumbnail" /></a>
+            {% endif %}
+            <br/><br/>
+            <ul>
+               <li><b> ID</b> : </b>{{data.template.pack.id}}</li>
+                <li><b>Name  : </b>{{data.template.pack}}</li>
+                <li><b>price : </b>{{data.template.pack.price}}</li>
+               <li><b> Validity : </b>{{data.template.pack.validity}}</li>
+               <li><b> Plan : </b>{{data.template.pack.plan}}</li>
+            </ul>
+            </div>
+            </div>
+
+
+        </div>
+
+
+        <div class="col-lg-4">   
+            <div class="card shadow mb-4">
+            <div class="card-header py-3">
+                <h6 class="m-0 font-weight-bold text-primary">Industry details</h6>
+            </div>
+            <div class="card-body text-dark">
+
+            {% if data.template.ind.photo %}
+              <a href="{{data.template.ind.photo.url}}" target="_blank">  <img src="{{data.template.ind.photo.url}}" width="100%" class="img-thumbnail" /></a>
+            {% endif %}
+            <br/><br/>
+            <ul>
+                <li><b> ID : </b>{{data.template.ind.id}}</li>
+                <li><b>Name    : </b>{{data.template.ind}}</li>
+                <li><b>Owner   : </b>{{data.template.ind.owner}}</li>
+                <li><b>Email   : </b>{{data.template.ind.email}}</li>
+                <li><b>Mobile  : </b>{{data.template.ind.mobile}}</li>
+                <li><b>Address : </b>{{data.template.ind.address}}</li>
+            </ul>
+            </div>
+            </div>
+  
+        </div>
+
+
+
+            <div class="col-lg-4">   
+            <div class="card shadow mb-4">
+            <div class="card-header py-3">
+                <h6 class="m-0 font-weight-bold text-primary">User details</h6>
+            </div>
+            <div class="card-body text-dark">
+                {% if data.user.photo %}
+                <a href="{{data.user.photo.url}}" target="_blank">  <img src="{{data.user.photo.url}}"  class="rounded mx-auto d-block" height="100px" /></a>
+                <br>
+                {% endif %}
+
+                <ul>
+                    <li><b>User id : </b>{{data.user.id}}</li>
+                    <li><b>User email : </b>{{data.user.email}}</li>
+                    <li><b>User mobile : </b>{{data.user.mobile}}</li>
+                    <li><b>User address : </b>{{data.user.address}}</li>
+                    <li><b>User role : </b>{{data.user.role}}</li>
+                </ul>
+            </div>
+            </div>
+        </div>
+
+
+</div>
+
+
+
+
+{% endblock %}

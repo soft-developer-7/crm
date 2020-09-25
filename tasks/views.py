@@ -5,6 +5,7 @@ from django.contrib.auth.hashers import make_password,check_password
 from django.http import JsonResponse
 from .models import User_db,Pages,Posts,Banners
 from django.core.paginator import Paginator
+from business_management.models import Packs,Industries,User_bookings,Templates
 
 # Create your views here.
 
@@ -57,7 +58,7 @@ def reg_form(request):
     if(request.method=="POST"):
         name = request.POST['name']
         mobile = request.POST['phone']
-        role = request.POST['role']
+        role =request.POST['role']
         address = request.POST['address']
         email = request.POST['email']
         password = request.POST['password']
@@ -160,8 +161,18 @@ def admin_login(request):
 def admin_dashboard(request):
 
     if(auth_admin(request)):
-        total = User_db.objects.all().count()
-        return render(request,'admin-dashboard.html',{'total_users':total})
+        users = User_db.objects.all().count()
+        pages = Pages.objects.all().count()
+        posts = Posts.objects.all().count()
+        banners = Banners.objects.all().count()
+        packs = Packs.objects.all().count()
+        inds = Industries.objects.all().count()
+        tmps = Templates.objects.all().count()
+        bookings = User_bookings.objects.all().count()
+
+        return render(request,'admin-dashboard.html',{'total_users':users,'total_pages':pages,
+        'total_posts':posts,'total_banners':banners,'total_packs':packs,'total_inds':inds,'total_tmps':tmps,
+        'total_bookings':bookings})
     else:
         return render(request,'login.html')
 
@@ -591,8 +602,9 @@ def admin_page_update_form(request):                                   # Admin P
 
 def ajax_call_delete_page(request):                                   # AJAX call DELETE Page - By Admin
     if(auth_admin(request) and request.method=="POST"):
-        page = Pages.objects.filter(id=request.POST['id']).get()
+        page = Pages.objects.filter(id=request.POST['id']).count()
         if(page):
+            page = Pages.objects.filter(id=request.POST['id']).get()
             page.delete()
             return JsonResponse({"value":request.POST['id']},status=200)
         else:
@@ -703,8 +715,9 @@ def admin_post_update_form(request):                                   # Admin P
 
 def ajax_call_delete_post(request):                                   # AJAX call DELETE Post - By Admin
     if(auth_admin(request) and request.method=="POST"):
-        post = Posts.objects.filter(id=request.POST['id']).get()
+        post = Posts.objects.filter(id=request.POST['id']).count()
         if(post):
+            post = Posts.objects.filter(id=request.POST['id']).get()
             post.delete()
             return JsonResponse({"value":request.POST['id']},status=200)
         else:
@@ -797,8 +810,9 @@ def admin_banner_update_form(request):                                   # Admin
 
 def ajax_call_delete_banner(request):                                   # AJAX call DELETE Banner - By Admin
     if(auth_admin(request) and request.method=="POST"):
-        banner = Banners.objects.filter(id=request.POST['id']).get()
+        banner = Banners.objects.filter(id=request.POST['id']).count()
         if(banner):
+            banner = Banners.objects.filter(id=request.POST['id']).get()
             banner.delete()
             return JsonResponse({"value":request.POST['id']},status=200)
         else:

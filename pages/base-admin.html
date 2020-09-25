@@ -56,7 +56,7 @@
       <li class="nav-item active">
         <a class="nav-link" href="/admin-dashboard">
           <i class="fas fa-home"></i>
-          <span>Home - {{request.session.role}}</span></a>
+          <span>Home</span></a>
       </li>
 
       <!-- Divider -->
@@ -180,6 +180,39 @@
         </div>
       </li>
 
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities6" aria-expanded="true" aria-controls="collapseUtilities">
+          <i class="fas fa-address-card"></i>
+          <span>Template management</span>
+        </a>
+
+        <div id="collapseUtilities6" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
+          <div class="bg-white py-2 collapse-inner rounded">
+            <h6 class="collapse-header">Utilities:</h6>
+
+            <a class="collapse-item" href="/admin-add-template">Add Template</a>
+            <a class="collapse-item" href="/admin-all-templates" >All Templates</a>
+            
+          </div>
+        </div>
+      </li>
+
+    <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities7" aria-expanded="true" aria-controls="collapseUtilities">
+          <i class="fas fa-address-book"></i>
+          <span>User Bookings</span>
+        </a>
+
+        <div id="collapseUtilities7" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
+          <div class="bg-white py-2 collapse-inner rounded">
+            <h6 class="collapse-header">Utilities:</h6>
+
+            <a class="collapse-item" href="/admin-add-booking">Add Booking</a>
+            <a class="collapse-item" href="/admin-all-bookings" >All Bookings</a>
+            
+          </div>
+        </div>
+      </li>
 
 
 
@@ -311,8 +344,11 @@
         {% endblock %}
       </div>
       <!-- End of Main Content -->
+
+      <br><br><br>
       <!-- Footer -->
-      <footer class="sticky-footer bg-white">
+      
+      <footer class="sticky-footer bg-white" style="position: fixed;bottom: 0;min-width:90%;">
         <div class="container my-auto">
           <div class="copyright text-center my-auto">
             <span>Copyright &copy; Company name 2020</span>

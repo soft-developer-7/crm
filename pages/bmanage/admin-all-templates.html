@@ -1,24 +1,26 @@
-{% extends "base-admin.html" %}
+{% extends "../base-admin.html" %}
 {% load static %}
 
-{% block title %}All posts{% endblock%}
-{% block page_heading %}All posts{% endblock%}
+{% block title %}All templates{% endblock%}
+{% block page_heading %}All templates{% endblock%}
 {% block content %}
 			
 	          <!-- DataTales Example -->
           <div class="card shadow mb-4">
             <div class="card-header py-3">
-              <h6 class="m-0 font-weight-bold text-primary">All posts list</h6>
+              <h6 class="m-0 font-weight-bold text-primary">All template list</h6>
             </div>
             <div class="card-body">
               <div class="table-responsive">
-                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0" style="table-layout: fixed;">
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0" >
                   <thead>
                     <tr>
-					  <th>id</th>
-                      <th>Banner</th>
-                      <th>Title</th>
-                      <th>Article</th>
+					  <th>id - Photo</th>
+                      <th>Template Name</th>
+                      <th>Industry Name</th>
+                      <th>Package Name</th>
+                      
+                      <th>View</th>
                       <th>Edit</th>
                       <th>Delete</th>
                     </tr>
@@ -26,10 +28,12 @@
                   <tfoot>
                     <tr>
 			
-					   <th>id</th>
-                      <th>Banner</th>
-                      <th>Title</th>
-                      <th>Article</th>
+					  <th>id - Photo</th>
+                      <th>Template Name</th>
+                      <th>Industry Name</th>
+                      <th>Package Name</th>
+                      
+                      <th>View</th>
                       <th>Edit</th>
                       <th>Delete</th>
                     </tr>
@@ -39,16 +43,16 @@
 
 
 
-{% for post in posts %}
+{% for tmp in templates %}
 <tr>
-<td>{{post.id}}</td>
-<td><a href="{{post.banner_photo.url}}" target="_blank"><img src="{{post.banner_photo.url}}" alt="img" class="img-thumbnail" height=50 width=50></a></td>
-<td class="text-truncate" >{{post.title}}</td>
-<td class="text-truncate" >{{post.post}}</td>
+<td>{{tmp.id}} {% if tmp.ind.photo %} <a href="{{tmp.ind.photo.url}}" target="_blank"><img src="{{tmp.ind.photo.url}}" alt="img" class="img-thumbnail" height=100 width=100></a> {% endif %} </td>
+<td class="text-truncate" >{{tmp.name}}</td>
+<td class="text-truncate" >{{tmp.ind.name}}</td>
+<td class="text-truncate" >{{tmp.pack.title}}</td>
 
-
-<td><a class="btn btn-primary" href="post_update_by_get/{{post.id}}">Edit</a></td>
-<td><button class="btn btn-danger" type="button" onclick="delete_post({{post.id}})">Delete</button></td>
+<td><a class="btn btn-success" href="template_view_by_get/{{tmp.id}}">View</a></td>
+<td><a class="btn btn-primary" href="template_update_by_get/{{tmp.id}}">Edit</a></td>
+<td><button class="btn btn-danger" type="button" onclick="delete_template({{tmp.id}})">Delete</button></td>
 </tr>
 
 {% endfor %}
@@ -92,31 +96,31 @@
 
 <script>
 
-function delete_post(id)
+function delete_template(id)
 {
       swal({
       title: "Are you sure?",
-      text: "Once deleted, you will not be able to recover the Post !",
+      text: "Once deleted, you will not be able to recover the template !",
       icon: "warning",
       buttons: true,
       dangerMode: true,
     })
     .then((willDelete) => {
       if (willDelete) {
-        ajax_call_delete_post(id);
+        ajax_call_delete_template(id);
       } else {
-        swal("Post is safe!");
+        swal("Template is safe!");
       }
     });
 }
 
 
 
-function ajax_call_delete_post(id)
+function ajax_call_delete_template(id)
 {
     
       $.ajax({
-        url: '/ajax_call_delete_post',
+        url: '/ajax_call_delete_template',
         type:'POST',
         data: {
           'id': id,
@@ -126,7 +130,7 @@ function ajax_call_delete_post(id)
         success: function (data) {
           if (data["value"]) {
             
-            swal("Post has been deleted!", {
+            swal("Template has been deleted!", {
                   icon: "success",
                 });
 

@@ -1,0 +1,169 @@
+{% extends "base-admin.html" %}
+{% load static %}
+
+{% block title %}Add new booking{% endblock%}
+{% block page_heading %}Add New Booking{% endblock%}
+{% block content %}
+
+{% if messages %}
+<div class="alert alert-danger" role="alert">
+  <ul class="text-center">
+    {% for message in messages%}
+      <li> {{message}} </li>
+    {% endfor%}
+    </ul>
+</div>
+{% endif %}
+
+	<div class="row mb-3">
+
+
+		<div class="col-lg-5">
+			<div class="card mb-3">
+				<div class="card-body shadow">
+					<form method="POST" action="/admin_new_booking_form">
+					{% csrf_token %}
+					<label>1. Template</label><br>
+					<select class="form-control" name="tmp_id" required onchange="update_values(value)">
+                        <option value="">Select industry name</option>
+
+                        {% for tmp in tmps %}
+                            <option value="{{tmp.id}}">{{tmp.name}}</option>
+                        {% endfor %}
+                    </select>
+					<br><br>
+
+				</div>				
+			</div>
+
+            <div class="card mb-3">
+				<div class="card-body shadow">
+					
+					<label> Industry name</label><br>
+					<h4 id="ind_name" class="text-dark">Please select a template</h3>
+					<br>
+
+                    <label> Package name</label><br>
+					<h4 id="pack_name" class="text-dark">Please select a template</h3>
+					
+
+				</div>				
+			</div>
+
+
+
+		</div>
+		
+		
+	<div class="col-lg-7">
+		<div class="row">
+			<div class="col">		
+				
+					<div class="card shadow mb-3">
+						<div class="card-header py-3">
+						<p class="text-primary m-0 font-weight-bold">Booking details</p>
+						</div>
+					<div class="card-body">
+					
+					<div class="form-row">
+						
+						<div class="col">
+							<div class="form-group">
+								<label ><strong>2. User email id</strong></label>
+								<input class="form-control" type="email" name="email" minlength="4" maxlength="300" onfocusout="check_user(value)" required> 
+								<small id="found" class="text-success" style="display:none;" >User found</small>
+                                <small id="not_found" class="text-danger" style="display:none;">User not found</small>
+                                
+                                </div>
+						</div>
+						</div>
+
+					<div class="form-row">
+						
+					<div class="col">
+						<div class="form-group">
+							<label ><strong>3. Booking name</strong></label>
+							<input class="form-control" type="text"  name="name"  minlength="2" maxlength="200" required>
+						</div>
+					</div>
+						
+				</div>
+						
+						
+						
+			<div class="form-group">
+				<button class="btn btn-primary btn-sm" type="submit">Submit</button>
+			</div>
+					
+		</div>
+	</div>
+</form>
+</div>
+</div>
+</div>
+</div>
+
+<script>
+
+function update_values(id)
+{
+    if(id=="")
+    {
+        $("#ind_name").html("Please select a template");
+        $("#pack_name").html("Please select a template");
+    }
+    else{
+      $.ajax({
+        url: '/ajax_call_fetch_template',
+        type:'POST',
+        data: {
+          'id': id,
+          'csrfmiddlewaretoken': '{{ csrf_token }}',
+        },
+        dataType: 'json',
+        success: function (data) {
+          if (data["ind"] && data["pack"]) {
+            $("#ind_name").html(data["ind"]);
+            $("#pack_name").html(data["pack"]);
+          }
+        else{
+            $("#ind_name").html("Not Found !");
+            $("#pack_name").html("Not Found !");
+        }
+        }
+      });
+    }
+}
+
+
+
+function check_user(email)
+{
+    if(email!="")
+    {
+       
+      $.ajax({
+        url: '/ajax_call_fetch_user',
+        type:'POST',
+        data: {
+          'email': email,
+          'csrfmiddlewaretoken': '{{ csrf_token }}',
+        },
+        dataType: 'json',
+        success: function (data) {
+          if (data["value"]) {
+            $("#not_found").hide();
+            $("#found").fadeIn("slow");
+          }
+        else{
+            $("#found").hide();
+            $("#not_found").fadeIn("slow");
+        }
+        }
+      });
+    }
+}
+
+
+</script>
+{% endblock %}
