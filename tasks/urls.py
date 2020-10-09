@@ -6,6 +6,13 @@ import re
 urlpatterns = [
     path("",views.home,name="home"),
     path("home",views.home,name="home"),
+
+    path("contactus",views.contactus,name="contactus"),
+    path("aboutus",views.aboutus,name="aboutus"),
+    path("faq",views.faq,name="faq"),
+    path("keyteam",views.keyteam,name="keyteam"),
+
+
     path("login",views.login,name="login"),
     path("logout",views.logout,name="logout"),
     path("registration",views.registration,name="registration"),

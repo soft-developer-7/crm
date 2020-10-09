@@ -1,269 +1,311 @@
-{% extends "base-home.html" %}
 {% load static %}
+<!DOCTYPE html>
+<html>
 
-{% block title %}Home{% endblock%}
-	
-	{% block style %}
-	
-		#hd-banner{
-			background-image:url("{% static 'assets/img/pexels-photo-160107.jpeg' %}");
-			height:500px;
-			background-position:center;
-			background-size:cover;
-			background-repeat:no-repeat;
-		}
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Superplan-Home</title>
+    <link rel="stylesheet" href="{% static 'assets/bootstrap/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Anonymous+Pro">
+    <link rel="stylesheet" href="{% static 'assets/fonts/fontawesome-all.min.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/fonts/font-awesome.min.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/fonts/ionicons.min.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/fonts/fontawesome5-overrides.min.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/Article-List.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/best-carousel-slide.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/Contact-Form-Clean.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/Customizable-Background--Overlay.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/Footer-Basic.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/Google-Style-Login.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/Highlight-Clean.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+    <link rel="stylesheet" href="{% static 'assets/css/Navigation-Clean.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/styles.css' %}">
+</head>
 
-	{% endblock %}
+<body>
+    <nav class="navbar navbar-light navbar-expand-lg navigation-clean">
+        <div class="container-fluid"><a class="navbar-brand" href="home"><img src="{% static 'assets/img/brand-logo.png' %}" alt="logo" style="width: 180px;margin-right: 0px;"></a><button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
+            <div
+                class="collapse navbar-collapse" id="navcol-1">
+                <ul class="nav navbar-nav ml-auto">
+                    <li class="nav-item" role="presentation"><a class="nav-link" href="home">Home</a></li>
+					
+                    <li class="nav-item" role="presentation"><button class="btn nav-link" onclick="superplan()">Why superplan</button></li>
+					
+                    <li class="nav-item" role="presentation"><button class="btn nav-link" onclick="works()">How it works</button></li>
+					
+                    <li class="nav-item" role="presentation"><button class="btn nav-link" onclick="pricing()">Pricing</button></li>
+					
+                    <li class="nav-item" role="presentation"><a class="nav-link" href="contactus">Contact Us</a></li>
+					
+                    <li class="nav-item" role="presentation"><a class="nav-link" href="registration">Register</a></li>
+					
+                    <li class="nav-item" role="presentation">
+					
+					<a class="btn btn-danger"  style="font-weight: bold;" href="login">Login</a>
+					
+					</li>
+                </ul>
+        </div>
+        </div>
+    </nav>
 
-
-{% block content %}
-
-	
-    <div id="hd-banner" style="">
-        <div class="d-flex justify-content-center align-items-center" style="height:inherit;min-height:initial;width:100%;position:absolute;left:0;background-color:rgba(30,41,99,0.53);">
-            <div class="d-flex align-items-center order-12" style="height:200px;">
-                <div class="container">
-                    <h1 class="text-center" style="color:rgb(242,245,248);font-size:56px;font-weight:bold;font-family:Roboto, sans-serif;">Company Tagline</h1>
-                    <h3 class="text-center" style="color:rgb(242,245,248);padding-top:0.25em;padding-bottom:0.25em;font-weight:normal;">Company vision in short line.....</h3>
+    <section id="carousel">
+        <div class="carousel slide" data-ride="carousel" id="carousel-1">
+            <div class="carousel-inner" role="listbox">
+                <div class="carousel-item active">
+                    <div class="jumbotron pulse animated hero-nature carousel-hero">
+                        <h1 class="hero-title">Comprehensive investment</h1>
+                        <p class="hero-subtitle" style="background-color: rgba(159,159,159,0.37);">Comprehensive investment pitch decks, business plans &amp; financial models</p>
+                        <p></p>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <div class="jumbotron pulse animated hero-photography carousel-hero">
+                        <h1 class="hero-title">Easiest to use business plan creator</h1>
+                        <p class="hero-subtitle" style="background-color: rgba(159,159,159,0.37);">Easiest to use business plan creator</p>
+                        <p></p>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <div class="jumbotron pulse animated hero-technology carousel-hero">
+                        <h1 class="hero-title">AI based creator<br></h1>
+                        <p class="hero-subtitle" style="background-color: rgba(159,159,159,0.37);">AI based creator</p>
+                    </div>
                 </div>
             </div>
+            <div><a class="carousel-control-prev" href="#carousel-1" role="button" data-slide="prev"><i class="fa fa-chevron-left"></i><span class="sr-only">Previous</span></a><a class="carousel-control-next" href="#carousel-1" role="button" data-slide="next"><i class="fa fa-chevron-right"></i><span class="sr-only">Next</span></a></div>
+            <ol
+                class="carousel-indicators">
+                <li data-target="#carousel-1" data-slide-to="0" class="active"></li>
+                <li data-target="#carousel-1" data-slide-to="1"></li>
+                <li data-target="#carousel-1" data-slide-to="2"></li>
+                </ol>
         </div>
-    </div>
-    <section class="py-5">
-        <h1 class="text-center text-uppercase" style="margin-bottom: 30px;font-size: 35px;">we are providing...</h1>
+    </section><br/ clear='all'>
+    <section id="superplan">
+        <h2 class="text-center" style="font-weight: bold;">Why Superplan</h2>
         <div class="container">
-            <div class="row">
-  <div class="col-md-6 col-lg-3">
-		<div class="card-container-imagia">
-			<div class="card-imagia">
-				<div class="front-imagia">
-					<div class="cover-imagia">
-					<img class="w-100" alt="" src="{% static 'assets/img/web2.jpg' %}"></div>
-					<div class="user-imagia">
-					<img class="rounded-circle" alt="" src="{% static 'assets/img/web.png' %}" width="150" height="150"></div>
-					<div class="py-1 px-3 text-center">
-						<p class="text-secondary mb-3" style="margin-top: 15px;"><em>We are providing Web development with our highly trained team</em><br></p>
-					</div>
-					<div class="footer-imagia w-100 text-secondary position-absolute text-center py-2"><span><i class="fa fa-plus"></i> More info</span></div>
-				</div>
-
-
-
-				<div class="back-imagia">
-					<div class="d-flex align-items-center h-100 px-3">
-						<div>
-							<br/>
-							<div class="text-center">
-								<img class="rounded-circle" alt="" src="{% static 'assets/img/web2.jpg' %}" style="width: 150px;height: 150px; margin-left: 30%">
-							</div>
-							<p class="text-left text-sm-left text-center" style="margin-bottom: 10px;font-size: 12px;"><strong>Options 1 :</strong><br></p>
-							<ul>
-								<li style="font-size: 12px;">tips-1</li>
-								<li style="font-size: 12px;">tips-2</li>
-								<li style="font-size: 12px;">tips-3</li>
-								
-							</ul>
-							<p class="text-left text-sm-left text-center" style="margin-bottom: 10px;font-size: 12px;"><strong>Options 2:&nbsp;</strong><br></p>
-							<ul>
-								<li style="font-size: 12px;">tips-1</li>
-								<li style="font-size: 12px;">tips-2</li>
-								<li style="font-size: 12px;">tips-3</li>
-								
-								
-							</ul>
-						</div>
-					</div>
-					<div class="footer-imagia w-100 text-secondary position-absolute text-center py-2"><a class="btn btn-primary" role="button" style="padding: 6px 40px;background-color: #0068A7; border: none !important" href="#" target="_blank">Learn more</a></div>
-				</div>
-			</div>
-		</div>
-	</div>
+            <p class="text-justify" style="padding: 30px;font-size: 20px;">Every startup needs a strong pitch deck to get investors’ attention in today’s highly competitive world, but not every founder has the skillset and the market information to create a pitch deck taking into account what an investors are looking
+                for.<br><br>Else, you want to develop a business plan for other purposes, Superplan will help you with appropriate plans that will provide insights into your thought process, and provide industry related data that will help you understand
+                where you stand with your model.<br><br>We at Superplan come with over a decade of experience in working with investors and helping startups get successfully funded. Our business plan creator will help you create the prefect pitch deck,
+                business plan and financial model (complete with projections) in just a few clicks, with our AI back end doing the heavy lifting of research.</p>
+        </div>
+        <div class="container">
+            <div class="row" style="margin: 0px;">
+			
+                <div class="col-sm-5 col-md-3 col-lg-2 col-xl-2 align-self-center">
+                    <div class="card" data-bs-hover-animate="pulse">
+                        <div class="card-body shadow">
+                            <h5 class="text-primary" style="font-weight: bold;">Knowledge of invester mindset</h5>
+                            <p class="card-text">Eg : Example</p>
+                        </div>
+                    </div>
+                </div>
 				
-				
-  <div class="col-md-6 col-lg-3">
-		<div class="card-container-imagia">
-			<div class="card-imagia">
-				<div class="front-imagia">
-					<div class="cover-imagia">
-					<img class="w-100" alt="" src="{% static 'assets/img/android1.jpg' %}"></div>
-					<div class="user-imagia">
-					<img class="rounded-circle" alt="" src="{% static 'assets/img/android2.png' %}" width="150" height="150"></div>
-					<div class="py-1 px-3 text-center">
-						<p class="text-secondary mb-3" style="margin-top: 15px;"><em>We are providing Android development with our highly trained team</em><br></p>
-					</div>
-					<div class="footer-imagia w-100 text-secondary position-absolute text-center py-2"><span><i class="fa fa-plus"></i> More info</span></div>
-				</div>
-
-
-
-				<div class="back-imagia">
-					<div class="d-flex align-items-center h-100 px-3">
-						<div>
-							<br/>
-							<div class="text-center">
-								<img class="rounded-circle" alt="" src="{% static 'assets/img/android2.png' %}" style="width: 150px;height: 150px; margin-left: 30%">
-							</div>
-							<p class="text-left text-sm-left text-center" style="margin-bottom: 10px;font-size: 12px;"><strong>Options 1 :</strong><br></p>
-							<ul>
-								<li style="font-size: 12px;">tips-1</li>
-								<li style="font-size: 12px;">tips-2</li>
-								<li style="font-size: 12px;">tips-3</li>
-							
-							</ul>
-							<p class="text-left text-sm-left text-center" style="margin-bottom: 10px;font-size: 12px;"><strong>Options 2:&nbsp;</strong><br></p>
-							<ul>
-								<li style="font-size: 12px;">tips-1</li>
-								<li style="font-size: 12px;">tips-2</li>
-								<li style="font-size: 12px;">tips-3</li>
-								
-								
-							</ul>
-						</div>
-					</div>
-					<div class="footer-imagia w-100 text-secondary position-absolute text-center py-2"><a class="btn btn-primary" role="button" style="padding: 6px 40px;background-color: #0068A7; border: none !important" href="#" target="_blank">Learn more</a></div>
-				</div>
-			</div>
-		</div>
-	</div>
-				
-				
-				
-				
-     <div class="col-md-6 col-lg-3">
-		<div class="card-container-imagia">
-			<div class="card-imagia">
-				<div class="front-imagia">
-					<div class="cover-imagia"><img class="w-100" alt="" src="{% static 'assets/img/consultancy1.jpg' %}"></div>
-					<div class="user-imagia"><img class="rounded-circle" alt="" src="{% static 'assets/img/consultancy2.jpg' %}" width="150" height="150"></div>
-					<div class="py-1 px-3 text-center">
-						<p class="text-secondary mb-3" style="margin-top: 15px;"><em>We are providing Consultancy with our highly trained team</em><br></p>
-					</div>
-					<div class="footer-imagia w-100 text-secondary position-absolute text-center py-2"><span><i class="fa fa-plus"></i> More info</span></div>
-				</div>
-
-
-
-				<div class="back-imagia">
-					<div class="d-flex align-items-center h-100 px-3">
-						<div>
-							<br/>
-							<div class="text-center">
-								<img class="rounded-circle" alt="" src="{% static 'assets/img/consultancy1.jpg' %}" style="width: 150px;height: 150px; margin-left: 30%">
-							</div>
-							<p class="text-left text-sm-left text-center" style="margin-bottom: 10px;font-size: 12px;"><strong>Options 1 :</strong><br></p>
-							<ul>
-								<li style="font-size: 12px;">tips-1</li>
-								<li style="font-size: 12px;">tips-2</li>
-								<li style="font-size: 12px;">tips-3</li>
-								
-							</ul>
-							<p class="text-left text-sm-left text-center" style="margin-bottom: 10px;font-size: 12px;"><strong>Options 2:&nbsp;</strong><br></p>
-							<ul>
-								<li style="font-size: 12px;">tips-1</li>
-								<li style="font-size: 12px;">tips-2</li>
-								<li style="font-size: 12px;">tips-3</li>
-								
-								
-							</ul>
-						</div>
-					</div>
-					<div class="footer-imagia w-100 text-secondary position-absolute text-center py-2"><a class="btn btn-primary" role="button" style="padding: 6px 40px;background-color: #0068A7; border: none !important" href="#" target="_blank">Learn more</a></div>
-				</div>
-			</div>
-		</div>
-	</div>
-				
-				
-				
-	<div class="col-md-6 col-lg-3">
-		<div class="card-container-imagia">
-			<div class="card-imagia">
-				<div class="front-imagia">
-					<div class="cover-imagia"><img class="w-100" alt="" src="{% static 'assets/img/support.jpg' %}"></div>
-					<div class="user-imagia"><img class="rounded-circle" alt="" src="{% static 'assets/img/support2.jpg' %}" width="150" height="150"></div>
-					<div class="py-1 px-3 text-center">
-						<p class="text-secondary mb-3" style="margin-top: 15px;"><em>We are providing 24*7 support with our highly trained team</em><br></p>
-					</div>
-					<div class="footer-imagia w-100 text-secondary position-absolute text-center py-2"><span><i class="fa fa-plus"></i> More info</span></div>
-				</div>
-
-
-
-				<div class="back-imagia">
-					<div class="d-flex align-items-center h-100 px-3">
-						<div>
-							<br/>
-							<div class="text-center">
-								<img class="rounded-circle" alt="" src="{% static 'assets/img/support2.jpg' %}" style="width: 150px;height:150px;margin-left: 30%">
-							</div>
-							<p class="text-left text-sm-left text-center" style="margin-bottom: 10px;font-size: 12px;"><strong>Options 1 :</strong><br></p>
-							<ul>
-								<li style="font-size: 12px;">tips-1</li>
-								<li style="font-size: 12px;">tips-2</li>
-								<li style="font-size: 12px;">tips-3</li>
-								
-							</ul>
-							<p class="text-left text-sm-left text-center" style="margin-bottom: 10px;font-size: 12px;"><strong>Options 2:&nbsp;</strong><br></p>
-							<ul>
-								<li style="font-size: 12px;">tips-1</li>
-								<li style="font-size: 12px;">tips-2</li>
-								<li style="font-size: 12px;">tips-3</li>
-								
-								
-							</ul>
-						</div>
-					</div>
-					<div class="footer-imagia w-100 text-secondary position-absolute text-center py-2"><a class="btn btn-primary" role="button" style="padding: 6px 40px;background-color: #0068A7; border: none !important" href="#" target="_blank">Learn more</a></div>
-				</div>
-			</div>
-		</div>
-	</div>
-				
-				
-				
+                <div class="col-sm-1 col-md-1 col-lg-1 col-xl-1 text-center align-self-center"><i class="fa fa-plus" style="font-size: 50px;color: rgb(0,0,0);"></i></div>
+                <div class="col-sm-5 col-md-3 col-lg-2 col-xl-2 align-self-center">
+                    <div class="card" data-bs-hover-animate="pulse">
+                        <div class="card-body shadow">
+                            <h5 class="text-primary card-title" style="font-weight: bold;">Easy to use creator</h5>
+                            <p class="card-text">Eg : Example</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-1 col-md-1 col-lg-1 col-xl-1 text-center align-self-center" style="font-size: 50px;color: rgb(150,150,150);"><i class="fa fa-plus" style="color: rgb(0,0,0);"></i></div>
+                <div class="col-sm-5 col-md-3 col-lg-2 col-xl-2 align-self-center">
+                    <div class="card" data-bs-hover-animate="pulse">
+                        <div class="card-body shadow">
+                            <h5 class="text-primary card-title" style="font-weight: bold;">Ai based research</h5>
+                            <p class="card-text">Eg : Example</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-1 col-md-1 col-lg-1 col-xl-1 text-center align-self-center"><i class="fas fa-equals" style="font-size: 50px;color: rgb(0,0,0);"></i></div>
+                <div class="col-sm-5 col-md-3 col-lg-3 col-xl-3 align-self-center">
+                    <div class="card" data-bs-hover-animate="pulse">
+                        <div class="card-body shadow">
+                            <h5 class="text-success card-title" style="font-weight: bold;">Kickass pitch deck</h5>
+                            <p class="card-text">Eg : Example</p>
+                        </div>
+                    </div>
+                </div>
             </div>
-			
-			
-			
-			
+            <p class="text-center"><img src="{%static 'assets/img/Superplan%20Blank%20Background.png' %}" style="margin-bottom: -150px;margin-top: -150px;" width="auto" height="auto" alt="superplan" loading="lazy"></p>
+        </div>
+    </section><br/ clear='all'>
+	
+	
+    <section id="works">
+        <h2 class="text-center" style="font-weight: bold;">How it works</h2>
+        <div class="container">
+            <p class="text-justify" style="font-size: 20px;"><br>You have built out a startup and started scaling or maybe you have an idea and want to present the idea to potential investors or clients or maybe just family &amp; friends, but not too sure how to go about it?? You have come to the right
+                place – we have the easiest&nbsp;business plan / pitch deck creator.&nbsp;<br><br>You start off by giving us some information on your company, and our intuitive creative engine asks you relevant information and using this our AI research
+                engine will put out industry information. Once you sign off on all the information, our creative engine takes over, giving you multiple themes to select – each one customised for your specific industry. Once you feel the information accurately
+                represents your business, you can download the pitch document or business plan and the financial model – yes, both historical financials (if any) and projections.&nbsp; [ Photo will be added soon ]<br></p>
+        </div>
+    </section><br/ clear='all'><br/ clear='all'><br/ clear='all'>
+    <section>
+        <h2 class="text-center" style="font-weight: bold;">Who will Benefit</h2>
+        <div class="container text-center">
+            <div class="col-sm-5 col-lg-3 col-xl-2 d-inline-block" data-bs-hover-animate="pulse">
+                <figure class="figure text-center"><img class="img-fluid figure-img border-danger" src="{% static 'assets/img/man-1459246_640.png' %}">
+                    <figcaption class="figure-caption text-primary" style="font-size: 19px;font-weight: 700;">Entrepreneurs</figcaption>
+                </figure>
+            </div>
+            <div class="col-sm-5 col-lg-3 col-xl-2 d-inline-block" data-bs-hover-animate="pulse">
+                <figure class="figure text-center"><img class="img-fluid figure-img" src="{% static 'assets/img/online-store-3153783_640.jpg' %}">
+                    <figcaption class="figure-caption text-primary" style="font-size: 19px;font-weight: 700;">Startups</figcaption>
+                </figure>
+            </div>
+            <div class="col-sm-5 col-lg-3 col-xl-2 d-inline-block" data-bs-hover-animate="pulse">
+                <figure class="figure text-center"><img class="img-fluid figure-img" src="{% static 'assets/img/network-3714966_640.jpg' %}">
+                    <figcaption class="figure-caption text-primary" style="font-weight: 700;font-size: 16px;">Companies looking to Expand/profits</figcaption>
+                </figure>
+            </div>
+            <div class="col-sm-3 col-xl-2 d-inline-block" data-bs-hover-animate="pulse">
+                <figure class="figure text-center"><img class="img-fluid figure-img" src="{% static 'assets/img/planning-4077086_640.jpg' %}">
+                    <figcaption class="figure-caption text-primary" style="font-weight: 700;font-size: 16px;">Analyst teams of investors</figcaption>
+                </figure>
+            </div>
+            <div class="col-sm-5 col-lg-3 col-xl-2 d-inline-block" data-bs-hover-animate="pulse">
+                <figure class="figure text-center"><img class="img-fluid figure-img" src="{% static 'assets/img/team-5614152_640.png' %}">
+                    <figcaption class="figure-caption text-primary" style="font-weight: 700;font-size: 18px;">Investment banks</figcaption>
+                </figure>
+            </div>
+        </div>
+    </section><br/ clear='all'><br/ clear='all'><br/ clear='all'>
+	
+	
+    <section id="pricing">
+        <h2 class="text-center" style="font-weight: bold;">Pricing</h2>
+        <div class="container">
+            <div class="table-responsive">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>Features</th>
+                            <th>Starter</th>
+                            <th>Pro</th>
+                            <th>Premium</th>
+                            <th>All access</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Pricing / Annum (Rs.)</td>
+                            <td>3,500</td>
+                            <td>6,000</td>
+                            <td>8,999</td>
+                            <td>14,999</td>
+                        </tr>
+                        <tr>
+                            <td>Investor Deck / Business Plan</td>
+                            <td>Yes</td>
+                            <td>Yes</td>
+                            <td>Yes</td>
+                            <td>Yes</td>
+                        </tr>
+                        <tr>
+                            <td>Financial Model</td>
+                            <td>Historical Only</td>
+                            <td>Historical + Projections</td>
+                            <td>Historical + Projections</td>
+                            <td>Historical + Projections</td>
+                        </tr>
+                        <tr>
+                            <td>Changes / Completed Deck or Plan</td>
+                            <td>5</td>
+                            <td>5</td>
+                            <td>10</td>
+                            <td>Unlimited</td>
+                        </tr>
+                        <tr>
+                            <td>SuperPlan Watermark</td>
+                            <td>Yes</td>
+                            <td>No</td>
+                            <td>No<br></td>
+                            <td>No<br></td>
+                        </tr>
+                        <tr>
+                            <td>No. Of Users</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>2</td>
+                            <td>5</td>
+                        </tr>
+                        <tr>
+                            <td>Option of Investor Deck or Business Plan</td>
+                            <td>Only 1 can be selected</td>
+                            <td>Only 1 can be selected</td>
+                            <td>Both can be selected</td>
+                            <td>Both can be selected</td>
+                        </tr>
+                        <tr>
+                            <td>Output Format</td>
+                            <td>PDF only</td>
+                            <td>PDF only</td>
+                            <td>PPT, PDF, XLSX</td>
+                            <td>PPT, PDF, XLSX</td>
+                        </tr>
+                        <tr>
+                            <td>Company Name</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>10</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
         </div>
     </section>
-    <div class="article-list">
-        <div class="container">
-            <div class="intro">
-                <h2 class="text-center">Latest Articles</h2>
-                <p class="text-center">View the latest news, top stories, headlines,&nbsp;photos and videos from around the nation. Read our latest coverage on immigration, health care, politics and many more..<br></p>
-            </div>
-            <div class="row articles" style="padding-bottom: 0px;">
-                <div class="col-sm-6 col-md-4 item"><a href="#"><img class="img-fluid" data-bs-hover-animate="pulse" src="{% static 'assets/img/grasshopper_insect_nature_animal_close-983589-200x100.jpg' %}"></a>
-                    <h3 class="name">Insect Can Find Bombs<br></h3>
-                    <p class="description">Scientists find a new way to use locusts. A locust is a small insect. Farmers do not like locusts. Locusts <strong>destroy</strong> plants and crops.<br></p><a class="action" href="#"><i class="fa fa-arrow-circle-right"></i></a></div>
-                <div
-                    class="col-sm-6 col-md-4 item"><a href="#"><img class="img-fluid" data-bs-hover-animate="pulse" src="{% static 'assets/img/virginia-rocket-liftoff-blast-space-exploration-travel-sky-clouds-200x100.jpg' %}"></a>
-                    <h3 class="name">NASA Rocket Test<br></h3>
-                    <p class="description">The US space organization, <strong>NASA</strong>, wants to send a rocket to the moon. People are very excited. NASA will send a rocket to the moon after more than 50 years.<br></p><a class="action" href="#"><i class="fa fa-arrow-circle-right"></i></a></div>
-            <div
-                class="col-sm-6 col-md-4 item"><a href="#"><img class="img-fluid" data-bs-hover-animate="pulse" src="{% static 'assets/img/Skeleton-is-Found-200x100.jpg' %}"></a>
-                <h3 class="name">Skeleton is Found<br></h3>
-                <p class="text-center description">This news is from England. People find a&nbsp;<strong>skeleton</strong>. It is near Stonehenge. It is is 4,000 years old. The skeleton is 1.5 metres long.<br></p><a class="action" href="#"><i class="fa fa-arrow-circle-right"></i></a></div>
+    <hr style="width: 80%;">
+    <div class="footer-basic">
+        <footer>
+            <div class="social"><a href="#"><i class="icon ion-social-whatsapp"></i></a><a href="#"><i class="icon ion-social-instagram"></i></a><a href="#"><i class="icon ion-social-twitter"></i></a><a href="#"><i class="icon ion-social-facebook"></i></a></div>
+            <ul class="list-inline">
+                <li class="list-inline-item"><a href="home">Home</a></li>
+                <li class="list-inline-item"><a href="contactus">Contact us</a></li>
+                <li class="list-inline-item"><a href="faq">FAQ</a></li>
+                <li class="list-inline-item"><a href="aboutus">About us</a></li>
+                <li class="list-inline-item"><a >Blog</a></li>
+            </ul>
+            <p class="copyright">Superplan © 2020</p>
+        </footer>
     </div>
-    </div>
-    </div>
-    <div class="newsletter-subscribe" style="padding-top: 0px;">
-        <div class="container">
-            <div class="intro">
-                <h2 class="text-center">Subscribe for more updates</h2>
-                <p class="text-center">We will provide valuable news and articles frequently. Please do subsribe with your mail id for more updates.</p>
-            </div>
-            <form class="form-inline">
-                <div class="form-group"><input class="form-control" type="email" name="email" placeholder="Your Email"></div>
-                <div class="form-group"><button class="btn btn-primary" type="submit">Subscribe </button></div>
-            </form>
-        </div>
-    </div>
-    
+    <script src="{% static 'assets/js/jquery.min.js' %}"></script>
+    <script src="{% static 'assets/bootstrap/js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'assets/js/bs-init.js' %}"></script>
 
+	
+	<script>
+	
+	
+			function superplan() {
+				$('html, body').animate({
+					scrollTop: $("#superplan").offset().top
+				}, 1500);
+			}
 
+			function works() {
+				$('html, body').animate({
+					scrollTop: $("#works").offset().top
+				}, 1500);
+			}
 
+			function pricing() {
+				$('html, body').animate({
+					scrollTop: $("#pricing").offset().top
+				}, 1500);
+			}
 
-	{% endblock %}
+	</script>
+	
+	
+	
+</body>
+
+</html>

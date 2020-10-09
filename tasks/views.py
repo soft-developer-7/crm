@@ -19,7 +19,25 @@ def home(request):
     return render(request,'home.html')
 
 
+                                # Contact Us page
+def contactus(request):
+    return render(request,'contactus.html')
 
+
+
+                                # About Us page
+def aboutus(request):
+    return render(request,'aboutus.html')
+
+
+                                # FAQ page
+def faq(request):
+    return render(request,'faq.html')
+
+
+                                # Keyteam page
+def keyteam(request):
+    return render(request,'keyteam.html')
 
 
                                 # Success page
