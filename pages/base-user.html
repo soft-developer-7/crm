@@ -38,25 +38,17 @@
     <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
       <!-- Sidebar - Brand -->
-      <a class="sidebar-brand d-flex align-items-center justify-content-center" href="/user-dashboard">
+      <a class="sidebar-brand d-flex align-items-center justify-content-center" >
         <div class="sidebar-brand-icon">
-          <i class="fas fa-users"></i>
+          <img class="img-fluid" src="{% static 'assets/img/logo.png' %}" alt="logo" >
         </div>
-        <div class="sidebar-brand-text mx-3">Company Name</div>
+        <div class="sidebar-brand-text mx-3">Superplan</div>
+  
       </a>
 
       <!-- Divider -->
       <hr class="sidebar-divider my-0">
 
-      <!-- Nav Item - Dashboard -->
-      <li class="nav-item active">
-        <a class="nav-link" href="/user-dashboard">
-          <i class="fas fa-fw fa-tachometer-alt"></i>
-          <span>Home - {{request.session.role}}</span></a>
-      </li>
-
-      <!-- Divider -->
-      <hr class="sidebar-divider">
 
       <!-- Heading -->
       <div class="sidebar-heading">
@@ -197,7 +189,7 @@
       <footer class="sticky-footer bg-white">
         <div class="container my-auto">
           <div class="copyright text-center my-auto">
-            <span>Copyright &copy; Company name 2020</span>
+            <span>Superplan &copy;  2020</span>
           </div>
         </div>
       </footer>

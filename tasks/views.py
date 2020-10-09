@@ -76,7 +76,7 @@ def reg_form(request):
     if(request.method=="POST"):
         name = request.POST['name']
         mobile = request.POST['phone']
-        role =request.POST['role']
+        role ="user"
         address = request.POST['address']
         email = request.POST['email']
         password = request.POST['password']
@@ -129,7 +129,7 @@ def login_form(request):
                 request.session['name']=user.name
                 request.session['photo']=user.photo.url
                 
-                return redirect('/user-dashboard')
+                return redirect('/user-profile-update')
                 
 
             else:
@@ -911,7 +911,7 @@ def user_profile_update_form(request):                                # User Pro
             if(request.POST['password']!=""):
                 user.password = make_password(request.POST['password'])
             user.save()
-            return redirect("/user-dashboard")
+            return redirect("/user-profile-update")
         else:
             return render(request,'login.html')
     else:
@@ -934,7 +934,7 @@ def user_profile_photo_update(request):                                         
             photo = request.FILES["photo"]
             user.photo = photo
             user.save()
-            return redirect("/user-dashboard")
+            return redirect("/user-profile-update")
         else:
             return render(request,'login.html')
     else:
