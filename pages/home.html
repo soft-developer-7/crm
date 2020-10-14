@@ -1,311 +1,731 @@
 {% load static %}
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-    <title>Superplan-Home</title>
-    <link rel="stylesheet" href="{% static 'assets/bootstrap/css/bootstrap.min.css' %}">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Anonymous+Pro">
-    <link rel="stylesheet" href="{% static 'assets/fonts/fontawesome-all.min.css' %}">
-    <link rel="stylesheet" href="{% static 'assets/fonts/font-awesome.min.css' %}">
-    <link rel="stylesheet" href="{% static 'assets/fonts/ionicons.min.css' %}">
-    <link rel="stylesheet" href="{% static 'assets/fonts/fontawesome5-overrides.min.css' %}">
-    <link rel="stylesheet" href="{% static 'assets/css/Article-List.css' %}">
-    <link rel="stylesheet" href="{% static 'assets/css/best-carousel-slide.css' %}">
-    <link rel="stylesheet" href="{% static 'assets/css/Contact-Form-Clean.css' %}">
-    <link rel="stylesheet" href="{% static 'assets/css/Customizable-Background--Overlay.css' %}">
-    <link rel="stylesheet" href="{% static 'assets/css/Footer-Basic.css' %}">
-    <link rel="stylesheet" href="{% static 'assets/css/Google-Style-Login.css' %}">
-    <link rel="stylesheet" href="{% static 'assets/css/Highlight-Clean.css' %}">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
-    <link rel="stylesheet" href="{% static 'assets/css/Navigation-Clean.css' %}">
-    <link rel="stylesheet" href="{% static 'assets/css/styles.css' %}">
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>Superplan-Home</title>
+  <meta content="" name="descriptison">
+  <meta content="" name="keywords">
+
+  <!-- Favicons -->
+  <link href="{% static 'assets-home/img/favi logo.png' %}" rel="icon">
+  <link href="{% static 'assets-home/img/Large favi logo.png' %}" rel="apple-touch-icon">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Montserrat:300,400,500,600,700" rel="stylesheet">
+
+
+	
+  <link href="{% static 'assets-home/vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+  <link href="{% static 'assets-home/vendor/font-awesome/css/font-awesome.min.css' %}" rel="stylesheet">
+  <link href="{% static 'assets-home/vendor/ionicons/css/ionicons.min.css' %}" rel="stylesheet">
+  <link href="{% static 'assets-home/vendor/venobox/venobox.css' %}" rel="stylesheet">
+  <link href="{% static 'assets-home/vendor/owl.carousel/assets/owl.carousel.min.css' %}" rel="stylesheet">
+  <link href="{% static 'assets-home/vendor/aos/aos.css' %}" rel="stylesheet">
+  
+  <link href="{% static 'assets-home/css/style.css' %}" rel="stylesheet">
+	<style>
+	
+		.li-item{
+			text-align: center;
+			margin: 10px 0px;
+			font-size: 15px;
+		}
+		
+	</style>
 </head>
 
 <body>
-    <nav class="navbar navbar-light navbar-expand-lg navigation-clean">
-        <div class="container-fluid"><a class="navbar-brand" href="home"><img src="{% static 'assets/img/brand-logo.png' %}" alt="logo" style="width: 180px;margin-right: 0px;"></a><button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
-            <div
-                class="collapse navbar-collapse" id="navcol-1">
-                <ul class="nav navbar-nav ml-auto">
-                    <li class="nav-item" role="presentation"><a class="nav-link" href="home">Home</a></li>
-					
-                    <li class="nav-item" role="presentation"><button class="btn nav-link" onclick="superplan()">Why superplan</button></li>
-					
-                    <li class="nav-item" role="presentation"><button class="btn nav-link" onclick="works()">How it works</button></li>
-					
-                    <li class="nav-item" role="presentation"><button class="btn nav-link" onclick="pricing()">Pricing</button></li>
-					
-                    <li class="nav-item" role="presentation"><a class="nav-link" href="contactus">Contact Us</a></li>
-					
-                    <li class="nav-item" role="presentation"><a class="nav-link" href="registration">Register</a></li>
-					
-                    <li class="nav-item" role="presentation">
-					
-					<a class="btn btn-danger"  style="font-weight: bold;" href="login">Login</a>
-					
-					</li>
-                </ul>
-        </div>
-        </div>
-    </nav>
 
-    <section id="carousel">
-        <div class="carousel slide" data-ride="carousel" id="carousel-1">
-            <div class="carousel-inner" role="listbox">
-                <div class="carousel-item active">
-                    <div class="jumbotron pulse animated hero-nature carousel-hero">
-                        <h1 class="hero-title">Comprehensive investment</h1>
-                        <p class="hero-subtitle" style="background-color: rgba(159,159,159,0.37);">Comprehensive investment pitch decks, business plans &amp; financial models</p>
-                        <p></p>
-                    </div>
-                </div>
-                <div class="carousel-item">
-                    <div class="jumbotron pulse animated hero-photography carousel-hero">
-                        <h1 class="hero-title">Easiest to use business plan creator</h1>
-                        <p class="hero-subtitle" style="background-color: rgba(159,159,159,0.37);">Easiest to use business plan creator</p>
-                        <p></p>
-                    </div>
-                </div>
-                <div class="carousel-item">
-                    <div class="jumbotron pulse animated hero-technology carousel-hero">
-                        <h1 class="hero-title">AI based creator<br></h1>
-                        <p class="hero-subtitle" style="background-color: rgba(159,159,159,0.37);">AI based creator</p>
-                    </div>
-                </div>
-            </div>
-            <div><a class="carousel-control-prev" href="#carousel-1" role="button" data-slide="prev"><i class="fa fa-chevron-left"></i><span class="sr-only">Previous</span></a><a class="carousel-control-next" href="#carousel-1" role="button" data-slide="next"><i class="fa fa-chevron-right"></i><span class="sr-only">Next</span></a></div>
-            <ol
-                class="carousel-indicators">
-                <li data-target="#carousel-1" data-slide-to="0" class="active"></li>
-                <li data-target="#carousel-1" data-slide-to="1"></li>
-                <li data-target="#carousel-1" data-slide-to="2"></li>
-                </ol>
-        </div>
-    </section><br/ clear='all'>
-    <section id="superplan">
-        <h2 class="text-center" style="font-weight: bold;">Why Superplan</h2>
-        <div class="container">
-            <p class="text-justify" style="padding: 30px;font-size: 20px;">Every startup needs a strong pitch deck to get investors’ attention in today’s highly competitive world, but not every founder has the skillset and the market information to create a pitch deck taking into account what an investors are looking
-                for.<br><br>Else, you want to develop a business plan for other purposes, Superplan will help you with appropriate plans that will provide insights into your thought process, and provide industry related data that will help you understand
-                where you stand with your model.<br><br>We at Superplan come with over a decade of experience in working with investors and helping startups get successfully funded. Our business plan creator will help you create the prefect pitch deck,
-                business plan and financial model (complete with projections) in just a few clicks, with our AI back end doing the heavy lifting of research.</p>
-        </div>
-        <div class="container">
-            <div class="row" style="margin: 0px;">
-			
-                <div class="col-sm-5 col-md-3 col-lg-2 col-xl-2 align-self-center">
-                    <div class="card" data-bs-hover-animate="pulse">
-                        <div class="card-body shadow">
-                            <h5 class="text-primary" style="font-weight: bold;">Knowledge of invester mindset</h5>
-                            <p class="card-text">Eg : Example</p>
-                        </div>
-                    </div>
-                </div>
-				
-                <div class="col-sm-1 col-md-1 col-lg-1 col-xl-1 text-center align-self-center"><i class="fa fa-plus" style="font-size: 50px;color: rgb(0,0,0);"></i></div>
-                <div class="col-sm-5 col-md-3 col-lg-2 col-xl-2 align-self-center">
-                    <div class="card" data-bs-hover-animate="pulse">
-                        <div class="card-body shadow">
-                            <h5 class="text-primary card-title" style="font-weight: bold;">Easy to use creator</h5>
-                            <p class="card-text">Eg : Example</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm-1 col-md-1 col-lg-1 col-xl-1 text-center align-self-center" style="font-size: 50px;color: rgb(150,150,150);"><i class="fa fa-plus" style="color: rgb(0,0,0);"></i></div>
-                <div class="col-sm-5 col-md-3 col-lg-2 col-xl-2 align-self-center">
-                    <div class="card" data-bs-hover-animate="pulse">
-                        <div class="card-body shadow">
-                            <h5 class="text-primary card-title" style="font-weight: bold;">Ai based research</h5>
-                            <p class="card-text">Eg : Example</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm-1 col-md-1 col-lg-1 col-xl-1 text-center align-self-center"><i class="fas fa-equals" style="font-size: 50px;color: rgb(0,0,0);"></i></div>
-                <div class="col-sm-5 col-md-3 col-lg-3 col-xl-3 align-self-center">
-                    <div class="card" data-bs-hover-animate="pulse">
-                        <div class="card-body shadow">
-                            <h5 class="text-success card-title" style="font-weight: bold;">Kickass pitch deck</h5>
-                            <p class="card-text">Eg : Example</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <p class="text-center"><img src="{%static 'assets/img/Superplan Blank Background.png' %}" style="max-width:100%;margin-bottom: -150px;margin-top: -100px;" width="auto" height="auto" alt="superplan" loading="lazy"></p>
-        </div>
-    </section><br/ clear='all'>
-	
-	
-    <section id="works">
-        <h2 class="text-center" style="font-weight: bold;">How it works</h2>
-        <div class="container">
-            <p class="text-justify" style="font-size: 20px;"><br>You have built out a startup and started scaling or maybe you have an idea and want to present the idea to potential investors or clients or maybe just family &amp; friends, but not too sure how to go about it?? You have come to the right
-                place – we have the easiest&nbsp;business plan / pitch deck creator.&nbsp;<br><br>You start off by giving us some information on your company, and our intuitive creative engine asks you relevant information and using this our AI research
-                engine will put out industry information. Once you sign off on all the information, our creative engine takes over, giving you multiple themes to select – each one customised for your specific industry. Once you feel the information accurately
-                represents your business, you can download the pitch document or business plan and the financial model – yes, both historical financials (if any) and projections.&nbsp; [ Photo will be added soon ]<br></p>
-        </div>
-    </section><br/ clear='all'><br/ clear='all'><br/ clear='all'>
-    <section>
-        <h2 class="text-center" style="font-weight: bold;">Who will Benefit</h2>
-        <div class="container text-center">
-            <div class="col-sm-5 col-lg-3 col-xl-2 d-inline-block" data-bs-hover-animate="pulse">
-                <figure class="figure text-center"><img class="img-fluid figure-img border-danger" src="{% static 'assets/img/man-1459246_640.png' %}">
-                    <figcaption class="figure-caption text-primary" style="font-size: 19px;font-weight: 700;">Entrepreneurs</figcaption>
-                </figure>
-            </div>
-            <div class="col-sm-5 col-lg-3 col-xl-2 d-inline-block" data-bs-hover-animate="pulse">
-                <figure class="figure text-center"><img class="img-fluid figure-img" src="{% static 'assets/img/online-store-3153783_640.jpg' %}">
-                    <figcaption class="figure-caption text-primary" style="font-size: 19px;font-weight: 700;">Startups</figcaption>
-                </figure>
-            </div>
-            <div class="col-sm-5 col-lg-3 col-xl-2 d-inline-block" data-bs-hover-animate="pulse">
-                <figure class="figure text-center"><img class="img-fluid figure-img" src="{% static 'assets/img/network-3714966_640.jpg' %}">
-                    <figcaption class="figure-caption text-primary" style="font-weight: 700;font-size: 16px;">Companies looking to Expand/profits</figcaption>
-                </figure>
-            </div>
-            <div class="col-sm-3 col-xl-2 d-inline-block" data-bs-hover-animate="pulse">
-                <figure class="figure text-center"><img class="img-fluid figure-img" src="{% static 'assets/img/planning-4077086_640.jpg' %}">
-                    <figcaption class="figure-caption text-primary" style="font-weight: 700;font-size: 16px;">Analyst teams of investors</figcaption>
-                </figure>
-            </div>
-            <div class="col-sm-5 col-lg-3 col-xl-2 d-inline-block" data-bs-hover-animate="pulse">
-                <figure class="figure text-center"><img class="img-fluid figure-img" src="{% static 'assets/img/team-5614152_640.png' %}">
-                    <figcaption class="figure-caption text-primary" style="font-weight: 700;font-size: 18px;">Investment banks</figcaption>
-                </figure>
-            </div>
-        </div>
-    </section><br/ clear='all'><br/ clear='all'><br/ clear='all'>
-	
-	
-    <section id="pricing">
-        <h2 class="text-center" style="font-weight: bold;">Pricing</h2>
-        <div class="container">
-            <div class="table-responsive">
-                <table class="table table-striped">
-                    <thead>
-                        <tr>
-                            <th>Features</th>
-                            <th>Starter</th>
-                            <th>Pro</th>
-                            <th>Premium</th>
-                            <th>All access</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>Pricing / Annum (Rs.)</td>
-                            <td>3,500</td>
-                            <td>6,000</td>
-                            <td>8,999</td>
-                            <td>14,999</td>
-                        </tr>
-                        <tr>
-                            <td>Investor Deck / Business Plan</td>
-                            <td>Yes</td>
-                            <td>Yes</td>
-                            <td>Yes</td>
-                            <td>Yes</td>
-                        </tr>
-                        <tr>
-                            <td>Financial Model</td>
-                            <td>Historical Only</td>
-                            <td>Historical + Projections</td>
-                            <td>Historical + Projections</td>
-                            <td>Historical + Projections</td>
-                        </tr>
-                        <tr>
-                            <td>Changes / Completed Deck or Plan</td>
-                            <td>5</td>
-                            <td>5</td>
-                            <td>10</td>
-                            <td>Unlimited</td>
-                        </tr>
-                        <tr>
-                            <td>SuperPlan Watermark</td>
-                            <td>Yes</td>
-                            <td>No</td>
-                            <td>No<br></td>
-                            <td>No<br></td>
-                        </tr>
-                        <tr>
-                            <td>No. Of Users</td>
-                            <td>1</td>
-                            <td>1</td>
-                            <td>2</td>
-                            <td>5</td>
-                        </tr>
-                        <tr>
-                            <td>Option of Investor Deck or Business Plan</td>
-                            <td>Only 1 can be selected</td>
-                            <td>Only 1 can be selected</td>
-                            <td>Both can be selected</td>
-                            <td>Both can be selected</td>
-                        </tr>
-                        <tr>
-                            <td>Output Format</td>
-                            <td>PDF only</td>
-                            <td>PDF only</td>
-                            <td>PPT, PDF, XLSX</td>
-                            <td>PPT, PDF, XLSX</td>
-                        </tr>
-                        <tr>
-                            <td>Company Name</td>
-                            <td>1</td>
-                            <td>1</td>
-                            <td>1</td>
-                            <td>10</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
-    </section>
-    <hr style="width: 80%;">
-    <div class="footer-basic">
-        <footer>
-            <div class="social"><a href="#"><i class="icon ion-social-whatsapp"></i></a><a href="#"><i class="icon ion-social-instagram"></i></a><a href="#"><i class="icon ion-social-twitter"></i></a><a href="#"><i class="icon ion-social-facebook"></i></a></div>
-            <ul class="list-inline">
-                <li class="list-inline-item"><a href="home">Home</a></li>
-                <li class="list-inline-item"><a href="contactus">Contact us</a></li>
-                <li class="list-inline-item"><a href="faq">FAQ</a></li>
-                <li class="list-inline-item"><a href="aboutus">About us</a></li>
-                <li class="list-inline-item"><a >Blog</a></li>
-            </ul>
-            <p class="copyright">Superplan © 2020</p>
-        </footer>
+  <!-- ======= Top Bar ======= -->
+  <div id="topbar" class="d-none d-lg-flex align-items-end fixed-top topbar-transparent">
+    <div class="container d-flex justify-content-end">
+      <div class="social-links">
+        <a href="#" class="twitter"><i class="fa fa-twitter"></i></a>
+        <a href="#" class="facebook"><i class="fa fa-facebook"></i></a>
+        <a href="#" class="linkedin"><i class="fa fa-linkedin"></i></a>
+        <a href="#" class="instagram"><i class="fa fa-instagram"></i></a>
+      </div>
     </div>
-    <script src="{% static 'assets/js/jquery.min.js' %}"></script>
-    <script src="{% static 'assets/bootstrap/js/bootstrap.min.js' %}"></script>
-    <script src="{% static 'assets/js/bs-init.js' %}"></script>
+  </div>
 
-	
-	<script>
-	
-	
-			function superplan() {
-				$('html, body').animate({
-					scrollTop: $("#superplan").offset().top
-				}, 1500);
-			}
+  <!-- ======= Header ======= -->
+  <header id="header" class="fixed-top header-transparent">
+    <div class="container d-flex align-items-center">
 
-			function works() {
-				$('html, body').animate({
-					scrollTop: $("#works").offset().top
-				}, 1500);
-			}
+      
+      
+      <a href="home" class="logo mr-auto"><img src="{% static 'assets-home/img/ban-logo.png'%}" alt="Superplan" class="img-fluid"></a>
 
-			function pricing() {
-				$('html, body').animate({
-					scrollTop: $("#pricing").offset().top
-				}, 1500);
-			}
+      <nav class="main-nav d-none d-lg-block">
+        <ul>
+          <li class="active"><a href="home">Home</a></li>
+		      <li><a href="#why-us">Why Superplan</a></li>	
+          <li><a href="#how-works">How it works</a></li>
+          <li><a href="#pricing">Pricing</a></li>
+          <li><a href="#footer">Contact Us</a></li>
+          <li><a href="registration">Register</a></li>
+          <li><a href="login">Login</a></li>
+        </ul>
+      </nav><!-- main-nav-->
 
-	</script>
+    </div>
+  </header><!-- End Header -->
+
+  <!-- ======= Hero Section ======= -->
+  <section id="hero" class="clearfix">
+    <div class="container d-flex h-100">
+      <div class="row justify-content-center align-self-center" data-aos="fade-up">
+        <div class="col-md-6 intro-info order-md-first order-last" data-aos="zoom-in" data-aos-delay="100">
+          <h2>Superplan<br>for Your <span>Business!</span></h2>
+          <div>
+            <a href="registration" class="btn-get-started scrollto">Get Started</a>
+          </div>
+        </div>
+
+        <div class="col-md-6 intro-img order-md-last order-first" data-aos="zoom-out" data-aos-delay="200">
+          <img src="{% static 'assets-home/img/intro-img.svg'%}" alt="" class="img-fluid">
+        </div>
+      </div>
+
+    </div>
+  </section><!-- End Hero -->
+
+  <main id="main">
+
+
+
+    <!-- ======= Services Section ======= -->
+    <section id="services" class="services section-bg">
+      <div class="container" data-aos="fade-up">
+
+        <header class="section-header">
+          <h3>Highlights</h3>
+        
+        </header>
+
+        <div class="row text-center">
+
+          <div class="col-md-6 col-lg-4 wow bounceInUp" data-aos="zoom-in" data-aos-delay="100">
+            <div class="box">
+              <div class="icon" style="background: #fceef3;"><i class="ion-ios-analytics-outline" style="color: #ff689b;"></i></div>
+              <h4 class="title"><a href="">Comprehensive investment</a></h4>
+              <p class="description">Comprehensive investment pitch decks, business plans & financial models</p>
+            </div>
+          </div>
+			
+			
+          <div class="col-md-6 col-lg-4" data-aos="zoom-in" data-aos-delay="200">
+            <div class="box">
+              <div class="icon" style="background: #fff0da;"><i class="ion-ios-bookmarks-outline" style="color: #e98e06;"></i></div>
+              <h4 class="title"><a href="">Easiest creator</a></h4>
+              <p class="description">Easiest to use business plan creator</p>
+            </div>
+          </div>
+
+          <div class="col-md-6 col-lg-4" data-aos="zoom-in" data-aos-delay="300">
+            <div class="box">
+              <div class="icon" style="background: #e6fdfc;"><i class="ion-ios-paper-outline" style="color: #3fcdc7;"></i></div>
+              <h4 class="title"><a href="">AI based creator</a></h4>
+              <p class="description">AI based creator</p>
+            </div>
+          </div>
+			
+			
+			
+          
+      </div>
+
+      </div>
+    </section><!-- End Services Section -->
+
+    <!-- ======= Why Us Section ======= -->
+    <section id="why-us" class="why-us">
+      <div class="container-fluid" data-aos="fade-up">
+
+        <header class="section-header">
+          <h3>Why Superplan?</h3>
+			<br>
+			<br>
+        </header>
+
+        <div class="row">
+
+          <div class="col-lg-6" data-aos="zoom-in" data-aos-delay="100">
+            <div class="why-us-img">
+              <img src="{% static 'assets-home/img/why-superplan2.jpg'%}" alt="" class="img-fluid">
+            </div>
+          </div>
+
+          <div class="col-lg-6">
+            <div class="why-us-content">
+				<p>Every startup needs a strong pitch deck to get investors’ attention in today’s highly competitive world, but not every founder has the skillset and the market information to create a pitch deck taking into account what an investors are looking for.</p>
+				
+				
+				<p>Else, you want to develop a business plan for other purposes, Superplan will help you with appropriate plans that will provide insights into your thought process, and provide industry related data that will help you understand where you stand with your model.</p>
+				
+				
+				<p>We at Superplan come with over a decade of experience in working with investors and helping startups get successfully funded. Our business plan creator will help you create the prefect pitch deck, business plan and financial model (complete with projections) in just a few clicks, with our AI back end doing the heavy lifting of research.</p>
+
+            </div>
+
+          </div>
+
+        </div>
+		 
+		 <br/>
+		<div class="container" data-aos="zoom-out" data-aos-delay="200">
+		 <img src="{% static 'assets-home/img/why-superplan.png'%}" alt="Superplan" class="img-fluid" >
+		  </div>
+</div>
 	
+		<br>
+		
+		<hr data-aos="fade-up" data-aos-delay="100"  style="width: 80%;" />
+
+		
+      <div class="container">
+        <div class="row counters" data-aos="fade-up" data-aos-delay="100">
+
+          <div class="col-lg-3 col-6 text-center">
+            <span data-toggle="counter-up">200</span>
+            <p>Clients</p>
+          </div>
+
+          <div class="col-lg-3 col-6 text-center">
+            <span data-toggle="counter-up">500</span>
+            <p>Projects</p>
+          </div>
+
+          <div class="col-lg-3 col-6 text-center">
+            <span data-toggle="counter-up">2,000</span>
+            <p>Hours Of Support</p>
+          </div>
+
+          <div class="col-lg-3 col-6 text-center">
+            <span data-toggle="counter-up">20</span>
+            <p>Hard Workers</p>
+          </div>
+
+        </div>
+
+      </div>
+    </section><!-- End Why Us Section -->
+
+    <!-- ======= Call To Action Section ======= -->
+    <section id="call-to-action" class="call-to-action">
+      <div class="container" data-aos="zoom-out">
+        <div class="row">
+          <div class="col-lg-9 text-center text-lg-left">
+            <h3 class="cta-title">Register Now</h3>
+            <p class="cta-text"> We at Superplan come with over a decade of experience in working with investors and helping startups get successfully funded. Our business plan creator will help you create the prefect pitch deck, business plan and financial model (complete with projections) in just a few clicks, with our AI back end doing the heavy lifting of research.</p>
+          </div>
+          <div class="col-lg-3 cta-btn-container text-center">
+            <a class="cta-btn align-middle" href="registration">Register</a>
+          </div>
+        </div>
+
+      </div>
+    </section><!--  End Call To Action Section -->
+
+    <!-- ======= Features Section ======= -->
+    <section id="how-works" class="features">
+      <div class="container" data-aos="fade-up">
+
+        <div class="row feature-item">
+          <div class="col-lg-6" data-aos="fade-right" data-aos-delay="100">
+           <br><br> <img src="{% static 'assets-home/img/how-it-works.jpg'%}" class="img-fluid" alt="">
+          </div>
+          <div class="col-lg-6 wow fadeInUp pt-5 pt-lg-0" data-aos="fade-left" data-aos-delay="150">
+			  <br>
+            <h1>How it works</h1>
+            <p>
+              You have built out a startup and started scaling or maybe you have an idea and want to present the idea to potential investors or clients or maybe just family & friends, but not too sure how to go about it?? You have come to the right place – we have the easiest business plan / pitch deck creator. 
+            </p>
+            <p>
+              You start off by giving us some information on your company, and our intuitive creative engine asks you relevant information and using this our AI research engine will put out industry information. Once you sign off on all the information, our creative engine takes over, giving you multiple themes to select – each one customised for your specific industry. Once you feel the information accurately represents your business, you can download the pitch document or business plan and the financial model – yes, both historical financials (if any) and projections.
+            </p>
+          </div>
+        </div>
+
+        <div class="row feature-item mt-5 pt-5">
+          <div class="col-lg-6 wow fadeInUp order-1 order-lg-2" data-aos="fade-left" data-aos-delay="100">
+            <img src="{% static 'assets-home/img/benifits.png'%}" class="img-fluid" alt="">
+          </div>
+
+          <div class="col-lg-6 wow fadeInUp pt-4 pt-lg-0 order-2 order-lg-1" data-aos="fade-right" data-aos-delay="150">
+            <h1>Who will Benefit</h1>
+            <br><br>
+			  <ul class="list-group list-group-flush">
+				  <li class="list-group-item">1. Entrepreneurs</li>
+				  <li class="list-group-item">2. Startups</li>
+				  <li class="list-group-item">3. Companies looking to Expand/profits</li>
+				  <li class="list-group-item">4. Analyst teams of investors</li>
+				  <li class="list-group-item">5. Investment banks</li>
+				</ul>
+          </div>
+
+        </div>
+
+      </div>
+    </section><!-- End Features Section -->
+
+
+
+   
+    <!-- ======= Team Section ======= -->
+    <section id="team" class="team section-bg">
+      <div class="container" data-aos="fade-up">
+        <div class="section-header">
+          <h3>Team</h3>
+          <p>Our team members</p>
+        </div>
+
+        <div class="row">
+
+          <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="100">
+            <div class="member">
+              <img src="{% static 'assets-home/img/team-1.jpg'%}" class="img-fluid" alt="">
+              <div class="member-info">
+                <div class="member-info-content">
+                  <h4>Demo Name</h4>
+                  <span>Chief Executive Officer</span>
+                  <div class="social">
+                    <a href=""><i class="fa fa-twitter"></i></a>
+                    <a href=""><i class="fa fa-facebook"></i></a>
+                    <a href=""><i class="fa fa-google-plus"></i></a>
+                    <a href=""><i class="fa fa-linkedin"></i></a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="200">
+            <div class="member">
+              <img src="{% static 'assets-home/img/team-2.jpg'%}" class="img-fluid" alt="">
+              <div class="member-info">
+                <div class="member-info-content">
+                  <h4>Demo Name</h4>
+                  <span>Product Manager</span>
+                  <div class="social">
+                    <a href=""><i class="fa fa-twitter"></i></a>
+                    <a href=""><i class="fa fa-facebook"></i></a>
+                    <a href=""><i class="fa fa-google-plus"></i></a>
+                    <a href=""><i class="fa fa-linkedin"></i></a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="300">
+            <div class="member">
+              <img src="{% static 'assets-home/img/team-3.jpg'%}" class="img-fluid" alt="">
+              <div class="member-info">
+                <div class="member-info-content">
+                  <h4>Demo Name</h4>
+                  <span>CTO</span>
+                  <div class="social">
+                    <a href=""><i class="fa fa-twitter"></i></a>
+                    <a href=""><i class="fa fa-facebook"></i></a>
+                    <a href=""><i class="fa fa-google-plus"></i></a>
+                    <a href=""><i class="fa fa-linkedin"></i></a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="400">
+            <div class="member">
+              <img src="{% static 'assets-home/img/team-4.jpg'%}" class="img-fluid" alt="">
+              <div class="member-info">
+                <div class="member-info-content">
+                  <h4>Demo Name</h4>
+                  <span>Accountant</span>
+                  <div class="social">
+                    <a href=""><i class="fa fa-twitter"></i></a>
+                    <a href=""><i class="fa fa-facebook"></i></a>
+                    <a href=""><i class="fa fa-google-plus"></i></a>
+                    <a href=""><i class="fa fa-linkedin"></i></a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section><!-- End Team Section -->
+
+
+
+    <!-- ======= Pricing Section ======= -->
+    <section id="pricing" class="pricing section-bg wow fadeInUp">
+
+      <div class="container" data-aos="fade-up">
+
+        <header class="section-header">
+          <h3>Pricing</h3>
+         <br><br>
+        </header>
+
+        <div class="row flex-items-xs-middle flex-items-xs-center">
+
+          <!-- Starter Plan  -->
+          <div class="col-xs-12 col-lg-3" data-aos="fade-up" data-aos-delay="100">
+            <div class="card">
+              <div class="card-header">
+				  <p><b style="font-size: 30px;">3,500 ₹ </b>/month</p>
+              </div>
+              <div class="card-block">
+                <h4 class="card-title text-primary">
+                   	Starter Pack
+                </h4>
+<div class="container">
 	
+<p class="li-item">Investor Deck / Business Plan <i class="fa fa-check-circle-o" style="font-size: 22px;color:lawngreen;"></i></p><hr>
+<p class="li-item">Financial Model : <b> Historical Only </b></p><hr>
+<p class="li-item">Changes / Completed Deck or Plan :<b> 5 </b></p> <hr>
+<p class="li-item" >Remove Watermark <i class="fa fa-times-circle"  style="font-size: 22px;color:orangered;" ></i></p><hr>
+<p class="li-item" >No. Of Users :<b> 1 </b> </p><hr>
+<p class="li-item">Option of Investor Deck or Business Plan :<b> Only 1 can be selected </b></p><hr>
+<p class="li-item" >Output Format :<b>	PDF only </b></p><hr>
+<p class="li-item">Company Name :<b> 1 </b> </p>
+</div>
+                <a href="#" class="btn">Choose Plan</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Pro Plan  -->
+          <div class="col-xs-12 col-lg-3" data-aos="fade-up" data-aos-delay="100">
+            <div class="card">
+              <div class="card-header">
+				  <p><b style="font-size: 30px;">6,000 ₹ </b>/month</p>
+              </div>
+              <div class="card-block">
+                <h4 class="card-title text-primary">
+                   	Pro Pack
+                </h4>
+<div class="container">
 	
+<p class="li-item">Investor Deck / Business Plan <i class="fa fa-check-circle-o" style="font-size: 25px;color:springgreen;"></i></p><hr>
+<p class="li-item">Financial Model : <b> Historical + Projections </b></p><hr>
+<p class="li-item">Changes / Completed Deck or Plan :<b> 5 </b></p> <hr>
+<p class="li-item" >Remove Watermark <i class="fa fa-check-circle-o" style="font-size: 25px;color:springgreen;"></i> </p><hr>
+<p class="li-item" >No. Of Users :<b> 1 </b> </p><hr>
+<p class="li-item">Option of Investor Deck or Business Plan :<b> Only 1 can be selected </b></p><hr>
+<p class="li-item" >Output Format :<b>	PDF only </b></p><hr>
+<p class="li-item">Company Name :<b> 1 </b> </p>
+</div>
+                <a href="#" class="btn">Choose Plan</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Premium Plan  -->
+          <div class="col-xs-12 col-lg-3" data-aos="fade-up" data-aos-delay="100">
+            <div class="card">
+              <div class="card-header">
+				  <p><b style="font-size: 30px;">8,999 ₹ </b>/month</p>
+              </div>
+              <div class="card-block">
+                <h4 class="card-title text-primary">
+                   	Premium Pack
+                </h4>
+<div class="container">
+	
+<p class="li-item">Investor Deck / Business Plan <i class="fa fa-check-circle-o" style="font-size: 25px;color:springgreen;"></i></p><hr>
+<p class="li-item">Financial Model : <b> Historical + Projections </b></p><hr>
+<p class="li-item">Changes / Completed Deck or Plan :<b> 10 </b></p> <hr>
+<p class="li-item" >Remove Watermark <i class="fa fa-check-circle-o" style="font-size: 25px;color:springgreen;"></i> </p><hr>
+<p class="li-item" >No. Of Users :<b> 2 </b> </p><hr>
+<p class="li-item">Option of Investor Deck or Business Plan :<b> Both can be selected </b></p><hr>
+<p class="li-item" >Output Format :<b>	PPT, PDF, XLSX </b></p><hr>
+<p class="li-item">Company Name :<b> 1 </b> </p>
+</div>
+                <a href="#" class="btn">Choose Plan</a>
+              </div>
+            </div>
+          </div>
+			
+		  <!-- All access Plan  -->
+           <div class="col-xs-12 col-lg-3" data-aos="fade-up" data-aos-delay="100">
+            <div class="card">
+              <div class="card-header">
+				  <p><b style="font-size: 30px;">14,999 ₹ </b>/month</p>
+              </div>
+              <div class="card-block">
+                <h4 class="card-title text-primary">
+                   	All access Pack
+                </h4>
+<div class="container">
+	
+<p class="li-item">Investor Deck / Business Plan <i class="fa fa-check-circle-o" style="font-size: 25px;color:springgreen;"></i></p><hr>
+<p class="li-item">Financial Model : <b> Historical + Projections </b></p><hr>
+<p class="li-item">Changes / Completed Deck or Plan :<b> Unlimited </b></p> <hr>
+<p class="li-item" >Remove Watermark <i class="fa fa-check-circle-o" style="font-size: 25px;color:springgreen;"></i> </p><hr>
+<p class="li-item" >No. Of Users :<b> 5 </b> </p><hr>
+<p class="li-item">Option of Investor Deck or Business Plan :<b> Both can be selected </b></p><hr>
+<p class="li-item" >Output Format :<b>	PPT, PDF, XLSX </b></p><hr>
+<p class="li-item">Company Name :<b> 10 </b> </p>
+</div>
+                <a href="#" class="btn">Choose Plan</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </section><!-- End Pricing Section -->
+
+	  
+	  
+	  
+	  
+	<!-- ======= About Section ======= -->
+    <section id="about" class="about">
+
+      <div class="container" data-aos="fade-up">
+        <div class="row">
+
+          <div class="col-lg-5 col-md-6">
+            <div class="about-img" data-aos="fade-right" data-aos-delay="100">
+              <img src="{% static 'assets-home/img/about-us.jpg'%}" alt="">
+            </div>
+          </div>
+
+          <div class="col-lg-7 col-md-6">
+            <div class="about-content" data-aos="fade-left" data-aos-delay="100">
+              <h2>About Us</h2>
+              <h3>One helping line here</h3>
+   
+				
+              <p>SuperPlan was started by Smartemes Capital Advisors LLP, leading investment banker headquartered in Chennai, with presence in India, Singapore, & USA, and rated as one of the top 15 startup advisory firms in India (by multiple rating organisations).</p>
+				
+			<p>Leveraging the decade plus experience of the promoter firm in helping startups get funding, SuperPlan aims to help startups build kickass business plans / investor pitch decks along with financial model.</p>
+				
+              <ul>
+                <li><i class="ion-android-checkmark-circle"></i>Email Us</li>
+                <li><i class="ion-android-checkmark-circle"></i> Phone Call</li>
+                <li><i class="ion-android-checkmark-circle"></i> 24*7 Support</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </section><!-- End About Section -->
+	  
+	  
+	  
+	  
+	  
+	  
+    <!-- ======= F.A.Q Section ======= -->
+    <section id="faq" class="faq">
+      <div class="container" data-aos="fade-up">
+        <header class="section-header">
+          <h3>Frequently Asked Questions</h3>
+          <p>Here is some mostly asked questions</p>
+        </header>
+
+        <ul id="faq-list" data-aos="fade-up" data-aos-delay="100">
+          
+		<li>
+            <a data-toggle="collapse" class="collapsed" href="#faq1">Demo quetion 1 ? <i class="ion-android-remove"></i></a>
+            <div id="faq1" class="collapse" data-parent="#faq-list">
+              <p>
+                demo text demo text demo text demo text demo text demo text demo tex tdemo text demo textdemo text demo text demo text demo text demo text demo text demo text demo text demo text demo text demo text demo tex tdemo text demo textdemo text demo text demo text demo text demo text.
+              </p>
+            </div>
+          </li>
+			
+		    <li>
+            <a data-toggle="collapse" class="collapsed" href="#faq2">Demo quetion 2 ? <i class="ion-android-remove"></i></a>
+            <div id="faq2" class="collapse" data-parent="#faq-list">
+              <p>
+                demo text demo text demo text demo text demo text demo text demo tex tdemo text demo textdemo text demo text demo text demo text demo text demo text demo text demo text demo text demo text demo text demo tex tdemo text demo textdemo text demo text demo text demo text demo text.
+              </p>
+            </div>
+          </li>
+
+
+		<li>
+            <a data-toggle="collapse" class="collapsed" href="#faq3">Demo quetion 3 ? <i class="ion-android-remove"></i></a>
+            <div id="faq3" class="collapse" data-parent="#faq-list">
+              <p>
+                demo text demo text demo text demo text demo text demo text demo tex tdemo text demo textdemo text demo text demo text demo text demo text demo text demo text demo text demo text demo text demo text demo tex tdemo text demo textdemo text demo text demo text demo text demo text.
+              </p>
+            </div>
+          </li>
+
+
+
+
+
+        </ul>
+
+      </div>
+    </section><!-- End F.A.Q Section -->
+
+  </main><!-- End #main -->
+
+  <!-- ======= Footer ======= -->
+  <footer id="footer" class="section-bg">
+    <div class="footer-top">
+      <div class="container">
+
+        <div class="row">
+
+          <div class="col-lg-6">
+
+            <div class="row">
+
+              <div class="col-sm-6">
+
+                <div class="footer-info">
+					
+					
+                  <h3>Superplan</h3>
+					
+					
+                  <p>We at Superplan come with over a decade of experience in working with investors and helping startups get successfully funded. Our business plan creator will help you create the prefect pitch deck, business plan and financial model (complete with projections) in just a few clicks, with our AI back end doing the heavy lifting of research.</p>
+                </div>
+
+                <div class="footer-newsletter">
+                  <h4>Our Newsletter</h4>
+                  <p>Subscribe to our newsletter for more updates</p>
+                  <form action="" method="post">
+                    <input type="email" name="email" placeholder="Enter your email id"><input type="submit" value="Subscribe">
+                  </form>
+                </div>
+
+              </div>
+
+              <div class="col-sm-6">
+               
+
+                <div class="footer-links">
+				
+					<br><br><br>
+					<h3>Contact Us</h3>
+                  <p>
+					<b class="text-primary">Development Center</b><br>
+                    India: 2nd Floor, #62, Third Street,<br>
+					  Abhiramapuram, Chennai 600018, India<br>
+                    <strong>Phone:</strong> +91 123456789<br>
+                    <strong>Email:</strong> info@example.com<br>
+                  </p>
+					
+					<br>
+					
+                  <p>
+					  <b class="text-primary">Global Offices</b><br>
+                    Singapore: 161 Seagull Walk, Singapore 486678<br>
+					USA: 1650, Borel Place, Suite 100, San Mateo, CA 94402
+                  </p>
+					
+                </div>
+
+                <div class="social-links">
+                  <a href="#" class="twitter"><i class="fa fa-twitter"></i></a>
+                  <a href="#" class="facebook"><i class="fa fa-facebook"></i></a>
+                  <a href="#" class="instagram"><i class="fa fa-instagram"></i></a>
+                  <a href="#" class="linkedin"><i class="fa fa-linkedin"></i></a>
+                </div>
+
+              </div>
+
+            </div>
+
+          </div>
+
+          <div class="col-lg-6">
+
+            <div class="form">
+
+              <h4>Send us message</h4>
+              <p>You can send us message from here.</p>
+
+              <form method="post" role="form" class="php-email-form">
+                <div class="form-group">
+                  <input type="text" name="name" class="form-control" id="name" placeholder="Your Name" data-rule="minlen:4" data-msg="Please enter at least 4 chars" />
+                  <div class="validate"></div>
+                </div>
+                <div class="form-group">
+                  <input type="email" class="form-control" name="email" id="email" placeholder="Your Email" data-rule="email" data-msg="Please enter a valid email" />
+                  <div class="validate"></div>
+                </div>
+                <div class="form-group">
+                  <input type="text" class="form-control" name="subject" id="subject" placeholder="Subject" data-rule="minlen:4" data-msg="Please enter at least 8 chars of subject" />
+                  <div class="validate"></div>
+                </div>
+                <div class="form-group">
+                  <textarea class="form-control" name="message" rows="5" data-rule="required" data-msg="Please write something for us" placeholder="Message"></textarea>
+                  <div class="validate"></div>
+                </div>
+
+                <div class="mb-3">
+                  <div class="loading">Loading</div>
+                  <div class="error-message"></div>
+                  <div class="sent-message">Your message has been sent. Thank you!</div>
+                </div>
+
+                <div class="text-center"><button type="submit" title="Send Message">Send Message</button></div>
+              </form>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+	  
+	 
+	<div class="container text-center">
+		 
+		<a href="#">Home</a> |
+		<a href="#about"> About us</a> |
+		<a href="#"> Blog</a> |
+		<a href="#team"> Team</a> |
+		<a href="#faq"> FAQ</a>
+                  
+	  
+	
+
+   
+      <div class="copyright">
+        &copy; Copyright <strong>Superplan</strong>. All Rights Reserved
+      </div>
+
+ </div>
+  </footer><!-- End  Footer -->
+
+  <a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
+
+  <!-- Vendor JS Files -->
+  <script src="{% static 'assets-home/vendor/jquery/jquery.min.js' %}"></script>
+  <script src="{% static 'assets-home/vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+  <script src="{% static 'assets-home/vendor/jquery.easing/jquery.easing.min.js' %}"></script>
+  <script src="{% static 'assets-home/vendor/php-email-form/validate.js' %}"></script>
+  <script src="{% static 'assets-home/vendor/isotope-layout/isotope.pkgd.min.js' %}"></script>
+  <script src="{% static 'assets-home/vendor/counterup/counterup.min.js' %}"></script>
+  <script src="{% static 'assets-home/vendor/venobox/venobox.min.js' %}"></script>
+  <script src="{% static 'assets-home/vendor/owl.carousel/owl.carousel.min.js' %}"></script>
+  <script src="{% static 'assets-home/vendor/waypoints/jquery.waypoints.min.js' %}"></script>
+  <script src="{% static 'assets-home/vendor/aos/aos.js' %}"></script>
+
+  <script src="{% static 'assets-home/js/main.js' %}"></script>
+
 </body>
 
 </html>
