@@ -1,24 +1,69 @@
-{% extends "base-home.html" %}
+{% extends "base-form.html" %}
 {% load static %}
 
-{% block title %}Contact Us{% endblock%}
+{% block title %}ContactUs{% endblock%}
+
+
+{% block head %}
+	 <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+{% endblock %}
+
 
 {% block content %}
 
-    <div class="text-primary contact-clean" style="padding-bottom: 10px;">
-        <form method="post">
-        {% csrf_token %}
-        
-            <h2 class="text-center text-primary">Contact us [Demo]</h2>
-            <div class="form-group" style="margin-bottom: 30px;"><label><strong>Name</strong></label><input class="form-control" type="text" name="name" placeholder="Name" autofocus="" required="" minlength="4" maxlength="100"></div>
-            <div class="form-group" style="margin-bottom: 30px;"><label><strong>Email</strong></label><input class="form-control" type="email" placeholder="Email id" required="" minlength="4" maxlength="200" inputmode="email"></div>
-            <div class="form-group"><label><strong>Message</strong></label><textarea class="form-control" name="message" placeholder="Message" rows="14" spellcheck="true" required="" minlength="4" maxlength="500"></textarea></div>
-            <div class="form-group"><button class="btn btn-primary" type="submit">send </button></div>
-            <hr>
-            <div class="form-group" style="margin-top: 20px;">
-                <p class="text-left text-dark"><span class="text-primary"><i class="fa fa-map-marker"></i><strong>&nbsp;Development Center</strong><br></span><em>India: 2nd Floor, #62, Third Street, Abhiramapuram, Chennai 600018, India</em><br><br><span class="text-primary"><i class="fa fa-map-marker"></i><strong>&nbsp;Global Offices</strong><br></span><em>Singapore: 161 Seagull Walk, Singapore 486678</em><br><em>USA: 1650, Borel Place, Suite 100, San Mateo, CA 94402</em></p>
+    <div class="main">
+
+        <!-- Contact us form -->
+        <section class="signup">
+            <div class="container">
+                <div class="signup-content">
+                    <div class="signup-form">
+						<h3 class="form-title"><b>Contact Us</b></h3>
+<form method="POST" class="register-form" action="" >
+{% csrf_token %}
+							
+<div class="input-field">
+	<input type="text" name="name" id="name" />
+	<label for="name">Your Name</label>
+</div>
+
+
+<div class="input-field">
+	<input type="email" name="email" id="email" />
+	<label for="email">Your Email</label>
+</div>
+
+
+<div class="input-field">
+	<input type="text" name="subject" id="subject"/>
+	<label for="subject">Email subject</label>
+</div>
+
+<br><br>
+<div class="input-field">
+	<textarea id="address" name="address" class="materialize-textarea"></textarea>
+	<label for="address">Your message</label>
+</div>
+							
+                           
+                            <div class="form-group form-button">
+                                <input type="submit" name="send" id="send" class="form-submit" value="Send"/>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="signup-image">
+                        <figure><img src="{% static 'forms-css/images/signup-image.jpg'%}" alt="sing up image"></figure>
+                        
+                    </div>
+                </div>
             </div>
-        </form>
+        </section>
+
+      
     </div>
 
-{% endblock %}
+  {% endblock %}

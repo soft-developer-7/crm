@@ -1,48 +1,69 @@
-{% extends "base-home.html" %}
+{% extends "base-form.html" %}
 {% load static %}
 
 {% block title %}Admin Login{% endblock%}
 
+
 {% block content %}
 
-    <h1 class="text-center text-primary">Admin Login</h1>
-    <div class="border rounded shadow-lg login-card" style="margin-top: 20px;">
-    <img class="rounded-circle profile-img-card" src="{% static 'assets/img/avatar_2x.png' %}">
-    <p class="profile-name-card"> </p>
+    <div class="main">
 
 
-    <form class="form-signin" action="admin_login_form" method="POST">
+        <!-- Sing in  Form -->
+        <section class="sign-in">
+            <div class="container">
+                <div class="signin-content">
+                    <div class="signin-image">
+                        <figure><img src="{% static 'forms-css/images/signin-image.jpg'%}" alt="sing up image"></figure>
+                       
+                    </div>
+
+                    <div class="signin-form">
+                        <h2 class="form-title">Admin Login</h2>
+
+
+    <form method="POST" class="register-form" id="login-form" action="admin_login_form">
     {% csrf_token %}
 
 
-    <span class="reauth-email">
-
-  {% if messages %}
-<div class="alert alert-danger" role="alert">
-  
-    {% for message in messages%}
-    {{message}}
-    {% endfor%}
-    
-</div>
-
-      
-    {% endif %}
-
-    </span>
-    <input class="form-control" type="email" id="inputEmail" name="email" required="" placeholder="Email address" autofocus=""  maxlength="100" minlength="4">
 
 
+        <div class="form-group">
+            <label for="your_name"><i class="zmdi zmdi-account material-icons-name"></i></label>
+            <input  type="email" id="inputEmail" name="email" required="" placeholder="User id" autofocus=""  maxlength="100" minlength="4"/>
+       </div>
 
-    <input class="form-control"
-    type="password" id="inputPassword" name="password"  maxlength="100" minlength="4" required="" placeholder="Password">
+        {% if messages %}
+            <div style="color:red;margin-top:-20px;">
+                {% for message in messages%}
+                {{message}}
+                {% endfor%}
+            </div>
+        {% endif %}
+         
 
-    <div class="checkbox">
-    <div class="form-check"><input class="form-check-input" type="checkbox" id="formCheck-1"><label class="form-check-label" for="formCheck-1">Remember me</label></div>
+        <div class="form-group">
+            <label for="your_pass"><i class="zmdi zmdi-lock"></i></label>
+            <input type="password" id="inputPassword" name="password"  maxlength="100" minlength="4" required="" placeholder="Password"/>
+        </div>
+
+
+
+        <div class="form-group">
+            <input type="checkbox" name="remember-me" id="remember-me" class="agree-term" />
+            <label for="remember-me" class="label-agree-term"><span><span></span></span>Remember me</label>
+        </div>
+
+        <div class="form-group form-button">
+            <input type="submit" name="signin" id="signin" class="form-submit" value="Log in"/>
+        </div>
+    </form>
+
+
+                    </div>
+                </div>
+            </div>
+        </section>
 
     </div>
-    <button class="btn btn-primary active btn-block btn-lg btn-signin" type="submit">Sign in</button>
-    </form>
-    <a class="forgot-password" href="#">Forgot your password?</a></div>
-
-{% endblock  %}
+{% endblock %}

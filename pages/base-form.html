@@ -1,0 +1,59 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>{% block title %}{% endblock %}</title>
+
+    <!-- Font Icon -->
+    <link rel="stylesheet" href="{% static 'forms-css/fonts/material-icon/css/material-design-iconic-font.min.css'%}">
+
+    <!-- Main css -->
+    <link rel="stylesheet" href="{% static 'forms-css/css/style.css'%}">
+
+
+    {% block head %}{% endblock %}
+
+    {% block style %}
+    
+    <style>
+        footer a{
+            text-decoration:none;
+        }
+    </style>
+    
+    {% endblock %}
+</head>
+<body style="margin:0px;">
+   <div style="width:100%;height:auto;background:white;padding:15px 0px;margin:0px;"> <a href="home"> <img src="{% static 'assets-home/img/ban-logo.png'%}" alt="Superplan" style="height:35px;" /></a></div>
+    {% block content %}
+    {% endblock %}
+
+    <hr style="border-color:rgba(216,216,216,0.25);width:90%;">
+    <center>
+    <footer style="padding:20px;font-size:15px;">
+
+
+        <div>
+
+
+        <a href="home">Home</a> |
+		<a href="aboutus"> About us</a> |
+        <a href="contactus"> Contact us</a> |
+		<a href="#"> Blog</a> |
+		<a href="faq"> FAQ</a>
+        
+        
+        <div>
+
+
+         &copy; Copyright <strong>Superplan</strong>. All Rights Reserved
+    </footer>
+    </center>
+    <!-- JS -->
+    <script src="{% static 'forms-css/vendor/jquery/jquery.min.js'%}"></script>
+    <script src="{% static 'forms-css/js/main.js'%}"></script>
+</body>
+</html>
