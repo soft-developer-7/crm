@@ -80,7 +80,7 @@ def reg_form(request):
         address = request.POST['address']
         email = request.POST['email']
         password = request.POST['password']
-        password_confirmation = request.POST['confrim_password']
+        password_confirmation = request.POST['confirm_password']
 
         if(password==password_confirmation):
             user = User_db.objects.filter(email=email).count()
@@ -937,5 +937,35 @@ def user_profile_photo_update(request):                                         
             return redirect("/user-profile-update")
         else:
             return render(request,'login.html')
+    else:
+        return render(request,'login.html')
+
+
+
+
+
+#--------------------------------------------------- User Forms -------------------------------------------
+
+
+def user_form_1(request):                                # User Form 1
+
+    if(auth_user(request)):
+        return render(request,'user-form1.html')
+    else:
+        return render(request,'login.html')
+
+
+def user_form_1_submit(request):            # User Form 1 Submit
+    if(auth_user(request)):
+        return render(request,'user-form2.html')
+    else:
+        return render(request,'login.html')
+
+
+
+
+def user_form_2_submit(request):            # User Form 2 Submit
+    if(auth_user(request)):
+        return render(request,'user-form3.html')
     else:
         return render(request,'login.html')

@@ -78,6 +78,14 @@ urlpatterns = [
     path("banner_update_by_get/<int:id>",views.banner_update_by_get,name="banner_update_by_get"),
     path("admin_banner_update_form",views.admin_banner_update_form,name="admin_banner_update_form"),
     path("ajax_call_delete_banner",views.ajax_call_delete_banner,name="ajax_call_delete_banner"),
+
+
+
+    #-------------------------- Forms ------------------------
+
+    path("user-form1",views.user_form_1,name="user_form_1"),
+    path("user_form_1_submit",views.user_form_1_submit,name="user_form_1_submit"),
+    path("user_form_2_submit",views.user_form_2_submit,name="user_form_2_submit"),
     
 
 ]
