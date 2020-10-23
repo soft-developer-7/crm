@@ -1,8 +1,8 @@
 {% extends "base-user.html" %}
 {% load static %}
 
-{% block title %}User Form-3{% endblock%}
-{% block page_heading %}Superplan Form 3 of 11{% endblock%}
+{% block title %}User Form-7{% endblock%}
+{% block page_heading %}Superplan Form 7 of 11{% endblock%}
 {% block content %}
 
 
@@ -14,11 +14,11 @@
 
 
 
-				<form method="POST" action="/user_form_3_submit">
+				<form method="POST" action="/user_form_7_submit">
 				{% csrf_token %}
 					<div class="card shadow mb-3">
 						<div class="card-header py-3">
-						<p class="text-primary m-0 font-weight-bold">3. Challenges & Solutions</p>
+						<p class="text-primary m-0 font-weight-bold">7. Industry & Competitor Analysis</p>
 						</div>
 					<div class="card-body">
 					
@@ -28,21 +28,33 @@
 						
 						<div class="col">
 							<div class="form-group">
-								<label ><strong>3.1. Challenges Faced in the Industry</strong></label>
-								<textarea class="form-control"   name="" > </textarea>
-							</div>
+								<label ><strong>7.1. Industry Analysis</strong></label>
+								<textarea class="form-control"   name="" /> Some automated text will be present here from our Database </textarea>
+								</div>
 						</div>
 						
 						
-					<div class="col">
-                        <div class="form-group">
-                            <label ><strong>3.2. Solutions Provided by the company</strong></label>
-                            <textarea class="form-control"   name="" > </textarea>
-                        </div>  
-					</div>
-						
+                        <div class="col">
+							<div class="form-group">
+								<label ><strong>7.2. Competitor Analysis</strong></label>
+								<textarea class="form-control"  name="" /> Some automated text will be present here </textarea>
+								</div>
+						</div>
 				</div>
 
+                <div class="form-row">
+						
+						<div class="col-6">
+							<div class="form-group">
+								<label ><strong>7.3. USP</strong></label>
+                                <a href="#"  data-toggle="tooltip" title="Help text."><i class="far fa-question-circle"></i></a>
+								<textarea class="form-control"   name="" /></textarea>
+								</div>
+						</div>
+                    </div>
+
+						
+						
 						
 						
 						

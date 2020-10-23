@@ -969,3 +969,73 @@ def user_form_2_submit(request):            # User Form 2 Submit
         return render(request,'user-form3.html')
     else:
         return render(request,'login.html')
+
+
+
+def user_form_3_submit(request):            # User Form 3 Submit
+    if(auth_user(request)):
+        return render(request,'user-form4.html')
+    else:
+        return render(request,'login.html')
+
+
+def user_form_4_submit(request):            # User Form 4 Submit
+    if(auth_user(request)):
+        return render(request,'user-form5.html')
+    else:
+        return render(request,'login.html')
+
+
+
+
+def user_form_5_submit(request):            # User Form 5 Submit
+    if(auth_user(request)):
+        return render(request,'user-form6.html')
+    else:
+        return render(request,'login.html')
+
+
+
+def user_form_6_submit(request):            # User Form 6 Submit
+    if(auth_user(request)):
+        return render(request,'user-form7.html')
+    else:
+        return render(request,'login.html')
+
+
+
+
+def user_form_7_submit(request):            # User Form 7 Submit
+    if(auth_user(request)):
+        return render(request,'user-form8.html')
+    else:
+        return render(request,'login.html')
+
+
+
+def user_form_8_submit(request):            # User Form 8 Submit
+    if(auth_user(request)):
+        return render(request,'user-form9.html')
+    else:
+        return render(request,'login.html')
+
+
+
+def user_form_9_submit(request):            # User Form 9 Submit
+    if(auth_user(request)):
+        return render(request,'user-form10.html')
+    else:
+        return render(request,'login.html')
+
+
+def user_form_10_submit(request):            # User Form 10 Submit
+    if(auth_user(request)):
+        return render(request,'user-form11.html')
+    else:
+        return render(request,'login.html')
+
+def user_form_11_submit(request):            # User Form 11 Submit
+    if(auth_user(request)):
+        return render(request,'user-form11.html')
+    else:
+        return render(request,'login.html')

@@ -86,6 +86,15 @@ urlpatterns = [
     path("user-form1",views.user_form_1,name="user_form_1"),
     path("user_form_1_submit",views.user_form_1_submit,name="user_form_1_submit"),
     path("user_form_2_submit",views.user_form_2_submit,name="user_form_2_submit"),
+    path("user_form_3_submit",views.user_form_3_submit,name="user_form_3_submit"),
+    path("user_form_4_submit",views.user_form_4_submit,name="user_form_4_submit"),
+    path("user_form_5_submit",views.user_form_5_submit,name="user_form_5_submit"),
+    path("user_form_6_submit",views.user_form_6_submit,name="user_form_6_submit"),
+    path("user_form_7_submit",views.user_form_7_submit,name="user_form_7_submit"),
+    path("user_form_8_submit",views.user_form_8_submit,name="user_form_8_submit"),
+    path("user_form_9_submit",views.user_form_9_submit,name="user_form_9_submit"),
+    path("user_form_10_submit",views.user_form_10_submit,name="user_form_10_submit"),
+    path("user_form_11_submit",views.user_form_11_submit,name="user_form_11_submit"),
     
 
 ]

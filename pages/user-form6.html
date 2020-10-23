@@ -1,8 +1,8 @@
 {% extends "base-user.html" %}
 {% load static %}
 
-{% block title %}User Form-3{% endblock%}
-{% block page_heading %}Superplan Form 3 of 11{% endblock%}
+{% block title %}User Form-6{% endblock%}
+{% block page_heading %}Superplan Form 6 of 11{% endblock%}
 {% block content %}
 
 
@@ -14,11 +14,11 @@
 
 
 
-				<form method="POST" action="/user_form_3_submit">
+				<form method="POST" action="/user_form_6_submit">
 				{% csrf_token %}
 					<div class="card shadow mb-3">
 						<div class="card-header py-3">
-						<p class="text-primary m-0 font-weight-bold">3. Challenges & Solutions</p>
+						<p class="text-primary m-0 font-weight-bold">6. Growth & Marketing Strategies</p>
 						</div>
 					<div class="card-body">
 					
@@ -28,21 +28,25 @@
 						
 						<div class="col">
 							<div class="form-group">
-								<label ><strong>3.1. Challenges Faced in the Industry</strong></label>
-								<textarea class="form-control"   name="" > </textarea>
-							</div>
+								<label ><strong>6.1. Marketing Strategies</strong></label>
+								<a href="#"  data-toggle="tooltip" title="Help text."><i class="far fa-question-circle"></i></a>
+								<textarea class="form-control"   name="" /> </textarea>
+								</div>
 						</div>
 						
 						
-					<div class="col">
-                        <div class="form-group">
-                            <label ><strong>3.2. Solutions Provided by the company</strong></label>
-                            <textarea class="form-control"   name="" > </textarea>
-                        </div>  
-					</div>
-						
+                        <div class="col">
+							<div class="form-group">
+								<label ><strong>6.2. Growth Strategy</strong></label>
+								<a href="#"  data-toggle="tooltip" title="Help text."><i class="far fa-question-circle"></i></a>
+								<textarea class="form-control"  name="" /> </textarea>
+								</div>
+						</div>
 				</div>
 
+
+						
+						
 						
 						
 						

@@ -2,7 +2,7 @@
 {% load static %}
 
 {% block title %}User Form-2{% endblock%}
-{% block page_heading %}Superplan Form 2 of n{% endblock%}
+{% block page_heading %}Superplan Form 2 of 11{% endblock%}
 {% block content %}
 
 
@@ -18,7 +18,7 @@
 				{% csrf_token %}
 					<div class="card shadow mb-3">
 						<div class="card-header py-3">
-						<p class="text-primary m-0 font-weight-bold">Introduction</p>
+						<p class="text-primary m-0 font-weight-bold">2. Introduction</p>
 						</div>
 					<div class="card-body">
 					
@@ -28,9 +28,8 @@
 						
 						<div class="col">
 							<div class="form-group">
-								<label ><strong>About the company</strong></label>
-								<small class="text-danger"> ( will be added automatically )</small>
-								<textarea class="form-control" type="text"  name=""  readonly> </textarea>
+								<label ><strong>2.1. About the company</strong></label>
+								<textarea class="form-control"  name="" /> </textarea>
 								</div>
 						</div>
 						
@@ -40,7 +39,7 @@
                         <div class="row">
                             <div class="col">
                                     <div class="form-group">
-                                        <label ><strong>Company Logo</strong></label>
+                                        <label ><strong>2.2. Company Logo</strong></label>
                                         <input  type="file"  name="">
                                     </div>
                                 </div>
@@ -72,16 +71,15 @@
 						
 						<div class="col">
 						<div class="form-group">
-							<label ><strong>When was the company founded</strong></label>
-							<small class="text-danger"> ( will be added automatically )</small>
-							<input class="form-control" type="text"  name="" value="" readonly> 
+							<label ><strong>2.3. When was the company founded</strong></label>
+							<input class="form-control" type="text"  name="" value="" /> 
 						</div>
 					</div>
 						
 						
 					<div class="col">
 						<div class="form-group">
-							<label ><strong>Industry Type</strong></label>
+							<label ><strong>2.4. Industry Type</strong></label>
 							<select class="form-control" name="">
                                 <option>Select Here</option>
                                 <option>Industry Type 1</option>
@@ -100,7 +98,7 @@
 						
 						
 			<div class="form-group">
-				<button class="btn btn-primary btn-sm" type="submit">Next Step</button>
+				<button class="btn btn-primary btn-sm" type="submit">Save & Next</button>
 			</div>
 					
 		</div>
