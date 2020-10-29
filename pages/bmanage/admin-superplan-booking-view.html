@@ -1,0 +1,409 @@
+{% extends "base-admin.html" %}
+{% load static %}
+
+{% block title %}Superplan Booking view{% endblock%}
+{% block page_heading %}Superplan Booking view{% endblock%}
+{% block content %}
+
+
+
+<div class="row">
+        <div class="col-lg-12">   
+            <div class="card shadow mb-12">
+            <div class="card-header py-3">
+                <h6 class="m-0 font-weight-bold text-primary">Booking details</h6>
+            </div>
+            <div class="card-body text-dark">
+                <ul>
+                    <li><b>Booking id : </b>{{data.id}}</li>
+                    <li><b>Package : </b>{{data.pack}}</li>
+                    <li><b>Theme : </b>{{data.theme}}</li>
+                    <li><b>Date & Time : </b>{{data.date}}</li>
+                </ul>
+            </div>
+            </div>
+
+        </div>
+    </div>
+    <br>
+
+
+<div class="row">
+        <div class="col-lg-12">   
+            <div class="card shadow mb-12">
+            <div class="card-header py-3">
+                <h6 class="m-0 font-weight-bold text-primary">User details</h6>
+            </div>
+            <div class="card-body text-dark">
+                {% if data.user.photo %}
+                <a href="{{data.user.photo.url}}" target="_blank">  <img src="{{data.user.photo.url}}"  class="rounded d-block" height="100px" /></a>
+                <br>
+                {% endif %}
+
+                <ul>
+                    <li><b>User id : </b>{{data.user.id}}</li>
+                    <li><b>User email : </b>{{data.user.email}}</li>
+                    <li><b>User mobile : </b>{{data.user.mobile}}</li>
+                    <li><b>User address : </b>{{data.user.address}}</li>
+                </ul>
+            </div>
+            </div>
+        </div>
+    </div>
+    <br>
+
+
+<div class="row">
+
+        <div class="col-lg-12">   
+            <div class="card shadow mb-12">
+            <div class="card-header py-3">
+                <h6 class="m-0 font-weight-bold text-primary">Company details</h6>
+            </div>
+            <div class="card-body text-dark">
+
+            {% if data.company_logo %}
+              <a href="{{data.company_logo.url}}" target="_blank">  <img src="{{data.company_logo.url}}" width="500px" class="img-thumbnail" /></a>
+            {% endif %}
+            <br/><br/>
+            <ul>
+                
+                <li><b>Company’s Name    : </b>{{data.company_name}}</li>
+                <li><b>Company Website Link   : </b><a href={{data.company_website_link}} target="_blank">{{data.company_website_link}}</a></li>
+                <li><b>Owner’s Name   : </b>{{data.owner_name}}</li>
+                <li><b>Phone Number  : </b>{{data.phone_number}}</li>
+                <li><b>Email ID : </b>{{data.email_id}}</li>
+                <li><b>GST Number : </b>{{data.gst_number}}</li>
+                <li><b>GST Name : </b>{{data.gst_name}}</li>
+                <li><b>About the company : </b>{{data.about_the_company}}</li>
+                <li><b>When was the company Founded : </b>{{data.company_founded}}</li>
+                <li><b>Industry Type : </b>{{data.industry_type}}</li>
+            </ul>
+            </div>
+            </div>
+  
+        </div>
+        </div>
+    <br>
+
+
+<div class="row">
+        <div class="col-lg-12">   
+            <div class="card shadow mb-12">
+            <div class="card-header py-3">
+                <h6 class="m-0 font-weight-bold text-primary">Challenges & Solutions</h6>
+            </div>
+            <div class="card-body text-dark">
+                <ul>
+                   <li><b>Challenges Faced in the Industry : </b>{{data.challenges_faced}}</li>
+                   <li><b>Solutions Provided by the company : </b>{{data.solutions_provided}}</li>
+                </ul>
+            </div>
+            </div>
+
+        </div>
+</div>
+<br>
+
+
+<div class="row">
+        <div class="col-lg-12">   
+            <div class="card shadow mb-12">
+            <div class="card-header py-3">
+                <h6 class="m-0 font-weight-bold text-primary">Company Profile</h6>
+            </div>
+            <div class="card-body text-dark">
+                <ul>
+                   <li><b>Products & Services : </b>{{data.products_and_services}}</li>
+                   <li><b>Products & Services (PNG/JPG/PDF optional) : </b>{% if data.products_and_services_file %} <a href="{{data.products_and_services_file.url}}" target="_blank"> View</a>{% endif %}</li>
+                   <li><b>Top Clients : </b>{{data.top_clients}}</li>
+                   <li><b>Top Clients (PNG/JPG/PDF optional) : </b>{% if data.top_clients_file %} <a href="{{data.top_clients_file.url}}" target="_blank"> View</a>{% endif %}</li>
+                   <li><b>Milestones : </b>{{data.milestones}}</li>
+                   <li><b>Locations Served : </b>{{data.locations_served}}</li>
+                   <li><b>SWOT : </b>{{data.swot}}</li>
+                </ul>
+            </div>
+            </div>
+
+        </div>
+</div>
+<br>
+
+<div class="row">
+        <div class="col-lg-12">   
+            <div class="card shadow mb-12">
+            <div class="card-header py-3">
+                <h6 class="m-0 font-weight-bold text-primary">Management Profile</h6>
+            </div>
+            <div class="card-body text-dark">
+                <ul>
+                   <li><b>Management Team & Designation : </b>{{data.management_team_and_designation}}</li>
+                   <li><b>Management Team & Designation (PNG/JPG/PDF optional) : </b>{% if data.management_team_and_designation_file %} <a href="{{data.management_team_and_designation_file.url}}" target="_blank"> View</a>{% endif %}</li>
+                   <li><b>Management Bio : </b>{{data.management_bio}}</li>
+                </ul>
+            </div>
+            </div>
+
+        </div>
+</div>
+<br>
+
+
+<div class="row">
+        <div class="col-lg-12">   
+            <div class="card shadow mb-12">
+            <div class="card-header py-3">
+                <h6 class="m-0 font-weight-bold text-primary">Growth & Marketing Strategies</h6>
+            </div>
+            <div class="card-body text-dark">
+                <ul>
+                   <li><b> Marketing Strategies : </b>{{data.marketing_strategies}}</li>
+                   <li><b> Growth Strategy : </b>{{data.growth_strategy}}</li>
+                </ul>
+            </div>
+            </div>
+
+        </div>
+</div>
+<br>
+
+<div class="row">
+        <div class="col-lg-12">   
+            <div class="card shadow mb-12">
+            <div class="card-header py-3">
+                <h6 class="m-0 font-weight-bold text-primary">Industry & Competitor Analysis</h6>
+            </div>
+            <div class="card-body text-dark">
+                <ul>
+                   <li><b> Industry Analysis : </b>{{data.industry_analysis}}</li>
+                   <li><b> Competitor Analysis  : </b>{{data.competitor_analysis}}</li>
+                   <li><b> USP : </b>{{data.usp}}</li>
+                </ul>
+            </div>
+            </div>
+
+        </div>
+</div>
+<br>
+
+<br>
+<br>
+<h2 class="text-primary text-center">FINANCIALS</h2>
+<hr>
+<br>
+
+<div class="row">
+        <div class="col-lg-12">   
+            <div class="card shadow mb-12">
+            <div class="card-header py-3">
+                <h6 class="m-0 font-weight-bold text-primary">Profit & Loss Statement</h6>
+            </div>
+            <div class="card-body text-dark">
+                <ul>
+                   <li><b> Revenue Growth % or Amount : </b>{{data.revenue_growth_or_amount}}</li>
+                   <li><b> Revenue Growth % or Amount (Excel file optional) : </b>{% if data.revenue_growth_or_amount_file %} <a href="{{data.revenue_growth_or_amount_file.url}}" target="_blank"> View</a>{% endif %}</li><br>
+                    
+                   <li><b> Other Income Growth % or Amount: </b>{{data.other_income_growth_or_amount}}</li>
+                   <li><b> Other Income Growth % or Amount (Excel file optional): </b>{% if data.other_income_growth_or_amount_file %} <a href="{{data.other_income_growth_or_amount_file.url}}" target="_blank"> View</a>{% endif %}</li><br>
+
+                   <li><b> Total Revenue Amount : </b>{{data.total_revenue_amount}}</li>
+                   <li><b> Total Revenue Amount (Excel file optional): </b>{% if data.total_revenue_amount_file %} <a href="{{data.total_revenue_amount_file.url}}" target="_blank"> View</a>{% endif %}</li><br>
+
+                   <li><b> Operating Expenses Growth % or Amount : </b>{{data.operating_expenses_growth_or_amount}}</li>
+                   <li><b> Operating Expenses Growth % or Amount (Excel file optional): </b>{% if data.operating_expenses_growth_or_amount_file %} <a href="{{data.operating_expenses_growth_or_amount_file.url}}" target="_blank"> View</a>{% endif %}</li><br>
+
+                   <li><b> Employee Cost : </b>{{data.employee_cost}}</li>
+                   <li><b> Employee Cost (Excel file optional): </b>{% if data.employee_cost_file %} <a href="{{data.employee_cost_file.url}}" target="_blank"> View</a>{% endif %}</li><br>
+
+                   <li><b> Selling & Marketing Cost : </b>{{data.selling_and_marketing_cost}}</li>
+                   <li><b> Selling & Marketing Cost  (Excel file optional): </b>{% if data.selling_and_marketing_cost_file %} <a href="{{data.selling_and_marketing_cost_file.url}}" target="_blank"> View</a>{% endif %}</li><br>
+
+                   <li><b> Other Expenses Growth % or Amount : </b>{{data.other_expenses_growth_or_amount}}</li>
+                   <li><b> Other Expenses Growth % or Amount (Excel file optional): </b>{% if data.other_expenses_growth_or_amount_file %} <a href="{{data.other_expenses_growth_or_amount_file.url}}" target="_blank"> View</a>{% endif %}</li><br>
+
+                   <li><b> EBITDA : </b>{{data.ebitda}}</li>
+                   <li><b> EBITDA (Earnings Before Interest, Tax, Depreciation & Ammortisation) Amount (Excel file optional) : </b>{% if data.ebitda_file %} <a href="{{data.ebitda_file.url}}" target="_blank"> View</a>{% endif %}</li><br>
+
+                   <li><b> Depreciation % or Amount : </b>{{data.depreciation_or_amount }}</li>
+                   <li><b> Depreciation % or Amount (Excel file optional): </b>{% if data.depreciation_or_amount_file %} <a href="{{data.depreciation_or_amount_file.url}}" target="_blank"> View</a>{% endif %}</li><br>
+
+                   <li><b> Interest Expense Interest % or Amount : </b>{{data.interest_expense_interest_or_amount}}</li>
+                   <li><b> Interest Expense Interest % or Amount (Excel file optional): </b>{% if data.interest_expense_interest_or_amount_file %} <a href="{{data.interest_expense_interest_or_amount_file.url}}" target="_blank"> View</a>{% endif %}</li><br>
+
+                   <li><b> EBT (Earnings Before Tax): </b>{{data.ebt}}</li>
+                   <li><b> EBT (Earnings Before Tax) (Excel file optional): </b>{% if data.ebt_file %} <a href="{{data.ebt_file.url}}" target="_blank"> View</a>{% endif %}</li><br>
+
+                   <li><b> Tax Expense Tax % or Amount : </b>{{data.tax_expense_tax_or_amount}}</li>
+                   <li><b> Tax Expense Tax % or Amount (Excel file optional): </b>{% if data.tax_expense_tax_or_amount_file %} <a href="{{data.tax_expense_tax_or_amount_file.url}}" target="_blank"> View</a>{% endif %}</li><br>
+
+                   <li><b> PAT (Profit After Tax) : </b>{{data.pat}}</li>
+                   <li><b> PAT (Profit After Tax) (Excel file optional): </b>{% if data.pat_file %} <a href="{{data.pat_file.url}}" target="_blank"> View</a>{% endif %}</li><br>
+
+                  
+                </ul>
+            </div>
+            </div>
+
+        </div>
+</div>
+<br>
+
+<div class="row">
+        <div class="col-lg-12">   
+            <div class="card shadow mb-12">
+            <div class="card-header py-3">
+                <h6 class="m-0 font-weight-bold text-primary">Balance Sheet</h6>
+            </div>
+            <div class="card-body text-dark">
+                <ul>
+                   <li><b> Share Capital : </b>{{data.share_capital}}</li>
+                   <li><b> Share Capital  (Excel file optional): </b>{% if data.share_capital_file %} <a href="{{data.share_capital_file.url}}" target="_blank"> View</a>{% endif %}</li><br>
+
+                   <li><b> Reserves & Surplus : </b>{{data.}}</li>
+                   <li><b> Reserves & Surplus (Excel file optional): </b>{% if data.reserves_and_surplus_file %} <a href="{{data.reserves_and_surplus_file.url}}" target="_blank"> View</a>{% endif %}</li><br>
+
+                   <li><b> Fund Requirement : </b>{{data.fund_requirement}}</li>
+                   <li><b> Fund Requirement  (Excel file optional): </b>{% if data.fund_requirement_file %} <a href="{{data.fund_requirement_file.url}}" target="_blank"> View</a>{% endif %}</li><br>
+
+                   <li><b> Total Shareholder’s Funds : </b>{{data.total_shareholder_funds}}</li>
+                   <li><b> Total Shareholder’s Funds (Excel file optional): </b>{% if data.total_shareholder_funds_file %} <a href="{{data.total_shareholder_funds_file.url}}" target="_blank"> View</a>{% endif %}</li><br>
+
+                   <li><b> Secured Loans : </b>{{data.secured_loans}}</li>
+                   <li><b> Secured Loans (Excel file optional): </b>{% if data.secured_loans_file %} <a href="{{data.secured_loans_file.url}}" target="_blank"> View</a>{% endif %}</li><br>
+
+                   <li><b> Unsecured Loans : </b>{{data.unsecured_loans}}</li>
+                   <li><b> Unsecured Loans (Excel file optional): </b>{% if data.unsecured_loans_file %} <a href="{{data.unsecured_loans_file.url}}" target="_blank"> View</a>{% endif %}</li><br>
+
+                   <li><b> Long-term Provisions Growth % or Amount  : </b>{{data.long_term_provisions_growth_or_amount}}</li>
+                   <li><b> Long-term Provisions Growth % or Amount (Excel file optional): </b>{% if data.long_term_provisions_growth_or_amount_file %} <a href="{{data.long_term_provisions_growth_or_amount_file.url}}" target="_blank"> View</a>{% endif %}</li><br>
+
+                   <li><b> Other Non-Current Liabilities Growth % or Amount : </b>{{data.other_non_current_liabilities_growth_or_amount}}</li>
+                   <li><b> Other Non-Current Liabilities Growth % or Amount  (Excel file optional): </b>{% if data.other_non_current_liabilities_growth_or_amount_file %} <a href="{{data.other_non_current_liabilities_growth_or_amount_file.url}}" target="_blank"> View</a>{% endif %}</li><br>
+
+                   <li><b> Total Non-Current Liabilities : </b>{{data.total_non_current_liabilities}}</li>
+                   <li><b> Total Non-Current Liabilities (Excel file optional): </b>{% if data.total_non_current_liabilities_file %} <a href="{{data.total_non_current_liabilities_file.url}}" target="_blank"> View</a>{% endif %}</li><br>
+
+                   <li><b> Short-Term Borrowings Growth % or Amount  : </b>{{data.short_term_borrowings_growth_or_amount}}</li>
+                   <li><b> Short-Term Borrowings Growth % or Amount  (Excel file optional): </b>{% if data.short_term_borrowings_growth_or_amount_file %} <a href="{{data.short_term_borrowings_growth_or_amount_file.url}}" target="_blank"> View</a>{% endif %}</li><br>
+
+                   <li><b> Short-Term Provisions Growth % or Amount : </b>{{data.short_term_provisions_growth_or_amount}}</li>
+                   <li><b> Short-Term Provisions Growth % or Amount (Excel file optional): </b>{% if data.short_term_provisions_growth_or_amount_file %} <a href="{{data.short_term_provisions_growth_or_amount_file.url}}" target="_blank"> View</a>{% endif %}</li><br>
+
+                   <li><b> Sundry Creditors No of Days or Amount : </b>{{data.sundry_creditors_no_of_days_or_amount}}</li>
+                   <li><b> Sundry Creditors No of Days or Amount (Excel file optional): </b>{% if data.sundry_creditors_no_of_days_or_amount_file %} <a href="{{data.sundry_creditors_no_of_days_or_amount_file.url}}" target="_blank"> View</a>{% endif %}</li><br>
+
+                   <li><b> Other Current Liabilities Growth % or Amount  : </b>{{data.other_current_liabilities_growth_or_amount}}</li>
+                   <li><b> Other Current Liabilities Growth % or Amount  (Excel file optional): </b>{% if data.other_current_liabilities_growth_or_amount_file %} <a href="{{data.other_current_liabilities_growth_or_amount_file.url}}" target="_blank"> View</a>{% endif %}</li><br>
+
+                   <li><b> Total Current Liabilities : </b>{{data.total_current_liabilities}}</li>
+                   <li><b> Total Current Liabilities (Excel file optional): </b>{% if data.total_current_liabilities_file %} <a href="{{data.total_current_liabilities_file.url}}" target="_blank"> View</a>{% endif %}</li><br>
+
+                   <li><b> Total Liabilities : </b>{{data.total_liabilities}}</li>
+                   <li><b> Total Liabilities (Excel file optional): </b>{% if data.total_liabilities_file %} <a href="{{data.total_liabilities_file.url}}" target="_blank"> View</a>{% endif %}</li><br>
+
+                   <li><b> Gross Fixed Assets Growth % or Amount  : </b>{{data.gross_fixed_assets_growth_or_amount}}</li>
+                   <li><b> Gross Fixed Assets Growth % or Amount  (Excel file optional): </b>{% if data.gross_fixed_assets_growth_or_amount_file %} <a href="{{data.gross_fixed_assets_growth_or_amount_file.url}}" target="_blank"> View</a>{% endif %}</li><br>
+
+                   <li><b> Less: Accumulated Depreciation % or Amount : </b>{{data.less_accumulated_depreciation_or_amount}}</li>
+                   <li><b> Less: Accumulated Depreciation % or Amount  (Excel file optional): </b>{% if data.less_accumulated_depreciation_or_amount_file %} <a href="{{data.less_accumulated_depreciation_or_amount_file.url}}" target="_blank"> View</a>{% endif %}</li><br>
+
+                   <li><b> Net Fixed Assets Growth % or Amount : </b>{{data.net_fixed_assets_growth_or_amount}}</li>
+                   <li><b> Net Fixed Assets Growth % or Amount (Excel file optional): </b>{% if data.net_fixed_assets_growth_or_amount_file %} <a href="{{data.net_fixed_assets_growth_or_amount_file.url}}" target="_blank"> View</a>{% endif %}</li><br>
+
+                   <li><b> Intangible Assets Growth % or Amount  : </b>{{data.intangible_assets_growth_or_amount}}</li>
+                   <li><b> Intangible Assets Growth % or Amount  (Excel file optional): </b>{% if data.intangible_assets_growth_or_amount_file %} <a href="{{data.intangible_assets_growth_or_amount_file.url}}" target="_blank"> View</a>{% endif %}</li><br>
+
+                   <li><b> Long Term Loans & Advances Growth % or Amount : </b>{{data.long_term_loans_and_advances_growth_or_amount}}</li>
+                   <li><b> Long Term Loans & Advances Growth % or Amount (Excel file optional): </b>{% if data.long_term_loans_and_advances_growth_or_amount_file %} <a href="{{data.long_term_loans_and_advances_growth_or_amount_file.url}}" target="_blank"> View</a>{% endif %}</li><br>
+
+                   <li><b> Long Term Investments Growth % or Amount : </b>{{data.long_term_investments_growth_or_amount}}</li>
+                   <li><b> Long Term Investments Growth % or Amount (Excel file optional): </b>{% if data.long_term_investments_growth_or_amount_file %} <a href="{{data.long_term_investments_growth_or_amount_file.url}}" target="_blank"> View</a>{% endif %}</li><br>
+
+                   <li><b> Other Non-Current Assets Growth % or Amount : </b>{{data.other_non_current_assets_growth_or_amount}}</li>
+                   <li><b> Other Non-Current Assets Growth % or Amount  (Excel file optional): </b>{% if data.other_non_current_assets_growth_or_amount_file %} <a href="{{data.other_non_current_assets_growth_or_amount_file.url}}" target="_blank"> View</a>{% endif %}</li><br>
+
+                   <li><b> Total Non-Current Assets : </b>{{data.total_non_current_assets}}</li>
+                   <li><b> Total Non-Current Assets (Excel file optional): </b>{% if data.total_non_current_assets_file %} <a href="{{data.total_non_current_assets_file.url}}" target="_blank"> View</a>{% endif %}</li><br>
+
+                   <li><b> Cash : </b>{{data.cash}}</li>
+                   <li><b> Cash (Excel file optional): </b>{% if data.cash_file %} <a href="{{data.cash_file.url}}" target="_blank"> View</a>{% endif %}</li><br>
+
+                   <li><b> Sundry Debtors No of Days or Amount : </b>{{data.sundry_debtors_no_of_days_or_amount}}</li>
+                   <li><b> Sundry Debtors No of Days or Amount (Excel file optional): </b>{% if data.sundry_debtors_no_of_days_or_amount_file %} <a href="{{data.sundry_debtors_no_of_days_or_amount_file.url}}" target="_blank"> View</a>{% endif %}</li><br>
+
+                   <li><b> Inventory No of Days or Amount : </b>{{data.inventory_no_of_days_or_amount}}</li>
+                   <li><b> Inventory No of Days or Amount (Excel file optional): </b>{% if data.inventory_no_of_days_or_amount_file %} <a href="{{data.inventory_no_of_days_or_amount_file.url}}" target="_blank"> View</a>{% endif %}</li><br>
+
+                   <li><b> Short-Term Investments Growth % or Amount : </b>{{data.short_term_investments_growth_or_amount}}</li>
+                   <li><b> Short-Term Investments Growth % or Amount  (Excel file optional): </b>{% if data.short_term_investments_growth_or_amount_file %} <a href="{{data.short_term_investments_growth_or_amount_file.url}}" target="_blank"> View</a>{% endif %}</li><br>
+
+                   <li><b> Short-Term Loans & Advances Growth % or Amount : </b>{{data.short_term_loans_and_advances_growth_or_amount}}</li>
+                   <li><b> Short-Term Loans & Advances Growth % or Amount  (Excel file optional): </b>{% if data.short_term_loans_and_advances_growth_or_amount_file %} <a href="{{data.short_term_loans_and_advances_growth_or_amount_file.url}}" target="_blank"> View</a>{% endif %}</li><br>
+
+                   <li><b> Other Current Assets Growth % or Amount : </b>{{data.other_current_assets_growth_or_amount}}</li>
+                   <li><b> Other Current Assets Growth % or Amount (Excel file optional): </b>{% if data.other_current_assets_growth_or_amount_file %} <a href="{{data.other_current_assets_growth_or_amount_file.url}}" target="_blank"> View</a>{% endif %}</li><br>
+
+                   <li><b> Total Current Assets : </b>{{data.total_current_assets}}</li>
+                   <li><b> Total Current Assets (Excel file optional): </b>{% if data.total_current_assets_file %} <a href="{{data.total_current_assets_file.url}}" target="_blank"> View</a>{% endif %}</li><br>
+
+                   <li><b> Total Assets  : </b>{{data.total_assets}}</li>
+                   <li><b> Total Assets  (Excel file optional): </b>{% if data.total_assets_file %} <a href="{{data.total_assets_file.url}}" target="_blank"> View</a>{% endif %}</li><br>
+
+                   
+                </ul>
+            </div>
+            </div>
+
+        </div>
+</div>
+<br>
+
+
+<div class="row">
+        <div class="col-lg-12">   
+            <div class="card shadow mb-12">
+            <div class="card-header py-3">
+                <h6 class="m-0 font-weight-bold text-primary">CAPEX Schedule </h6>
+            </div>
+            <div class="card-body text-dark">
+                <ul>
+                  <li><b> Company Owned Land & Building : </b>{{data.company_owned_land_and_building}}</li>
+                  <li><b> Company Owned Land & Building (Excel file optional): </b>{% if data.company_owned_land_and_building_file %} <a href="{{data.company_owned_land_and_building_file.url}}" target="_blank"> View</a>{% endif %}</li><br>
+
+                   <li><b> Other Fixed Assets  : </b>{{data.other_fixed_assets}}</li>
+                   <li><b> Other Fixed Assets  (Excel file optional): </b>{% if data.other_fixed_assets_file %} <a href="{{data.other_fixed_assets_file.url}}" target="_blank"> View</a>{% endif %}</li><br>
+
+                   <li><b> Depreciation Growth % or Amount  : </b>{{data.depreciation_growth_or_amount}}</li>
+                   <li><b> Depreciation Growth % or Amount  (Excel file optional): </b>{% if data.depreciation_growth_or_amount_file %} <a href="{{data.depreciation_growth_or_amount_file.url}}" target="_blank"> View</a>{% endif %}</li><br>
+
+                   <li><b> Total CAPEX Expense : </b>{{data.total_capex_expense}}</li>
+                </ul>
+            </div>
+            </div>
+
+        </div>
+</div>
+<br>
+
+<div class="row">
+        <div class="col-lg-12">   
+            <div class="card shadow mb-12">
+            <div class="card-header py-3">
+                <h6 class="m-0 font-weight-bold text-primary">Theme & Currency Selection</h6>
+            </div>
+            <div class="card-body text-dark">
+                <ul>
+                   <li><b> Theme : </b>{{data.theme}}</li>
+                   <li><b> Currency Selection : </b>{{data.currency}}</li>
+                   <li><b> Denomination : </b>{{data.denomination}}</li>
+                   <li><b> Superplan Pack : </b>{{data.pack}}</li>
+                </ul>
+            </div>
+            </div>
+
+        </div>
+</div>
+<br>
+
+
+{% endblock %}

@@ -80,9 +80,10 @@ urlpatterns = [
     path("ajax_call_delete_banner",views.ajax_call_delete_banner,name="ajax_call_delete_banner"),
 
 
-
+    path("successful-purchased",views.successful_purchased,name="successful_purchased"),
     #-------------------------- Forms ------------------------
 
+   
     path("user-form1",views.user_form_1,name="user_form_1"),
     path("user_form_1_submit",views.user_form_1_submit,name="user_form_1_submit"),
     path("user_form_2_submit",views.user_form_2_submit,name="user_form_2_submit"),

@@ -27,7 +27,7 @@
 						<div class="col">
 							<div class="form-group">
 								<label ><strong>1.1. Company’s Name</strong></label>
-								<input class="form-control" type="text"  name=""> 
+								<input class="form-control" type="text"  name="company_name" required maxlength="1000" minlength="3"> 
 								</div>
 						</div>
 						
@@ -35,7 +35,7 @@
 					<div class="col">
 						<div class="form-group">
 							<label ><strong>1.2. Company Website Link</strong></label>
-							<input class="form-control" type="text"  name=""> 
+							<input class="form-control" type="text"  name="company_website_link" required maxlength="1000" minlength="3" > 
 						</div>
 					</div>
 						
@@ -46,7 +46,7 @@
 						<div class="col">
 							<div class="form-group">
 								<label ><strong>1.3. Owner’s Name</strong></label>
-								<input class="form-control" type="text"  name="" value="" /> 
+								<input class="form-control" type="text"  name="owner_name" required maxlength="500" minlength="3" /> 
 								</div>
 						</div>
 						
@@ -54,14 +54,14 @@
 					<div class="col">
 						<div class="form-group">
 							<label ><strong>1.4. Phone Number</strong></label>
-							<input class="form-control" type="text"  name="" value="" /> 
+							<input class="form-control" type="text"  name="phone_number" required maxlength="13" minlength="10" /> 
 						</div>
 					</div>
 
 					<div class="col">
 						<div class="form-group">
 							<label ><strong>1.5. Email id</strong></label>
-							<input class="form-control" type="text"  name="" value="" /> 
+							<input class="form-control" type="email"  name="email_id" required maxlength="500" minlength="4" /> 
 						</div>
 					</div>
 						
@@ -73,7 +73,7 @@
 						<div class="col">
 							<div class="form-group">
 								<label ><strong>1.6. GST Number</strong></label>
-								<input class="form-control" type="text"  name=""> 
+								<input class="form-control" type="text"  name="gst_number" maxlength="100" minlength="4"> 
 								</div>
 						</div>
 						
@@ -81,7 +81,7 @@
 					<div class="col">
 						<div class="form-group">
 							<label ><strong>1.7. GST Name</strong></label>
-							<input class="form-control" type="text"  name=""> 
+							<input class="form-control" type="text"  name="gst_name" maxlength="500" minlength="4"> 
 						</div>
 					</div>
 						
@@ -103,53 +103,5 @@
 </div>
 </div>
 
-<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-
-
-<script>
-
-    $("#profile_photo").change(function() {
-    var imgPath = $(this)[0].value;
-    var extn = imgPath.substring(imgPath.lastIndexOf('.') + 1).toLowerCase();
-    var size=Math.round((this.files[0].size)/1024);
-    if(extn == "jpg" || extn == "jpeg" || extn == "png")
-        {
-            if(size<1024)
-                {
-                    pass;
-                }
-            else
-                {
-                    $("#profile_photo").val('');
-
-					swal({
-						title: "Oops !",
-						text: "Image size is larger than 1MB !",
-						icon: "error",
-						button: "ok",
-						});
-                    
-                }
-        }
-
-    else
-        {
-            
-			$("#profile_photo").val('');
-
-			swal({
-				title: "Oops !",
-				text: "Image format must be in JPG/JPEG/PNG !",
-				icon: "error",
-				button: "ok",
-				});
-                    
-                
-        }
-    });
-
-
-
-</script>
 
 {% endblock %}

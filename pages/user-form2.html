@@ -14,7 +14,7 @@
 
 
 
-				<form method="POST" action="/user_form_2_submit">
+				<form method="POST" action="/user_form_2_submit"  enctype="multipart/form-data">
 				{% csrf_token %}
 					<div class="card shadow mb-3">
 						<div class="card-header py-3">
@@ -29,7 +29,7 @@
 						<div class="col">
 							<div class="form-group">
 								<label ><strong>2.1. About the company</strong></label>
-								<textarea class="form-control"  name="" /> </textarea>
+								<textarea class="form-control"  name="about_the_company"  maxlength="7000" minlength="4" /> </textarea>
 								</div>
 						</div>
 						
@@ -39,27 +39,14 @@
                         <div class="row">
                             <div class="col">
                                     <div class="form-group">
-                                        <label ><strong>2.2. Company Logo</strong></label>
-                                        <input  type="file"  name="">
+                                        <label ><strong>2.2. Company Logo (JPEG/PNG)</strong></label>
+                                        <input id="photo"  type="file"  name="company_logo" accept="image/jpeg,image/png" />
                                     </div>
                                 </div>
                         </div>
 
 
-                        <div id="img-inp">
-                            <div class="row text-center">
-                                <div class="col">
-                                    <img class="img-thumbnail" src="{% static 'assets-home/img/Large favi logo.png' %}" alt="logo" style="max-height:100px;margin-bottom:10px;" />
-                                </div>
-                            </div>
-
-                            <div class="row text-center">
-                                <div class="col">
-                                    <button class="btn btn-danger btn-sm" type="button">Remove image</button>
-                                </div>
-                            </div>
-
-                        </div>
+                        
 					</div>
 
 					
@@ -72,7 +59,7 @@
 						<div class="col">
 						<div class="form-group">
 							<label ><strong>2.3. When was the company founded</strong></label>
-							<input class="form-control" type="text"  name="" value="" /> 
+							<input class="form-control" type="text"  name="company_founded" /> 
 						</div>
 					</div>
 						
@@ -80,13 +67,13 @@
 					<div class="col">
 						<div class="form-group">
 							<label ><strong>2.4. Industry Type</strong></label>
-							<select class="form-control" name="">
+							<select class="form-control" name="industry_type">
                                 <option>Select Here</option>
-                                <option>Industry Type 1</option>
-                                <option>Industry Type 2</option>
-                                <option>Industry Type 3</option>
-                                <option>Industry Type 4</option>
-                                <option>Industry Type 5</option>
+                                <option value="industry type 1">Industry Type 1</option>
+                                <option value="industry type 2">Industry Type 2</option>
+                                <option value="industry type 3">Industry Type 3</option>
+                                <option value="industry type 4">Industry Type 4</option>
+                                <option value="industry type 5">Industry Type 5</option>
                             </select> 
 						</div>
 					</div>
@@ -114,23 +101,23 @@
 
 <script>
 
-    $("#profile_photo").change(function() {
+    $("#photo").change(function() {
     var imgPath = $(this)[0].value;
     var extn = imgPath.substring(imgPath.lastIndexOf('.') + 1).toLowerCase();
     var size=Math.round((this.files[0].size)/1024);
     if(extn == "jpg" || extn == "jpeg" || extn == "png")
         {
-            if(size<1024)
+            if(size<2048)
                 {
                     pass;
                 }
             else
                 {
-                    $("#profile_photo").val('');
+                    $("#photo").val('');
 
 					swal({
 						title: "Oops !",
-						text: "Image size is larger than 1MB !",
+						text: "Image size is larger than 2MB !",
 						icon: "error",
 						button: "ok",
 						});
@@ -141,7 +128,7 @@
     else
         {
             
-			$("#profile_photo").val('');
+			$("#photo").val('');
 
 			swal({
 				title: "Oops !",

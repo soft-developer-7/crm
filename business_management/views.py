@@ -3,7 +3,7 @@ from django.http import HttpResponse,request,HttpResponseRedirect
 from django.contrib import messages
 from django.contrib.auth.hashers import make_password,check_password
 from django.http import JsonResponse
-from tasks.models import User_db,Pages,Posts,Banners
+from tasks.models import User_db,Pages,Posts,Banners,super_plan_forms
 from django.core.paginator import Paginator
 from .models import Packs,Industries,Templates,User_bookings
 
@@ -120,6 +120,23 @@ def admin_add_booking(request):                        # Admin Add booking page
     else:
         return render(request,'login.html')
 
+
+def admin_all_superplan_bookings(request):                        # Admin All Bookings page
+    if(auth_admin(request)):
+        bookings = super_plan_forms.objects.all()
+        return render(request,"bmanage/admin-all-superplan-bookings.html",{"bookings":bookings})
+    else:
+        return render(request,'login.html')
+
+
+
+
+
+
+
+
+
+        
 #--------------------------------------------------------------- Tasks ------------------------------------------------
 
 
@@ -618,3 +635,20 @@ def ajax_call_delete_booking(request):                                   # AJAX 
             return JsonResponse({"value":0})
     else:
         return JsonResponse({"value":0})
+
+
+
+
+
+
+
+def superplan_booking_view_by_get(request,id):                                   # Superplan booking view by GET method by Admin
+    if(auth_admin(request)):
+        book =  super_plan_forms.objects.get(id=id)
+        if(book):
+            return render(request,'bmanage/admin-superplan-booking-view.html',{'data':book})  
+
+        else:
+            return render(request,'login.html')
+    else:
+        return render(request,'login.html')
