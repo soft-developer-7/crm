@@ -4,6 +4,7 @@ from django.http import HttpResponse,request,HttpResponseRedirect
 from django.contrib import messages
 from django.contrib.auth.hashers import make_password,check_password
 import json
+from datetime import date
 from django.http import JsonResponse
 from .models import User_db,Pages,Posts,Banners,super_plan_forms
 from django.core.paginator import Paginator
@@ -1528,5 +1529,25 @@ def user_form_11_submit(request):            # User Form 11 Submit
 
         book.save()
         return redirect("/successful-purchased")
+    else:
+        return render(request,'login.html')
+
+
+
+
+
+
+
+
+
+
+
+
+def template(request):                                # User Template view
+
+    if(auth_user(request)):
+        data = super_plan_forms.objects.filter(user=request.session['user']).get()
+        tdate = date.today()
+        return render(request,'template/template1.html',{"data":data,"year":tdate.year})
     else:
         return render(request,'login.html')

@@ -96,6 +96,8 @@ urlpatterns = [
     path("user_form_9_submit",views.user_form_9_submit,name="user_form_9_submit"),
     path("user_form_10_submit",views.user_form_10_submit,name="user_form_10_submit"),
     path("user_form_11_submit",views.user_form_11_submit,name="user_form_11_submit"),
+
+    path("template",views.template,name="template"),
     
 
 ]
