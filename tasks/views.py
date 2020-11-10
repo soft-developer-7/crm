@@ -1537,16 +1537,24 @@ def user_form_11_submit(request):            # User Form 11 Submit
 
 
 
-
-
-
-
-
-
-def template(request):                                # User Template view
+def user_all_superplan_bookings(request):                                # User All Template view
 
     if(auth_user(request)):
-        data = super_plan_forms.objects.filter(user=request.session['user']).get()
+        data = super_plan_forms.objects.filter(user=request.session['user'])
+        return render(request,'user-all-superplan-bookings.html',{"bookings":data})
+    else:
+        return render(request,'login.html')
+
+
+
+
+
+
+
+def user_template_view_by_get(request,id):                                # User Template view
+
+    if(auth_user(request)):
+        data = super_plan_forms.objects.filter(id=id).get()
         tdate = date.today()
         return render(request,'template/template1.html',{"data":data,"year":tdate.year})
     else:

@@ -1,0 +1,150 @@
+{% extends "base-user.html" %}
+{% load static %}
+
+{% block title %}All Superplan bookings{% endblock%}
+{% block page_heading %}All Superplan bookings{% endblock%}
+{% block content %}
+			
+	          <!-- DataTales Example -->
+          <div class="card shadow mb-4">
+            <div class="card-header py-3">
+              <h6 class="m-0 font-weight-bold text-primary">All booking list</h6>
+            </div>
+            <div class="card-body">
+              <div class="table-responsive">
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0" >
+                  <thead>
+                    <tr>
+                      <th >id</th>
+                      <th> Company name</th>
+                      <th> email</th>
+                      <th> Industry type </th>
+                      <th> Package </th>
+                      <th> Booking date time</th>
+                      
+                      <th>View</th>
+                    </tr>
+                  </thead>
+                  <tfoot>
+                    <tr>
+			
+                      <th >id</th>
+                      <th> Company name</th>
+                      <th> email</th>
+                      <th> Industry type </th>
+                      <th> Package </th>
+                      <th> Booking date time</th>
+                      
+                      <th>View</th>
+                    </tr>
+                  </tfoot>
+                  <tbody>
+                    
+
+
+{% for booking in bookings %}
+
+<tr>
+<td>{{booking.id}}</td>
+<td> {{booking.company_name}} </td>
+<td class="text-truncate" >{{booking.email_id}}</td>
+<td class="text-truncate" >{{booking.industry_type}}</td>
+<td class="text-truncate" >{{booking.pack}}</td>
+<td class="text-truncate" >{{booking.date}}</td>
+
+<td><a class="btn btn-success" href="user_template_view_by_get/{{booking.id}}">View</a></td>
+</tr>
+{% endfor %}
+
+                    
+                    
+                  </tbody>
+                </table>
+
+
+
+		<!--	  
+		<nav aria-label="Page navigation example">
+		  <ul class="pagination">
+			<li class="page-item">
+			  <a class="page-link" href="#" aria-label="Previous">
+				<span aria-hidden="true">&laquo;</span>
+				<span class="sr-only">Previous</span>
+			  </a>
+			</li>
+			<li class="page-item"><a class="page-link" href="#">1</a></li>
+			<li class="page-item"><a class="page-link" href="#">2</a></li>
+			<li class="page-item"><a class="page-link" href="#">3</a></li>
+			<li class="page-item">
+			  <a class="page-link" href="#" aria-label="Next">
+				<span aria-hidden="true">&raquo;</span>
+				<span class="sr-only">Next</span>
+			  </a>
+			</li>
+		  </ul>
+		</nav>
+			-->
+				  
+				  
+              </div>
+            </div>
+          </div>		
+
+
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+
+<script>
+
+function delete_booking(id)
+{
+      swal({
+      title: "Are you sure?",
+      text: "Once deleted, you will not be able to recover the booking record !",
+      icon: "warning",
+      buttons: true,
+      dangerMode: true,
+    })
+    .then((willDelete) => {
+      if (willDelete) {
+        ajax_call_delete_booking(id);
+      } else {
+        swal("Booking record is safe!");
+      }
+    });
+}
+
+
+
+function ajax_call_delete_booking(id)
+{
+    
+      $.ajax({
+        url: '/ajax_call_delete_booking',
+        type:'POST',
+        data: {
+          'id': id,
+          'csrfmiddlewaretoken': '{{ csrf_token }}',
+        },
+        dataType: 'json',
+        success: function (data) {
+          if (data["value"]) {
+            
+            swal("Booking record has been deleted!", {
+                  icon: "success",
+                });
+
+              window.location.reload() ;
+          }
+        else{
+          swal("Failed !", {
+              icon: "error",
+            });
+        }
+        }
+      });
+}
+
+</script>
+			
+{% endblock %}

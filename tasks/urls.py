@@ -97,7 +97,9 @@ urlpatterns = [
     path("user_form_10_submit",views.user_form_10_submit,name="user_form_10_submit"),
     path("user_form_11_submit",views.user_form_11_submit,name="user_form_11_submit"),
 
-    path("template",views.template,name="template"),
+    path("user-all-superplan-bookings",views.user_all_superplan_bookings,name="user-all-superplan-bookings"),
+    path("user_template_view_by_get/<int:id>",views.user_template_view_by_get,name="user_template_view_by_get"),
+    
     
 
 ]
