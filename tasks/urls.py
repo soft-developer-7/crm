@@ -47,7 +47,6 @@ urlpatterns = [
 
 
     path("user_profile_update_form",views.user_profile_update_form,name="user_profile_update_form"),
-    path("user_profile_photo_update",views.user_profile_photo_update,name="user_profile_photo_update"),
 
 
 
@@ -99,6 +98,11 @@ urlpatterns = [
 
     path("user-all-superplan-bookings",views.user_all_superplan_bookings,name="user-all-superplan-bookings"),
     path("user_template_view_by_get/<int:id>",views.user_template_view_by_get,name="user_template_view_by_get"),
+
+    path("user-all-incomplete-superplan-bookings",views.user_all_incomplete_superplan_bookings,name="user-all-incomplete-superplan-bookings"),
+    path("user_incomplete_superplan_by_get/<int:id>",views.user_incomplete_superplan_by_get,name="user_incomplete_superplan_by_get"),
+    path("ajax_call_delete_incomplete_booking",views.ajax_call_delete_incomplete_booking,name="ajax_call_delete_incomplete_booking"),
+
     
     
 

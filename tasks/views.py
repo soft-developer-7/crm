@@ -10,6 +10,9 @@ from .models import User_db,Pages,Posts,Banners,super_plan_forms
 from django.core.paginator import Paginator
 from business_management.models import Packs,Industries,User_bookings,Templates
 
+
+
+
 # Create your views here.
 
 
@@ -883,7 +886,7 @@ def user_profile_update(request):                                # User Profile 
         if(user and user.role!="admin"):
             user =  User_db.objects.get(id=request.session['user'])
             
-            return render(request,'user-profile-update.html',{'name':user.name,'mobile':user.mobile,
+            return render(request,'user-profile-update.html',{'name':user.name,'countrycode':user.countrycode,'mobile':user.mobile,
             'email':user.email,'address':user.address,'photo':user.photo.url})
         else:
             return render(request,'login.html')
@@ -911,9 +914,26 @@ def user_profile_update_form(request):                                # User Pro
             user.mobile=request.POST["mobile"]
             user.address=request.POST["address"]
 
+
+
             if(request.POST['password']!=""):
                 user.password = make_password(request.POST['password'])
+
+            if(request.POST.get('countrycode')):
+                print(request.POST['countrycode'])
+                user.countrycode = request.POST['countrycode']
+
+
+            if(request.FILES.get("photo")):
+                photo = request.FILES["photo"]
+                user.photo = photo
+
             user.save()
+
+            
+            request.session['name']=user.name
+            request.session['photo']=user.photo.url
+
             return redirect("/user-profile-update")
         else:
             return render(request,'login.html')
@@ -928,20 +948,7 @@ def user_profile_update_form(request):                                # User Pro
 
 
 
-def user_profile_photo_update(request):                                         # User Profile PHOTO Update Form
 
-    if(request.session.get('user')):
-        user = User_db.objects.filter(id=request.session['user']).get()
-
-        if(user and user.role!="admin" and request.method=="POST"):
-            photo = request.FILES["photo"]
-            user.photo = photo
-            user.save()
-            return redirect("/user-profile-update")
-        else:
-            return render(request,'login.html')
-    else:
-        return render(request,'login.html')
 
 
 def successful_purchased(request):                                # User Successful Purchased
@@ -976,6 +983,7 @@ def user_form_1_submit(request):            # User Form 1 Submit
             book.company_name = request.POST["company_name"]
             book.company_website_link = request.POST["company_website_link"]
             book.owner_name = request.POST["owner_name"]
+            book.countrycode = request.POST['countrycode']
             book.phone_number = request.POST["phone_number"]
             book.email_id = request.POST["email_id"]
 
@@ -983,6 +991,9 @@ def user_form_1_submit(request):            # User Form 1 Submit
                 book.gst_number = request.POST["gst_number"]
                 book.gst_name = request.POST["gst_name"]
 
+
+            
+            book.current_fillup_position = 1
             book.save()
             request.session["form"] = book.id
 
@@ -1010,6 +1021,9 @@ def user_form_2_submit(request):            # User Form 2 Submit
 
         if(request.FILES.get("company_logo")):
             book.company_logo = request.FILES["company_logo"]
+
+        if(book.current_fillup_position<12):
+            book.current_fillup_position = 2
         book.save()
 
         return render(request,'user-form3.html')
@@ -1028,9 +1042,12 @@ def user_form_3_submit(request):            # User Form 3 Submit
     if(auth_user(request) and book and request.method=="POST"):
         if(request.POST.get("challenges_faced")):
             book.challenges_faced = request.POST["challenges_faced"]
-        if(request.POST.get("solutions_provided")):
-            book.challenges_faced = request.POST["solutions_provided"]
 
+        if(request.POST.get("solutions_provided")):
+            book.solutions_provided = request.POST["solutions_provided"]
+
+        if(book.current_fillup_position<12):
+            book.current_fillup_position = 3
         book.save()
 
         return render(request,'user-form4.html')
@@ -1066,6 +1083,8 @@ def user_form_4_submit(request):            # User Form 4 Submit
         if(request.POST.get("swot")):
             book.swot = request.POST["swot"]
 
+        if(book.current_fillup_position<12):
+            book.current_fillup_position = 4
         book.save()
         return render(request,'user-form5.html')
     else:
@@ -1089,6 +1108,8 @@ def user_form_5_submit(request):            # User Form 5 Submit
         if(request.POST.get("management_bio")):
             book.management_bio = request.POST["management_bio"]
 
+        if(book.current_fillup_position<12):
+            book.current_fillup_position = 5
         book.save()
         return render(request,'user-form6.html')
     else:
@@ -1112,6 +1133,8 @@ def user_form_6_submit(request):            # User Form 6 Submit
         if(request.POST.get("growth_strategy")):
             book.growth_strategy = request.POST["growth_strategy"]
 
+        if(book.current_fillup_position<12):
+            book.current_fillup_position = 6
         book.save()
         return render(request,'user-form7.html')
     else:
@@ -1138,7 +1161,8 @@ def user_form_7_submit(request):            # User Form 7 Submit
         if(request.POST.get("usp")):
             book.usp = request.POST["usp"]
 
-
+        if(book.current_fillup_position<12):
+            book.current_fillup_position = 7
         book.save()
         return render(request,'user-form8.html')
     else:
@@ -1244,7 +1268,8 @@ def user_form_8_submit(request):            # User Form 8 Submit
             book.pat_file = request.FILES["pat_file"]
 
 
-
+        if(book.current_fillup_position<12):
+            book.current_fillup_position = 8
         book.save()
         return render(request,'user-form9.html')
     else:
@@ -1449,7 +1474,8 @@ def user_form_9_submit(request):            # User Form 9 Submit
             book.total_assets_file = request.FILES["total_assets_file"]
 
 
-
+        if(book.current_fillup_position<12):
+            book.current_fillup_position = 9
         book.save()
         return render(request,'user-form10.html')
     else:
@@ -1498,7 +1524,8 @@ def user_form_10_submit(request):            # User Form 10 Submit
         if(request.POST.get("total_capex_expense")):
             book.total_capex_expense = request.POST["total_capex_expense"]
 
-
+        if(book.current_fillup_position<12):
+            book.current_fillup_position = 10
         book.save()
         return render(request,'user-form11.html')
     else:
@@ -1527,6 +1554,7 @@ def user_form_11_submit(request):            # User Form 11 Submit
         if(request.POST.get("pack")):
             book.pack = request.POST["pack"]
 
+        book.current_fillup_position = 12
         book.save()
         return redirect("/successful-purchased")
     else:
@@ -1551,11 +1579,62 @@ def user_all_superplan_bookings(request):                                # User 
 
 
 
-def user_template_view_by_get(request,id):                                # User Template view
+def user_template_view_by_get(request,id):                                # User Template view by GET
 
     if(auth_user(request)):
         data = super_plan_forms.objects.filter(id=id).get()
         tdate = date.today()
-        return render(request,'template/template1.html',{"data":data,"year":tdate.year})
+        logo=""
+        if(data.company_logo):
+            logo=data.company_logo.url
+        return render(request,'template/template1.html',{"data":data,"logo":logo,"year":tdate.year})
     else:
         return render(request,'login.html')
+
+
+
+
+
+
+
+def user_all_incomplete_superplan_bookings(request):                                # User All incomplete superplan form
+
+    if(auth_user(request)):
+        data = super_plan_forms.objects.filter(user=request.session['user'],current_fillup_position__lt=12)
+        return render(request,'user-all-incomplete-superplan-bookings.html',{"bookings":data})
+    else:
+        return render(request,'login.html')
+
+
+
+
+
+
+
+
+def user_incomplete_superplan_by_get(request,id):                                # User incomplete superplan form by GET
+
+    if(auth_user(request)):
+        book=super_plan_forms.objects.filter(id=id,user=request.session['user']).get()
+        if(book):
+            request.session["form"] = book.id
+            form_url = 'user-form'+str((book.current_fillup_position)+1)+'.html'
+            return render(request,form_url)
+        else:
+            return render(request,'login.html')
+    else:
+        return render(request,'login.html')
+
+
+
+
+def ajax_call_delete_incomplete_booking(request):                                   # AJAX call DELETE incomplete booking - By User
+    if(auth_user(request) and request.method=="POST"):
+        booking = super_plan_forms.objects.filter(id=request.POST['id'],user=request.session['user'])
+        if(booking):
+            booking.delete()
+            return JsonResponse({"value":request.POST['id']},status=200)
+        else:
+            return JsonResponse({"value":0})
+    else:
+        return JsonResponse({"value":0})

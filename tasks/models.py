@@ -6,6 +6,7 @@ from django.db import models
 class User_db (models.Model):
     name = models.CharField(max_length=100)
     role = models.CharField(default='user',max_length=100)
+    countrycode = models.CharField(max_length=10,null=True)
     mobile = models.CharField(max_length=10)
     email = models.CharField(max_length=100)
     password = models.CharField(max_length=300)
@@ -79,6 +80,7 @@ class super_plan_forms(models.Model):
     company_name = models.CharField(max_length=1000)
     company_website_link = models.CharField(max_length=1000)
     owner_name = models.CharField(max_length=500)
+    countrycode = models.CharField(max_length=10)
     phone_number = models.CharField(max_length=13)
     email_id = models.CharField(max_length=500)
     gst_number = models.CharField(max_length=100)
@@ -283,8 +285,18 @@ class super_plan_forms(models.Model):
     pack = models.CharField(max_length=100,null=True)
 
 
+
+
+
+    current_fillup_position = models.IntegerField(null=True)
     date = models.DateTimeField(auto_now_add=True)
+
+
 
 
     def __str__(self):
         return self.user.name
+
+
+
+

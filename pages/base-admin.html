@@ -25,6 +25,17 @@
 
 
   <style>
+  /* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
       
   {% block style %}
   {% endblock %}
@@ -413,6 +424,13 @@
   <script src="{% static 'vendor/jquery-easing/jquery.easing.min.js' %}"></script>
   <!-- Custom scripts for all pages-->
   <script src="{% static 'js/sb-admin-2.min.js' %}"></script>
+  <script>
+  
+  $(document).on("wheel", "input[type=number]", function (e) {
+    $(this).blur();
+});
+  
+  </script>
 
 </body>
 </html>

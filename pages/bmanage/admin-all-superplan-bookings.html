@@ -23,6 +23,7 @@
                       <th> Booking date time</th>
                       
                       <th>View</th>
+                      <th>Delete</th>
                     </tr>
                   </thead>
                   <tfoot>
@@ -36,6 +37,7 @@
                       <th> Booking date time</th>
                       
                       <th>View</th>
+                      <th>Delete</th>
                     </tr>
                   </tfoot>
                   <tbody>
@@ -53,6 +55,7 @@
 <td class="text-truncate" >{{booking.date}}</td>
 
 <td><a class="btn btn-success" href="superplan_booking_view_by_get/{{booking.id}}">View</a></td>
+<td><button class="btn btn-danger" type="button" onclick="delete_booking({{booking.id}})">Delete</button></td>
 </tr>
 
 {% endfor %}
@@ -120,7 +123,7 @@ function ajax_call_delete_booking(id)
 {
     
       $.ajax({
-        url: '/ajax_call_delete_booking',
+        url: '/ajax_call_delete_superplan_booking',
         type:'POST',
         data: {
           'id': id,

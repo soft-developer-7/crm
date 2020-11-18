@@ -4,6 +4,8 @@
 {% block title %}Registration{% endblock%}
 
 
+
+
 {% block content %}
 
     <div class="main">
@@ -58,7 +60,9 @@
 
 	<div class="form-group">
 		<label for="phone"><i class="zmdi zmdi-phone"></i></label>
-		<input type="tel"  maxlength="10" minlength="10" id="from-phone" name="phone" required="" placeholder="Your Phone number"/>
+
+        
+		<input type="text"  id="from-phone" name="phone" required="" placeholder="Your Phone number" pattern="[6-9]{1}[0-9]{9}"  oninvalid="this.setCustomValidity('Invalid Mobile Number')" onvalid="this.setCustomValidity('')"/>
 	</div>
 	
 	

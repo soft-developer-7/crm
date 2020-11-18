@@ -128,11 +128,12 @@ a:focus, a:active {
 
 input, select, textarea {
   outline: none;
-  appearance: unset !important;
-  -moz-appearance: unset !important;
-  -webkit-appearance: unset !important;
-  -o-appearance: unset !important;
-  -ms-appearance: unset !important; }
+  appearance: none !important;
+  -moz-appearance: none !important;
+  -webkit-appearance: none !important;
+  -o-appearance: none !important;
+  -ms-appearance:none !important;
+  appearance: none !important; }
 
 input::-webkit-outer-spin-button, input::-webkit-inner-spin-button {
   appearance: none !important;
@@ -140,6 +141,7 @@ input::-webkit-outer-spin-button, input::-webkit-inner-spin-button {
   -webkit-appearance: none !important;
   -o-appearance: none !important;
   -ms-appearance: none !important;
+  appearance: none !important;
   margin: 0; }
 
 input:focus, select:focus, textarea:focus {
@@ -149,6 +151,14 @@ input:focus, select:focus, textarea:focus {
   -webkit-box-shadow: none !important;
   -o-box-shadow: none !important;
   -ms-box-shadow: none !important; }
+
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+    -webkit-appearance: none !important;
+    -moz-appearance: none !important;
+    appearance: none !important;
+    margin: 0; 
+}
 
 input[type=checkbox] {
   appearance: checkbox !important;

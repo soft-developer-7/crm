@@ -28,8 +28,8 @@
 						
 						<div class="col">
 							<div class="form-group">
-								<label ><strong>2.1. About the company</strong></label>
-								<textarea class="form-control"  name="about_the_company"  maxlength="7000" minlength="4" /> </textarea>
+								<label ><strong>2.1. About the company</strong><small class="text-danger"> *Max : 2000 characters</small></label>
+								<textarea class="form-control"  name="about_the_company"  maxlength="2000" minlength="4" required /> </textarea>
 								</div>
 						</div>
 						
@@ -40,7 +40,7 @@
                             <div class="col">
                                     <div class="form-group">
                                         <label ><strong>2.2. Company Logo (JPEG/PNG)</strong></label>
-                                        <input id="photo"  type="file"  name="company_logo" accept="image/jpeg,image/png" />
+                                        <input id="photo"  type="file"  name="company_logo" accept="image/jpeg,image/png" required />
                                     </div>
                                 </div>
                         </div>
@@ -59,7 +59,7 @@
 						<div class="col">
 						<div class="form-group">
 							<label ><strong>2.3. When was the company founded</strong></label>
-							<input class="form-control" type="text"  name="company_founded" /> 
+							<input class="form-control" type="number" min="1600" max="2020"  name="company_founded" required /> 
 						</div>
 					</div>
 						
@@ -67,13 +67,13 @@
 					<div class="col">
 						<div class="form-group">
 							<label ><strong>2.4. Industry Type</strong></label>
-							<select class="form-control" name="industry_type">
+							<select class="form-control" name="industry_type" required>
                                 <option>Select Here</option>
-                                <option value="industry type 1">Industry Type 1</option>
-                                <option value="industry type 2">Industry Type 2</option>
-                                <option value="industry type 3">Industry Type 3</option>
-                                <option value="industry type 4">Industry Type 4</option>
-                                <option value="industry type 5">Industry Type 5</option>
+                                <option value="industry type 1">Industry type name 1</option>
+                                <option value="industry type 2">Industry type name  2</option>
+                                <option value="industry type 3">Industry type name  3</option>
+                                <option value="industry type 4">Industry type name  4</option>
+                                <option value="industry type 5">Industry type name  5</option>
                             </select> 
 						</div>
 					</div>
@@ -100,6 +100,10 @@
 
 
 <script>
+
+
+
+
 
     $("#photo").change(function() {
     var imgPath = $(this)[0].value;
