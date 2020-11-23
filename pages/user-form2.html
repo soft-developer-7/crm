@@ -6,6 +6,8 @@
 {% block content %}
 
 
+
+
 	<div class="row mb-3">	
 		
 	<div class="col">
@@ -28,8 +30,9 @@
 						
 						<div class="col">
 							<div class="form-group">
-								<label ><strong>2.1. About the company</strong><small class="text-danger"> *Max : 2000 characters</small></label>
-								<textarea class="form-control"  name="about_the_company"  maxlength="2000" minlength="4" required /> </textarea>
+								<label ><strong>2.1. About the company</strong><small class="text-danger"> *Max : 1000 characters</small></label>
+								<textarea  class="form-control"  id="about_the_company" maxlength="1000"  required /></textarea>
+								<textarea class="d-none"  name="about_the_company" /></textarea>
 								</div>
 						</div>
 						
@@ -96,14 +99,82 @@
 </div>
 </div>
 
+
+
+
+
+
+
+
+
+<!-- Modal Texteditor-->
+
+<!-- Modal -->
+<div class="modal fade bd-example-modal-lg" id="richtextModal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="richtextModalTitle">Write your text</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        
+        <!-- Text editor -->
+
+				
+
+
+
+
+            <div class="container text-dark">
+                <div class="row">
+                    <div class="col-md-12">
+						<input name="box" type="hidden">
+                        <div id="editor-container"  style="min-height:200px;"></div>
+						<div id="err" style="position: absolute;padding-left: 10px;"></div>
+						<div id="counter">0 characters</div>
+						
+                    </div>
+                </div>
+            <br/><br/><br/><br/>
+            </div>
+
+			
+        <!-- Text editor finish -->
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+        <button type="button" id="get-content" class="btn btn-primary">Done</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- Modal Text editor finish -->
+
+ <!-- Quill -->
+  	<script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
+  	<script src="{% static 'assets-quill/js/Quill-Text-Editor.js' %}"></script>
+  <!-- Quill -->
+
+
+
+
+
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
 
-<script>
 
 
 
 
+
+
+
+<script>  // Photo size and extension validation
 
     $("#photo").change(function() {
     var imgPath = $(this)[0].value;
@@ -144,8 +215,6 @@
                 
         }
     });
-
-
 
 </script>
 

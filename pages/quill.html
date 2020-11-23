@@ -1,0 +1,40 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Texteditor</title>
+    <link rel="stylesheet" href="{% static 'assets-quill/bootstrap/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="https://cdn.quilljs.com/1.0.0/quill.snow.css">
+    <link rel="stylesheet" href="{% static 'assets-quill/css/styles.css' %}">
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div>
+                    <h1>Custom <small>Rich text editor</small></h1>
+                </div>
+                <div id="toolbar"></div>
+                <div id="editor"></div>
+            </div>
+        </div>
+		
+		<br/><br/><br/><br/><br/>
+		
+		<div class="row text-center"><div class="col"><button id="get-content" class="btn btn-primary" type="button">Done</button></div></div>
+		
+    </div>
+	
+	<div class="container"><div id="content-text"></div></div><br><hr><div class="container"><div class="content-html"></div><textarea class="content-html"></textarea></div>
+	
+    <script src="{% static 'assets-quill/js/jquery.min.js' %}"></script>
+    <script src="{% static 'assets-quill/bootstrap/js/bootstrap.min.js' %}"></script>
+    <script src="https://cdn.quilljs.com/1.0.0/quill.js"></script>
+    <script src="{% static 'assets-quill/js/Quill-Text-Editor.js' %}"></script>
+</body>
+
+</html>

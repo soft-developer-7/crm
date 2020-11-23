@@ -62,7 +62,7 @@
 		<label for="phone"><i class="zmdi zmdi-phone"></i></label>
 
         
-		<input type="text"  id="from-phone" name="phone" required="" placeholder="Your Phone number" pattern="[6-9]{1}[0-9]{9}"  oninvalid="this.setCustomValidity('Invalid Mobile Number')" onvalid="this.setCustomValidity('')"/>
+		<input type="number"  id="form-phone" name="phone" required="" placeholder="Your Phone number" onfocusout="phone_number_validation();"/>
 	</div>
 	
 	
@@ -130,6 +130,28 @@ function check_psw()
                 });
     }
 }
+
+
+
+
+function phone_number_validation()
+{
+    
+    var phone_number = $("#form-phone").val().toString();
+    if(phone_number.length >12 || phone_number.length <6 || isNaN(phone_number))
+    {
+        swal({
+                title: phone_number,
+                text: "Invalid Phone Number ! try again",
+                icon: "warning",
+                button: "ok",
+                });
+
+                $("#form-phone").val("");
+    }
+}
+
+
 
 
 </script>

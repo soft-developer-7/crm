@@ -297,7 +297,7 @@
 </div>
 
 							<div class="col-5">
-							<input class="form-control" type="text" value="{{mobile}}" name="mobile" pattern="[6-9]{1}[0-9]{9}"  oninvalid="this.setCustomValidity('Invalid Mobile Number')" onvalid="this.setCustomValidity('')" />
+							<input class="form-control" id="form-phone" type="number" value="{{mobile}}" name="mobile" onfocusout="phone_number_validation();" required />
 							</div>
 							</div>
 						</div>
@@ -351,6 +351,14 @@
 </div>
 </div>
 </div>
+
+
+
+
+
+
+
+
 
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
@@ -407,7 +415,27 @@ function myFunction() {
   } else {
     x.type = "password";
   }
-} 
+}
+
+
+
+
+
+function phone_number_validation()
+{
+    var phone_number = $("#form-phone").val().toString();
+    if(phone_number.length >12 || phone_number.length <6 || isNaN(phone_number))
+    {
+        swal({
+                title: phone_number,
+                text: "Invalid Phone Number ! try again",
+                icon: "warning",
+                button: "ok",
+                });
+
+                $("#form-phone").val("");
+    }
+}
 
 
 </script>

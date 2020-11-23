@@ -29,7 +29,9 @@
 						<div class="col">
 							<div class="form-group">
 								<label ><strong>7.1. Industry Analysis</strong></label>
-								<textarea class="form-control"   name="industry_analysis" maxlength="8000" minlength="4" /> Some automated text will be present here from our Database </textarea>
+								<textarea class="form-control"   id="industry_analysis" maxlength="8000" minlength="4" />Some automated text will be present here from our Database</textarea>
+
+								<textarea class="d-none"  name="industry_analysis" /><p>Some automated text will be present here from our Database</p></textarea>
 								</div>
 						</div>
 						
@@ -37,7 +39,9 @@
                         <div class="col">
 							<div class="form-group">
 								<label ><strong>7.2. Competitor Analysis</strong></label>
-								<textarea class="form-control"  name="competitor_analysis" maxlength="500" minlength="4" /> Some automated text will be present here </textarea>
+								<textarea class="form-control"  id="competitor_analysis" maxlength="500" minlength="4" />Some automated text will be present here </textarea>
+
+								<textarea class="d-none"  name="competitor_analysis" /><p>Some automated text will be present here from our Database</p></textarea>
 								</div>
 						</div>
 				</div>
@@ -48,7 +52,8 @@
 							<div class="form-group">
 								<label ><strong>7.3. USP</strong></label>
                                 <a href="#"  data-toggle="tooltip" title="Help text."><i class="far fa-question-circle"></i></a>
-								<textarea class="form-control"   name="usp" maxlength="5000" minlength="4"   /></textarea>
+								<textarea class="form-control"   id="usp" maxlength="5000" minlength="4"   /></textarea>
+								<textarea class="d-none"  name="usp" value="" /></textarea>
 								</div>
 						</div>
                     </div>
@@ -69,6 +74,65 @@
 </div>
 </div>
 </div>
+
+
+
+
+<!-- Modal Texteditor-->
+
+<!-- Modal -->
+<div class="modal fade bd-example-modal-lg" id="richtextModal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="richtextModalTitle">Write your text</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        
+        <!-- Text editor -->
+
+				
+
+
+
+
+            <div class="container text-dark">
+                <div class="row">
+                    <div class="col-md-12">
+						<input name="box" type="hidden">
+                        <div id="editor-container"  style="min-height:200px;"></div>
+						<div id="err" style="position: absolute;padding-left: 10px;"></div>
+						<div id="counter">0 characters</div>
+						
+                    </div>
+                </div>
+            <br/><br/><br/><br/>
+            </div>
+
+			
+        <!-- Text editor finish -->
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+        <button type="button" id="get-content" class="btn btn-primary">Done</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- Modal Text editor finish -->
+
+
+
+
+ <!-- Quill -->
+  	<script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
+  	<script src="{% static 'assets-quill/js/Quill-Text-Editor.js' %}"></script>
+  <!-- Quill -->
 
 
 {% endblock %}

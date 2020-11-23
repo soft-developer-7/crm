@@ -652,3 +652,21 @@ def superplan_booking_view_by_get(request,id):                                  
             return render(request,'login.html')
     else:
         return render(request,'login.html')
+
+
+
+
+
+
+
+
+def ajax_call_delete_superplan_booking(request):                                   # AJAX call DELETE Superplan Booking - By Admin
+    if(auth_admin(request) and request.method=="POST"):
+        book = super_plan_forms.objects.get(id=request.POST['id'])
+        if(book):
+            book.delete()
+            return JsonResponse({"value":request.POST['id']},status=200)
+        else:
+            return JsonResponse({"value":0})
+    else:
+        return JsonResponse({"value":0})

@@ -28,14 +28,31 @@
 			<div class="form-row">
 
 					<div class="col">
+
+
 						<div class="form-group">
 							<label ><strong>11.1. Theme </strong></label>
-							<select class="form-control" name="theme"  required>
-                                <option>Select Here</option>
-                                <option value="1">Theme 1</option>
-                            </select> 
+							<br>
+
+							<!--name="theme"-->
+							<div class="border d-inline-block p-1 shadow-sm rounded">
+							<label><input type="radio" class="form-control" name="theme" value="template1"  required/>Template 1</label>
+							<a href="\user_template_view_1" target="_blank"><img src="{% static 'assets-template/template-image/template1.png' %}" alt="template 1 image" height=130></a>
+							</div>
+							
+							
+
+
+
 						</div>
+
+
+
 					</div>
+
+
+
+
 						
 						
 					<div class="col-4">
@@ -88,7 +105,7 @@
 						
 						
 			<div class="form-group">
-				<button class="btn btn-primary btn-sm" type="submit">Finish & preview</button>
+				<button class="btn btn-primary btn-sm" type="submit">Finish</button>
 			</div>
 					
 		</div>

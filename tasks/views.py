@@ -972,6 +972,8 @@ def user_form_1(request):                                # User Form 1
         return render(request,'login.html')
 
 
+
+
 def user_form_1_submit(request):            # User Form 1 Submit
     if(auth_user(request) and request.method=="POST"):
 
@@ -1568,7 +1570,7 @@ def user_form_11_submit(request):            # User Form 11 Submit
 def user_all_superplan_bookings(request):                                # User All Template view
 
     if(auth_user(request)):
-        data = super_plan_forms.objects.filter(user=request.session['user'])
+        data = super_plan_forms.objects.filter(user=request.session['user'],current_fillup_position=12)
         return render(request,'user-all-superplan-bookings.html',{"bookings":data})
     else:
         return render(request,'login.html')
@@ -1638,3 +1640,16 @@ def ajax_call_delete_incomplete_booking(request):                               
             return JsonResponse({"value":0})
     else:
         return JsonResponse({"value":0})
+
+
+
+
+
+
+
+def user_template_view_1(request):                                # User View Template 1
+
+    if(auth_user(request)):
+        return render(request,'template/tem-1.html')
+    else:
+        return render(request,'login.html')

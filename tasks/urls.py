@@ -103,6 +103,7 @@ urlpatterns = [
     path("user_incomplete_superplan_by_get/<int:id>",views.user_incomplete_superplan_by_get,name="user_incomplete_superplan_by_get"),
     path("ajax_call_delete_incomplete_booking",views.ajax_call_delete_incomplete_booking,name="ajax_call_delete_incomplete_booking"),
 
+    path("user_template_view_1",views.user_template_view_1,name="user_template_view_1"),
     
     
 

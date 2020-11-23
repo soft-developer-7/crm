@@ -20,6 +20,9 @@
   <!-- Custom styles for this template-->
   <link href="{% static 'css/sb-admin-2.min.css' %}" rel="stylesheet">
 
+  <!-- Quill-->
+  <link rel="stylesheet" href="https://cdn.quilljs.com/1.3.6/quill.snow.css">
+
   <style>
 
   /* Chrome, Safari, Edge, Opera */
@@ -33,7 +36,14 @@ input::-webkit-inner-spin-button {
 input[type=number] {
   -moz-appearance: textfield;
 }
-      
+
+#counter {
+  border: 1px solid #ccc;
+  border-width: 0px 1px 1px 1px;
+  color: #aaa;
+  padding: 5px 15px;
+  text-align: right;
+}
   {% block style %}
   {% endblock %}
   
@@ -135,7 +145,7 @@ input[type=number] {
           </button>
 
           <!-- Topbar Search -->
-          <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
+          <!--form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
             <div class="input-group">
               <input readonly type="text" class="form-control bg-light border-0 small" placeholder="Search user" aria-label="Search" aria-describedby="basic-addon2">
               <div class="input-group-append">
@@ -144,7 +154,7 @@ input[type=number] {
                 </button>
               </div>
             </div>
-          </form>
+          </form-->
 
           <!-- Topbar Navbar -->
           <ul class="navbar-nav ml-auto">
@@ -259,6 +269,13 @@ input[type=number] {
   <script src="{% static 'vendor/jquery-easing/jquery.easing.min.js' %}"></script>
   <!-- Custom scripts for all pages-->
   <script src="{% static 'js/sb-admin-2.min.js' %}"></script>
+
+  <!-- Quill -->
+  <!--script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
+  <script src="{% static 'assets-quill/js/Quill-Text-Editor.js' %}"></script-->
+
+
+
   <script>
 $(document).ready(function(){
   $('[data-toggle="tooltip"]').tooltip();
@@ -272,12 +289,12 @@ $(document).ready(function(){
 });
   
 
-  $("textarea").focusin(function(){
+/*$("textarea").focusin(function(){
  $(this).attr('rows', 10);
 });
 $("textarea").focusout(function(){
  $(this).attr('rows', 2);
-});
+});*/
   </script>
 </body>
 </html>

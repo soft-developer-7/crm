@@ -41,5 +41,5 @@ urlpatterns = [
     path("admin-all-superplan-bookings",views.admin_all_superplan_bookings,name="admin-all-superplan-bookings"),
     path("superplan_booking_view_by_get/<int:id>", views.superplan_booking_view_by_get, name='superplan_booking_view_by_get'),
 
-
+    path("ajax_call_delete_superplan_booking",views.ajax_call_delete_superplan_booking,name="ajax_call_delete_superplan_booking"),
 ]

@@ -1,12 +1,11 @@
 {% load static %}
-
 <!DOCTYPE html>
 <html>
 
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-    <title>Superplan | {{data.company_name}}</title>
+    <title>template1</title>
     <link rel="stylesheet" href="{% static 'assets-template/bootstrap/css/bootstrap.min.css' %}">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
     <link rel="stylesheet" href="{% static 'assets-template/fonts/fontawesome-all.min.css' %}">
@@ -16,8 +15,6 @@
     <link rel="stylesheet" href="{% static 'assets-template/css/styles.css' %}">
 </head>
 
-{% autoescape off %}
-
 <body style="padding: 2%;">
     <main style="height: 570px;background-color: #d9d9d9;">
         <div class="row" style="margin: 0px;height: 100%;">
@@ -25,7 +22,7 @@
             <div class="col-4" style="height: 100%;padding: 15px;">
                 <div class="border rounded-0 border-dark" style="height: 100%;padding-top: 200px;">
                     <div class="row text-center" style="width: 100%;margin: 0px;padding-bottom: 60px;">
-                        <div class="col"><img src="{{logo}}" alt="Company Logo" width="70%"></div>
+                        <div class="col"><img src="{% static 'assets-template/img/ban-logo.png' %}" width="70%"></div>
                     </div>
                     <div class="row text-center" style="margin: 0px;">
                         <div class="col">
@@ -34,7 +31,7 @@
                     </div>
                     <div class="row text-center" style="margin: 0px;">
                         <div class="col">
-                            <p style="font-size: 25px;">{{year}}</p>
+                            <p style="font-size: 25px;">YEAR</p>
                         </div>
                     </div>
                 </div>
@@ -47,7 +44,7 @@
                 <div class="col-8 align-self-end" style="padding: 0px;">
                     <h1 class="text-right" style="font-family: Montserrat, sans-serif;">Executive Summary<br></h1>
                 </div>
-                <div class="col-2 ml-auto" style="padding-right: 20px;max-width: 200px;"><img src="{{logo}}" width="100%" alt="Company Logo"></div>
+                <div class="col-2 ml-auto" style="padding-right: 20px;max-width: 200px;"><img src="{% static 'assets-template/img/ban-logo.png' %}" width="100%" alt="logo"></div>
             </div>
             <div class="row" style="margin: 0px;">
                 <div class="col-4 text-center">
@@ -107,9 +104,9 @@
                 <div class="col-8 align-self-end" style="padding: 0px;">
                     <h1 class="text-right" style="font-family: Montserrat, sans-serif;">Investment Thesis<br></h1>
                 </div>
-                <div class="col-2 ml-auto" style="padding-right: 20px;max-width: 200px;"><img src="{{logo}}" width="100%" alt="Company Logo"></div>
+                <div class="col-2 ml-auto" style="padding-right: 20px;max-width: 200px;"><img src="{% static 'assets-template/img/ban-logo.png' %}" width="100%" alt="logo"></div>
             </div>
-            <div style="height: 70%;background-image: url(&quot;{%static 'assets-template/img/pic2.png' %}&quot;);background-position: center;background-size: contain;background-repeat: no-repeat;">
+            <div style="height: 70%;background-image: url(&quot;{% static 'assets-template/img/pic2.png' %}&quot;);background-position: center;background-size: contain;background-repeat: no-repeat;">
                 <div class="row" style="padding-left: 200px;padding-right: 100px;margin: 30px 0px;">
                     <div class="col-3 text-right">
                         <p style="margin-bottom: 5px;"><strong>Contents Title</strong><br></p>
@@ -139,7 +136,7 @@
                 <div class="col-7 align-self-end" style="padding: 0px;">
                     <h1 class="text-right" style="font-family: Montserrat, sans-serif;">Traction<br></h1>
                 </div>
-                <div class="col-2 ml-auto" style="padding-right: 20px;max-width: 200px;"><img src="{{logo}}" width="100%" alt="Company Logo"></div>
+                <div class="col-2 ml-auto" style="padding-right: 20px;max-width: 200px;"><img src="{% static 'assets-template/img/ban-logo.png' %}" width="100%" alt="logo"></div>
             </div>
             <div class="row justify-content-center" style="margin: 10px 0px;">
                 <div class="col-3" style="height: 185px;padding: 20px;margin-right: 30px;">
@@ -221,14 +218,15 @@
                 <div class="col-7 align-self-end" style="padding: 0px;">
                     <h1 class="text-right" style="font-family: Montserrat, sans-serif;">Problems<br></h1>
                 </div>
-                <div class="col-2 ml-auto" style="padding-right: 20px;max-width: 200px;"><img src="{{logo}}" width="100%" alt="Company Logo"></div>
+                <div class="col-2 ml-auto" style="padding-right: 20px;max-width: 200px;"><img src="{% static 'assets-template/img/ban-logo.png' %}" width="100%" alt="logo"></div>
             </div>
-            <div style="height: 75%;background-image: url(&quot;{%static 'assets-template/img/pic1.png'%}&quot;);background-position: center;background-size: contain;background-repeat: no-repeat;margin-top: 20px;">
+            <div style="height: 75%;background-image: url(&quot;{% static 'assets-template/img/pic1.png' %}&quot;);background-position: center;background-size: contain;background-repeat: no-repeat;margin-top: 20px;">
                 <div class="row" style="margin-left: 0px;margin-right: 0px;">
                     <div class="col align-self-center">
                         <div class="row" style="margin-left: 0px;margin-right: 0px;padding-left: 50px;">
                             <div class="col-6 text-center" style="padding-left: 0px;margin-left: 30px;margin-bottom: 20px;">
-                               {{data.challenges_faced}}
+                                <p style="margin-bottom: 5px;"><strong>Loremipsum</strong><br></p>
+                                <p class="text-justify" style="margin: 0px;margin-bottom: -4px;">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam. Sed nisi. Nulla quis sem at nibh elementum.</p>
                             </div>
                         </div>
                         <div class="row" style="margin-left: 0px;margin-right: 0px;padding-left: 50px;padding-top: 20px;">
@@ -264,12 +262,13 @@
                 <div class="col-7 align-self-end" style="padding: 0px;">
                     <h1 class="text-right" style="font-family: Montserrat, sans-serif;">Solutions<br></h1>
                 </div>
-                <div class="col-2 ml-auto" style="padding-right: 20px;max-width: 200px;"><img src="{{logo}}" width="100%" alt="Company Logo"></div>
+                <div class="col-2 ml-auto" style="padding-right: 20px;max-width: 200px;"><img src="{% static 'assets-template/img/ban-logo.png' %}" width="100%" alt="logo"></div>
             </div>
-            <div style="height: 75%;background-image: url(&quot;{%static 'assets-template/img/bulb.png'%}&quot;);background-position: center;background-size: contain;background-repeat: no-repeat;margin-top: 20px;">
+            <div style="height: 75%;background-image: url(&quot;{% static 'assets-template/img/bulb.png' %}&quot;);background-position: center;background-size: contain;background-repeat: no-repeat;margin-top: 20px;">
                 <div class="row justify-content-center" style="margin-left: 0px;margin-right: 0px;">
                     <div class="col-3 text-center">
-                         {{data.solutions_provided}}
+                        <p class="text-left" style="margin-bottom: 5px;font-size: 20px;"><strong>Loremipsum</strong><br></p>
+                        <p class="text-justify" style="margin: 0px;margin-bottom: -4px;">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam. Sed nisi. Nulla quis sem at nibh elementum.</p>
                     </div>
                     <div class="col-3 offset-5 text-center">
                         <p class="text-left" style="margin-bottom: 5px;font-size: 20px;"><strong>Loremipsum</strong><br></p>
@@ -295,11 +294,11 @@
                 <div class="col-8 align-self-end" style="padding: 0px;padding-right: 30px;">
                     <h1 class="text-right" style="font-family: Montserrat, sans-serif;">Company Profile<br></h1>
                 </div>
-                <div class="col-2 ml-auto" style="padding-right: 20px;max-width: 200px;"><img src="{{logo}}" width="100%" alt="Company Logo"></div>
+                <div class="col-2 ml-auto" style="padding-right: 20px;max-width: 200px;"><img src="{% static 'assets-template/img/ban-logo.png' %}" width="100%" alt="logo"></div>
             </div>
             <div class="row" style="margin-left: 0px;margin-right: 0px;margin-top: 40px;">
                 <div class="col-7">
-                    <div style="height: 100%;border:2px white solid;padding:10px;">{{data.about_the_company}}</div>
+                    <p style="height: 100%;border:2px white solid;padding:10px;">Company details</p>
                 </div>
                 <div class="col-5"><img class="img-thumbnail" src="{% static 'assets-template/img/1.png' %}" width="100%" height="100%"></div>
             </div>
@@ -311,9 +310,9 @@
                 <div class="col-7 align-self-end" style="padding: 0px;">
                     <h1 class="text-right" style="font-family: Montserrat, sans-serif;">Timeline<br></h1>
                 </div>
-                <div class="col-2 ml-auto" style="padding-right: 20px;max-width: 200px;"><img src="{{logo}}" width="100%" alt="Company Logo"></div>
+                <div class="col-2 ml-auto" style="padding-right: 20px;max-width: 200px;"><img src="{% static 'assets-template/img/ban-logo.png' %}" width="100%" alt="logo"></div>
             </div>
-            <div style="height: 80%;width: 90%;background-image: url(&quot;{%static 'assets-template/img/pic3.png'%}&quot;);background-position: center;background-size: contain;background-repeat: no-repeat;margin: auto;padding-top: 48px;">
+            <div style="height: 80%;width: 90%;background-image: url(&quot;{% static 'assets-template/img/pic3.png' %}&quot;);background-position: center;background-size: contain;background-repeat: no-repeat;margin: auto;padding-top: 48px;">
                 <div class="row" style="margin-right: 0px;margin-left: 0px;margin-top: 25px;">
                     <div class="col-1 offset-1" style="margin-left: 130px;padding: 0px;">
                         <p class="text-left">ABC</p>
@@ -361,13 +360,13 @@
                 <div class="col-9 align-self-end" style="padding: 0px;padding-right: 30px;">
                     <h1 class="text-right" style="font-family: Montserrat, sans-serif;">Products/Services Offered<br></h1>
                 </div>
-                <div class="col-2 ml-auto" style="padding-right: 20px;max-width: 200px;"><img src="{{logo}}" width="100%" alt="Company Logo"></div>
+                <div class="col-2 ml-auto" style="padding-right: 20px;max-width: 200px;"><img src="{% static 'assets-template/img/ban-logo.png' %}" width="100%" alt="logo"></div>
             </div>
             <div class="row" style="margin-left: 0px;margin-right: 0px;margin-top: 40px;height: 70%;">
                 <div class="col-7" style="height: 100%;padding: 30px;">
-                    <div style="height: 60%;background-color: #f4f4f4;padding: 20px;margin: 0px;margin-bottom: 20px;">{{data.products_and_services}}</div><img src="{% static 'assets-template/img/1.png' %}" height="45%" alt="img" style="margin-left: 73px;"></div>
+                    <p style="height: 60%;background-color: #f4f4f4;padding: 20px;margin: 0px;margin-bottom: 20px;">details</p><img src="{% static 'assets-template/img/1.png' %}" height="45%" alt="img" style="margin-left: 73px;"></div>
                 <div class="col-5" style="height: 100%;padding: 10px;"><img src="{% static 'assets-template/img/1.png' %}" height="45%" alt="img" style="margin-left: 163px;margin-bottom: 20px;">
-                    <div style="height: 55%;background-color: #f4f4f4;padding: 20px;margin: 0px;">details</div>
+                    <p style="height: 55%;background-color: #f4f4f4;padding: 20px;margin: 0px;">details</p>
                 </div>
             </div>
         </div>
@@ -378,13 +377,13 @@
                 <div class="col-8 align-self-end" style="padding: 0px;padding-right: 30px;">
                     <h1 class="text-right" style="font-family: Montserrat, sans-serif;">Management Profile<br></h1>
                 </div>
-                <div class="col-2 ml-auto" style="padding-right: 20px;max-width: 200px;"><img src="{{logo}}" width="100%" alt="Company Logo"></div>
+                <div class="col-2 ml-auto" style="padding-right: 20px;max-width: 200px;"><img src="{% static 'assets-template/img/ban-logo.png' %}" width="100%" alt="logo"></div>
             </div>
             <div class="row" style="margin-left: 0px;margin-right: 0px;margin-top: 40px;">
                 <div class="col-4">
                     <div class="row" style="margin: 0px;">
                         <div class="col">
-                            <div class="text-center" style="height: 250px;width: 250px;background-image: url(&quot;{%static 'assets-template/img/pic4.png'%}&quot;);margin: auto;"><img class="rounded-circle" src="{% static 'assets-template/img/prfl1.png' %}" width="70%" height="70%" style="margin-top: 45px;"></div>
+                            <div class="text-center" style="height: 250px;width: 250px;background-image: url(&quot;{% static 'assets-template/img/pic4.png' %}&quot;);margin: auto;"><img class="rounded-circle" src="{% static 'assets-template/img/prfl1.png' %}" width="70%" height="70%" style="margin-top: 45px;"></div>
                         </div>
                     </div>
                     <div class="row justify-content-center" style="margin: 0px;margin-top: 15px;">
@@ -402,7 +401,7 @@
                 <div class="col-4">
                     <div class="row" style="margin: 0px;">
                         <div class="col">
-                            <div class="text-center" style="height: 250px;width: 250px;background-image: url(&quot;{%static 'assets-template/img/pic4.png'%}&quot;);margin: auto;"><img class="rounded-circle" src="{% static 'assets-template/img/prfl3.jpg' %}" width="70%" height="70%" style="margin-top: 45px;"></div>
+                            <div class="text-center" style="height: 250px;width: 250px;background-image: url(&quot;{% static 'assets-template/img/pic4.png' %}&quot;);margin: auto;"><img class="rounded-circle" src="{% static 'assets-template/img/prfl3.jpg' %}" width="70%" height="70%" style="margin-top: 45px;"></div>
                         </div>
                     </div>
                     <div class="row justify-content-center" style="margin: 0px;margin-top: 15px;">
@@ -420,7 +419,7 @@
                 <div class="col-4">
                     <div class="row" style="margin: 0px;">
                         <div class="col">
-                            <div class="text-center" style="height: 250px;width: 250px;background-image: url(&quot;{%static 'assets-template/img/pic4.png'%}&quot;);margin: auto;"><img class="rounded-circle" src="{% static 'assets-template/img/prfl2.jpg' %}" width="70%" height="70%" style="margin-top: 45px;"></div>
+                            <div class="text-center" style="height: 250px;width: 250px;background-image: url(&quot;{% static 'assets-template/img/pic4.png' %}&quot;);margin: auto;"><img class="rounded-circle" src="{% static 'assets-template/img/prfl2.jpg' %}" width="70%" height="70%" style="margin-top: 45px;"></div>
                         </div>
                     </div>
                     <div class="row justify-content-center" style="margin: 0px;margin-top: 15px;">
@@ -444,9 +443,9 @@
                 <div class="col-7 align-self-end" style="padding: 0px;">
                     <h1 class="text-right" style="font-family: Montserrat, sans-serif;padding-right: 30px;">SWOT<br></h1>
                 </div>
-                <div class="col-2 ml-auto" style="padding-right: 20px;max-width: 200px;"><img src="{{logo}}" width="100%" alt="Company Logo"></div>
+                <div class="col-2 ml-auto" style="padding-right: 20px;max-width: 200px;"><img src="{% static 'assets-template/img/ban-logo.png' %}" width="100%" alt="logo"></div>
             </div>
-            <div style="height: 75%;background-image: url(&quot;{%static 'assets-template/img/pic5.png'%}&quot;);background-position: center;background-size: contain;background-repeat: no-repeat;margin-top: 30px;">
+            <div style="height: 75%;background-image: url(&quot;{% static 'assets-template/img/pic5.png' %}&quot;);background-position: center;background-size: contain;background-repeat: no-repeat;margin-top: 30px;">
                 <div class="row" style="margin-left: 0px;padding-top: 60px;">
                     <div class="col-3 offset-2 text-center">
                         <p class="text-justify" style="margin: 0px;margin-bottom: -4px;">• ABC</p>
@@ -472,9 +471,9 @@
                 <div class="col-8 align-self-end" style="padding: 0px;">
                     <h1 class="text-right" style="font-family: Montserrat, sans-serif;">Growth Strategy<br></h1>
                 </div>
-                <div class="col-2 ml-auto" style="padding-right: 20px;max-width: 200px;"><img src="{{logo}}" width="100%" alt="Company Logo"></div>
+                <div class="col-2 ml-auto" style="padding-right: 20px;max-width: 200px;"><img src="{% static 'assets-template/img/ban-logo.png' %}" width="100%" alt="logo"></div>
             </div>
-            <div style="height: 75%;background-image: url(&quot;{%static 'assets-template/img/pic6.png'%}&quot;);background-position: center;background-size: contain;background-repeat: no-repeat;margin-top: 40px;">
+            <div style="height: 75%;background-image: url(&quot;{% static 'assets-template/img/pic6.png' %}&quot;);background-position: center;background-size: contain;background-repeat: no-repeat;margin-top: 40px;">
                 <div class="row" style="margin: 0px;margin-left: 0px;padding-top: 16px;">
                     <div class="col-3 text-center" style="margin-left: 200px;">
                         <p class="text-justify" style="margin: 0px;margin-bottom: 0px;"><strong>Year 3</strong></p>
@@ -510,7 +509,7 @@
                 <div class="col-8 align-self-end" style="padding: 0px;">
                     <h1 class="text-right" style="font-family: Montserrat, sans-serif;padding-right: 30px;">Marketing Strategy<br></h1>
                 </div>
-                <div class="col-2 ml-auto" style="padding-right: 20px;max-width: 200px;"><img src="{{logo}}" width="100%" alt="Company Logo"></div>
+                <div class="col-2 ml-auto" style="padding-right: 20px;max-width: 200px;"><img src="{% static 'assets-template/img/ban-logo.png' %}" width="100%" alt="logo"></div>
             </div>
             <div class="row" style="margin-left: 0px;padding-top: 60px;height: 80%;">
                 <div class="col-5 text-center">
@@ -539,7 +538,7 @@
                 <div class="col-8 align-self-end" style="padding: 0px;">
                     <h1 class="text-right" style="font-family: Montserrat, sans-serif;padding-right: 40px;">Business Model<br></h1>
                 </div>
-                <div class="col-2 ml-auto" style="padding-right: 20px;max-width: 200px;"><img src="{{logo}}" width="100%" alt="Company Logo"></div>
+                <div class="col-2 ml-auto" style="padding-right: 20px;max-width: 200px;"><img src="{% static 'assets-template/img/ban-logo.png' %}" width="100%" alt="logo"></div>
             </div>
             <div class="col" style="padding: 0px;height: 80%;margin: 10px;">
                 <div class="row" style="margin: 0px;margin-top: 24px;height: 70%;width: 98%;">
@@ -666,11 +665,11 @@
                 <div class="col-8 align-self-end" style="padding: 0px;padding-right: 30px;">
                     <h1 class="text-right" style="font-family: Montserrat, sans-serif;">Industry Analysis<br></h1>
                 </div>
-                <div class="col-2 ml-auto" style="padding-right: 20px;max-width: 200px;"><img src="{{logo}}" width="100%" alt="Company Logo"></div>
+                <div class="col-2 ml-auto" style="padding-right: 20px;max-width: 200px;"><img src="{% static 'assets-template/img/ban-logo.png' %}" width="100%" alt="logo"></div>
             </div>
             <div class="row" style="margin-left: 0px;margin-right: 0px;margin-top: 40px;">
                 <div class="col-6">
-                    <div style="height: 100%;border:2px white solid;padding:10px;">{{data.industry_analysis}}</div>
+                    <p style="height: 100%;border:2px white solid;padding:10px;">Details</p>
                 </div>
                 <div class="col-5" style="background-color: #f4f4f4;padding: 20px;margin-left: 50px;">
                     <div style="width: 100%;"><canvas data-bs-chart="{&quot;type&quot;:&quot;bar&quot;,&quot;data&quot;:{&quot;labels&quot;:[&quot;January&quot;,&quot;February&quot;,&quot;March&quot;,&quot;April&quot;,&quot;May&quot;,&quot;June&quot;],&quot;datasets&quot;:[{&quot;label&quot;:&quot;Revenue&quot;,&quot;backgroundColor&quot;:&quot;#4e73df&quot;,&quot;borderColor&quot;:&quot;#4e73df&quot;,&quot;data&quot;:[&quot;4500&quot;,&quot;5300&quot;,&quot;6250&quot;,&quot;7800&quot;,&quot;9800&quot;,&quot;15000&quot;]}]},&quot;options&quot;:{&quot;maintainAspectRatio&quot;:true,&quot;legend&quot;:{&quot;display&quot;:false},&quot;title&quot;:{}}}"></canvas></div>
@@ -686,9 +685,9 @@
                 <div class="col-9 align-self-end" style="padding: 0px;">
                     <h1 class="text-right" style="font-family: Montserrat, sans-serif;">Industry Growth Drivers<br></h1>
                 </div>
-                <div class="col-2 ml-auto" style="padding-right: 20px;max-width: 200px;"><img src="{{logo}}" width="100%" alt="Company Logo"></div>
+                <div class="col-2 ml-auto" style="padding-right: 20px;max-width: 200px;"><img src="{% static 'assets-template/img/ban-logo.png' %}" width="100%" alt="logo"></div>
             </div>
-            <div style="height: 75%;background-image: url(&quot;{%static 'assets-template/img/pic8.png'%}&quot;);background-position: center;background-size: contain;background-repeat: no-repeat;margin-top: 40px;">
+            <div style="height: 75%;background-image: url(&quot;{% static 'assets-template/img/pic8.png' %}&quot;);background-position: center;background-size: contain;background-repeat: no-repeat;margin-top: 40px;">
                 <div class="row" style="margin: 0px;margin-left: 0px;padding-top: 79px;">
                     <div class="col-3 text-center" style="margin-top: 30px;margin-left: 800px;">
                         <p class="text-justify" style="margin: 0px;margin-bottom: 0px;font-size: 30px;"><strong>Text</strong></p>
@@ -718,7 +717,7 @@
                 <div class="col-8 align-self-end" style="padding: 0px;">
                     <h1 class="text-right" style="font-family: Montserrat, sans-serif;">Competitor Analysis<br></h1>
                 </div>
-                <div class="col-2 ml-auto" style="padding-right: 20px;max-width: 200px;"><img src="{{logo}}" width="100%" alt="Company Logo"></div>
+                <div class="col-2 ml-auto" style="padding-right: 20px;max-width: 200px;"><img src="{% static 'assets-template/img/ban-logo.png' %}" width="100%" alt="logo"></div>
             </div>
             <div style="padding: 30px;">
                 <div class="table-responsive table-bordered text-center" style="background-color: #f2f2f2;">
@@ -786,12 +785,13 @@
                 <div class="col-7 align-self-end" style="padding: 0px;padding-right: 50px;">
                     <h1 class="text-right" style="font-family: Montserrat, sans-serif;">USP<br></h1>
                 </div>
-                <div class="col-2 ml-auto" style="padding-right: 20px;max-width: 200px;"><img src="{{logo}}" width="100%" alt="Company Logo"></div>
+                <div class="col-2 ml-auto" style="padding-right: 20px;max-width: 200px;"><img src="{% static 'assets-template/img/ban-logo.png' %}" width="100%" alt="logo"></div>
             </div>
-            <div style="height: 75%;background-image: url(&quot;{%static 'assets-template/img/pic9-1.png' %}&quot;);background-position: center;background-size: contain;background-repeat: no-repeat;margin-top: 20px;">
+            <div style="height: 75%;background-image: url(&quot;{% static 'assets-template/img/pic9-1.png' %}&quot;);background-position: center;background-size: contain;background-repeat: no-repeat;margin-top: 20px;">
                 <div class="row justify-content-center" style="margin-left: 0px;margin-right: 0px;">
                     <div class="col-3 text-center" style="margin-top: 53px;">
-                        {{data.usp}}
+                        <p class="text-left" style="margin-bottom: 5px;font-size: 20px;"><strong>Loremipsum</strong><br></p>
+                        <p class="text-justify" style="margin: 0px;margin-bottom: -4px;">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam. Sed nisi. Nulla quis sem at nibh elementum.</p>
                     </div>
                     <div class="col-3 offset-4 text-center">
                         <p class="text-left" style="margin-bottom: 5px;font-size: 20px;"><strong>Loremipsum</strong><br></p>
@@ -813,7 +813,7 @@
                 <div class="col-9 align-self-end" style="padding: 0px;padding-right: 30px;">
                     <h1 class="text-right" style="font-family: Montserrat, sans-serif;">Financial Projections<br></h1>
                 </div>
-                <div class="col-2 ml-auto" style="padding-right: 20px;max-width: 200px;"><img src="{{logo}}" width="100%" alt="Company Logo"></div>
+                <div class="col-2 ml-auto" style="padding-right: 20px;max-width: 200px;"><img src="{% static 'assets-template/img/ban-logo.png' %}" width="100%" alt="logo"></div>
             </div>
             <div class="row" style="margin-left: 0px;margin-right: 0px;margin-top: 40px;">
                 <div class="col-5" style="background-color: #f4f4f4;padding: 20px;margin-left: 50px;">
@@ -835,7 +835,7 @@
                 <div class="col-9 align-self-end" style="padding: 0px;padding-right: 30px;">
                     <h1 class="text-right" style="font-family: Montserrat, sans-serif;">Financial Projections<br></h1>
                 </div>
-                <div class="col-2 ml-auto" style="padding-right: 20px;max-width: 200px;"><img src="{{logo}}" width="100%" alt="Company Logo"></div>
+                <div class="col-2 ml-auto" style="padding-right: 20px;max-width: 200px;"><img src="{% static 'assets-template/img/ban-logo.png' %}" width="100%" alt="logo"></div>
             </div>
             <div class="row" style="margin-left: 0px;margin-right: 0px;margin-top: 40px;height: 40%;width: 100%;">
                 <div class="col-5" style="background-color: #f4f4f4;padding: 20px;margin-left: 50px;height: 100%;">
@@ -869,7 +869,7 @@
                 <div class="col-10 align-self-end" style="padding: 0px;padding-right: 30px;">
                     <h1 class="text-right" style="font-family: Montserrat, sans-serif;">Funds Required and Utilization<br></h1>
                 </div>
-                <div class="col-2 ml-auto" style="padding-right: 20px;max-width: 200px;"><img src="{{logo}}" width="100%" alt="Company Logo"></div>
+                <div class="col-2 ml-auto" style="padding-right: 20px;max-width: 200px;"><img src="{% static 'assets-template/img/ban-logo.png' %}" width="100%" alt="logo"></div>
             </div>
             <div class="row" style="margin-left: 0px;margin-right: 0px;margin-top: 40px;">
                 <div class="col-5" style="padding: 20px;margin-left: 50px;">
@@ -891,7 +891,7 @@
                 <div class="col-7 align-self-end" style="padding: 0px;padding-right: 30px;">
                     <h1 class="text-right" style="font-family: Montserrat, sans-serif;margin-top: 155px;font-weight: bold;">Thank You<br></h1>
                 </div>
-                <div class="col-2 ml-auto" style="padding-right: 20px;max-width: 200px;"><img src="{{logo}}" width="100%" alt="Company Logo"></div>
+                <div class="col-2 ml-auto" style="padding-right: 20px;max-width: 200px;"><img src="{% static 'assets-template/img/ban-logo.png' %}" width="100%" alt="logo"></div>
             </div>
             <div class="row" style="margin-left: 0px;margin-right: 0px;margin-top: 163px;">
                 <div class="col-6" style="padding: 20px;margin-left: 50px;">
@@ -901,7 +901,7 @@
                             <p style="font-size: 25px;font-family: Montserrat, sans-serif;">Name :</p>
                         </div>
                         <div class="col-7" style="padding-left: 10px;">
-                            <p style="font-size: 25px;font-family: Montserrat, sans-serif;">{{data.owner_name}}</p>
+                            <p style="font-size: 25px;font-family: Montserrat, sans-serif;">Demo Name</p>
                         </div>
                     </div>
                     <div class="row">
@@ -910,7 +910,7 @@
                             <p style="font-size: 25px;font-family: Montserrat, sans-serif;">Email :</p>
                         </div>
                         <div class="col-7" style="padding-left: 5px;">
-                            <p style="font-size: 25px;font-family: Montserrat, sans-serif;">{{data.email_id}}</p>
+                            <p style="font-size: 25px;font-family: Montserrat, sans-serif;">Demo@Name.email</p>
                         </div>
                     </div>
                     <div class="row">
@@ -919,22 +919,17 @@
                             <p style="font-size: 25px;font-family: Montserrat, sans-serif;">Contact No. :</p>
                         </div>
                         <div class="col-5" style="padding-left: 0px;">
-                            <p style="font-size: 25px;font-family: Montserrat, sans-serif;">{{data.phone_number}}</p>
+                            <p style="font-size: 25px;font-family: Montserrat, sans-serif;">+91 123456789</p>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
-
-    
-    <script src="{% static 'assets-template/js/jquery.min.js' %}"></script>
-    <script src="{% static 'assets-template/bootstrap/js/bootstrap.min.js' %}"></script>
-    <script src="{% static 'assets-template/js/chart.min.js' %}"></script>
-    <script src="{% static 'assets-template/js/bs-init.js' %}"></script>
-
-
+    <script src="{% static 'assets-template/js/jquery.min.js'%}"></script>
+    <script src="{% static 'assets-template/bootstrap/js/bootstrap.min.js'%}"></script>
+    <script src="{% static 'assets-template/js/chart.min.js'%}"></script>
+    <script src="{% static 'assets-template/js/bs-init.js'%}"></script>
 </body>
-{% endautoescape %}
 
 </html>
