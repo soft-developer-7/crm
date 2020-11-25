@@ -28,10 +28,10 @@
 						
 						<div class="col">
 							<div class="form-group">
-								<label ><strong>4.1. Products & Services</strong></label>
+								<label ><strong>4.1. Products & Services</strong><small class="text-danger"> *Max : 300 characters</small></label>
 								<a href="#"  data-toggle="tooltip" title="Help text."><i class="far fa-question-circle"></i></a>
-								<textarea class="form-control"  id="products_and_services" maxlength="2000" minlength="4" /></textarea>
-								<textarea class="d-none"  name="products_and_services" /></textarea>
+								<textarea class="form-control"  id="products_and_services_1" maxlength="300" minlength="4" /></textarea>
+								<textarea class="d-none"  name="products_and_services_1" /></textarea>
 
 
 								</div>
@@ -40,14 +40,42 @@
 						
                         <div class="col">
                             <div class="form-group">
-                                <label ><strong>4.2. Products & Services (PNG/JPG/PDF optional)</strong></label>
-                                <input  type="file"  name="products_and_services_file" accept="image/jpeg,image/png,application/pdf">
+                                <label ><strong>4.2. Products & Services (PNG/JPG optional)</strong></label>
+                                <input  type="file"  name="products_and_services_file_1" accept="image/jpeg,image/png">
                             </div>
                         </div>
 				</div>
 
 
-                <br>
+				<div id="p2" class="form-row" style="display:none;" >
+						<div class="col">
+							<div class="form-group">
+								<label ><strong>Products & Services</strong><small class="text-danger"> *Max : 300 characters</small></label>
+								<a href="#"  data-toggle="tooltip" title="Help text."><i class="far fa-question-circle"></i></a>
+								<textarea class="form-control"  id="products_and_services_2" maxlength="300" minlength="4" /></textarea>
+								<textarea class="d-none"  name="products_and_services_2" /></textarea>
+
+
+								</div>
+						</div>
+						
+						
+                        <div class="col-4">
+                            <div class="form-group">
+                                <label ><strong>Products & Services (PNG/JPG optional)</strong></label>
+                                <input  type="file"  name="products_and_services_file_2" accept="image/jpeg,image/png">
+                            </div>
+                        </div>
+
+						<div class="col-2 align-self-center">
+							<button class="btn btn-danger" type="button" onclick="$('textarea[name=products_and_services_2]').val('');$('#products_and_services_2').html('');$('input[name=products_and_services_file_2]').val('');$('#p2').hide();"><i class="fa fa-close"></i> Remove</button>
+						</div>
+				</div>
+				<button class="btn btn-success" type="button" onclick="if($('#p2').is(':hidden')){$('#p2').show();}else{swal('Maximum Reached !', 'You can add maximum 2 products & services !', 'warning');}"><i class="fa fa-plus"></i> Add more product and services</button>
+
+
+                <br><br><hr><br>
+
                 <div class="form-row">
 						
 						<div class="col">
@@ -90,19 +118,49 @@
 						
 				</div>
 
-                <div class="form-row">
+
+				<br><br>
+				 <div class="form-row">
 						
 					<div class="col">
 						<div class="form-group">
-							<label ><strong>4.7. SWOT (Strengths, Weakness, Opportunities, Threats)</strong></label>
+							<label ><strong>4.7.1. SWOT - Strengths</strong></label>
 							<a href="#"  data-toggle="tooltip" title="Help text."><i class="far fa-question-circle"></i></a>
-							<textarea class="form-control"  id="swot" maxlength="5000" minlength="4" /></textarea>
-							<textarea class="d-none"  name="swot" /></textarea>
+							<textarea class="form-control"  id="swot_s" maxlength="5000" minlength="4" /></textarea>
+							<textarea class="d-none"  name="swot_s" /></textarea>
+						</div>
+					</div>
+
+					<div class="col">
+						<div class="form-group">
+							<label ><strong>4.7.2. SWOT - Weakness</strong></label>
+							<a href="#"  data-toggle="tooltip" title="Help text."><i class="far fa-question-circle"></i></a>
+							<textarea class="form-control"  id="swot_w" maxlength="5000" minlength="4" /></textarea>
+							<textarea class="d-none"  name="swot_w" /></textarea>
 						</div>
 					</div>
 						
-                    
-				
+				</div>
+
+				<div class="form-row">
+						
+					<div class="col">
+						<div class="form-group">
+							<label ><strong>4.7.3. SWOT - Opportunities</strong></label>
+							<a href="#"  data-toggle="tooltip" title="Help text."><i class="far fa-question-circle"></i></a>
+							<textarea class="form-control"  id="swot_o" maxlength="5000" minlength="4" /></textarea>
+							<textarea class="d-none"  name="swot_o" /></textarea>
+						</div>
+					</div>
+
+					<div class="col">
+						<div class="form-group">
+							<label ><strong>4.7.4. SWOT - Threats</strong></label>
+							<a href="#"  data-toggle="tooltip" title="Help text."><i class="far fa-question-circle"></i></a>
+							<textarea class="form-control"  id="swot_t" maxlength="5000" minlength="4" /></textarea>
+							<textarea class="d-none"  name="swot_t" /></textarea>
+						</div>
+					</div>
 						
 				</div>
 						
@@ -187,7 +245,7 @@
 
 
 
-
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
 
 

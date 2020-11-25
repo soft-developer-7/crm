@@ -6,7 +6,7 @@ from django.contrib.auth.hashers import make_password,check_password
 import json
 from datetime import date
 from django.http import JsonResponse
-from .models import User_db,Pages,Posts,Banners,super_plan_forms
+from .models import User_db,Pages,Posts,Banners,super_plan_forms,super_plan_forms_multiple_inputs,super_plan_forms_multiple_images,super_plan_forms_multiple_files
 from django.core.paginator import Paginator
 from business_management.models import Packs,Industries,User_bookings,Templates
 
@@ -1042,11 +1042,51 @@ def user_form_2_submit(request):            # User Form 2 Submit
 def user_form_3_submit(request):            # User Form 3 Submit
     book = super_plan_forms.objects.filter(id=request.session['form']).get()
     if(auth_user(request) and book and request.method=="POST"):
-        if(request.POST.get("challenges_faced")):
-            book.challenges_faced = request.POST["challenges_faced"]
 
-        if(request.POST.get("solutions_provided")):
-            book.solutions_provided = request.POST["solutions_provided"]
+
+        c=0
+        multi = super_plan_forms_multiple_inputs()
+        multi.user = User_db.objects.filter(id=request.session['user']).get()
+        multi.form_id=request.session['form']
+        
+        for i in range(1,6):
+            if(request.POST.get("challenges_faced_"+str(i))):
+                c+=1
+                if(c==1):
+                     multi.f_1 = request.POST["challenges_faced_"+str(i)]
+                elif(c==2):
+                     multi.f_2 = request.POST["challenges_faced_"+str(i)]
+                elif(c==3):
+                     multi.f_3 = request.POST["challenges_faced_"+str(i)]
+                elif(c==4):
+                     multi.f_4 = request.POST["challenges_faced_"+str(i)]
+                elif(c==5):
+                     multi.f_5 = request.POST["challenges_faced_"+str(i)]
+        multi.save()
+        book.challenges_faced = multi
+
+
+        c=0
+        multi = super_plan_forms_multiple_inputs()
+        multi.user = User_db.objects.filter(id=request.session['user']).get()
+        multi.form_id=request.session['form']
+        
+        for i in range(1,6):
+            if(request.POST.get("solutions_provided_"+str(i))):
+                c+=1
+                if(c==1):
+                     multi.f_1 = request.POST["solutions_provided_"+str(i)]
+                elif(c==2):
+                     multi.f_2 = request.POST["solutions_provided_"+str(i)]
+                elif(c==3):
+                     multi.f_3 = request.POST["solutions_provided_"+str(i)]
+                elif(c==4):
+                     multi.f_4 = request.POST["solutions_provided_"+str(i)]
+                elif(c==5):
+                     multi.f_5 = request.POST["solutions_provided_"+str(i)]
+        multi.save()
+        book.solutions_provided = multi
+
 
         if(book.current_fillup_position<12):
             book.current_fillup_position = 3
@@ -1066,10 +1106,38 @@ def user_form_4_submit(request):            # User Form 4 Submit
     book = super_plan_forms.objects.filter(id=request.session['form']).get()
     if(auth_user(request) and book and request.method=="POST"):
 
-        if(request.POST.get("products_and_services")):
-            book.products_and_services = request.POST["products_and_services"]
-        if(request.FILES.get("products_and_services_file")):
-            book.products_and_services_file = request.FILES["products_and_services_file"]
+
+
+        multi = super_plan_forms_multiple_inputs()
+        multi.user = User_db.objects.filter(id=request.session['user']).get()
+        multi.form_id=request.session['form']
+
+        if(request.POST.get("products_and_services_1")):
+            multi.f_1 = request.POST["products_and_services_1"]
+
+        if(request.POST.get("products_and_services_2")):
+            multi.f_2 = request.POST["products_and_services_2"]
+
+        multi.save()
+        book.products_and_services = multi
+
+
+
+        multi = super_plan_forms_multiple_images()
+        multi.user = User_db.objects.filter(id=request.session['user']).get()
+        multi.form_id=request.session['form']
+
+        if(request.FILES.get("products_and_services_file_1")):
+            multi.i_1 = request.FILES["products_and_services_file_1"]
+
+        if(request.FILES.get("products_and_services_file_2")):
+            multi.i_2 = request.FILES["products_and_services_file_2"]
+
+        multi.save()
+        book.products_and_services_file = multi
+
+
+
 
         if(request.POST.get("top_clients")):
             book.top_clients = request.POST["top_clients"]
@@ -1082,8 +1150,17 @@ def user_form_4_submit(request):            # User Form 4 Submit
         if(request.POST.get("locations_served")):
             book.locations_served = request.POST["locations_served"]
         
-        if(request.POST.get("swot")):
-            book.swot = request.POST["swot"]
+        if(request.POST.get("swot_s")):
+            book.swot_s = request.POST["swot_s"]
+
+        if(request.POST.get("swot_w")):
+            book.swot_w = request.POST["swot_w"]
+
+        if(request.POST.get("swot_o")):
+            book.swot_o = request.POST["swot_o"]
+
+        if(request.POST.get("swot_t")):
+            book.swot_t = request.POST["swot_t"]
 
         if(book.current_fillup_position<12):
             book.current_fillup_position = 4
@@ -1102,13 +1179,75 @@ def user_form_5_submit(request):            # User Form 5 Submit
     book = super_plan_forms.objects.filter(id=request.session['form']).get()
     if(auth_user(request) and book and request.method=="POST"):
 
-        if(request.POST.get("management_team_and_designation")):
-            book.management_team_and_designation = request.POST["management_team_and_designation"]
-        if(request.FILES.get("management_team_and_designation_file")):
-            book.management_team_and_designation_file = request.FILES["management_team_and_designation_file"]
 
-        if(request.POST.get("management_bio")):
-            book.management_bio = request.POST["management_bio"]
+            
+        multi = super_plan_forms_multiple_inputs()
+        multi.user = User_db.objects.filter(id=request.session['user']).get()
+        multi.form_id=request.session['form']
+
+        if(request.POST.get("management_team_name_1")):
+            multi.f_1= request.POST["management_team_name_1"]
+        if(request.POST.get("management_team_name_2")):
+            multi.f_2= request.POST["management_team_name_2"]
+        if(request.POST.get("management_team_name_3")):
+            multi.f_3= request.POST["management_team_name_3"]
+
+        multi.save()
+        book.management_team_name=multi
+
+
+
+
+
+        multi = super_plan_forms_multiple_inputs()
+        multi.user = User_db.objects.filter(id=request.session['user']).get()
+        multi.form_id=request.session['form']
+
+        if(request.POST.get("management_team_designation_1")):
+            multi.f_1= request.POST["management_team_designation_1"]
+        if(request.POST.get("management_team_designation_2")):
+            multi.f_2= request.POST["management_team_designation_2"]
+        if(request.POST.get("management_team_designation_3")):
+            multi.f_3= request.POST["management_team_designation_3"]
+
+        multi.save()
+        book.management_team_designation=multi
+
+
+
+
+
+        multi = super_plan_forms_multiple_inputs()
+        multi.user = User_db.objects.filter(id=request.session['user']).get()
+        multi.form_id=request.session['form']
+
+        if(request.POST.get("management_team_contact_1")):
+            multi.f_1= request.POST["management_team_contact_1"]
+        if(request.POST.get("management_team_contact_2")):
+            multi.f_2= request.POST["management_team_contact_2"]
+        if(request.POST.get("management_team_contact_3")):
+            multi.f_3= request.POST["management_team_contact_3"]
+
+        multi.save()
+        book.management_team_contact=multi
+
+
+
+
+        multi = super_plan_forms_multiple_images()
+        multi.user = User_db.objects.filter(id=request.session['user']).get()
+        multi.form_id=request.session['form']
+
+        if(request.FILES.get("management_team_file_1")):
+            multi.i_1=request.FILES["management_team_file_1"]
+        if(request.FILES.get("management_team_file_2")):
+            multi.i_2=request.FILES["management_team_file_2"]
+        if(request.FILES.get("management_team_file_3")):
+            multi.i_3=request.FILES["management_team_file_3"]
+
+        multi.save()
+        book.management_team_file=multi
+        
 
         if(book.current_fillup_position<12):
             book.current_fillup_position = 5
@@ -1570,7 +1709,7 @@ def user_form_11_submit(request):            # User Form 11 Submit
 def user_all_superplan_bookings(request):                                # User All Template view
 
     if(auth_user(request)):
-        data = super_plan_forms.objects.filter(user=request.session['user'],current_fillup_position=12)
+        data = super_plan_forms.objects.filter(user=request.session['user'],current_fillup_position=12) 
         return render(request,'user-all-superplan-bookings.html',{"bookings":data})
     else:
         return render(request,'login.html')
@@ -1653,3 +1792,11 @@ def user_template_view_1(request):                                # User View Te
         return render(request,'template/tem-1.html')
     else:
         return render(request,'login.html')
+
+
+
+
+
+def test(request):
+    data=super_plan_forms_multiple_inputs.objects.all()
+    return render(request,'print_data.html',{'datas':data})

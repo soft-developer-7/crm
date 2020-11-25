@@ -228,29 +228,28 @@
                     <div class="col align-self-center">
                         <div class="row" style="margin-left: 0px;margin-right: 0px;padding-left: 50px;">
                             <div class="col-6 text-center" style="padding-left: 0px;margin-left: 30px;margin-bottom: 20px;">
-                               {{data.challenges_faced}}
+                            {% if data.challenges_faced.f_1 %}{{data.challenges_faced.f_1}}{% endif %}
                             </div>
                         </div>
                         <div class="row" style="margin-left: 0px;margin-right: 0px;padding-left: 50px;padding-top: 20px;">
                             <div class="col-6 text-center" style="padding-left: 0px;margin-left: 30px;">
-                                <p style="margin-bottom: 5px;"><strong>Loremipsum</strong><br></p>
-                                <p class="text-justify" style="margin: 0px;margin-bottom: -4px;">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam. Sed nisi. Nulla quis sem at nibh elementum.</p>
+                                {% if  data.challenges_faced.f_2 %}{{data.challenges_faced.f_2}}{% endif %}
+                                
                             </div>
                         </div>
                     </div>
                     <div class="col">
                         <div class="row" style="margin-left: 0px;margin-right: 0px;">
                             <div class="col-6 offset-4 text-center" style="padding-left: 0px;margin-top: -58px;margin-bottom: 20px;">
-                                <p style="margin-bottom: 5px;"><strong>Loremipsum</strong><br></p>
-                                <p class="text-justify" style="margin: 0px;margin-bottom: -4px;">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam. Sed nisi. Nulla quis sem at nibh elementum.</p>
+                                {% if data.challenges_faced.f_3 %}{{data.challenges_faced.f_3}}{% endif %}
+                                
                             </div>
                             <div class="col-6 offset-5 text-center" style="padding-left: 0px;margin-bottom: 40px;">
-                                <p style="margin-bottom: 5px;"><strong>Loremipsum</strong><br></p>
-                                <p class="text-justify" style="margin: 0px;margin-bottom: -4px;">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam. Sed nisi. Nulla quis sem at nibh elementum.</p>
+                                {% if data.challenges_faced.f_4 %}{{data.challenges_faced.f_4}}{% endif %}
                             </div>
                             <div class="col-6 offset-4 text-center" style="padding-left: 0px;margin-left: 185px;">
-                                <p style="margin-bottom: 5px;"><strong>Loremipsum</strong><br></p>
-                                <p class="text-justify" style="margin: 0px;margin-bottom: -4px;">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam. Sed nisi. Nulla quis sem at nibh elementum.</p>
+                                {% if data.challenges_faced.f_5 %}{{data.challenges_faced.f_5}}{% endif %}
+                                
                             </div>
                         </div>
                     </div>
@@ -267,25 +266,39 @@
                 <div class="col-2 ml-auto" style="padding-right: 20px;max-width: 200px;"><img src="{{logo}}" width="100%" alt="Company Logo"></div>
             </div>
             <div style="height: 75%;background-image: url(&quot;{%static 'assets-template/img/bulb.png'%}&quot;);background-position: center;background-size: contain;background-repeat: no-repeat;margin-top: 20px;">
+
                 <div class="row justify-content-center" style="margin-left: 0px;margin-right: 0px;">
                     <div class="col-3 text-center">
-                         {{data.solutions_provided}}
+                        {% if data.solutions_provided.f_1 %}{{data.solutions_provided.f_1}}{% endif %}
+                         
                     </div>
                     <div class="col-3 offset-5 text-center">
-                        <p class="text-left" style="margin-bottom: 5px;font-size: 20px;"><strong>Loremipsum</strong><br></p>
-                        <p class="text-justify" style="margin: 0px;margin-bottom: -4px;">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam. Sed nisi. Nulla quis sem at nibh elementum.</p>
+                        {% if data.solutions_provided.f_2 %}{{data.solutions_provided.f_2}}{% endif %}
+                        
                     </div>
                 </div>
+
                 <div class="row justify-content-center" style="margin-left: 0px;margin-right: 0px;margin-top: 40px;">
                     <div class="col-3 text-center">
-                        <p class="text-left" style="margin-bottom: 5px;font-size: 20px;"><strong>Loremipsum</strong><br></p>
-                        <p class="text-justify" style="margin: 0px;margin-bottom: -4px;">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam. Sed nisi. Nulla quis sem at nibh elementum.</p>
+                        {% if data.solutions_provided.f_3 %}{{data.solutions_provided.f_3}}{% endif %}
+                       
                     </div>
                     <div class="col-3 offset-5 text-center">
-                        <p class="text-left" style="margin-bottom: 5px;font-size: 20px;"><strong>Loremipsum</strong><br></p>
-                        <p class="text-justify" style="margin: 0px;margin-bottom: -4px;">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam. Sed nisi. Nulla quis sem at nibh elementum.</p>
+                        {% if data.solutions_provided.f_4 %}{{data.solutions_provided.f_4}}{% endif %}
+                       
                     </div>
                 </div>
+
+                <div class="row justify-content-center" style="margin-left: 0px;margin-right: 0px;margin-top: 40px;">
+                    <div class="col-3 text-center">
+                       
+                    </div>
+                    <div class="col-3 offset-5 text-center">
+                        {% if data.solutions_provided.f_5 %}{{data.solutions_provided.f_5}}{% endif %}
+                       
+                    </div>
+                </div>
+
             </div>
         </div>
     </section>
@@ -365,9 +378,9 @@
             </div>
             <div class="row" style="margin-left: 0px;margin-right: 0px;margin-top: 40px;height: 70%;">
                 <div class="col-7" style="height: 100%;padding: 30px;">
-                    <div style="height: 60%;background-color: #f4f4f4;padding: 20px;margin: 0px;margin-bottom: 20px;">{{data.products_and_services}}</div><img src="{% static 'assets-template/img/1.png' %}" height="45%" alt="img" style="margin-left: 73px;"></div>
-                <div class="col-5" style="height: 100%;padding: 10px;"><img src="{% static 'assets-template/img/1.png' %}" height="45%" alt="img" style="margin-left: 163px;margin-bottom: 20px;">
-                    <div style="height: 55%;background-color: #f4f4f4;padding: 20px;margin: 0px;">details</div>
+                    <div style="height: 60%;background-color: #f4f4f4;padding: 20px;margin: 0px;margin-bottom: 20px;">{{data.products_and_services.f_1}}</div><img src="{{data.products_and_services_file.i_1.url}}" height="45%" alt=" " style="margin-left: 73px;"></div>
+                <div class="col-5" style="height: 100%;padding: 10px;"><img src="{{data.products_and_services_file.i_2.url}}" height="45%" alt=" " style="margin-left: 163px;margin-bottom: 20px;">
+                    <div style="height: 55%;background-color: #f4f4f4;padding: 20px;margin: 0px;">{{data.products_and_services.f_2}}</div>
                 </div>
             </div>
         </div>
@@ -384,54 +397,54 @@
                 <div class="col-4">
                     <div class="row" style="margin: 0px;">
                         <div class="col">
-                            <div class="text-center" style="height: 250px;width: 250px;background-image: url(&quot;{%static 'assets-template/img/pic4.png'%}&quot;);margin: auto;"><img class="rounded-circle" src="{% static 'assets-template/img/prfl1.png' %}" width="70%" height="70%" style="margin-top: 45px;"></div>
+                            <div class="text-center" style="height: 250px;width: 250px;background-image: url(&quot;{%static 'assets-template/img/pic4.png'%}&quot;);margin: auto;"><img class="rounded-circle" src="{{data.management_team_file.i_1.url}}" alt="" width="70%" height="70%" style="margin-top: 45px;"></div>
                         </div>
                     </div>
                     <div class="row justify-content-center" style="margin: 0px;margin-top: 15px;">
                         <div class="col-8" style="padding: 10px 0px;background-color: #a6a6a6;">
-                            <p class="text-center" style="font-size: 25px;font-family: Montserrat, sans-serif;"><strong>Jane Doe</strong></p>
-                            <p class="text-center" style="font-size: 20px;font-family: Montserrat, sans-serif;">CEO/Founder</p>
+                            <p class="text-center" style="font-size: 25px;font-family: Montserrat, sans-serif;"><strong>{{data.management_team_name.f_1}}</strong></p>
+                            <p class="text-center" style="font-size: 20px;font-family: Montserrat, sans-serif;">{{data.management_team_designation.f_1}}</p>
                         </div>
                     </div>
                     <div class="row" style="margin: 0px;margin-top: 10px;">
                         <div class="col">
-                            <p class="text-center" style="font-size: 20px;"><i class="fa fa-linkedin-square" style="margin-right: 10px;"></i>@jane.doe</p>
+                            <p class="text-center" style="font-size: 20px;"><i class="fa fa-linkedin-square" style="margin-right: 10px;"></i>{{data.management_team_contact.f_1}}</p>
                         </div>
                     </div>
                 </div>
                 <div class="col-4">
                     <div class="row" style="margin: 0px;">
                         <div class="col">
-                            <div class="text-center" style="height: 250px;width: 250px;background-image: url(&quot;{%static 'assets-template/img/pic4.png'%}&quot;);margin: auto;"><img class="rounded-circle" src="{% static 'assets-template/img/prfl3.jpg' %}" width="70%" height="70%" style="margin-top: 45px;"></div>
+                            <div class="text-center" style="height: 250px;width: 250px;background-image: url(&quot;{%static 'assets-template/img/pic4.png'%}&quot;);margin: auto;"><img class="rounded-circle" src="{{data.management_team_file.i_2.url}}" width="70%" height="70%" style="margin-top: 45px;"></div>
                         </div>
                     </div>
                     <div class="row justify-content-center" style="margin: 0px;margin-top: 15px;">
                         <div class="col-8" style="padding: 10px 0px;background-color: #a6a6a6;">
-                            <p class="text-center" style="font-size: 25px;font-family: Montserrat, sans-serif;"><strong>Doe John</strong><br></p>
-                            <p class="text-center" style="font-size: 20px;font-family: Montserrat, sans-serif;">Project Manager</p>
+                            <p class="text-center" style="font-size: 25px;font-family: Montserrat, sans-serif;"><strong>{{data.management_team_name.f_2}}</strong><br></p>
+                            <p class="text-center" style="font-size: 20px;font-family: Montserrat, sans-serif;">{{data.management_team_designation.f_2}}</p>
                         </div>
                     </div>
                     <div class="row" style="margin: 0px;margin-top: 10px;">
                         <div class="col">
-                            <p class="text-center" style="font-size: 20px;"><i class="fa fa-linkedin-square" style="margin-right: 10px;"></i>@doe.john</p>
+                            <p class="text-center" style="font-size: 20px;"><i class="fa fa-linkedin-square" style="margin-right: 10px;"></i>{{data.management_team_contact.f_2}}</p>
                         </div>
                     </div>
                 </div>
                 <div class="col-4">
                     <div class="row" style="margin: 0px;">
                         <div class="col">
-                            <div class="text-center" style="height: 250px;width: 250px;background-image: url(&quot;{%static 'assets-template/img/pic4.png'%}&quot;);margin: auto;"><img class="rounded-circle" src="{% static 'assets-template/img/prfl2.jpg' %}" width="70%" height="70%" style="margin-top: 45px;"></div>
+                            <div class="text-center" style="height: 250px;width: 250px;background-image: url(&quot;{%static 'assets-template/img/pic4.png'%}&quot;);margin: auto;"><img class="rounded-circle" src="{{data.management_team_file.i_3.url}}" width="70%" height="70%" style="margin-top: 45px;"></div>
                         </div>
                     </div>
                     <div class="row justify-content-center" style="margin: 0px;margin-top: 15px;">
                         <div class="col-8" style="padding: 10px 0px;background-color: #a6a6a6;">
-                            <p class="text-center" style="font-size: 25px;font-family: Montserrat, sans-serif;"><strong>Lisa Doe</strong><br></p>
-                            <p class="text-center" style="font-size: 20px;font-family: Montserrat, sans-serif;">Web Designer</p>
+                            <p class="text-center" style="font-size: 25px;font-family: Montserrat, sans-serif;"><strong>{{data.management_team_name.f_3}}</strong><br></p>
+                            <p class="text-center" style="font-size: 20px;font-family: Montserrat, sans-serif;">{{data.management_team_designation.f_3}}</p>
                         </div>
                     </div>
                     <div class="row" style="margin: 0px;margin-top: 10px;">
                         <div class="col">
-                            <p class="text-center" style="font-size: 20px;"><i class="fa fa-linkedin-square" style="margin-right: 10px;"></i>@lisa.doe</p>
+                            <p class="text-center" style="font-size: 20px;"><i class="fa fa-linkedin-square" style="margin-right: 10px;"></i>{{data.management_team_contact.f_3}}</p>
                         </div>
                     </div>
                 </div>
@@ -449,18 +462,18 @@
             <div style="height: 75%;background-image: url(&quot;{%static 'assets-template/img/pic5.png'%}&quot;);background-position: center;background-size: contain;background-repeat: no-repeat;margin-top: 30px;">
                 <div class="row" style="margin-left: 0px;padding-top: 60px;">
                     <div class="col-3 offset-2 text-center">
-                        <p class="text-justify" style="margin: 0px;margin-bottom: -4px;">• ABC</p>
+                        <p class="text-justify" style="margin: 0px;margin-bottom: -4px;">{{data.swot_s}}</p>
                     </div>
                     <div class="col-3 offset-3 text-center">
-                        <p class="text-justify" style="margin: 0px;margin-bottom: -4px;">• ABC</p>
+                        <p class="text-justify" style="margin: 0px;margin-bottom: -4px;">{{data.swot_w}}</p>
                     </div>
                 </div>
                 <div class="row" style="margin-left: 0px;margin-right: 0px;margin-top: 228px;">
                     <div class="col-3 offset-2 text-center">
-                        <p class="text-justify" style="margin: 0px;margin-bottom: -4px;">• ABC</p>
+                        <p class="text-justify" style="margin: 0px;margin-bottom: -4px;">{{data.swot_o}}</p>
                     </div>
                     <div class="col-3 offset-3 text-center">
-                        <p class="text-justify" style="margin: 0px;margin-bottom: -4px;">• ABC</p>
+                        <p class="text-justify" style="margin: 0px;margin-bottom: -4px;">{{data.swot_t}}</p>
                     </div>
                 </div>
             </div>

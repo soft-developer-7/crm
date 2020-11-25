@@ -104,6 +104,7 @@ urlpatterns = [
     path("ajax_call_delete_incomplete_booking",views.ajax_call_delete_incomplete_booking,name="ajax_call_delete_incomplete_booking"),
 
     path("user_template_view_1",views.user_template_view_1,name="user_template_view_1"),
+    path("test",views.test,name="test"), # print all multi input data
     
     
 

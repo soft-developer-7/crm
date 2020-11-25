@@ -73,6 +73,82 @@ class Banners(models.Model):
 
 
 
+
+class super_plan_forms_multiple_inputs(models.Model):                   # Multiple input fields
+    form_id = models.CharField(max_length=10,null=True)
+    user = models.ForeignKey(User_db, on_delete=models.CASCADE)
+    f_1 = models.CharField(max_length=10000,null=True)
+    f_2 = models.CharField(max_length=10000,null=True)
+    f_3 = models.CharField(max_length=10000,null=True)
+    f_4 = models.CharField(max_length=10000,null=True)
+    f_5 = models.CharField(max_length=10000,null=True)
+    f_6 = models.CharField(max_length=10000,null=True)
+    f_7 = models.CharField(max_length=10000,null=True)
+    f_8 = models.CharField(max_length=10000,null=True)
+    f_9 = models.CharField(max_length=10000,null=True)
+    f_10 = models.CharField(max_length=10000,null=True)
+    f_11 = models.CharField(max_length=10000,null=True)
+    f_12 = models.CharField(max_length=10000,null=True)
+    f_13 = models.CharField(max_length=10000,null=True)
+    f_14 = models.CharField(max_length=10000,null=True)
+    f_15 = models.CharField(max_length=10000,null=True)
+    f_16 = models.CharField(max_length=10000,null=True)
+    f_17 = models.CharField(max_length=10000,null=True)
+    f_18 = models.CharField(max_length=10000,null=True)
+    f_19 = models.CharField(max_length=10000,null=True)
+    f_20 = models.CharField(max_length=10000,null=True)
+    date = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return self.id
+
+
+
+
+class super_plan_forms_multiple_images(models.Model):                           # Multiple Image
+    form_id = models.CharField(max_length=10,null=True)
+    user = models.ForeignKey(User_db, on_delete=models.CASCADE)
+    i_1 = models.ImageField(upload_to='form_images/',null=True,blank=True)
+    i_2 = models.ImageField(upload_to='form_images/',null=True,blank=True)
+    i_3 = models.ImageField(upload_to='form_images/',null=True,blank=True)
+    i_4 = models.ImageField(upload_to='form_images/',null=True,blank=True)
+    i_5 = models.ImageField(upload_to='form_images/',null=True,blank=True)
+    date = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return self.id
+
+
+
+
+class super_plan_forms_multiple_files(models.Model):                            # Multiple Files
+    form_id = models.CharField(max_length=10,null=True)
+    user = models.ForeignKey(User_db, on_delete=models.CASCADE)
+    fi_1 = models.FileField(upload_to='superplan-files/',null=True,blank=True)
+    fi_2 = models.FileField(upload_to='superplan-files/',null=True,blank=True)
+    fi_3 = models.FileField(upload_to='superplan-files/',null=True,blank=True)
+    fi_4 = models.FileField(upload_to='superplan-files/',null=True,blank=True)
+    fi_5 = models.FileField(upload_to='superplan-files/',null=True,blank=True)
+    fi_6 = models.FileField(upload_to='superplan-files/',null=True,blank=True)
+    fi_7 = models.FileField(upload_to='superplan-files/',null=True,blank=True)
+    fi_8 = models.FileField(upload_to='superplan-files/',null=True,blank=True)
+    fi_9 = models.FileField(upload_to='superplan-files/',null=True,blank=True)
+    fi_10 = models.FileField(upload_to='superplan-files/',null=True,blank=True)
+    date = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return self.id
+
+
+
+
+
+
+
+
+
+
+
 class super_plan_forms(models.Model):
 
     # Form-1------------------------------------------------------------------------------------- 1 --------------------
@@ -93,22 +169,27 @@ class super_plan_forms(models.Model):
     industry_type = models.CharField(max_length=200,null=True)
 
     # Form-3------------------------------------------------------------------------------------------3 ---------------
-    challenges_faced = models.CharField(max_length=7000,null=True)
-    solutions_provided = models.CharField(max_length=5000,null=True)
+    challenges_faced = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='challenges_faced',on_delete=models.SET_NULL, null=True)
+    solutions_provided = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='solutions_provided',on_delete=models.SET_NULL, null=True)
 
     # Form-4--------------------------------------------------------------------------------------------4 -------------
-    products_and_services = models.CharField(max_length=2000,null=True)
-    products_and_services_file = models.FileField(upload_to='superplan-files/',null=True,blank=True)
+    products_and_services = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='products_and_services',on_delete=models.SET_NULL, null=True)
+    products_and_services_file = models.ForeignKey(super_plan_forms_multiple_images,related_name='products_and_services_file',on_delete=models.SET_NULL, null=True)
     top_clients = models.CharField(max_length=2000,null=True)
     top_clients_file = models.FileField(upload_to='superplan-files/',null=True,blank=True)
     milestones = models.CharField(max_length=1000,null=True)
     locations_served = models.CharField(max_length=1000,null=True)
-    swot = models.CharField(max_length=1000,null=True)
+    swot_s = models.CharField(max_length=1000,null=True)
+    swot_w = models.CharField(max_length=1000,null=True)
+    swot_o = models.CharField(max_length=1000,null=True)
+    swot_t = models.CharField(max_length=1000,null=True)
 
     # Form-5---------------------------------------------------------------------------------------------5 ------------
-    management_team_and_designation = models.CharField(max_length=5000,null=True)
-    management_team_and_designation_file = models.FileField(upload_to='superplan-files/',null=True,blank=True)
-    management_bio = models.CharField(max_length=6000,null=True)
+    management_team_name = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='management_team_name',on_delete=models.SET_NULL, null=True)
+    management_team_file = models.ForeignKey(super_plan_forms_multiple_images,related_name='management_team_designation',on_delete=models.SET_NULL, null=True)
+    management_team_contact = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='management_team_contact',on_delete=models.SET_NULL, null=True)
+    management_team_designation = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='management_team_file',on_delete=models.SET_NULL, null=True)
+    
 
     # For-6-----------------------------------------------------------------------------------------------6 ----------
     marketing_strategies = models.CharField(max_length=8000,null=True)
@@ -299,4 +380,9 @@ class super_plan_forms(models.Model):
 
 
 
+
+
+
+
+#-----------------------------------------------------------------------------------------------------------------
 

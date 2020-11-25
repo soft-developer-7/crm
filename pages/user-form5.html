@@ -28,34 +28,113 @@
 						
 						<div class="col">
 							<div class="form-group">
-								<label ><strong>5.1. Management Team & Designation</strong></label>
-								<textarea class="form-control"   id="management_team_and_designation" maxlength="5000" minlength="4" /></textarea>
+								<label ><strong>1st Team member Name </strong></label>
+								<input type="text" class="form-control"   name="management_team_name_1" maxlength="200" minlength="3" />
+								
+								</div>
+						</div>
 
-								<textarea class="d-none"  name="management_team_and_designation"  /></textarea>
+						<div class="col">
+							<div class="form-group">
+								<label ><strong>Designation</strong></label>
+								<input type="text" class="form-control"   name="management_team_designation_1" maxlength="200" minlength="1" />
+								</div>
+						</div>
+
+						<div class="col">
+							<div class="form-group">
+								<label ><strong>contact</strong></label>
+								<input type="text" class="form-control" name="management_team_contact_1" placeholder=" Link/email/phone"   maxlength="200" minlength="2" />
 								</div>
 						</div>
 						
 						
                         <div class="col">
                             <div class="form-group">
-                                <label ><strong>5.2. Management Team & Designation (PNG/JPG/PDF optional)</strong></label>
-                                <input  type="file"  name="management_team_and_designation_file" accept="image/jpeg,image/png,application/pdf">
+                                <label ><strong>Profile image (PNG/JPG)</strong></label>
+                                <input  type="file"  name="management_team_file_1" accept="image/jpeg,image/png">
+                            </div>
+                        </div>
+				</div>
+
+				<br>
+				<hr>
+                <br>
+
+				<div class="form-row">
+						
+						<div class="col">
+							<div class="form-group">
+								<label ><strong>2nd Team member Name </strong></label>
+								<input type="text" class="form-control"   name="management_team_name_2" maxlength="200" minlength="3" />
+								
+								</div>
+						</div>
+
+						<div class="col">
+							<div class="form-group">
+								<label ><strong>Designation</strong></label>
+								<input type="text" class="form-control"   name="management_team_designation_2" maxlength="200" minlength="1" />
+								</div>
+						</div>
+
+						<div class="col">
+							<div class="form-group">
+								<label ><strong>contact</strong></label>
+								<input type="text" class="form-control" name="management_team_contact_2" placeholder=" Link/email/phone"   maxlength="200" minlength="2" />
+								</div>
+						</div>
+						
+						
+                        <div class="col">
+                            <div class="form-group">
+                                <label ><strong>Profile image (PNG/JPG)</strong></label>
+                                <input  type="file"  name="management_team_file_2" accept="image/jpeg,image/png">
+                            </div>
+                        </div>
+				</div>
+
+				<br>
+				<hr>
+                <br>
+
+
+				<div class="form-row">
+						
+						<div class="col">
+							<div class="form-group">
+								<label ><strong>3rd Team member Name </strong></label>
+								<input type="text" class="form-control"   name="management_team_name_3" maxlength="200" minlength="3" />
+								
+								</div>
+						</div>
+
+						<div class="col">
+							<div class="form-group">
+								<label ><strong>Designation</strong></label>
+								<input type="text" class="form-control"   name="management_team_designation_3" maxlength="200" minlength="1" />
+								</div>
+						</div>
+
+						<div class="col">
+							<div class="form-group">
+								<label ><strong>contact</strong></label>
+								<input type="text" class="form-control" name="management_team_contact_3" placeholder=" Link/email/phone"   maxlength="200" minlength="2" />
+								</div>
+						</div>
+						
+						
+                        <div class="col">
+                            <div class="form-group">
+                                <label ><strong>Profile image (PNG/JPG)</strong></label>
+                                <input  type="file"  name="management_team_file_3" accept="image/jpeg,image/png">
                             </div>
                         </div>
 				</div>
 
 
                 <br>
-                <div class="form-row">
-						
-						<div class="col-6">
-							<div class="form-group">
-								<label ><strong>5.3. Management Bio</strong></label>
-								<textarea class="form-control"   id="management_bio" maxlength="6000" minlength="4" /></textarea>
-								<textarea class="d-none"  name="management_bio" /></textarea>
-								</div>
-						</div>
-				</div>
+                
 						
 						
 						
@@ -133,8 +212,47 @@
 
  <!-- Quill -->
   	<script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
-  	<script src="{% static 'assets-quill/js/Quill-Text-Editor.js' %}"></script>
   <!-- Quill -->
 
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<script>  // Photo size and extension validation
 
+    $('input[type="file"]').change(function() {
+    var imgPath = $(this)[0].value;
+    var extn = imgPath.substring(imgPath.lastIndexOf('.') + 1).toLowerCase();
+    var size=Math.round((this.files[0].size)/1024);
+    if(extn == "jpg" || extn == "jpeg" || extn == "png")
+        {
+            if(size>2048)
+                {
+                 
+                    $(this).val('');
+
+					swal({
+						title: "Oops !",
+						text: "Image size is larger than 2MB !",
+						icon: "error",
+						button: "ok",
+						});
+                    
+                }
+        }
+
+    else
+        {
+            
+			$(this).val('');
+
+			swal({
+				title: "Oops !",
+				text: "Image format must be in JPG/JPEG/PNG !",
+				icon: "error",
+				button: "ok",
+				});
+                    
+                
+        }
+    });
+
+</script>
 {% endblock %}

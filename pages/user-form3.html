@@ -1,6 +1,5 @@
 {% extends "base-user.html" %}
 {% load static %}
-
 {% block title %}User Form-3{% endblock%}
 {% block page_heading %}Superplan Form 3 of 11{% endblock%}
 {% block content %}
@@ -29,31 +28,187 @@
 					
 
 				<div class="form-row">
-						
-						<div class="col">
+						<div class="col-8">
 							<div class="form-group">
-								<label ><strong>3.1. Challenges Faced in the Industry </strong><small class="text-danger"> *Max : 1500 characters</small></label>
-
-								<textarea class="form-control"   id="challenges_faced" maxlength="1500" minlength="4" ></textarea>
-								<textarea class="d-none"  name="challenges_faced"  /></textarea>
-
-
+								<label ><strong>3.1. Challenges Faced in the Industry </strong><small class="text-danger"> *Max : 100 characters</small></label>
+								<textarea class="form-control"   id="challenges_faced_1" maxlength="100" minlength="4" ></textarea>
+								<textarea class="d-none"  name="challenges_faced_1"  /></textarea>
 							</div>
 						</div>
-						
-						
-					<div class="col">
-                        <div class="form-group">
-                            <label ><strong>3.2. Solutions Provided by the company</strong><small class="text-danger"> *Max : 1500 characters</small></label>
-                            <textarea class="form-control"   id="solutions_provided" maxlength="1500" minlength="4"></textarea>
-							<textarea class="d-none"  name="solutions_provided"  /></textarea>
-                        </div>  
-					</div>
-						
 				</div>
 
-						
-						
+
+
+				<div id="c2" class="form-row" style="display:none;">
+						<div class="col-8">
+							<div class="form-group">
+								<label ><strong>Challenges Faced in the Industry </strong><small class="text-danger"> *Max : 100 characters</small></label>
+								<textarea class="form-control"   id="challenges_faced_2" maxlength="100" minlength="4" ></textarea>
+								<textarea class="d-none"  name="challenges_faced_2"  /></textarea>
+							</div>
+						</div>
+						<div class="col-2 align-self-center">
+							<button class="btn btn-danger" type="button" onclick="remove_challenges(2)"><i class="fa fa-close"></i> Remove</button>
+						</div>
+				</div>
+
+
+
+
+				<div id="c3" class="form-row" style="display:none;">
+						<div class="col-8">
+							<div class="form-group">
+								<label ><strong>Challenges Faced in the Industry </strong><small class="text-danger"> *Max : 100 characters</small></label>
+								<textarea class="form-control"   id="challenges_faced_3" maxlength="100" minlength="4" ></textarea>
+								<textarea class="d-none"  name="challenges_faced_3"  /></textarea>
+							</div>
+						</div>
+						<div class="col-2 align-self-center">
+							<button class="btn btn-danger" type="button" onclick="remove_challenges(3)"><i class="fa fa-close"></i> Remove</button>
+						</div>
+				</div>
+
+
+
+
+
+
+				<div id="c4" class="form-row" style="display:none;">
+						<div class="col-8">
+							<div class="form-group">
+								<label ><strong>Challenges Faced in the Industry </strong><small class="text-danger"> *Max : 100 characters</small></label>
+								<textarea class="form-control"   id="challenges_faced_4" maxlength="100" minlength="4" ></textarea>
+								<textarea class="d-none"  name="challenges_faced_4"  /></textarea>
+							</div>
+						</div>
+						<div class="col-2 align-self-center">
+							<button class="btn btn-danger" type="button" onclick="remove_challenges(4)"><i class="fa fa-close"></i> Remove</button>
+						</div>
+				</div>
+
+
+
+
+				<div id="c5" class="form-row" style="display:none;">
+						<div class="col-8">
+							<div class="form-group">
+								<label ><strong>Challenges Faced in the Industry </strong><small class="text-danger"> *Max : 100 characters</small></label>
+								<textarea class="form-control"   id="challenges_faced_5" maxlength="100" minlength="4" ></textarea>
+								<textarea class="d-none"  name="challenges_faced_5"  /></textarea>
+							</div>
+						</div>
+						<div class="col-2 align-self-center">
+							<button class="btn btn-danger" type="button" onclick="remove_challenges(5)"><i class="fa fa-close"></i> Remove</button>
+						</div>
+				</div>
+
+				<button class="btn btn-success" type="button" onclick="add_challenges();"><i class="fa fa-plus"></i> Add more challenges</button>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+				<hr>
+<!-- Solutions -->
+
+			<div class="form-row">
+				<div class="col-8">
+                        <div class="form-group">
+                            <label ><strong>3.2. Solutions Provided by the company</strong><small class="text-danger"> *Max : 100 characters</small></label>
+                            <textarea class="form-control"   id="solutions_provided_1" maxlength="100" minlength="4"></textarea>
+							<textarea class="d-none"  name="solutions_provided_1"  /></textarea>
+                        </div>  
+					</div>
+				</div>
+
+
+
+
+
+
+			<div id="s2" class="form-row" style="display:none;">
+						<div class="col-8">
+							<div class="form-group">
+								<label ><strong>Solutions Provided by the company </strong><small class="text-danger"> *Max : 100 characters</small></label>
+								 <textarea class="form-control"   id="solutions_provided_2" maxlength="100" minlength="4"></textarea>
+							<textarea class="d-none"  name="solutions_provided_2"  /></textarea>
+							</div>
+						</div>
+						<div class="col-2 align-self-center">
+							<button class="btn btn-danger" type="button" onclick="remove_solutions(2)"><i class="fa fa-close"></i> Remove</button>
+						</div>
+				</div>
+
+
+
+			<div id="s3" class="form-row" style="display:none;">
+						<div class="col-8">
+							<div class="form-group">
+								<label ><strong>Solutions Provided by the company </strong><small class="text-danger"> *Max : 100 characters</small></label>
+								 <textarea class="form-control"   id="solutions_provided_3" maxlength="100" minlength="4"></textarea>
+							<textarea class="d-none"  name="solutions_provided_3"  /></textarea>
+							</div>
+						</div>
+						<div class="col-2 align-self-center">
+							<button class="btn btn-danger" type="button" onclick="remove_solutions(3)"><i class="fa fa-close"></i> Remove</button>
+						</div>
+				</div>
+
+
+			<div id="s4" class="form-row" style="display:none;">
+						<div class="col-8">
+							<div class="form-group">
+								<label ><strong>Solutions Provided by the company </strong><small class="text-danger"> *Max : 100 characters</small></label>
+								 <textarea class="form-control"   id="solutions_provided_4" maxlength="100" minlength="4"></textarea>
+							<textarea class="d-none"  name="solutions_provided_4"  /></textarea>
+							</div>
+						</div>
+						<div class="col-2 align-self-center">
+							<button class="btn btn-danger" type="button" onclick="remove_solutions(4)"><i class="fa fa-close"></i> Remove</button>
+						</div>
+				</div>
+
+
+
+				<div id="s5" class="form-row" style="display:none;">
+						<div class="col-8">
+							<div class="form-group">
+								<label ><strong>Solutions Provided by the company </strong><small class="text-danger"> *Max : 100 characters</small></label>
+								 <textarea class="form-control"   id="solutions_provided_5" maxlength="100" minlength="4"></textarea>
+							<textarea class="d-none"  name="solutions_provided_5"  /></textarea>
+							</div>
+						</div>
+						<div class="col-2 align-self-center">
+							<button class="btn btn-danger" type="button" onclick="remove_solutions(5)"><i class="fa fa-close"></i> Remove</button>
+						</div>
+				</div>
+
+
+
+
+				<button class="btn btn-info" type="button" onclick="add_solutions();"><i class="fa fa-plus"></i> Add more solutions</button>
+
+
+
+
+
+
+
+				<br><br>		
 						
 			<div class="form-group">
 				<button class="btn btn-primary btn-sm" type="submit">Save & Next</button>
@@ -131,5 +286,81 @@
   	<script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
   	<script src="{% static 'assets-quill/js/Quill-Text-Editor.js' %}"></script>
   <!-- Quill -->
+
+
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+
+<!-- Challenges script -->
+<script>
+challenges=2;
+function add_challenges()
+{
+	
+	if (challenges<6)
+	{
+		for(var i=2; i<6;i++)
+		{
+			if($('#c'+i).is(':hidden'))
+			{
+				$('#c'+i).show();
+				challenges++;
+				break;
+			}
+		}
+	}
+	else
+	{
+		swal("Maximum Reached !", "You can add maximum 5 challenges!", "warning")
+	}
+}
+function remove_challenges(div_num)
+{
+	var tt_name = "challenges_faced_"+div_num;
+	$('#'+tt_name).html('');
+	$('textarea[name='+tt_name+']').val('');
+
+	$("#c"+div_num).hide();
+	challenges--;
+}
+</script>
+
+
+
+
+
+<!-- Solution script -->
+<script>
+solutions=2;
+function add_solutions()
+{
+	
+	if (solutions<6)
+	{
+		for(var i=2; i<6;i++)
+		{
+			if($('#s'+i).is(':hidden'))
+			{
+				$('#s'+i).show();
+				solutions++;
+				break;
+			}
+		}
+	}
+	else
+	{
+		swal("Maximum Reached !", "You can add maximum 5 solutions!", "warning")
+	}
+}
+function remove_solutions(div_num)
+{
+	var tt_name = "solutions_provided_"+div_num;
+	$('#'+tt_name).html('');
+	$('textarea[name='+tt_name+']').val('');
+
+	$("#s"+div_num).hide();
+	solutions--;
+}
+</script>
 
 {% endblock %}
