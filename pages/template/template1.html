@@ -378,8 +378,8 @@
             </div>
             <div class="row" style="margin-left: 0px;margin-right: 0px;margin-top: 40px;height: 70%;">
                 <div class="col-7" style="height: 100%;padding: 30px;">
-                    <div style="height: 60%;background-color: #f4f4f4;padding: 20px;margin: 0px;margin-bottom: 20px;">{{data.products_and_services.f_1}}</div><img src="{{data.products_and_services_file.i_1.url}}" height="45%" alt=" " style="margin-left: 73px;"></div>
-                <div class="col-5" style="height: 100%;padding: 10px;"><img src="{{data.products_and_services_file.i_2.url}}" height="45%" alt=" " style="margin-left: 163px;margin-bottom: 20px;">
+                    <div style="height: 60%;background-color: #f4f4f4;padding: 20px;margin: 0px;margin-bottom: 20px;">{{data.products_and_services.f_1}}</div><img src="{% if data.products_and_services_file.i_1 %}{{data.products_and_services_file.i_1.url}}{% endif %}" height="45%" alt=" " style="margin-left: 73px;"></div>
+                <div class="col-5" style="height: 100%;padding: 10px;"><img src="{% if data.products_and_services_file.i_2 %}{{data.products_and_services_file.i_2.url}}{% endif %}" height="45%" alt=" " style="margin-left: 163px;margin-bottom: 20px;">
                     <div style="height: 55%;background-color: #f4f4f4;padding: 20px;margin: 0px;">{{data.products_and_services.f_2}}</div>
                 </div>
             </div>
@@ -397,7 +397,7 @@
                 <div class="col-4">
                     <div class="row" style="margin: 0px;">
                         <div class="col">
-                            <div class="text-center" style="height: 250px;width: 250px;background-image: url(&quot;{%static 'assets-template/img/pic4.png'%}&quot;);margin: auto;"><img class="rounded-circle" src="{{data.management_team_file.i_1.url}}" alt="" width="70%" height="70%" style="margin-top: 45px;"></div>
+                            <div class="text-center" style="height: 250px;width: 250px;background-image: url(&quot;{%static 'assets-template/img/pic4.png'%}&quot;);margin: auto;"><img class="rounded-circle" src="{% if data.management_team_file.i_1  %}{{data.management_team_file.i_1.url}}{% else %}{% static 'assets/img/def.png' %}{% endif %}" alt="" width="70%" height="70%" style="margin-top: 45px;"></div>
                         </div>
                     </div>
                     <div class="row justify-content-center" style="margin: 0px;margin-top: 15px;">
@@ -415,7 +415,7 @@
                 <div class="col-4">
                     <div class="row" style="margin: 0px;">
                         <div class="col">
-                            <div class="text-center" style="height: 250px;width: 250px;background-image: url(&quot;{%static 'assets-template/img/pic4.png'%}&quot;);margin: auto;"><img class="rounded-circle" src="{{data.management_team_file.i_2.url}}" width="70%" height="70%" style="margin-top: 45px;"></div>
+                            <div class="text-center" style="height: 250px;width: 250px;background-image: url(&quot;{%static 'assets-template/img/pic4.png'%}&quot;);margin: auto;"><img class="rounded-circle" src="{% if data.management_team_file.i_2  %}{{data.management_team_file.i_2.url}}{% else %}{% static 'assets/img/def.png' %}{% endif %}" width="70%" height="70%" style="margin-top: 45px;"></div>
                         </div>
                     </div>
                     <div class="row justify-content-center" style="margin: 0px;margin-top: 15px;">
@@ -433,7 +433,7 @@
                 <div class="col-4">
                     <div class="row" style="margin: 0px;">
                         <div class="col">
-                            <div class="text-center" style="height: 250px;width: 250px;background-image: url(&quot;{%static 'assets-template/img/pic4.png'%}&quot;);margin: auto;"><img class="rounded-circle" src="{{data.management_team_file.i_3.url}}" width="70%" height="70%" style="margin-top: 45px;"></div>
+                            <div class="text-center" style="height: 250px;width: 250px;background-image: url(&quot;{%static 'assets-template/img/pic4.png'%}&quot;);margin: auto;"><img class="rounded-circle" src="{% if data.management_team_file.i_3  %}{{data.management_team_file.i_3.url}} {% else %}{% static 'assets/img/def.png' %}{% endif %}" width="70%" height="70%" style="margin-top: 45px;"></div>
                         </div>
                     </div>
                     <div class="row justify-content-center" style="margin: 0px;margin-top: 15px;">
@@ -804,18 +804,16 @@
             <div style="height: 75%;background-image: url(&quot;{%static 'assets-template/img/pic9-1.png' %}&quot;);background-position: center;background-size: contain;background-repeat: no-repeat;margin-top: 20px;">
                 <div class="row justify-content-center" style="margin-left: 0px;margin-right: 0px;">
                     <div class="col-3 text-center" style="margin-top: 53px;">
-                        {{data.usp}}
+                        {% if data.usp.f_1 %}{{data.usp.f_1}}{% endif %}
                     </div>
                     <div class="col-3 offset-4 text-center">
-                        <p class="text-left" style="margin-bottom: 5px;font-size: 20px;"><strong>Loremipsum</strong><br></p>
-                        <p class="text-justify" style="margin: 0px;margin-bottom: -4px;">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam. Sed nisi. Nulla quis sem at nibh elementum.</p>
+                    {% if data.usp.f_2 %}{{data.usp.f_2}}{% endif %}
                     </div>
                 </div>
                 <div class="row justify-content-center" style="margin-left: 0px;margin-right: 0px;margin-top: 40px;">
                     <div class="col-3 offset-8 text-center" style="margin-top: -40px;">
-                        <p class="text-left" style="margin-bottom: 5px;font-size: 20px;"><strong>Loremipsum</strong><br></p>
-                        <p class="text-justify" style="margin: 0px;margin-bottom: -4px;">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam. Sed nisi. Nulla quis sem at nibh elementum.</p>
-                    </div>
+                        {% if data.usp.f_3 %}{{data.usp.f_3}}{% endif %}
+                        </div>
                 </div>
             </div>
         </div>

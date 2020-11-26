@@ -1299,8 +1299,25 @@ def user_form_7_submit(request):            # User Form 7 Submit
         if(request.POST.get("competitor_analysis")):
             book.competitor_analysis = request.POST["competitor_analysis"]
 
-        if(request.POST.get("usp")):
-            book.usp = request.POST["usp"]
+
+        c=0
+        multi = super_plan_forms_multiple_inputs()
+        multi.user = User_db.objects.filter(id=request.session['user']).get()
+        multi.form_id=request.session['form']
+
+
+        for i in range(1,4):
+            if(request.POST.get("usp_"+str(i))):
+                c+=1
+                if(c==1):
+                     multi.f_1 = request.POST["usp_"+str(i)]
+                elif(c==2):
+                     multi.f_2 = request.POST["usp_"+str(i)]
+                elif(c==3):
+                     multi.f_3 = request.POST["usp_"+str(i)]
+        
+        multi.save()
+        book.usp = multi
 
         if(book.current_fillup_position<12):
             book.current_fillup_position = 7

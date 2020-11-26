@@ -186,9 +186,9 @@ class super_plan_forms(models.Model):
 
     # Form-5---------------------------------------------------------------------------------------------5 ------------
     management_team_name = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='management_team_name',on_delete=models.SET_NULL, null=True)
-    management_team_file = models.ForeignKey(super_plan_forms_multiple_images,related_name='management_team_designation',on_delete=models.SET_NULL, null=True)
+    management_team_file = models.ForeignKey(super_plan_forms_multiple_images,related_name='management_team_file',on_delete=models.SET_NULL, null=True)
     management_team_contact = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='management_team_contact',on_delete=models.SET_NULL, null=True)
-    management_team_designation = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='management_team_file',on_delete=models.SET_NULL, null=True)
+    management_team_designation = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='management_team_designation',on_delete=models.SET_NULL, null=True)
     
 
     # For-6-----------------------------------------------------------------------------------------------6 ----------
@@ -198,7 +198,7 @@ class super_plan_forms(models.Model):
     # Form-7-----------------------------------------------------------------------------------------------7 ----------
     industry_analysis = models.CharField(max_length=8000,null=True)
     competitor_analysis = models.CharField(max_length=8000,null=True)
-    usp = models.CharField(max_length=8000,null=True)
+    usp = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='usp',on_delete=models.SET_NULL, null=True)
 
 
 

@@ -52,13 +52,53 @@
 							<div class="form-group">
 								<label ><strong>7.3. USP</strong></label>
                                 <a href="#"  data-toggle="tooltip" title="Help text."><i class="far fa-question-circle"></i></a>
-								<textarea class="form-control"   id="usp" maxlength="5000" minlength="4"   /></textarea>
-								<textarea class="d-none"  name="usp" value="" /></textarea>
+								<textarea class="form-control"   id="usp_1" maxlength="5000" minlength="4"   /></textarea>
+								<textarea class="d-none"  name="usp_1" value="" /></textarea>
 								</div>
 						</div>
                     </div>
 
+
+
+
+					<div id="u2" class="form-row" style="display:none;">
 						
+						<div class="col-6">
+							<div class="form-group">
+								<label ><strong>2 USP</strong></label>
+                                <a href="#"  data-toggle="tooltip" title="Help text."><i class="far fa-question-circle"></i></a>
+								<textarea class="form-control"   id="usp_2" maxlength="5000" minlength="4"   /></textarea>
+								<textarea class="d-none"  name="usp_2" value="" /></textarea>
+								</div>
+						</div>
+
+						<div class="col-2 align-self-center">
+							<button class="btn btn-danger" type="button" onclick="remove_usp(2)"><i class="fa fa-close"></i> Remove</button>
+						</div>
+                    </div>
+
+
+
+
+					<div id="u3" class="form-row" style="display:none;">
+						
+						<div class="col-6">
+							<div class="form-group">
+								<label ><strong>3 USP</strong></label>
+                                <a href="#"  data-toggle="tooltip" title="Help text."><i class="far fa-question-circle"></i></a>
+								<textarea class="form-control"   id="usp_3" maxlength="5000" minlength="4"   /></textarea>
+								<textarea class="d-none"  name="usp_3" value="" /></textarea>
+								</div>
+						</div>
+
+						<div class="col-2 align-self-center">
+							<button class="btn btn-danger" type="button" onclick="remove_usp(3)"><i class="fa fa-close"></i> Remove</button>
+						</div>
+                    </div>
+
+					<button class="btn btn-success" type="button" onclick="add_usp();"><i class="fa fa-plus"></i> Add more USP</button>
+
+						<br><br><br>
 						
 						
 						
@@ -133,6 +173,45 @@
   	<script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
   	<script src="{% static 'assets-quill/js/Quill-Text-Editor.js' %}"></script>
   <!-- Quill -->
+
+
+
+  
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+<script>
+usp=2;
+function add_usp()
+{
+	
+	if (usp<4)
+	{
+		for(var i=2; i<4;i++)
+		{
+			if($('#u'+i).is(':hidden'))
+			{
+				$('#u'+i).show();
+				usp++;
+				break;
+			}
+		}
+	}
+	else
+	{
+		swal("Maximum Reached !", "You can add maximum 3 usp!", "warning")
+	}
+}
+
+function remove_usp(div_num)
+{
+	var tt_name = "usp_"+div_num;
+	$('#'+tt_name).html('');
+	$('textarea[name='+tt_name+']').val('');
+
+	$("#u"+div_num).hide();
+	usp--;
+}
+</script>
 
 
 {% endblock %}
