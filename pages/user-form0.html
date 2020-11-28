@@ -1,0 +1,120 @@
+{% extends "base-user.html" %}
+{% load static %}
+
+{% block title %}User Form{% endblock%}
+{% block page_heading %}Superplan Form {% endblock%}
+{% block content %}
+
+
+	<div class="row mb-3">	
+		
+	<div class="col">
+		<div class="row">
+			<div class="col">
+
+
+
+				<form method="POST" action="/user_form_0_submit">
+				{% csrf_token %}
+					<div class="card shadow mb-3">
+						<div class="card-header py-3">
+						<p class="text-primary m-0 font-weight-bold">Theme & Currency Selection</p>
+						</div>
+					<div class="card-body">
+					
+					
+
+				
+			<div class="form-row">
+
+					<div class="col">
+
+
+						<div class="form-group">
+							<label ><strong>Theme </strong></label>
+							<br>
+
+							<!--name="theme"-->
+							<div class="border d-inline-block p-1 shadow-sm rounded">
+							<label><input type="radio" class="form-control" name="theme" value="template1"  required/>Template 1</label>
+							<a href="\user_template_view_1" target="_blank"><img src="{% static 'assets-template/template-image/template1.png' %}" alt="template 1 image" height=130></a>
+							</div>
+							
+							
+
+
+
+						</div>
+
+
+
+					</div>
+
+
+
+
+						
+						
+					<div class="col-4">
+						<div class="form-group">
+							<label ><strong>Currency Selection</strong></label>
+							<select class="form-control" name="currency"  required>
+                                <option value="">Select Here</option>
+                                <option value="euro">€ - Euro</option>
+                                <option value="dollar">$ - Dollar</option>
+                                <option value="pound">£ - Pound</option> 
+                                <option value="rupee">₹ - Rupee</option> 
+                            </select> 
+						</div>
+					</div>
+						
+			</div>
+
+
+            	<div class="form-row">
+					<div class="col-6">
+						<div class="form-group">
+							<label ><strong> Denomination</strong></label>
+							<select class="form-control" name="denomination"  required>
+                                <option value="">Select Here</option>
+                                <option value="Million">Million</option>
+                                <option value="Billion">Billion</option>
+                                <option value="Crore">Crore</option>
+                                <option value="Lakh">Lakh</option>
+                                <option value="Thousands">Thousands</option>
+                            </select> 
+						</div>
+					</div>
+
+					<div class="col-6">
+						<div class="form-group">
+							<label ><strong>Superplan Pack</strong></label>
+							<select class="form-control" name="pack" required>
+                                
+                                <option value="Starter Pack" selected>Starter Pack - 3,500 ₹ /month</option>
+                                <option value="Pro Pack">Pro Pack - 6,000 ₹ /month</option>
+                                <option value="Premium Pack">Premium Pack - 8,999 ₹ /month</option>
+                                <option value="All access Pack">All access Pack - 14,999 ₹ /month</option>
+                            </select> 
+						</div>
+					</div>
+						
+			</div>
+
+						
+						
+						
+			<div class="form-group">
+				<button class="btn btn-primary btn-sm" type="submit">Save & Next</button>
+			</div>
+					
+		</div>
+	</div>
+</form>
+</div>
+</div>
+</div>
+</div>
+
+
+{% endblock %}

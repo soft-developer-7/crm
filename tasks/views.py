@@ -962,11 +962,43 @@ def successful_purchased(request):                                # User Success
 #--------------------------------------------------- User Forms -------------------------------------------
 
 
-def user_form_1(request):                                # User Form 1
+def user_form_0(request):                                # User Form 1
 
     if(auth_user(request)):
         if(request.session.get("form")):
             del request.session['form']
+        return render(request,'user-form0.html')
+    else:
+        return render(request,'login.html')
+
+
+
+def user_form_0_submit(request):            # User Form 0 Submit
+
+    if(not request.session.get("form")):
+        book = super_plan_forms()
+        book.user = User_db.objects.filter(id=request.session['user']).get()
+    else:
+        book = super_plan_forms.objects.filter(id=request.session['form']).get()
+
+    if(auth_user(request) and book and request.method=="POST"):
+
+        if(request.POST.get("theme")):
+            book.theme = request.POST["theme"]
+
+        if(request.POST.get("currency")):
+            book.currency = request.POST["currency"]
+
+        if(request.POST.get("denomination")):
+            book.denomination = request.POST["denomination"]
+
+        if(request.POST.get("pack")):
+            book.pack = request.POST["pack"]
+
+        book.current_fillup_position = 0
+        book.save()
+        request.session["form"] = book.id
+
         return render(request,'user-form1.html')
     else:
         return render(request,'login.html')
@@ -974,14 +1006,17 @@ def user_form_1(request):                                # User Form 1
 
 
 
+
+
 def user_form_1_submit(request):            # User Form 1 Submit
     if(auth_user(request) and request.method=="POST"):
 
-        if(not request.session.get("form")):
+        
+        book = super_plan_forms.objects.filter(id=request.session['form']).get()
+        if(auth_user(request) and book and request.method=="POST"):
+            
 
-            book = super_plan_forms()
-
-            book.user = User_db.objects.filter(id=request.session['user']).get()
+            
             book.company_name = request.POST["company_name"]
             book.company_website_link = request.POST["company_website_link"]
             book.owner_name = request.POST["owner_name"]
@@ -994,8 +1029,8 @@ def user_form_1_submit(request):            # User Form 1 Submit
                 book.gst_name = request.POST["gst_name"]
 
 
-            
-            book.current_fillup_position = 1
+            if(book.current_fillup_position<10):
+                book.current_fillup_position = 1
             book.save()
             request.session["form"] = book.id
 
@@ -1024,7 +1059,7 @@ def user_form_2_submit(request):            # User Form 2 Submit
         if(request.FILES.get("company_logo")):
             book.company_logo = request.FILES["company_logo"]
 
-        if(book.current_fillup_position<12):
+        if(book.current_fillup_position<10):
             book.current_fillup_position = 2
         book.save()
 
@@ -1088,7 +1123,7 @@ def user_form_3_submit(request):            # User Form 3 Submit
         book.solutions_provided = multi
 
 
-        if(book.current_fillup_position<12):
+        if(book.current_fillup_position<10):
             book.current_fillup_position = 3
         book.save()
 
@@ -1162,7 +1197,7 @@ def user_form_4_submit(request):            # User Form 4 Submit
         if(request.POST.get("swot_t")):
             book.swot_t = request.POST["swot_t"]
 
-        if(book.current_fillup_position<12):
+        if(book.current_fillup_position<10):
             book.current_fillup_position = 4
         book.save()
         return render(request,'user-form5.html')
@@ -1249,7 +1284,7 @@ def user_form_5_submit(request):            # User Form 5 Submit
         book.management_team_file=multi
         
 
-        if(book.current_fillup_position<12):
+        if(book.current_fillup_position<10):
             book.current_fillup_position = 5
         book.save()
         return render(request,'user-form6.html')
@@ -1274,7 +1309,7 @@ def user_form_6_submit(request):            # User Form 6 Submit
         if(request.POST.get("growth_strategy")):
             book.growth_strategy = request.POST["growth_strategy"]
 
-        if(book.current_fillup_position<12):
+        if(book.current_fillup_position<10):
             book.current_fillup_position = 6
         book.save()
         return render(request,'user-form7.html')
@@ -1319,7 +1354,7 @@ def user_form_7_submit(request):            # User Form 7 Submit
         multi.save()
         book.usp = multi
 
-        if(book.current_fillup_position<12):
+        if(book.current_fillup_position<10):
             book.current_fillup_position = 7
         book.save()
         return render(request,'user-form8.html')
@@ -1341,92 +1376,340 @@ def user_form_8_submit(request):            # User Form 8 Submit
     book = super_plan_forms.objects.filter(id=request.session['form']).get()
     if(auth_user(request) and book and request.method=="POST"):
 
-
-        if(request.POST.get("revenue_growth_or_amount")):
-            book.revenue_growth_or_amount = request.POST["revenue_growth_or_amount"]
-        if(request.FILES.get("revenue_growth_or_amount_file")):
-            book.revenue_growth_or_amount_file = request.FILES["revenue_growth_or_amount_file"]
+        user = User_db.objects.filter(id=request.session['user']).get()
+        form_id = request.session['form']
 
 
-        if(request.POST.get("other_income_growth_or_amount")):
-            book.other_income_growth_or_amount = request.POST["other_income_growth_or_amount"]
-        if(request.FILES.get("other_income_growth_or_amount_file")):
-            book.other_income_growth_or_amount_file = request.FILES["other_income_growth_or_amount_file"]
+
+        multi = super_plan_forms_multiple_inputs()
+        multi.user = user
+        multi.form_id = form_id
+        values = request.POST.getlist("revenue_growth_or_amount[]")
+        for i in range(0,5):
+            if(values[i]):
+                val = values[i]
+                if i==0:
+                    multi.f_1 = val
+                elif i==1:
+                    multi.f_2 = val
+                elif i==2:
+                    multi.f_3 = val
+                elif i==3:
+                    multi.f_4 = val
+                elif i==4:
+                    multi.f_5 = val
+            
+        multi.save()    
+        book.revenue_growth_or_amount = multi
+        
+
+        multi = super_plan_forms_multiple_inputs()
+        multi.user = user
+        multi.form_id = form_id
+        values = request.POST.getlist("other_income_growth_or_amount[]")
+        for i in range(0,5):
+            if(values[i]):
+                val = values[i]
+                if i==0:
+                    multi.f_1 = val
+                elif i==1:
+                    multi.f_2 = val
+                elif i==2:
+                    multi.f_3 = val
+                elif i==3:
+                    multi.f_4 = val
+                elif i==4:
+                    multi.f_5 = val
+            
+        multi.save()    
+        book.other_income_growth_or_amount = multi
 
 
-        if(request.POST.get("total_revenue_amount")):
-            book.total_revenue_amount = request.POST["total_revenue_amount"]
-        if(request.FILES.get("total_revenue_amount_file")):
-            book.total_revenue_amount_file = request.FILES["total_revenue_amount_file"]
-
-
-        if(request.POST.get("operating_expenses_growth_or_amount")):
-            book.operating_expenses_growth_or_amount = request.POST["operating_expenses_growth_or_amount"]
-        if(request.FILES.get("operating_expenses_growth_or_amount_file")):
-            book.operating_expenses_growth_or_amount_file = request.FILES["operating_expenses_growth_or_amount_file"]
+        multi = super_plan_forms_multiple_inputs()
+        multi.user = user
+        multi.form_id = form_id
+        values = request.POST.getlist("total_revenue_amount[]")
+        for i in range(0,5):
+            if(values[i]):
+                val = values[i]
+                if i==0:
+                    multi.f_1 = val
+                elif i==1:
+                    multi.f_2 = val
+                elif i==2:
+                    multi.f_3 = val
+                elif i==3:
+                    multi.f_4 = val
+                elif i==4:
+                    multi.f_5 = val
+            
+        multi.save()    
+        book.total_revenue_amount = multi
 
         
-        if(request.POST.get("employee_cost")):
-            book.employee_cost = request.POST["employee_cost"]
-        if(request.FILES.get("employee_cost_file")):
-            book.employee_cost_file = request.FILES["employee_cost_file"]
+        
 
 
-        if(request.POST.get("general_and_administration_cost")):
-            book.general_and_administration_cost = request.POST["general_and_administration_cost"]
-        if(request.FILES.get("general_and_administration_cost_file")):
-            book.general_and_administration_cost_file = request.FILES["general_and_administration_cost_file"]
+        
+
+        multi = super_plan_forms_multiple_inputs()
+        multi.user = user
+        multi.form_id = form_id
+        values = request.POST.getlist("operating_expenses_growth_or_amount[]")
+        for i in range(0,5):
+            if(values[i]):
+                val = values[i]
+                if i==0:
+                    multi.f_1 = val
+                elif i==1:
+                    multi.f_2 = val
+                elif i==2:
+                    multi.f_3 = val
+                elif i==3:
+                    multi.f_4 = val
+                elif i==4:
+                    multi.f_5 = val
+            
+        multi.save()    
+        book.operating_expenses_growth_or_amount = multi
+
+        
+        
+
+        multi = super_plan_forms_multiple_inputs()
+        multi.user = user
+        multi.form_id = form_id
+        values = request.POST.getlist("employee_cost[]")
+        for i in range(0,5):
+            if(values[i]):
+                val = values[i]
+                if i==0:
+                    multi.f_1 = val
+                elif i==1:
+                    multi.f_2 = val
+                elif i==2:
+                    multi.f_3 = val
+                elif i==3:
+                    multi.f_4 = val
+                elif i==4:
+                    multi.f_5 = val
+            
+        multi.save()    
+        book.employee_cost = multi
+        
 
 
-        if(request.POST.get("selling_and_marketing_cost")):
-            book.selling_and_marketing_cost = request.POST["selling_and_marketing_cost"]
-        if(request.FILES.get("selling_and_marketing_cost_file")):
-            book.selling_and_marketing_cost_file = request.FILES["selling_and_marketing_cost_file"]
+        multi = super_plan_forms_multiple_inputs()
+        multi.user = user
+        multi.form_id = form_id
+        values = request.POST.getlist("general_and_administration_cost[]")
+        for i in range(0,5):
+            if(values[i]):
+                val = values[i]
+                if i==0:
+                    multi.f_1 = val
+                elif i==1:
+                    multi.f_2 = val
+                elif i==2:
+                    multi.f_3 = val
+                elif i==3:
+                    multi.f_4 = val
+                elif i==4:
+                    multi.f_5 = val
+            
+        multi.save()    
+        book.general_and_administration_cost = multi
+        
 
 
-        if(request.POST.get("other_expenses_growth_or_amount")):
-            book.other_expenses_growth_or_amount = request.POST["other_expenses_growth_or_amount"]
-        if(request.FILES.get("other_expenses_growth_or_amount_file")):
-            book.other_expenses_growth_or_amount_file = request.FILES["other_expenses_growth_or_amount_file"]
+
+        multi = super_plan_forms_multiple_inputs()
+        multi.user = user
+        multi.form_id = form_id
+        values = request.POST.getlist("selling_and_marketing_cost[]")
+        for i in range(0,5):
+            if(values[i]):
+                val = values[i]
+                if i==0:
+                    multi.f_1 = val
+                elif i==1:
+                    multi.f_2 = val
+                elif i==2:
+                    multi.f_3 = val
+                elif i==3:
+                    multi.f_4 = val
+                elif i==4:
+                    multi.f_5 = val
+            
+        multi.save()    
+        book.selling_and_marketing_cost = multi
+
+        
+        
+
+        multi = super_plan_forms_multiple_inputs()
+        multi.user = user
+        multi.form_id = form_id
+        values = request.POST.getlist("other_expenses_growth_or_amount[]")
+        for i in range(0,5):
+            if(values[i]):
+                val = values[i]
+                if i==0:
+                    multi.f_1 = val
+                elif i==1:
+                    multi.f_2 = val
+                elif i==2:
+                    multi.f_3 = val
+                elif i==3:
+                    multi.f_4 = val
+                elif i==4:
+                    multi.f_5 = val
+            
+        multi.save()    
+        book.other_expenses_growth_or_amount = multi
+
+        
+        
 
 
-        if(request.POST.get("ebitda")):
-            book.ebitda = request.POST["ebitda"]
-        if(request.FILES.get("ebitda_file")):
-            book.ebitda_file = request.FILES["ebitda_file"]
+        multi = super_plan_forms_multiple_inputs()
+        multi.user = user
+        multi.form_id = form_id
+        values=request.POST.getlist("ebitda[]")
+        for i in range(0,5):
+            if(values[i]):
+                val = values[i]
+                if i==0:
+                    multi.f_1 = val
+                elif i==1:
+                    multi.f_2 = val
+                elif i==2:
+                    multi.f_3 = val
+                elif i==3:
+                    multi.f_4 = val
+                elif i==4:
+                    multi.f_5 = val
+            
+        multi.save()    
+        book.ebitda = multi
+        
+        
+
+        multi = super_plan_forms_multiple_inputs()
+        multi.user = user
+        multi.form_id = form_id
+        values=request.POST.getlist("depreciation_or_amount[]")
+        for i in range(0,5):
+            if(values[i]):
+                val = values[i]
+                if i==0:
+                    multi.f_1 = val
+                elif i==1:
+                    multi.f_2 = val
+                elif i==2:
+                    multi.f_3 = val
+                elif i==3:
+                    multi.f_4 = val
+                elif i==4:
+                    multi.f_5 = val
+            
+        multi.save()    
+        book.depreciation_or_amount = multi
+        
+
+        multi = super_plan_forms_multiple_inputs()
+        multi.user = user
+        multi.form_id = form_id
+        values=request.POST.getlist("interest_expense_interest_or_amount[]")
+        for i in range(0,5):
+            if(values[i]):
+                val = values[i]
+                if i==0:
+                    multi.f_1 = val
+                elif i==1:
+                    multi.f_2 = val
+                elif i==2:
+                    multi.f_3 = val
+                elif i==3:
+                    multi.f_4 = val
+                elif i==4:
+                    multi.f_5 = val
+            
+        multi.save()    
+        book.interest_expense_interest_or_amount = multi
+
+        
+        
+
+        multi = super_plan_forms_multiple_inputs()
+        multi.user = user
+        multi.form_id = form_id
+        values=request.POST.getlist("ebt[]")
+        for i in range(0,5):
+            if(values[i]):
+                val = values[i]
+                if i==0:
+                    multi.f_1 = val
+                elif i==1:
+                    multi.f_2 = val
+                elif i==2:
+                    multi.f_3 = val
+                elif i==3:
+                    multi.f_4 = val
+                elif i==4:
+                    multi.f_5 = val
+            
+        multi.save()    
+        book.ebt = multi
+        
+
+        multi = super_plan_forms_multiple_inputs()
+        multi.user = user
+        multi.form_id = form_id
+        values=request.POST.getlist("tax_expense_tax_or_amount[]")
+        for i in range(0,5):
+            if(values[i]):
+                val = values[i]
+                if i==0:
+                    multi.f_1 = val
+                elif i==1:
+                    multi.f_2 = val
+                elif i==2:
+                    multi.f_3 = val
+                elif i==3:
+                    multi.f_4 = val
+                elif i==4:
+                    multi.f_5 = val
+            
+        multi.save()    
+        book.tax_expense_tax_or_amount = multi
+        
 
 
-        if(request.POST.get("depreciation_or_amount")):
-            book.depreciation_or_amount = request.POST["depreciation_or_amount"]
-        if(request.FILES.get("depreciation_or_amount_file")):
-            book.depreciation_or_amount_file = request.FILES["depreciation_or_amount_file"]
+        multi = super_plan_forms_multiple_inputs()
+        multi.user = user
+        multi.form_id = form_id
+        values=request.POST.getlist("pat[]")
+        for i in range(0,5):
+            if(values[i]):
+                val = values[i]
+                if i==0:
+                    multi.f_1 = val
+                elif i==1:
+                    multi.f_2 = val
+                elif i==2:
+                    multi.f_3 = val
+                elif i==3:
+                    multi.f_4 = val
+                elif i==4:
+                    multi.f_5 = val
+            
+        multi.save()    
+        book.pat = multi
+        
 
 
-        if(request.POST.get("interest_expense_interest_or_amount")):
-            book.interest_expense_interest_or_amount = request.POST["interest_expense_interest_or_amount"]
-        if(request.FILES.get("interest_expense_interest_or_amount_file")):
-            book.interest_expense_interest_or_amount_file = request.FILES["interest_expense_interest_or_amount_file"]
-
-
-        if(request.POST.get("ebt")):
-            book.ebt = request.POST["ebt"]
-        if(request.FILES.get("ebt_file")):
-            book.ebt_file = request.FILES["ebt_file"]
-
-
-        if(request.POST.get("tax_expense_tax_or_amount")):
-            book.tax_expense_tax_or_amount = request.POST["tax_expense_tax_or_amount"]
-        if(request.FILES.get("tax_expense_tax_or_amount_file")):
-            book.tax_expense_tax_or_amount_file = request.FILES["tax_expense_tax_or_amount_file"]
-
-
-        if(request.POST.get("pat")):
-            book.pat = request.POST["pat"]
-        if(request.FILES.get("pat_file")):
-            book.pat_file = request.FILES["pat_file"]
-
-
-        if(book.current_fillup_position<12):
+        if(book.current_fillup_position<10):
             book.current_fillup_position = 8
         book.save()
         return render(request,'user-form9.html')
@@ -1448,191 +1731,129 @@ def user_form_9_submit(request):            # User Form 9 Submit
 
         if(request.POST.get("share_capital")):
             book.share_capital = request.POST["share_capital"]
-        if(request.FILES.get("share_capital_file")):
-            book.share_capital_file = request.FILES["share_capital_file"]
 
 
         if(request.POST.get("reserves_and_surplus")):
             book.reserves_and_surplus = request.POST["reserves_and_surplus"]
-        if(request.FILES.get("reserves_and_surplus_file")):
-            book.reserves_and_surplus_file = request.FILES["reserves_and_surplus_file"]
 
         
         if(request.POST.get("fund_requirement")):
             book.fund_requirement = request.POST["fund_requirement"]
-        if(request.FILES.get("fund_requirement_file")):
-            book.fund_requirement_file = request.FILES["fund_requirement_file"]
 
 
         if(request.POST.get("total_shareholder_funds")):
             book.total_shareholder_funds = request.POST["total_shareholder_funds"]
-        if(request.FILES.get("total_shareholder_funds_file")):
-            book.total_shareholder_funds_file = request.FILES["total_shareholder_funds_file"]
 
 
         if(request.POST.get("secured_loans")):
             book.secured_loans = request.POST["secured_loans"]
-        if(request.FILES.get("secured_loans_file")):
-            book.secured_loans_file = request.FILES["secured_loans_file"]
 
         
         if(request.POST.get("unsecured_loans")):
             book.unsecured_loans = request.POST["unsecured_loans"]
-        if(request.FILES.get("unsecured_loans_file")):
-            book.unsecured_loans_file = request.FILES["unsecured_loans_file"]
 
 
         if(request.POST.get("long_term_provisions_growth_or_amount")):
             book.long_term_provisions_growth_or_amount = request.POST["long_term_provisions_growth_or_amount"]
-        if(request.FILES.get("long_term_provisions_growth_or_amount_file")):
-            book.long_term_provisions_growth_or_amount_file = request.FILES["long_term_provisions_growth_or_amount_file"]
 
 
         if(request.POST.get("other_non_current_liabilities_growth_or_amount")):
             book.other_non_current_liabilities_growth_or_amount = request.POST["other_non_current_liabilities_growth_or_amount"]
-        if(request.FILES.get("other_non_current_liabilities_growth_or_amount_file")):
-            book.other_non_current_liabilities_growth_or_amount_file = request.FILES["other_non_current_liabilities_growth_or_amount_file"]
 
         
         if(request.POST.get("total_non_current_liabilities")):
             booktotal_non_current_liabilities = request.POST["total_non_current_liabilities"]
-        if(request.FILES.get("total_non_current_liabilities_file")):
-            book.total_non_current_liabilities_file = request.FILES["total_non_current_liabilities_file"]
 
         
         if(request.POST.get("short_term_borrowings_growth_or_amount")):
             book.short_term_borrowings_growth_or_amount = request.POST["short_term_borrowings_growth_or_amount"]
-        if(request.FILES.get("short_term_borrowings_growth_or_amount_file")):
-            book.short_term_borrowings_growth_or_amount_file = request.FILES["short_term_borrowings_growth_or_amount_file"]
 
 
         if(request.POST.get("short_term_provisions_growth_or_amount")):
             book.short_term_provisions_growth_or_amount = request.POST["short_term_provisions_growth_or_amount"]
-        if(request.FILES.get("short_term_provisions_growth_or_amount_file")):
-            book.short_term_provisions_growth_or_amount_file = request.FILES["short_term_provisions_growth_or_amount_file"]
 
         
         if(request.POST.get("sundry_creditors_no_of_days_or_amount")):
             book.sundry_creditors_no_of_days_or_amount = request.POST["sundry_creditors_no_of_days_or_amount"]
-        if(request.FILES.get("sundry_creditors_no_of_days_or_amount_file")):
-            book.sundry_creditors_no_of_days_or_amount_file = request.FILES["sundry_creditors_no_of_days_or_amount_file"]
 
 
         if(request.POST.get("other_current_liabilities_growth_or_amount")):
             book.other_current_liabilities_growth_or_amount = request.POST["other_current_liabilities_growth_or_amount"]
-        if(request.FILES.get("other_current_liabilities_growth_or_amount_file")):
-            book.other_current_liabilities_growth_or_amount_file = request.FILES["other_current_liabilities_growth_or_amount_file"]
 
 
         if(request.POST.get("total_current_liabilities")):
             book.total_current_liabilities = request.POST["total_current_liabilities"]
-        if(request.FILES.get("total_current_liabilities_file")):
-            book.total_current_liabilities_file = request.FILES["total_current_liabilities_file"]
 
         
         if(request.POST.get("total_liabilities")):
             book.total_liabilities = request.POST["total_liabilities"]
-        if(request.FILES.get("total_liabilities_file")):
-            book.total_liabilities_file = request.FILES["total_liabilities_file"]
 
 
         if(request.POST.get("gross_fixed_assets_growth_or_amount")):
             book.gross_fixed_assets_growth_or_amount = request.POST["gross_fixed_assets_growth_or_amount"]
-        if(request.FILES.get("gross_fixed_assets_growth_or_amount_file")):
-            book.gross_fixed_assets_growth_or_amount_file = request.FILES["gross_fixed_assets_growth_or_amount_file"]
 
 
         if(request.POST.get("less_accumulated_depreciation_or_amount")):
             book.less_accumulated_depreciation_or_amount = request.POST["less_accumulated_depreciation_or_amount"]
-        if(request.FILES.get("_file")):
-            book.less_accumulated_depreciation_or_amount_file = request.FILES["less_accumulated_depreciation_or_amount_file"]
 
         
         if(request.POST.get("net_fixed_assets_growth_or_amount")):
             book.net_fixed_assets_growth_or_amount = request.POST["net_fixed_assets_growth_or_amount"]
-        if(request.FILES.get("net_fixed_assets_growth_or_amount_file")):
-            book.net_fixed_assets_growth_or_amount_file = request.FILES["net_fixed_assets_growth_or_amount_file"]
 
 
         if(request.POST.get("intangible_assets_growth_or_amount")):
             book.intangible_assets_growth_or_amount = request.POST["intangible_assets_growth_or_amount"]
-        if(request.FILES.get("intangible_assets_growth_or_amount_file")):
-            book.intangible_assets_growth_or_amount_file = request.FILES["intangible_assets_growth_or_amount_file"]
 
 
         if(request.POST.get("long_term_loans_and_advances_growth_or_amount")):
             book.long_term_loans_and_advances_growth_or_amount = request.POST["long_term_loans_and_advances_growth_or_amount"]
-        if(request.FILES.get("long_term_loans_and_advances_growth_or_amount_file")):
-            book.long_term_loans_and_advances_growth_or_amount_file = request.FILES["long_term_loans_and_advances_growth_or_amount_file"]
 
         
         if(request.POST.get("long_term_investments_growth_or_amount")):
             book.long_term_investments_growth_or_amount = request.POST["long_term_investments_growth_or_amount"]
-        if(request.FILES.get("long_term_investments_growth_or_amount_file")):
-            book.long_term_investments_growth_or_amount_file = request.FILES["long_term_investments_growth_or_amount_file"]
 
         
         if(request.POST.get("other_non_current_assets_growth_or_amount")):
             book.other_non_current_assets_growth_or_amount = request.POST["other_non_current_assets_growth_or_amount"]
-        if(request.FILES.get("other_non_current_assets_growth_or_amount_file")):
-            book.other_non_current_assets_growth_or_amount_file = request.FILES["other_non_current_assets_growth_or_amount_file"]
 
 
         if(request.POST.get("total_non_current_assets")):
             book.total_non_current_assets = request.POST["total_non_current_assets"]
-        if(request.FILES.get("_file")):
-            book.total_non_current_assets_file = request.FILES["total_non_current_assets_file"]
 
         
         if(request.POST.get("cash")):
             book.cash = request.POST["cash"]
-        if(request.FILES.get("cash_file")):
-            book.cash_file = request.FILES["cash_file"]
 
 
         if(request.POST.get("sundry_debtors_no_of_days_or_amount")):
             book.sundry_debtors_no_of_days_or_amount = request.POST["sundry_debtors_no_of_days_or_amount"]
-        if(request.FILES.get("sundry_debtors_no_of_days_or_amount_file")):
-            book.sundry_debtors_no_of_days_or_amount_file = request.FILES["sundry_debtors_no_of_days_or_amount_file"]
 
         
         if(request.POST.get("inventory_no_of_days_or_amount")):
             book.inventory_no_of_days_or_amount = request.POST["inventory_no_of_days_or_amount"]
-        if(request.FILES.get("inventory_no_of_days_or_amount_file")):
-            book.inventory_no_of_days_or_amount_file = request.FILES["inventory_no_of_days_or_amount_file"]
 
 
         if(request.POST.get("short_term_investments_growth_or_amount")):
             book.short_term_investments_growth_or_amount = request.POST["short_term_investments_growth_or_amount"]
-        if(request.FILES.get("short_term_investments_growth_or_amount_file")):
-            book.short_term_investments_growth_or_amount_file = request.FILES["short_term_investments_growth_or_amount_file"]
 
         
         if(request.POST.get("short_term_loans_and_advances_growth_or_amount")):
             book.short_term_loans_and_advances_growth_or_amount = request.POST["short_term_loans_and_advances_growth_or_amount"]
-        if(request.FILES.get("short_term_loans_and_advances_growth_or_amount_file")):
-            book.short_term_loans_and_advances_growth_or_amount_file = request.FILES["short_term_loans_and_advances_growth_or_amount_file"]
 
         
         if(request.POST.get("other_current_assets_growth_or_amount")):
             book.other_current_assets_growth_or_amount = request.POST["other_current_assets_growth_or_amount"]
-        if(request.FILES.get("other_current_assets_growth_or_amount_file")):
-            book.other_current_assets_growth_or_amount_file = request.FILES["other_current_assets_growth_or_amount_file"]
 
 
         if(request.POST.get("total_current_assets")):
             book.total_current_assets = request.POST["total_current_assets"]
-        if(request.FILES.get("total_current_assets_file")):
-            book.total_current_assets_file = request.FILES["total_current_assets_file"]
 
 
         if(request.POST.get("total_assets")):
             book.total_assets = request.POST["total_assets"]
-        if(request.FILES.get("total_assets_file")):
-            book.total_assets_file = request.FILES["total_assets_file"]
 
 
-        if(book.current_fillup_position<12):
+        if(book.current_fillup_position<10):
             book.current_fillup_position = 9
         book.save()
         return render(request,'user-form10.html')
@@ -1663,56 +1884,21 @@ def user_form_10_submit(request):            # User Form 10 Submit
 
         if(request.POST.get("company_owned_land_and_building")):
             book.company_owned_land_and_building = request.POST["company_owned_land_and_building"]
-        if(request.FILES.get("company_owned_land_and_building_file")):
-            book.company_owned_land_and_building_file = request.FILES["company_owned_land_and_building_file"]
 
 
         if(request.POST.get("other_fixed_assets")):
             book.other_fixed_assets = request.POST["other_fixed_assets"]
-        if(request.FILES.get("other_fixed_assets_file")):
-            book.other_fixed_assets_file = request.FILES["other_fixed_assets_file"]
 
 
         if(request.POST.get("depreciation_growth_or_amount")):
             book.depreciation_growth_or_amount = request.POST["depreciation_growth_or_amount"]
-        if(request.FILES.get("depreciation_growth_or_amount_file")):
-            book.depreciation_growth_or_amount_file = request.FILES["depreciation_growth_or_amount_file"]
 
 
         if(request.POST.get("total_capex_expense")):
             book.total_capex_expense = request.POST["total_capex_expense"]
 
-        if(book.current_fillup_position<12):
+        if(book.current_fillup_position<10):
             book.current_fillup_position = 10
-        book.save()
-        return render(request,'user-form11.html')
-    else:
-        return render(request,'login.html')
-
-
-
-
-
-
-
-
-def user_form_11_submit(request):            # User Form 11 Submit
-    book = super_plan_forms.objects.filter(id=request.session['form']).get()
-    if(auth_user(request) and book and request.method=="POST"):
-
-        if(request.POST.get("theme")):
-            book.theme = request.POST["theme"]
-
-        if(request.POST.get("currency")):
-            book.currency = request.POST["currency"]
-
-        if(request.POST.get("denomination")):
-            book.denomination = request.POST["denomination"]
-
-        if(request.POST.get("pack")):
-            book.pack = request.POST["pack"]
-
-        book.current_fillup_position = 12
         book.save()
         return redirect("/successful-purchased")
     else:
@@ -1723,10 +1909,19 @@ def user_form_11_submit(request):            # User Form 11 Submit
 
 
 
+
+
+
+
+
+
+
+
+
 def user_all_superplan_bookings(request):                                # User All Template view
 
     if(auth_user(request)):
-        data = super_plan_forms.objects.filter(user=request.session['user'],current_fillup_position=12) 
+        data = super_plan_forms.objects.filter(user=request.session['user'],current_fillup_position=10) 
         return render(request,'user-all-superplan-bookings.html',{"bookings":data})
     else:
         return render(request,'login.html')
@@ -1758,7 +1953,7 @@ def user_template_view_by_get(request,id):                                # User
 def user_all_incomplete_superplan_bookings(request):                                # User All incomplete superplan form
 
     if(auth_user(request)):
-        data = super_plan_forms.objects.filter(user=request.session['user'],current_fillup_position__lt=12)
+        data = super_plan_forms.objects.filter(user=request.session['user'],current_fillup_position__lt=10)
         return render(request,'user-all-incomplete-superplan-bookings.html',{"bookings":data})
     else:
         return render(request,'login.html')

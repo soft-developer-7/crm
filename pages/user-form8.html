@@ -2,7 +2,7 @@
 {% load static %}
 
 {% block title %}User Form-8{% endblock%}
-{% block page_heading %}Superplan Form 8 of 11{% endblock%}
+{% block page_heading %}Superplan Form 8 of 10{% endblock%}
 {% block content %}
 
 
@@ -23,286 +23,736 @@
 					<div class="card-body">
 					
 					
+				<div class="form-row text-center">
+						
+						<div class="col-4 border-right">
+							<div class="form-group">
+								<label ><strong>Field</strong></label>
+							</div>
+						</div>
+
+						<div class="col border-right">
+							<div class="form-group">
+								<label ><strong>Year 1</strong></label>
+							</div>
+						</div>
+
+						<div class="col border-right">
+							<div class="form-group">
+								<label ><strong>Year 2</strong></label>
+							</div>
+						</div>
+
+						<div class="col border-right">
+							<div class="form-group">
+								<label ><strong>Year 3</strong></label>
+							</div>
+						</div>
+
+						<div class="col border-right">
+							<div class="form-group">
+								<label ><strong>Year 4</strong></label>
+							</div>
+						</div>
+
+						<div class="col border-right">
+							<div class="form-group">
+								<label ><strong>Year 5</strong></label>
+							</div>
+						</div>
+				</div>
+				<hr>
 
 				<div class="form-row">
 						
-						<div class="col">
+						<div class="col-4">
 							<div class="form-group">
 								<label ><strong>8.1. Revenue Growth % or Amount</strong></label>
                                 <a href="#"  data-toggle="tooltip" title="Help text."><i class="far fa-question-circle"></i></a>
-								<input type="text" class="form-control" name="revenue_growth_or_amount" maxlength="200" minlength="2" />
 								</div>
 						</div>
-						
-						
-                        <div class="col">
-                            <div class="form-group d-none">
-                                <label ><strong>8.2. Revenue Growth % or Amount (Excel file optional)</strong></label>
-                                <input  type="file"  name="revenue_growth_or_amount_file" accept=".csv, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel" >
-                            </div>
-                        </div>
-				</div>
-                <br>
-                <div class="form-row">
+
+
+
+
+						<div class="col">
+							<div class="form-group">
+								<input type="number"  step="0.01" class="form-control" name="revenue_growth_or_amount[]" maxlength="20" minlength="1" />
+								</div>
+						</div>
 						
 						<div class="col">
 							<div class="form-group">
-								<label ><strong>8.3. Other Income Growth % or Amount</strong></label>
+								<input type="number"  step="0.01" class="form-control" name="revenue_growth_or_amount[]" maxlength="20" minlength="1" />
+								</div>
+						</div>
+						<div class="col">
+							<div class="form-group">
+								<input type="number"  step="0.01" class="form-control" name="revenue_growth_or_amount[]" maxlength="20" minlength="1" />
+								</div>
+						</div>
+						<div class="col">
+							<div class="form-group">
+								<input type="number"  step="0.01" class="form-control" name="revenue_growth_or_amount[]" maxlength="20" minlength="1" />
+								</div>
+						</div>
+						<div class="col">
+							<div class="form-group">
+								<input type="number"  step="0.01" class="form-control" name="revenue_growth_or_amount[]" maxlength="20" minlength="1" />
+								</div>
+						</div>
+						
+                      
+				</div>
+				<hr>
+
+
+
+
+
+                
+                <div class="form-row">
+						
+						<div class="col-4">
+							<div class="form-group">
+								<label ><strong>8.2. Other Income Growth % or Amount</strong></label>
                                 <a href="#"  data-toggle="tooltip" title="Help text."><i class="far fa-question-circle"></i></a>
-								<input type="text" class="form-control" name="other_income_growth_or_amount"  maxlength="200" minlength="2"  />
+								</div>
+						</div>
+
+						
+
+						<div class="col">
+							<div class="form-group">
+								<input type="number"  step="0.01" class="form-control" name="other_income_growth_or_amount[]"   maxlength="20" minlength="1"  />
+								</div>
+						</div>
+
+						<div class="col">
+							<div class="form-group">
+								<input type="number"  step="0.01" class="form-control" name="other_income_growth_or_amount[]"  maxlength="20" minlength="1"  />
+								</div>
+						</div>
+						<div class="col">
+							<div class="form-group">
+								<input type="number"  step="0.01" class="form-control" name="other_income_growth_or_amount[]"   maxlength="20" minlength="1"  />
+								</div>
+						</div>
+						<div class="col">
+							<div class="form-group">
+								<input type="number"  step="0.01" class="form-control" name="other_income_growth_or_amount[]"   maxlength="20" minlength="1"  />
+								</div>
+						</div>
+						<div class="col">
+							<div class="form-group">
+								<input type="number"  step="0.01" class="form-control" name="other_income_growth_or_amount[]"  maxlength="20" minlength="1"  />
 								</div>
 						</div>
 						
 						
-                        <div class="col">
-                            <div class="form-group d-none">
-                                <label ><strong>8.4. Other Income Growth % or Amount (Excel file optional)</strong></label>
-                                <input  type="file"  name="other_income_growth_or_amount_file" accept=".csv, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel" >
-                            </div>
-                        </div>
+                       
 				</div>
-                <br>
+				<hr>
+                
 
 
             <div class="form-row">
 						
+						<div class="col-4">
+							<div class="form-group">
+								<label ><strong>8.3. Total Revenue Amount</strong></label>
+								</div>
+						</div>
+
+						
+
 						<div class="col">
 							<div class="form-group">
-								<label ><strong>8.5. Total Revenue Amount</strong></label>
-								<input type="text" class="form-control" name="total_revenue_amount" maxlength="300" minlength="2" />
+								<input type="number"  step="0.01" class="form-control" name="total_revenue_amount[]"  maxlength="300" minlength="2" />
+								</div>
+						</div>
+
+						<div class="col">
+							<div class="form-group">
+								<input type="number"  step="0.01" class="form-control" name="total_revenue_amount[]"  maxlength="300" minlength="2" />
+								</div>
+						</div>
+
+						<div class="col">
+							<div class="form-group">
+								<input type="number"  step="0.01" class="form-control" name="total_revenue_amount[]"  maxlength="300" minlength="2" />
+								</div>
+						</div>
+
+						<div class="col">
+							<div class="form-group">
+								<input type="number"  step="0.01" class="form-control" name="total_revenue_amount[]"  maxlength="300" minlength="2" />
+								</div>
+						</div>
+
+						<div class="col">
+							<div class="form-group">
+								<input type="number"  step="0.01" class="form-control" name="total_revenue_amount[]"  maxlength="300" minlength="2" />
 								</div>
 						</div>
 						
 						
-                        <div class="col">
-                            <div class="form-group d-none">
-                                <label ><strong>8.6. Total Revenue Amount (Excel file optional)</strong></label>
-                                <input  type="file"  name="total_revenue_amount_file" accept=".csv, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel" >
-                            </div>
-                        </div>
-				</div><br>
+                        
+				</div><hr>
+				
+				
+				<br><br><br>
 
 
 
                 <br>
                 <h5 class="text-primary">Expenses</h5>
                 <hr>
+
+				<div class="form-row text-center">
+						
+						<div class="col-4 border-right">
+							<div class="form-group">
+								<label ><strong>Field</strong></label>
+							</div>
+						</div>
+
+						<div class="col border-right">
+							<div class="form-group">
+								<label ><strong>Year 1</strong></label>
+							</div>
+						</div>
+
+						<div class="col border-right">
+							<div class="form-group">
+								<label ><strong>Year 2</strong></label>
+							</div>
+						</div>
+
+						<div class="col border-right">
+							<div class="form-group">
+								<label ><strong>Year 3</strong></label>
+							</div>
+						</div>
+
+						<div class="col border-right">
+							<div class="form-group">
+								<label ><strong>Year 4</strong></label>
+							</div>
+						</div>
+
+						<div class="col border-right">
+							<div class="form-group">
+								<label ><strong>Year 5</strong></label>
+							</div>
+						</div>
+				</div>
+				<hr>
 						
                 
                  <div class="form-row">
 						
+						<div class="col-4">
+							<div class="form-group">
+								<label ><strong>8.4. Operating Expenses Growth % or Amount</strong>
+                                <a href="#"  data-toggle="tooltip" title="Help text."><i class="far fa-question-circle"></i></a></label>
+								</div>
+						</div>
+
+						
+
 						<div class="col">
 							<div class="form-group">
-								<label ><strong>8.7. Operating Expenses Growth % or Amount</strong></label>
-                                <a href="#"  data-toggle="tooltip" title="Help text."><i class="far fa-question-circle"></i></a>
-								<input type="text" class="form-control" name="operating_expenses_growth_or_amount"  maxlength="200" minlength="2"  />
+								<input type="number"  step="0.01" class="form-control" name="operating_expenses_growth_or_amount[]"  maxlength="20" minlength="1"  />
+								</div>
+						</div>
+
+						<div class="col">
+							<div class="form-group">
+								<input type="number"  step="0.01" class="form-control" name="operating_expenses_growth_or_amount[]"  maxlength="20" minlength="1"  />
+								</div>
+						</div>
+
+						<div class="col">
+							<div class="form-group">
+								<input type="number"  step="0.01" class="form-control" name="operating_expenses_growth_or_amount[]"  maxlength="20" minlength="1"  />
+								</div>
+						</div>
+
+						<div class="col">
+							<div class="form-group">
+								<input type="number"  step="0.01" class="form-control" name="operating_expenses_growth_or_amount[]"  maxlength="20" minlength="1"  />
+								</div>
+						</div>
+
+						<div class="col">
+							<div class="form-group">
+								<input type="number"  step="0.01" class="form-control" name="operating_expenses_growth_or_amount[]"  maxlength="20" minlength="1"  />
 								</div>
 						</div>
 						
 						
-                        <div class="col">
-                            <div class="form-group d-none">
-                                <label ><strong>8.8. Operating Expenses Growth % or Amount (Excel file optional)</strong></label>
-                                <input  type="file"  name="operating_expenses_growth_or_amount_file" accept=".csv, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel">
-                            </div>
-                        </div>
-				</div><br>
+                       
+				</div><hr>
 
                 <div class="form-row">
 						
+						<div class="col-4">
+							<div class="form-group">
+								<label ><strong>8.5. Employee Cost</strong></label>
+                                <a href="#"  data-toggle="tooltip" title="Help text."><i class="far fa-question-circle"></i></a>
+								</div>
+						</div>
+
+						
+
 						<div class="col">
 							<div class="form-group">
-								<label ><strong>8.9. Employee Cost</strong></label>
-                                <a href="#"  data-toggle="tooltip" title="Help text."><i class="far fa-question-circle"></i></a>
-								<input type="text" class="form-control" name="employee_cost" maxlength="200" minlength="2" />
+								<input type="number"  step="0.01" class="form-control" name="employee_cost[]" maxlength="20" minlength="1" />
+								</div>
+						</div>
+
+						<div class="col">
+							<div class="form-group">
+								<input type="number"  step="0.01" class="form-control" name="employee_cost[]" maxlength="20" minlength="1" />
+								</div>
+						</div>
+
+						<div class="col">
+							<div class="form-group">
+								<input type="number"  step="0.01" class="form-control" name="employee_cost[]" maxlength="20" minlength="1" />
+								</div>
+						</div>
+
+						<div class="col">
+							<div class="form-group">
+								<input type="number"  step="0.01" class="form-control" name="employee_cost[]" maxlength="20" minlength="1" />
+								</div>
+						</div>
+
+						<div class="col">
+							<div class="form-group">
+								<input type="number"  step="0.01" class="form-control" name="employee_cost[]" maxlength="20" minlength="1" />
 								</div>
 						</div>
 						
 						
-                        <div class="col">
-                            <div class="form-group d-none">
-                                <label ><strong>8.10. Employee Cost (Excel file optional)</strong></label>
-                                <input  type="file"  name="employee_cost_file" accept=".csv, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel">
-                            </div>
-                        </div>
-				</div><br>
+                        
+				</div><hr>
 
 
                 <div class="form-row">
 						
+						<div class="col-4">
+							<div class="form-group">
+								<label ><strong>8.6. General & Administration Cost</strong></label>
+                                <a href="#"  data-toggle="tooltip" title="Help text."><i class="far fa-question-circle"></i></a>
+								
+								</div>
+						</div>
+
 						<div class="col">
 							<div class="form-group">
-								<label ><strong>8.11. General & Administration Cost</strong></label>
-                                <a href="#"  data-toggle="tooltip" title="Help text."><i class="far fa-question-circle"></i></a>
-								<input type="text" class="form-control" name="general_and_administration_cost" maxlength="200" minlength="2"  />
-								</div>
+								<input type="number"  step="0.01" class="form-control" name="general_and_administration_cost[]" maxlength="20" minlength="1"  />
+							</div>
+						
+						</div>
+
+						<div class="col">
+							<div class="form-group">
+								<input type="number"  step="0.01" class="form-control" name="general_and_administration_cost[]" maxlength="20" minlength="1"  />
+							</div>
+						
+						</div>
+
+						<div class="col">
+							<div class="form-group">
+								<input type="number"  step="0.01" class="form-control" name="general_and_administration_cost[]" maxlength="20" minlength="1"  />
+							</div>
+						
+						</div>
+
+						<div class="col">
+							<div class="form-group">
+								<input type="number"  step="0.01" class="form-control" name="general_and_administration_cost[]" maxlength="20" minlength="1"  />
+							</div>
+						
+						</div>
+
+						<div class="col">
+							<div class="form-group">
+								<input type="number"  step="0.01" class="form-control" name="general_and_administration_cost[]" maxlength="20" minlength="1"  />
+							</div>
+						
 						</div>
 						
 						
-                        <div class="col">
-                            <div class="form-group d-none">
-                                <label ><strong>8.12. General & Administration Cost (Excel file optional)</strong></label>
-                                <input  type="file"  name="general_and_administration_cost_file" accept=".csv, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel">
-                            </div>
-                        </div>
-				</div><br>
+                      
+				</div><hr>
 						
 
                  <div class="form-row">
 						
-						<div class="col">
-							<div class="form-group d-none">
-								<label ><strong>8.13. Selling & Marketing Cost</strong></label>
+						<div class="col-4">
+							<div class="form-group">
+								<label ><strong>8.7. Selling & Marketing Cost</strong></label>
                                 <a href="#"  data-toggle="tooltip" title="Help text."><i class="far fa-question-circle"></i></a>
-								<input type="text" class="form-control" name="selling_and_marketing_cost" maxlength="200" minlength="2" />
+								</div>
+						</div>
+
+
+						
+
+						<div class="col">
+							<div class="form-group">
+								<input type="number"  step="0.01" class="form-control" name="selling_and_marketing_cost[]" maxlength="20" minlength="1" />
+								</div>
+						</div>
+
+						<div class="col">
+							<div class="form-group">
+								<input type="number"  step="0.01" class="form-control" name="selling_and_marketing_cost[]" maxlength="20" minlength="1" />
+								</div>
+						</div>
+
+						<div class="col">
+							<div class="form-group">
+								<input type="number"  step="0.01" class="form-control" name="selling_and_marketing_cost[]" maxlength="20" minlength="1" />
+								</div>
+						</div>
+
+						<div class="col">
+							<div class="form-group">
+								<input type="number"  step="0.01" class="form-control" name="selling_and_marketing_cost[]" maxlength="20" minlength="1" />
+								</div>
+						</div>
+
+						<div class="col">
+							<div class="form-group">
+								<input type="number"  step="0.01" class="form-control" name="selling_and_marketing_cost[]" maxlength="20" minlength="1" />
 								</div>
 						</div>
 						
 						
-                        <div class="col">
-                            <div class="form-group d-none">
-                                <label ><strong>8.14. Selling & Marketing Cost (Excel file optional)</strong></label>
-                                <input  type="file"  name="selling_and_marketing_cost_file" accept=".csv, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel">
-                            </div>
-                        </div>
-				</div><br>
+                   
+				</div><hr>
 
 
                 <div class="form-row">
 						
+						<div class="col-4">
+							<div class="form-group">
+								<label ><strong>8.8. Other Expenses Growth % or Amount </strong></label>
+								</div>
+						</div>
+
+						
+
 						<div class="col">
 							<div class="form-group">
-								<label ><strong>8.15. Other Expenses Growth % or Amount </strong></label>
-								<input type="text" class="form-control" name="other_expenses_growth_or_amount" maxlength="200" minlength="2" />
+								<input type="number"  step="0.01" class="form-control" name="other_expenses_growth_or_amount[]" maxlength="20" minlength="1" />
+								</div>
+						</div>
+
+						<div class="col">
+							<div class="form-group">
+								<input type="number"  step="0.01" class="form-control" name="other_expenses_growth_or_amount[]" maxlength="20" minlength="1" />
+								</div>
+						</div>
+
+						<div class="col">
+							<div class="form-group">
+								<input type="number"  step="0.01" class="form-control" name="other_expenses_growth_or_amount[]" maxlength="20" minlength="1" />
+								</div>
+						</div>
+
+						<div class="col">
+							<div class="form-group">
+								<input type="number"  step="0.01" class="form-control" name="other_expenses_growth_or_amount[]" maxlength="20" minlength="1" />
+								</div>
+						</div>
+
+						<div class="col">
+							<div class="form-group">
+								<input type="number"  step="0.01" class="form-control" name="other_expenses_growth_or_amount[]" maxlength="20" minlength="1" />
 								</div>
 						</div>
 						
 						
-                        <div class="col">
-                            <div class="form-group d-none">
-                                <label ><strong>8.16. Other Expenses (Excel file optional)</strong></label>
-                                <input  type="file"  name="other_expenses_growth_or_amount_file" accept=".csv, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel">
-                            </div>
-                        </div>
-				</div><br>
+                       
+				</div><hr>
 
 
                 <div class="form-row">
 						
+						<div class="col-4">
+							<div class="form-group">
+								<label ><strong>8.9. EBITDA (Earnings Before Interest, Tax, Depreciation & Ammortisation) Amount </strong></label>
+								</div>
+						</div>
+
+						
+
 						<div class="col">
 							<div class="form-group">
-								<label ><strong>8.17. EBITDA (Earnings Before Interest, Tax, Depreciation & Ammortisation) Amount </strong></label>
-								<input type="text" class="form-control" name="ebitda"  maxlength="200" minlength="2"/>
+								<input type="number"  step="0.01" class="form-control" name="ebitda[]"  maxlength="20" minlength="1"/>
+								</div>
+						</div>
+
+						<div class="col">
+							<div class="form-group">
+								<input type="number"  step="0.01" class="form-control" name="ebitda[]"  maxlength="20" minlength="1"/>
+								</div>
+						</div>
+
+						<div class="col">
+							<div class="form-group">
+								<input type="number"  step="0.01" class="form-control" name="ebitda[]"  maxlength="20" minlength="1"/>
+								</div>
+						</div>
+
+						<div class="col">
+							<div class="form-group">
+								<input type="number"  step="0.01" class="form-control" name="ebitda[]"  maxlength="20" minlength="1"/>
+								</div>
+						</div>
+
+						<div class="col">
+							<div class="form-group">
+								<input type="number"  step="0.01" class="form-control" name="ebitda[]"  maxlength="20" minlength="1"/>
 								</div>
 						</div>
 						
 						
-                        <div class="col">
-                            <div class="form-group d-none">
-                                <label ><strong>8.18. EBITDA (Earnings Before Interest, Tax, Depreciation & Ammortisation) Amount (Excel file optional)</strong></label>
-                                <input  type="file"  name="ebitda_file" accept=".csv, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel">
-                            </div>
-                        </div>
-				</div><br>
+                       
+				</div><hr>
 
                 <div class="form-row">
 						
-						<div class="col">
+						<div class="col-4">
 							<div class="form-group">
-								<label ><strong>8.19. Depreciation % or Amount</strong></label>
+								<label ><strong>8.10. Depreciation % or Amount</strong></label>
                                  <a href="#"  data-toggle="tooltip" title="Help text."><i class="far fa-question-circle"></i></a>
-								<input type="text" class="form-control" name="depreciation_or_amount" maxlength="200" minlength="2" />
+								</div>
+						</div>
+
+						
+
+						<div class="col">
+							<div class="form-group">
+								<input type="number"  step="0.01" class="form-control" name="depreciation_or_amount[]" maxlength="20" minlength="1" />
+								</div>
+						</div>
+
+						<div class="col">
+							<div class="form-group">
+								<input type="number"  step="0.01" class="form-control" name="depreciation_or_amount[]" maxlength="20" minlength="1" />
+								</div>
+						</div>
+
+						<div class="col">
+							<div class="form-group">
+								<input type="number"  step="0.01" class="form-control" name="depreciation_or_amount[]" maxlength="20" minlength="1" />
+								</div>
+						</div>
+
+						<div class="col">
+							<div class="form-group">
+								<input type="number"  step="0.01" class="form-control" name="depreciation_or_amount[]" maxlength="20" minlength="1" />
+								</div>
+						</div>
+
+						<div class="col">
+							<div class="form-group">
+								<input type="number"  step="0.01" class="form-control" name="depreciation_or_amount[]" maxlength="20" minlength="1" />
 								</div>
 						</div>
 						
 						
-                        <div class="col">
-                            <div class="form-group d-none">
-                                <label ><strong>8.20. Depreciation % or Amount (Excel file optional)</strong></label>
-                                <input  type="file"  name="depreciation_or_amount_file" accept=".csv, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel">
-                            </div>
-                        </div>
-				</div><br>
+  
+				</div><hr>
 
                  <div class="form-row">
 						
+						<div class="col-4">
+							<div class="form-group">
+								<label ><strong>8.11. Interest Expense Interest %  or Amount</strong>
+                                 <a href="#"  data-toggle="tooltip" title="Help text."><i class="far fa-question-circle"></i></a></label>
+								</div>
+						</div>
+
+						
+
 						<div class="col">
 							<div class="form-group">
-								<label ><strong>8.21. Interest Expense Interest %  or Amount</strong></label>
-                                 <a href="#"  data-toggle="tooltip" title="Help text."><i class="far fa-question-circle"></i></a>
-								<input type="text" class="form-control" name="interest_expense_interest_or_amount" maxlength="200" minlength="2" />
+								<input type="number"  step="0.01" class="form-control" name="interest_expense_interest_or_amount[]" maxlength="20" minlength="1" />
+								</div>
+						</div>
+
+						<div class="col">
+							<div class="form-group">
+								<input type="number"  step="0.01" class="form-control" name="interest_expense_interest_or_amount[]" maxlength="20" minlength="1" />
+								</div>
+						</div>
+
+						<div class="col">
+							<div class="form-group">
+								<input type="number"  step="0.01" class="form-control" name="interest_expense_interest_or_amount[]" maxlength="20" minlength="1" />
+								</div>
+						</div>
+
+						<div class="col">
+							<div class="form-group">
+								<input type="number"  step="0.01" class="form-control" name="interest_expense_interest_or_amount[]" maxlength="20" minlength="1" />
+								</div>
+						</div>
+
+						<div class="col">
+							<div class="form-group">
+								<input type="number"  step="0.01" class="form-control" name="interest_expense_interest_or_amount[]" maxlength="20" minlength="1" />
 								</div>
 						</div>
 						
 						
-                        <div class="col">
-                            <div class="form-group d-none">
-                                <label ><strong>8.22. Interest Expense Interest %  or Amount (Excel file optional)</strong></label>
-                                <input  type="file"  name="interest_expense_interest_or_amount_file" accept=".csv, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel">
-                            </div>
-                        </div>
-				</div><br>
+                        
+				</div><hr>
 						
 
 
                 <div class="form-row">
 						
-						<div class="col">
+						<div class="col-4">
 							<div class="form-group">
-								<label ><strong>8.23. EBT (Earnings Before Tax)</strong></label>
-                                
-								<input type="text" class="form-control" name="ebt" maxlength="200" minlength="2" />
+								<label ><strong>8.12. EBT (Earnings Before Tax)</strong></label>								
 								</div>
 						</div>
 						
+
 						
-                        <div class="col">
-                            <div class="form-group d-none">
-                                <label ><strong>8.24. EBT (Earnings Before Tax) (Excel file optional)</strong></label>
-                                <input  type="file"  name="ebt_file" accept=".csv, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel">
-                            </div>
-                        </div>
-				</div><br>
+
+						<div class="col">
+							<div class="form-group">
+							<input type="number"  step="0.01" class="form-control" name="ebt[]" maxlength="20" minlength="1" />
+							</div>
+						</div>
+
+						<div class="col">
+							<div class="form-group">
+							<input type="number"  step="0.01" class="form-control" name="ebt[]" maxlength="20" minlength="1" />
+							</div>
+						</div>
+
+						<div class="col">
+							<div class="form-group">
+							<input type="number"  step="0.01" class="form-control" name="ebt[]" maxlength="20" minlength="1" />
+							</div>
+						</div>
+
+						<div class="col">
+							<div class="form-group">
+							<input type="number"  step="0.01" class="form-control" name="ebt[]" maxlength="20" minlength="1" />
+							</div>
+						</div>
+
+						<div class="col">
+							<div class="form-group">
+							<input type="number"  step="0.01" class="form-control" name="ebt[]" maxlength="20" minlength="1" />
+							</div>
+						</div>
+						
+                        
+				</div><hr>
 
 
                 <div class="form-row">
 						
-						<div class="col">
+						<div class="col-4">
 							<div class="form-group">
-								<label ><strong>8.25. Tax Expense Tax %  or Amount</strong></label>
+								<label ><strong>8.13. Tax Expense Tax %  or Amount</strong></label>
                                  <a href="#"  data-toggle="tooltip" title="Help text."><i class="far fa-question-circle"></i></a>
-								<input type="text" class="form-control" name="tax_expense_tax_or_amount" maxlength="200" minlength="2" />
 								</div>
 						</div>
 						
+
 						
-                        <div class="col">
-                            <div class="form-group d-none">
-                                <label ><strong>8.26. Tax Expense Tax %  or Amount (Excel file optional)</strong></label>
-                                <input  type="file"  name="tax_expense_tax_or_amount_file" accept=".csv, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel">
-                            </div>
-                        </div>
-				</div><br>
+
+						<div class="col">
+							<div class="form-group">
+								<input type="number"  step="0.01" class="form-control" name="tax_expense_tax_or_amount[]" maxlength="20" minlength="1" />
+								</div>
+						</div>
+
+						<div class="col">
+							<div class="form-group">
+								<input type="number"  step="0.01" class="form-control" name="tax_expense_tax_or_amount[]" maxlength="20" minlength="1" />
+								</div>
+						</div>
+
+						<div class="col">
+							<div class="form-group">
+								<input type="number"  step="0.01" class="form-control" name="tax_expense_tax_or_amount[]" maxlength="20" minlength="1" />
+								</div>
+						</div>
+
+						<div class="col">
+							<div class="form-group">
+								<input type="number"  step="0.01" class="form-control" name="tax_expense_tax_or_amount[]" maxlength="20" minlength="1" />
+								</div>
+						</div>
+
+						<div class="col">
+							<div class="form-group">
+								<input type="number"  step="0.01" class="form-control" name="tax_expense_tax_or_amount[]" maxlength="20" minlength="1" />
+								</div>
+						</div>
+						
+                        
+				</div><hr>
 
 
                 
                 <div class="form-row">
 						
+						<div class="col-4">
+							<div class="form-group">
+								<label ><strong>8.14. PAT (Profit After Tax)</strong></label>
+								</div>
+						</div>
+
+
+						
+
 						<div class="col">
 							<div class="form-group">
-								<label ><strong>8.27. PAT (Profit After Tax)</strong></label>
-                                
-								<input type="text" class="form-control" name="pat" maxlength="200" minlength="2" />
-								</div>
+								<input type="number"  step="0.01" class="form-control" name="pat[]" maxlength="20" minlength="1" />
+							</div>
+						</div>
+
+						<div class="col">
+							<div class="form-group">
+								<input type="number"  step="0.01" class="form-control" name="pat[]" maxlength="20" minlength="1" />
+							</div>
+						</div>
+
+						<div class="col">
+							<div class="form-group">
+								<input type="number"  step="0.01" class="form-control" name="pat[]" maxlength="20" minlength="1" />
+							</div>
+						</div>
+
+						<div class="col">
+							<div class="form-group">
+								<input type="number"  step="0.01" class="form-control" name="pat[]" maxlength="20" minlength="1" />
+							</div>
+						</div>
+
+						<div class="col">
+							<div class="form-group">
+								<input type="number"  step="0.01" class="form-control" name="pat[]" maxlength="20" minlength="1" />
+							</div>
 						</div>
 						
 						
-                        <div class="col">
-                            <div class="form-group d-none">
-                                <label ><strong>8.28. PAT (Profit After Tax) (Excel file optional)</strong></label>
-                                <input  type="file"  name="pat_file" accept=".csv, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel">
-                            </div>
-                        </div>
 				</div><br>
 						
 						
@@ -318,6 +768,24 @@
 </div>
 </div>
 
+<script>
 
+$("input[name='revenue_growth_or_amount[]']").focusout(function(){total_revenue();});
+$("input[name='other_income_growth_or_amount[]']").focusout(function(){total_revenue();});
+function total_revenue(){
+	
+	for (var i=0; i<5;i++)
+	{
+		var total = 0;
+		var r_r = $("input[name='revenue_growth_or_amount[]']")[i].value;
+		var o_r = $("input[name='other_income_growth_or_amount[]']")[i].value;
+		if(r_r){total+=parseFloat(r_r)};
+		if(o_r){total+=parseFloat(o_r)}
+		$("input[name='total_revenue_amount[]']")[i].value=total;
+	}
+}
+
+
+</script>
 
 {% endblock %}
