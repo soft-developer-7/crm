@@ -1,214 +1,101 @@
 {% extends "base-user.html" %}
 {% load static %}
+
 {% block title %}User Form-3{% endblock%}
-{% block page_heading %}Superplan Form 3 of 10{% endblock%}
+{% block page_heading %}Superplan Form 3 of 12{% endblock%}
 {% block content %}
 
 
- 
 
 
-
-	<div class="row mb-3">	
+	<div class="row">	
 		
 	<div class="col">
 		<div class="row">
+
 			<div class="col">
 
-
-
-				<form method="POST" action="/user_form_3_submit">
+				<form method="POST" action="/user_form_3_submit"  enctype="multipart/form-data">
 				{% csrf_token %}
 					<div class="card shadow mb-3">
 						<div class="card-header py-3">
-						<p class="text-primary m-0 font-weight-bold">3. Challenges & Solutions</p>
+						<p class="text-primary m-0 font-weight-bold">3. Introduction</p>
 						</div>
 					<div class="card-body">
 					
 					
 
 				<div class="form-row">
-						<div class="col-md-8">
+						
+						<div class="col-md-6">
 							<div class="form-group">
-								<label ><strong>3.1. Challenges Faced in the Industry </strong><small class="text-danger"> *Max : 200 characters</small></label>
-								<textarea class="form-control"   id="challenges_faced_1" maxlength="200" minlength="4" ></textarea>
-								<textarea class="d-none"  name="challenges_faced_1"  /></textarea>
-							</div>
+								<label ><strong>3.1. About the company</strong><small class="text-danger"> *Max : 1000 characters</small></label>
+              
+                <div id="m1" class="inputbox">
+									<input class="d-none" type="text" name="about_the_company" maxlength="1000" />
+									<div class="content"></div>
+              </div>
+              
+								</div>
 						</div>
-				</div>
+						
+						
+					<div class="col-md-6">
+
+                        <div class="row">
+                            <div class="col">
+                                    <div class="form-group">
+                                        <label ><strong>3.2. Company Logo (JPEG/PNG)</strong></label>
+                                        <input id="photo"  type="file"  name="company_logo" accept="image/jpeg,image/png" />
+                                    </div>
+                                </div>
+                        </div>
 
 
-
-				<div id="c2" class="form-row" style="display:none;">
-						<div class="col-md-8">
-							<div class="form-group">
-								<label ><strong>Challenges Faced in the Industry </strong><small class="text-danger"> *Max : 200 characters</small></label>
-								<textarea class="form-control"   id="challenges_faced_2" maxlength="200" minlength="4" ></textarea>
-								<textarea class="d-none"  name="challenges_faced_2"  /></textarea>
-							</div>
-						</div>
-						<div class="col-md-2 align-self-center">
-							<button class="btn btn-danger" type="button" onclick="remove_challenges(2)"><i class="fa fa-close"></i> Remove</button>
-						</div>
-				</div>
-
-
-
-
-				<div id="c3" class="form-row" style="display:none;">
-						<div class="col-md-8">
-							<div class="form-group">
-								<label ><strong>Challenges Faced in the Industry </strong><small class="text-danger"> *Max : 200 characters</small></label>
-								<textarea class="form-control"   id="challenges_faced_3" maxlength="200" minlength="4" ></textarea>
-								<textarea class="d-none"  name="challenges_faced_3"  /></textarea>
-							</div>
-						</div>
-						<div class="col-md-2 align-self-center">
-							<button class="btn btn-danger" type="button" onclick="remove_challenges(3)"><i class="fa fa-close"></i> Remove</button>
-						</div>
-				</div>
-
-
-
-
-
-
-				<div id="c4" class="form-row" style="display:none;">
-						<div class="col-md-8">
-							<div class="form-group">
-								<label ><strong>Challenges Faced in the Industry </strong><small class="text-danger"> *Max : 200 characters</small></label>
-								<textarea class="form-control"   id="challenges_faced_4" maxlength="200" minlength="4" ></textarea>
-								<textarea class="d-none"  name="challenges_faced_4"  /></textarea>
-							</div>
-						</div>
-						<div class="col-md-2 align-self-center">
-							<button class="btn btn-danger" type="button" onclick="remove_challenges(4)"><i class="fa fa-close"></i> Remove</button>
-						</div>
-				</div>
-
-
-
-
-				<div id="c5" class="form-row" style="display:none;">
-						<div class="col-md-8">
-							<div class="form-group">
-								<label ><strong>Challenges Faced in the Industry </strong><small class="text-danger"> *Max : 200 characters</small></label>
-								<textarea class="form-control"   id="challenges_faced_5" maxlength="200" minlength="4" ></textarea>
-								<textarea class="d-none"  name="challenges_faced_5"  /></textarea>
-							</div>
-						</div>
-						<div class="col-md-2 align-self-center">
-							<button class="btn btn-danger" type="button" onclick="remove_challenges(5)"><i class="fa fa-close"></i> Remove</button>
-						</div>
-				</div>
-
-				<button class="btn btn-success" type="button" onclick="add_challenges();"><i class="fa fa-plus"></i> Add more challenges</button>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-				<hr>
-<!-- Solutions -->
-
-			<div class="form-row">
-				<div class="col-md-8">
-                        <div class="form-group">
-                            <label ><strong>3.2. Solutions Provided by the company</strong><small class="text-danger"> *Max : 200 characters</small></label>
-                            <textarea class="form-control"   id="solutions_provided_1" maxlength="200" minlength="4"></textarea>
-							<textarea class="d-none"  name="solutions_provided_1"  /></textarea>
-                        </div>  
+                        
 					</div>
+
+					
+						
 				</div>
 
 
+				<div class="form-row">
+						
+						<div class="col-md-6">
+						<div class="form-group">
+							<label ><strong>3.3. When was the company founded</strong></label>
+							<!--input class="form-control" type="date" min="1600" max="2020"  name="company_founded" required /--> 
 
+              <div class="input-append date" id="datepicker"  data-date-format="mm-yyyy">
+                   
+                   <input class="form-control" type="text" placeholder="mm-yyyy"  name="company_founded" /> 
+                   <span class="add-on"></span>     
+              </div>  
 
-
-
-			<div id="s2" class="form-row" style="display:none;">
-						<div class="col-md-8">
-							<div class="form-group">
-								<label ><strong>Solutions Provided by the company </strong><small class="text-danger"> *Max : 200 characters</small></label>
-								 <textarea class="form-control"   id="solutions_provided_2" maxlength="200" minlength="4"></textarea>
-							<textarea class="d-none"  name="solutions_provided_2"  /></textarea>
-							</div>
 						</div>
-						<div class="col-md-2 align-self-center">
-							<button class="btn btn-danger" type="button" onclick="remove_solutions(2)"><i class="fa fa-close"></i> Remove</button>
+					</div>
+						
+						
+					<div class="col-md-6">
+						<div class="form-group">
+							<label ><strong>3.4. Industry Type</strong></label>
+							<select class="form-control" name="industry_type" required>
+                                <option>Select Here</option>
+                                <option value="industry type 1">Industry type name 1</option>
+                                <option value="industry type 2">Industry type name  2</option>
+                                <option value="industry type 3">Industry type name  3</option>
+                                <option value="industry type 4">Industry type name  4</option>
+                                <option value="industry type 5">Industry type name  5</option>
+                            </select> 
 						</div>
+					</div>
+						
 				</div>
-
-
-
-			<div id="s3" class="form-row" style="display:none;">
-						<div class="col-md-8">
-							<div class="form-group">
-								<label ><strong>Solutions Provided by the company </strong><small class="text-danger"> *Max : 200 characters</small></label>
-								 <textarea class="form-control"   id="solutions_provided_3" maxlength="200" minlength="4"></textarea>
-							<textarea class="d-none"  name="solutions_provided_3"  /></textarea>
-							</div>
-						</div>
-						<div class="col-md-2 align-self-center">
-							<button class="btn btn-danger" type="button" onclick="remove_solutions(3)"><i class="fa fa-close"></i> Remove</button>
-						</div>
-				</div>
-
-
-			<div id="s4" class="form-row" style="display:none;">
-						<div class="col-md-8">
-							<div class="form-group">
-								<label ><strong>Solutions Provided by the company </strong><small class="text-danger"> *Max : 200 characters</small></label>
-								 <textarea class="form-control"   id="solutions_provided_4" maxlength="200" minlength="4"></textarea>
-							<textarea class="d-none"  name="solutions_provided_4"  /></textarea>
-							</div>
-						</div>
-						<div class="col-md-2 align-self-center">
-							<button class="btn btn-danger" type="button" onclick="remove_solutions(4)"><i class="fa fa-close"></i> Remove</button>
-						</div>
-				</div>
-
-
-
-				<div id="s5" class="form-row" style="display:none;">
-						<div class="col-md-8">
-							<div class="form-group">
-								<label ><strong>Solutions Provided by the company </strong><small class="text-danger"> *Max : 200 characters</small></label>
-								 <textarea class="form-control"   id="solutions_provided_5" maxlength="200" minlength="4"></textarea>
-							<textarea class="d-none"  name="solutions_provided_5"  /></textarea>
-							</div>
-						</div>
-						<div class="col-md-2 align-self-center">
-							<button class="btn btn-danger" type="button" onclick="remove_solutions(5)"><i class="fa fa-close"></i> Remove</button>
-						</div>
-				</div>
-
-
-
-
-				<button class="btn btn-info" type="button" onclick="add_solutions();"><i class="fa fa-plus"></i> Add more solutions</button>
-
-
-
-
-
-
-
-				<br><br>		
+						
+						
+						
+						
 						
 			<div class="form-group">
 				<button class="btn btn-primary btn-sm" type="submit">Save & Next</button>
@@ -221,7 +108,6 @@
 </div>
 </div>
 </div>
-
 
 
 
@@ -279,88 +165,71 @@
 
 <!-- Modal Text editor finish -->
 
-
-
-
  <!-- Quill -->
-  	<script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
+  	
+    <script src="//cdn.quilljs.com/1.3.6/quill.js"></script>
   	<script src="{% static 'assets-quill/js/Quill-Text-Editor.js' %}"></script>
   <!-- Quill -->
 
 
+
+
+
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js" integrity="sha512-T/tUfKSV1bihCnd+MxKD0Hm1uBBroVYBOYSk1knyvQ9VyZJpc/ALb4P0r6ubwVPSGB2GvjeoMAJJImBG12TiaQ==" crossorigin="anonymous"></script>
 
 
-<!-- Challenges script -->
 <script>
-challenges=2;
-function add_challenges()
-{
-	
-	if (challenges<6)
-	{
-		for(var i=2; i<6;i++)
-		{
-			if($('#c'+i).is(':hidden'))
-			{
-				$('#c'+i).show();
-				challenges++;
-				break;
-			}
-		}
-	}
-	else
-	{
-		swal("Maximum Reached !", "You can add maximum 5 challenges!", "warning")
-	}
-}
-function remove_challenges(div_num)
-{
-	var tt_name = "challenges_faced_"+div_num;
-	$('#'+tt_name).html('');
-	$('textarea[name='+tt_name+']').val('');
-
-	$("#c"+div_num).hide();
-	challenges--;
-}
+$("#datepicker").datepicker( {
+    format: "mm-yyyy",
+    startView: "years", 
+    minViewMode: "months"
+});
 </script>
 
 
 
 
 
-<!-- Solution script -->
-<script>
-solutions=2;
-function add_solutions()
-{
-	
-	if (solutions<6)
-	{
-		for(var i=2; i<6;i++)
-		{
-			if($('#s'+i).is(':hidden'))
-			{
-				$('#s'+i).show();
-				solutions++;
-				break;
-			}
-		}
-	}
-	else
-	{
-		swal("Maximum Reached !", "You can add maximum 5 solutions!", "warning")
-	}
-}
-function remove_solutions(div_num)
-{
-	var tt_name = "solutions_provided_"+div_num;
-	$('#'+tt_name).html('');
-	$('textarea[name='+tt_name+']').val('');
+<script>  // Photo size and extension validation
 
-	$("#s"+div_num).hide();
-	solutions--;
-}
+    $("#photo").change(function() {
+    var imgPath = $(this)[0].value;
+    var extn = imgPath.substring(imgPath.lastIndexOf('.') + 1).toLowerCase();
+    var size=Math.round((this.files[0].size)/1024);
+    if(extn == "jpg" || extn == "jpeg" || extn == "png")
+        {
+            if(size>2048)
+                {
+                 
+                    $("#photo").val('');
+
+					swal({
+						title: "Oops !",
+						text: "Image size is larger than 2MB !",
+						icon: "error",
+						button: "ok",
+						});
+                    
+                }
+        }
+
+    else
+        {
+            
+			$("#photo").val('');
+
+			swal({
+				title: "Oops !",
+				text: "Image format must be in JPG/JPEG/PNG !",
+				icon: "error",
+				button: "ok",
+				});
+                    
+                
+        }
+    });
+
 </script>
 
 {% endblock %}

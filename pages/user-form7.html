@@ -2,7 +2,7 @@
 {% load static %}
 
 {% block title %}User Form-7{% endblock%}
-{% block page_heading %}Superplan Form 7 of 10{% endblock%}
+{% block page_heading %}Superplan Form 7 of 12{% endblock%}
 {% block content %}
 
 
@@ -18,7 +18,7 @@
 				{% csrf_token %}
 					<div class="card shadow mb-3">
 						<div class="card-header py-3">
-						<p class="text-primary m-0 font-weight-bold">7. Industry & Competitor Analysis</p>
+						<p class="text-primary m-0 font-weight-bold">7. Marketing Strategies</p>
 						</div>
 					<div class="card-body">
 					
@@ -26,82 +26,73 @@
 
 				<div class="form-row">
 						
-						<div class="col">
+						<div class="col-md-8">
 							<div class="form-group">
-								<label ><strong>7.1. Industry Analysis</strong></label>
-								<textarea class="form-control"   id="industry_analysis" maxlength="8000" minlength="4" />Some automated text will be present here from our Database</textarea>
+								<label ><strong>7.1. Offline Marketing Strategies</strong><small class="text-danger"> *Max : 1000 characters</small></label>
+								<a href="#"  data-toggle="tooltip" title="Help text."><i class="far fa-question-circle"></i></a>
 
-								<textarea class="d-none"  name="industry_analysis" /><p>Some automated text will be present here from our Database</p></textarea>
+
+
+								<div id="m_off1" class="inputbox">
+									<input class="d-none" type="text" name="marketing_strategies_offline[]" maxlength="1000" />
+									<div class="content"></div>
+								</div>
+
+
+
+							</div>
+						</div>
+
+					</div>
+					<div id="m_off_rows"></div>
+
+					<div class="form-row">
+						<div class="col-4">
+								<div class="form-group">
+									
+									<button class="btn btn-success" type="button"  onclick="add_m_off()" ><i class="fas fa-plus"></i> Add</button>
+									<button id="remove_m_off_btn" type="button" onclick="remove_m_off()" class="btn btn-danger" style="display:none;"><i class="fas fa-trash-alt"></i> Remove</button>
+		
+								</div>
+							</div>
+					</div>
+
+
+
+
+					<br><br><hr><br>
+
+
+				<div class="form-row">
+
+						<div class="col-md-8">
+							<div class="form-group">
+								<label ><strong>7.2. Online Marketing Strategies</strong><small class="text-danger"> *Max : 1000 characters</small></label>
+								<a href="#"  data-toggle="tooltip" title="Help text."><i class="far fa-question-circle"></i></a>
+								<div id="m_on1" class="inputbox">
+									<input class="d-none" type="text" name="marketing_strategies_online[]" maxlength="1000" />
+									<div class="content"></div>
+							</div>
 								</div>
 						</div>
 						
-						
-                        <div class="col">
-							<div class="form-group">
-								<label ><strong>7.2. Competitor Analysis</strong></label>
-								<textarea class="form-control"  id="competitor_analysis" maxlength="500" minlength="4" />Some automated text will be present here </textarea>
-
-								<textarea class="d-none"  name="competitor_analysis" /><p>Some automated text will be present here from our Database</p></textarea>
-								</div>
-						</div>
 				</div>
 
-                <div class="form-row">
-						
-						<div class="col-6">
-							<div class="form-group">
-								<label ><strong>7.3. USP</strong></label>
-                                <a href="#"  data-toggle="tooltip" title="Help text."><i class="far fa-question-circle"></i></a>
-								<textarea class="form-control"   id="usp_1" maxlength="5000" minlength="4"   /></textarea>
-								<textarea class="d-none"  name="usp_1" value="" /></textarea>
+				<div id="m_on_rows"></div>
+
+					<div class="form-row">
+						<div class="col-4">
+								<div class="form-group">
+									
+									<button class="btn btn-success" type="button"  onclick="add_m_on()" ><i class="fas fa-plus"></i> Add</button>
+									<button id="remove_m_on_btn" type="button" onclick="remove_m_on()" class="btn btn-danger" style="display:none;"><i class="fas fa-trash-alt"></i> Remove</button>
+		
 								</div>
-						</div>
-                    </div>
-
-
-
-
-					<div id="u2" class="form-row" style="display:none;">
+							</div>
+					</div>
+		
 						
-						<div class="col-6">
-							<div class="form-group">
-								<label ><strong>2 USP</strong></label>
-                                <a href="#"  data-toggle="tooltip" title="Help text."><i class="far fa-question-circle"></i></a>
-								<textarea class="form-control"   id="usp_2" maxlength="5000" minlength="4"   /></textarea>
-								<textarea class="d-none"  name="usp_2" value="" /></textarea>
-								</div>
-						</div>
-
-						<div class="col-2 align-self-center">
-							<button class="btn btn-danger" type="button" onclick="remove_usp(2)"><i class="fa fa-close"></i> Remove</button>
-						</div>
-                    </div>
-
-
-
-
-					<div id="u3" class="form-row" style="display:none;">
-						
-						<div class="col-6">
-							<div class="form-group">
-								<label ><strong>3 USP</strong></label>
-                                <a href="#"  data-toggle="tooltip" title="Help text."><i class="far fa-question-circle"></i></a>
-								<textarea class="form-control"   id="usp_3" maxlength="5000" minlength="4"   /></textarea>
-								<textarea class="d-none"  name="usp_3" value="" /></textarea>
-								</div>
-						</div>
-
-						<div class="col-2 align-self-center">
-							<button class="btn btn-danger" type="button" onclick="remove_usp(3)"><i class="fa fa-close"></i> Remove</button>
-						</div>
-                    </div>
-
-					<button class="btn btn-success" type="button" onclick="add_usp();"><i class="fa fa-plus"></i> Add more USP</button>
-
-						<br><br><br>
-						
-						
-						
+			<br><br><br>
 						
 			<div class="form-group">
 				<button class="btn btn-primary btn-sm" type="submit">Save & Next</button>
@@ -176,42 +167,135 @@
 
 
 
-  
-<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+
+  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
 <script>
-usp=2;
-function add_usp()
+
+var m_off=2;
+
+
+function add_m_off()
 {
 	
-	if (usp<4)
+	if(m_off<6)
 	{
-		for(var i=2; i<4;i++)
-		{
-			if($('#u'+i).is(':hidden'))
-			{
-				$('#u'+i).show();
-				usp++;
-				break;
-			}
-		}
+		$("#m_off_rows").append('<div id="m_off_div'+m_off+'" class="form-row"><div class="col-md-8"><div class="form-group">\
+<div id="m_off'+m_off+'" class="inputbox"><input class="d-none" type="text" name="marketing_strategies_offline[]" maxlength="1000" />\
+<div class="content"></div></div></div></div></div>');
+
+	m_off++;
+
+	
+
 	}
-	else
+	else{
+		swal('Maximum Reached !', 'You can add maximum 5 Strategies !', 'warning');
+	}
+
+	if($("#remove_m_off_btn").is(':hidden'))
 	{
-		swal("Maximum Reached !", "You can add maximum 3 usp!", "warning")
+		$("#remove_m_off_btn").show();
 	}
 }
 
-function remove_usp(div_num)
+
+
+
+
+function remove_m_off()
 {
-	var tt_name = "usp_"+div_num;
-	$('#'+tt_name).html('');
-	$('textarea[name='+tt_name+']').val('');
+	var id=m_off-1;
+	
+	if($('#m_off_div'+id).length)
+	{
+		
+		$("#m_off_div"+id).remove();
+		m_off--;
 
-	$("#u"+div_num).hide();
-	usp--;
+	}
+	if(id<=2)
+	{
+		$("#remove_m_off_btn").hide();
+	}
+	
+
 }
+
+
+
+
+
+
+//--------------------------------------------- online strategy----------------------------
+
+
+
+var m_on=2;
+
+
+function add_m_on()
+{
+	
+	if(m_on<6)
+	{
+		$("#m_on_rows").append('<div id="m_on_div'+m_on+'" class="form-row"><div class="col-md-8"><div class="form-group">\
+<div id="m_on'+m_on+'" class="inputbox"><input class="d-none" type="text" name="marketing_strategies_online[]" maxlength="1000" />\
+<div class="content"></div></div></div></div></div>');
+
+	m_on++;
+
+	
+
+	}
+	else{
+		swal('Maximum Reached !', 'You can add maximum 5 Strategies !', 'warning');
+	}
+
+	if($("#remove_m_on_btn").is(':hidden'))
+	{
+		$("#remove_m_on_btn").show();
+	}
+}
+
+
+
+
+
+function remove_m_on()
+{
+	var id=m_on-1;
+	
+	if($('#m_on_div'+id).length)
+	{
+		
+		$("#m_on_div"+id).remove();
+		m_on--;
+
+	}
+	if(id<=2)
+	{
+		$("#remove_m_on_btn").hide();
+	}
+	
+
+}
+
+
+
+
+
+
+
+
 </script>
+
+
+
+
+
+
 
 
 {% endblock %}

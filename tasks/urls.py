@@ -83,8 +83,7 @@ urlpatterns = [
     #-------------------------- Forms ------------------------
 
    
-    path("user-form0",views.user_form_0,name="user_form_0"),
-    path("user_form_0_submit",views.user_form_0_submit,name="user_form_0_submit"),
+    path("user-form_1",views.user_form_1,name="user_form_1"),
     path("user_form_1_submit",views.user_form_1_submit,name="user_form_1_submit"),
     path("user_form_2_submit",views.user_form_2_submit,name="user_form_2_submit"),
     path("user_form_3_submit",views.user_form_3_submit,name="user_form_3_submit"),
@@ -95,6 +94,8 @@ urlpatterns = [
     path("user_form_8_submit",views.user_form_8_submit,name="user_form_8_submit"),
     path("user_form_9_submit",views.user_form_9_submit,name="user_form_9_submit"),
     path("user_form_10_submit",views.user_form_10_submit,name="user_form_10_submit"),
+    path("user_form_11_submit",views.user_form_11_submit,name="user_form_11_submit"),
+    path("user_form_12_submit",views.user_form_12_submit,name="user_form_12_submit"),
     
 
     path("user-all-superplan-bookings",views.user_all_superplan_bookings,name="user-all-superplan-bookings"),

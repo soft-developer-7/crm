@@ -153,13 +153,13 @@ class super_plan_forms_multiple_files(models.Model):                            
 class super_plan_forms(models.Model):
 
 
-    # Form- 0 ----------------------------------------------------------------------------------------- 11 -------------
+    # Form- 1 ----------------------------------------------------------------------------------------- 11 -------------
     theme = models.CharField(max_length=500,null=True)
     currency = models.CharField(max_length=50,null=True)
     denomination  = models.CharField(max_length=50,null=True)
     pack = models.CharField(max_length=100,null=True)
 
-    # Form-1------------------------------------------------------------------------------------- 1 --------------------
+    # Form-2------------------------------------------------------------------------------------- 1 --------------------
     user = models.ForeignKey(User_db, on_delete=models.CASCADE,null=True)
     company_name = models.CharField(max_length=1000,null=True)
     company_website_link = models.CharField(max_length=1000,null=True)
@@ -170,17 +170,17 @@ class super_plan_forms(models.Model):
     gst_number = models.CharField(max_length=100,null=True)
     gst_name = models.CharField(max_length=500,null=True)
 
-    # Form-2----------------------------------------------------------------------------------------2 -----------------
+    # Form-3----------------------------------------------------------------------------------------2 -----------------
     about_the_company = models.CharField(max_length=7000,null=True)
     company_logo = models.ImageField(upload_to='superplan-files/',null=True,blank=True)
     company_founded = models.CharField(max_length=100,null=True)
     industry_type = models.CharField(max_length=1000,null=True)
 
-    # Form-3------------------------------------------------------------------------------------------3 ---------------
+    # Form-4------------------------------------------------------------------------------------------3 ---------------
     challenges_faced = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='challenges_faced',on_delete=models.SET_NULL, null=True)
     solutions_provided = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='solutions_provided',on_delete=models.SET_NULL, null=True)
 
-    # Form-4--------------------------------------------------------------------------------------------4 -------------
+    # Form-5--------------------------------------------------------------------------------------------4 -------------
     products_and_services = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='products_and_services',on_delete=models.SET_NULL, null=True)
     products_and_services_file = models.ForeignKey(super_plan_forms_multiple_images,related_name='products_and_services_file',on_delete=models.SET_NULL, null=True)
     
@@ -197,25 +197,36 @@ class super_plan_forms(models.Model):
     swot_o = models.CharField(max_length=1000,null=True)
     swot_t = models.CharField(max_length=1000,null=True)
 
-    # Form-5---------------------------------------------------------------------------------------------5 ------------
+    # Form-6---------------------------------------------------------------------------------------------5 ------------
     management_team_name = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='management_team_name',on_delete=models.SET_NULL, null=True)
     management_team_file = models.ForeignKey(super_plan_forms_multiple_images,related_name='management_team_file',on_delete=models.SET_NULL, null=True)
     management_team_contact = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='management_team_contact',on_delete=models.SET_NULL, null=True)
     management_team_designation = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='management_team_designation',on_delete=models.SET_NULL, null=True)
     
 
-    # For-6-----------------------------------------------------------------------------------------------6 ----------
-    marketing_strategies = models.CharField(max_length=8000,null=True)
-    growth_strategy = models.CharField(max_length=8000,null=True)
+    # For-7-----------------------------------------------------------------------------------------------6 ----------
+    marketing_strategies_offline = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='marketing_strategies_offline',on_delete=models.SET_NULL, null=True)
+    marketing_strategies_online = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='marketing_strategies_online',on_delete=models.SET_NULL, null=True)
 
-    # Form-7-----------------------------------------------------------------------------------------------7 ----------
+
+    # For-8-----------------------------------------------------------------------------------------------6 ----------
+    growth_strategy = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='growth_strategy',on_delete=models.SET_NULL, null=True)
+
+    # Form-9-----------------------------------------------------------------------------------------------7 ----------
     industry_analysis = models.CharField(max_length=8000,null=True)
-    competitor_analysis = models.CharField(max_length=8000,null=True)
+    competitor_analysis_n = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='competitor_analysis_n',on_delete=models.SET_NULL, null=True)
+    competitor_analysis_p = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='competitor_analysis_p',on_delete=models.SET_NULL, null=True)
+    competitor_analysis_v1 = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='competitor_analysis_v1',on_delete=models.SET_NULL, null=True)
+    competitor_analysis_v2 = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='competitor_analysis_v2',on_delete=models.SET_NULL, null=True)
+    competitor_analysis_v3 = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='competitor_analysis_v3',on_delete=models.SET_NULL, null=True)
+    competitor_analysis_v4 = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='competitor_analysis_v4',on_delete=models.SET_NULL, null=True)
+    competitor_analysis_v5 = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='competitor_analysis_v5',on_delete=models.SET_NULL, null=True)
+    industry_growth_drivers = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='industry_growth_drivers',on_delete=models.SET_NULL, null=True)
     usp = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='usp',on_delete=models.SET_NULL, null=True)
 
 
 
-    # Form-8-------------------------------------------------------------------------------------------------8 ---------
+    # Form-10-------------------------------------------------------------------------------------------------8 ---------
     revenue_growth_or_amount = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='revenue_growth_or_amount',on_delete=models.SET_NULL, null=True)
 
     other_income_growth_or_amount = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='other_income_growth_or_amount',on_delete=models.SET_NULL, null=True)
@@ -247,7 +258,7 @@ class super_plan_forms(models.Model):
 
 
 
-    # Form -9 ----------------------------------------------------------------------------------------------9 ----------
+    # Form -11 ----------------------------------------------------------------------------------------------9 ----------
     share_capital = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='share_capital',on_delete=models.SET_NULL, null=True)
 
     reserves_and_surplus = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='reserves_and_surplus',on_delete=models.SET_NULL, null=True)
@@ -310,7 +321,7 @@ class super_plan_forms(models.Model):
 
     total_assets = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='total_assets',on_delete=models.SET_NULL, null=True)
 
-    # Form- 10 ----------------------------------------------------------------------------------------- 10 -------------
+    # Form- 12 ----------------------------------------------------------------------------------------- 10 -------------
 
     company_owned_land_and_building = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='company_owned_land_and_building',on_delete=models.SET_NULL, null=True)
 

@@ -2,7 +2,7 @@
 {% load static %}
 
 {% block title %}User Form-6{% endblock%}
-{% block page_heading %}Superplan Form 6 of 10{% endblock%}
+{% block page_heading %}Superplan Form 6 of 12{% endblock%}
 {% block content %}
 
 
@@ -14,11 +14,11 @@
 
 
 
-				<form method="POST" action="/user_form_6_submit">
+				<form method="POST" action="/user_form_6_submit"  enctype="multipart/form-data">
 				{% csrf_token %}
 					<div class="card shadow mb-3">
 						<div class="card-header py-3">
-						<p class="text-primary m-0 font-weight-bold">6. Growth & Marketing Strategies</p>
+						<p class="text-primary m-0 font-weight-bold">6. Management Profile</p>
 						</div>
 					<div class="card-body">
 					
@@ -26,27 +26,115 @@
 
 				<div class="form-row">
 						
-						<div class="col">
+						<div class="col-md-3">
 							<div class="form-group">
-								<label ><strong>6.1. Marketing Strategies</strong><small class="text-danger"> *Max : 300 characters</small></label>
-								<a href="#"  data-toggle="tooltip" title="Help text."><i class="far fa-question-circle"></i></a>
-								<textarea class="form-control"   id="marketing_strategies" maxlength="300" minlength="4" /></textarea>
-								<textarea class="d-none"  name="marketing_strategies"  /></textarea>
+								<label ><strong>Co-Founder </strong></label>
+								<input type="text" class="form-control"   name="management_team_name_1" maxlength="200" minlength="3" />
+								
+								</div>
+						</div>
+
+						<div class="col-md-3">
+							<div class="form-group">
+								<label ><strong>Designation</strong></label>
+								<input type="text" class="form-control"   name="management_team_designation_1" maxlength="200" minlength="1" />
+								</div>
+						</div>
+
+						<div class="col-md-3">
+							<div class="form-group">
+								<label ><strong>contact</strong></label>
+								<input type="text" class="form-control" name="management_team_contact_1" placeholder=" Link/email/phone"   maxlength="200" minlength="2" />
 								</div>
 						</div>
 						
 						
-                        <div class="col">
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label ><strong>Profile image (PNG/JPG)</strong></label>
+                                <input  type="file"  name="management_team_file_1" accept="image/jpeg,image/png">
+                            </div>
+                        </div>
+				</div>
+
+				<br>
+				<hr>
+                <br>
+
+				<div class="form-row">
+						
+						<div class="col-md-3">
 							<div class="form-group">
-								<label ><strong>6.2. Growth Strategy</strong><small class="text-danger"> *Max : 300 characters</small></label>
-								<a href="#"  data-toggle="tooltip" title="Help text."><i class="far fa-question-circle"></i></a>
-								<textarea class="form-control"  id="growth_strategy" maxlength="300" minlength="4"  /></textarea>
-								<textarea class="d-none"  name="growth_strategy"  /></textarea>
+								<label ><strong>Co-Founder </strong></label>
+								<input type="text" class="form-control"   name="management_team_name_2" maxlength="200" minlength="3" />
+								
 								</div>
 						</div>
+
+						<div class="col-md-3">
+							<div class="form-group">
+								<label ><strong>Designation</strong></label>
+								<input type="text" class="form-control"   name="management_team_designation_2" maxlength="200" minlength="1" />
+								</div>
+						</div>
+
+						<div class="col-md-3">
+							<div class="form-group">
+								<label ><strong>contact</strong></label>
+								<input type="text" class="form-control" name="management_team_contact_2" placeholder=" Link/email/phone"   maxlength="200" minlength="2" />
+								</div>
+						</div>
+						
+						
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label ><strong>Profile image (PNG/JPG)</strong></label>
+                                <input  type="file"  name="management_team_file_2" accept="image/jpeg,image/png">
+                            </div>
+                        </div>
+				</div>
+
+				<br>
+				<hr>
+                <br>
+
+
+				<div class="form-row">
+						
+						<div class="col-md-3">
+							<div class="form-group">
+								<label ><strong>Co-Founder </strong></label>
+								<input type="text" class="form-control"   name="management_team_name_3" maxlength="200" minlength="3" />
+								
+								</div>
+						</div>
+
+						<div class="col-md-3">
+							<div class="form-group">
+								<label ><strong>Designation</strong></label>
+								<input type="text" class="form-control"   name="management_team_designation_3" maxlength="200" minlength="1" />
+								</div>
+						</div>
+
+						<div class="col-md-3">
+							<div class="form-group">
+								<label ><strong>contact</strong></label>
+								<input type="text" class="form-control" name="management_team_contact_3" placeholder=" Link/email/phone"   maxlength="200" minlength="2" />
+								</div>
+						</div>
+						
+						
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label ><strong>Profile image (PNG/JPG)</strong></label>
+                                <input  type="file"  name="management_team_file_3" accept="image/jpeg,image/png">
+                            </div>
+                        </div>
 				</div>
 
 
+                <br>
+                
 						
 						
 						
@@ -63,6 +151,10 @@
 </div>
 </div>
 </div>
+
+
+
+
 
 
 
@@ -120,7 +212,47 @@
 
  <!-- Quill -->
   	<script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
-  	<script src="{% static 'assets-quill/js/Quill-Text-Editor.js' %}"></script>
   <!-- Quill -->
 
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<script>  // Photo size and extension validation
+
+    $('input[type="file"]').change(function() {
+    var imgPath = $(this)[0].value;
+    var extn = imgPath.substring(imgPath.lastIndexOf('.') + 1).toLowerCase();
+    var size=Math.round((this.files[0].size)/1024);
+    if(extn == "jpg" || extn == "jpeg" || extn == "png")
+        {
+            if(size>2048)
+                {
+                 
+                    $(this).val('');
+
+					swal({
+						title: "Oops !",
+						text: "Image size is larger than 2MB !",
+						icon: "error",
+						button: "ok",
+						});
+                    
+                }
+        }
+
+    else
+        {
+            
+			$(this).val('');
+
+			swal({
+				title: "Oops !",
+				text: "Image format must be in JPG/JPEG/PNG !",
+				icon: "error",
+				button: "ok",
+				});
+                    
+                
+        }
+    });
+
+</script>
 {% endblock %}

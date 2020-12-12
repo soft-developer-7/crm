@@ -1023,6 +1023,9 @@ def user_profile_update_form(request):                                # User Pro
 def successful_purchased(request):                                # User Successful Purchased
 
     if(auth_user(request)):
+        book = super_plan_forms.objects.filter(id=request.session['form']).get()
+        book.current_fillup_position = 13
+        book.save()
         return render(request,'successful-purchased.html')
     else:
         return render(request,'login.html')
@@ -1031,18 +1034,18 @@ def successful_purchased(request):                                # User Success
 #--------------------------------------------------- User Forms -------------------------------------------
 
 
-def user_form_0(request):                                # User Form 1
+def user_form_1(request):                                # User Form 1
 
     if(auth_user(request)):
         if(request.session.get("form")):
             del request.session['form']
-        return render(request,'user-form0.html')
+        return render(request,'user-form1.html')
     else:
         return render(request,'login.html')
 
 
 
-def user_form_0_submit(request):            # User Form 0 Submit
+def user_form_1_submit(request):            # User Form 1 Submit
 
     if(not request.session.get("form")):
         book = super_plan_forms()
@@ -1064,11 +1067,11 @@ def user_form_0_submit(request):            # User Form 0 Submit
         
         book.pack = 'Starter Pack'
 
-        book.current_fillup_position = 0
+        book.current_fillup_position = 1
         book.save()
         request.session["form"] = book.id
 
-        return render(request,'user-form1.html')
+        return render(request,'user-form2.html')
     else:
         return render(request,'login.html')
 
@@ -1077,7 +1080,7 @@ def user_form_0_submit(request):            # User Form 0 Submit
 
 
 
-def user_form_1_submit(request):            # User Form 1 Submit
+def user_form_2_submit(request):            # User Form 2 Submit
     if(auth_user(request) and request.method=="POST"):
 
         
@@ -1098,12 +1101,12 @@ def user_form_1_submit(request):            # User Form 1 Submit
                 book.gst_name = request.POST["gst_name"]
 
 
-            if(book.current_fillup_position<10):
-                book.current_fillup_position = 1
+            if(book.current_fillup_position<13):
+                book.current_fillup_position = 2
             book.save()
             request.session["form"] = book.id
 
-            return render(request,'user-form2.html')
+            return render(request,'user-form3.html')
         else:
             return render(request,'user-form1.html')
     else:
@@ -1117,7 +1120,7 @@ def user_form_1_submit(request):            # User Form 1 Submit
 
 
 
-def user_form_2_submit(request):            # User Form 2 Submit
+def user_form_3_submit(request):            # User Form 3 Submit
     book = super_plan_forms.objects.filter(id=request.session['form']).get()
     if(auth_user(request) and book and request.method=="POST"):
 
@@ -1128,71 +1131,7 @@ def user_form_2_submit(request):            # User Form 2 Submit
         if(request.FILES.get("company_logo")):
             book.company_logo = request.FILES["company_logo"]
 
-        if(book.current_fillup_position<10):
-            book.current_fillup_position = 2
-        book.save()
-
-        return render(request,'user-form3.html')
-    else:
-        return render(request,'login.html')
-
-
-
-
-
-
-
-
-def user_form_3_submit(request):            # User Form 3 Submit
-    book = super_plan_forms.objects.filter(id=request.session['form']).get()
-    if(auth_user(request) and book and request.method=="POST"):
-
-
-        c=0
-        multi = super_plan_forms_multiple_inputs()
-        multi.user = User_db.objects.filter(id=request.session['user']).get()
-        multi.form_id=request.session['form']
-        
-        for i in range(1,6):
-            if(request.POST.get("challenges_faced_"+str(i))):
-                c+=1
-                if(c==1):
-                     multi.f_1 = request.POST["challenges_faced_"+str(i)]
-                elif(c==2):
-                     multi.f_2 = request.POST["challenges_faced_"+str(i)]
-                elif(c==3):
-                     multi.f_3 = request.POST["challenges_faced_"+str(i)]
-                elif(c==4):
-                     multi.f_4 = request.POST["challenges_faced_"+str(i)]
-                elif(c==5):
-                     multi.f_5 = request.POST["challenges_faced_"+str(i)]
-        multi.save()
-        book.challenges_faced = multi
-
-
-        c=0
-        multi = super_plan_forms_multiple_inputs()
-        multi.user = User_db.objects.filter(id=request.session['user']).get()
-        multi.form_id=request.session['form']
-        
-        for i in range(1,6):
-            if(request.POST.get("solutions_provided_"+str(i))):
-                c+=1
-                if(c==1):
-                     multi.f_1 = request.POST["solutions_provided_"+str(i)]
-                elif(c==2):
-                     multi.f_2 = request.POST["solutions_provided_"+str(i)]
-                elif(c==3):
-                     multi.f_3 = request.POST["solutions_provided_"+str(i)]
-                elif(c==4):
-                     multi.f_4 = request.POST["solutions_provided_"+str(i)]
-                elif(c==5):
-                     multi.f_5 = request.POST["solutions_provided_"+str(i)]
-        multi.save()
-        book.solutions_provided = multi
-
-
-        if(book.current_fillup_position<10):
+        if(book.current_fillup_position<13):
             book.current_fillup_position = 3
         book.save()
 
@@ -1206,41 +1145,35 @@ def user_form_3_submit(request):            # User Form 3 Submit
 
 
 
+
 def user_form_4_submit(request):            # User Form 4 Submit
     book = super_plan_forms.objects.filter(id=request.session['form']).get()
     if(auth_user(request) and book and request.method=="POST"):
 
+        book.challenges_faced = multi_input_insert(request,"challenges_faced[]")
+        book.solutions_provided = multi_input_insert(request,"solutions_provided[]")
 
 
-        multi = super_plan_forms_multiple_inputs()
-        multi.user = User_db.objects.filter(id=request.session['user']).get()
-        multi.form_id=request.session['form']
+        if(book.current_fillup_position<13):
+            book.current_fillup_position = 4
+        book.save()
 
-        if(request.POST.get("products_and_services_1")):
-            multi.f_1 = request.POST["products_and_services_1"]
-
-        if(request.POST.get("products_and_services_2")):
-            multi.f_2 = request.POST["products_and_services_2"]
-
-        multi.save()
-        book.products_and_services = multi
+        return render(request,'user-form5.html')
+    else:
+        return render(request,'login.html')
 
 
 
-        multi = super_plan_forms_multiple_images()
-        multi.user = User_db.objects.filter(id=request.session['user']).get()
-        multi.form_id=request.session['form']
 
-        if(request.FILES.get("products_and_services_file_1")):
-            multi.i_1 = request.FILES["products_and_services_file_1"]
 
-        if(request.FILES.get("products_and_services_file_2")):
-            multi.i_2 = request.FILES["products_and_services_file_2"]
 
-        multi.save()
-        book.products_and_services_file = multi
 
+def user_form_5_submit(request):            # User Form 5 Submit
+    book = super_plan_forms.objects.filter(id=request.session['form']).get()
+    if(auth_user(request) and book and request.method=="POST"):
         
+        book.products_and_services = multi_input_insert(request,"products_and_services[]")
+        book.products_and_services_file = multi_image_insert(request,"products_and_services_file[]")
         book.top_clients= multi_input_insert(request,"top_clients[]")
         book.top_clients_file= multi_image_insert(request,"top_clients_file[]")
         book.milestones_time= multi_input_insert(request,"milestones_time[]")
@@ -1260,10 +1193,10 @@ def user_form_4_submit(request):            # User Form 4 Submit
         if(request.POST.get("swot_t")):
             book.swot_t = request.POST["swot_t"]
 
-        if(book.current_fillup_position<10):
-            book.current_fillup_position = 4
+        if(book.current_fillup_position<13):
+            book.current_fillup_position = 5
         book.save()
-        return render(request,'user-form5.html')
+        return render(request,'user-form6.html')
     else:
         return render(request,'login.html')
 
@@ -1273,7 +1206,7 @@ def user_form_4_submit(request):            # User Form 4 Submit
 
 
 
-def user_form_5_submit(request):            # User Form 5 Submit
+def user_form_6_submit(request):            # User Form 6 Submit
     book = super_plan_forms.objects.filter(id=request.session['form']).get()
     if(auth_user(request) and book and request.method=="POST"):
 
@@ -1347,32 +1280,7 @@ def user_form_5_submit(request):            # User Form 5 Submit
         book.management_team_file=multi
         
 
-        if(book.current_fillup_position<10):
-            book.current_fillup_position = 5
-        book.save()
-        return render(request,'user-form6.html')
-    else:
-        return render(request,'login.html')
-
-
-
-
-
-
-
-
-
-def user_form_6_submit(request):            # User Form 6 Submit
-    book = super_plan_forms.objects.filter(id=request.session['form']).get()
-    if(auth_user(request) and book and request.method=="POST"):
-
-        if(request.POST.get("marketing_strategies")):
-            book.marketing_strategies = request.POST["marketing_strategies"]
-
-        if(request.POST.get("growth_strategy")):
-            book.growth_strategy = request.POST["growth_strategy"]
-
-        if(book.current_fillup_position<10):
+        if(book.current_fillup_position<13):
             book.current_fillup_position = 6
         book.save()
         return render(request,'user-form7.html')
@@ -1391,36 +1299,59 @@ def user_form_7_submit(request):            # User Form 7 Submit
     book = super_plan_forms.objects.filter(id=request.session['form']).get()
     if(auth_user(request) and book and request.method=="POST"):
 
-        if(request.POST.get("industry_analysis")):
-            book.industry_analysis = request.POST["industry_analysis"]
+        book.marketing_strategies_offline = multi_input_insert(request,"marketing_strategies_offline[]")
+        book.marketing_strategies_online = multi_input_insert(request,"marketing_strategies_online[]")
 
-        if(request.POST.get("competitor_analysis")):
-            book.competitor_analysis = request.POST["competitor_analysis"]
-
-
-        c=0
-        multi = super_plan_forms_multiple_inputs()
-        multi.user = User_db.objects.filter(id=request.session['user']).get()
-        multi.form_id=request.session['form']
-
-
-        for i in range(1,4):
-            if(request.POST.get("usp_"+str(i))):
-                c+=1
-                if(c==1):
-                     multi.f_1 = request.POST["usp_"+str(i)]
-                elif(c==2):
-                     multi.f_2 = request.POST["usp_"+str(i)]
-                elif(c==3):
-                     multi.f_3 = request.POST["usp_"+str(i)]
-        
-        multi.save()
-        book.usp = multi
-
-        if(book.current_fillup_position<10):
+        if(book.current_fillup_position<13):
             book.current_fillup_position = 7
         book.save()
         return render(request,'user-form8.html')
+    else:
+        return render(request,'login.html')
+
+
+
+
+def user_form_8_submit(request):            # User Form 8 Submit
+    book = super_plan_forms.objects.filter(id=request.session['form']).get()
+    if(auth_user(request) and book and request.method=="POST"):
+
+        book.growth_strategy = multi_input_insert(request,"growth_strategy[]")
+
+        if(book.current_fillup_position<13):
+            book.current_fillup_position = 8
+        book.save()
+        return render(request,'user-form9.html')
+    else:
+        return render(request,'login.html')
+
+
+
+
+
+
+
+def user_form_9_submit(request):            # User Form 9 Submit
+    book = super_plan_forms.objects.filter(id=request.session['form']).get()
+    if(auth_user(request) and book and request.method=="POST"):
+
+        if(request.POST.get("industry_analysis")):
+            book.industry_analysis = request.POST["industry_analysis"]
+       
+        book.competitor_analysis_n = multi_input_insert(request,"competitor_analysis_n[]")
+        book.competitor_analysis_p = multi_input_insert(request,"competitor_analysis_p[]")
+        book.competitor_analysis_v1 = multi_input_insert(request,"competitor_analysis_v1[]")
+        book.competitor_analysis_v2 = multi_input_insert(request,"competitor_analysis_v2[]")
+        book.competitor_analysis_v3 = multi_input_insert(request,"competitor_analysis_v3[]")
+        book.competitor_analysis_v4 = multi_input_insert(request,"competitor_analysis_v4[]")
+        book.competitor_analysis_v5 = multi_input_insert(request,"competitor_analysis_v5[]")
+        book.industry_growth_drivers = multi_input_insert(request,"industry_growth_drivers[]")
+        book.usp = multi_input_insert(request,"usp[]")
+
+        if(book.current_fillup_position<13):
+            book.current_fillup_position = 9
+        book.save()
+        return render(request,'user-form10.html')
     else:
         return render(request,'login.html')
 
@@ -1435,7 +1366,7 @@ def user_form_7_submit(request):            # User Form 7 Submit
 
 
 
-def user_form_8_submit(request):            # User Form 8 Submit
+def user_form_10_submit(request):            # User Form 10 Submit
     book = super_plan_forms.objects.filter(id=request.session['form']).get()
     if(auth_user(request) and book and request.method=="POST"):
         book.revenue_growth_or_amount = multi_input_insert(request,"revenue_growth_or_amount[]")  
@@ -1454,10 +1385,11 @@ def user_form_8_submit(request):            # User Form 8 Submit
         book.pat = multi_input_insert(request,"pat[]")
         
 
-        if(book.current_fillup_position<10):
-            book.current_fillup_position = 8
+        if(book.current_fillup_position<13):
+            book.current_fillup_position = 10
         book.save()
-        return render(request,'user-form9.html')
+        
+        return render(request,'user-form11.html')
     else:
         return render(request,'login.html')
 
@@ -1470,7 +1402,7 @@ def user_form_8_submit(request):            # User Form 8 Submit
 
 
 
-def user_form_9_submit(request):            # User Form 9 Submit
+def user_form_11_submit(request):            # User Form 11 Submit
     book = super_plan_forms.objects.filter(id=request.session['form']).get()
     if(auth_user(request) and book and request.method=="POST"):
 
@@ -1508,10 +1440,12 @@ def user_form_9_submit(request):            # User Form 9 Submit
         book.total_assets = multi_input_insert(request,"total_assets[]")
 
 
-        if(book.current_fillup_position<10):
-            book.current_fillup_position = 9
+        if(book.current_fillup_position<13):
+            book.current_fillup_position = 11
         book.save()
-        return render(request,'user-form10.html')
+
+        
+        return render(request,'user-form12.html')
     else:
         return render(request,'login.html')
 
@@ -1533,7 +1467,7 @@ def user_form_9_submit(request):            # User Form 9 Submit
 
 
 
-def user_form_10_submit(request):            # User Form 10 Submit
+def user_form_12_submit(request):            # User Form 12 Submit
     book = super_plan_forms.objects.filter(id=request.session['form']).get()
     if(auth_user(request) and book and request.method=="POST"):
         book.company_owned_land_and_building = multi_input_insert(request,"company_owned_land_and_building[]")
@@ -1541,8 +1475,8 @@ def user_form_10_submit(request):            # User Form 10 Submit
         book.depreciation_growth_or_amount = multi_input_insert(request,"depreciation_growth_or_amount[]")
         book.total_capex_expense = multi_input_insert(request,"total_capex_expense[]")
 
-        if(book.current_fillup_position<10):
-            book.current_fillup_position = 10
+        if(book.current_fillup_position<13):
+            book.current_fillup_position = 12
         book.save()
         return redirect("/successful-purchased")
     else:
@@ -1565,7 +1499,7 @@ def user_form_10_submit(request):            # User Form 10 Submit
 def user_all_superplan_bookings(request):                                # User All Template view
 
     if(auth_user(request)):
-        data = super_plan_forms.objects.filter(user=request.session['user'],current_fillup_position=10) 
+        data = super_plan_forms.objects.filter(user=request.session['user'],current_fillup_position=13) 
         return render(request,'user-all-superplan-bookings.html',{"bookings":data})
     else:
         return render(request,'login.html')
@@ -1598,11 +1532,11 @@ def user_template_view_by_get(request,id):                                # User
 def incomplete_superplan_bookings_check(request):                                # User All incomplete superplan form Checking
 
     if(auth_user(request)):
-        data = super_plan_forms.objects.filter(user=request.session['user'],current_fillup_position__lt=10)
+        data = super_plan_forms.objects.filter(user=request.session['user'],current_fillup_position__lt=13)
         if(data):
             return render(request,'user-all-incomplete-superplan-bookings.html',{"bookings":data})
         else:
-            return redirect('user_form_0')
+            return redirect('user_form_1')
 
     else:
         return render(request,'login.html')

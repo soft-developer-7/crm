@@ -308,25 +308,33 @@
 						
 						
 			<div class="form-row">
-				<div class="col">
+				<div class="col-md-8">
 					<div class="form-group"><label>
 						<strong>Full Name</strong></label>
 						<input class="form-control" type="text" name="name" value="{{name}}" >
 					</div>
 				</div>
 				
-				
-				<div class="col">
+            </div>
+                
+        <div class="form-row">
+				<div class="col-md-6">
 				<div class="form-group"><label >
 					<strong>New Password</strong></label>
 					<small class="text-danger">*leave it blank for no update</small>
 					<input id="password" class="form-control" type="password" value="" name="password"></div>
 					<input type="checkbox" onclick="myFunction()"> Show Password 
-				</div>
+                </div>
+                
+                <div class="col-md-6">
+                    <div class="form-group"><label >
+                        <strong>Confirm Password</strong><small class="text-danger"> *leave it blank for no update</small></label>
+                        <input id="cpassword" class="form-control" type="password" ></div>
+                    </div>
 				
 			</div>
 						
-									
+					<br>				
 			<div class="form-row">
 				
 				<div class="col">
@@ -364,6 +372,41 @@
 
 
 <script>
+
+
+
+
+    $("#password").focusout(function(){
+        if($("#password").val())
+        $("#cpassword").prop('required',true);
+
+        else
+        $("#cpassword").prop('required',false);
+    });
+
+    $("#cpassword").focusout(function(){
+        var passw = $("#password").val();
+        var cpass = $("#cpassword").val();
+        
+        if(passw!=cpass)
+        {
+            swal({
+                title: "Oops !",
+                text: "Password not matched !",
+                icon: "error",
+                button: "ok",
+                });
+
+
+                $("#password").val('');
+                $("#cpassword").val('');
+        }
+    });
+
+
+
+
+
 
     $("#profile_photo").change(function() {
     var imgPath = $(this)[0].value;

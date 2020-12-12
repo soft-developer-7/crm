@@ -88,18 +88,19 @@ var toolbarOptions = [
 
 
 
-    //---------------------------------- Textarea Modal-------------------
+    //---------------------------------- Div touch to Modal-------------------
 
 
-var t_name="";
+var cur_box="";
 
-$("textarea").focusin(function(){
-	t_name = this.id;
-	var t_val = $('textarea[name='+t_name+']').val();
+$("body").on("click",".inputbox", function(){
+  cur_box=this.id;
+  var t_val = $(this).find('input').val();
+  var maxlen = $('#'+cur_box+' input').attr('maxLength');
   $(".ql-editor").html(t_val);
   
-  if(this.maxLength>0)
-    limit = this.maxLength;
+  if(maxlen>0)
+    limit = maxlen;
   else
     limit = 1000;
     
@@ -111,13 +112,13 @@ $("textarea").focusin(function(){
 
 $('#get-content').click(function(){
 	$('#richtextModal').modal("hide");
-	var c = quill.getText();
+	//var c = quill.getText();         //Plain text
 	var h =  quill.root.innerHTML;
-	$('#'+t_name).html(c);
+	$('#'+cur_box+' .content').html(h);
 	if(h!="<p><br></p>")
-		$('textarea[name='+t_name+']').val(h);
+		$("#"+cur_box+' input').val(h);
 	else
-		$('textarea[name='+t_name+']').val('');
+  $("#"+cur_box+' input').val("");
 
 });
 
