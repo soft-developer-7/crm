@@ -113,6 +113,7 @@ class super_plan_forms_multiple_images(models.Model):                           
     i_3 = models.ImageField(upload_to='form_images/',null=True,blank=True)
     i_4 = models.ImageField(upload_to='form_images/',null=True,blank=True)
     i_5 = models.ImageField(upload_to='form_images/',null=True,blank=True)
+    i_6 = models.ImageField(upload_to='form_images/',null=True,blank=True)
     date = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
@@ -182,10 +183,15 @@ class super_plan_forms(models.Model):
     # Form-4--------------------------------------------------------------------------------------------4 -------------
     products_and_services = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='products_and_services',on_delete=models.SET_NULL, null=True)
     products_and_services_file = models.ForeignKey(super_plan_forms_multiple_images,related_name='products_and_services_file',on_delete=models.SET_NULL, null=True)
-    top_clients = models.CharField(max_length=2000,null=True)
-    top_clients_file = models.FileField(upload_to='superplan-files/',null=True,blank=True)
-    milestones = models.CharField(max_length=1000,null=True)
-    locations_served = models.CharField(max_length=1000,null=True)
+    
+    top_clients = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='top_clients',on_delete=models.SET_NULL, null=True)
+    top_clients_file = models.ForeignKey(super_plan_forms_multiple_images,related_name='top_clients_file',on_delete=models.SET_NULL, null=True)
+    
+    milestones_time = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='milestones_time',on_delete=models.SET_NULL, null=True)
+    milestones_achievement = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='milestones_achievement',on_delete=models.SET_NULL, null=True)
+    
+    locations_served = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='locations_served',on_delete=models.SET_NULL, null=True)
+    
     swot_s = models.CharField(max_length=1000,null=True)
     swot_w = models.CharField(max_length=1000,null=True)
     swot_o = models.CharField(max_length=1000,null=True)

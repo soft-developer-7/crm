@@ -39,62 +39,36 @@
 							<label><input type="radio" class="form-control" name="theme" value="template1"  required/>Template 1</label>
 							<a href="\user_template_view_1" target="_blank"><img src="{% static 'assets-template/template-image/template1.png' %}" alt="template 1 image" height=130></a>
 							</div>
-							
-							
-
-
-
 						</div>
 
 
 
-					</div>
-
-
-
-
-						
-						
-					<div class="col-4">
-						<div class="form-group">
-							<label ><strong>Currency Selection</strong></label>
-							<select class="form-control" name="currency"  required>
-                                <option value="">Select Here</option>
-                                <option value="euro">€ - Euro</option>
-                                <option value="dollar">$ - Dollar</option>
-                                <option value="pound">£ - Pound</option> 
-                                <option value="rupee">₹ - Rupee</option> 
-                            </select> 
-						</div>
-					</div>
+					</div>	
 						
 			</div>
 
 
             	<div class="form-row">
-					<div class="col-6">
+					<div class="col-md-4">
 						<div class="form-group">
-							<label ><strong> Denomination</strong></label>
+							<label ><strong> Currency units </strong></label>
 							<select class="form-control" name="denomination"  required>
-                                <option value="">Select Here</option>
-                                <option value="Million">Million</option>
-                                <option value="Billion">Billion</option>
-                                <option value="Crore">Crore</option>
-                                <option value="Lakh">Lakh</option>
-                                <option value="Thousands">Thousands</option>
+							
+                                <option value="Lakh">Thousand / Lakh / Crore</option>
+                                <option value="Million">Thousand / Million / Billion</option>
                             </select> 
 						</div>
 					</div>
 
-					<div class="col-6">
+					<div class="col-md-4">
 						<div class="form-group">
-							<label ><strong>Superplan Pack</strong></label>
-							<select class="form-control" name="pack" required>
+							<label ><strong>Currency Selection</strong></label>
+							<select class="form-control" name="currency"  required>
+                                <option value="rupee">₹ - Rupee</option>
+								<option value="dollar">$ - Dollar</option>
+                                <option value="euro">€ - Euro</option>
+                                <option value="pound">£ - Pound</option> 
                                 
-                                <option value="Starter Pack" selected>Starter Pack - 3,500 ₹ /month</option>
-                                <option value="Pro Pack">Pro Pack - 6,000 ₹ /month</option>
-                                <option value="Premium Pack">Premium Pack - 8,999 ₹ /month</option>
-                                <option value="All access Pack">All access Pack - 14,999 ₹ /month</option>
                             </select> 
 						</div>
 					</div>
@@ -103,7 +77,7 @@
 
 						
 						
-						
+			<br>
 			<div class="form-group">
 				<button class="btn btn-primary btn-sm" type="submit">Save & Next</button>
 			</div>

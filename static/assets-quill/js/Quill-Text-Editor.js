@@ -4,8 +4,11 @@ var toolbarOptions = [
     ['bold', 'italic', 'underline'],
     [{ 'list': 'ordered'}, { 'list': 'bullet' }],
     [{ 'header': [1, 2, 3, 4,false] }],
-    ['clean']                                         
+    /*['clean']*/                                         
   ];
+
+ 
+
   
   Quill.register('modules/counter', function(quill, options) {
 
@@ -50,12 +53,26 @@ var toolbarOptions = [
       counter: {
         container: '#counter',
         unit: 'character'
-      }
+      } /*,keyboard: {
+        bindings: {
+          'tab': {
+            key: 9,
+            handler: function(range, context) {
+              return true;
+            }
+          }
+        }
+      } */
     },
 
-
+    
+    placeholder: 'Write here...',
     theme: 'snow' });
   
+
+
+
+
 
     function limit_exceed()
     {
@@ -85,8 +102,10 @@ $("textarea").focusin(function(){
     limit = this.maxLength;
   else
     limit = 1000;
-
-	$('#richtextModal').modal('toggle');
+    
+  $('#richtextModal').modal('toggle');
+  quill.focus();
+ 
 });
 
 
@@ -101,4 +120,5 @@ $('#get-content').click(function(){
 		$('textarea[name='+t_name+']').val('');
 
 });
+
 

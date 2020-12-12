@@ -100,12 +100,14 @@ urlpatterns = [
     path("user-all-superplan-bookings",views.user_all_superplan_bookings,name="user-all-superplan-bookings"),
     path("user_template_view_by_get/<int:id>",views.user_template_view_by_get,name="user_template_view_by_get"),
 
+    path("incomplete-superplan-bookings-check",views.incomplete_superplan_bookings_check,name="incomplete-superplan-bookings-check"),
     path("user-all-incomplete-superplan-bookings",views.user_all_incomplete_superplan_bookings,name="user-all-incomplete-superplan-bookings"),
     path("user_incomplete_superplan_by_get/<int:id>",views.user_incomplete_superplan_by_get,name="user_incomplete_superplan_by_get"),
     path("ajax_call_delete_incomplete_booking",views.ajax_call_delete_incomplete_booking,name="ajax_call_delete_incomplete_booking"),
 
     path("user_template_view_1",views.user_template_view_1,name="user_template_view_1"),
     path("test",views.test,name="test"), # print all multi input data
+    path("test_image",views.test_image,name="test_image"), # print all multi image data
     
     
 

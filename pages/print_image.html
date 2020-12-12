@@ -1,0 +1,19 @@
+<html>
+
+<body>
+
+{% for data in datas  %}
+<br><hr><br>
+id = {{data.id}} <br>
+Name = {{data.user.name}} <br>
+Form id = {{data.form_id}} <br>
+i1 = {% if data.i_1 %} <img src="{{data.i_1.url}}" alt="Image not found" height=150/>{% else %} Not uploaded ! {% endif %}<br>
+i2 = {% if data.i_2 %} <img src="{{data.i_2.url}}" alt="Image not found" height=150/>{% else %} Not uploaded ! {% endif %}<br>
+i3 = {% if data.i_3 %} <img src="{{data.i_3.url}}" alt="Image not found" height=150/>{% else %} Not uploaded ! {% endif %}<br>
+i4 = {% if data.i_4 %} <img src="{{data.i_4.url}}" alt="Image not found" height=150/>{% else %} Not uploaded ! {% endif %}<br>
+i5 = {% if data.i_5 %} <img src="{{data.i_5.url}}" alt="Image not found" height=150/>{% else %} Not uploaded ! {% endif %}<br>
+i6 = {% if data.i_6 %} <img src="{{data.i_6.url}}" alt="Image not found" height=150/>{% else %} Not uploaded ! {% endif %}<br> 
+{% endfor %}
+</body>
+
+<html>

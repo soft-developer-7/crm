@@ -15,27 +15,25 @@
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0" >
                   <thead>
                     <tr>
-                      <th >id</th>
+                      <th >sl</th>
                       <th> Company name</th>
-                      <th> email</th>
                       <th> Theme</th>
-                      <th> Package </th>
                       <th> Booking date time</th>
                       
                       <th>View</th>
+                      <th>Download</th>
                     </tr>
                   </thead>
                   <tfoot>
                     <tr>
 			
-                      <th >id</th>
+                      <th >sl</th>
                       <th> Company name</th>
-                      <th> email</th>
                       <th> Theme</th>
-                      <th> Package </th>
-                      <th> Booking date time</th>
+                      <th> Date Created</th>
                       
                       <th>View</th>
+                      <th>Download</th>
                     </tr>
                   </tfoot>
                   <tbody>
@@ -45,14 +43,12 @@
 {% for booking in bookings %}
 
 <tr>
-<td>{{booking.id}}</td>
+<td>{{forloop.counter}}</td>
 <td> {{booking.company_name}} </td>
-<td class="text-truncate" >{{booking.email_id}}</td>
 <td class="text-truncate" >Theme 1</td>
-<td class="text-truncate" >{{booking.pack}}</td>
-<td class="text-truncate" >{{booking.date}}</td>
-
+<td class="text-truncate" >{{booking.date  | date:"F d Y"}}</td>
 <td><a class="btn btn-success" href="user_template_view_by_get/{{booking.id}}">View</a></td>
+<td><a class="btn btn-primary"  onclick="alert('Under development !');" href="">PDF</a> <a class="btn btn-info" onclick="alert('Please upgrade your plan !');" href="">PPT</a>  <a class="btn btn-danger"  onclick="alert('Please upgrade your plan !');" href="">XLSX</a> </td>
 </tr>
 {% endfor %}
 

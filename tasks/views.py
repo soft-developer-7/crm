@@ -19,7 +19,7 @@ def multi_input_insert(request,name):
     multi.user = user
     multi.form_id = form_id
     values = request.POST.getlist(name)
-    for i in range(0,5):
+    for i in range(0,len(values)):
         if(values[i]):
             val = values[i]
             if i==0:
@@ -32,6 +32,50 @@ def multi_input_insert(request,name):
                 multi.f_4 = val
             elif i==4:
                 multi.f_5 = val
+            elif i==5:
+                multi.f_6 = val
+                 
+        
+    multi.save()
+    return multi
+
+
+
+
+
+
+
+
+
+def multi_image_insert(request,name):
+    user = User_db.objects.filter(id=request.session['user']).get()
+    form_id = request.session['form']
+    multi = super_plan_forms_multiple_images()
+    multi.user = user
+    multi.form_id = form_id
+    values = request.FILES.getlist(name)
+    print('len images-',len(values))
+    for i in range(0,len(values)):
+        if(values[i]):
+            val = values[i]
+            if i==0:
+                multi.i_1 = val
+                print("1 image")
+            elif i==1:
+                multi.i_2 = val
+                print("2 image")
+            elif i==2:
+                multi.i_3 = val
+                print("3 image")
+            elif i==3:
+                multi.i_4 = val
+                print("4 image")
+            elif i==4:
+                multi.i_5 = val
+                print("5 image")
+            elif i==5:
+                multi.i_6 = val
+                print("6 image")
         
     multi.save()
     return multi
@@ -160,7 +204,7 @@ def login_form(request):
                 request.session['name']=user.name
                 request.session['photo']=user.photo.url
                 
-                return redirect('/user-profile-update')
+                return redirect('/user-dashboard')
                 
 
             else:
@@ -1017,8 +1061,8 @@ def user_form_0_submit(request):            # User Form 0 Submit
         if(request.POST.get("denomination")):
             book.denomination = request.POST["denomination"]
 
-        if(request.POST.get("pack")):
-            book.pack = request.POST["pack"]
+        
+        book.pack = 'Starter Pack'
 
         book.current_fillup_position = 0
         book.save()
@@ -1196,19 +1240,13 @@ def user_form_4_submit(request):            # User Form 4 Submit
         multi.save()
         book.products_and_services_file = multi
 
+        
+        book.top_clients= multi_input_insert(request,"top_clients[]")
+        book.top_clients_file= multi_image_insert(request,"top_clients_file[]")
+        book.milestones_time= multi_input_insert(request,"milestones_time[]")
+        book.milestones_achievement= multi_input_insert(request,"milestones_achievement[]")
+        book.locations_served= multi_input_insert(request,"locations_served[]")
 
-
-
-        if(request.POST.get("top_clients")):
-            book.top_clients = request.POST["top_clients"]
-        if(request.FILES.get("top_clients_file")):
-            book.top_clients_file = request.FILES["top_clients_file"]
-
-        if(request.POST.get("milestones")):
-            book.milestones = request.POST["milestones"]
-
-        if(request.POST.get("locations_served")):
-            book.locations_served = request.POST["locations_served"]
         
         if(request.POST.get("swot_s")):
             book.swot_s = request.POST["swot_s"]
@@ -1556,6 +1594,28 @@ def user_template_view_by_get(request,id):                                # User
 
 
 
+
+def incomplete_superplan_bookings_check(request):                                # User All incomplete superplan form Checking
+
+    if(auth_user(request)):
+        data = super_plan_forms.objects.filter(user=request.session['user'],current_fillup_position__lt=10)
+        if(data):
+            return render(request,'user-all-incomplete-superplan-bookings.html',{"bookings":data})
+        else:
+            return redirect('user_form_0')
+
+    else:
+        return render(request,'login.html')
+
+
+
+
+
+
+
+
+
+
 def user_all_incomplete_superplan_bookings(request):                                # User All incomplete superplan form
 
     if(auth_user(request)):
@@ -1618,3 +1678,7 @@ def user_template_view_1(request):                                # User View Te
 def test(request):
     data=super_plan_forms_multiple_inputs.objects.all()
     return render(request,'print_data.html',{'datas':data})
+
+def test_image(request):
+    data=super_plan_forms_multiple_images.objects.all()
+    return render(request,'print_image.html',{'datas':data})

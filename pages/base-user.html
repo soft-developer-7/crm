@@ -23,6 +23,11 @@
   <!-- Quill-->
   <link rel="stylesheet" href="https://cdn.quilljs.com/1.3.6/quill.snow.css">
 
+
+  <!--datepicker-->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css" integrity="sha512-mSYUmp1HYZDFaVKK//63EcZq4iFWFjxSL+Z3T/aCt4IO9Cejm03q3NKKYN6pFQzY0SBOr8h+eCIAZHPXcpZaNw==" crossorigin="anonymous" />
+
+
   <style>
 
   /* Chrome, Safari, Edge, Opera */
@@ -60,7 +65,7 @@ input[type=number] {
     <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
       <!-- Sidebar - Brand -->
-      <a class="sidebar-brand d-flex align-items-center justify-content-center" >
+      <a class="sidebar-brand d-flex align-items-center justify-content-center" href="\user-dashboard">
         <div class="sidebar-brand-icon">
           <img class="img-fluid" src="{% static 'assets/img/logo.png' %}" alt="logo" >
         </div>
@@ -91,22 +96,41 @@ input[type=number] {
 
       <!-- Nav Item - Profile update -->
       <li class="nav-item">
+        <a class="nav-link" href="/user-dashboard">
+          <i class="fas fa-fw fa-home"></i>
+          <span>Dashboard</span></a>
+      </li>
+
+
+      <li class="nav-item">
         <a class="nav-link" href="/user-profile-update">
           <i class="fas fa-fw fa-pencil-alt"></i>
-          <span>Profile update</span></a>
+          <span>User Profile</span></a>
       </li>
 
       <li class="nav-item">
-        <a class="nav-link" href="/user-all-incomplete-superplan-bookings">
-          <i class="fab fa-buffer"></i>
-          <span>Superplan form</span></a>
+        <a class="nav-link" href="/incomplete-superplan-bookings-check">
+          <i class="fas fa-plus"></i>
+          <span>Create New Superplan</span></a>
       </li>
 
 
       <li class="nav-item">
         <a class="nav-link" href="/user-all-superplan-bookings">
           <i class="fas fa-fw fa-id-card"></i>
-          <span>My Superplan bookings</span></a>
+          <span>My Plans</span></a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link" href="/user-all-superplan-bookings">
+          <i class="far fa-images"></i>
+          <span>Theme preview</span></a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link" href="/user-all-superplan-bookings">
+          <i class="fas fa-sliders-h"></i>
+          <span>Plan details and Upgrade</span></a>
       </li>
 
 
