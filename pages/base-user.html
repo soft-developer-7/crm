@@ -251,7 +251,17 @@ input[type=number] {
         <!-- Begin Page Content -->
         <div class="container-fluid" style="min-height:450px;">
           <!-- Page Heading -->
-            <h1 class="h3 mb-0 text-gray-800">{% block page_heading %} {% endblock %} </h1><br/>
+
+          <div class="row">
+
+            <div class="col-md-6">
+              <h1 class="h3 mb-0 text-gray-800">{% block page_heading %} {% endblock %} </h1><br/>
+            </div> 
+
+            {% block form_nav %}
+            {% endblock form_nav %}
+
+          </div>
         <!-- /.container-fluid -->
         {% block content %}
 
@@ -326,12 +336,6 @@ $(document).ready(function(){
 });
   
 
-/*$("textarea").focusin(function(){
- $(this).attr('rows', 10);
-});
-$("textarea").focusout(function(){
- $(this).attr('rows', 2);
-});*/
   </script>
 </body>
 </html>

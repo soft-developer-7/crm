@@ -3,6 +3,42 @@
 
 {% block title %}User Form-5{% endblock%}
 {% block page_heading %}Superplan Form 5 of 12{% endblock%}
+
+
+{% block form_nav %}
+{% if request.session.form %}
+
+
+	<div class="col-md-6 text-right">
+            
+            
+            <div class="btn-group">
+              <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Goto Form Number
+              </button>
+                <div class="dropdown-menu">
+                  <a class="dropdown-item" href="/superplan_form_number/1">1. Theme & Currency Selection</a>
+				  <a class="dropdown-item" href="/superplan_form_number/2">2. Basic informations</a>
+				  <a class="dropdown-item" href="/superplan_form_number/3">3. Introduction</a>
+				  <a class="dropdown-item" href="/superplan_form_number/4">4. Challenges & Solutions</a>
+				  <a class="dropdown-item" href="/superplan_form_number/5">5. Company Profile</a>
+				  <a class="dropdown-item" href="/superplan_form_number/6">6. Management Profile</a>
+				  <a class="dropdown-item" href="/superplan_form_number/7">7. Marketing Strategies</a>
+				  <a class="dropdown-item" href="/superplan_form_number/8">8. Growth Strategies</a>
+				  <a class="dropdown-item" href="/superplan_form_number/9-1">8.1. Hostorical Data</a>
+				  <a class="dropdown-item" href="/superplan_form_number/9">9. Industry & Competitor Analysis</a>
+				  <a class="dropdown-item" href="/superplan_form_number/10">10. Profit & Loss</a>
+				  <a class="dropdown-item" href="/superplan_form_number/11">11. Balance Sheet</a>
+				  <a class="dropdown-item" href="/superplan_form_number/12">12. CAPEX Schedule</a>
+                </div>
+            </div>
+            
+            </div> 
+
+
+{% endif %}
+{% endblock form_nav %}
+
 {% block content %}
 
 
@@ -18,7 +54,7 @@
 				{% csrf_token %}
 					<div class="card shadow mb-3">
 						<div class="card-header py-3">
-						<p class="text-primary m-0 font-weight-bold">4. Company Profile</p>
+						<p class="text-primary m-0 font-weight-bold">5. Company Profile</p>
 						</div>
 					<div class="card-body">
 					
@@ -401,8 +437,22 @@
 						
 						
 						
-			<div class="form-group">
-				<button class="btn btn-primary btn-sm" type="submit">Save & Next</button>
+						<br>
+			<br>
+			<hr>
+			<div class="form-row">
+				<div class="col-md-4 text-center p-1">
+					<a class="btn btn-primary"  href="/superplan_form_number/4"><i class="fas fa-arrow-circle-left"></i> Previous form</a>
+				</div>
+
+				<div class="col-md-4 text-center p-1">
+					<button class="btn btn-success" type="submit"> <b> Save & Next </b></button>
+				</div>
+
+				<div class="col-md-4 text-center p-1">
+					<a class="btn btn-danger"  href="/superplan_form_number/6">Skip <i class="fas fa-arrow-circle-right"></i></i></a>
+				</div>
+
 			</div>
 					
 		</div>

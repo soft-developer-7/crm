@@ -5,6 +5,7 @@ from django.contrib import messages
 from django.contrib.auth.hashers import make_password,check_password
 import json
 from datetime import date
+import datetime
 from django.http import JsonResponse
 from .models import User_db,Pages,Posts,Banners,super_plan_forms,super_plan_forms_multiple_inputs,super_plan_forms_multiple_images,super_plan_forms_multiple_files
 from django.core.paginator import Paginator
@@ -210,12 +211,12 @@ def login_form(request):
             else:
                 
                 messages.info(request,"Invalid user id or password !")
-                return render(request,'login.html')
+                return redirect('/login')
 
         else:
             
             messages.info(request,"Invalid user id or password !")
-            return render(request,'login.html')
+            return redirect('/login')
 
     
 
@@ -267,7 +268,7 @@ def admin_dashboard(request):
         'total_posts':posts,'total_banners':banners,'total_packs':packs,'total_inds':inds,'total_tmps':tmps,
         'total_bookings':bookings})
     else:
-        return render(request,'login.html')
+        return redirect('/login')
 
 
 
@@ -285,7 +286,7 @@ def admin_add_user(request):
     if(auth_admin(request)):
         return render(request,'admin-add-user.html')
     else:
-        return render(request,'login.html')
+        return redirect('/login')
 
 
 
@@ -296,7 +297,7 @@ def admin_all_users(request):
         users = User_db.objects.exclude(role="admin").all()
         return render(request,'admin-all-users.html',{'users':users})
     else:
-        return render(request,'login.html')
+        return redirect('/login')
 
 
 
@@ -308,9 +309,9 @@ def admin_profile_update(request):
             return render(request,'admin-profile-update.html',{'name':user.name,'mobile':user.mobile,
             'email':user.email,'address':user.address,'photo':user.photo.url})
         else:
-            return render(request,'login.html')
+            return redirect('/login')
     else:
-        return render(request,'login.html')
+        return redirect('/login')
 
 
 
@@ -321,7 +322,7 @@ def admin_add_page(request):
     if(auth_admin(request)):
         return render(request,'admin-add-page.html')
     else:
-        return render(request,'login.html')
+        return redirect('/login')
 
 
 
@@ -333,7 +334,7 @@ def admin_all_pages(request):
         pages = Pages.objects.all()
         return render(request,'admin-all-pages.html',{"pages":pages})
     else:
-        return render(request,'login.html')       
+        return redirect('/login')       
 
 
 
@@ -345,7 +346,7 @@ def admin_add_post(request):
     if(auth_admin(request)):
         return render(request,'admin-add-post.html')
     else:
-        return render(request,'login.html')
+        return redirect('/login')
 
 
 
@@ -356,7 +357,7 @@ def admin_all_posts(request):
         posts = Posts.objects.order_by('-pub_date')
         return render(request,'admin-all-posts.html',{"posts":posts})
     else:
-        return render(request,'login.html')    
+        return redirect('/login')    
 
 
 
@@ -369,7 +370,7 @@ def admin_add_banner(request):
     if(auth_admin(request)):
         return render(request,'admin-add-banner.html')
     else:
-        return render(request,'login.html')
+        return redirect('/login')
 
 
 
@@ -380,7 +381,7 @@ def admin_all_banners(request):
         banners = Banners.objects.order_by('-date')
         return render(request,'admin-all-banners.html',{"banners":banners})
     else:
-        return render(request,'login.html')    
+        return redirect('/login')    
 
 
 
@@ -449,9 +450,9 @@ def admin_profile_update_form(request):                                # Admin P
             user.save()
             return redirect("/admin-profile-update")
         else:
-            return render(request,'login.html')
+            return redirect('/login')
     else:
-        return render(request,'login.html')
+        return redirect('/login')
 
 
 
@@ -471,9 +472,9 @@ def admin_profile_photo_update(request):                                # Admin 
             user.save()
             return redirect("/admin-profile-update")
         else:
-            return render(request,'login.html')
+            return redirect('/login')
     else:
-        return render(request,'login.html')
+        return redirect('/login')
             
 
 
@@ -513,9 +514,9 @@ def profile_edit_by_get(request,id):                                # Profile Ed
         if(user.role !="admin"):
             return render(request,'admin-update-user.html',{'id':id,'name':user.name,'mobile':user.mobile,'email':user.email,'address':user.address,'role':user.role,'photo':user.photo.url})
         else:
-            return render(request,'login.html')
+            return redirect('/login')
     else:
-        return render(request,'login.html')
+        return redirect('/login')
 
 
 
@@ -542,7 +543,7 @@ def admin_user_profile_update_form(request):                                # Ad
         user.save()
         return redirect("/admin-all-users")
     else:
-        return render(request,'login.html')
+        return redirect('/login')
 
 
 
@@ -561,7 +562,7 @@ def admin_user_profile_photo_update(request):                               # Ad
         user.save()
         return redirect("/admin-all-users")
     else:
-        return render(request,'login.html')
+        return redirect('/login')
 
 
 
@@ -600,7 +601,7 @@ def admin_new_user_profile_form(request):                                   # Ad
 
         return redirect("/admin-all-users")
     else:
-        return render(request,'login.html')
+        return redirect('/login')
 
 
 
@@ -635,7 +636,7 @@ def admin_new_page_form(request):                                   # Admin New 
         return redirect("/admin-all-pages")
 
     else:
-        return render(request,'login.html')
+        return redirect('/login')
 
 
 
@@ -654,9 +655,9 @@ def page_update_by_get(request,id):                                   # page by 
                 'slug':page.slug,'keywords':page.keywords,'post':page.post})
 
         else:
-            return render(request,'login.html')
+            return redirect('/login')
     else:
-        return render(request,'login.html')
+        return redirect('/login')
 
 
 
@@ -687,7 +688,7 @@ def admin_page_update_form(request):                                   # Admin P
         page.save()
         return redirect("/admin-all-pages")
     else:
-        return render(request,'login.html')
+        return redirect('/login')
 
 
 
@@ -744,7 +745,7 @@ def admin_new_post_form(request):                                   # Admin New 
         return redirect("/admin-all-posts")
 
     else:
-        return render(request,'login.html')
+        return redirect('/login')
 
 
 
@@ -766,9 +767,9 @@ def post_update_by_get(request,id):                                   # Post by 
                 'slug':post.slug,'keywords':post.keywords,'post':post.post,'banner_photo':post.banner_photo.url})
 
         else:
-            return render(request,'login.html')
+            return redirect('/login')
     else:
-        return render(request,'login.html')
+        return redirect('/login')
 
 
 
@@ -801,7 +802,7 @@ def admin_post_update_form(request):                                   # Admin P
         post.save()
         return redirect("/admin-all-posts")
     else:
-        return render(request,'login.html')
+        return redirect('/login')
 
 
 
@@ -853,7 +854,7 @@ def admin_new_banner_form(request):                                   # Admin Ne
         return redirect("/admin-all-banners")
 
     else:
-        return render(request,'login.html')
+        return redirect('/login')
 
 
 
@@ -867,9 +868,9 @@ def banner_update_by_get(request,id):                                   # Banner
             return render(request,'admin-banner-update.html',{'id':id,'title':banner.title,'desc':banner.desc,
             'alt':banner.alt,'category':banner.category,'photo':banner.photo.url})
         else:
-            return render(request,'login.html')
+            return redirect('/login')
     else:
-        return render(request,'login.html')
+        return redirect('/login')
 
 
 
@@ -889,7 +890,7 @@ def admin_banner_update_form(request):                                   # Admin
         banner.save()
         return redirect("/admin-all-banners")
     else:
-        return render(request,'login.html')
+        return redirect('/login')
 
 
 
@@ -943,7 +944,7 @@ def user_dashboard(request):                                # User Dashboard
     if(auth_user(request)):
         return render(request,'user-dashboard.html')
     else:
-        return render(request,'login.html')
+        return redirect('/login')
 
 
 
@@ -958,9 +959,9 @@ def user_profile_update(request):                                # User Profile 
             return render(request,'user-profile-update.html',{'name':user.name,'countrycode':user.countrycode,'mobile':user.mobile,
             'email':user.email,'address':user.address,'photo':user.photo.url})
         else:
-            return render(request,'login.html')
+            return redirect('/login')
     else:
-        return render(request,'login.html')
+        return redirect('/login')
 
 
 
@@ -1005,9 +1006,9 @@ def user_profile_update_form(request):                                # User Pro
 
             return redirect("/user-profile-update")
         else:
-            return render(request,'login.html')
+            return redirect('/login')
     else:
-        return render(request,'login.html')
+        return redirect('/login')
 
 
 
@@ -1028,7 +1029,7 @@ def successful_purchased(request):                                # User Success
         book.save()
         return render(request,'successful-purchased.html')
     else:
-        return render(request,'login.html')
+        return redirect('/login')
 
 
 #--------------------------------------------------- User Forms -------------------------------------------
@@ -1036,12 +1037,17 @@ def successful_purchased(request):                                # User Success
 
 def user_form_1(request):                                # User Form 1
 
+    now = datetime.datetime.now()
+    year = now.year
+    years = [i for i in range(year+5,year-6,-1)]
+    request.session["years"]=years
+
     if(auth_user(request)):
         if(request.session.get("form")):
             del request.session['form']
         return render(request,'user-form1.html')
     else:
-        return render(request,'login.html')
+        return redirect('/login')
 
 
 
@@ -1073,7 +1079,7 @@ def user_form_1_submit(request):            # User Form 1 Submit
 
         return render(request,'user-form2.html')
     else:
-        return render(request,'login.html')
+        return redirect('/login')
 
 
 
@@ -1101,8 +1107,7 @@ def user_form_2_submit(request):            # User Form 2 Submit
                 book.gst_name = request.POST["gst_name"]
 
 
-            if(book.current_fillup_position<13):
-                book.current_fillup_position = 2
+            book.current_fillup_position = 2
             book.save()
             request.session["form"] = book.id
 
@@ -1110,7 +1115,7 @@ def user_form_2_submit(request):            # User Form 2 Submit
         else:
             return render(request,'user-form1.html')
     else:
-        return render(request,'login.html')
+        return redirect('/login')
 
 
 
@@ -1131,13 +1136,13 @@ def user_form_3_submit(request):            # User Form 3 Submit
         if(request.FILES.get("company_logo")):
             book.company_logo = request.FILES["company_logo"]
 
-        if(book.current_fillup_position<13):
-            book.current_fillup_position = 3
+        
+        book.current_fillup_position = 3
         book.save()
 
         return render(request,'user-form4.html')
     else:
-        return render(request,'login.html')
+        return redirect('/login')
 
 
 
@@ -1154,13 +1159,12 @@ def user_form_4_submit(request):            # User Form 4 Submit
         book.solutions_provided = multi_input_insert(request,"solutions_provided[]")
 
 
-        if(book.current_fillup_position<13):
-            book.current_fillup_position = 4
+        book.current_fillup_position = 4
         book.save()
 
         return render(request,'user-form5.html')
     else:
-        return render(request,'login.html')
+        return redirect('/login')
 
 
 
@@ -1193,12 +1197,11 @@ def user_form_5_submit(request):            # User Form 5 Submit
         if(request.POST.get("swot_t")):
             book.swot_t = request.POST["swot_t"]
 
-        if(book.current_fillup_position<13):
-            book.current_fillup_position = 5
+        book.current_fillup_position = 5
         book.save()
         return render(request,'user-form6.html')
     else:
-        return render(request,'login.html')
+        return redirect('/login')
 
 
 
@@ -1280,12 +1283,11 @@ def user_form_6_submit(request):            # User Form 6 Submit
         book.management_team_file=multi
         
 
-        if(book.current_fillup_position<13):
-            book.current_fillup_position = 6
+        book.current_fillup_position = 6
         book.save()
         return render(request,'user-form7.html')
     else:
-        return render(request,'login.html')
+        return redirect('/login')
 
 
 
@@ -1302,12 +1304,11 @@ def user_form_7_submit(request):            # User Form 7 Submit
         book.marketing_strategies_offline = multi_input_insert(request,"marketing_strategies_offline[]")
         book.marketing_strategies_online = multi_input_insert(request,"marketing_strategies_online[]")
 
-        if(book.current_fillup_position<13):
-            book.current_fillup_position = 7
+        book.current_fillup_position = 7
         book.save()
         return render(request,'user-form8.html')
     else:
-        return render(request,'login.html')
+        return redirect('/login')
 
 
 
@@ -1318,12 +1319,11 @@ def user_form_8_submit(request):            # User Form 8 Submit
 
         book.growth_strategy = multi_input_insert(request,"growth_strategy[]")
 
-        if(book.current_fillup_position<13):
-            book.current_fillup_position = 8
+        book.current_fillup_position = 8
         book.save()
         return render(request,'user-form9.html')
     else:
-        return render(request,'login.html')
+        return redirect('/login')
 
 
 
@@ -1348,18 +1348,23 @@ def user_form_9_submit(request):            # User Form 9 Submit
         book.industry_growth_drivers = multi_input_insert(request,"industry_growth_drivers[]")
         book.usp = multi_input_insert(request,"usp[]")
 
-        if(book.current_fillup_position<13):
-            book.current_fillup_position = 9
+        book.current_fillup_position = 9
         book.save()
+        return render(request,'user-form9-1.html')
+    else:
+        return redirect('/login')
+
+
+
+
+
+def user_form_9_1_submit(request):            # User Form 9_1 Submit
+    book = super_plan_forms.objects.filter(id=request.session['form']).get()
+    if(auth_user(request) and book and request.method=="POST"):
+
         return render(request,'user-form10.html')
     else:
-        return render(request,'login.html')
-
-
-
-
-
-
+        return redirect('/login')
 
 
 
@@ -1385,13 +1390,12 @@ def user_form_10_submit(request):            # User Form 10 Submit
         book.pat = multi_input_insert(request,"pat[]")
         
 
-        if(book.current_fillup_position<13):
-            book.current_fillup_position = 10
+        book.current_fillup_position = 10
         book.save()
         
         return render(request,'user-form11.html')
     else:
-        return render(request,'login.html')
+        return redirect('/login')
 
 
 
@@ -1440,14 +1444,13 @@ def user_form_11_submit(request):            # User Form 11 Submit
         book.total_assets = multi_input_insert(request,"total_assets[]")
 
 
-        if(book.current_fillup_position<13):
-            book.current_fillup_position = 11
+        book.current_fillup_position = 11
         book.save()
 
         
         return render(request,'user-form12.html')
     else:
-        return render(request,'login.html')
+        return redirect('/login')
 
 
 
@@ -1475,14 +1478,31 @@ def user_form_12_submit(request):            # User Form 12 Submit
         book.depreciation_growth_or_amount = multi_input_insert(request,"depreciation_growth_or_amount[]")
         book.total_capex_expense = multi_input_insert(request,"total_capex_expense[]")
 
-        if(book.current_fillup_position<13):
-            book.current_fillup_position = 12
+        book.current_fillup_position = 12
         book.save()
         return redirect("/successful-purchased")
     else:
-        return render(request,'login.html')
+        return redirect('/login')
 
 
+
+#----------------------------------------------------- Forms end-----------------------
+
+
+
+
+def superplan_form_number(request,id):                                # User Superplan form by GET
+    if(id=="9-1" or 1<=int(id)<=12 ):
+        if(request.session.get('form')):
+            book = super_plan_forms.objects.filter(id=request.session['form']).get()
+        else:
+            book=False
+        if(auth_user(request) and book ):
+            return render(request,'user-form'+str(id)+'.html',{"data":book})
+        else:
+            return redirect('/login')
+    else:
+        return redirect('/login')
 
 
 
@@ -1502,7 +1522,7 @@ def user_all_superplan_bookings(request):                                # User 
         data = super_plan_forms.objects.filter(user=request.session['user'],current_fillup_position=13) 
         return render(request,'user-all-superplan-bookings.html',{"bookings":data})
     else:
-        return render(request,'login.html')
+        return redirect('/login')
 
 
 
@@ -1520,7 +1540,7 @@ def user_template_view_by_get(request,id):                                # User
             logo=data.company_logo.url
         return render(request,'template/template1.html',{"data":data,"logo":logo,"year":tdate.year})
     else:
-        return render(request,'login.html')
+        return redirect('/login')
 
 
 
@@ -1539,7 +1559,7 @@ def incomplete_superplan_bookings_check(request):                               
             return redirect('user_form_1')
 
     else:
-        return render(request,'login.html')
+        return redirect('/login')
 
 
 
@@ -1556,7 +1576,7 @@ def user_all_incomplete_superplan_bookings(request):                            
         data = super_plan_forms.objects.filter(user=request.session['user'],current_fillup_position__lt=10)
         return render(request,'user-all-incomplete-superplan-bookings.html',{"bookings":data})
     else:
-        return render(request,'login.html')
+        return redirect('/login')
 
 
 
@@ -1568,15 +1588,20 @@ def user_all_incomplete_superplan_bookings(request):                            
 def user_incomplete_superplan_by_get(request,id):                                # User incomplete superplan form by GET
 
     if(auth_user(request)):
+        now = datetime.datetime.now()
+        year = now.year
+        years = [i for i in range(year+5,year-6,-1)]
+        request.session["years"]=years
+
         book=super_plan_forms.objects.filter(id=id,user=request.session['user']).get()
         if(book):
             request.session["form"] = book.id
             form_url = 'user-form'+str((book.current_fillup_position)+1)+'.html'
             return render(request,form_url)
         else:
-            return render(request,'login.html')
+            return redirect('/login')
     else:
-        return render(request,'login.html')
+        return redirect('/login')
 
 
 
@@ -1603,7 +1628,7 @@ def user_template_view_1(request):                                # User View Te
     if(auth_user(request)):
         return render(request,'template/tem-1.html')
     else:
-        return render(request,'login.html')
+        return redirect('/login')
 
 
 

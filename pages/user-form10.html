@@ -3,6 +3,42 @@
 
 {% block title %}User Form-10{% endblock%}
 {% block page_heading %}Superplan Form 10 of 12{% endblock%}
+
+
+{% block form_nav %}
+{% if request.session.form %}
+
+
+	<div class="col-md-6 text-right">
+            
+            
+            <div class="btn-group">
+              <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Goto Form Number
+              </button>
+                <div class="dropdown-menu">
+                  <a class="dropdown-item" href="/superplan_form_number/1">1. Theme & Currency Selection</a>
+				  <a class="dropdown-item" href="/superplan_form_number/2">2. Basic informations</a>
+				  <a class="dropdown-item" href="/superplan_form_number/3">3. Introduction</a>
+				  <a class="dropdown-item" href="/superplan_form_number/4">4. Challenges & Solutions</a>
+				  <a class="dropdown-item" href="/superplan_form_number/5">5. Company Profile</a>
+				  <a class="dropdown-item" href="/superplan_form_number/6">6. Management Profile</a>
+				  <a class="dropdown-item" href="/superplan_form_number/7">7. Marketing Strategies</a>
+				  <a class="dropdown-item" href="/superplan_form_number/8">8. Growth Strategies</a>
+				  <a class="dropdown-item" href="/superplan_form_number/9-1">8.1. Hostorical Data</a>
+				  <a class="dropdown-item" href="/superplan_form_number/9">9. Industry & Competitor Analysis</a>
+				  <a class="dropdown-item" href="/superplan_form_number/10">10. Profit & Loss</a>
+				  <a class="dropdown-item" href="/superplan_form_number/11">11. Balance Sheet</a>
+				  <a class="dropdown-item" href="/superplan_form_number/12">12. CAPEX Schedule</a>
+                </div>
+            </div>
+            
+            </div> 
+
+
+{% endif %}
+{% endblock form_nav %}
+
 {% block content %}
 
 
@@ -18,48 +54,76 @@
 				{% csrf_token %}
 					<div class="card shadow mb-3">
 						<div class="card-header py-3">
-						<p class="text-primary m-0 font-weight-bold">8. Profit & Loss</p>
+						<p class="text-primary m-0 font-weight-bold">10. Profit & Loss</p>
 						</div>
 					<div class="card-body">
 					
 					
 				<div class="form-row text-center">
 						
-						<div class="col-4 border-right">
+						<div class="col-md-4 border-right">
 							<div class="form-group">
-								<label ><strong>Field</strong></label>
+								<label ></label>
 							</div>
 						</div>
 
 						<div class="col border-right">
 							<div class="form-group">
-								<label ><strong>Year 1</strong></label>
+								<select class="form-control" name="revenue_growth_or_amount_years[]">
+									<option value="Year1">Year1</option>
+									{% for i in request.session.years %}
+										<option value="{{i}}">{{ i }}</option>
+									{% endfor %}
+								</select>
+								
 							</div>
 						</div>
 
 						<div class="col border-right">
 							<div class="form-group">
-								<label ><strong>Year 2</strong></label>
+								<select class="form-control" name="revenue_growth_or_amount_years[]">
+									<option value="Year2">Year2</option>
+									{% for i in request.session.years %}
+										<option value="{{i}}">{{ i }}</option>
+									{% endfor %}
+								</select>
 							</div>
 						</div>
 
 						<div class="col border-right">
 							<div class="form-group">
-								<label ><strong>Year 3</strong></label>
+								<select class="form-control" name="revenue_growth_or_amount_years[]">
+									<option value="Year3">Year3</option>
+									{% for i in request.session.years %}
+										<option value="{{i}}">{{ i }}</option>
+									{% endfor %}
+								</select>
 							</div>
 						</div>
 
 						<div class="col border-right">
 							<div class="form-group">
-								<label ><strong>Year 4</strong></label>
+								<select class="form-control" name="revenue_growth_or_amount_years[]">
+									<option value="Year4">Year4</option>
+									{% for i in request.session.years %}
+										<option value="{{i}}">{{ i }}</option>
+									{% endfor %}
+								</select>
 							</div>
 						</div>
 
 						<div class="col border-right">
 							<div class="form-group">
-								<label ><strong>Year 5</strong></label>
+								<select class="form-control" name="revenue_growth_or_amount_years[]">
+									<option value="Year5">Year5</option>
+									{% for i in request.session.years %}
+										<option value="{{i}}">{{ i }}</option>
+									{% endfor %}
+								</select>
 							</div>
 						</div>
+
+						
 				</div>
 				<hr>
 
@@ -67,7 +131,7 @@
 						
 						<div class="col-4">
 							<div class="form-group">
-								<label ><strong>8.1. Revenue Growth % or Amount</strong></label>
+								<label ><strong>10.1. Revenue Growth % or Amount</strong></label>
                                 <a href="#"  data-toggle="tooltip" title="Help text."><i class="far fa-question-circle"></i></a>
 								</div>
 						</div>
@@ -115,7 +179,7 @@
 						
 						<div class="col-4">
 							<div class="form-group">
-								<label ><strong>8.2. Other Income Growth % or Amount</strong></label>
+								<label ><strong>10.2. Other Income Growth % or Amount</strong></label>
                                 <a href="#"  data-toggle="tooltip" title="Help text."><i class="far fa-question-circle"></i></a>
 								</div>
 						</div>
@@ -160,7 +224,7 @@
 						
 						<div class="col-4">
 							<div class="form-group">
-								<label ><strong>8.3. Total Revenue Amount</strong></label>
+								<label ><strong>10.3. Total Revenue Amount</strong></label>
 								</div>
 						</div>
 
@@ -211,39 +275,69 @@
 
 				<div class="form-row text-center">
 						
-						<div class="col-4 border-right">
+						<div class="col-md-4 border-right">
 							<div class="form-group">
-								<label ><strong>Field</strong></label>
+								<label ></label>
 							</div>
 						</div>
 
 						<div class="col border-right">
 							<div class="form-group">
-								<label ><strong>Year 1</strong></label>
+								<select class="form-control" name="operating_expenses_growth_or_amount_years[]">
+									<option value="Year1">Year1</option>
+									{% for i in request.session.years %}
+										<option value="{{i}}">{{ i }}</option>
+									{% endfor %}
+								</select>
+								
 							</div>
 						</div>
 
 						<div class="col border-right">
 							<div class="form-group">
-								<label ><strong>Year 2</strong></label>
+								<select class="form-control" name="operating_expenses_growth_or_amount_years[]">
+									<option value="Year2">Year2</option>
+									{% for i in request.session.years %}
+										<option value="{{i}}">{{ i }}</option>
+									{% endfor %}
+								</select>
+								
 							</div>
 						</div>
 
 						<div class="col border-right">
 							<div class="form-group">
-								<label ><strong>Year 3</strong></label>
+								<select class="form-control" name="operating_expenses_growth_or_amount_years[]">
+									<option value="Year3">Year3</option>
+									{% for i in request.session.years %}
+										<option value="{{i}}">{{ i }}</option>
+									{% endfor %}
+								</select>
+								
 							</div>
 						</div>
 
 						<div class="col border-right">
 							<div class="form-group">
-								<label ><strong>Year 4</strong></label>
+								<select class="form-control" name="operating_expenses_growth_or_amount_years[]">
+									<option value="Year4">Year4</option>
+									{% for i in request.session.years %}
+										<option value="{{i}}">{{ i }}</option>
+									{% endfor %}
+								</select>
+								
 							</div>
 						</div>
 
 						<div class="col border-right">
 							<div class="form-group">
-								<label ><strong>Year 5</strong></label>
+								<select class="form-control" name="operating_expenses_growth_or_amount_years[]">
+									<option value="Year5">Year5</option>
+									{% for i in request.session.years %}
+										<option value="{{i}}">{{ i }}</option>
+									{% endfor %}
+								</select>
+								
 							</div>
 						</div>
 				</div>
@@ -254,7 +348,7 @@
 						
 						<div class="col-4">
 							<div class="form-group">
-								<label ><strong>8.4. Operating Expenses Growth % or Amount</strong>
+								<label ><strong>10.4. Operating Expenses Growth % or Amount</strong>
                                 <a href="#"  data-toggle="tooltip" title="Help text."><i class="far fa-question-circle"></i></a></label>
 								</div>
 						</div>
@@ -299,7 +393,7 @@
 						
 						<div class="col-4">
 							<div class="form-group">
-								<label ><strong>8.5. Employee Cost</strong></label>
+								<label ><strong>10.5. Employee Expense</strong></label>
                                 <a href="#"  data-toggle="tooltip" title="Help text."><i class="far fa-question-circle"></i></a>
 								</div>
 						</div>
@@ -345,7 +439,7 @@
 						
 						<div class="col-4">
 							<div class="form-group">
-								<label ><strong>8.6. General & Administration Cost</strong></label>
+								<label ><strong>10.6. General & Administration Expense</strong></label>
                                 <a href="#"  data-toggle="tooltip" title="Help text."><i class="far fa-question-circle"></i></a>
 								
 								</div>
@@ -395,7 +489,7 @@
 						
 						<div class="col-4">
 							<div class="form-group">
-								<label ><strong>8.7. Selling & Marketing Cost</strong></label>
+								<label ><strong>10.7. Selling & Marketing Expense</strong></label>
                                 <a href="#"  data-toggle="tooltip" title="Help text."><i class="far fa-question-circle"></i></a>
 								</div>
 						</div>
@@ -442,7 +536,7 @@
 						
 						<div class="col-4">
 							<div class="form-group">
-								<label ><strong>8.8. Other Expenses Growth % or Amount </strong></label>
+								<label ><strong>10.8. Other Expenses Growth % or Amount </strong></label>
 								</div>
 						</div>
 
@@ -487,7 +581,7 @@
 						
 						<div class="col-4">
 							<div class="form-group">
-								<label ><strong>8.9. EBITDA (Earnings Before Interest, Tax, Depreciation & Ammortisation) Amount </strong></label>
+								<label ><strong>10.9. EBITDA (Earnings Before Interest, Tax, Depreciation & Ammortisation) Amount </strong></label>
 								</div>
 						</div>
 
@@ -531,7 +625,7 @@
 						
 						<div class="col-4">
 							<div class="form-group">
-								<label ><strong>8.10. Depreciation % or Amount</strong></label>
+								<label ><strong>10.10. Depreciation % or Amount</strong></label>
                                  <a href="#"  data-toggle="tooltip" title="Help text."><i class="far fa-question-circle"></i></a>
 								</div>
 						</div>
@@ -576,7 +670,7 @@
 						
 						<div class="col-4">
 							<div class="form-group">
-								<label ><strong>8.11. Interest Expense Interest %  or Amount</strong>
+								<label ><strong>10.11. Interest Expense Interest %  or Amount</strong>
                                  <a href="#"  data-toggle="tooltip" title="Help text."><i class="far fa-question-circle"></i></a></label>
 								</div>
 						</div>
@@ -623,7 +717,7 @@
 						
 						<div class="col-4">
 							<div class="form-group">
-								<label ><strong>8.12. EBT (Earnings Before Tax)</strong></label>								
+								<label ><strong>10.12. EBT (Earnings Before Tax)</strong></label>								
 								</div>
 						</div>
 						
@@ -668,7 +762,7 @@
 						
 						<div class="col-4">
 							<div class="form-group">
-								<label ><strong>8.13. Tax Expense Tax %  or Amount</strong></label>
+								<label ><strong>10.13. Tax Expense Tax %  or Amount</strong></label>
                                  <a href="#"  data-toggle="tooltip" title="Help text."><i class="far fa-question-circle"></i></a>
 								</div>
 						</div>
@@ -715,7 +809,7 @@
 						
 						<div class="col-4">
 							<div class="form-group">
-								<label ><strong>8.14. PAT (Profit After Tax)</strong></label>
+								<label ><strong>10.14. PAT (Profit After Tax)</strong></label>
 								</div>
 						</div>
 
@@ -755,9 +849,22 @@
 						
 				</div><br>
 						
-						
-			<div class="form-group">
-				<button class="btn btn-primary btn-sm" type="submit">Save & Next</button>
+						<br>
+			<br>
+			<hr>
+			<div class="form-row">
+				<div class="col-md-4 text-center p-1">
+					<a class="btn btn-primary"  href="/superplan_form_number/9"><i class="fas fa-arrow-circle-left"></i> Previous form</a>
+				</div>
+
+				<div class="col-md-4 text-center p-1">
+					<button class="btn btn-success" type="submit"> <b> Save & Next </b></button>
+				</div>
+
+				<div class="col-md-4 text-center p-1">
+					<a class="btn btn-danger"  href="/superplan_form_number/11">Skip <i class="fas fa-arrow-circle-right"></i></i></a>
+				</div>
+
 			</div>
 					
 		</div>

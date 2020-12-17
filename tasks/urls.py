@@ -83,7 +83,7 @@ urlpatterns = [
     #-------------------------- Forms ------------------------
 
    
-    path("user-form_1",views.user_form_1,name="user_form_1"),
+    path("user_form_1",views.user_form_1,name="user_form_1"),
     path("user_form_1_submit",views.user_form_1_submit,name="user_form_1_submit"),
     path("user_form_2_submit",views.user_form_2_submit,name="user_form_2_submit"),
     path("user_form_3_submit",views.user_form_3_submit,name="user_form_3_submit"),
@@ -93,6 +93,7 @@ urlpatterns = [
     path("user_form_7_submit",views.user_form_7_submit,name="user_form_7_submit"),
     path("user_form_8_submit",views.user_form_8_submit,name="user_form_8_submit"),
     path("user_form_9_submit",views.user_form_9_submit,name="user_form_9_submit"),
+    path("user_form_9_1_submit",views.user_form_9_1_submit,name="user_form_9_1_submit"),
     path("user_form_10_submit",views.user_form_10_submit,name="user_form_10_submit"),
     path("user_form_11_submit",views.user_form_11_submit,name="user_form_11_submit"),
     path("user_form_12_submit",views.user_form_12_submit,name="user_form_12_submit"),
@@ -105,6 +106,11 @@ urlpatterns = [
     path("user-all-incomplete-superplan-bookings",views.user_all_incomplete_superplan_bookings,name="user-all-incomplete-superplan-bookings"),
     path("user_incomplete_superplan_by_get/<int:id>",views.user_incomplete_superplan_by_get,name="user_incomplete_superplan_by_get"),
     path("ajax_call_delete_incomplete_booking",views.ajax_call_delete_incomplete_booking,name="ajax_call_delete_incomplete_booking"),
+
+
+
+
+    path("superplan_form_number/<str:id>",views.superplan_form_number,name="superplan_form_number"),
 
     path("user_template_view_1",views.user_template_view_1,name="user_template_view_1"),
     path("test",views.test,name="test"), # print all multi input data

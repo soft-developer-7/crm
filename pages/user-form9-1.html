@@ -1,0 +1,90 @@
+{% extends "base-user.html" %}
+{% load static %}
+
+{% block title %}User Form{% endblock%}
+{% block page_heading %}Superplan Form {% endblock%}
+
+
+{% block form_nav %}
+{% if request.session.form %}
+
+
+	<div class="col-md-6 text-right">
+            
+            
+            <div class="btn-group">
+              <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Goto Form Number
+              </button>
+                <div class="dropdown-menu">
+                  <a class="dropdown-item" href="/superplan_form_number/1">1. Theme & Currency Selection</a>
+				  <a class="dropdown-item" href="/superplan_form_number/2">2. Basic informations</a>
+				  <a class="dropdown-item" href="/superplan_form_number/3">3. Introduction</a>
+				  <a class="dropdown-item" href="/superplan_form_number/4">4. Challenges & Solutions</a>
+				  <a class="dropdown-item" href="/superplan_form_number/5">5. Company Profile</a>
+				  <a class="dropdown-item" href="/superplan_form_number/6">6. Management Profile</a>
+				  <a class="dropdown-item" href="/superplan_form_number/7">7. Marketing Strategies</a>
+				  <a class="dropdown-item" href="/superplan_form_number/8">8. Growth Strategies</a>
+				  <a class="dropdown-item" href="/superplan_form_number/9-1">8.1. Hostorical Data</a>
+				  <a class="dropdown-item" href="/superplan_form_number/9">9. Industry & Competitor Analysis</a>
+				  <a class="dropdown-item" href="/superplan_form_number/10">10. Profit & Loss</a>
+				  <a class="dropdown-item" href="/superplan_form_number/11">11. Balance Sheet</a>
+				  <a class="dropdown-item" href="/superplan_form_number/12">12. CAPEX Schedule</a>
+                </div>
+            </div>
+            
+            </div> 
+
+
+{% endif %}
+{% endblock form_nav %}
+
+
+{% block content %}
+
+
+	<div class="row mb-3">	
+		
+	<div class="col">
+		<div class="row">
+			<div class="col">
+
+
+
+				<form method="POST" action="/user_form_9_1_submit">
+				{% csrf_token %}
+					<div class="card shadow mb-3">
+						<div class="card-header py-3">
+						<p class="text-primary m-0 font-weight-bold">Hostorical Data</p>
+						</div>
+					<div class="card-body">
+					
+					
+
+				<div class="container text-center">
+					<h3>Do you have your companies Historical Data ?</h3>
+				</div>
+						
+			<div class="form-group text-center">
+
+				<button id="btn" onclick="$('#box').show();" class="btn btn-success btn-lg m-2" type="button">Yes</button>
+                <button class="btn btn-danger btn-lg m-2" type="submit">No</button></form>
+				<a class="btn btn-primary btn-lg m-2" href="/superplan_form_number/12" >Skip</a>
+			</div>
+
+            <div id="box" class="container bg-white border shadow text-center" style="display:none; min-height:150px;padding-top:50px;">
+			<a href="{% static 'files/demo.xlsx'%}" target="_blank"> 
+			<u><h4>Download the Historical data format excel file here <i class="fas fa-download"></i></h4></u></div>
+					
+		</div>
+	</div>
+</form>
+</div>
+</div>
+</div>
+</div>
+
+
+
+
+{% endblock %}
