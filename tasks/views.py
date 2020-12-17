@@ -403,7 +403,7 @@ def admin_login_form(request):
 
     if(request.method=="POST"):
         email = request.POST['email']
-        user = User_db.objects.filter(email=email).get()
+        user = User_db.objects.filter(email=email)
         if(user and user.role=="admin"):
             password = request.POST['password']
 
