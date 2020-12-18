@@ -1039,7 +1039,7 @@ def user_form_1(request):                                # User Form 1
 
     now = datetime.datetime.now()
     year = now.year
-    years = [i for i in range(year+5,year-6,-1)]
+    years = [i for i in range(year-5,year+6)]
     request.session["years"]=years
 
     if(auth_user(request)):
@@ -1590,7 +1590,7 @@ def user_incomplete_superplan_by_get(request,id):                               
     if(auth_user(request)):
         now = datetime.datetime.now()
         year = now.year
-        years = [i for i in range(year+5,year-6,-1)]
+        years = [i for i in range(year-5,year+6)]
         request.session["years"]=years
 
         book=super_plan_forms.objects.filter(id=id,user=request.session['user']).get()

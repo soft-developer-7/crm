@@ -3,6 +3,14 @@
 
 {% block title %}User Form-9{% endblock%}
 
+{% block style %}
+.div_icon{
+	cursor:pointer;
+}
+
+{% endblock%}
+
+
 {% block page_heading %}Superplan Form 9 of 12{% endblock%}
 
 
@@ -67,7 +75,7 @@
 						
 						<div class="col-md-8">
 							<div class="form-group">
-								<label ><strong>9.1. Industry Analysis</strong></label>
+								<label ><strong>Industry Analysis</strong></label>
 								<div id="ind1" class="inputbox">
 									<input class="d-none" type="text" name="industry_analysis" maxlength="1000" />
 									<div class="content"></div>
@@ -85,7 +93,7 @@
 
                         <div class="col">
 							<div class="form-group">
-								<label ><strong>9.2. Competitor Analysis</strong></label></div>
+								<label ><strong>Competitor Analysis</strong> (Click the icon for change)</label></div>
 						</div>
 				</div>
 				<br>
@@ -100,31 +108,31 @@
 
 						<div class="col-md-2 border-right">
 							<div class="form-group">
-								<input type="text" class="form-control" name="competitor_analysis_p[]" maxlength="200" placeholder="parameter1" />
+								<input type="text" class="form-control" name="competitor_analysis_p[]" maxlength="200" value="parameter1" />
 							</div>
 						</div>
 
 						<div class="col-md-2 border-right">
 							<div class="form-group">
-								<input type="text" class="form-control" name="competitor_analysis_p[]" maxlength="200" placeholder="parameter2" />
+								<input type="text" class="form-control" name="competitor_analysis_p[]" maxlength="200" value="parameter2" />
 							</div>
 						</div>
 
 						<div class="col-md-2 border-right">
 							<div class="form-group">
-								<input type="text" class="form-control" name="competitor_analysis_p[]" maxlength="200" placeholder="parameter3" />
+								<input type="text" class="form-control" name="competitor_analysis_p[]" maxlength="200" value="parameter3" />
 							</div>
 						</div>
 
 						<div class="col-md-2 border-right">
 							<div class="form-group">
-								<input type="text" class="form-control" name="competitor_analysis_p[]" maxlength="200" placeholder="parameter4" />
+								<input type="text" class="form-control" name="competitor_analysis_p[]" maxlength="200" value="parameter4" />
 							</div>
 						</div>
 
 						<div class="col-md-2 border-right">
 							<div class="form-group">
-								<input type="text" class="form-control" name="competitor_analysis_p[]" maxlength="200" placeholder="parameter5" />
+								<input type="text" class="form-control" name="competitor_analysis_p[]" maxlength="200" value="parameter5" />
 							</div>
 						</div>
 
@@ -141,33 +149,54 @@
 					</div>
 
 					<div class="col-md-2 border-right">
-						<div class="form-group">
-							<input type="checkbox" class="form-control" name="competitor_analysis_v1[]" value="1" />
-						</div>
+						
+								<input hidden id="c11" type="checkbox" class="form-control" name="competitor_analysis_v1[]" value="1" />
+							
+							<div id="11" class="div_icon">
+								<i class="fas fa-times fa-2x text-danger"></i>
+							</div>
+						
 					</div>
 
 					<div class="col-md-2 border-right">
-						<div class="form-group">
-							<input type="checkbox" class="form-control" name="competitor_analysis_v1[]" value="2" />
-						</div>
+						
+							
+								<input hidden id="c12" type="checkbox" class="form-control" name="competitor_analysis_v1[]" value="2" />
+							
+							<div id="12" class="div_icon">
+								<i class="fas fa-times fa-2x text-danger"></i>
+							</div>
+						
 					</div>
 
 					<div class="col-md-2 border-right">
-						<div class="form-group">
-							<input type="checkbox" class="form-control" name="competitor_analysis_v1[]" value="3" />
-						</div>
+						
+							<input hidden id="c13" type="checkbox" class="form-control" name="competitor_analysis_v1[]" value="3" />
+							
+							<div id="13" class="div_icon">
+								<i class="fas fa-times fa-2x text-danger"></i>
+							</div>
+						
 					</div>
 
 					<div class="col-md-2 border-right">
-						<div class="form-group">
-							<input type="checkbox" class="form-control" name="competitor_analysis_v1[]" value="4" />
-						</div>
+						
+							<input hidden id="c14" type="checkbox" class="form-control"name="competitor_analysis_v1[]" value="4" />
+							
+							<div id="14" class="div_icon">
+								<i class="fas fa-times fa-2x text-danger"></i>
+							</div>
+						
 					</div>
 
 					<div class="col-md-2 border-right">
-						<div class="form-group">
-							<input type="checkbox" class="form-control" name="competitor_analysis_v1[]" value="5" />
-						</div>
+						
+								<input hidden id="c15" type="checkbox" class="form-control" name="competitor_analysis_v1[]" value="5" />
+							
+							<div id="15" class="div_icon">
+								<i class="fas fa-times fa-2x text-danger"></i>
+							</div>
+						
 					</div>
 
 				</div>
@@ -177,41 +206,62 @@
 
 					<div class="col-md-2 border-right">
 						<div class="form-group">
-							<input type="text" class="form-control" name="competitor_analysis_n[]" value="Competitor 2" maxlength="250" />
+							<input type="text" class="form-control" name="competitor_analysis_n[]" value="Competitor 2" maxlength="250"/>
 						</div>
 					</div>
 
 					<div class="col-md-2 border-right">
-						<div class="form-group">
-							<input type="checkbox" class="form-control" name="competitor_analysis_v2[]" value="1" />
-						</div>
+						
+							<input hidden id="c21" type="checkbox" class="form-control" name="competitor_analysis_v2[]" value="1" />
+							
+							<div id="21" class="div_icon">
+								<i class="fas fa-times fa-2x text-danger"></i>
+							</div>
+						
 					</div>
 
 					<div class="col-md-2 border-right">
-						<div class="form-group">
-							<input type="checkbox" class="form-control" name="competitor_analysis_v2[]" value="2" />
-						</div>
+						
+							<input hidden id="c22" type="checkbox" class="form-control" name="competitor_analysis_v2[]" value="2" />
+						
+							<div id="22" class="div_icon">
+								<i class="fas fa-times fa-2x text-danger"></i>
+							</div>
+						
 					</div>
 
 					<div class="col-md-2 border-right">
-						<div class="form-group">
-							<input type="checkbox" class="form-control" name="competitor_analysis_v2[]" value="3" />
-						</div>
+						
+							<input hidden id="c23" type="checkbox" class="form-control"  name="competitor_analysis_v2[]" value="3" />
+							
+							<div id="23" class="div_icon">
+								<i class="fas fa-times fa-2x text-danger"></i>
+							</div>
+						
 					</div>
 
 					<div class="col-md-2 border-right">
-						<div class="form-group">
-							<input type="checkbox" class="form-control" name="competitor_analysis_v2[]" value="4" />
-						</div>
+						
+							<input hidden id="c24" type="checkbox" class="form-control"name="competitor_analysis_v2[]" value="4" />
+							
+							<div id="24" class="div_icon">
+								<i class="fas fa-times fa-2x text-danger"></i>
+							</div>
+						
 					</div>
 
 					<div class="col-md-2 border-right">
-						<div class="form-group">
-							<input type="checkbox" class="form-control" name="competitor_analysis_v2[]" value="5" />
-						</div>
+						
+							<input hidden id="c25" type="checkbox" class="form-control"  name="competitor_analysis_v2[]" value="5" />
+							
+							<div id="25" class="div_icon">
+								<i class="fas fa-times fa-2x text-danger"></i>
+							</div>
+					
 					</div>
 
 				</div>
+				<hr>
 				<hr>
 
 				<div class="form-row text-center">
@@ -219,41 +269,61 @@
 					<div class="col-md-2 border-right">
 						<div class="form-group">
 							<input type="text" class="form-control" name="competitor_analysis_n[]" value="Competitor 3" maxlength="250"/>
-
 						</div>
 					</div>
 
 					<div class="col-md-2 border-right">
-						<div class="form-group">
-							<input type="checkbox" class="form-control" name="competitor_analysis_v3[]" value="1" />
-						</div>
+						
+							<input hidden id="c31" type="checkbox" class="form-control" name="competitor_analysis_v3[]" value="1" />
+							
+							<div id="31" class="div_icon">
+								<i class="fas fa-times fa-2x text-danger"></i>
+							</div>
+						
 					</div>
 
 					<div class="col-md-2 border-right">
-						<div class="form-group">
-							<input type="checkbox" class="form-control" name="competitor_analysis_v3[]" value="2" />
-						</div>
+						
+							<input hidden id="c32" type="checkbox" class="form-control" name="competitor_analysis_v3[]" value="2" />
+							
+							<div id="32" class="div_icon">
+								<i class="fas fa-times fa-2x text-danger"></i>
+							</div>
+						
 					</div>
 
 					<div class="col-md-2 border-right">
-						<div class="form-group">
-							<input type="checkbox" class="form-control" name="competitor_analysis_v3[]" value="3" />
-						</div>
+						
+							<input hidden id="c33" type="checkbox" class="form-control" name="competitor_analysis_v3[]" value="3" />
+							
+							<div id="33" class="div_icon">
+								<i class="fas fa-times fa-2x text-danger"></i>
+							</div>
+						
 					</div>
 
 					<div class="col-md-2 border-right">
-						<div class="form-group">
-							<input type="checkbox" class="form-control" name="competitor_analysis_v3[]" value="4" />
-						</div>
+						
+							<input hidden id="c34" type="checkbox" class="form-control" name="competitor_analysis_v3[]" value="4" />
+							
+							<div id="34" class="div_icon">
+								<i class="fas fa-times fa-2x text-danger"></i>
+							</div>
+						
 					</div>
 
 					<div class="col-md-2 border-right">
-						<div class="form-group">
-							<input type="checkbox" class="form-control" name="competitor_analysis_v3[]" value="5" />
-						</div>
+						
+								<input hidden id="c35" type="checkbox" class="form-control" name="competitor_analysis_v3[]" value="5" />
+							
+							<div id="35" class="div_icon">
+								<i class="fas fa-times fa-2x text-danger"></i>
+							</div>
+						
 					</div>
 
 				</div>
+				<hr>
 
 				<hr>
 
@@ -262,41 +332,61 @@
 					<div class="col-md-2 border-right">
 						<div class="form-group">
 							<input type="text" class="form-control" name="competitor_analysis_n[]" value="Competitor 4" maxlength="250"/>
-
 						</div>
 					</div>
 
 					<div class="col-md-2 border-right">
-						<div class="form-group">
-							<input type="checkbox" class="form-control" name="competitor_analysis_v4[]" value="1" />
-						</div>
+						
+							<input hidden id="c41" type="checkbox" class="form-control" name="competitor_analysis_v4[]" value="1" />
+							
+							<div id="41" class="div_icon">
+								<i class="fas fa-times fa-2x text-danger"></i>
+							</div>
+					
 					</div>
 
 					<div class="col-md-2 border-right">
-						<div class="form-group">
-							<input type="checkbox" class="form-control" name="competitor_analysis_v4[]" value="2" />
-						</div>
+					
+								<input hidden id="c42" type="checkbox" class="form-control"  name="competitor_analysis_v4[]" value="2" />
+						
+							<div id="42" class="div_icon">
+								<i class="fas fa-times fa-2x text-danger"></i>
+							</div>
+						
 					</div>
 
 					<div class="col-md-2 border-right">
-						<div class="form-group">
-							<input type="checkbox" class="form-control" name="competitor_analysis_v4[]" value="3" />
-						</div>
+					
+								<input hidden id="c43" type="checkbox" class="form-control" name="competitor_analysis_v4[]" value="3" />
+							
+							<div id="43" class="div_icon">
+								<i class="fas fa-times fa-2x text-danger"></i>
+							</div>
+						
 					</div>
 
 					<div class="col-md-2 border-right">
-						<div class="form-group">
-							<input type="checkbox" class="form-control" name="competitor_analysis_v4[]" value="4" />
-						</div>
+					
+								<input hidden id="c44" type="checkbox" class="form-control" name="competitor_analysis_v4[]" value="4" />
+							
+							<div id="44" class="div_icon">
+								<i class="fas fa-times fa-2x text-danger"></i>
+							</div>
+						
 					</div>
 
 					<div class="col-md-2 border-right">
-						<div class="form-group">
-							<input type="checkbox" class="form-control" name="competitor_analysis_v4[]" value="5" />
-						</div>
+					
+								<input hidden id="c45" type="checkbox" class="form-control"  name="competitor_analysis_v4[]" value="5" />
+						
+							<div id="45" class="div_icon">
+								<i class="fas fa-times fa-2x text-danger"></i>
+							</div>
+					
 					</div>
 
 				</div>
+				<hr>
 				<hr>
 
 				<div class="form-row text-center">
@@ -304,41 +394,60 @@
 					<div class="col-md-2 border-right">
 						<div class="form-group">
 							<input type="text" class="form-control" name="competitor_analysis_n[]" value="Competitor 5" maxlength="250"/>
-
 						</div>
 					</div>
 
 					<div class="col-md-2 border-right">
-						<div class="form-group">
-							<input type="checkbox" class="form-control" name="competitor_analysis_v5[]" value="1" />
-						</div>
+					
+								<input hidden id="c51" type="checkbox" class="form-control" name="competitor_analysis_v5[]" value="1" />
+						
+							<div id="51" class="div_icon">
+								<i class="fas fa-times fa-2x text-danger"></i>
+							</div>
+					
 					</div>
 
 					<div class="col-md-2 border-right">
-						<div class="form-group">
-							<input type="checkbox" class="form-control" name="competitor_analysis_v5[]" value="2" />
-						</div>
+					
+								<input hidden id="c52" type="checkbox" class="form-control" name="competitor_analysis_v5[]" value="2" />
+					
+							<div id="52" class="div_icon">
+								<i class="fas fa-times fa-2x text-danger"></i>
+							</div>
+				
 					</div>
 
 					<div class="col-md-2 border-right">
-						<div class="form-group">
-							<input type="checkbox" class="form-control" name="competitor_analysis_v5[]" value="3" />
-						</div>
+					
+							<input hidden id="c53" type="checkbox" class="form-control"  name="competitor_analysis_v5[]" value="3" />
+						
+							<div id="53" class="div_icon">
+								<i class="fas fa-times fa-2x text-danger"></i>
+							</div>
+					
 					</div>
 
 					<div class="col-md-2 border-right">
-						<div class="form-group">
-							<input type="checkbox" class="form-control" name="competitor_analysis_v5[]" value="4" />
-						</div>
+					
+							<input hidden id="c54" type="checkbox" class="form-control"  name="competitor_analysis_v5[]" value="4" />
+							<div id="54" class="div_icon">
+								<i class="fas fa-times fa-2x text-danger"></i>
+							</div>
+					
 					</div>
 
 					<div class="col-md-2 border-right">
-						<div class="form-group">
-							<input type="checkbox" class="form-control" name="competitor_analysis_v5[]" value="5" />
-						</div>
+					
+								<input hidden id="c55" type="checkbox" class="form-control" name="competitor_analysis_v5[]" value="5" />
+						
+							<div id="55" class="div_icon">
+								<i class="fas fa-times fa-2x text-danger"></i>
+							</div>
+					
 					</div>
 
 				</div>
+				<hr>
 
 				<hr>
 
@@ -354,7 +463,7 @@
 						
 					<div class="col-md-8">
 						<div class="form-group">
-							<label ><strong>9.3. Industry Growth Drivers</strong><small class="text-danger"> *Max : 300 characters</small></label>
+							<label ><strong>Industry Growth Drivers</strong><small class="text-danger"> *Max : 300 characters</small></label>
 							<a href="#"  data-toggle="tooltip" title="Help text."><i class="far fa-question-circle"></i></a>
 							<div id="grw1" class="inputbox">
 									<input class="d-none" type="text" name="industry_growth_drivers[]" maxlength="300" />
@@ -617,6 +726,28 @@ var grw=2;
 	
 	}
 	
+</script>
+
+
+
+<script>
+
+$(".div_icon").click(function(){
+	var chk_num = $(this).attr('id');
+	
+	if ($("#c"+chk_num).is(":checked"))
+	{
+		$("#"+chk_num).html('<i class="fas fa-times fa-2x text-danger"></i>');
+		$("#c"+chk_num).prop('checked',false);
+	}
+	else
+	{
+		$("#"+chk_num).html('<i class="fas fa-check fa-2x text-success"></i>');
+		$("#c"+chk_num).prop('checked',true);
+	}
+	
+});
+
 </script>
 
 

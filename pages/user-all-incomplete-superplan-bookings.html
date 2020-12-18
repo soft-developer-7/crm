@@ -28,7 +28,7 @@
                       <th >id</th>
                       <th> Company name</th>
                       <th> Last upload form number</th>
-                      <th> Booking date time</th>
+                      <th> Date Created</th>
                       <th> Go</th>
                       <th> Delete</th>
                     </tr>
@@ -44,7 +44,7 @@
 <td>{{booking.id}}</td>
 <td> {{booking.company_name}} </td>
 <td class="text-truncate" >{{booking.current_fillup_position}}</td>
-<td class="text-truncate" >{{booking.date}}</td>
+<td class="text-truncate" >{{booking.date  | date:"F d Y"}}</td>
 
 <td><a class="btn btn-success" href="user_incomplete_superplan_by_get/{{booking.id}}">Go</a></td>
 <td><dutton class="btn btn-danger" onclick="delete_booking({{booking.id}})">Delete</button></td>

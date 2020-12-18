@@ -227,11 +227,16 @@ class super_plan_forms(models.Model):
 
 
     # Form-10-------------------------------------------------------------------------------------------------8 ---------
+    revenue_growth_or_amount_years = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='revenue_growth_or_amount_years',on_delete=models.SET_NULL, null=True)
+
     revenue_growth_or_amount = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='revenue_growth_or_amount',on_delete=models.SET_NULL, null=True)
 
     other_income_growth_or_amount = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='other_income_growth_or_amount',on_delete=models.SET_NULL, null=True)
 
     total_revenue_amount = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='total_revenue_amount',on_delete=models.SET_NULL, null=True)
+
+
+    operating_expenses_growth_or_amount_years = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='operating_expenses_growth_or_amount_years',on_delete=models.SET_NULL, null=True)
 
     operating_expenses_growth_or_amount = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='operating_expenses_growth_or_amount',on_delete=models.SET_NULL, null=True)
 
@@ -259,6 +264,9 @@ class super_plan_forms(models.Model):
 
 
     # Form -11 ----------------------------------------------------------------------------------------------9 ----------
+    
+    share_capital_years = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='share_capital_years',on_delete=models.SET_NULL, null=True)
+
     share_capital = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='share_capital',on_delete=models.SET_NULL, null=True)
 
     reserves_and_surplus = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='reserves_and_surplus',on_delete=models.SET_NULL, null=True)
@@ -266,6 +274,10 @@ class super_plan_forms(models.Model):
     fund_requirement = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='fund_requirement',on_delete=models.SET_NULL, null=True)
 
     total_shareholder_funds = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='total_shareholder_funds',on_delete=models.SET_NULL, null=True)
+
+
+
+    non_current_liabilities_years = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='non_current_liabilities_years',on_delete=models.SET_NULL, null=True)
 
     secured_loans = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='secured_loans',on_delete=models.SET_NULL, null=True)
 
@@ -276,6 +288,11 @@ class super_plan_forms(models.Model):
     other_non_current_liabilities_growth_or_amount = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='other_non_current_liabilities_growth_or_amount',on_delete=models.SET_NULL, null=True)
 
     total_non_current_liabilities = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='total_non_current_liabilities',on_delete=models.SET_NULL, null=True)
+
+
+
+
+    current_liabilities_years = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='current_liabilities_years',on_delete=models.SET_NULL, null=True)
 
     short_term_borrowings_growth_or_amount = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='short_term_borrowings_growth_or_amount',on_delete=models.SET_NULL, null=True)
 
@@ -288,6 +305,11 @@ class super_plan_forms(models.Model):
     total_current_liabilities = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='total_current_liabilities',on_delete=models.SET_NULL, null=True)
 
     total_liabilities = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='total_liabilities',on_delete=models.SET_NULL, null=True)
+
+
+
+
+    non_current_assets_years = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='non_current_assets_years',on_delete=models.SET_NULL, null=True)
 
     gross_fixed_assets_growth_or_amount = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='gross_fixed_assets_growth_or_amount',on_delete=models.SET_NULL, null=True)
 
@@ -304,6 +326,11 @@ class super_plan_forms(models.Model):
     other_non_current_assets_growth_or_amount = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='other_non_current_assets_growth_or_amount',on_delete=models.SET_NULL, null=True)
 
     total_non_current_assets = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='total_non_current_assets',on_delete=models.SET_NULL, null=True)
+
+
+
+
+    current_assets_years = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='current_assets_years',on_delete=models.SET_NULL, null=True)
 
     cash = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='cash',on_delete=models.SET_NULL, null=True)
 
@@ -322,6 +349,8 @@ class super_plan_forms(models.Model):
     total_assets = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='total_assets',on_delete=models.SET_NULL, null=True)
 
     # Form- 12 ----------------------------------------------------------------------------------------- 10 -------------
+
+    capex_years = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='capex_years',on_delete=models.SET_NULL, null=True)
 
     company_owned_land_and_building = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='company_owned_land_and_building',on_delete=models.SET_NULL, null=True)
 
