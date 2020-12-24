@@ -2,6 +2,13 @@
 {% load static %}
 
 {% block title %}User Form-10{% endblock%}
+
+{% block style %}
+
+{% endblock%}
+
+
+
 {% block page_heading %}Superplan Form 10 of 12{% endblock%}
 
 
@@ -59,6 +66,14 @@
 					<div class="card-body">
 					
 					
+
+
+				<br>
+                <h5 class="text-primary">Revenue Growth
+				<a href="#"  data-toggle="tooltip" title="Help text."><i class="far fa-question-circle"></i></a></h5>
+                <hr>
+
+
 				<div class="form-row text-center">
 						
 						<div class="col-md-4 border-right">
@@ -131,17 +146,16 @@
 						
 						<div class="col-4">
 							<div class="form-group">
-								<label ><strong>Revenue Growth % or Amount</strong>
-                                <a href="#"  data-toggle="tooltip" title="Help text."><i class="far fa-question-circle"></i></a></label>
+								<input type="text" value="Stream Name 1" name="revenue_growth_or_amount_1[]" class="form-control text-primary" minlength="1" maxlength="200" />
 								
 								<div class="form-group text-info">
 
 										<label class="radio-inline">
-											<input type="radio" class="r1" name="revenue_growth_or" value="amnt" checked> Amount &nbsp; &nbsp; &nbsp; 
+											<input type="radio" class="r1" name="revenue_growth_1_or" value="amnt"> Amount &nbsp; &nbsp; &nbsp; 
 										</label>
 
 										<label class="radio-inline">
-											<input type="radio" class="r1" name="revenue_growth_or" value="perc"> %    
+											<input type="radio" class="r1" name="revenue_growth_1_or" value="perc" checked> %    
 										</label>
 
 										
@@ -155,41 +169,226 @@
 					
 						<div class="col">
 							<div class="form-group">
-								<input type="number"  step="0.01" class="form-control" name="revenue_growth_or_amount[]" maxlength="20" minlength="1" />
+								<input type="number"  step="0.01" class="form-control" name="revenue_growth_or_amount_1[]"  maxlength="20" minlength="1" />
 								</div>
 						</div>
 						
 						<div class="col">
 							<div class="form-group">
-								<input type="number"  step="0.01" class="form-control" name="revenue_growth_or_amount[]" maxlength="20" minlength="1" />
+								<input type="number"  step="0.01" min=0 max=100 class="form-control" name="revenue_growth_or_amount_1[]" maxlength="20" minlength="1" />
+									<div class="perc_helper">% value</div>
 								</div>
 						</div>
 						<div class="col">
 							<div class="form-group">
-								<input type="number"  step="0.01" class="form-control" name="revenue_growth_or_amount[]" maxlength="20" minlength="1" />
+								<input type="number"  step="0.01" min=0 max=100 class="form-control" name="revenue_growth_or_amount_1[]" maxlength="20" minlength="1" />
+									<div class="perc_helper">% value</div>
+								</div>
+						</div>
+						
+						<div class="col">
+							<div class="form-group">
+								<input type="number"  step="0.01" min=0 max=100 class="form-control" name="revenue_growth_or_amount_1[]" maxlength="20" minlength="1" />
+									<div class="perc_helper">%value</div>
 								</div>
 						</div>
 						<div class="col">
 							<div class="form-group">
-								<input type="number"  step="0.01" class="form-control" name="revenue_growth_or_amount[]" maxlength="20" minlength="1" />
-								</div>
-						</div>
-						<div class="col">
-							<div class="form-group">
-								<input type="number"  step="0.01" class="form-control" name="revenue_growth_or_amount[]" maxlength="20" minlength="1" />
+								<input type="number"  step="0.01" min=0 max=100 class="form-control" name="revenue_growth_or_amount_1[]" maxlength="20" minlength="1" />
+									<div class="perc_helper">% value</div>
 								</div>
 						</div>
 					
                       
 				</div>
-				<hr>
+				
 
 
+				<div id="cr2" class="form-row">
+						
+						<div class="col-4">
+							<div class="form-group">
+								<input type="text" value="Stream Name 2" name="revenue_growth_or_amount_2[]" class="form-control text-primary" minlength="1" maxlength="200" />
+								
+								<div class="form-group text-info">
+
+										<label class="radio-inline">
+											<input type="radio" class="r2" name="revenue_growth_2_or" value="amnt"> Amount &nbsp; &nbsp; &nbsp; 
+										</label>
+
+										<label class="radio-inline">
+											<input type="radio" class="r2" name="revenue_growth_2_or" value="perc" checked> %    
+										</label>
+
+										
+									</div>
+
+								</div>
+						</div>
+
+
+
+					
+						<div class="col">
+							<div class="form-group">
+								<input type="number"  step="0.01"  class="form-control" name="revenue_growth_or_amount_2[]" maxlength="20" minlength="1" />
+								</div>
+						</div>
+						
+						<div class="col">
+							<div class="form-group">
+								<input type="number"  step="0.01" min=0 max=100 class="form-control" name="revenue_growth_or_amount_2[]" maxlength="20" minlength="1" />
+									<div class="perc_helper">% value</div>
+								</div>
+						</div>
+						<div class="col">
+							<div class="form-group">
+								<input type="number"  step="0.01" min=0 max=100 class="form-control" name="revenue_growth_or_amount_2[]" maxlength="20" minlength="1" />
+									<div class="perc_helper">% value</div>
+								</div>
+						</div>
+						<div class="col">
+							<div class="form-group">
+								<input type="number"  step="0.01" min=0 max=100 class="form-control" name="revenue_growth_or_amount_2[]" maxlength="20" minlength="1" />
+									<div class="perc_helper">% value</div>
+								</div>
+						</div>
+						<div class="col">
+							<div class="form-group">
+								<input type="number"  step="0.01" min=0 max=100 class="form-control" name="revenue_growth_or_amount_2[]" maxlength="20" minlength="1" />
+									<div class="perc_helper">% value</div>
+								</div>
+						</div>
+					
+                      
+				</div>
+				
+
+
+				<div id="cr3" class="form-row">
+						
+						<div class="col-4">
+							<div class="form-group">
+								<input type="text" value="Stream Name 3" name="revenue_growth_or_amount_3[]" class="form-control text-primary" minlength="1" maxlength="200" />
+								
+								<div class="form-group text-info">
+
+										<label class="radio-inline">
+											<input type="radio" class="r3" name="revenue_growth_3_or" value="amnt"> Amount &nbsp; &nbsp; &nbsp; 
+										</label>
+
+										<label class="radio-inline">
+											<input type="radio" class="r3" name="revenue_growth_3_or" value="perc" checked> %    
+										</label>
+
+										
+									</div>
+
+								</div>
+						</div>
+
+
+
+					
+						<div class="col">
+							<div class="form-group">
+								<input type="number"  step="0.01"  class="form-control" name="revenue_growth_or_amount_3[]" maxlength="20" minlength="1" />
+								</div>
+						</div>
+						
+						<div class="col">
+							<div class="form-group">
+								<input type="number"  step="0.01" min=0 max=100 class="form-control" name="revenue_growth_or_amount_3[]" maxlength="20" minlength="1" />
+									<div class="perc_helper">% value</div>
+								</div>
+						</div>
+						<div class="col">
+							<div class="form-group">
+								<input type="number"  step="0.01" min=0 max=100 class="form-control" name="revenue_growth_or_amount_3[]" maxlength="20" minlength="1" />
+									<div class="perc_helper">% value</div>
+								</div>
+						</div>
+						<div class="col">
+							<div class="form-group">
+								<input type="number"  step="0.01" min=0 max=100 class="form-control" name="revenue_growth_or_amount_3[]" maxlength="20" minlength="1" />
+									<div class="perc_helper">% value</div>
+								</div>
+						</div>
+						<div class="col">
+							<div class="form-group">
+								<input type="number"  step="0.01" min=0 max=100 class="form-control" name="revenue_growth_or_amount_3[]" maxlength="20" minlength="1" />
+									<div class="perc_helper">% value</div>
+								</div>
+						</div>
+					
+                      
+				</div>
+				
+
+				<div id="cr4" class="form-row">
+						
+						<div class="col-4">
+							<div class="form-group">
+								<input type="text" value="Stream Name 4" name="revenue_growth_or_amount_4[]" class="form-control text-primary" minlength="1" maxlength="200" />
+								
+								<div class="form-group text-info">
+
+										<label class="radio-inline">
+											<input type="radio" class="r4" name="revenue_growth_4_or" value="amnt"> Amount &nbsp; &nbsp; &nbsp; 
+										</label>
+
+										<label class="radio-inline">
+											<input type="radio" class="r4" name="revenue_growth_4_or" value="perc" checked> %    
+										</label>
+
+										
+									</div>
+
+								</div>
+						</div>
+
+
+
+					
+						<div class="col">
+							<div class="form-group">
+								<input type="number"  step="0.01"  class="form-control" name="revenue_growth_or_amount_4[]" maxlength="20" minlength="1" />
+								</div>
+						</div>
+						
+						<div class="col">
+							<div class="form-group">
+								<input type="number"  step="0.01" min=0 max=100 class="form-control" name="revenue_growth_or_amount_4[]" maxlength="20" minlength="1" />
+									<div class="perc_helper">% value</div>
+								</div>
+						</div>
+						<div class="col">
+							<div class="form-group">
+								<input type="number"  step="0.01" min=0 max=100 class="form-control" name="revenue_growth_or_amount_4[]" maxlength="20" minlength="1" />
+									<div class="perc_helper">% value</div>
+								</div>
+						</div>
+						<div class="col">
+							<div class="form-group">
+								<input type="number"  step="0.01" min=0 max=100 class="form-control" name="revenue_growth_or_amount_4[]" maxlength="20" minlength="1" />
+									<div class="perc_helper">% value</div>
+								</div>
+						</div>
+						<div class="col">
+							<div class="form-group">
+								<input type="number"  step="0.01" min=0 max=100 class="form-control" name="revenue_growth_or_amount_4[]" maxlength="20" minlength="1" />
+									<div class="perc_helper">% value</div>
+								</div>
+						</div>
+					
+                      
+				</div>
+			
 
 
 
                 
-                <div id="cr2" class="form-row">
+                <div id="cr5" class="form-row">
 						
 						<div class="col-4">
 							<div class="form-group">
@@ -199,11 +398,11 @@
 								<div class="form-group text-info">
 
 										<label class="radio-inline">
-											<input type="radio" class="r2" name="other_income_growth_or" value="amnt" checked> Amount &nbsp; &nbsp; &nbsp; 
+											<input type="radio" class="r5" name="other_income_growth_or" value="amnt"> Amount &nbsp; &nbsp; &nbsp; 
 										</label>
 
 										<label class="radio-inline">
-											<input type="radio" class="r2" name="other_income_growth_or" value="perc"> %    
+											<input type="radio" class="r5" name="other_income_growth_or" value="perc" checked> %    
 										</label>
 
 										
@@ -216,43 +415,60 @@
 
 						<div class="col">
 							<div class="form-group">
-								<input type="number"  step="0.01" class="form-control" name="other_income_growth_or_amount[]"   maxlength="20" minlength="1"  />
+								<input type="number"  step="0.01"  class="form-control" name="other_income_growth_or_amount[]"   maxlength="20" minlength="1"  />
 								</div>
 						</div>
 
 						<div class="col">
 							<div class="form-group">
-								<input type="number"  step="0.01" class="form-control" name="other_income_growth_or_amount[]"  maxlength="20" minlength="1"  />
+								<input type="number"  step="0.01" min=0 max=100 class="form-control" name="other_income_growth_or_amount[]"  maxlength="20" minlength="1"  />
+									<div class="perc_helper">% value</div>
 								</div>
 						</div>
 						<div class="col">
 							<div class="form-group">
-								<input type="number"  step="0.01" class="form-control" name="other_income_growth_or_amount[]"   maxlength="20" minlength="1"  />
+								<input type="number"  step="0.01" min=0 max=100 class="form-control" name="other_income_growth_or_amount[]"   maxlength="20" minlength="1"  />
+									<div class="perc_helper">% value</div>
 								</div>
 						</div>
 						<div class="col">
 							<div class="form-group">
-								<input type="number"  step="0.01" class="form-control" name="other_income_growth_or_amount[]"   maxlength="20" minlength="1"  />
+								<input type="number"  step="0.01" min=0 max=100 class="form-control" name="other_income_growth_or_amount[]"   maxlength="20" minlength="1"  />
+									<div class="perc_helper">% value</div>
 								</div>
 						</div>
 						<div class="col">
 							<div class="form-group">
-								<input type="number"  step="0.01" class="form-control" name="other_income_growth_or_amount[]"  maxlength="20" minlength="1"  />
+								<input type="number"  step="0.01" min=0 max=100 class="form-control" name="other_income_growth_or_amount[]"  maxlength="20" minlength="1"  />
+									<div class="perc_helper">% value</div>
 								</div>
 						</div>
 						
 						
                        
 				</div>
-				<hr>
+				
                 
-
-
-            <div class="form-row">
+                <div id="cr5" class="form-row">
 						
 						<div class="col-4">
 							<div class="form-group">
-								<label ><strong>Total Revenue Amount</strong></label>
+								<label ><strong>Realised Foreign Exchange Gain or Loss </strong>
+                                <a href="#"  data-toggle="tooltip" title="Help text."><i class="far fa-question-circle"></i></a></label>
+									
+								<div class="form-group text-info">
+
+										<label class="radio-inline">
+											<input type="radio" class="r5" name="realised_foreign_exchange_gain_or" value="gain" checked> Gain &nbsp; &nbsp; &nbsp; 
+										</label>
+
+										<label class="radio-inline">
+											<input type="radio" class="r5" name="realised_foreign_exchange_gain_or" value="loss"> Loss    
+										</label>
+
+										
+									</div>
+
 								</div>
 						</div>
 
@@ -260,37 +476,42 @@
 
 						<div class="col">
 							<div class="form-group">
-								<input type="number" readonly  step="0.01" class="form-control" name="total_revenue_amount[]"  maxlength="300" minlength="2" />
+								<input type="number"  step="0.01"  class="form-control" name="realised_foreign_exchange_gain_or_loss[]"   maxlength="20" minlength="1"  />
 								</div>
 						</div>
 
 						<div class="col">
 							<div class="form-group">
-								<input type="number" readonly  step="0.01" class="form-control" name="total_revenue_amount[]"  maxlength="300" minlength="2" />
+								<input type="number"  step="0.01"  class="form-control" name="realised_foreign_exchange_gain_or_loss[]"  maxlength="20" minlength="1"  />
+									
 								</div>
 						</div>
-
 						<div class="col">
 							<div class="form-group">
-								<input type="number" readonly  step="0.01" class="form-control" name="total_revenue_amount[]"  maxlength="300" minlength="2" />
+								<input type="number"  step="0.01"  class="form-control" name="realised_foreign_exchange_gain_or_loss[]"   maxlength="20" minlength="1"  />
+									
 								</div>
 						</div>
-
 						<div class="col">
 							<div class="form-group">
-								<input type="number" readonly  step="0.01" class="form-control" name="total_revenue_amount[]"  maxlength="300" minlength="2" />
+								<input type="number"  step="0.01"  class="form-control" name="realised_foreign_exchange_gain_or_loss[]"   maxlength="20" minlength="1"  />
+									
 								</div>
 						</div>
-
 						<div class="col">
 							<div class="form-group">
-								<input type="number" readonly  step="0.01" class="form-control" name="total_revenue_amount[]"  maxlength="300" minlength="2" />
+								<input type="number"  step="0.01" class="form-control" name="realised_foreign_exchange_gain_or_loss[]"  maxlength="20" minlength="1"  />
+									
 								</div>
 						</div>
 						
 						
-                        
-				</div><hr>
+                       
+				</div>
+				<hr>                
+
+
+    
 				
 				
 				<br><br><br>
@@ -298,7 +519,7 @@
 
 
                 <br>
-                <h5 class="text-primary">Expenses</h5>
+                <h4 class="text-primary">Expenses</h4>
                 <hr>
 
 				<div class="form-row text-center">
@@ -371,26 +592,27 @@
 				</div>
 				<hr>
 						
-                
-                 <div id="cr3" class="form-row">
+                <h6 class="text-success">Direct Material <a href="#"  data-toggle="tooltip" title="Help text."><i class="far fa-question-circle"></i></a></h6><br>
+
+
+                  <div id="" class="form-row">
 						
 						<div class="col-4">
 							<div class="form-group">
-								<label ><strong>Operating Expenses Growth % or Amount</strong>
-                                <a href="#"  data-toggle="tooltip" title="Help text."><i class="far fa-question-circle"></i></a></label>
-								
-								<div class="form-group text-info">
+								<label ><strong> Units </strong></label>
+									
+								<div class="perc_helper_h form-group text-info">
 
 										<label class="radio-inline">
-											<input type="radio" class="r3" name="operating_expenses_growth_or" value="amnt" checked> Amount &nbsp; &nbsp; &nbsp; 
+											<input type="radio" class="r" name="" value="amnt"> Amount   
 										</label>
 
 										<label class="radio-inline">
-											<input type="radio" class="r3" name="operating_expenses_growth_or" value="perc"> %    
+											<input type="radio" class="r" name="" value="perc" checked> % &nbsp; &nbsp; &nbsp; 
 										</label>
 
-										
 									</div>
+
 								</div>
 						</div>
 
@@ -398,31 +620,662 @@
 
 						<div class="col">
 							<div class="form-group">
-								<input type="number"  step="0.01" class="form-control" name="operating_expenses_growth_or_amount[]"  maxlength="20" minlength="1"  />
+								<input type="number"  step="0.01"  class="form-control" name="direct_material_units[]"   maxlength="20" minlength="1"  />
 								</div>
 						</div>
 
 						<div class="col">
 							<div class="form-group">
-								<input type="number"  step="0.01" class="form-control" name="operating_expenses_growth_or_amount[]"  maxlength="20" minlength="1"  />
+								<input type="number"  step="0.01" class="form-control" name="direct_material_units[]"  maxlength="20" minlength="1"  />
+									<div class="perc_helper_h">% value</div>
+								</div>
+						</div>
+						<div class="col">
+							<div class="form-group">
+								<input type="number"  step="0.01"  class="form-control" name="direct_material_units[]"   maxlength="20" minlength="1"  />
+									<div class="perc_helper_h">% value</div>
+								</div>
+						</div>
+						<div class="col">
+							<div class="form-group">
+								<input type="number"  step="0.01"  class="form-control" name="direct_material_units[]"   maxlength="20" minlength="1"  />
+									<div class="perc_helper_h">% value</div>
+								</div>
+						</div>
+						<div class="col">
+							<div class="form-group">
+								<input type="number"  step="0.01"  class="form-control" name="direct_material_units[]"  maxlength="20" minlength="1"  />
+									<div class="perc_helper_h">% value</div>
+								</div>
+						</div>
+						
+						
+                       
+				</div>
+
+
+
+
+
+				                
+                  <div id="" class="form-row">
+						
+						<div class="col-4">
+							<div class="form-group">
+								<label ><strong> Average Cost Per unit  </strong></label>
+									
+								<div class="perc_helper_h form-group text-info">
+
+										<label class="radio-inline">
+											<input type="radio" class="r" name="" value="amnt"> Amount   
+										</label>
+
+										<label class="radio-inline">
+											<input type="radio" class="r" name="" value="perc" checked> % &nbsp; &nbsp; &nbsp; 
+										</label>
+
+									</div>
+
+								</div>
+						</div>
+
+						
+
+						<div class="col">
+							<div class="form-group">
+								<input type="number"  step="0.01"  class="form-control" name="direct_material_average_cost_per_unit[]"   maxlength="20" minlength="1"  />
 								</div>
 						</div>
 
 						<div class="col">
 							<div class="form-group">
-								<input type="number"  step="0.01" class="form-control" name="operating_expenses_growth_or_amount[]"  maxlength="20" minlength="1"  />
+								<input type="number"  step="0.01"  class="form-control" name="direct_material_average_cost_per_unit[]"  maxlength="20" minlength="1"  />
+									<div class="perc_helper_h">% value</div>
+								</div>
+						</div>
+						<div class="col">
+							<div class="form-group">
+								<input type="number"  step="0.01"  class="form-control" name="direct_material_average_cost_per_unit[]"   maxlength="20" minlength="1"  />
+									<div class="perc_helper_h">% value</div>
+								</div>
+						</div>
+						<div class="col">
+							<div class="form-group">
+								<input type="number"  step="0.01"  class="form-control" name="direct_material_average_cost_per_unit[]"   maxlength="20" minlength="1"  />
+									<div class="perc_helper_h">% value</div>
+								</div>
+						</div>
+						<div class="col">
+							<div class="form-group">
+								<input type="number"  step="0.01"  class="form-control" name="direct_material_average_cost_per_unit[]"  maxlength="20" minlength="1"  />
+									<div class="perc_helper_h">% value</div>
+								</div>
+						</div>
+						
+						
+                       
+				</div>
+
+				<hr>
+
+
+
+				<h6 class="text-success">Direct Labour  <a href="#"  data-toggle="tooltip" title="Help text."><i class="far fa-question-circle"></i></a></h6><br>
+				                
+                  <div id="" class="form-row">
+						
+						<div class="col-4">
+							<div class="form-group">
+								<label ><strong> No of Employees  </strong></label>
+									
+								<div class="perc_helper_h form-group text-info">
+
+										<label class="radio-inline">
+											<input type="radio" class="r" name="" value="amnt"> Amount   
+										</label>
+
+										<label class="radio-inline">
+											<input type="radio" class="r" name="" value="perc" checked> % &nbsp; &nbsp; &nbsp; 
+										</label>
+
+									</div>
+
+								</div>
+						</div>
+
+						
+
+						<div class="col">
+							<div class="form-group">
+								<input type="number"  step="0.01"  class="form-control" name="direct_labour_no_of_employees[]"   maxlength="20" minlength="1"  />
 								</div>
 						</div>
 
 						<div class="col">
 							<div class="form-group">
-								<input type="number"  step="0.01" class="form-control" name="operating_expenses_growth_or_amount[]"  maxlength="20" minlength="1"  />
+								<input type="number"  step="0.01"  class="form-control" name="direct_labour_no_of_employees[]"  maxlength="20" minlength="1"  />
+									<div class="perc_helper_h">% value</div>
+								</div>
+						</div>
+						<div class="col">
+							<div class="form-group">
+								<input type="number"  step="0.01"  class="form-control" name="direct_labour_no_of_employees[]"   maxlength="20" minlength="1"  />
+									<div class="perc_helper_h">% value</div>
+								</div>
+						</div>
+						<div class="col">
+							<div class="form-group">
+								<input type="number"  step="0.01"  class="form-control" name="direct_labour_no_of_employees[]"   maxlength="20" minlength="1"  />
+									<div class="perc_helper_h">% value</div>
+								</div>
+						</div>
+						<div class="col">
+							<div class="form-group">
+								<input type="number"  step="0.01"  class="form-control" name="direct_labour_no_of_employees[]"  maxlength="20" minlength="1"  />
+									<div class="perc_helper_h">% value</div>
+								</div>
+						</div>
+						
+						
+                       
+				</div>
+
+
+
+				                
+                  <div id="" class="form-row">
+						
+						<div class="col-4">
+							<div class="form-group">
+								<label ><strong> Average Expenses Per employee  </strong>  </label>
+									
+								<div class="perc_helper_h form-group text-info">
+
+										<label class="radio-inline">
+											<input type="radio" class="r" name="" value="amnt"> Amount   
+										</label>
+
+										<label class="radio-inline">
+											<input type="radio" class="r" name="" value="perc" checked> % &nbsp; &nbsp; &nbsp; 
+										</label>
+
+									</div>
+
+								</div>
+						</div>
+
+						
+
+						<div class="col">
+							<div class="form-group">
+								<input type="number"  step="0.01"  class="form-control" name="direct_labour_average_cost_per_employee[]"   maxlength="20" minlength="1"  />
 								</div>
 						</div>
 
 						<div class="col">
 							<div class="form-group">
-								<input type="number"  step="0.01" class="form-control" name="operating_expenses_growth_or_amount[]"  maxlength="20" minlength="1"  />
+								<input type="number"  step="0.01"  class="form-control" name="direct_labour_average_cost_per_employee[]"  maxlength="20" minlength="1"  />
+									<div class="perc_helper_h">% value</div>
+								</div>
+						</div>
+						<div class="col">
+							<div class="form-group">
+								<input type="number"  step="0.01"  class="form-control" name="direct_labour_average_cost_per_employee[]"   maxlength="20" minlength="1"  />
+									<div class="perc_helper_h">% value</div>
+								</div>
+						</div>
+						<div class="col">
+							<div class="form-group">
+								<input type="number"  step="0.01"  class="form-control" name="direct_labour_average_cost_per_employee[]"   maxlength="20" minlength="1"  />
+									<div class="perc_helper_h">% value</div>
+								</div>
+						</div>
+						<div class="col">
+							<div class="form-group">
+								<input type="number"  step="0.01"  class="form-control" name="direct_labour_average_cost_per_employee[]"  maxlength="20" minlength="1"  />
+									<div class="perc_helper_h">% value</div>
+								</div>
+						</div>
+						
+						
+                       
+				</div>
+				<hr>
+
+				<h6 class="text-success">Direct Expenses   <a href="#"  data-toggle="tooltip" title="Help text."><i class="far fa-question-circle"></i></a></h6><br>
+
+
+			                
+                  <div id="" class="form-row">
+						
+						<div class="col-4">
+							<div class="form-group">
+								<input type="text" value="Other Direct Expenses Name 1" name="other_direct_expenses_1[]" class="form-control text-primary" minlength="1" maxlength="200" />
+									
+								<div class="perc_helper_h form-group text-info">
+
+										<label class="radio-inline">
+											<input type="radio" class="r" name="" value="amnt"> Amount   
+										</label>
+
+										<label class="radio-inline">
+											<input type="radio" class="r" name="" value="perc" checked> % &nbsp; &nbsp; &nbsp; 
+										</label>
+
+									</div>
+
+								</div>
+						</div>
+
+						
+
+						<div class="col">
+							<div class="form-group">
+								<input type="number"  step="0.01"  class="form-control" name="other_direct_expenses_1[]"   maxlength="20" minlength="1"  />
+								</div>
+						</div>
+
+						<div class="col">
+							<div class="form-group">
+								<input type="number"  step="0.01" class="form-control" name="other_direct_expenses_1[]"  maxlength="20" minlength="1"  />
+									<div class="perc_helper_h">% value</div>
+								</div>
+						</div>
+						<div class="col">
+							<div class="form-group">
+								<input type="number"  step="0.01"  class="form-control" name="other_direct_expenses_1[]"   maxlength="20" minlength="1"  />
+									<div class="perc_helper_h">% value</div>
+								</div>
+						</div>
+						<div class="col">
+							<div class="form-group">
+								<input type="number"  step="0.01"  class="form-control" name="other_direct_expenses_1[]"   maxlength="20" minlength="1"  />
+									<div class="perc_helper_h">% value</div>
+								</div>
+						</div>
+						<div class="col">
+							<div class="form-group">
+								<input type="number"  step="0.01"  class="form-control" name="other_direct_expenses_1[]"  maxlength="20" minlength="1"  />
+									<div class="perc_helper_h">% value</div>
+								</div>
+						</div>
+						
+						
+                       
+				</div>
+
+
+				<div id="" class="form-row">
+						
+						<div class="col-4">
+							<div class="form-group">
+								<input type="text" value="Other Direct Expenses Name 2" name="other_direct_expenses_2[]" class="form-control text-primary" minlength="1" maxlength="200" />
+									
+								<div class="perc_helper_h form-group text-info">
+
+										<label class="radio-inline">
+											<input type="radio" class="r" name="" value="amnt"> Amount   
+										</label>
+
+										<label class="radio-inline">
+											<input type="radio" class="r" name="" value="perc" checked> % &nbsp; &nbsp; &nbsp; 
+										</label>
+
+									</div>
+
+								</div>
+						</div>
+
+						
+
+						<div class="col">
+							<div class="form-group">
+								<input type="number"  step="0.01"  class="form-control" name="other_direct_expenses_2[]"   maxlength="20" minlength="1"  />
+								</div>
+						</div>
+
+						<div class="col">
+							<div class="form-group">
+								<input type="number"  step="0.01"  class="form-control" name="other_direct_expenses_2[]"  maxlength="20" minlength="1"  />
+									<div class="perc_helper_h">% value</div>
+								</div>
+						</div>
+						<div class="col">
+							<div class="form-group">
+								<input type="number"  step="0.01"  class="form-control" name="other_direct_expenses_2[]"   maxlength="20" minlength="1"  />
+									<div class="perc_helper_h">% value</div>
+								</div>
+						</div>
+						<div class="col">
+							<div class="form-group">
+								<input type="number"  step="0.01"  class="form-control" name="other_direct_expenses_2[]"   maxlength="20" minlength="1"  />
+									<div class="perc_helper_h">% value</div>
+								</div>
+						</div>
+						<div class="col">
+							<div class="form-group">
+								<input type="number"  step="0.01"  class="form-control" name="other_direct_expenses_2[]"  maxlength="20" minlength="1"  />
+									<div class="perc_helper_h">% value</div>
+								</div>
+						</div>
+						
+						
+                       
+				</div>
+				
+
+
+
+				<div id="" class="form-row">
+						
+						<div class="col-4">
+							<div class="form-group">
+								<input type="text" value="Other Direct Expenses Name 3" name="other_direct_expenses_3[]" class="form-control text-primary" minlength="1" maxlength="200" />
+									
+								<div class="perc_helper_h form-group text-info">
+
+										<label class="radio-inline">
+											<input type="radio" class="r" name="" value="amnt"> Amount   
+										</label>
+
+										<label class="radio-inline">
+											<input type="radio" class="r" name="" value="perc" checked> % &nbsp; &nbsp; &nbsp; 
+										</label>
+
+									</div>
+
+								</div>
+						</div>
+
+						
+
+						<div class="col">
+							<div class="form-group">
+								<input type="number"  step="0.01"  class="form-control" name="other_direct_expenses_3[]"   maxlength="20" minlength="1"  />
+								</div>
+						</div>
+
+						<div class="col">
+							<div class="form-group">
+								<input type="number"  step="0.01"  class="form-control" name="other_direct_expenses_3[]"  maxlength="20" minlength="1"  />
+									<div class="perc_helper_h">% value</div>
+								</div>
+						</div>
+						<div class="col">
+							<div class="form-group">
+								<input type="number"  step="0.01"  class="form-control" name="other_direct_expenses_3[]"   maxlength="20" minlength="1"  />
+									<div class="perc_helper_h">% value</div>
+								</div>
+						</div>
+						<div class="col">
+							<div class="form-group">
+								<input type="number"  step="0.01"  class="form-control" name="other_direct_expenses_3[]"   maxlength="20" minlength="1"  />
+									<div class="perc_helper_h">% value</div>
+								</div>
+						</div>
+						<div class="col">
+							<div class="form-group">
+								<input type="number"  step="0.01"  class="form-control" name="other_direct_expenses_3[]"  maxlength="20" minlength="1"  />
+									<div class="perc_helper_h">% value</div>
+								</div>
+						</div>
+						
+						
+                       
+				</div>
+				<hr>
+
+
+			
+			<h5 class="text-primary">Employee Expenses</h5><br>
+
+
+			<h6 class="text-success">Administration <a href="#"  data-toggle="tooltip" title="Help text."><i class="far fa-question-circle"></i></a></h6><br>
+
+
+			
+
+			   <div id="" class="form-row">
+						
+						<div class="col-4">
+							<div class="form-group">
+								<label ><strong> No of Employees  </strong></label>
+									
+								<div class="perc_helper_h form-group text-info">
+
+										<label class="radio-inline">
+											<input type="radio" class="r" name="" value="amnt"> Amount   
+										</label>
+
+										<label class="radio-inline">
+											<input type="radio" class="r" name="" value="perc" checked> % &nbsp; &nbsp; &nbsp; 
+										</label>
+
+									</div>
+
+								</div>
+						</div>
+
+						
+
+						<div class="col">
+							<div class="form-group">
+								<input type="number"  step="0.01"  class="form-control" name="administration_no_of_employees[]"   maxlength="20" minlength="1"  />
+								</div>
+						</div>
+
+						<div class="col">
+							<div class="form-group">
+								<input type="number"  step="0.01"  class="form-control" name="administration_no_of_employees[]"  maxlength="20" minlength="1"  />
+									<div class="perc_helper_h">% value</div>
+								</div>
+						</div>
+						<div class="col">
+							<div class="form-group">
+								<input type="number"  step="0.01"  class="form-control" name="administration_no_of_employees[]"   maxlength="20" minlength="1"  />
+									<div class="perc_helper_h">% value</div>
+								</div>
+						</div>
+						<div class="col">
+							<div class="form-group">
+								<input type="number"  step="0.01"  class="form-control" name="administration_no_of_employees[]"   maxlength="20" minlength="1"  />
+									<div class="perc_helper_h">% value</div>
+								</div>
+						</div>
+						<div class="col">
+							<div class="form-group">
+								<input type="number"  step="0.01"  class="form-control" name="administration_no_of_employees[]"  maxlength="20" minlength="1"  />
+									<div class="perc_helper_h">% value</div>
+								</div>
+						</div>
+						
+						
+                       
+				</div>
+
+
+
+				                
+                  <div id="" class="form-row">
+						
+						<div class="col-4">
+							<div class="form-group">
+								<label ><strong> Average Expenses Per employee  </strong>  </label>
+									
+								<div class="perc_helper_h form-group text-info">
+
+										<label class="radio-inline">
+											<input type="radio" class="r" name="" value="amnt"> Amount   
+										</label>
+
+										<label class="radio-inline">
+											<input type="radio" class="r" name="" value="perc" checked> % &nbsp; &nbsp; &nbsp; 
+										</label>
+
+									</div>
+
+								</div>
+						</div>
+
+						
+
+						<div class="col">
+							<div class="form-group">
+								<input type="number"  step="0.01"  class="form-control" name="administration_average_cost_per_employee[]"   maxlength="20" minlength="1"  />
+								</div>
+						</div>
+
+						<div class="col">
+							<div class="form-group">
+								<input type="number"  step="0.01"  class="form-control" name="administration_average_cost_per_employee[]"  maxlength="20" minlength="1"  />
+									<div class="perc_helper_h">% value</div>
+								</div>
+						</div>
+						<div class="col">
+							<div class="form-group">
+								<input type="number"  step="0.01"  class="form-control" name="administration_average_cost_per_employee[]"   maxlength="20" minlength="1"  />
+									<div class="perc_helper_h">% value</div>
+								</div>
+						</div>
+						<div class="col">
+							<div class="form-group">
+								<input type="number"  step="0.01"  class="form-control" name="administration_average_cost_per_employee[]"   maxlength="20" minlength="1"  />
+									<div class="perc_helper_h">% value</div>
+								</div>
+						</div>
+						<div class="col">
+							<div class="form-group">
+								<input type="number"  step="0.01"  class="form-control" name="administration_average_cost_per_employee[]"  maxlength="20" minlength="1"  />
+									<div class="perc_helper_h">% value</div>
+								</div>
+						</div>
+						
+						
+                       
+				</div>
+				
+				<hr>
+
+
+
+
+			<h6 class="text-success">Selling & Distribution  <a href="#"  data-toggle="tooltip" title="Help text."><i class="far fa-question-circle"></i></a></h6><br>
+
+
+			
+
+			   <div id="" class="form-row">
+						
+						<div class="col-4">
+							<div class="form-group">
+								<label ><strong> No of Employees  </strong></label>
+									
+								<div class="perc_helper_h form-group text-info">
+
+										<label class="radio-inline">
+											<input type="radio" class="r" name="" value="amnt"> Amount   
+										</label>
+
+										<label class="radio-inline">
+											<input type="radio" class="r" name="" value="perc" checked> % &nbsp; &nbsp; &nbsp; 
+										</label>
+
+									</div>
+
+								</div>
+						</div>
+
+						
+
+						<div class="col">
+							<div class="form-group">
+								<input type="number"  step="0.01"  class="form-control" name="selling_and_distribution_no_of_employees[]"   maxlength="20" minlength="1"  />
+								</div>
+						</div>
+
+						<div class="col">
+							<div class="form-group">
+								<input type="number"  step="0.01"  class="form-control" name="selling_and_distribution_no_of_employees[]"  maxlength="20" minlength="1"  />
+									<div class="perc_helper_h">% value</div>
+								</div>
+						</div>
+						<div class="col">
+							<div class="form-group">
+								<input type="number"  step="0.01"  class="form-control" name="selling_and_distribution_no_of_employees[]"   maxlength="20" minlength="1"  />
+									<div class="perc_helper_h">% value</div>
+								</div>
+						</div>
+						<div class="col">
+							<div class="form-group">
+								<input type="number"  step="0.01"  class="form-control" name="selling_and_distribution_no_of_employees[]"   maxlength="20" minlength="1"  />
+									<div class="perc_helper_h">% value</div>
+								</div>
+						</div>
+						<div class="col">
+							<div class="form-group">
+								<input type="number"  step="0.01"  class="form-control" name="selling_and_distribution_no_of_employees[]"  maxlength="20" minlength="1"  />
+									<div class="perc_helper_h">% value</div>
+								</div>
+						</div>
+						
+						
+                       
+				</div>
+
+
+
+				                
+                  <div id="" class="form-row">
+						
+						<div class="col-4">
+							<div class="form-group">
+								<label ><strong> Average Expenses Per employee  </strong>  </label>
+									
+								<div class="perc_helper_h form-group text-info">
+
+										<label class="radio-inline">
+											<input type="radio" class="r" name="" value="amnt"> Amount   
+										</label>
+
+										<label class="radio-inline">
+											<input type="radio" class="r" name="" value="perc" checked> % &nbsp; &nbsp; &nbsp; 
+										</label>
+
+									</div>
+
+								</div>
+						</div>
+
+						
+
+						<div class="col">
+							<div class="form-group">
+								<input type="number"  step="0.01"  class="form-control" name="selling_and_distribution_average_cost_per_employee[]"   maxlength="20" minlength="1"  />
+								</div>
+						</div>
+
+						<div class="col">
+							<div class="form-group">
+								<input type="number"  step="0.01"  class="form-control" name="selling_and_distribution_average_cost_per_employee[]"  maxlength="20" minlength="1"  />
+									<div class="perc_helper_h">% value</div>
+								</div>
+						</div>
+						<div class="col">
+							<div class="form-group">
+								<input type="number"  step="0.01"  class="form-control" name="selling_and_distribution_average_cost_per_employee[]"   maxlength="20" minlength="1"  />
+									<div class="perc_helper_h">% value</div>
+								</div>
+						</div>
+						<div class="col">
+							<div class="form-group">
+								<input type="number"  step="0.01"  class="form-control" name="selling_and_distribution_average_cost_per_employee[]"   maxlength="20" minlength="1"  />
+									<div class="perc_helper_h">% value</div>
+								</div>
+						</div>
+						<div class="col">
+							<div class="form-group">
+								<input type="number"  step="0.01"  class="form-control" name="selling_and_distribution_average_cost_per_employee[]"  maxlength="20" minlength="1"  />
+									<div class="perc_helper_h">% value</div>
 								</div>
 						</div>
 						
@@ -430,167 +1283,30 @@
                        
 				</div><hr>
 
-                <div class="form-row">
+
+				<h6 class="text-success">Marketing  <a href="#"  data-toggle="tooltip" title="Help text."><i class="far fa-question-circle"></i></a></h6><br>
+
+
+			
+
+			   <div id="" class="form-row">
 						
 						<div class="col-4">
 							<div class="form-group">
-								<label ><strong>Employee Expense</strong>
-                                <a href="#"  data-toggle="tooltip" title="Help text."><i class="far fa-question-circle"></i></a></label>
-								</div>
-						</div>
-
-						
-
-						<div class="col">
-							<div class="form-group">
-								<input type="number"  step="0.01" class="form-control" name="employee_cost[]" maxlength="20" minlength="1" />
-								</div>
-						</div>
-
-						<div class="col">
-							<div class="form-group">
-								<input type="number"  step="0.01" class="form-control" name="employee_cost[]" maxlength="20" minlength="1" />
-								</div>
-						</div>
-
-						<div class="col">
-							<div class="form-group">
-								<input type="number"  step="0.01" class="form-control" name="employee_cost[]" maxlength="20" minlength="1" />
-								</div>
-						</div>
-
-						<div class="col">
-							<div class="form-group">
-								<input type="number"  step="0.01" class="form-control" name="employee_cost[]" maxlength="20" minlength="1" />
-								</div>
-						</div>
-
-						<div class="col">
-							<div class="form-group">
-								<input type="number"  step="0.01" class="form-control" name="employee_cost[]" maxlength="20" minlength="1" />
-								</div>
-						</div>
-						
-						
-                        
-				</div><hr>
-
-
-                <div class="form-row">
-						
-						<div class="col-4">
-							<div class="form-group">
-								<label ><strong>General & Administration Expense</strong>
-                                <a href="#"  data-toggle="tooltip" title="Help text."><i class="far fa-question-circle"></i></a></label>
-								
-								</div>
-						</div>
-
-						<div class="col">
-							<div class="form-group">
-								<input type="number"  step="0.01" class="form-control" name="general_and_administration_cost[]" maxlength="20" minlength="1"  />
-							</div>
-						
-						</div>
-
-						<div class="col">
-							<div class="form-group">
-								<input type="number"  step="0.01" class="form-control" name="general_and_administration_cost[]" maxlength="20" minlength="1"  />
-							</div>
-						
-						</div>
-
-						<div class="col">
-							<div class="form-group">
-								<input type="number"  step="0.01" class="form-control" name="general_and_administration_cost[]" maxlength="20" minlength="1"  />
-							</div>
-						
-						</div>
-
-						<div class="col">
-							<div class="form-group">
-								<input type="number"  step="0.01" class="form-control" name="general_and_administration_cost[]" maxlength="20" minlength="1"  />
-							</div>
-						
-						</div>
-
-						<div class="col">
-							<div class="form-group">
-								<input type="number"  step="0.01" class="form-control" name="general_and_administration_cost[]" maxlength="20" minlength="1"  />
-							</div>
-						
-						</div>
-						
-						
-                      
-				</div><hr>
-						
-
-                 <div class="form-row">
-						
-						<div class="col-4">
-							<div class="form-group">
-								<label ><strong>Selling & Marketing Expense</strong>
-                                <a href="#"  data-toggle="tooltip" title="Help text."><i class="far fa-question-circle"></i></a></label>
-								</div>
-						</div>
-
-
-						
-
-						<div class="col">
-							<div class="form-group">
-								<input type="number"  step="0.01" class="form-control" name="selling_and_marketing_cost[]" maxlength="20" minlength="1" />
-								</div>
-						</div>
-
-						<div class="col">
-							<div class="form-group">
-								<input type="number"  step="0.01" class="form-control" name="selling_and_marketing_cost[]" maxlength="20" minlength="1" />
-								</div>
-						</div>
-
-						<div class="col">
-							<div class="form-group">
-								<input type="number"  step="0.01" class="form-control" name="selling_and_marketing_cost[]" maxlength="20" minlength="1" />
-								</div>
-						</div>
-
-						<div class="col">
-							<div class="form-group">
-								<input type="number"  step="0.01" class="form-control" name="selling_and_marketing_cost[]" maxlength="20" minlength="1" />
-								</div>
-						</div>
-
-						<div class="col">
-							<div class="form-group">
-								<input type="number"  step="0.01" class="form-control" name="selling_and_marketing_cost[]" maxlength="20" minlength="1" />
-								</div>
-						</div>
-						
-						
-                   
-				</div><hr>
-
-
-                <div id="cr4" class="form-row">
-						
-						<div class="col-4">
-							<div class="form-group">
-								<label ><strong>Other Expenses Growth % or Amount </strong></label>
-								<div class="form-group text-info">
+								<label ><strong> No of Employees  </strong></label>
+									
+								<div class="perc_helper_h form-group text-info">
 
 										<label class="radio-inline">
-											<input type="radio" class="r4" name="other_expenses_growth_or" value="amnt" checked> Amount &nbsp; &nbsp; &nbsp; 
+											<input type="radio" class="r" name="" value="amnt"> Amount   
 										</label>
 
 										<label class="radio-inline">
-											<input type="radio" class="r4" name="other_expenses_growth_or" value="perc"> %    
+											<input type="radio" class="r" name="" value="perc" checked> % &nbsp; &nbsp; &nbsp; 
 										</label>
 
-										
 									</div>
-								
+
 								</div>
 						</div>
 
@@ -598,31 +1314,217 @@
 
 						<div class="col">
 							<div class="form-group">
-								<input type="number"  step="0.01" class="form-control" name="other_expenses_growth_or_amount[]" maxlength="20" minlength="1" />
+								<input type="number"  step="0.01"  class="form-control" name="marketing_no_of_employees[]"   maxlength="20" minlength="1"  />
 								</div>
 						</div>
 
 						<div class="col">
 							<div class="form-group">
-								<input type="number"  step="0.01" class="form-control" name="other_expenses_growth_or_amount[]" maxlength="20" minlength="1" />
+								<input type="number"  step="0.01"  class="form-control" name="marketing_no_of_employees[]"  maxlength="20" minlength="1"  />
+									<div class="perc_helper_h">% value</div>
+								</div>
+						</div>
+						<div class="col">
+							<div class="form-group">
+								<input type="number"  step="0.01"  class="form-control" name="marketing_no_of_employees[]"   maxlength="20" minlength="1"  />
+									<div class="perc_helper_h">% value</div>
+								</div>
+						</div>
+						<div class="col">
+							<div class="form-group">
+								<input type="number"  step="0.01"  class="form-control" name="marketing_no_of_employees[]"   maxlength="20" minlength="1"  />
+									<div class="perc_helper_h">% value</div>
+								</div>
+						</div>
+						<div class="col">
+							<div class="form-group">
+								<input type="number"  step="0.01"  class="form-control" name="marketing_no_of_employees[]"  maxlength="20" minlength="1"  />
+									<div class="perc_helper_h">% value</div>
+								</div>
+						</div>
+						
+						
+                       
+				</div>
+
+
+
+				                
+                  <div id="" class="form-row">
+						
+						<div class="col-4">
+							<div class="form-group">
+								<label ><strong> Average Expenses Per employee  </strong>  </label>
+									
+								<div class="perc_helper_h form-group text-info">
+
+										<label class="radio-inline">
+											<input type="radio" class="r" name="" value="amnt"> Amount   
+										</label>
+
+										<label class="radio-inline">
+											<input type="radio" class="r" name="" value="perc" checked> % &nbsp; &nbsp; &nbsp; 
+										</label>
+
+									</div>
+
+								</div>
+						</div>
+
+						
+
+						<div class="col">
+							<div class="form-group">
+								<input type="number"  step="0.01"  class="form-control" name="marketing_average_cost_per_employee[]"   maxlength="20" minlength="1"  />
 								</div>
 						</div>
 
 						<div class="col">
 							<div class="form-group">
-								<input type="number"  step="0.01" class="form-control" name="other_expenses_growth_or_amount[]" maxlength="20" minlength="1" />
+								<input type="number"  step="0.01"  class="form-control" name="marketing_average_cost_per_employee[]"  maxlength="20" minlength="1"  />
+									<div class="perc_helper_h">% value</div>
+								</div>
+						</div>
+						<div class="col">
+							<div class="form-group">
+								<input type="number"  step="0.01"  class="form-control" name="marketing_average_cost_per_employee[]"   maxlength="20" minlength="1"  />
+									<div class="perc_helper_h">% value</div>
+								</div>
+						</div>
+						<div class="col">
+							<div class="form-group">
+								<input type="number"  step="0.01"  class="form-control" name="marketing_average_cost_per_employee[]"   maxlength="20" minlength="1"  />
+									<div class="perc_helper_h">% value</div>
+								</div>
+						</div>
+						<div class="col">
+							<div class="form-group">
+								<input type="number"  step="0.01"  class="form-control" name="marketing_average_cost_per_employee[]"  maxlength="20" minlength="1"  />
+									<div class="perc_helper_h">% value</div>
+								</div>
+						</div>
+						
+						
+                       
+				</div><hr>
+
+				<h6 class="text-success">Research & Development  <a href="#"  data-toggle="tooltip" title="Help text."><i class="far fa-question-circle"></i></a></h6><br>
+
+
+			
+
+			   <div id="" class="form-row">
+						
+						<div class="col-4">
+							<div class="form-group">
+								<label ><strong> No of Employees  </strong></label>
+									
+								<div class="perc_helper_h form-group text-info">
+
+										<label class="radio-inline">
+											<input type="radio" class="r" name="" value="amnt"> Amount   
+										</label>
+
+										<label class="radio-inline">
+											<input type="radio" class="r" name="" value="perc" checked> % &nbsp; &nbsp; &nbsp; 
+										</label>
+
+									</div>
+
+								</div>
+						</div>
+
+						
+
+						<div class="col">
+							<div class="form-group">
+								<input type="number"  step="0.01"  class="form-control" name="research_and_development_no_of_employees[]"   maxlength="20" minlength="1"  />
 								</div>
 						</div>
 
 						<div class="col">
 							<div class="form-group">
-								<input type="number"  step="0.01" class="form-control" name="other_expenses_growth_or_amount[]" maxlength="20" minlength="1" />
+								<input type="number"  step="0.01"  class="form-control" name="research_and_development_no_of_employees[]"  maxlength="20" minlength="1"  />
+									<div class="perc_helper_h">% value</div>
+								</div>
+						</div>
+						<div class="col">
+							<div class="form-group">
+								<input type="number"  step="0.01"  class="form-control" name="research_and_development_no_of_employees[]"   maxlength="20" minlength="1"  />
+									<div class="perc_helper_h">% value</div>
+								</div>
+						</div>
+						<div class="col">
+							<div class="form-group">
+								<input type="number"  step="0.01"  class="form-control" name="research_and_development_no_of_employees[]"   maxlength="20" minlength="1"  />
+									<div class="perc_helper_h">% value</div>
+								</div>
+						</div>
+						<div class="col">
+							<div class="form-group">
+								<input type="number"  step="0.01"  class="form-control" name="research_and_development_no_of_employees[]"  maxlength="20" minlength="1"  />
+									<div class="perc_helper_h">% value</div>
+								</div>
+						</div>
+						
+						
+                       
+				</div>
+
+
+
+				                
+                  <div id="" class="form-row">
+						
+						<div class="col-4">
+							<div class="form-group">
+								<label ><strong> Average Expenses Per employee  </strong>  </label>
+									
+								<div class="perc_helper_h form-group text-info">
+
+										<label class="radio-inline">
+											<input type="radio" class="r" name="" value="amnt"> Amount   
+										</label>
+
+										<label class="radio-inline">
+											<input type="radio" class="r" name="" value="perc" checked> % &nbsp; &nbsp; &nbsp; 
+										</label>
+
+									</div>
+
+								</div>
+						</div>
+
+						
+
+						<div class="col">
+							<div class="form-group">
+								<input type="number"  step="0.01"  class="form-control" name="research_and_development_average_cost_per_employee[]"   maxlength="20" minlength="1"  />
 								</div>
 						</div>
 
 						<div class="col">
 							<div class="form-group">
-								<input type="number"  step="0.01" class="form-control" name="other_expenses_growth_or_amount[]" maxlength="20" minlength="1" />
+								<input type="number"  step="0.01"  class="form-control" name="research_and_development_average_cost_per_employee[]"  maxlength="20" minlength="1"  />
+									<div class="perc_helper_h">% value</div>
+								</div>
+						</div>
+						<div class="col">
+							<div class="form-group">
+								<input type="number"  step="0.01"  class="form-control" name="research_and_development_average_cost_per_employee[]"   maxlength="20" minlength="1"  />
+									<div class="perc_helper_h">% value</div>
+								</div>
+						</div>
+						<div class="col">
+							<div class="form-group">
+								<input type="number"  step="0.01"  class="form-control" name="research_and_development_average_cost_per_employee[]"   maxlength="20" minlength="1"  />
+									<div class="perc_helper_h">% value</div>
+								</div>
+						</div>
+						<div class="col">
+							<div class="form-group">
+								<input type="number"  step="0.01"  class="form-control" name="research_and_development_average_cost_per_employee[]"  maxlength="20" minlength="1"  />
+									<div class="perc_helper_h">% value</div>
 								</div>
 						</div>
 						
@@ -631,323 +1533,1547 @@
 				</div><hr>
 
 
-                <div class="form-row">
-						
-						<div class="col-4">
-							<div class="form-group">
-								<label ><strong>EBITDA (Earnings Before Interest, Tax, Depreciation & Ammortisation) Amount </strong></label>
-								</div>
-						</div>
 
-						
-
-						<div class="col">
-							<div class="form-group">
-								<input type="number"  step="0.01" class="form-control" name="ebitda[]"  maxlength="20" minlength="1"/>
-								</div>
-						</div>
-
-						<div class="col">
-							<div class="form-group">
-								<input type="number"  step="0.01" class="form-control" name="ebitda[]"  maxlength="20" minlength="1"/>
-								</div>
-						</div>
-
-						<div class="col">
-							<div class="form-group">
-								<input type="number"  step="0.01" class="form-control" name="ebitda[]"  maxlength="20" minlength="1"/>
-								</div>
-						</div>
-
-						<div class="col">
-							<div class="form-group">
-								<input type="number"  step="0.01" class="form-control" name="ebitda[]"  maxlength="20" minlength="1"/>
-								</div>
-						</div>
-
-						<div class="col">
-							<div class="form-group">
-								<input type="number"  step="0.01" class="form-control" name="ebitda[]"  maxlength="20" minlength="1"/>
-								</div>
-						</div>
-						
-						
-                       
-				</div><hr>
-
-                <div id="cr5" class="form-row">
-						
-						<div class="col-4">
-							<div class="form-group">
-								<label ><strong>Depreciation % or Amount</strong></label>
-                                 <a href="#"  data-toggle="tooltip" title="Help text."><i class="far fa-question-circle"></i></a>
-								
-								<div class="form-group text-info">
-
-										<label class="radio-inline">
-											<input type="radio" class="r5" name="depreciation_growth_or" value="amnt" checked> Amount &nbsp; &nbsp; &nbsp; 
-										</label>
-
-										<label class="radio-inline">
-											<input type="radio" class="r5" name="depreciation_growth_or" value="perc"> %    
-										</label>
-
-										
-									</div>
-								
-								</div>
-						</div>
-
-						
-
-						<div class="col">
-							<div class="form-group">
-								<input type="number"  step="0.01" class="form-control" name="depreciation_or_amount[]" maxlength="20" minlength="1" />
-								</div>
-						</div>
-
-						<div class="col">
-							<div class="form-group">
-								<input type="number"  step="0.01" class="form-control" name="depreciation_or_amount[]" maxlength="20" minlength="1" />
-								</div>
-						</div>
-
-						<div class="col">
-							<div class="form-group">
-								<input type="number"  step="0.01" class="form-control" name="depreciation_or_amount[]" maxlength="20" minlength="1" />
-								</div>
-						</div>
-
-						<div class="col">
-							<div class="form-group">
-								<input type="number"  step="0.01" class="form-control" name="depreciation_or_amount[]" maxlength="20" minlength="1" />
-								</div>
-						</div>
-
-						<div class="col">
-							<div class="form-group">
-								<input type="number"  step="0.01" class="form-control" name="depreciation_or_amount[]" maxlength="20" minlength="1" />
-								</div>
-						</div>
-						
-						
-  
-				</div><hr>
-
-                 <div id="cr6" class="form-row">
-						
-						<div class="col-4">
-							<div class="form-group">
-								<label ><strong>Interest Expense Interest %  or Amount</strong>
-                                 <a href="#"  data-toggle="tooltip" title="Help text."><i class="far fa-question-circle"></i></a></label>
-								
-								<div class="form-group text-info">
-
-										<label class="radio-inline">
-											<input type="radio" class="r6" name="interest_expense_interest_or" value="amnt" checked> Amount &nbsp; &nbsp; &nbsp; 
-										</label>
-
-										<label class="radio-inline">
-											<input type="radio" class="r6" name="interest_expense_interest_or" value="perc"> %    
-										</label>
-
-										
-									</div>
-								
-								
-								</div>
-						</div>
-
-						
-
-						<div class="col">
-							<div class="form-group">
-								<input type="number"  step="0.01" class="form-control" name="interest_expense_interest_or_amount[]" maxlength="20" minlength="1" />
-								</div>
-						</div>
-
-						<div class="col">
-							<div class="form-group">
-								<input type="number"  step="0.01" class="form-control" name="interest_expense_interest_or_amount[]" maxlength="20" minlength="1" />
-								</div>
-						</div>
-
-						<div class="col">
-							<div class="form-group">
-								<input type="number"  step="0.01" class="form-control" name="interest_expense_interest_or_amount[]" maxlength="20" minlength="1" />
-								</div>
-						</div>
-
-						<div class="col">
-							<div class="form-group">
-								<input type="number"  step="0.01" class="form-control" name="interest_expense_interest_or_amount[]" maxlength="20" minlength="1" />
-								</div>
-						</div>
-
-						<div class="col">
-							<div class="form-group">
-								<input type="number"  step="0.01" class="form-control" name="interest_expense_interest_or_amount[]" maxlength="20" minlength="1" />
-								</div>
-						</div>
-						
-						
-                        
-				</div><hr>
-						
-
-
-                <div class="form-row">
-						
-						<div class="col-4">
-							<div class="form-group">
-								<label ><strong>EBT (Earnings Before Tax)</strong></label>								
-								</div>
-						</div>
-						
-
-						
-
-						<div class="col">
-							<div class="form-group">
-							<input type="number"  step="0.01" class="form-control" name="ebt[]" maxlength="20" minlength="1" />
-							</div>
-						</div>
-
-						<div class="col">
-							<div class="form-group">
-							<input type="number"  step="0.01" class="form-control" name="ebt[]" maxlength="20" minlength="1" />
-							</div>
-						</div>
-
-						<div class="col">
-							<div class="form-group">
-							<input type="number"  step="0.01" class="form-control" name="ebt[]" maxlength="20" minlength="1" />
-							</div>
-						</div>
-
-						<div class="col">
-							<div class="form-group">
-							<input type="number"  step="0.01" class="form-control" name="ebt[]" maxlength="20" minlength="1" />
-							</div>
-						</div>
-
-						<div class="col">
-							<div class="form-group">
-							<input type="number"  step="0.01" class="form-control" name="ebt[]" maxlength="20" minlength="1" />
-							</div>
-						</div>
-						
-                        
-				</div><hr>
-
-
-                <div id="cr7" class="form-row">
-						
-						<div class="col-4">
-							<div class="form-group">
-								<label ><strong>Tax Expense Tax %  or Amount</strong></label>
-                                 <a href="#"  data-toggle="tooltip" title="Help text."><i class="far fa-question-circle"></i></a>
-								
-								<div class="form-group text-info">
-
-										<label class="radio-inline">
-											<input type="radio" class="r7" name="tax_expense_tax_or" value="amnt" checked> Amount &nbsp; &nbsp; &nbsp; 
-										</label>
-
-										<label class="radio-inline">
-											<input type="radio" class="r7" name="tax_expense_tax_or" value="perc"> %    
-										</label>
-
-										
-									</div>
-								
-								
-								</div>
-						</div>
-						
-
-						
-
-						<div class="col">
-							<div class="form-group">
-								<input type="number"  step="0.01" class="form-control" name="tax_expense_tax_or_amount[]" maxlength="20" minlength="1" />
-								</div>
-						</div>
-
-						<div class="col">
-							<div class="form-group">
-								<input type="number"  step="0.01" class="form-control" name="tax_expense_tax_or_amount[]" maxlength="20" minlength="1" />
-								</div>
-						</div>
-
-						<div class="col">
-							<div class="form-group">
-								<input type="number"  step="0.01" class="form-control" name="tax_expense_tax_or_amount[]" maxlength="20" minlength="1" />
-								</div>
-						</div>
-
-						<div class="col">
-							<div class="form-group">
-								<input type="number"  step="0.01" class="form-control" name="tax_expense_tax_or_amount[]" maxlength="20" minlength="1" />
-								</div>
-						</div>
-
-						<div class="col">
-							<div class="form-group">
-								<input type="number"  step="0.01" class="form-control" name="tax_expense_tax_or_amount[]" maxlength="20" minlength="1" />
-								</div>
-						</div>
-						
-                        
-				</div><hr>
-
-
-                
-                <div class="form-row">
-						
-						<div class="col-4">
-							<div class="form-group">
-								<label ><strong>PAT (Profit After Tax)</strong></label>
-								</div>
-						</div>
-
-
-						
-
-						<div class="col">
-							<div class="form-group">
-								<input type="number"  step="0.01" class="form-control" name="pat[]" maxlength="20" minlength="1" />
-							</div>
-						</div>
-
-						<div class="col">
-							<div class="form-group">
-								<input type="number"  step="0.01" class="form-control" name="pat[]" maxlength="20" minlength="1" />
-							</div>
-						</div>
-
-						<div class="col">
-							<div class="form-group">
-								<input type="number"  step="0.01" class="form-control" name="pat[]" maxlength="20" minlength="1" />
-							</div>
-						</div>
-
-						<div class="col">
-							<div class="form-group">
-								<input type="number"  step="0.01" class="form-control" name="pat[]" maxlength="20" minlength="1" />
-							</div>
-						</div>
-
-						<div class="col">
-							<div class="form-group">
-								<input type="number"  step="0.01" class="form-control" name="pat[]" maxlength="20" minlength="1" />
-							</div>
-						</div>
-						
-						
+				<div class="form-row">
+				<div class="col-md-3">	<input type="text" value="Other Employees 1" name="other_employees_1" class="form-control text-success" minlength="1" maxlength="200" /></div>
 				</div><br>
+
+
+
+			
+
+			   <div id="" class="form-row">
 						
-						<br>
+						<div class="col-4">
+							<div class="form-group">
+								<label ><strong> No of Employees  </strong></label>
+									
+								<div class="perc_helper_h form-group text-info">
+
+										<label class="radio-inline">
+											<input type="radio" class="r" name="" value="amnt"> Amount   
+										</label>
+
+										<label class="radio-inline">
+											<input type="radio" class="r" name="" value="perc" checked> % &nbsp; &nbsp; &nbsp; 
+										</label>
+
+									</div>
+
+								</div>
+						</div>
+
+						
+
+						<div class="col">
+							<div class="form-group">
+								<input type="number"  step="0.01"  class="form-control" name="other_employees_1_no_of_employees[]"   maxlength="20" minlength="1"  />
+								</div>
+						</div>
+
+						<div class="col">
+							<div class="form-group">
+								<input type="number"  step="0.01"  class="form-control" name="other_employees_1_no_of_employees[]"  maxlength="20" minlength="1"  />
+									<div class="perc_helper_h">% value</div>
+								</div>
+						</div>
+						<div class="col">
+							<div class="form-group">
+								<input type="number"  step="0.01"  class="form-control" name="other_employees_1_no_of_employees[]"   maxlength="20" minlength="1"  />
+									<div class="perc_helper_h">% value</div>
+								</div>
+						</div>
+						<div class="col">
+							<div class="form-group">
+								<input type="number"  step="0.01"  class="form-control" name="other_employees_1_no_of_employees[]"   maxlength="20" minlength="1"  />
+									<div class="perc_helper_h">% value</div>
+								</div>
+						</div>
+						<div class="col">
+							<div class="form-group">
+								<input type="number"  step="0.01"  class="form-control" name="other_employees_1_no_of_employees[]"  maxlength="20" minlength="1"  />
+									<div class="perc_helper_h">% value</div>
+								</div>
+						</div>
+						
+						
+                       
+				</div>
+
+
+
+				                
+                  <div id="" class="form-row">
+						
+						<div class="col-4">
+							<div class="form-group">
+								<label ><strong> Average Expenses Per employee  </strong>  </label>
+									
+								<div class="perc_helper_h form-group text-info">
+
+										<label class="radio-inline">
+											<input type="radio" class="r" name="" value="amnt"> Amount   
+										</label>
+
+										<label class="radio-inline">
+											<input type="radio" class="r" name="" value="perc" checked> % &nbsp; &nbsp; &nbsp; 
+										</label>
+
+									</div>
+
+								</div>
+						</div>
+
+						
+
+						<div class="col">
+							<div class="form-group">
+								<input type="number"  step="0.01"  class="form-control" name="other_employees_1_average_cost_per_employee[]"   maxlength="20" minlength="1"  />
+								</div>
+						</div>
+
+						<div class="col">
+							<div class="form-group">
+								<input type="number"  step="0.01"  class="form-control" name="other_employees_1_average_cost_per_employee[]"  maxlength="20" minlength="1"  />
+									<div class="perc_helper_h">% value</div>
+								</div>
+						</div>
+						<div class="col">
+							<div class="form-group">
+								<input type="number"  step="0.01"  class="form-control" name="other_employees_1_average_cost_per_employee[]"   maxlength="20" minlength="1"  />
+									<div class="perc_helper_h">% value</div>
+								</div>
+						</div>
+						<div class="col">
+							<div class="form-group">
+								<input type="number"  step="0.01"  class="form-control" name="other_employees_1_average_cost_per_employee[]"   maxlength="20" minlength="1"  />
+									<div class="perc_helper_h">% value</div>
+								</div>
+						</div>
+						<div class="col">
+							<div class="form-group">
+								<input type="number"  step="0.01"  class="form-control" name="other_employees_1_average_cost_per_employee[]"  maxlength="20" minlength="1"  />
+									<div class="perc_helper_h">% value</div>
+								</div>
+						</div>
+						
+						
+                       
+				</div><hr>
+
+
+
+				<div class="form-row">
+				<div class="col-md-3">	<input type="text" value="Other Employees 2" name="other_employees_2" class="form-control text-success" minlength="1" maxlength="200" /></div>
+				</div><br>
+
+
+
+			
+
+			   <div id="" class="form-row">
+						
+						<div class="col-4">
+							<div class="form-group">
+								<label ><strong> No of Employees  </strong></label>
+									
+								<div class="perc_helper_h form-group text-info">
+
+										<label class="radio-inline">
+											<input type="radio" class="r" name="" value="amnt"> Amount   
+										</label>
+
+										<label class="radio-inline">
+											<input type="radio" class="r" name="" value="perc" checked> % &nbsp; &nbsp; &nbsp; 
+										</label>
+
+									</div>
+
+								</div>
+						</div>
+
+						
+
+						<div class="col">
+							<div class="form-group">
+								<input type="number"  step="0.01"  class="form-control" name="other_employees_2_no_of_employees[]"   maxlength="20" minlength="1"  />
+								</div>
+						</div>
+
+						<div class="col">
+							<div class="form-group">
+								<input type="number"  step="0.01"  class="form-control" name="other_employees_2_no_of_employees[]"  maxlength="20" minlength="1"  />
+									<div class="perc_helper_h">% value</div>
+								</div>
+						</div>
+						<div class="col">
+							<div class="form-group">
+								<input type="number"  step="0.01"  class="form-control" name="other_employees_2_no_of_employees[]"   maxlength="20" minlength="1"  />
+									<div class="perc_helper_h">% value</div>
+								</div>
+						</div>
+						<div class="col">
+							<div class="form-group">
+								<input type="number"  step="0.01"  class="form-control" name="other_employees_2_no_of_employees[]"   maxlength="20" minlength="1"  />
+									<div class="perc_helper_h">% value</div>
+								</div>
+						</div>
+						<div class="col">
+							<div class="form-group">
+								<input type="number"  step="0.01"  class="form-control" name="other_employees_2_no_of_employees[]"  maxlength="20" minlength="1"  />
+									<div class="perc_helper_h">% value</div>
+								</div>
+						</div>
+						
+						
+                       
+				</div>
+
+
+
+				                
+                  <div id="" class="form-row">
+						
+						<div class="col-4">
+							<div class="form-group">
+								<label ><strong> Average Expenses Per employee  </strong>  </label>
+									
+								<div class="perc_helper_h form-group text-info">
+
+										<label class="radio-inline">
+											<input type="radio" class="r" name="" value="amnt"> Amount   
+										</label>
+
+										<label class="radio-inline">
+											<input type="radio" class="r" name="" value="perc" checked> % &nbsp; &nbsp; &nbsp; 
+										</label>
+
+									</div>
+
+								</div>
+						</div>
+
+						
+
+						<div class="col">
+							<div class="form-group">
+								<input type="number"  step="0.01"  class="form-control" name="other_employees_2_average_cost_per_employee[]"   maxlength="20" minlength="1"  />
+								</div>
+						</div>
+
+						<div class="col">
+							<div class="form-group">
+								<input type="number"  step="0.01"  class="form-control" name="other_employees_2_average_cost_per_employee[]"  maxlength="20" minlength="1"  />
+									<div class="perc_helper_h">% value</div>
+								</div>
+						</div>
+						<div class="col">
+							<div class="form-group">
+								<input type="number"  step="0.01"  class="form-control" name="other_employees_2_average_cost_per_employee[]"   maxlength="20" minlength="1"  />
+									<div class="perc_helper_h">% value</div>
+								</div>
+						</div>
+						<div class="col">
+							<div class="form-group">
+								<input type="number"  step="0.01"  class="form-control" name="other_employees_2_average_cost_per_employee[]"   maxlength="20" minlength="1"  />
+									<div class="perc_helper_h">% value</div>
+								</div>
+						</div>
+						<div class="col">
+							<div class="form-group">
+								<input type="number"  step="0.01"  class="form-control" name="other_employees_2_average_cost_per_employee[]"  maxlength="20" minlength="1"  />
+									<div class="perc_helper_h">% value</div>
+								</div>
+						</div>
+						
+						
+                       
+				</div><hr>
+
+
+				<div class="form-row">
+				<div class="col-md-3">	<input type="text" value="Other Employees 3" name="other_employees_3" class="form-control text-success" minlength="1" maxlength="200" /></div>
+				</div><br>
+
+
+
+			
+
+			   <div id="" class="form-row">
+						
+						<div class="col-4">
+							<div class="form-group">
+								<label ><strong> No of Employees  </strong></label>
+									
+								<div class="perc_helper_h form-group text-info">
+
+										<label class="radio-inline">
+											<input type="radio" class="r" name="" value="amnt"> Amount   
+										</label>
+
+										<label class="radio-inline">
+											<input type="radio" class="r" name="" value="perc" checked> % &nbsp; &nbsp; &nbsp; 
+										</label>
+
+									</div>
+
+								</div>
+						</div>
+
+						
+
+						<div class="col">
+							<div class="form-group">
+								<input type="number"  step="0.01"  class="form-control" name="other_employees_3_no_of_employees[]"   maxlength="20" minlength="1"  />
+								</div>
+						</div>
+
+						<div class="col">
+							<div class="form-group">
+								<input type="number"  step="0.01"  class="form-control" name="other_employees_3_no_of_employees[]"  maxlength="20" minlength="1"  />
+									<div class="perc_helper_h">% value</div>
+								</div>
+						</div>
+						<div class="col">
+							<div class="form-group">
+								<input type="number"  step="0.01"  class="form-control" name="other_employees_3_no_of_employees[]"   maxlength="20" minlength="1"  />
+									<div class="perc_helper_h">% value</div>
+								</div>
+						</div>
+						<div class="col">
+							<div class="form-group">
+								<input type="number"  step="0.01"  class="form-control" name="other_employees_3_no_of_employees[]"   maxlength="20" minlength="1"  />
+									<div class="perc_helper_h">% value</div>
+								</div>
+						</div>
+						<div class="col">
+							<div class="form-group">
+								<input type="number"  step="0.01"  class="form-control" name="other_employees_3_no_of_employees[]"  maxlength="20" minlength="1"  />
+									<div class="perc_helper_h">% value</div>
+								</div>
+						</div>
+						
+						
+                       
+				</div>
+
+
+
+				                
+                  <div id="" class="form-row">
+						
+						<div class="col-4">
+							<div class="form-group">
+								<label ><strong> Average Expenses Per employee  </strong>  </label>
+									
+								<div class="perc_helper_h form-group text-info">
+
+										<label class="radio-inline">
+											<input type="radio" class="r" name="" value="amnt"> Amount   
+										</label>
+
+										<label class="radio-inline">
+											<input type="radio" class="r" name="" value="perc" checked> % &nbsp; &nbsp; &nbsp; 
+										</label>
+
+									</div>
+
+								</div>
+						</div>
+
+						
+
+						<div class="col">
+							<div class="form-group">
+								<input type="number"  step="0.01"  class="form-control" name="other_employees_3_average_cost_per_employee[]"   maxlength="20" minlength="1"  />
+								</div>
+						</div>
+
+						<div class="col">
+							<div class="form-group">
+								<input type="number"  step="0.01"  class="form-control" name="other_employees_3_average_cost_per_employee[]"  maxlength="20" minlength="1"  />
+									<div class="perc_helper_h">% value</div>
+								</div>
+						</div>
+						<div class="col">
+							<div class="form-group">
+								<input type="number"  step="0.01"  class="form-control" name="other_employees_3_average_cost_per_employee[]"   maxlength="20" minlength="1"  />
+									<div class="perc_helper_h">% value</div>
+								</div>
+						</div>
+						<div class="col">
+							<div class="form-group">
+								<input type="number"  step="0.01"  class="form-control" name="other_employees_3_average_cost_per_employee[]"   maxlength="20" minlength="1"  />
+									<div class="perc_helper_h">% value</div>
+								</div>
+						</div>
+						<div class="col">
+							<div class="form-group">
+								<input type="number"  step="0.01"  class="form-control" name="other_employees_3_average_cost_per_employee[]"  maxlength="20" minlength="1"  />
+									<div class="perc_helper_h">% value</div>
+								</div>
+						</div>
+						
+						
+                       
+				</div><hr>
+
+				<br>
+				<h5 class="text-primary">General & Administrative Expenses </h5><br>
+
+
+				<div id="" class="form-row">
+						
+						<div class="col-4">
+							<div class="form-group">
+								<label ><strong> Rent   </strong>  </label>
+									
+								<div class="perc_helper_h form-group text-info">
+
+										<label class="radio-inline">
+											<input type="radio" class="r" name="" value="amnt"> Amount   
+										</label>
+
+										<label class="radio-inline">
+											<input type="radio" class="r" name="" value="perc" checked> % &nbsp; &nbsp; &nbsp; 
+										</label>
+
+									</div>
+
+								</div>
+						</div>
+
+						
+
+						<div class="col">
+							<div class="form-group">
+								<input type="number"  step="0.01"  class="form-control" name="rent[]"   maxlength="20" minlength="1"  />
+								</div>
+						</div>
+
+						<div class="col">
+							<div class="form-group">
+								<input type="number"  step="0.01"  class="form-control" name="rent[]"  maxlength="20" minlength="1"  />
+									<div class="perc_helper_h">% value</div>
+								</div>
+						</div>
+						<div class="col">
+							<div class="form-group">
+								<input type="number"  step="0.01"  class="form-control" name="rent[]"   maxlength="20" minlength="1"  />
+									<div class="perc_helper_h">% value</div>
+								</div>
+						</div>
+						<div class="col">
+							<div class="form-group">
+								<input type="number"  step="0.01"  class="form-control" name="rent[]"   maxlength="20" minlength="1"  />
+									<div class="perc_helper_h">% value</div>
+								</div>
+						</div>
+						<div class="col">
+							<div class="form-group">
+								<input type="number"  step="0.01"  class="form-control" name="rent[]"  maxlength="20" minlength="1"  />
+									<div class="perc_helper_h">% value</div>
+								</div>
+						</div>
+						
+						
+                       
+				</div>
+
+
+
+				<div id="" class="form-row">
+						
+						<div class="col-4">
+							<div class="form-group">
+								<label ><strong> Telephone expenses    </strong>  </label>
+									
+								<div class="perc_helper_h form-group text-info">
+
+										<label class="radio-inline">
+											<input type="radio" class="r" name="" value="amnt"> Amount   
+										</label>
+
+										<label class="radio-inline">
+											<input type="radio" class="r" name="" value="perc" checked> % &nbsp; &nbsp; &nbsp; 
+										</label>
+
+									</div>
+
+								</div>
+						</div>
+
+						
+
+						<div class="col">
+							<div class="form-group">
+								<input type="number"  step="0.01"  class="form-control" name="telephone_expenses[]"   maxlength="20" minlength="1"  />
+								</div>
+						</div>
+
+						<div class="col">
+							<div class="form-group">
+								<input type="number"  step="0.01"  class="form-control" name="telephone_expenses[]"  maxlength="20" minlength="1"  />
+									<div class="perc_helper_h">% value</div>
+								</div>
+						</div>
+						<div class="col">
+							<div class="form-group">
+								<input type="number"  step="0.01"  class="form-control" name="telephone_expenses[]"   maxlength="20" minlength="1"  />
+									<div class="perc_helper_h">% value</div>
+								</div>
+						</div>
+						<div class="col">
+							<div class="form-group">
+								<input type="number"  step="0.01"  class="form-control" name="telephone_expenses[]"   maxlength="20" minlength="1"  />
+									<div class="perc_helper_h">% value</div>
+								</div>
+						</div>
+						<div class="col">
+							<div class="form-group">
+								<input type="number"  step="0.01"  class="form-control" name="telephone_expenses[]"  maxlength="20" minlength="1"  />
+									<div class="perc_helper_h">% value</div>
+								</div>
+						</div>
+						
+						
+                       
+				</div>
+
+
+				<div id="" class="form-row">
+						
+						<div class="col-4">
+							<div class="form-group">
+								<label ><strong>  Electricity   </strong>  </label>
+									
+								<div class="perc_helper_h form-group text-info">
+
+										<label class="radio-inline">
+											<input type="radio" class="r" name="" value="amnt"> Amount   
+										</label>
+
+										<label class="radio-inline">
+											<input type="radio" class="r" name="" value="perc" checked> % &nbsp; &nbsp; &nbsp; 
+										</label>
+
+									</div>
+
+								</div>
+						</div>
+
+						
+
+						<div class="col">
+							<div class="form-group">
+								<input type="number"  step="0.01"  class="form-control" name="electricity[]"   maxlength="20" minlength="1"  />
+								</div>
+						</div>
+
+						<div class="col">
+							<div class="form-group">
+								<input type="number"  step="0.01"  class="form-control" name="electricity[]"  maxlength="20" minlength="1"  />
+									<div class="perc_helper_h">% value</div>
+								</div>
+						</div>
+						<div class="col">
+							<div class="form-group">
+								<input type="number"  step="0.01"  class="form-control" name="electricity[]"   maxlength="20" minlength="1"  />
+									<div class="perc_helper_h">% value</div>
+								</div>
+						</div>
+						<div class="col">
+							<div class="form-group">
+								<input type="number"  step="0.01"  class="form-control" name="electricity[]"   maxlength="20" minlength="1"  />
+									<div class="perc_helper_h">% value</div>
+								</div>
+						</div>
+						<div class="col">
+							<div class="form-group">
+								<input type="number"  step="0.01"  class="form-control" name="electricity[]"  maxlength="20" minlength="1"  />
+									<div class="perc_helper_h">% value</div>
+								</div>
+						</div>
+						
+						
+                       
+				</div>
+
+
+				<div id="" class="form-row">
+						
+						<div class="col-4">
+							<div class="form-group">
+								<label ><strong> Printing & Stationery   </strong>  </label>
+									
+								<div class="perc_helper_h form-group text-info">
+
+										<label class="radio-inline">
+											<input type="radio" class="r" name="" value="amnt"> Amount   
+										</label>
+
+										<label class="radio-inline">
+											<input type="radio" class="r" name="" value="perc" checked> % &nbsp; &nbsp; &nbsp; 
+										</label>
+
+									</div>
+
+								</div>
+						</div>
+
+						
+
+						<div class="col">
+							<div class="form-group">
+								<input type="number"  step="0.01"  class="form-control" name="printing_and_stationery[]"   maxlength="20" minlength="1"  />
+								</div>
+						</div>
+
+						<div class="col">
+							<div class="form-group">
+								<input type="number"  step="0.01"  class="form-control" name="printing_and_stationery[]"  maxlength="20" minlength="1"  />
+									<div class="perc_helper_h">% value</div>
+								</div>
+						</div>
+						<div class="col">
+							<div class="form-group">
+								<input type="number"  step="0.01"  class="form-control" name="printing_and_stationery[]"   maxlength="20" minlength="1"  />
+									<div class="perc_helper_h">% value</div>
+								</div>
+						</div>
+						<div class="col">
+							<div class="form-group">
+								<input type="number"  step="0.01"  class="form-control" name="printing_and_stationery[]"   maxlength="20" minlength="1"  />
+									<div class="perc_helper_h">% value</div>
+								</div>
+						</div>
+						<div class="col">
+							<div class="form-group">
+								<input type="number"  step="0.01"  class="form-control" name="printing_and_stationery[]"  maxlength="20" minlength="1"  />
+									<div class="perc_helper_h">% value</div>
+								</div>
+						</div>
+						
+						
+                       
+				</div>
+
+
+
+			<div id="" class="form-row">
+						
+						<div class="col-4">
+							<div class="form-group">
+								<label ><strong> Audit fees    </strong>  </label>
+									
+								<div class="perc_helper_h form-group text-info">
+
+										<label class="radio-inline">
+											<input type="radio" class="r" name="" value="amnt"> Amount   
+										</label>
+
+										<label class="radio-inline">
+											<input type="radio" class="r" name="" value="perc" checked> % &nbsp; &nbsp; &nbsp; 
+										</label>
+
+									</div>
+
+								</div>
+						</div>
+
+						
+
+						<div class="col">
+							<div class="form-group">
+								<input type="number"  step="0.01"  class="form-control" name="audit_fees[]"   maxlength="20" minlength="1"  />
+								</div>
+						</div>
+
+						<div class="col">
+							<div class="form-group">
+								<input type="number"  step="0.01"  class="form-control" name="audit_fees[]"  maxlength="20" minlength="1"  />
+									<div class="perc_helper_h">% value</div>
+								</div>
+						</div>
+						<div class="col">
+							<div class="form-group">
+								<input type="number"  step="0.01"  class="form-control" name="audit_fees[]"   maxlength="20" minlength="1"  />
+									<div class="perc_helper_h">% value</div>
+								</div>
+						</div>
+						<div class="col">
+							<div class="form-group">
+								<input type="number"  step="0.01"  class="form-control" name="audit_fees[]"   maxlength="20" minlength="1"  />
+									<div class="perc_helper_h">% value</div>
+								</div>
+						</div>
+						<div class="col">
+							<div class="form-group">
+								<input type="number"  step="0.01"  class="form-control" name="audit_fees[]"  maxlength="20" minlength="1"  />
+									<div class="perc_helper_h">% value</div>
+								</div>
+						</div>
+						
+						
+                       
+				</div>
+
+				
+				
+			<div id="" class="form-row">
+						
+						<div class="col-4">
+							<div class="form-group">
+								<input type="text" value="Other administration expenses 1" name="other_administration_expenses_1[]" class="form-control text-primary" minlength="1" maxlength="200" />
+									
+								<div class="perc_helper_h form-group text-info">
+
+										<label class="radio-inline">
+											<input type="radio" class="r" name="" value="amnt"> Amount   
+										</label>
+
+										<label class="radio-inline">
+											<input type="radio" class="r" name="" value="perc" checked> % &nbsp; &nbsp; &nbsp; 
+										</label>
+
+									</div>
+
+								</div>
+						</div>
+
+						
+
+						<div class="col">
+							<div class="form-group">
+								<input type="number"  step="0.01"  class="form-control" name="other_administration_expenses_1[]"   maxlength="20" minlength="1"  />
+								</div>
+						</div>
+
+						<div class="col">
+							<div class="form-group">
+								<input type="number"  step="0.01"  class="form-control" name="other_administration_expenses_1[]"  maxlength="20" minlength="1"  />
+									<div class="perc_helper_h">% value</div>
+								</div>
+						</div>
+						<div class="col">
+							<div class="form-group">
+								<input type="number"  step="0.01"  class="form-control" name="other_administration_expenses_1[]"   maxlength="20" minlength="1"  />
+									<div class="perc_helper_h">% value</div>
+								</div>
+						</div>
+						<div class="col">
+							<div class="form-group">
+								<input type="number"  step="0.01"  class="form-control" name="other_administration_expenses_1[]"   maxlength="20" minlength="1"  />
+									<div class="perc_helper_h">% value</div>
+								</div>
+						</div>
+						<div class="col">
+							<div class="form-group">
+								<input type="number"  step="0.01"  class="form-control" name="other_administration_expenses_1[]"  maxlength="20" minlength="1"  />
+									<div class="perc_helper_h">% value</div>
+								</div>
+						</div>
+						
+						
+                       
+				</div>
+				
+				
+				<div id="" class="form-row">
+						
+						<div class="col-4">
+							<div class="form-group">
+								<input type="text" value="Other administration expenses 2" name="other_administration_expenses_2[]" class="form-control text-primary" minlength="1" maxlength="200" />
+									
+								<div class="perc_helper_h form-group text-info">
+
+										<label class="radio-inline">
+											<input type="radio" class="r" name="" value="amnt"> Amount   
+										</label>
+
+										<label class="radio-inline">
+											<input type="radio" class="r" name="" value="perc" checked> % &nbsp; &nbsp; &nbsp; 
+										</label>
+
+									</div>
+
+								</div>
+						</div>
+
+						
+
+						<div class="col">
+							<div class="form-group">
+								<input type="number"  step="0.01"  class="form-control" name="other_administration_expenses_2[]"   maxlength="20" minlength="1"  />
+								</div>
+						</div>
+
+						<div class="col">
+							<div class="form-group">
+								<input type="number"  step="0.01"  class="form-control" name="other_administration_expenses_2[]"  maxlength="20" minlength="1"  />
+									<div class="perc_helper_h">% value</div>
+								</div>
+						</div>
+						<div class="col">
+							<div class="form-group">
+								<input type="number"  step="0.01"  class="form-control" name="other_administration_expenses_2[]"   maxlength="20" minlength="1"  />
+									<div class="perc_helper_h">% value</div>
+								</div>
+						</div>
+						<div class="col">
+							<div class="form-group">
+								<input type="number"  step="0.01"  class="form-control" name="other_administration_expenses_2[]"   maxlength="20" minlength="1"  />
+									<div class="perc_helper_h">% value</div>
+								</div>
+						</div>
+						<div class="col">
+							<div class="form-group">
+								<input type="number"  step="0.01"  class="form-control" name="other_administration_expenses_2[]"  maxlength="20" minlength="1"  />
+									<div class="perc_helper_h">% value</div>
+								</div>
+						</div>
+						
+						
+                       
+				</div>
+
+
+
+				<div id="" class="form-row">
+						
+						<div class="col-4">
+							<div class="form-group">
+								<input type="text" value="Other administration expenses 3" name="other_administration_expenses_3[]" class="form-control text-primary" minlength="1" maxlength="200" />
+									
+								<div class="perc_helper_h form-group text-info">
+
+										<label class="radio-inline">
+											<input type="radio" class="r" name="" value="amnt"> Amount   
+										</label>
+
+										<label class="radio-inline">
+											<input type="radio" class="r" name="" value="perc" checked> % &nbsp; &nbsp; &nbsp; 
+										</label>
+
+									</div>
+
+								</div>
+						</div>
+
+						
+
+						<div class="col">
+							<div class="form-group">
+								<input type="number"  step="0.01"  class="form-control" name="other_administration_expenses_3[]"   maxlength="20" minlength="1"  />
+								</div>
+						</div>
+
+						<div class="col">
+							<div class="form-group">
+								<input type="number"  step="0.01"  class="form-control" name="other_administration_expenses_3[]"  maxlength="20" minlength="1"  />
+									<div class="perc_helper_h">% value</div>
+								</div>
+						</div>
+						<div class="col">
+							<div class="form-group">
+								<input type="number"  step="0.01"  class="form-control" name="other_administration_expenses_3[]"   maxlength="20" minlength="1"  />
+									<div class="perc_helper_h">% value</div>
+								</div>
+						</div>
+						<div class="col">
+							<div class="form-group">
+								<input type="number"  step="0.01"  class="form-control" name="other_administration_expenses_3[]"   maxlength="20" minlength="1"  />
+									<div class="perc_helper_h">% value</div>
+								</div>
+						</div>
+						<div class="col">
+							<div class="form-group">
+								<input type="number"  step="0.01"  class="form-control" name="other_administration_expenses_3[]"  maxlength="20" minlength="1"  />
+									<div class="perc_helper_h">% value</div>
+								</div>
+						</div>
+						
+						
+                       
+				</div>
+
+
+
+				<br>
+				<h5 class="text-primary">Selling & Marketing Expenses   </h5><br>
+
+
+				<div id="" class="form-row">
+						
+						<div class="col-4">
+							<div class="form-group">
+								<label ><strong>  Digital Marketing Expenses </strong>  </label>
+									
+								<div class="perc_helper_h form-group text-info">
+
+										<label class="radio-inline">
+											<input type="radio" class="r" name="" value="amnt"> Amount   
+										</label>
+
+										<label class="radio-inline">
+											<input type="radio" class="r" name="" value="perc" checked> % &nbsp; &nbsp; &nbsp; 
+										</label>
+
+									</div>
+
+								</div>
+						</div>
+
+						
+
+						<div class="col">
+							<div class="form-group">
+								<input type="number"  step="0.01"  class="form-control" name="digital_marketing_cost[]"   maxlength="20" minlength="1"  />
+								</div>
+						</div>
+
+						<div class="col">
+							<div class="form-group">
+								<input type="number"  step="0.01"  class="form-control" name="digital_marketing_cost[]"  maxlength="20" minlength="1"  />
+									<div class="perc_helper_h">% value</div>
+								</div>
+						</div>
+						<div class="col">
+							<div class="form-group">
+								<input type="number"  step="0.01"  class="form-control" name="digital_marketing_cost[]"   maxlength="20" minlength="1"  />
+									<div class="perc_helper_h">% value</div>
+								</div>
+						</div>
+						<div class="col">
+							<div class="form-group">
+								<input type="number"  step="0.01"  class="form-control" name="digital_marketing_cost[]"   maxlength="20" minlength="1"  />
+									<div class="perc_helper_h">% value</div>
+								</div>
+						</div>
+						<div class="col">
+							<div class="form-group">
+								<input type="number"  step="0.01"  class="form-control" name="digital_marketing_cost[]"  maxlength="20" minlength="1"  />
+									<div class="perc_helper_h">% value</div>
+								</div>
+						</div>
+						
+						
+                       
+				</div>
+
+
+				<div id="" class="form-row">
+						
+						<div class="col-4">
+							<div class="form-group">
+								<label ><strong> Sales Commissions   </strong>  </label>
+									
+								<div class="perc_helper_h form-group text-info">
+
+										<label class="radio-inline">
+											<input type="radio" class="r" name="" value="amnt"> Amount   
+										</label>
+
+										<label class="radio-inline">
+											<input type="radio" class="r" name="" value="perc" checked> % &nbsp; &nbsp; &nbsp; 
+										</label>
+
+									</div>
+
+								</div>
+						</div>
+
+						
+
+						<div class="col">
+							<div class="form-group">
+								<input type="number"  step="0.01"  class="form-control" name="sales_commissions[]"   maxlength="20" minlength="1"  />
+								</div>
+						</div>
+
+						<div class="col">
+							<div class="form-group">
+								<input type="number"  step="0.01"  class="form-control" name="sales_commissions[]"  maxlength="20" minlength="1"  />
+									<div class="perc_helper_h">% value</div>
+								</div>
+						</div>
+						<div class="col">
+							<div class="form-group">
+								<input type="number"  step="0.01"  class="form-control" name="sales_commissions[]"   maxlength="20" minlength="1"  />
+									<div class="perc_helper_h">% value</div>
+								</div>
+						</div>
+						<div class="col">
+							<div class="form-group">
+								<input type="number"  step="0.01"  class="form-control" name="sales_commissions[]"   maxlength="20" minlength="1"  />
+									<div class="perc_helper_h">% value</div>
+								</div>
+						</div>
+						<div class="col">
+							<div class="form-group">
+								<input type="number"  step="0.01"  class="form-control" name="sales_commissions[]"  maxlength="20" minlength="1"  />
+									<div class="perc_helper_h">% value</div>
+								</div>
+						</div>
+						
+						
+                       
+				</div>
+
+
+
+				<div id="" class="form-row">
+						
+						<div class="col-4">
+							<div class="form-group">
+								<label ><strong> Travelling expenses   </strong>  </label>
+									
+								<div class="perc_helper_h form-group text-info">
+
+										<label class="radio-inline">
+											<input type="radio" class="r" name="" value="amnt"> Amount   
+										</label>
+
+										<label class="radio-inline">
+											<input type="radio" class="r" name="" value="perc" checked> % &nbsp; &nbsp; &nbsp; 
+										</label>
+
+									</div>
+
+								</div>
+						</div>
+
+						
+
+						<div class="col">
+							<div class="form-group">
+								<input type="number"  step="0.01"  class="form-control" name="travelling_expenses[]"   maxlength="20" minlength="1"  />
+								</div>
+						</div>
+
+						<div class="col">
+							<div class="form-group">
+								<input type="number"  step="0.01"  class="form-control" name="travelling_expenses[]"  maxlength="20" minlength="1"  />
+									<div class="perc_helper_h">% value</div>
+								</div>
+						</div>
+						<div class="col">
+							<div class="form-group">
+								<input type="number"  step="0.01"  class="form-control" name="travelling_expenses[]"   maxlength="20" minlength="1"  />
+									<div class="perc_helper_h">% value</div>
+								</div>
+						</div>
+						<div class="col">
+							<div class="form-group">
+								<input type="number"  step="0.01"  class="form-control" name="travelling_expenses[]"   maxlength="20" minlength="1"  />
+									<div class="perc_helper_h">% value</div>
+								</div>
+						</div>
+						<div class="col">
+							<div class="form-group">
+								<input type="number"  step="0.01"  class="form-control" name="travelling_expenses[]"  maxlength="20" minlength="1"  />
+									<div class="perc_helper_h">% value</div>
+								</div>
+						</div>
+						
+						
+                       
+				</div>
+
+
+
+				<div id="" class="form-row">
+						
+						<div class="col-4">
+							<div class="form-group">
+								<label ><strong> Advertisement   </strong>  </label>
+									
+								<div class="perc_helper_h form-group text-info">
+
+										<label class="radio-inline">
+											<input type="radio" class="r" name="" value="amnt"> Amount   
+										</label>
+
+										<label class="radio-inline">
+											<input type="radio" class="r" name="" value="perc" checked> % &nbsp; &nbsp; &nbsp; 
+										</label>
+
+									</div>
+
+								</div>
+						</div>
+
+						
+
+						<div class="col">
+							<div class="form-group">
+								<input type="number"  step="0.01"  class="form-control" name="advertisement[]"   maxlength="20" minlength="1"  />
+								</div>
+						</div>
+
+						<div class="col">
+							<div class="form-group">
+								<input type="number"  step="0.01"  class="form-control" name="advertisement[]"  maxlength="20" minlength="1"  />
+									<div class="perc_helper_h">% value</div>
+								</div>
+						</div>
+						<div class="col">
+							<div class="form-group">
+								<input type="number"  step="0.01"  class="form-control" name="advertisement[]"   maxlength="20" minlength="1"  />
+									<div class="perc_helper_h">% value</div>
+								</div>
+						</div>
+						<div class="col">
+							<div class="form-group">
+								<input type="number"  step="0.01"  class="form-control" name="advertisement[]"   maxlength="20" minlength="1"  />
+									<div class="perc_helper_h">% value</div>
+								</div>
+						</div>
+						<div class="col">
+							<div class="form-group">
+								<input type="number"  step="0.01"  class="form-control" name="advertisement[]"  maxlength="20" minlength="1"  />
+									<div class="perc_helper_h">% value</div>
+								</div>
+						</div>
+						
+						
+                       
+				</div>
+
+
+				<div id="" class="form-row">
+						
+						<div class="col-4">
+							<div class="form-group">
+								<label ><strong> Logistics expenses   </strong>  </label>
+									
+								<div class="perc_helper_h form-group text-info">
+
+										<label class="radio-inline">
+											<input type="radio" class="r" name="" value="amnt"> Amount   
+										</label>
+
+										<label class="radio-inline">
+											<input type="radio" class="r" name="" value="perc" checked> % &nbsp; &nbsp; &nbsp; 
+										</label>
+
+									</div>
+
+								</div>
+						</div>
+
+						
+
+						<div class="col">
+							<div class="form-group">
+								<input type="number"  step="0.01"  class="form-control" name="logistics_expenses[]"   maxlength="20" minlength="1"  />
+								</div>
+						</div>
+
+						<div class="col">
+							<div class="form-group">
+								<input type="number"  step="0.01"  class="form-control" name="logistics_expenses[]"  maxlength="20" minlength="1"  />
+									<div class="perc_helper_h">% value</div>
+								</div>
+						</div>
+						<div class="col">
+							<div class="form-group">
+								<input type="number"  step="0.01"  class="form-control" name="logistics_expenses[]"   maxlength="20" minlength="1"  />
+									<div class="perc_helper_h">% value</div>
+								</div>
+						</div>
+						<div class="col">
+							<div class="form-group">
+								<input type="number"  step="0.01"  class="form-control" name="logistics_expenses[]"   maxlength="20" minlength="1"  />
+									<div class="perc_helper_h">% value</div>
+								</div>
+						</div>
+						<div class="col">
+							<div class="form-group">
+								<input type="number"  step="0.01"  class="form-control" name="logistics_expenses[]"  maxlength="20" minlength="1"  />
+									<div class="perc_helper_h">% value</div>
+								</div>
+						</div>
+						
+						
+                       
+				</div>
+
+
+
+					<div id="" class="form-row">
+						
+						<div class="col-4">
+							<div class="form-group">
+								<input type="text" value="Other Selling & Marketing Expenses 1" name="other_selling_and_marketing_expenses_1" class="form-control text-primary" minlength="1" maxlength="200" />
+									
+								<div class="perc_helper_h form-group text-info">
+
+										<label class="radio-inline">
+											<input type="radio" class="r" name="" value="amnt"> Amount   
+										</label>
+
+										<label class="radio-inline">
+											<input type="radio" class="r" name="" value="perc" checked> % &nbsp; &nbsp; &nbsp; 
+										</label>
+
+									</div>
+
+								</div>
+						</div>
+
+						
+
+						<div class="col">
+							<div class="form-group">
+								<input type="number"  step="0.01"  class="form-control" name="other_selling_and_marketing_expenses_1[]"   maxlength="20" minlength="1"  />
+								</div>
+						</div>
+
+						<div class="col">
+							<div class="form-group">
+								<input type="number"  step="0.01"  class="form-control" name="other_selling_and_marketing_expenses_1[]"  maxlength="20" minlength="1"  />
+									<div class="perc_helper_h">% value</div>
+								</div>
+						</div>
+						<div class="col">
+							<div class="form-group">
+								<input type="number"  step="0.01"  class="form-control" name="other_selling_and_marketing_expenses_1[]"   maxlength="20" minlength="1"  />
+									<div class="perc_helper_h">% value</div>
+								</div>
+						</div>
+						<div class="col">
+							<div class="form-group">
+								<input type="number"  step="0.01"  class="form-control" name="other_selling_and_marketing_expenses_1[]"   maxlength="20" minlength="1"  />
+									<div class="perc_helper_h">% value</div>
+								</div>
+						</div>
+						<div class="col">
+							<div class="form-group">
+								<input type="number"  step="0.01"  class="form-control" name="other_selling_and_marketing_expenses_1[]"  maxlength="20" minlength="1"  />
+									<div class="perc_helper_h">% value</div>
+								</div>
+						</div>
+						
+						
+                       
+				</div>
+
+
+
+				<div id="" class="form-row">
+						
+						<div class="col-4">
+							<div class="form-group">
+								<input type="text" value="Other Selling & Marketing Expenses 2" name="other_selling_and_marketing_expenses_2" class="form-control text-primary" minlength="1" maxlength="200" />
+									
+								<div class="perc_helper_h form-group text-info">
+
+										<label class="radio-inline">
+											<input type="radio" class="r" name="" value="amnt"> Amount   
+										</label>
+
+										<label class="radio-inline">
+											<input type="radio" class="r" name="" value="perc" checked> % &nbsp; &nbsp; &nbsp; 
+										</label>
+
+									</div>
+
+								</div>
+						</div>
+
+						
+
+						<div class="col">
+							<div class="form-group">
+								<input type="number"  step="0.01"  class="form-control" name="other_selling_and_marketing_expenses_2[]"   maxlength="20" minlength="1"  />
+								</div>
+						</div>
+
+						<div class="col">
+							<div class="form-group">
+								<input type="number"  step="0.01"  class="form-control" name="other_selling_and_marketing_expenses_2[]"  maxlength="20" minlength="1"  />
+									<div class="perc_helper_h">% value</div>
+								</div>
+						</div>
+						<div class="col">
+							<div class="form-group">
+								<input type="number"  step="0.01"  class="form-control" name="other_selling_and_marketing_expenses_2[]"   maxlength="20" minlength="1"  />
+									<div class="perc_helper_h">% value</div>
+								</div>
+						</div>
+						<div class="col">
+							<div class="form-group">
+								<input type="number"  step="0.01"  class="form-control" name="other_selling_and_marketing_expenses_2[]"   maxlength="20" minlength="1"  />
+									<div class="perc_helper_h">% value</div>
+								</div>
+						</div>
+						<div class="col">
+							<div class="form-group">
+								<input type="number"  step="0.01"  class="form-control" name="other_selling_and_marketing_expenses_2[]"  maxlength="20" minlength="1"  />
+									<div class="perc_helper_h">% value</div>
+								</div>
+						</div>
+						
+						
+                       
+				</div>
+
+
+
+
+				<div id="" class="form-row">
+						
+						<div class="col-4">
+							<div class="form-group">
+								<input type="text" value="Other Selling & Marketing Expenses 3" name="other_selling_and_marketing_expenses_3" class="form-control text-primary" minlength="1" maxlength="200" />
+									
+								<div class="perc_helper_h form-group text-info">
+
+										<label class="radio-inline">
+											<input type="radio" class="r" name="" value="amnt"> Amount   
+										</label>
+
+										<label class="radio-inline">
+											<input type="radio" class="r" name="" value="perc" checked> % &nbsp; &nbsp; &nbsp; 
+										</label>
+
+									</div>
+
+								</div>
+						</div>
+
+						
+
+						<div class="col">
+							<div class="form-group">
+								<input type="number"  step="0.01"  class="form-control" name="other_selling_and_marketing_expenses_3[]"   maxlength="20" minlength="1"  />
+								</div>
+						</div>
+
+						<div class="col">
+							<div class="form-group">
+								<input type="number"  step="0.01"  class="form-control" name="other_selling_and_marketing_expenses_3[]"  maxlength="20" minlength="1"  />
+									<div class="perc_helper_h">% value</div>
+								</div>
+						</div>
+						<div class="col">
+							<div class="form-group">
+								<input type="number"  step="0.01"  class="form-control" name="other_selling_and_marketing_expenses_3[]"   maxlength="20" minlength="1"  />
+									<div class="perc_helper_h">% value</div>
+								</div>
+						</div>
+						<div class="col">
+							<div class="form-group">
+								<input type="number"  step="0.01"  class="form-control" name="other_selling_and_marketing_expenses_3[]"   maxlength="20" minlength="1"  />
+									<div class="perc_helper_h">% value</div>
+								</div>
+						</div>
+						<div class="col">
+							<div class="form-group">
+								<input type="number"  step="0.01"  class="form-control" name="other_selling_and_marketing_expenses_3[]"  maxlength="20" minlength="1"  />
+									<div class="perc_helper_h">% value</div>
+								</div>
+						</div>
+						
+						
+                       
+				</div>
+
+				<hr>
+				<br>
+				<br>
+
+
+					<div id="" class="form-row">
+						
+						<div class="col-4">
+							<div class="form-group">
+								<input type="text" value="Other Expenses 1" name="other_expenses_1[]" class="form-control text-success" minlength="1" maxlength="200" />
+									
+								<div class="perc_helper_h form-group text-info">
+
+										<label class="radio-inline">
+											<input type="radio" class="r" name="" value="amnt"> Amount   
+										</label>
+
+										<label class="radio-inline">
+											<input type="radio" class="r" name="" value="perc" checked> % &nbsp; &nbsp; &nbsp; 
+										</label>
+
+									</div>
+
+								</div>
+						</div>
+
+						
+
+						<div class="col">
+							<div class="form-group">
+								<input type="number"  step="0.01"  class="form-control" name="other_expenses_1[]"   maxlength="20" minlength="1"  />
+								</div>
+						</div>
+
+						<div class="col">
+							<div class="form-group">
+								<input type="number"  step="0.01"  class="form-control" name="other_expenses_1[]"  maxlength="20" minlength="1"  />
+									<div class="perc_helper_h">% value</div>
+								</div>
+						</div>
+						<div class="col">
+							<div class="form-group">
+								<input type="number"  step="0.01"  class="form-control" name="other_expenses_1[]"   maxlength="20" minlength="1"  />
+									<div class="perc_helper_h">% value</div>
+								</div>
+						</div>
+						<div class="col">
+							<div class="form-group">
+								<input type="number"  step="0.01"  class="form-control" name="other_expenses_1[]"   maxlength="20" minlength="1"  />
+									<div class="perc_helper_h">% value</div>
+								</div>
+						</div>
+						<div class="col">
+							<div class="form-group">
+								<input type="number"  step="0.01"  class="form-control" name="other_expenses_1[]"  maxlength="20" minlength="1"  />
+									<div class="perc_helper_h">% value</div>
+								</div>
+						</div>
+						
+						
+                       
+				</div>
+
+				<div id="" class="form-row">
+						
+						<div class="col-4">
+							<div class="form-group">
+								<input type="text" value="Other Expenses 2" name="other_expenses_2[]" class="form-control text-success" minlength="1" maxlength="200" />
+									
+								<div class="perc_helper_h form-group text-info">
+
+										<label class="radio-inline">
+											<input type="radio" class="r" name="" value="amnt"> Amount   
+										</label>
+
+										<label class="radio-inline">
+											<input type="radio" class="r" name="" value="perc" checked> % &nbsp; &nbsp; &nbsp; 
+										</label>
+
+									</div>
+
+								</div>
+						</div>
+
+						
+
+						<div class="col">
+							<div class="form-group">
+								<input type="number"  step="0.01"  class="form-control" name="other_expenses_2[]"   maxlength="20" minlength="1"  />
+								</div>
+						</div>
+
+						<div class="col">
+							<div class="form-group">
+								<input type="number"  step="0.01"  class="form-control" name="other_expenses_2[]"  maxlength="20" minlength="1"  />
+									<div class="perc_helper_h">% value</div>
+								</div>
+						</div>
+						<div class="col">
+							<div class="form-group">
+								<input type="number"  step="0.01"  class="form-control" name="other_expenses_2[]"   maxlength="20" minlength="1"  />
+									<div class="perc_helper_h">% value</div>
+								</div>
+						</div>
+						<div class="col">
+							<div class="form-group">
+								<input type="number"  step="0.01"  class="form-control" name="other_expenses_2[]"   maxlength="20" minlength="1"  />
+									<div class="perc_helper_h">% value</div>
+								</div>
+						</div>
+						<div class="col">
+							<div class="form-group">
+								<input type="number"  step="0.01"  class="form-control" name="other_expenses_2[]"  maxlength="20" minlength="1"  />
+									<div class="perc_helper_h">% value</div>
+								</div>
+						</div>
+						
+						
+                       
+				</div>
+
+				<hr>
+				<br>
+
+				<div id="" class="form-row">
+						
+						<div class="col-4">
+							<div class="form-group">
+								<label ><strong> Income Tax Rate   </strong>  </label>
+									
+								<div class="perc_helper_h form-group text-info">
+
+										<label class="radio-inline">
+											<input type="radio" class="r" name="" value="amnt"> Amount   
+										</label>
+
+										<label class="radio-inline">
+											<input type="radio" class="r" name="" value="perc" checked> % &nbsp; &nbsp; &nbsp; 
+										</label>
+
+									</div>
+
+								</div>
+						</div>
+
+						
+
+						<div class="col">
+							<div class="form-group">
+								<input type="number"  step="0.01"  class="form-control" name="income_tax_rate[]"   maxlength="20" minlength="1"  />
+								</div>
+						</div>
+
+						<div class="col">
+							<div class="form-group">
+								<input type="number"  step="0.01"  class="form-control" name="income_tax_rate[]"  maxlength="20" minlength="1"  />
+									<div class="perc_helper_h">% value</div>
+								</div>
+						</div>
+						<div class="col">
+							<div class="form-group">
+								<input type="number"  step="0.01"  class="form-control" name="income_tax_rate[]"   maxlength="20" minlength="1"  />
+									<div class="perc_helper_h">% value</div>
+								</div>
+						</div>
+						<div class="col">
+							<div class="form-group">
+								<input type="number"  step="0.01"  class="form-control" name="income_tax_rate[]"   maxlength="20" minlength="1"  />
+									<div class="perc_helper_h">% value</div>
+								</div>
+						</div>
+						<div class="col">
+							<div class="form-group">
+								<input type="number"  step="0.01"  class="form-control" name="income_tax_rate[]"  maxlength="20" minlength="1"  />
+									<div class="perc_helper_h">% value</div>
+								</div>
+						</div>
+						
+						
+                       
+				</div>
+
+
+
+
+
+
+				<hr>                
+
+				
+				
+				
+			<br>		
+			<br>
 			<br>
 			<hr>
 			<div class="form-row">
@@ -974,7 +3100,7 @@
 </div>
 
 <script>
-
+/*
 $("input[name='revenue_growth_or_amount[]']").focusout(function(){total_revenue();});
 $("input[name='other_income_growth_or_amount[]']").focusout(function(){total_revenue();});
 function total_revenue(){
@@ -988,7 +3114,37 @@ function total_revenue(){
 		if(o_r){total+=parseFloat(o_r)}
 		$("input[name='total_revenue_amount[]']")[i].value=total;
 	}
-}
+}*/
+
+
+$('input[type=radio]').change(function(){
+	var cls_name = $(this).attr("class");
+	var rad_val = $(this).val();
+	var inputboxes = $("#c"+cls_name+' input[type=number]');
+	
+	if(rad_val=="amnt")
+	{
+		$("#c"+cls_name+" .perc_helper").hide();
+		for(var i=1;i<inputboxes.length;i++)
+			{
+				$(inputboxes[i]).removeAttr('min');
+				$(inputboxes[i]).removeAttr('max');
+			}
+	}
+
+	if(rad_val=="perc")
+	{
+		$("#c"+cls_name+" .perc_helper").show();
+		for(var i=1;i<inputboxes.length;i++)
+			{
+				$(inputboxes[i]).attr('min','0');
+				$(inputboxes[i]).attr('max','100');
+			}
+	}
+	
+		
+});
+
 
 
 </script>

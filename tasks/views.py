@@ -35,6 +35,14 @@ def multi_input_insert(request,name):
                 multi.f_5 = val
             elif i==5:
                 multi.f_6 = val
+            elif i==6:
+                multi.f_7 = val
+            elif i==7:
+                multi.f_8 = val
+            elif i==8:
+                multi.f_9 = val
+            elif i==9:
+                multi.f_10 = val
                  
         
     multi.save()
@@ -55,7 +63,7 @@ def multi_image_insert(request,name):
     multi.user = user
     multi.form_id = form_id
     values = request.FILES.getlist(name)
-    print('len images-',len(values))
+    
     for i in range(0,len(values)):
         if(values[i]):
             val = values[i]
@@ -1374,21 +1382,118 @@ def user_form_9_1_submit(request):            # User Form 9_1 Submit
 def user_form_10_submit(request):            # User Form 10 Submit
     book = super_plan_forms.objects.filter(id=request.session['form']).get()
     if(auth_user(request) and book and request.method=="POST"):
-        book.revenue_growth_or_amount = multi_input_insert(request,"revenue_growth_or_amount[]")  
-        book.other_income_growth_or_amount =  multi_input_insert(request,"other_income_growth_or_amount[]")
-        book.total_revenue_amount = multi_input_insert(request,"total_revenue_amount[]")   
-        book.operating_expenses_growth_or_amount = multi_input_insert(request,"operating_expenses_growth_or_amount[]") 
-        book.employee_cost = multi_input_insert(request,"employee_cost[]")  
-        book.general_and_administration_cost = multi_input_insert(request,"general_and_administration_cost[]")   
-        book.selling_and_marketing_cost = multi_input_insert(request,"selling_and_marketing_cost[]")
-        book.other_expenses_growth_or_amount = multi_input_insert(request,"other_expenses_growth_or_amount[]")   
-        book.ebitda = multi_input_insert(request,"ebitda[]")   
-        book.depreciation_or_amount = multi_input_insert(request,"depreciation_or_amount[]")   
-        book.interest_expense_interest_or_amount = multi_input_insert(request,"interest_expense_interest_or_amount[]")  
-        book.ebt = multi_input_insert(request,"ebt[]")  
-        book.tax_expense_tax_or_amount = multi_input_insert(request,"tax_expense_tax_or_amount[]")  
-        book.pat = multi_input_insert(request,"pat[]")
+
+        book.revenue_growth_or_amount_years = multi_input_insert(request,"revenue_growth_or_amount_years[]")
+
+        book.revenue_growth_or_amount_1 = multi_input_insert(request,"revenue_growth_or_amount_1[]")
+        book.revenue_growth_1_or = request.POST["revenue_growth_1_or"]
+
+        book.revenue_growth_or_amount_2 = multi_input_insert(request,"revenue_growth_or_amount_2[]")
+        book.revenue_growth_2_or = request.POST["revenue_growth_2_or"]
+
+        book.revenue_growth_or_amount_3 = multi_input_insert(request,"revenue_growth_or_amount_3[]")
+        book.revenue_growth_3_or = request.POST["revenue_growth_3_or"]
+
+        book.revenue_growth_or_amount_4 = multi_input_insert(request,"revenue_growth_or_amount_4[]")
+        book.revenue_growth_4_or = request.POST["revenue_growth_4_or"]
+
+        book.other_income_growth_or_amount = multi_input_insert(request,"other_income_growth_or_amount[]")
+        book.other_income_growth_or = request.POST["other_income_growth_or"]
+
+        book.realised_foreign_exchange_gain_or_loss = multi_input_insert(request,"realised_foreign_exchange_gain_or_loss[]")
+        book.realised_foreign_exchange_gain_or = request.POST["realised_foreign_exchange_gain_or"]
+
+
+        book.operating_expenses_growth_or_amount_years = multi_input_insert(request,"operating_expenses_growth_or_amount_years[]")
+
+        book.direct_material_units = multi_input_insert(request,"direct_material_units[]")
+
+        book.direct_material_average_cost_per_unit = multi_input_insert(request,"direct_material_average_cost_per_unit[]")
+
+        book.direct_labour_no_of_employees = multi_input_insert(request,"direct_labour_no_of_employees[]")
+
+        book.direct_labour_average_cost_per_employee = multi_input_insert(request,"direct_labour_average_cost_per_employee[]")
+
+        book.other_direct_expenses_1 = multi_input_insert(request,"other_direct_expenses_1[]")
+
+        book.other_direct_expenses_2 = multi_input_insert(request,"other_direct_expenses_2[]")
+
+        book.other_direct_expenses_3 = multi_input_insert(request,"other_direct_expenses_3[]")
+
+        book.administration_no_of_employees = multi_input_insert(request,"administration_no_of_employees[]")
+
+        book.administration_average_cost_per_employee = multi_input_insert(request,"administration_average_cost_per_employee[]")
+
+        book.selling_and_distribution_no_of_employees = multi_input_insert(request,"selling_and_distribution_no_of_employees[]")
+
+        book.selling_and_distribution_average_cost_per_employee = multi_input_insert(request,"selling_and_distribution_average_cost_per_employee[]")
+
+        book.marketing_no_of_employees = multi_input_insert(request,"marketing_no_of_employees[]")
+
+        book.marketing_average_cost_per_employee = multi_input_insert(request,"marketing_average_cost_per_employee[]")
+
+        book.research_and_development_no_of_employees = multi_input_insert(request,"research_and_development_no_of_employees[]")
+
+        book.research_and_development_average_cost_per_employee = multi_input_insert(request,"research_and_development_average_cost_per_employee[]")
+
+        if(request.POST.get("other_employees_1")):
+            book.other_employees_1 = request.POST["other_employees_1"]
+
+            book.other_employees_1_no_of_employees = multi_input_insert(request,"other_employees_1_no_of_employees[]")
+            book.other_employees_1_average_cost_per_employee = multi_input_insert(request,"other_employees_1_average_cost_per_employee[]")
+
+
+        if(request.POST.get("other_employees_2")):
+            book.other_employees_2 = request.POST["other_employees_2"]
+
+            book.other_employees_2_no_of_employees = multi_input_insert(request,"other_employees_2_no_of_employees[]")
+            book.other_employees_2_average_cost_per_employee = multi_input_insert(request,"other_employees_2_average_cost_per_employee[]")
+
+
+        if(request.POST.get("other_employees_3")):
+            book.other_employees_3 = request.POST["other_employees_3"]
+
+            book.other_employees_3_no_of_employees = multi_input_insert(request,"other_employees_3_no_of_employees[]")
+            book.other_employees_3_average_cost_per_employee = multi_input_insert(request,"other_employees_3_average_cost_per_employee[]")
+
         
+        book.rent = multi_input_insert(request,"rent[]")
+
+        book.telephone_expenses = multi_input_insert(request,"telephone_expenses[]")
+
+        book.electricity = multi_input_insert(request,"electricity[]")
+
+        book.printing_and_stationery = multi_input_insert(request,"printing_and_stationery[]")
+
+        book.audit_fees = multi_input_insert(request,"audit_fees[]")
+
+        book.other_administration_expenses_1 = multi_input_insert(request,"other_administration_expenses_1[]")
+
+        book.other_administration_expenses_2 = multi_input_insert(request,"other_administration_expenses_2[]")
+
+        book.other_administration_expenses_3 = multi_input_insert(request,"other_administration_expenses_3[]")
+
+        book.digital_marketing_cost = multi_input_insert(request,"digital_marketing_cost[]")
+
+        book.sales_commissions = multi_input_insert(request,"sales_commissions[]")
+
+        book.travelling_expenses = multi_input_insert(request,"travelling_expenses[]")
+
+        book.advertisement = multi_input_insert(request,"advertisement[]")
+
+        book.logistics_expenses = multi_input_insert(request,"logistics_expenses[]")
+
+        book.other_selling_and_marketing_expenses_1 = multi_input_insert(request,"other_selling_and_marketing_expenses_1[]")
+
+        book.other_selling_and_marketing_expenses_2 = multi_input_insert(request,"other_selling_and_marketing_expenses_2[]")
+
+        book.other_selling_and_marketing_expenses_3 = multi_input_insert(request,"other_selling_and_marketing_expenses_3[]")
+
+        book.other_expenses_1 = multi_input_insert(request,"other_expenses_1[]")
+
+        book.other_expenses_2 = multi_input_insert(request,"other_expenses_2[]")
+
+        book.income_tax_rate = multi_input_insert(request,"income_tax_rate[]")
 
         book.current_fillup_position = 10
         book.save()

@@ -153,13 +153,13 @@ class super_plan_forms_multiple_files(models.Model):                            
 class super_plan_forms(models.Model):
 
 
-    # Form- 1 ----------------------------------------------------------------------------------------- 11 -------------
+    # Form- 1 ----------------------------------------------------------------------------------------- 1 -------------
     theme = models.CharField(max_length=500,null=True)
     currency = models.CharField(max_length=50,null=True)
     denomination  = models.CharField(max_length=50,null=True)
     pack = models.CharField(max_length=100,null=True)
 
-    # Form-2------------------------------------------------------------------------------------- 1 --------------------
+    # Form-2------------------------------------------------------------------------------------- 2 --------------------
     user = models.ForeignKey(User_db, on_delete=models.CASCADE,null=True)
     company_name = models.CharField(max_length=1000,null=True)
     company_website_link = models.CharField(max_length=1000,null=True)
@@ -170,17 +170,17 @@ class super_plan_forms(models.Model):
     gst_number = models.CharField(max_length=100,null=True)
     gst_name = models.CharField(max_length=500,null=True)
 
-    # Form-3----------------------------------------------------------------------------------------2 -----------------
+    # Form-3----------------------------------------------------------------------------------------3 -----------------
     about_the_company = models.CharField(max_length=7000,null=True)
     company_logo = models.ImageField(upload_to='superplan-files/',null=True,blank=True)
     company_founded = models.CharField(max_length=100,null=True)
     industry_type = models.CharField(max_length=1000,null=True)
 
-    # Form-4------------------------------------------------------------------------------------------3 ---------------
+    # Form-4------------------------------------------------------------------------------------------4 ---------------
     challenges_faced = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='challenges_faced',on_delete=models.SET_NULL, null=True)
     solutions_provided = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='solutions_provided',on_delete=models.SET_NULL, null=True)
 
-    # Form-5--------------------------------------------------------------------------------------------4 -------------
+    # Form-5--------------------------------------------------------------------------------------------5 -------------
     products_and_services = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='products_and_services',on_delete=models.SET_NULL, null=True)
     products_and_services_file = models.ForeignKey(super_plan_forms_multiple_images,related_name='products_and_services_file',on_delete=models.SET_NULL, null=True)
     
@@ -197,22 +197,22 @@ class super_plan_forms(models.Model):
     swot_o = models.CharField(max_length=1000,null=True)
     swot_t = models.CharField(max_length=1000,null=True)
 
-    # Form-6---------------------------------------------------------------------------------------------5 ------------
+    # Form-6---------------------------------------------------------------------------------------------6 ------------
     management_team_name = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='management_team_name',on_delete=models.SET_NULL, null=True)
     management_team_file = models.ForeignKey(super_plan_forms_multiple_images,related_name='management_team_file',on_delete=models.SET_NULL, null=True)
     management_team_contact = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='management_team_contact',on_delete=models.SET_NULL, null=True)
     management_team_designation = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='management_team_designation',on_delete=models.SET_NULL, null=True)
     
 
-    # For-7-----------------------------------------------------------------------------------------------6 ----------
+    # For-7-----------------------------------------------------------------------------------------------7 ----------
     marketing_strategies_offline = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='marketing_strategies_offline',on_delete=models.SET_NULL, null=True)
     marketing_strategies_online = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='marketing_strategies_online',on_delete=models.SET_NULL, null=True)
 
 
-    # For-8-----------------------------------------------------------------------------------------------6 ----------
+    # For-8-----------------------------------------------------------------------------------------------8 ----------
     growth_strategy = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='growth_strategy',on_delete=models.SET_NULL, null=True)
 
-    # Form-9-----------------------------------------------------------------------------------------------7 ----------
+    # Form-9-----------------------------------------------------------------------------------------------9 ----------
     industry_analysis = models.CharField(max_length=8000,null=True)
     competitor_analysis_n = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='competitor_analysis_n',on_delete=models.SET_NULL, null=True)
     competitor_analysis_p = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='competitor_analysis_p',on_delete=models.SET_NULL, null=True)
@@ -226,39 +226,118 @@ class super_plan_forms(models.Model):
 
 
 
-    # Form-10-------------------------------------------------------------------------------------------------8 ---------
+    # Form-10-------------------------------------------------------------------------------------------------10 ---------
     revenue_growth_or_amount_years = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='revenue_growth_or_amount_years',on_delete=models.SET_NULL, null=True)
 
-    revenue_growth_or_amount = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='revenue_growth_or_amount',on_delete=models.SET_NULL, null=True)
+    revenue_growth_or_amount_1 = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='revenue_growth_or_amount_1',on_delete=models.SET_NULL, null=True)
+    revenue_growth_1_or = models.CharField(max_length=100,null=True)
 
-    other_income_growth_or_amount = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='other_income_growth_or_amount',on_delete=models.SET_NULL, null=True)
+    revenue_growth_or_amount_2 = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='revenue_growth_or_amount_2',on_delete=models.SET_NULL, null=True)
+    revenue_growth_2_or = models.CharField(max_length=100,null=True)
 
-    total_revenue_amount = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='total_revenue_amount',on_delete=models.SET_NULL, null=True)
+    revenue_growth_or_amount_3 = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='revenue_growth_or_amount_3',on_delete=models.SET_NULL, null=True)
+    revenue_growth_3_or = models.CharField(max_length=100,null=True)
 
+    revenue_growth_or_amount_4 = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='revenue_growth_or_amount_4',on_delete=models.SET_NULL, null=True)
+    revenue_growth_4_or = models.CharField(max_length=100,null=True)
+
+    other_income_growth_or_amount = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='other_income_growth_or_amount', on_delete=models.SET_NULL, null=True)
+    other_income_growth_or = models.CharField(max_length=100,null=True)
+
+
+    realised_foreign_exchange_gain_or_loss = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='realised_foreign_exchange_gain_or_loss', on_delete=models.SET_NULL, null=True)
+    realised_foreign_exchange_gain_or = models.CharField(max_length=100,null=True)
 
     operating_expenses_growth_or_amount_years = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='operating_expenses_growth_or_amount_years',on_delete=models.SET_NULL, null=True)
 
-    operating_expenses_growth_or_amount = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='operating_expenses_growth_or_amount',on_delete=models.SET_NULL, null=True)
+    direct_material_units = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='direct_material_units', on_delete=models.SET_NULL, null=True)
 
-    employee_cost = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='employee_cost',on_delete=models.SET_NULL, null=True)
+    direct_material_average_cost_per_unit =models.ForeignKey(super_plan_forms_multiple_inputs,related_name='direct_material_average_cost_per_unit', on_delete=models.SET_NULL, null=True) 
 
-    general_and_administration_cost = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='general_and_administration_cost',on_delete=models.SET_NULL, null=True)
+    direct_labour_no_of_employees = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='direct_labour_no_of_employees', on_delete=models.SET_NULL, null=True)
 
-    selling_and_marketing_cost = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='selling_and_marketing_cost',on_delete=models.SET_NULL, null=True)
+    direct_labour_average_cost_per_employee = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='direct_labour_average_cost_per_employee', on_delete=models.SET_NULL, null=True)
 
-    other_expenses_growth_or_amount = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='other_expenses_growth_or_amount',on_delete=models.SET_NULL, null=True)
+    other_direct_expenses_1 = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='other_direct_expenses_1', on_delete=models.SET_NULL, null=True)
 
-    ebitda = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='ebitda',on_delete=models.SET_NULL, null=True)
+    other_direct_expenses_2 =models.ForeignKey(super_plan_forms_multiple_inputs,related_name='other_direct_expenses_2', on_delete=models.SET_NULL, null=True)
 
-    depreciation_or_amount = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='depreciation_or_amount',on_delete=models.SET_NULL, null=True)
+    other_direct_expenses_3 = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='other_direct_expenses_3', on_delete=models.SET_NULL, null=True)
 
-    interest_expense_interest_or_amount = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='interest_expense_interest_or_amount',on_delete=models.SET_NULL, null=True)
 
-    ebt = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='ebt',on_delete=models.SET_NULL, null=True)
+    administration_no_of_employees = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='administration_no_of_employees', on_delete=models.SET_NULL, null=True)
 
-    tax_expense_tax_or_amount = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='tax_expense_tax_or_amount',on_delete=models.SET_NULL, null=True)
+    administration_average_cost_per_employee = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='administration_average_cost_per_employee', on_delete=models.SET_NULL, null=True)
 
-    pat = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='pat',on_delete=models.SET_NULL, null=True)
+    selling_and_distribution_no_of_employees = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='selling_and_distribution_no_of_employees', on_delete=models.SET_NULL, null=True)
+
+    selling_and_distribution_average_cost_per_employee = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='selling_and_distribution_average_cost_per_employee', on_delete=models.SET_NULL, null=True)
+
+    marketing_no_of_employees = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='marketing_no_of_employees', on_delete=models.SET_NULL, null=True)
+
+    marketing_average_cost_per_employee =models.ForeignKey(super_plan_forms_multiple_inputs,related_name='marketing_average_cost_per_employee', on_delete=models.SET_NULL, null=True)
+
+    research_and_development_no_of_employees = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='research_and_development_no_of_employees', on_delete=models.SET_NULL, null=True)
+
+    research_and_development_average_cost_per_employee = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='research_and_development_average_cost_per_employee', on_delete=models.SET_NULL, null=True)
+
+    other_employees_1  = models.CharField(max_length=100,null=True)
+    other_employees_1_no_of_employees = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='other_employees_1_no_of_employees', on_delete=models.SET_NULL, null=True)
+
+    other_employees_1_average_cost_per_employee = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='other_employees_1_average_cost_per_employee', on_delete=models.SET_NULL, null=True)
+
+    other_employees_2 = models.CharField(max_length=100,null=True)
+
+    other_employees_2_no_of_employees = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='other_employees_2_no_of_employees', on_delete=models.SET_NULL, null=True)
+
+    other_employees_2_average_cost_per_employee = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='other_employees_2_average_cost_per_employee', on_delete=models.SET_NULL, null=True)
+
+    other_employees_3 = models.CharField(max_length=100,null=True)
+
+    other_employees_3_no_of_employees = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='other_employees_3_no_of_employees', on_delete=models.SET_NULL, null=True)
+
+    other_employees_3_average_cost_per_employee = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='other_employees_3_average_cost_per_employee', on_delete=models.SET_NULL, null=True)
+
+    rent = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='rent', on_delete=models.SET_NULL, null=True)
+
+    telephone_expenses = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='telephone_expenses', on_delete=models.SET_NULL, null=True)
+
+    electricity = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='electricity', on_delete=models.SET_NULL, null=True)
+
+    printing_and_stationery = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='printing_and_stationery', on_delete=models.SET_NULL, null=True)
+
+    audit_fees = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='audit_fees', on_delete=models.SET_NULL, null=True)
+
+
+    other_administration_expenses_1 = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='other_administration_expenses_1', on_delete=models.SET_NULL, null=True)
+
+    other_administration_expenses_2 = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='other_administration_expenses_2', on_delete=models.SET_NULL, null=True)
+
+    other_administration_expenses_3 = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='other_administration_expenses_3', on_delete=models.SET_NULL, null=True)
+
+    digital_marketing_cost = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='digital_marketing_cost', on_delete=models.SET_NULL, null=True)
+
+    sales_commissions = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='sales_commissions', on_delete=models.SET_NULL, null=True)
+
+    travelling_expenses  = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='travelling_expenses', on_delete=models.SET_NULL, null=True)
+
+    advertisement = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='advertisement', on_delete=models.SET_NULL, null=True)
+
+    logistics_expenses = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='logistics_expenses', on_delete=models.SET_NULL, null=True)
+
+
+    other_selling_and_marketing_expenses_1 = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='other_selling_and_marketing_expenses_1', on_delete=models.SET_NULL, null=True)
+
+    other_selling_and_marketing_expenses_2 = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='other_selling_and_marketing_expenses_2', on_delete=models.SET_NULL, null=True)
+
+    other_selling_and_marketing_expenses_3 = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='other_selling_and_marketing_expenses_3', on_delete=models.SET_NULL, null=True)
+
+    other_expenses_1 = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='other_expenses_1', on_delete=models.SET_NULL, null=True)
+
+    other_expenses_2 = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='other_expenses_2', on_delete=models.SET_NULL, null=True)
+
+
+    income_tax_rate = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='income_tax_rate', on_delete=models.SET_NULL, null=True)
 
 
 
