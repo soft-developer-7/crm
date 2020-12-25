@@ -3147,6 +3147,26 @@ $('input[type=radio]').change(function(){
 
 
 
+$('input[type=number]').focus(function(){
+	var name=$(this).attr("name");
+	var inputs = $("input[name='"+name+"']");
+	for(var i=0;i<inputs.length;i++)
+		{
+			if(!$(inputs[i]).val())
+			{
+				$(inputs[i]).focus();
+				break;
+			}
+		}
+
+});
+
+
+
+
+
+
+
 </script>
 
 {% endblock %}
