@@ -1515,38 +1515,81 @@ def user_form_11_submit(request):            # User Form 11 Submit
     book = super_plan_forms.objects.filter(id=request.session['form']).get()
     if(auth_user(request) and book and request.method=="POST"):
 
-        
+        book.share_capital_years = multi_input_insert(request,"share_capital_years[]")
         book.share_capital = multi_input_insert(request,"share_capital[]")
         book.reserves_and_surplus = multi_input_insert(request,"reserves_and_surplus[]")
-        book.fund_requirement = multi_input_insert(request,"fund_requirement[]")
-        book.total_shareholder_funds = multi_input_insert(request,"total_shareholder_funds[]")
-        book.secured_loans = multi_input_insert(request,"secured_loans[]")
+        book.equity_funds_raised = multi_input_insert(request,"equity_funds_raised[]")
+
+        book.non_current_liabilities_years = multi_input_insert(request,"non_current_liabilities_years[]")
+        book.secured_loans_from_banks = multi_input_insert(request,"secured_loans_from_banks[]")
+        book.secured_loans_term_loans = multi_input_insert(request,"secured_loans_term_loans[]")
+        book.secured_loans_other_loans = multi_input_insert(request,"secured_loans_other_loans[]")
+        book.secured_loans_finance_lease_obligation = multi_input_insert(request,"secured_loans_finance_lease_obligation[]")
+
         book.unsecured_loans = multi_input_insert(request,"unsecured_loans[]")
+        book.average_interest_rate_debt = multi_input_insert(request,"average_interest_rate_debt[]")
+
+        book.deferred_tax_liabilities  = multi_input_insert(request,"deferred_tax_liabilities[]")
+
+        book.long_term_provisions_growth_or = request.POST["long_term_provisions_growth_or"]
         book.long_term_provisions_growth_or_amount = multi_input_insert(request,"long_term_provisions_growth_or_amount[]")
+
+        book.other_non_current_liabilities_growth_or = request.POST["other_non_current_liabilities_growth_or"]
         book.other_non_current_liabilities_growth_or_amount = multi_input_insert(request,"other_non_current_liabilities_growth_or_amount[]")
-        book.total_non_current_liabilities = multi_input_insert(request,"total_non_current_liabilities[]")
+
+
+
+
+        book.current_liabilities_years = multi_input_insert(request,"current_liabilities_years[]")
+        book.short_term_borrowings_growth_or = request.POST["short_term_borrowings_growth_or"]
         book.short_term_borrowings_growth_or_amount = multi_input_insert(request,"short_term_borrowings_growth_or_amount[]")
+
+
+        book.short_term_provisions_growth_or = request.POST["short_term_provisions_growth_or"]
         book.short_term_provisions_growth_or_amount = multi_input_insert(request,"short_term_provisions_growth_or_amount[]")
-        book.sundry_creditors_no_of_days_or_amount = multi_input_insert(request,"sundry_creditors_no_of_days_or_amount[]")
+
+
+        book.sundry_creditors_no_of_days = multi_input_insert(request,"sundry_creditors_no_of_days[]")
+
+        book.other_current_liabilities_growth_or = request.POST["other_current_liabilities_growth_or"]
         book.other_current_liabilities_growth_or_amount = multi_input_insert(request,"other_current_liabilities_growth_or_amount[]")
-        book.total_current_liabilities = multi_input_insert(request,"total_current_liabilities[]")
-        book.total_liabilities = multi_input_insert(request,"total_liabilities[]")
-        book.gross_fixed_assets_growth_or_amount = multi_input_insert(request,"gross_fixed_assets_growth_or_amount[]")
-        book.less_accumulated_depreciation_or_amount = multi_input_insert(request,"less_accumulated_depreciation_or_amount[]")
-        book.net_fixed_assets_growth_or_amount = multi_input_insert(request,"net_fixed_assets_growth_or_amount[]")
+
+
+
+
+        book.non_current_assets_years = multi_input_insert(request,"non_current_assets_years[]")
+        book.intangible_assets_growth_or = request.POST["intangible_assets_growth_or"]
         book.intangible_assets_growth_or_amount = multi_input_insert(request,"intangible_assets_growth_or_amount[]")
+
+
+        book.long_term_loans_and_advances_growth_or = request.POST["long_term_loans_and_advances_growth_or"]
         book.long_term_loans_and_advances_growth_or_amount = multi_input_insert(request,"long_term_loans_and_advances_growth_or_amount[]")
+
+
+        book.long_term_investments_growth_or = request.POST["long_term_investments_growth_or"]
         book.long_term_investments_growth_or_amount = multi_input_insert(request,"long_term_investments_growth_or_amount[]")
+
+        book.deferred_tax_assets_or = request.POST["deferred_tax_assets_or"]
+        book.deferred_tax_assets = multi_input_insert(request,"deferred_tax_assets[]")
+
+        book.other_non_current_assets_growth_or = request.POST["other_non_current_assets_growth_or"]
         book.other_non_current_assets_growth_or_amount = multi_input_insert(request,"other_non_current_assets_growth_or_amount[]")
-        book.total_non_current_assets = multi_input_insert(request,"total_non_current_assets[]")
-        book.cash = multi_input_insert(request,"cash[]")
-        book.sundry_debtors_no_of_days_or_amount = multi_input_insert(request,"sundry_debtors_no_of_days_or_amount[]")
-        book.inventory_no_of_days_or_amount = multi_input_insert(request,"inventory_no_of_days_or_amount[]")
+
+
+
+        book.current_assets_years = multi_input_insert(request,"current_assets_years[]")
+
+        book.sundry_debtors_no_of_days = multi_input_insert(request,"sundry_debtors_no_of_days[]")
+        book.inventory_no_of_days = multi_input_insert(request,"inventory_no_of_days[]")
+        book.short_term_investments_growth_or = request.POST["short_term_investments_growth_or"]
         book.short_term_investments_growth_or_amount = multi_input_insert(request,"short_term_investments_growth_or_amount[]")
+        book.short_term_loans_and_advances_growth_or = request.POST["short_term_loans_and_advances_growth_or"]
         book.short_term_loans_and_advances_growth_or_amount = multi_input_insert(request,"short_term_loans_and_advances_growth_or_amount[]")
+        book.other_current_assets_growth_or = request.POST["other_current_assets_growth_or"]
         book.other_current_assets_growth_or_amount = multi_input_insert(request,"other_current_assets_growth_or_amount[]")
-        book.total_current_assets = multi_input_insert(request,"total_current_assets[]")
-        book.total_assets = multi_input_insert(request,"total_assets[]")
+
+        book.working_capital = multi_input_insert(request,"working_capital[]")
+
 
 
         book.current_fillup_position = 11
@@ -1578,11 +1621,11 @@ def user_form_11_submit(request):            # User Form 11 Submit
 def user_form_12_submit(request):            # User Form 12 Submit
     book = super_plan_forms.objects.filter(id=request.session['form']).get()
     if(auth_user(request) and book and request.method=="POST"):
-        book.company_owned_land_and_building = multi_input_insert(request,"company_owned_land_and_building[]")
-        book.other_fixed_assets = multi_input_insert(request,"other_fixed_assets[]")
-        book.depreciation_growth_or_amount = multi_input_insert(request,"depreciation_growth_or_amount[]")
-        book.total_capex_expense = multi_input_insert(request,"total_capex_expense[]")
-
+        book.capex_years = multi_input_insert(request,"capex_years[]")
+        book.capex_additions = multi_input_insert(request,"capex_additions[]")
+        book.capex_additions_intangible = multi_input_insert(request,"capex_additions_intangible[]")
+        book.capex_deletions = multi_input_insert(request,"capex_deletions[]")
+        book.capex_average_depreciation_rate = multi_input_insert(request,"capex_average_depreciation_rate[]")
         book.current_fillup_position = 12
         book.save()
         return redirect("/successful-purchased")

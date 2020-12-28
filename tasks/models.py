@@ -350,100 +350,117 @@ class super_plan_forms(models.Model):
 
     reserves_and_surplus = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='reserves_and_surplus',on_delete=models.SET_NULL, null=True)
 
-    fund_requirement = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='fund_requirement',on_delete=models.SET_NULL, null=True)
-
-    total_shareholder_funds = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='total_shareholder_funds',on_delete=models.SET_NULL, null=True)
-
+    equity_funds_raised = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='equity_funds_raised',on_delete=models.SET_NULL, null=True)
 
 
     non_current_liabilities_years = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='non_current_liabilities_years',on_delete=models.SET_NULL, null=True)
 
-    secured_loans = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='secured_loans',on_delete=models.SET_NULL, null=True)
+    secured_loans_from_banks = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='secured_loans_from_banks',on_delete=models.SET_NULL, null=True)
+
+    secured_loans_term_loans = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='secured_loans_term_loans',on_delete=models.SET_NULL, null=True)
+
+    secured_loans_other_loans = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='secured_loans_other_loans',on_delete=models.SET_NULL, null=True)
+
+    secured_loans_finance_lease_obligation = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='secured_loans_finance_lease_obligation',on_delete=models.SET_NULL, null=True)
 
     unsecured_loans = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='unsecured_loans',on_delete=models.SET_NULL, null=True)
 
+    average_interest_rate_debt = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='average_interest_rate_debt',on_delete=models.SET_NULL, null=True)
+
+    deferred_tax_liabilities  = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='deferred_tax_liabilities',on_delete=models.SET_NULL, null=True)
+
+    long_term_provisions_growth_or = models.CharField(max_length=100,null=True)
+
     long_term_provisions_growth_or_amount = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='long_term_provisions_growth_or_amount',on_delete=models.SET_NULL, null=True)
 
-    other_non_current_liabilities_growth_or_amount = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='other_non_current_liabilities_growth_or_amount',on_delete=models.SET_NULL, null=True)
+    other_non_current_liabilities_growth_or = models.CharField(max_length=100,null=True)
 
-    total_non_current_liabilities = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='total_non_current_liabilities',on_delete=models.SET_NULL, null=True)
+    other_non_current_liabilities_growth_or_amount = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='other_non_current_liabilities_growth_or_amount',on_delete=models.SET_NULL, null=True)
 
 
 
 
     current_liabilities_years = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='current_liabilities_years',on_delete=models.SET_NULL, null=True)
 
+    short_term_borrowings_growth_or = models.CharField(max_length=100,null=True)
+
     short_term_borrowings_growth_or_amount = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='short_term_borrowings_growth_or_amount',on_delete=models.SET_NULL, null=True)
+
+
+    short_term_provisions_growth_or = models.CharField(max_length=100,null=True)
 
     short_term_provisions_growth_or_amount = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='short_term_provisions_growth_or_amount',on_delete=models.SET_NULL, null=True)
 
-    sundry_creditors_no_of_days_or_amount = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='sundry_creditors_no_of_days_or_amount',on_delete=models.SET_NULL, null=True)
+
+    sundry_creditors_no_of_days = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='sundry_creditors_no_of_days',on_delete=models.SET_NULL, null=True)
+
+    other_current_liabilities_growth_or = models.CharField(max_length=100,null=True)
 
     other_current_liabilities_growth_or_amount = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='other_current_liabilities_growth_or_amount',on_delete=models.SET_NULL, null=True)
-
-    total_current_liabilities = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='total_current_liabilities',on_delete=models.SET_NULL, null=True)
-
-    total_liabilities = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='total_liabilities',on_delete=models.SET_NULL, null=True)
 
 
 
 
     non_current_assets_years = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='non_current_assets_years',on_delete=models.SET_NULL, null=True)
 
-    gross_fixed_assets_growth_or_amount = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='gross_fixed_assets_growth_or_amount',on_delete=models.SET_NULL, null=True)
-
-    less_accumulated_depreciation_or_amount = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='less_accumulated_depreciation_or_amount',on_delete=models.SET_NULL, null=True)
-
-    net_fixed_assets_growth_or_amount = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='net_fixed_assets_growth_or_amount',on_delete=models.SET_NULL, null=True)
+    intangible_assets_growth_or = models.CharField(max_length=100,null=True)
 
     intangible_assets_growth_or_amount = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='intangible_assets_growth_or_amount',on_delete=models.SET_NULL, null=True)
 
+
+    long_term_loans_and_advances_growth_or = models.CharField(max_length=100,null=True)
+
     long_term_loans_and_advances_growth_or_amount = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='long_term_loans_and_advances_growth_or_amount',on_delete=models.SET_NULL, null=True)
+
+
+    long_term_investments_growth_or = models.CharField(max_length=100,null=True)
 
     long_term_investments_growth_or_amount = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='long_term_investments_growth_or_amount',on_delete=models.SET_NULL, null=True)
 
+    deferred_tax_assets_or = models.CharField(max_length=100,null=True)
+
+    deferred_tax_assets = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='deferred_tax_assets',on_delete=models.SET_NULL, null=True)
+
+    other_non_current_assets_growth_or = models.CharField(max_length=100,null=True)
+
     other_non_current_assets_growth_or_amount = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='other_non_current_assets_growth_or_amount',on_delete=models.SET_NULL, null=True)
-
-    total_non_current_assets = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='total_non_current_assets',on_delete=models.SET_NULL, null=True)
-
 
 
 
     current_assets_years = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='current_assets_years',on_delete=models.SET_NULL, null=True)
 
-    cash = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='cash',on_delete=models.SET_NULL, null=True)
+    sundry_debtors_no_of_days = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='sundry_debtors_no_of_days',on_delete=models.SET_NULL, null=True)
 
-    sundry_debtors_no_of_days_or_amount = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='sundry_debtors_no_of_days_or_amount',on_delete=models.SET_NULL, null=True)
+    inventory_no_of_days = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='inventory_no_of_days',on_delete=models.SET_NULL, null=True)
 
-    inventory_no_of_days_or_amount  = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='inventory_no_of_days_or_amount',on_delete=models.SET_NULL, null=True)
+    short_term_investments_growth_or = models.CharField(max_length=100,null=True)
 
     short_term_investments_growth_or_amount = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='short_term_investments_growth_or_amount',on_delete=models.SET_NULL, null=True)
 
+    short_term_loans_and_advances_growth_or = models.CharField(max_length=100,null=True)
+
     short_term_loans_and_advances_growth_or_amount = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='short_term_loans_and_advances_growth_or_amount',on_delete=models.SET_NULL, null=True)
+
+    other_current_assets_growth_or = models.CharField(max_length=100,null=True)
 
     other_current_assets_growth_or_amount = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='other_current_assets_growth_or_amount',on_delete=models.SET_NULL, null=True)
 
-    total_current_assets = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='total_current_assets',on_delete=models.SET_NULL, null=True)
+    working_capital = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='working_capital',on_delete=models.SET_NULL, null=True)
 
-    total_assets = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='total_assets',on_delete=models.SET_NULL, null=True)
+
 
     # Form- 12 ----------------------------------------------------------------------------------------- 10 -------------
 
     capex_years = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='capex_years',on_delete=models.SET_NULL, null=True)
 
-    company_owned_land_and_building = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='company_owned_land_and_building',on_delete=models.SET_NULL, null=True)
+    
+    capex_additions = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='capex_additions',on_delete=models.SET_NULL, null=True)
 
-    other_fixed_assets  = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='other_fixed_assets',on_delete=models.SET_NULL, null=True)
+    capex_additions_intangible = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='capex_additions_intangible',on_delete=models.SET_NULL, null=True)
 
-    depreciation_growth_or_amount = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='depreciation_growth_or_amount',on_delete=models.SET_NULL, null=True)
+    capex_deletions = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='capex_deletions',on_delete=models.SET_NULL, null=True)
 
-    total_capex_expense = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='total_capex_expense',on_delete=models.SET_NULL, null=True)
-
-
-
-
-
-
+    capex_average_depreciation_rate = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='capex_average_depreciation_rate',on_delete=models.SET_NULL, null=True)
 
 
     current_fillup_position = models.IntegerField(null=True)
