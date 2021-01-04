@@ -60,23 +60,69 @@
 					<div class="card-body">
 					
 					
-
+			<div id="growth-div">
 				<div class="form-row">
 						
                         <div class="col-md-8">
 							<div class="form-group">
-								<label class="text-primary" ><strong>Growth Strategies</strong><small class="text-danger"> *Max : 300 characters</small></label>
+								<label class="text-primary" ><strong>Growth Strategies</strong><small class="text-danger"> *Max : 1000 characters</small></label>
 								<a href="#"  data-toggle="tooltip" title="Help text."><i class="far fa-question-circle"></i></a>
 								
 
 								<div id="grw1" class="inputbox">
-									<input class="d-none" type="text" name="growth_strategy[]" maxlength="300" />
+								{% if data.growth_strategy.f_1 %}
+									<input class="d-none" type="text" name="growth_strategy[]" value="{{data.growth_strategy.f_1}}" maxlength="1000" />
+									<div class="content">{{data.growth_strategy.f_1}}</div>
+								{% else %}
+									<input class="d-none" type="text" name="growth_strategy[]" maxlength="1000" />
 									<div class="content"></div>
+								{% endif %}
 								</div>
 
 
 								</div>
 						</div>
+				</div>
+
+
+				{% if data.growth_strategy.f_2 %}
+
+					<div id="grw_div2" class="form-row"><div class="col-md-8"><div class="form-group">
+					<div id="grw2" class="inputbox"><input class="d-none" type="text" name="growth_strategy[]" value="{{data.growth_strategy.f_2}}" maxlength="1000" />
+					<div class="content">{{data.growth_strategy.f_2}}</div></div></div></div></div>
+
+				{% endif %}
+
+
+
+				{% if data.growth_strategy.f_3 %}
+
+					<div id="grw_div3" class="form-row"><div class="col-md-8"><div class="form-group">
+					<div id="grw3" class="inputbox"><input class="d-none" type="text" name="growth_strategy[]" value="{{data.growth_strategy.f_3}}" maxlength="1000" />
+					<div class="content">{{data.growth_strategy.f_3}}</div></div></div></div></div>
+
+				{% endif %}
+
+
+
+				{% if data.growth_strategy.f_4 %}
+
+					<div id="grw_div4" class="form-row"><div class="col-md-8"><div class="form-group">
+					<div id="grw4" class="inputbox"><input class="d-none" type="text" name="growth_strategy[]" value="{{data.growth_strategy.f_4}}" maxlength="1000" />
+					<div class="content">{{data.growth_strategy.f_4}}</div></div></div></div></div>
+
+				{% endif %}
+
+
+				{% if data.growth_strategy.f_5 %}
+
+					<div id="grw_div5" class="form-row"><div class="col-md-8"><div class="form-group">
+					<div id="grw5" class="inputbox"><input class="d-none" type="text" name="growth_strategy[]" value="{{data.growth_strategy.f_5}}" maxlength="1000" />
+					<div class="content">{{data.growth_strategy.f_5}}</div></div></div></div></div>
+
+				{% endif %}
+
+
 				</div>
 
 
@@ -87,8 +133,12 @@
 								<div class="form-group">
 									
 									<button class="btn btn-success" type="button"  onclick="add_grw()" ><i class="fas fa-plus"></i> Add</button>
+									
+									{% if data.growth_strategy.f_2 %}
+									<button id="remove_grw_btn" type="button" onclick="remove_grw()" class="btn btn-danger"><i class="fas fa-trash-alt"></i> Remove</button>
+									{% else %}
 									<button id="remove_grw_btn" type="button" onclick="remove_grw()" class="btn btn-danger" style="display:none;"><i class="fas fa-trash-alt"></i> Remove</button>
-		
+									{% endif %}
 								</div>
 							</div>
 					</div>
@@ -186,8 +236,14 @@
 
   <script>
 
-	var grw=2;
-	
+	var grw = $("#growth-div .content").length;
+	if(grw==0){
+		grw=2;
+	}
+	else
+	{
+		grw+=1;
+	}
 	
 	function add_grw()
 	{

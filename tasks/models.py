@@ -224,10 +224,12 @@ class super_plan_forms(models.Model):
     industry_growth_drivers = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='industry_growth_drivers',on_delete=models.SET_NULL, null=True)
     usp = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='usp',on_delete=models.SET_NULL, null=True)
 
+    # Form-9.1----------------------------------------------------------------------------------------- 9.1------------
+    historical_xl = models.ImageField(upload_to='superplan-files/',null=True,blank=True)
 
 
     # Form-10-------------------------------------------------------------------------------------------------10 ---------
-    revenue_growth_or_amount_years = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='revenue_growth_or_amount_years',on_delete=models.SET_NULL, null=True)
+    profit_and_loss_years = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='profit_and_loss_years',on_delete=models.SET_NULL, null=True)
 
     revenue_growth_or_amount_1 = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='revenue_growth_or_amount_1',on_delete=models.SET_NULL, null=True)
     revenue_growth_1_or = models.CharField(max_length=100,null=True)
@@ -248,7 +250,6 @@ class super_plan_forms(models.Model):
     realised_foreign_exchange_gain_or_loss = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='realised_foreign_exchange_gain_or_loss', on_delete=models.SET_NULL, null=True)
     realised_foreign_exchange_gain_or = models.CharField(max_length=100,null=True)
 
-    operating_expenses_growth_or_amount_years = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='operating_expenses_growth_or_amount_years',on_delete=models.SET_NULL, null=True)
 
     direct_material_units = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='direct_material_units', on_delete=models.SET_NULL, null=True)
 
@@ -344,7 +345,7 @@ class super_plan_forms(models.Model):
 
     # Form -11 ----------------------------------------------------------------------------------------------9 ----------
     
-    share_capital_years = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='share_capital_years',on_delete=models.SET_NULL, null=True)
+    balance_sheet_years = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='balance_sheet_years',on_delete=models.SET_NULL, null=True)
 
     share_capital = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='share_capital',on_delete=models.SET_NULL, null=True)
 
@@ -353,7 +354,6 @@ class super_plan_forms(models.Model):
     equity_funds_raised = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='equity_funds_raised',on_delete=models.SET_NULL, null=True)
 
 
-    non_current_liabilities_years = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='non_current_liabilities_years',on_delete=models.SET_NULL, null=True)
 
     secured_loans_from_banks = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='secured_loans_from_banks',on_delete=models.SET_NULL, null=True)
 
@@ -380,7 +380,6 @@ class super_plan_forms(models.Model):
 
 
 
-    current_liabilities_years = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='current_liabilities_years',on_delete=models.SET_NULL, null=True)
 
     short_term_borrowings_growth_or = models.CharField(max_length=100,null=True)
 
@@ -401,7 +400,6 @@ class super_plan_forms(models.Model):
 
 
 
-    non_current_assets_years = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='non_current_assets_years',on_delete=models.SET_NULL, null=True)
 
     intangible_assets_growth_or = models.CharField(max_length=100,null=True)
 
@@ -427,7 +425,6 @@ class super_plan_forms(models.Model):
 
 
 
-    current_assets_years = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='current_assets_years',on_delete=models.SET_NULL, null=True)
 
     sundry_debtors_no_of_days = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='sundry_debtors_no_of_days',on_delete=models.SET_NULL, null=True)
 
@@ -453,6 +450,7 @@ class super_plan_forms(models.Model):
 
     capex_years = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='capex_years',on_delete=models.SET_NULL, null=True)
 
+    capex_opening_gross = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='capex_opening_gross',on_delete=models.SET_NULL, null=True)
     
     capex_additions = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='capex_additions',on_delete=models.SET_NULL, null=True)
 

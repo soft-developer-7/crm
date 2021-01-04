@@ -64,7 +64,7 @@
 						<div class="col-md-6">
 							<div class="form-group">
 								<label ><strong>Company’s Name</strong></label>
-								<input class="form-control" type="text"  name="company_name" required maxlength="1000" minlength="3"> 
+								<input class="form-control" type="text"  name="company_name"  required maxlength="1000" minlength="3" {% if data.company_name %} value="{{data.company_name}}" {% endif %}> 
 								</div>
 						</div>
 						
@@ -72,7 +72,7 @@
 					<div class="col-md-6">
 						<div class="form-group">
 							<label ><strong>Company Website Link</strong></label>
-							<input class="form-control" type="text"  name="company_website_link" required maxlength="1000" minlength="3" > 
+							<input class="form-control" type="text"  name="company_website_link" required maxlength="1000" minlength="3" {% if data.company_website_link %} value="{{data.company_website_link}}" {% endif %} > 
 						</div>
 					</div>
 						
@@ -83,7 +83,7 @@
 						<div class="col-md-6">
 							<div class="form-group">
 								<label ><strong>Owner’s Name</strong></label>
-								<input class="form-control" type="text"  name="owner_name" required maxlength="500" minlength="3" /> 
+								<input class="form-control" type="text"  name="owner_name" required maxlength="500" minlength="3" {% if data.owner_name %} value="{{data.owner_name}}" {% endif %}/> 
 								</div>
 						</div>
 					
@@ -91,7 +91,7 @@
 					<div class="col-md-6">
 						<div class="form-group">
 							<label ><strong>Email id</strong></label>
-							<input class="form-control" type="email"  name="email_id" required maxlength="500" minlength="4" /> 
+							<input class="form-control" type="email"  name="email_id" required maxlength="500" minlength="4" {% if data.email_id %} value="{{data.email_id}}" {% endif %} /> 
 						</div>
 					</div>
 						
@@ -106,6 +106,8 @@
 				<div class="form-group">
 						<label ><strong>Country Code</strong></label>
 						<select class="form-control" name="countrycode" required>
+
+						{% if data.countrycode %} <option  value="{{data.countrycode}}" selected >+{{data.countrycode}}</option>  {% endif %}
 						<option data-countryCode="IN" value="91">&#x1F1EE&#x1F1F3 India (+91)</option>
 						<optgroup label="Other countries">
 							<option data-countryCode="AF" value="93">&#x1F1E6&#x1F1EB Afghanistan (+93)</option>
@@ -349,7 +351,7 @@
 					<div class="col-md-6">
 						<div class="form-group">
 							<label ><strong>Phone Number</strong></label>
-							<input id="form-phone" class="form-control" type="number"  name="phone_number" required onfocusout="phone_number_validation();"  /> 
+							<input id="form-phone" class="form-control" type="number"  name="phone_number" required onfocusout="phone_number_validation();" {% if data.phone_number %} value="{{data.phone_number}}" {% endif %}  /> 
 						</div>
 					</div>
 

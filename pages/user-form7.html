@@ -59,36 +59,101 @@
 						</div>
 					<div class="card-body">
 					
+
+
 					
 
-				<div class="form-row">
+				<div id="offline-div" class="form-row">
 						
-						<div class="col-md-8">
+						<div class="col">
 							<div class="form-group">
 								<label ><strong>Offline Marketing Strategies</strong><small class="text-danger"> *Max : 1000 characters</small></label>
 								<a href="#"  data-toggle="tooltip" title="Help text."><i class="far fa-question-circle"></i></a>
+							</div>
 
+							<div id="m_off_div1" class="form-row"><div class="col-md-8"><div class="form-group">
+								<div id="m_off_div1" class="inputbox">
+								{% if data.marketing_strategies_offline.f_1 %}
+									<input class="d-none" type="text" name="marketing_strategies_offline[]" value="{{data.marketing_strategies_offline.f_1}}" maxlength="1000" />
+									<div class="content">{{data.marketing_strategies_offline.f_1}}</div>
+									
 
-
-								<div id="m_off1" class="inputbox">
+								{% else %}
 									<input class="d-none" type="text" name="marketing_strategies_offline[]" maxlength="1000" />
 									<div class="content"></div>
-								</div>
+								{% endif %}
+
+								</div></div></div></div>
+
+
+								{% if data.marketing_strategies_offline.f_2 %}
+
+								<div id="m_off_div2" class="form-row"><div class="col-md-8"><div class="form-group">
+								<div id="m_off2" class="inputbox">
+								<input class="d-none" type="text" name="marketing_strategies_offline[]" value="{{data.marketing_strategies_offline.f_2}}" maxlength="1000" />
+								<div class="content">{{data.marketing_strategies_offline.f_2}}</div></div></div></div></div>
+
+								{% endif %}
+
+
+								{% if data.marketing_strategies_offline.f_3 %}
+								<div id="m_off_div3" class="form-row"><div class="col-md-8"><div class="form-group">
+								<div id="m_off3" class="inputbox">
+								<input class="d-none" type="text" name="marketing_strategies_offline[]" value="{{data.marketing_strategies_offline.f_3}}" maxlength="1000" />
+								<div class="content">{{data.marketing_strategies_offline.f_3}}</div></div></div></div></div>
+								{% endif %}
+
+
+								{% if data.marketing_strategies_offline.f_4 %}
+								<div id="m_off_div4" class="form-row"><div class="col-md-8"><div class="form-group">
+								<div id="m_off4" class="inputbox">
+								<input class="d-none" type="text" name="marketing_strategies_offline[]" value="{{data.marketing_strategies_offline.f_4}}" maxlength="1000" />
+								<div class="content">{{data.marketing_strategies_offline.f_4}}</div></div></div></div></div>
+								{% endif %}
+
+
+								{% if data.marketing_strategies_offline.f_5 %}
+								<div id="m_off_div5" class="form-row"><div class="col-md-8"><div class="form-group">
+								<div id="m_off5" class="inputbox">
+								<input class="d-none" type="text" name="marketing_strategies_offline[]" value="{{data.marketing_strategies_offline.f_5}}" maxlength="1000" />
+								<div class="content">{{data.marketing_strategies_offline.f_5}}</div></div></div></div></div>
+								{% endif %}
 
 
 
-							</div>
+							
 						</div>
 
 					</div>
+
+
 					<div id="m_off_rows"></div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 					<div class="form-row">
 						<div class="col-4">
 								<div class="form-group">
 									
 									<button class="btn btn-success" type="button"  onclick="add_m_off()" ><i class="fas fa-plus"></i> Add</button>
+
+									{% if data.marketing_strategies_offline.f_2 %}
+									<button id="remove_m_off_btn" type="button" onclick="remove_m_off()" class="btn btn-danger" ><i class="fas fa-trash-alt"></i> Remove</button>
+									{% else %}
 									<button id="remove_m_off_btn" type="button" onclick="remove_m_off()" class="btn btn-danger" style="display:none;"><i class="fas fa-trash-alt"></i> Remove</button>
+									{% endif %}
 		
 								</div>
 							</div>
@@ -100,20 +165,83 @@
 					<br><br><hr><br>
 
 
+
+
+
+
+
+
+
+
+
+
+
+				<div id="online-div">
+
+
 				<div class="form-row">
 
 						<div class="col-md-8">
 							<div class="form-group">
 								<label ><strong>Online Marketing Strategies</strong><small class="text-danger"> *Max : 1000 characters</small></label>
 								<a href="#"  data-toggle="tooltip" title="Help text."><i class="far fa-question-circle"></i></a>
+
+								
 								<div id="m_on1" class="inputbox">
+									{% if data.marketing_strategies_online.f_1 %}
+									<input class="d-none" type="text" name="marketing_strategies_online[]" value="{{data.marketing_strategies_online.f_1}}" maxlength="1000" />
+									<div class="content">{{data.marketing_strategies_online.f_1}}</div>
+									{% else %}
 									<input class="d-none" type="text" name="marketing_strategies_online[]" maxlength="1000" />
 									<div class="content"></div>
-							</div>
+									{% endif %}
+								</div>
+
+
+
+
 								</div>
 						</div>
 						
 				</div>
+
+
+
+				{% if data.marketing_strategies_online.f_2 %}
+					<div id="m_on_div2" class="form-row"><div class="col-md-8"><div class="form-group">
+					<div id="m_on2" class="inputbox"><input class="d-none" type="text" name="marketing_strategies_online[]" value="{{data.marketing_strategies_online.f_2}}" maxlength="1000" />
+					<div class="content">{{data.marketing_strategies_online.f_2}}</div></div></div></div></div>
+				{% endif %}
+
+
+				{% if data.marketing_strategies_online.f_3 %}
+					<div id="m_on_div3" class="form-row"><div class="col-md-8"><div class="form-group">
+					<div id="m_on3" class="inputbox"><input class="d-none" type="text" name="marketing_strategies_online[]" value="{{data.marketing_strategies_online.f_3}}" maxlength="1000" />
+					<div class="content">{{data.marketing_strategies_online.f_3}}</div></div></div></div></div>
+				{% endif %}
+
+				{% if data.marketing_strategies_online.f_4 %}
+					<div id="m_on_div4" class="form-row"><div class="col-md-8"><div class="form-group">
+					<div id="m_on4" class="inputbox"><input class="d-none" type="text" name="marketing_strategies_online[]" value="{{data.marketing_strategies_online.f_4}}" maxlength="1000" />
+					<div class="content">{{data.marketing_strategies_online.f_4}}</div></div></div></div></div>
+				{% endif %}
+
+				{% if data.marketing_strategies_online.f_5 %}
+					<div id="m_on_div5" class="form-row"><div class="col-md-8"><div class="form-group">
+					<div id="m_on5" class="inputbox"><input class="d-none" type="text" name="marketing_strategies_online[]" value="{{data.marketing_strategies_online.f_5}}" maxlength="1000" />
+					<div class="content">{{data.marketing_strategies_online.f_5}}</div></div></div></div></div>
+				{% endif %}
+
+
+
+
+				</div>
+
+
+
+
+
+
 
 				<div id="m_on_rows"></div>
 
@@ -122,7 +250,12 @@
 								<div class="form-group">
 									
 									<button class="btn btn-success" type="button"  onclick="add_m_on()" ><i class="fas fa-plus"></i> Add</button>
+
+									{% if data.marketing_strategies_online.f_2 %}
+									<button id="remove_m_on_btn" type="button" onclick="remove_m_on()" class="btn btn-danger" ><i class="fas fa-trash-alt"></i> Remove</button>
+									{% else %}
 									<button id="remove_m_on_btn" type="button" onclick="remove_m_on()" class="btn btn-danger" style="display:none;"><i class="fas fa-trash-alt"></i> Remove</button>
+									{% endif %}
 		
 								</div>
 							</div>
@@ -222,7 +355,14 @@
 
 <script>
 
-var m_off=2;
+var m_off = $("#offline-div .content").length;
+if(m_off==1){
+	m_off=2;
+}
+else
+{
+	m_off+=1;
+}
 
 
 function add_m_off()
@@ -281,7 +421,14 @@ function remove_m_off()
 
 
 
-var m_on=2;
+var m_on = $("#online-div .content").length;
+if(m_on==1){
+	m_on=2;
+}
+else
+{
+	m_on+=1;
+}
 
 
 function add_m_on()

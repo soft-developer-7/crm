@@ -16,10 +16,11 @@ from business_management.models import Packs,Industries,User_bookings,Templates
 def multi_input_insert(request,name):
     user = User_db.objects.filter(id=request.session['user']).get()
     form_id = request.session['form']
+    values = request.POST.getlist(name)
     multi = super_plan_forms_multiple_inputs()
     multi.user = user
     multi.form_id = form_id
-    values = request.POST.getlist(name)
+
     for i in range(0,len(values)):
         if(values[i]):
             val = values[i]
@@ -43,8 +44,6 @@ def multi_input_insert(request,name):
                 multi.f_9 = val
             elif i==9:
                 multi.f_10 = val
-                 
-        
     multi.save()
     return multi
 
@@ -56,39 +55,108 @@ def multi_input_insert(request,name):
 
 
 
-def multi_image_insert(request,name):
+def multi_image_insert(request,name,r_id=None):
     user = User_db.objects.filter(id=request.session['user']).get()
     form_id = request.session['form']
-    multi = super_plan_forms_multiple_images()
-    multi.user = user
-    multi.form_id = form_id
+    
     values = request.FILES.getlist(name)
     
-    for i in range(0,len(values)):
-        if(values[i]):
-            val = values[i]
-            if i==0:
-                multi.i_1 = val
-                print("1 image")
-            elif i==1:
-                multi.i_2 = val
-                print("2 image")
-            elif i==2:
-                multi.i_3 = val
-                print("3 image")
-            elif i==3:
-                multi.i_4 = val
-                print("4 image")
-            elif i==4:
-                multi.i_5 = val
-                print("5 image")
-            elif i==5:
-                multi.i_6 = val
-                print("6 image")
-        
+    
+
+
+    if(r_id):
+        i_name=name.replace("[]","")
+        multi = super_plan_forms_multiple_images.objects.filter(id=r_id).get()
+        c=0
+        if(multi):
+            for i in range(1,7):
+                if(request.POST.get(i_name+'_'+str(i)) and request.POST[i_name+'_'+str(i)]=="1"):
+                    
+                    val = values[c]
+                    if i==1:
+                        multi.i_1 = val
+                        
+                    elif i==2:
+                        multi.i_2 = val
+                        
+                    elif i==3:
+                        multi.i_3 = val
+                        
+                    elif i==4:
+                        multi.i_4 = val
+                        
+                    elif i==5:
+                        multi.i_5 = val
+                        
+                    elif i==6:
+                        multi.i_6 = val
+                    c+=1
+                    
+                multi.save()
+
+
+    else:
+        multi = super_plan_forms_multiple_images()
+        multi.user = user
+        multi.form_id = form_id
+        for i in range(0,len(values)):
+            if(values[i]):
+                val = values[i]
+                if i==0:
+                    multi.i_1 = val
+                    
+                elif i==1:
+                    multi.i_2 = val
+                    
+                elif i==2:
+                    multi.i_3 = val
+                    
+                elif i==3:
+                    multi.i_4 = val
+                    
+                elif i==4:
+                    multi.i_5 = val
+                    
+                elif i==5:
+                    multi.i_6 = val
+                    
+            
+        multi.save()
+        return multi
+
+
+
+
+
+
+
+
+
+
+
+
+
+def competitor_analysis_input(request,name):                   # Competitor Analysis table
+    user = User_db.objects.filter(id=request.session['user']).get()
+    form_id = request.session['form']
+    values = request.POST.getlist(name)
+    multi = super_plan_forms_multiple_inputs()
+    multi.user = user
+    multi.form_id = form_id
+
+    if "1" in values:
+        multi.f_1 = 1
+    if "2" in values:
+        multi.f_2 = 2
+    if "3" in values:
+        multi.f_3 = 3
+    if "4" in values:
+        multi.f_4 = 4
+    if "5" in values:
+        multi.f_5 = 5
+
     multi.save()
     return multi
-
 
 
 # Create your views here.
@@ -1184,8 +1252,19 @@ def user_form_5_submit(request):            # User Form 5 Submit
     book = super_plan_forms.objects.filter(id=request.session['form']).get()
     if(auth_user(request) and book and request.method=="POST"):
         
-        book.products_and_services = multi_input_insert(request,"products_and_services[]")
-        book.products_and_services_file = multi_image_insert(request,"products_and_services_file[]")
+
+        if(request.FILES.get("products_and_services[]")):
+            if(book.products_and_services.id):
+                multi_input_insert(request,"products_and_services[]",book.products_and_services.id)
+            else:
+                book.products_and_services = multi_input_insert(request,"products_and_services[]")
+
+        if(request.FILES.get("products_and_services_file[]")):
+            if(book.products_and_services_file.id):
+                multi_image_insert(request,"products_and_services_file[]",book.products_and_services_file.id)
+            else:
+                 book.products_and_services_file = multi_image_insert(request,"products_and_services_file[]")
+
         book.top_clients= multi_input_insert(request,"top_clients[]")
         book.top_clients_file= multi_image_insert(request,"top_clients_file[]")
         book.milestones_time= multi_input_insert(request,"milestones_time[]")
@@ -1343,16 +1422,26 @@ def user_form_9_submit(request):            # User Form 9 Submit
     book = super_plan_forms.objects.filter(id=request.session['form']).get()
     if(auth_user(request) and book and request.method=="POST"):
 
+
+        user = User_db.objects.filter(id=request.session['user']).get()
+        form_id = request.session['form']
+        
+
+
         if(request.POST.get("industry_analysis")):
             book.industry_analysis = request.POST["industry_analysis"]
        
         book.competitor_analysis_n = multi_input_insert(request,"competitor_analysis_n[]")
         book.competitor_analysis_p = multi_input_insert(request,"competitor_analysis_p[]")
-        book.competitor_analysis_v1 = multi_input_insert(request,"competitor_analysis_v1[]")
-        book.competitor_analysis_v2 = multi_input_insert(request,"competitor_analysis_v2[]")
-        book.competitor_analysis_v3 = multi_input_insert(request,"competitor_analysis_v3[]")
-        book.competitor_analysis_v4 = multi_input_insert(request,"competitor_analysis_v4[]")
-        book.competitor_analysis_v5 = multi_input_insert(request,"competitor_analysis_v5[]")
+
+        
+        book.competitor_analysis_v1 = competitor_analysis_input(request,"competitor_analysis_v1[]")
+        book.competitor_analysis_v2 = competitor_analysis_input(request,"competitor_analysis_v2[]")
+        book.competitor_analysis_v3 = competitor_analysis_input(request,"competitor_analysis_v3[]")
+        book.competitor_analysis_v4 = competitor_analysis_input(request,"competitor_analysis_v4[]")
+        book.competitor_analysis_v5 = competitor_analysis_input(request,"competitor_analysis_v5[]")
+
+
         book.industry_growth_drivers = multi_input_insert(request,"industry_growth_drivers[]")
         book.usp = multi_input_insert(request,"usp[]")
 
@@ -1376,6 +1465,18 @@ def user_form_9_1_submit(request):            # User Form 9_1 Submit
 
 
 
+def user_form_9_1_historical_submit(request):          #XLSX input form
+    book = super_plan_forms.objects.filter(id=request.session['form']).get()
+    
+    if(auth_user(request) and book and request.method=="POST"):
+        if(request.FILES.get("historical_xl")):
+            book.historical_xl = request.FILES["historical_xl"]
+        book.save()
+        return render(request,'user-form10.html')
+    else:
+        return redirect('/login')
+
+
 
 
 
@@ -1383,7 +1484,7 @@ def user_form_10_submit(request):            # User Form 10 Submit
     book = super_plan_forms.objects.filter(id=request.session['form']).get()
     if(auth_user(request) and book and request.method=="POST"):
 
-        book.revenue_growth_or_amount_years = multi_input_insert(request,"revenue_growth_or_amount_years[]")
+        book.profit_and_loss_years = multi_input_insert(request,"profit_and_loss_years[]")
 
         book.revenue_growth_or_amount_1 = multi_input_insert(request,"revenue_growth_or_amount_1[]")
         book.revenue_growth_1_or = request.POST["revenue_growth_1_or"]
@@ -1403,8 +1504,6 @@ def user_form_10_submit(request):            # User Form 10 Submit
         book.realised_foreign_exchange_gain_or_loss = multi_input_insert(request,"realised_foreign_exchange_gain_or_loss[]")
         book.realised_foreign_exchange_gain_or = request.POST["realised_foreign_exchange_gain_or"]
 
-
-        book.operating_expenses_growth_or_amount_years = multi_input_insert(request,"operating_expenses_growth_or_amount_years[]")
 
         book.direct_material_units = multi_input_insert(request,"direct_material_units[]")
 
@@ -1515,12 +1614,11 @@ def user_form_11_submit(request):            # User Form 11 Submit
     book = super_plan_forms.objects.filter(id=request.session['form']).get()
     if(auth_user(request) and book and request.method=="POST"):
 
-        book.share_capital_years = multi_input_insert(request,"share_capital_years[]")
+        book.balance_sheet_years = multi_input_insert(request,"balance_sheet_years[]")
         book.share_capital = multi_input_insert(request,"share_capital[]")
         book.reserves_and_surplus = multi_input_insert(request,"reserves_and_surplus[]")
         book.equity_funds_raised = multi_input_insert(request,"equity_funds_raised[]")
 
-        book.non_current_liabilities_years = multi_input_insert(request,"non_current_liabilities_years[]")
         book.secured_loans_from_banks = multi_input_insert(request,"secured_loans_from_banks[]")
         book.secured_loans_term_loans = multi_input_insert(request,"secured_loans_term_loans[]")
         book.secured_loans_other_loans = multi_input_insert(request,"secured_loans_other_loans[]")
@@ -1540,7 +1638,6 @@ def user_form_11_submit(request):            # User Form 11 Submit
 
 
 
-        book.current_liabilities_years = multi_input_insert(request,"current_liabilities_years[]")
         book.short_term_borrowings_growth_or = request.POST["short_term_borrowings_growth_or"]
         book.short_term_borrowings_growth_or_amount = multi_input_insert(request,"short_term_borrowings_growth_or_amount[]")
 
@@ -1557,7 +1654,6 @@ def user_form_11_submit(request):            # User Form 11 Submit
 
 
 
-        book.non_current_assets_years = multi_input_insert(request,"non_current_assets_years[]")
         book.intangible_assets_growth_or = request.POST["intangible_assets_growth_or"]
         book.intangible_assets_growth_or_amount = multi_input_insert(request,"intangible_assets_growth_or_amount[]")
 
@@ -1577,7 +1673,6 @@ def user_form_11_submit(request):            # User Form 11 Submit
 
 
 
-        book.current_assets_years = multi_input_insert(request,"current_assets_years[]")
 
         book.sundry_debtors_no_of_days = multi_input_insert(request,"sundry_debtors_no_of_days[]")
         book.inventory_no_of_days = multi_input_insert(request,"inventory_no_of_days[]")
@@ -1621,6 +1716,7 @@ def user_form_11_submit(request):            # User Form 11 Submit
 def user_form_12_submit(request):            # User Form 12 Submit
     book = super_plan_forms.objects.filter(id=request.session['form']).get()
     if(auth_user(request) and book and request.method=="POST"):
+        book.capex_opening_gross = multi_input_insert(request,"capex_opening_gross[]")
         book.capex_years = multi_input_insert(request,"capex_years[]")
         book.capex_additions = multi_input_insert(request,"capex_additions[]")
         book.capex_additions_intangible = multi_input_insert(request,"capex_additions_intangible[]")
@@ -1741,11 +1837,11 @@ def user_incomplete_superplan_by_get(request,id):                               
         years = [i for i in range(year-5,year+6)]
         request.session["years"]=years
 
-        book=super_plan_forms.objects.filter(id=id,user=request.session['user']).get()
+        book=super_plan_forms.objects.filter(id=int(id),user=request.session['user']).get()
         if(book):
             request.session["form"] = book.id
             form_url = 'user-form'+str((book.current_fillup_position)+1)+'.html'
-            return render(request,form_url)
+            return render(request,form_url,{"data":book})
         else:
             return redirect('/login')
     else:

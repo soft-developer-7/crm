@@ -94,6 +94,7 @@ urlpatterns = [
     path("user_form_8_submit",views.user_form_8_submit,name="user_form_8_submit"),
     path("user_form_9_submit",views.user_form_9_submit,name="user_form_9_submit"),
     path("user_form_9_1_submit",views.user_form_9_1_submit,name="user_form_9_1_submit"),
+    path("user_form_9_1_historical_submit",views.user_form_9_1_historical_submit,name="user_form_9_1_historical_submit"),
     path("user_form_10_submit",views.user_form_10_submit,name="user_form_10_submit"),
     path("user_form_11_submit",views.user_form_11_submit,name="user_form_11_submit"),
     path("user_form_12_submit",views.user_form_12_submit,name="user_form_12_submit"),

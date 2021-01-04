@@ -65,22 +65,33 @@
 						<div class="col-md-3">
 							<div class="form-group">
 								<label ><strong>Co-Founder </strong></label>
+								{% if data.management_team_name.f_1 %}
+								<input type="text" class="form-control"   name="management_team_name_1" value="{{data.management_team_name.f_1}}" maxlength="200" minlength="3" />
+								{% else %}
 								<input type="text" class="form-control"   name="management_team_name_1" maxlength="200" minlength="3" />
-								
+								{% endif %}
 								</div>
 						</div>
 
 						<div class="col-md-3">
 							<div class="form-group">
 								<label ><strong>Designation</strong></label>
+								{% if data.management_team_designation.f_1 %}
+								<input type="text" class="form-control"   name="management_team_designation_1" value="{{data.management_team_designation.f_1}}" maxlength="200" minlength="1" />
+								{% else %}
 								<input type="text" class="form-control"   name="management_team_designation_1" maxlength="200" minlength="1" />
+								{% endif %}
 								</div>
 						</div>
 
 						<div class="col-md-3">
 							<div class="form-group">
 								<label ><strong>contact</strong></label>
+								{% if data.management_team_contact.f_1 %}
+								<input type="text" class="form-control" name="management_team_contact_1" placeholder=" Link/email/phone" value="{{data.management_team_contact.f_1}}"  maxlength="200" minlength="2" />
+								{% else %}
 								<input type="text" class="form-control" name="management_team_contact_1" placeholder=" Link/email/phone"   maxlength="200" minlength="2" />
+								{% endif %}
 								</div>
 						</div>
 						
@@ -88,6 +99,9 @@
                         <div class="col-md-3">
                             <div class="form-group">
                                 <label ><strong>Profile image (PNG/JPG)</strong></label>
+								{% if data.management_team_file.i_1 %}
+								<br><a href="{{data.management_team_file.i_1.url}}" target="_blank"><img  src="{{data.management_team_file.i_1.url}}" alt="logo" height=150 /></a><br><p> For Image change please select new image below</p>
+								{% endif %}
                                 <input  type="file"  name="management_team_file_1" accept="image/jpeg,image/png">
                             </div>
                         </div>
@@ -97,27 +111,39 @@
 				<hr>
                 <br>
 
-				<div class="form-row">
+
+					<div class="form-row">
 						
 						<div class="col-md-3">
 							<div class="form-group">
 								<label ><strong>Co-Founder </strong></label>
+								{% if data.management_team_name.f_2 %}
+								<input type="text" class="form-control"   name="management_team_name_2" value="{{data.management_team_name.f_2}}" maxlength="200" minlength="3" />
+								{% else %}
 								<input type="text" class="form-control"   name="management_team_name_2" maxlength="200" minlength="3" />
-								
+								{% endif %}
 								</div>
 						</div>
 
 						<div class="col-md-3">
 							<div class="form-group">
 								<label ><strong>Designation</strong></label>
+								{% if data.management_team_designation.f_2 %}
+								<input type="text" class="form-control"   name="management_team_designation_2" value="{{data.management_team_designation.f_2}}" maxlength="200" minlength="1" />
+								{% else %}
 								<input type="text" class="form-control"   name="management_team_designation_2" maxlength="200" minlength="1" />
+								{% endif %}
 								</div>
 						</div>
 
 						<div class="col-md-3">
 							<div class="form-group">
 								<label ><strong>contact</strong></label>
+								{% if data.management_team_contact.f_2 %}
+								<input type="text" class="form-control" name="management_team_contact_2" placeholder=" Link/email/phone" value="{{data.management_team_contact.f_2}}"  maxlength="200" minlength="2" />
+								{% else %}
 								<input type="text" class="form-control" name="management_team_contact_2" placeholder=" Link/email/phone"   maxlength="200" minlength="2" />
+								{% endif %}
 								</div>
 						</div>
 						
@@ -125,6 +151,10 @@
                         <div class="col-md-3">
                             <div class="form-group">
                                 <label ><strong>Profile image (PNG/JPG)</strong></label>
+
+								{% if data.management_team_file.i_2 %}
+								<br><a href="{{data.management_team_file.i_2.url}}" target="_blank"><img  src="{{data.management_team_file.i_2.url}}" alt="logo" height=150 /></a><br><p> For Image change please select new image below</p>
+								{% endif %}
                                 <input  type="file"  name="management_team_file_2" accept="image/jpeg,image/png">
                             </div>
                         </div>
@@ -135,27 +165,38 @@
                 <br>
 
 
-				<div class="form-row">
+               <div class="form-row">
 						
 						<div class="col-md-3">
 							<div class="form-group">
 								<label ><strong>Co-Founder </strong></label>
+								{% if data.management_team_name.f_3 %}
+								<input type="text" class="form-control"   name="management_team_name_3" value="{{data.management_team_name.f_3}}" maxlength="200" minlength="3" />
+								{% else %}
 								<input type="text" class="form-control"   name="management_team_name_3" maxlength="200" minlength="3" />
-								
+								{% endif %}
 								</div>
 						</div>
 
 						<div class="col-md-3">
 							<div class="form-group">
 								<label ><strong>Designation</strong></label>
+								{% if data.management_team_designation.f_3 %}
+								<input type="text" class="form-control"   name="management_team_designation_3" value="{{data.management_team_designation.f_3}}" maxlength="200" minlength="1" />
+								{% else %}
 								<input type="text" class="form-control"   name="management_team_designation_3" maxlength="200" minlength="1" />
+								{% endif %}
 								</div>
 						</div>
 
 						<div class="col-md-3">
 							<div class="form-group">
 								<label ><strong>contact</strong></label>
+								{% if data.management_team_contact.f_3 %}
+								<input type="text" class="form-control" name="management_team_contact_3" placeholder=" Link/email/phone" value="{{data.management_team_contact.f_3}}"  maxlength="200" minlength="2" />
+								{% else %}
 								<input type="text" class="form-control" name="management_team_contact_3" placeholder=" Link/email/phone"   maxlength="200" minlength="2" />
+								{% endif %}
 								</div>
 						</div>
 						
@@ -163,12 +204,19 @@
                         <div class="col-md-3">
                             <div class="form-group">
                                 <label ><strong>Profile image (PNG/JPG)</strong></label>
+
+								{% if data.management_team_file.i_3 %}
+								<br><a href="{{data.management_team_file.i_3.url}}" target="_blank"><img  src="{{data.management_team_file.i_3.url}}" alt="logo" height=150 /></a><br><p> For Image change please select new image below</p>
+								{% endif %}
+
                                 <input  type="file"  name="management_team_file_3" accept="image/jpeg,image/png">
                             </div>
                         </div>
 				</div>
 
-
+				<br>
+				<hr>
+                <br>
                 <br>
                 
 						

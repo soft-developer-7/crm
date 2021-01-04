@@ -72,7 +72,7 @@
 
 							<!--name="theme"-->
 							<div class="border d-inline-block p-1 shadow-sm rounded">
-							<label><input type="radio" class="form-control" name="theme" value="template1"  required/>Template 1</label>
+							<label><input type="radio" class="form-control" name="theme" value="template1" {% if data.theme and data.theme == "template1" %} checked {% endif %}  required/>Template 1</label>
 							<a href="\user_template_view_1" target="_blank"><img src="{% static 'assets-template/template-image/template1.png' %}" alt="template 1 image" height=130></a>
 							</div>
 						</div>
@@ -90,8 +90,8 @@
 							<label ><strong>Currency units </strong></label>
 							<select class="form-control" name="denomination"  required>
 							
-                                <option value="Lakh">Thousand / Lakh / Crore</option>
-                                <option value="Million">Thousand / Million / Billion</option>
+                                <option value="Lakh"  {% if data.denomination and data.denomination == "Lakh" %} selected {% endif %} >Thousand / Lakh / Crore</option>
+                                <option value="Million" {% if data.denomination and data.denomination == "Million" %} selected {% endif %}>Thousand / Million / Billion</option>
                             </select> 
 						</div>
 					</div>
@@ -100,10 +100,10 @@
 						<div class="form-group">
 							<label ><strong>Currency Selection</strong></label>
 							<select class="form-control" name="currency"  required>
-                                <option value="rupee">₹ - Rupee</option>
-								<option value="dollar">$ - Dollar</option>
-                                <option value="euro">€ - Euro</option>
-                                <option value="pound">£ - Pound</option> 
+                                <option value="rupee" {% if data.currency and data.currency == "rupee" %} selected {% endif %}>₹ - Rupee</option>
+								<option value="dollar" {% if data.currency and data.currency == "dollar" %} selected {% endif %}>$ - Dollar</option>
+                                <option value="euro" {% if data.currency and data.currency == "euro" %} selected {% endif %}>€ - Euro</option>
+                                <option value="pound" {% if data.currency and data.currency == "pound" %} selected {% endif %} >£ - Pound</option> 
                                 
                             </select> 
 						</div>

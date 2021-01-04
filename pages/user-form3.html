@@ -68,8 +68,8 @@
 								<label ><strong>About the company</strong><small class="text-danger"> *Max : 1000 characters</small></label>
               
                 <div id="m1" class="inputbox">
-									<input class="d-none" type="text" name="about_the_company" maxlength="1000" />
-									<div class="content"></div>
+									<input class="d-none" type="text" name="about_the_company" maxlength="1000" {% if data.about_the_company %} value="{{data.about_the_company}}" {% endif %} />
+									<div class="content">{% if data.about_the_company %} {{data.about_the_company}} {% endif %}</div>
               </div>
               
 								</div>
@@ -82,7 +82,17 @@
                             <div class="col">
                                     <div class="form-group">
                                         <label ><strong>Company Logo (JPEG/PNG)</strong></label>
-                                        <input id="photo"  type="file"  name="company_logo" accept="image/jpeg,image/png" />
+										{% if data.company_logo %}
+										<br>
+											<a href="{{data.company_logo.url}}" target="_blank"><img id="img1"  src="{{data.company_logo.url}}" alt="logo" height=50 /></a>
+										
+										<br><br>
+											<button id="ci_btn" type="button" class="btn btn-danger" onclick="change_img()">Change Logo</button>
+										 	<input id="photo"  type="file"  name="company_logo" accept="image/jpeg,image/png" style="display:none;" />
+										 {% else %}
+											<input id="photo"  type="file"  name="company_logo" accept="image/jpeg,image/png" />
+										 {% endif %}
+                                        
                                     </div>
                                 </div>
                         </div>
@@ -101,11 +111,11 @@
 						<div class="col-md-6">
 						<div class="form-group">
 							<label ><strong>When was the company founded</strong></label>
-							<!--input class="form-control" type="date" min="1600" max="2020"  name="company_founded" required /--> 
+							
 
               <div class="input-append date" id="datepicker"  data-date-format="mm-yyyy">
                    
-                   <input class="form-control" type="text" placeholder="mm-yyyy"  name="company_founded" /> 
+                   <input class="form-control" type="text" placeholder="mm-yyyy"  name="company_founded" {% if data.company_founded %} value="{{data.company_founded}}" {% endif %} /> 
                    <span class="add-on"></span>     
               </div>  
 
@@ -118,11 +128,12 @@
 							<label ><strong>Industry Type</strong></label>
 							<select class="form-control" name="industry_type" required>
                                 <option>Select Here</option>
-                                <option value="industry type 1">Industry type name 1</option>
-                                <option value="industry type 2">Industry type name  2</option>
-                                <option value="industry type 3">Industry type name  3</option>
-                                <option value="industry type 4">Industry type name  4</option>
-                                <option value="industry type 5">Industry type name  5</option>
+                                <option value="industry type 1" {% if data.industry_type and data.industry_type == "industry type 1" %}selected{% endif %} >Industry type name 1</option>
+
+                                <option value="industry type 2" {% if data.industry_type and data.industry_type == "industry type 2" %}selected{% endif %}>Industry type name  2</option>
+
+                                <option value="industry type 3" {% if data.industry_type and data.industry_type == "industry type 3" %}selected{% endif %} >Industry type name  3</option>
+
                             </select> 
 						</div>
 					</div>
@@ -279,6 +290,21 @@ $("#datepicker").datepicker( {
                 
         }
     });
+
+
+
+
+
+
+function change_img()
+{
+	$("#ci_btn").fadeOut("slow");
+	$("#img1").fadeOut("slow");
+	$("#photo").fadeIn("slow");
+}
+
+
+
 
 </script>
 

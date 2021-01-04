@@ -55,7 +55,7 @@
 				{% csrf_token %}
 					<div class="card shadow mb-3">
 						<div class="card-header py-3">
-						<p class="text-primary m-0 font-weight-bold">Hostorical Data</p>
+						<p class="text-primary m-0 font-weight-bold">Historical Data</p>
 						</div>
 					<div class="card-body">
 					
@@ -69,12 +69,29 @@
 
 				<button id="btn" onclick="$('#box').show();" class="btn btn-success btn-lg m-2" type="button">Yes</button>
                 <button class="btn btn-danger btn-lg m-2" type="submit">No</button></form>
-				<a class="btn btn-primary btn-lg m-2" href="/superplan_form_number/12" >Skip</a>
+				<a class="btn btn-primary btn-lg m-2" href="/superplan_form_number/10" >Skip</a>
 			</div>
 
             <div id="box" class="container bg-white border shadow text-center" style="display:none; min-height:150px;padding-top:50px;">
-			<a href="{% static 'files/demo.xlsx'%}" target="_blank"> 
-			<u><h4>Download the Historical data format excel file here <i class="fas fa-download"></i></h4></u></div>
+			<a href="{% static 'files/historical.xlsx'%}" target="_blank"> 
+			<u><h4>Download the Historical data format excel file here <i class="fas fa-download"></i></h4></u></a>
+			<br><br/>
+
+
+			
+			<form method="post"  action="/user_form_9_1_historical_submit" enctype="multipart/form-data" >
+				{% csrf_token %}
+
+				<div class="form-group">
+				<label class="text-danger">**Fill the above Historical.xlsx file and Upload the <b> Historical.xlsx </b> file below</label><br>
+				<input class="form-control" type="file" name="historical_xl"  accept=".xlsx" />
+				</div>
+				<button class="btn btn-primary" type="submit">Upload & Next</button>
+				<br>
+			</form>
+			
+			
+			</div>
 					
 		</div>
 	</div>

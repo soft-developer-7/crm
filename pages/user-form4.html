@@ -64,14 +64,63 @@
 					
 					
 
-				<div class="form-row">
+				<div id="challenges_div" class="form-row">
 						<div class="col-md-8">
 							<div class="form-group">
 								<label ><strong>Challenges Faced in the Industry </strong><small class="text-danger"> *Max : 200 characters</small></label>
-								<div id="chl1" class="inputbox">
-									<input class="d-none" type="text" name="challenges_faced[]" maxlength="200" />
+
+						{% if data.challenges_faced.f_1 %}
+
+								<div id="chl_div1" class="inputbox">
+									<input hidden type="text" name="challenges_faced[]" value="{{data.challenges_faced.f_1}}" maxlength="200" />
+									<div class="content">{{data.challenges_faced.f_1}}</div>
+								</div>
+						{% else %}
+
+								<div id="chl_div1" class="inputbox">
+									<input hidden type="text" name="challenges_faced[]" maxlength="200" />
 									<div class="content"></div>
 								</div>
+
+						{% endif %}
+							
+						{% if data.challenges_faced.f_2 %}
+
+								<div id="chl_div2" class="inputbox">
+									<input hidden type="text" name="challenges_faced[]" value="{{data.challenges_faced.f_2}}" maxlength="200" />
+									<div class="content">{{data.challenges_faced.f_2}}</div>
+								</div>
+						{% endif %}
+						
+						{% if data.challenges_faced.f_3 %}
+
+								<div id="chl_div3" class="inputbox">
+									<input hidden type="text" name="challenges_faced[]" value="{{data.challenges_faced.f_3}}" maxlength="200" />
+									<div class="content">{{data.challenges_faced.f_3}}</div>
+								</div>
+						{% endif %}
+
+						{% if data.challenges_faced.f_4 %}
+
+								<div id="chl_div4" class="inputbox">
+									<input hidden type="text" name="challenges_faced[]" value="{{data.challenges_faced.f_4}}" maxlength="200" />
+									<div class="content">{{data.challenges_faced.f_4}}</div>
+								</div>
+						{% endif %}
+
+						{% if data.challenges_faced.f_5 %}
+
+								<div id="chl_div5" class="inputbox">
+									<input hidden type="text" name="challenges_faced[]" value="{{data.challenges_faced.f_5}}" maxlength="200" />
+									<div class="content">{{data.challenges_faced.f_5}}</div>
+								</div>
+
+						
+						{% endif %}
+
+
+
+
 							</div>
 						</div>
 				</div>
@@ -84,7 +133,14 @@
 								<div class="form-group">
 									
 									<button class="btn btn-success" type="button"  onclick="add_chl()" ><i class="fas fa-plus"></i> Add</button>
-									<button id="remove_chl_btn" type="button" onclick="remove_chl()" class="btn btn-danger" style="display:none;"><i class="fas fa-trash-alt"></i> Remove</button>
+									
+									
+									{% if data.challenges_faced.f_2 %}
+									<button id="remove_chl_btn" type="button" onclick="remove_chl()" class="btn btn-danger" ><i class="fas fa-trash-alt"></i> Remove</button>
+									{% else %}
+										<button id="remove_chl_btn" type="button" onclick="remove_chl()" class="btn btn-danger" style="display:none;"><i class="fas fa-trash-alt"></i> Remove</button>
+									{% endif %}
+
 		
 								</div>
 							</div>
@@ -98,27 +154,91 @@
 				<hr> <br>
 <!-- Solutions -->
 
-			<div class="form-row">
+			<div id="solution_div" class="form-row">
 				<div class="col-md-8">
                         <div class="form-group">
                             <label ><strong>Solutions Provided by the company</strong><small class="text-danger"> *Max : 200 characters</small></label>
-							<div id="sol1" class="inputbox">
-								<input class="d-none" type="text" name="solutions_provided[]" maxlength="200" />
-								<div class="content"></div>
-							</div>
+
+
+
+							{% if data.solutions_provided.f_1 %}
+
+								<div id="sol_div1" class="inputbox">
+									<input hidden type="text" name="solutions_provided[]" value="{{data.solutions_provided.f_1}}" maxlength="200" />
+									<div class="content">{{data.solutions_provided.f_1}}</div>
+								</div>
+						{% else %}
+
+								<div id="sol_div1" class="inputbox">
+									<input hidden type="text" name="solutions_provided[]" maxlength="200" />
+									<div class="content"></div>
+								</div>
+
+						{% endif %}
+							
+						{% if data.solutions_provided.f_2 %}
+
+								<div id="sol_div2" class="inputbox">
+									<input hidden type="text" name="solutions_provided[]" value="{{data.solutions_provided.f_2}}" maxlength="200" />
+									<div class="content">{{data.solutions_provided.f_2}}</div>
+								</div>
+						{% endif %}
+
+						{% if data.solutions_provided.f_3 %}
+
+								<div id="sol_div3" class="inputbox">
+									<input hidden type="text" name="solutions_provided[]" value="{{data.solutions_provided.f_3}}" maxlength="200" />
+									<div class="content">{{data.solutions_provided.f_3}}</div>
+								</div>
+						{% endif %}
+
+
+						{% if data.solutions_provided.f_4 %}
+
+								<div id="sol_div4" class="inputbox">
+									<input hidden type="text" name="solutions_provided[]" value="{{data.solutions_provided.f_4}}" maxlength="200" />
+									<div class="content">{{data.solutions_provided.f_4}}</div>
+								</div>
+						{% endif %}
+
+						{% if data.solutions_provided.f_5 %}
+
+								<div id="sol_div5" class="inputbox">
+									<input hidden type="text" name="solutions_provided[]" value="{{data.solutions_provided.f_5}}" maxlength="200" />
+									<div class="content">{{data.solutions_provided.f_5}}</div>
+								</div>
+						{% endif %}
+
+
                         </div>  
 					</div>
 				</div>
 
 
+
+
+
+
+
 				<div id="sol_rows"></div>
+
+
 
 					<div class="form-row">
 						<div class="col-4">
 								<div class="form-group">
 									
 									<button class="btn btn-success" type="button"  onclick="add_sol()" ><i class="fas fa-plus"></i> Add</button>
-									<button id="remove_sol_btn" type="button" onclick="remove_sol()" class="btn btn-danger" style="display:none;"><i class="fas fa-trash-alt"></i> Remove</button>
+
+									{% if data.solutions_provided.f_2 %}
+
+									<button id="remove_sol_btn" type="button" onclick="remove_sol()" class="btn btn-danger" ><i class="fas fa-trash-alt"></i> Remove</button>
+
+									{% else %}
+
+										<button id="remove_sol_btn" type="button" onclick="remove_sol()" class="btn btn-danger" style="display:none;"><i class="fas fa-trash-alt"></i> Remove</button>
+
+									{% endif %}
 		
 								</div>
 							</div>
@@ -210,6 +330,7 @@
 </div>
 
 
+
 <!-- Modal Text editor finish -->
 
 
@@ -226,7 +347,16 @@
 
 <!-- Challenges script -->
 <script>
-	var chl=2;
+
+
+var chl = $("#challenges_div .content").length;
+if(chl==0){
+	chl=2;
+}
+else
+{
+	chl+=1;
+}
 
 
 function add_chl()
@@ -285,7 +415,14 @@ function remove_chl()
 
 
 
-var sol=2;
+var sol = $("#solution_div .content").length;
+if(sol==0){
+	sol=2;
+}
+else
+{
+	sol+=1;
+}
 
 
 function add_sol()
