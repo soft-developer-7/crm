@@ -452,10 +452,14 @@ class super_plan_forms(models.Model):
 
     capex_opening_gross = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='capex_opening_gross',on_delete=models.SET_NULL, null=True)
     
+
+    capex_additions_or = models.CharField(max_length=100,null=True)
     capex_additions = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='capex_additions',on_delete=models.SET_NULL, null=True)
 
+    capex_additions_intangible_or = models.CharField(max_length=100,null=True)
     capex_additions_intangible = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='capex_additions_intangible',on_delete=models.SET_NULL, null=True)
 
+    capex_deletions_or = models.CharField(max_length=100,null=True)
     capex_deletions = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='capex_deletions',on_delete=models.SET_NULL, null=True)
 
     capex_average_depreciation_rate = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='capex_average_depreciation_rate',on_delete=models.SET_NULL, null=True)

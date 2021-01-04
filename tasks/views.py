@@ -1718,9 +1718,17 @@ def user_form_12_submit(request):            # User Form 12 Submit
     if(auth_user(request) and book and request.method=="POST"):
         book.capex_opening_gross = multi_input_insert(request,"capex_opening_gross[]")
         book.capex_years = multi_input_insert(request,"capex_years[]")
+
+        book.capex_additions_or=request.POST["capex_additions_or"]
         book.capex_additions = multi_input_insert(request,"capex_additions[]")
+
+        book.capex_additions_intangible_or=request.POST["capex_additions_intangible_or"]
         book.capex_additions_intangible = multi_input_insert(request,"capex_additions_intangible[]")
+
+        book.capex_deletions_or=request.POST["capex_deletions_or"]
         book.capex_deletions = multi_input_insert(request,"capex_deletions[]")
+
+
         book.capex_average_depreciation_rate = multi_input_insert(request,"capex_average_depreciation_rate[]")
         book.current_fillup_position = 12
         book.save()
