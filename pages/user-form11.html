@@ -73,7 +73,7 @@
 
 						<div class="col border-right">
 							<div class="form-group">
-								<select class="form-control" name="balance_sheet_years[]">
+								<select id="year1_select" class="form-control" name="balance_sheet_years[]">
 									<option value="Year1">Year1</option>
 									{% for i in request.session.years %}
 										<option value="{{i}}">{{ i }}</option>
@@ -85,49 +85,25 @@
 
 						<div class="col border-right">
 							<div class="form-group">
-								<select class="form-control" name="balance_sheet_years[]">
-									<option value="Year2">Year2</option>
-									{% for i in request.session.years %}
-										<option value="{{i}}">{{ i }}</option>
-									{% endfor %}
-								</select>
-								
+								<input type="text" value="Year2" readonly class="form-control" name="balance_sheet_years[]"/>
 							</div>
 						</div>
 
 						<div class="col border-right">
 							<div class="form-group">
-								<select class="form-control" name="balance_sheet_years[]">
-									<option value="Year3">Year3</option>
-									{% for i in request.session.years %}
-										<option value="{{i}}">{{ i }}</option>
-									{% endfor %}
-								</select>
-								
+								<input type="text" value="Year3" readonly class="form-control" name="balance_sheet_years[]"/>
 							</div>
 						</div>
 
 						<div class="col border-right">
 							<div class="form-group">
-								<select class="form-control" name="balance_sheet_years[]">
-									<option value="Year4">Year4</option>
-									{% for i in request.session.years %}
-										<option value="{{i}}">{{ i }}</option>
-									{% endfor %}
-								</select>
-								
+								<input type="text" value="Year4" readonly class="form-control" name="balance_sheet_years[]"/>
 							</div>
 						</div>
 
 						<div class="col border-right">
 							<div class="form-group">
-								<select class="form-control" name="balance_sheet_years[]">
-									<option value="Year5">Year5</option>
-									{% for i in request.session.years %}
-										<option value="{{i}}">{{ i }}</option>
-									{% endfor %}
-								</select>
-								
+								<input type="text" value="Year5" readonly class="form-control" name="balance_sheet_years[]"/>
 							</div>
 						</div>
 				</div>
@@ -2060,65 +2036,26 @@ function working_capital(){
 
 
 
-
 /* Year dynamic change */
 
 var year=0;
-$("select").change(function(){
+$("#year1_select").change(function(){
 	var s_name = $(this).attr('name')
 	var all_years = $('select[name="'+s_name+'"]')
-	for(var i=0;i<5;i++)
+	
+	if(!isNaN($(this).val()))
 	{
-		if(!isNaN($(all_years[i]).val()))
-		{
-			year = parseInt($(all_years[i]).val());
-			break;
-		}
-	}
-
-	if(i==0)
-	{
-		year = year;
-	}
-	else if(i==1)
-	{
-		year = year-1;
-	}
-	else if(i==2)
-	{
-		year = year-2;
-	}
-	else if(i==3)
-	{
-		year = year-3;
-	}
-	else if(i==4)
-	{
-		year = year-4;
-	}
-	else if(i==5)
-	{
-		year = year-5;
-	}
-
-	var d = new Date();
-	var n = d.getFullYear();
-
-	if(year>n)
-	{
-		alert("Please select Year-1 in between "+(n-5)+" to "+n);
+		year = parseInt($(this).val());
 		for(var i=0;i<5;i++)
 		{
-			$('select[name="'+s_name+'"]')[i].value="";
+			$('[name="'+s_name+'"]')[i].value=year+i;
 		}
 	}
-	else{
-		for(var i=0;i<5;i++)
-		{
-			$('select[name="'+s_name+'"]')[i].value=year+i;
-		}
+	else
+	{
+		alert("Please correctly select the Year1");
 	}
-
+	
 });
 </script>
 {% endblock %}

@@ -1,0 +1,207 @@
+
+{% extends "base-admin.html" %}
+{% load static %}
+
+{% block title %}Update industry growth drivers{% endblock%}
+{% block page_heading %}Update Industry growth drivers{% endblock%}
+{% block content %}
+
+{% if message %}
+<div class="alert alert-danger" role="alert">
+  <ul class="text-center">
+
+      <li> {{message}} </li>
+
+    </ul>
+</div>
+{% endif %}
+
+
+
+<form method="POST" action="/admin_update_industry_growth_drivers_form">
+{% csrf_token %}
+	
+	<div class="row">
+
+		<div class="col-lg-8">
+				<div class="card shadow mb-3">
+					<div class="card-header py-3">
+					<p class="text-primary m-0 font-weight-bold">Industry</p>
+					</div>
+					<div class="card-body">
+					<div class="form-row">
+						<div class="col">
+							<div class="form-group">
+								<label ><strong>Industry type</strong></label>
+									<input type="text" readonly value="{{data.industry.name}}" class="form-control" />
+									<input type="number" hidden name="id" value="{{data.id}}" />
+								</div>
+						</div>
+					</div>
+					</div>
+				</div>
+		</div>
+
+
+		
+</div>
+
+	<div class="row">
+		
+		<div class="col">
+				<div class="card shadow mb-3">
+					<div class="card-header py-3">
+					<p class="text-primary m-0 font-weight-bold">Industry Growth Drivers</p>
+					</div>
+					<div class="card-body">
+
+
+					<div class="form-row text-center">
+						<div class="col-lg-1">
+							<div class="form-group">
+								<label ><strong>Sl.</strong></label>
+								</div>
+						</div>
+						<div class="col-lg-4">
+							<div class="form-group">
+								<label ><strong>Title</strong></label>
+								</div>
+						</div>
+						<div class="col-lg-6">
+							<div class="form-group">
+								<label ><strong>Content</strong></label>
+							</div>
+						</div>
+					</div>
+
+
+					<hr>
+					<div class="form-row text-center">
+					<div class="col-lg-1">
+							<div class="form-group">
+								<label ><strong>1.</strong></label>
+							</div>
+						</div>
+
+						<div class="col-lg-4">
+							<div class="form-group">
+							<input type="text"  name="drivers_t[]" value="{{data.drivers_t.f_1}}" class="form-control" />
+							</div>
+						</div>
+
+						<div class="col-lg-6">
+							<div class="form-group">
+								<textarea class="form-control" name="drivers_c[]" rows=3  >{{data.drivers_c.f_1}}</textarea>
+							</div>
+						</div>
+					</div>
+			
+
+
+
+
+				
+					<div class="form-row text-center">
+					<div class="col-lg-1">
+							<div class="form-group">
+								<label ><strong>2.</strong></label>
+							</div>
+						</div>
+
+						<div class="col-lg-4">
+							<div class="form-group">
+								<input type="text"  name="drivers_t[]" value="{{data.drivers_t.f_2}}" class="form-control" />
+							</div>
+						</div>
+
+						<div class="col-lg-6">
+							<div class="form-group">
+								<textarea class="form-control" name="drivers_c[]" rows=3  >{{data.drivers_c.f_2}}</textarea>
+							</div>
+						</div>
+					</div>
+				
+
+
+
+					<div class="form-row text-center">
+					<div class="col-lg-1">
+							<div class="form-group">
+								<label ><strong>3.</strong></label>
+							</div>
+						</div>
+
+						<div class="col-lg-4">
+							<div class="form-group">
+								<input type="text"  name="drivers_t[]" value="{{data.drivers_t.f_3}}" class="form-control" />
+							</div>
+						</div>
+
+						<div class="col-lg-6">
+							<div class="form-group">
+								<textarea class="form-control" name="drivers_c[]" rows=3  >{{data.drivers_c.f_3}}</textarea>
+							</div>
+						</div>
+					</div>
+				
+
+
+
+				
+					<div class="form-row text-center">
+					<div class="col-lg-1">
+							<div class="form-group">
+								<label ><strong>4.</strong></label>
+							</div>
+						</div>
+
+						<div class="col-lg-4">
+							<div class="form-group">
+								<input type="text"  name="drivers_t[]" value="{{data.drivers_t.f_4}}" class="form-control" />
+							</div>
+						</div>
+
+						<div class="col-lg-6">
+							<div class="form-group">
+								<textarea class="form-control" name="drivers_c[]" rows=3  >{{data.drivers_c.f_4}}</textarea>
+							</div>
+						</div>
+					</div>
+					<hr>
+
+					
+
+
+
+
+
+
+
+
+
+
+
+
+
+					<div class="form-group">
+						<button class="btn btn-primary" type="submit">Submit</button>
+					</div>
+					</div>
+				</div>
+			
+		</div>
+
+
+
+		
+		
+</div>
+
+
+
+
+
+
+
+
+{% endblock %}

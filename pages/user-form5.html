@@ -69,7 +69,7 @@
 
 							{% if data.products_and_services.f_1 %}
 								<div id="pi1" class="inputbox">
-									<input class="d-none" type="text" name="products_and_services[]" value="{{data.products_and_services.f_1}}" maxlength="300" />
+									<input class="d-none" type="text" name="products_and_services[]" value='{{data.products_and_services.f_1}}' maxlength="300" />
 									<div class="content">{{data.products_and_services.f_1}}</div>
 								</div>
 							{% else %}
@@ -93,7 +93,7 @@
 									<br><a href="{{data.products_and_services_file.i_1.url}}" target="_blank"><img id="img1"  src="{{data.products_and_services_file.i_1.url}}" alt="logo" height=150 /></a><br><p> For image change please select new image below</p>
 								{% endif %}
 								
-                                <input id="1"  type="file"  name="products_and_services_file[]"  value="file"  accept="image/jpeg,image/png" > <br>
+                                <input id="1"  type="file"  name="products_and_services_file[]"    accept="image/jpeg,image/png" > <br>
 								<input type="number" hidden value="0" name="products_and_services_file_1"  />
 
 
@@ -110,7 +110,7 @@
 								<label ><strong>Products & Services</strong><small class="text-danger"> *Max : 300 characters</small></label>
 								<a href="#"  data-toggle="tooltip" title="Help text."><i class="far fa-question-circle"></i></a>
 								<div id="pi2" class="inputbox">
-									<input class="d-none" type="text" name="products_and_services[]" value="{{data.products_and_services.f_2}}" maxlength="300" />
+									<input class="d-none" type="text" name="products_and_services[]" value='{{data.products_and_services.f_2}}' maxlength="300" />
 									<div class="content">{{data.products_and_services.f_2}}</div>
 								</div>
 
@@ -852,7 +852,7 @@
 							<label ><strong>Strengths</strong><small class="text-danger"> *Max : 150 characters</small></label>
 							<div id="s1" class="inputbox">
 							{% if data.swot_s %}
-								<input class="d-none" type="text" name="swot_s" value="{{data.swot_s}}" maxlength="150" />
+								<input class="d-none" type="text" name="swot_s" value='{{data.swot_s}}' maxlength="150" />
 								<div class="content">{{data.swot_s}}</div>
 
 							{% else %}
@@ -869,7 +869,7 @@
 							<div id="s2" class="inputbox">
 							{% if data.swot_w %}
 
-								<input class="d-none" type="text" name="swot_w" value="{{data.swot_w }}" maxlength="150" />
+								<input class="d-none" type="text" name="swot_w" value='{{data.swot_w }}' maxlength="150" />
 								<div class="content">{{data.swot_w}}</div>
 							{% else %}
 								<input class="d-none" type="text" name="swot_w" maxlength="150" />
@@ -888,7 +888,7 @@
 							<label ><strong>Opportunities</strong><small class="text-danger"> *Max : 150 characters</small></label>
 							<div id="s3" class="inputbox">
 							{% if data.swot_o %}
-								<input class="d-none" type="text" name="swot_o" value="{{data.swot_o}}" maxlength="150" />
+								<input class="d-none" type="text" name="swot_o" value='{{data.swot_o}}' maxlength="150" />
 								<div class="content">{{data.swot_o}}</div>
 							{% else %}
 								<input class="d-none" type="text" name="swot_o" maxlength="150" />
@@ -905,7 +905,7 @@
 
 
 								{% if data.swot_t %}
-								<input class="d-none" type="text" name="swot_t" value="{{data.swot_t}}" maxlength="150" />
+								<input class="d-none" type="text" name="swot_t" value='{{data.swot_t}}' maxlength="150" />
 								<div class="content">{{data.swot_t}}</div>
 								{% else %}
 								<input class="d-none" type="text" name="swot_t" maxlength="150" />

@@ -1,0 +1,159 @@
+{% extends "base-admin.html" %}
+{% load static %}
+
+{% block title %}view industry Analysis{% endblock%}
+{% block page_heading %}view Industry Analysis{% endblock%}
+{% block content %}
+
+{% if message %}
+<div class="alert alert-danger" role="alert">
+  <ul class="text-center">
+
+      <li> {{message}} </li>
+
+    </ul>
+</div>
+{% endif %}
+
+
+
+
+	<div class="row">
+
+
+
+				
+		<div class="col-lg-8">
+				<div class="card shadow mb-3">
+					<div class="card-header py-3">
+					<p class="text-primary m-0 font-weight-bold">Industry</p>
+					</div>
+					<div class="card-body">
+					<div class="form-row">
+						<div class="col">
+							<div class="form-group">
+								<label ><strong>Industry type</strong></label>
+									<input type="text" readonly value="{{data.industry.name}}" class="form-control" />
+								</div>
+						</div>
+					</div>
+					</div>
+				</div>
+		</div>
+
+
+		
+</div>
+
+	<div class="row">
+		
+		<div class="col-lg-8">
+				<div class="card shadow mb-3">
+					<div class="card-header py-3">
+					<p class="text-primary m-0 font-weight-bold">Industry Analysis (Global)</p>
+					</div>
+					<div class="card-body">
+					<div class="form-row">
+						<div class="col">
+							<div class="form-group">
+									<div id="glob_an" class="container">
+										<div class="content">{{data.glob}}</div>
+									</div>
+								</div>
+						</div>
+					</div>
+					</div>
+				</div>
+		</div>
+
+
+		<div class="col-lg-4">
+			<div class="card mb-3">
+				<div class="card-body shadow">
+					
+					<label>Supporting Diagram (Global)</label><br>
+					<br><br>
+						
+						{% if data.glob_img %}
+						<a href="{{data.glob_img.url}}" target="_blank"><img src="{{data.glob_img.url}}" alt="No image" width="100%" /></a>
+						{% else %}
+						<p>No image found</p>
+						{% endif %}
+					<br><br>
+
+				</div>				
+			</div>			
+		</div>
+		
+</div>
+
+
+
+
+
+
+<div class="row">
+
+
+
+				
+		<div class="col-lg-8">
+				<div class="card shadow mb-3">
+					<div class="card-header py-3">
+					<p class="text-primary m-0 font-weight-bold">Industry Analysis (India)</p>
+					</div>
+					<div class="card-body">
+					<div class="form-row">
+						<div class="col">
+							<div class="form-group">
+									<div id="india_an" class="container">
+										
+										<div class="content">{{data.india}}</div>
+									</div>
+								</div>
+						</div>
+					</div>
+					</div>
+				</div>
+		</div>
+
+
+		<div class="col-lg-4">
+			<div class="card mb-3">
+				<div class="card-body shadow">
+					
+					<label>Supporting Diagram (India)</label><br>
+					<br><br>
+						{% if data.india_img %}
+						<a href="{{data.india_img.url}}" target="_blank"><img src="{{data.india_img.url}}" alt="No image" width="100%" /></a>
+						{% else %}
+						<p>No image found</p>
+						{% endif %}
+					<br><br>
+
+				</div>				
+			</div>			
+		</div>
+		
+</div>
+
+
+
+
+
+
+
+
+<br><br>
+
+
+
+
+
+
+
+
+
+
+
+{% endblock %}

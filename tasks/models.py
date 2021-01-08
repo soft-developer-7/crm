@@ -174,7 +174,7 @@ class super_plan_forms(models.Model):
     about_the_company = models.CharField(max_length=7000,null=True)
     company_logo = models.ImageField(upload_to='superplan-files/',null=True,blank=True)
     company_founded = models.CharField(max_length=100,null=True)
-    industry_type = models.CharField(max_length=1000,null=True)
+    industry_type = models.IntegerField(null=True)
 
     # Form-4------------------------------------------------------------------------------------------4 ---------------
     challenges_faced = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='challenges_faced',on_delete=models.SET_NULL, null=True)
@@ -214,6 +214,7 @@ class super_plan_forms(models.Model):
 
     # Form-9-----------------------------------------------------------------------------------------------9 ----------
     industry_analysis = models.CharField(max_length=8000,null=True)
+    industry_analysis_img = models.ImageField(upload_to='superplan-files/',null=True,blank=True)
     competitor_analysis_n = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='competitor_analysis_n',on_delete=models.SET_NULL, null=True)
     competitor_analysis_p = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='competitor_analysis_p',on_delete=models.SET_NULL, null=True)
     competitor_analysis_v1 = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='competitor_analysis_v1',on_delete=models.SET_NULL, null=True)

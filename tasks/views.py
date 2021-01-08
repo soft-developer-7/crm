@@ -9,7 +9,7 @@ import datetime
 from django.http import JsonResponse
 from .models import User_db,Pages,Posts,Banners,super_plan_forms,super_plan_forms_multiple_inputs,super_plan_forms_multiple_images,super_plan_forms_multiple_files
 from django.core.paginator import Paginator
-from business_management.models import Packs,Industries,User_bookings,Templates
+from business_management.models import Packs,Industries,User_bookings,Templates,Industries, Industry_analysis,Industry_growth_drivers
 
 
 #--------- custom functions--------------
@@ -479,11 +479,12 @@ def admin_login_form(request):
 
     if(request.method=="POST"):
         email = request.POST['email']
-        user = User_db.objects.filter(email=email)
-        if(user and user.role=="admin"):
+        user = User_db.objects.filter(email=email).count()
+        if(user):
+            user = User_db.objects.get(email=email)
             password = request.POST['password']
 
-            if(check_password(password,user.password)):
+            if(user.role=="admin" and check_password(password,user.password)):
                 request.session['user']=user.id
                 request.session['role']=user.role
                 request.session['name']=user.name
@@ -1115,7 +1116,7 @@ def user_form_1(request):                                # User Form 1
 
     now = datetime.datetime.now()
     year = now.year
-    years = [i for i in range(year-5,year+6)]
+    years = [i for i in range(year-5,year+1)]
     request.session["years"]=years
 
     if(auth_user(request)):
@@ -1187,7 +1188,16 @@ def user_form_2_submit(request):            # User Form 2 Submit
             book.save()
             request.session["form"] = book.id
 
-            return render(request,'user-form3.html')
+
+
+
+
+            ind_types = Industries.objects.all()
+
+
+
+
+            return render(request,'user-form3.html',{"industries":ind_types})
         else:
             return render(request,'user-form1.html')
     else:
@@ -1408,7 +1418,11 @@ def user_form_8_submit(request):            # User Form 8 Submit
 
         book.current_fillup_position = 8
         book.save()
-        return render(request,'user-form9.html')
+
+        if(book.industry_type):
+            ind_an=Industry_analysis.objects.filter(industry__pk=book.industry_type).get()
+            ind_gw=Industry_growth_drivers.objects.filter(industry__pk=book.industry_type).get()
+        return render(request,'user-form9.html',{"industry_analysis":ind_an,"industry_growth_drivers":ind_gw})
     else:
         return redirect('/login')
 
@@ -1430,6 +1444,9 @@ def user_form_9_submit(request):            # User Form 9 Submit
 
         if(request.POST.get("industry_analysis")):
             book.industry_analysis = request.POST["industry_analysis"]
+        
+        if(request.FILES.get("industry_analysis_img")):
+            book.industry_analysis_img = request.FILES["industry_analysis_img"]
        
         book.competitor_analysis_n = multi_input_insert(request,"competitor_analysis_n[]")
         book.competitor_analysis_p = multi_input_insert(request,"competitor_analysis_p[]")
@@ -1750,7 +1767,14 @@ def superplan_form_number(request,id):                                # User Sup
         else:
             book=False
         if(auth_user(request) and book ):
-            return render(request,'user-form'+str(id)+'.html',{"data":book})
+            ind_types = Industries.objects.all()
+
+            if(book.industry_type):
+                ind_an=Industry_analysis.objects.filter(industry__pk=book.industry_type).get()
+                ind_gw=Industry_growth_drivers.objects.filter(industry__pk=book.industry_type).get()
+                return render(request,'user-form'+str(id)+'.html',{"data":book,"industries":ind_types,"industry_analysis":ind_an,"industry_growth_drivers":ind_gw})
+            else:
+                return render(request,'user-form'+str(id)+'.html',{"data":book,"industries":ind_types})
         else:
             return redirect('/login')
     else:
@@ -1842,14 +1866,23 @@ def user_incomplete_superplan_by_get(request,id):                               
     if(auth_user(request)):
         now = datetime.datetime.now()
         year = now.year
-        years = [i for i in range(year-5,year+6)]
+        years = [i for i in range(year-5,year+1)]
         request.session["years"]=years
 
         book=super_plan_forms.objects.filter(id=int(id),user=request.session['user']).get()
         if(book):
             request.session["form"] = book.id
             form_url = 'user-form'+str((book.current_fillup_position)+1)+'.html'
-            return render(request,form_url,{"data":book})
+
+            ind_types = Industries.objects.all()
+
+
+            if(book.industry_type):
+                ind_an=Industry_analysis.objects.filter(industry__pk=book.industry_type).get()
+                ind_gw=Industry_growth_drivers.objects.filter(industry__pk=book.industry_type).get()
+                return render(request,form_url,{"data":book,"industries":ind_types,"industry_analysis":ind_an,"industry_growth_drivers":ind_gw})
+            else:
+                return render(request,form_url,{"data":book,"industries":ind_types})
         else:
             return redirect('/login')
     else:

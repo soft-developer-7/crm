@@ -12,74 +12,98 @@
             </div>
             <div class="card-body">
               <div class="table-responsive">
-                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0" style="table-layout: fixed;">
+                <table class="table table-bordered" id="dataTable" width="100%" >
                   <thead>
                     <tr>
-					  <th>id - Photo</th>
+					            <th>Sl.</th>
                       <th>Name</th>
-                      <th>Email</th>
-                      <th>Mobile</th>
-                      <th>Edit</th>
-                      <th>Delete</th>
+                      <th>Edit / Delete</th>
+                      <th>Analysis</th>
+                      <th>Growth Drivers</th>
                     </tr>
                   </thead>
                   <tfoot>
                     <tr>
 			
-					  <th>id - Photo</th>
+					            <th>Sl.</th>
                       <th>Name</th>
-                      <th>Email</th>
-                      <th>Mobile</th>
-                      <th>Edit</th>
-                      <th>Delete</th>
+                      <th>Edit / Delete</th>
+                      <th>Analysis</th>
+                      <th>Growth Drivers</th>
                     </tr>
                   </tfoot>
                   <tbody>
                     
 
 
-
+{% if inds %}
 {% for ind in inds %}
 <tr>
-<td>{{ind.id}} {% if ind.photo %} <a href="{{ind.photo.url}}" target="_blank"><img src="{{ind.photo.url}}" alt="img" class="img-thumbnail" height=100 width=100></a> {% endif %} </td>
-<td class="text-truncate" >{{ind.name}}</td>
-<td class="text-truncate" >{{ind.email}}</td>
-<td class="text-truncate" >{{ind.mobile}}</td>
+<td>{{forloop.counter0|add:inds.start_index}}</td>
+
+<td >{{ind.name}}</td>
+<td><a class="btn btn-primary" href="industry_update_by_get/{{ind.id}}">Edit</a>&nbsp;
+<button class="btn btn-danger" type="button" onclick="delete_industry({{ind.id}})">Delete</button></td>
+
+{%if ind.id in inds_an%}
+<td><a class="btn btn-success" href="industry_analysis_view_by_get/{{ind.id}}"> View</a>
+<a class="btn btn-primary" href="industry_analysis_update_by_get/{{ind.id}}">Edit</a>
+<button class="btn btn-danger" type="button" onclick="delete_industry_analysis({{ind.id}})">Delete</button></td>
+{% else %}
+<td> Not Set Yet</td>
+{% endif %}
 
 
-<td><a class="btn btn-primary" href="industry_update_by_get/{{ind.id}}">Edit</a></td>
-<td><button class="btn btn-danger" type="button" onclick="delete_industry({{ind.id}})">Delete</button></td>
+{%if ind.id in inds_gw%}
+<td><a class="btn btn-success" href="industry_growth_drivers_view_by_get/{{ind.id}}"> View</a>
+<a class="btn btn-primary" href="industry_growth_drivers_update_by_get/{{ind.id}}">Edit</a>
+<button class="btn btn-danger" type="button" onclick="delete_industry_growth_drivers({{ind.id}})">Delete</button></td>
+{% else %}
+<td> Not Set Yet</td>
+{% endif %}
+
+
 </tr>
 
 {% endfor %}
-                    
+{% else %}
+<td>-</td>
+<td>-</td>
+<td>--</td>
+<td>--</td>
+
+{% endif %}
+
+
                     
                   </tbody>
                 </table>
 
 
 
-		<!--	  
-		<nav aria-label="Page navigation example">
-		  <ul class="pagination">
-			<li class="page-item">
-			  <a class="page-link" href="#" aria-label="Previous">
-				<span aria-hidden="true">&laquo;</span>
-				<span class="sr-only">Previous</span>
-			  </a>
-			</li>
-			<li class="page-item"><a class="page-link" href="#">1</a></li>
-			<li class="page-item"><a class="page-link" href="#">2</a></li>
-			<li class="page-item"><a class="page-link" href="#">3</a></li>
-			<li class="page-item">
-			  <a class="page-link" href="#" aria-label="Next">
-				<span aria-hidden="true">&raquo;</span>
-				<span class="sr-only">Next</span>
-			  </a>
-			</li>
-		  </ul>
-		</nav>
-			-->
+
+
+<nav aria-label="Page navigation example">
+
+<ul class="pagination">
+    
+        {% if inds.has_previous %}
+          <li class="page-item"> <a href="?page=1" class="page-link" >First</a></li>
+          <li class="page-item"><a href="?page={{ inds.previous_page_number }}" class="page-link">&laquo; Previous</a></li>
+        {% endif %}
+
+        {% if inds.has_next %}
+           <li class="page-item"> <a href="?page={{ inds.next_page_number }}" class="page-link">Next</a></li>
+           <li class="page-item"> <a href="?page={{ inds.paginator.num_pages }}" class="page-link">Last &raquo;</a></li>
+        {% endif %}
+
+        <li class="page-item"><span class="page-link">  Page {{ inds.number }} of {{ inds.paginator.num_pages }}</span></li>
+    
+</ul>
+</nav>
+
+
+
 				  
 				  
               </div>
@@ -140,6 +164,133 @@ function ajax_call_delete_industry(id)
         }
       });
 }
+
+
+
+
+
+
+/*---------------------------------------- Industry Analysis ----------------------------------------------------------*/
+
+
+
+
+
+function delete_industry_analysis(id)
+{
+      swal({
+      title: "Are you sure?",
+      text: "Once deleted, you will not be able to recover the industry Analysis !",
+      icon: "warning",
+      buttons: true,
+      dangerMode: true,
+    })
+    .then((willDelete) => {
+      if (willDelete) {
+        ajax_call_delete_industry_analysis(id);
+      } else {
+        swal("Industry Analysis is safe!");
+      }
+    });
+}
+
+
+
+function ajax_call_delete_industry_analysis(id)
+{
+    
+      $.ajax({
+        url: '/ajax_call_delete_industry_analysis',
+        type:'POST',
+        data: {
+          'id': id,
+          'csrfmiddlewaretoken': '{{ csrf_token }}',
+        },
+        dataType: 'json',
+        success: function (data) {
+          if (data["value"]) {
+            
+            swal("Industry analysis has been deleted!", {
+                  icon: "success",
+                });
+
+              window.location.reload() ;
+          }
+        else{
+          swal("Failed !", {
+              icon: "error",
+            });
+        }
+        }
+      });
+}
+
+
+
+
+
+
+/*---------------------------------------- Industry growth drivers ----------------------------------------------------------*/
+
+
+
+
+
+function delete_industry_growth_drivers(id)
+{
+      swal({
+      title: "Are you sure?",
+      text: "Once deleted, you will not be able to recover the industry growth drivers !",
+      icon: "warning",
+      buttons: true,
+      dangerMode: true,
+    })
+    .then((willDelete) => {
+      if (willDelete) {
+        ajax_call_delete_industry_growth_drivers(id);
+      } else {
+        swal("Industry growth drivers is safe!");
+      }
+    });
+}
+
+
+
+function ajax_call_delete_industry_growth_drivers(id)
+{
+    
+      $.ajax({
+        url: '/ajax_call_delete_industry_growth_drivers',
+        type:'POST',
+        data: {
+          'id': id,
+          'csrfmiddlewaretoken': '{{ csrf_token }}',
+        },
+        dataType: 'json',
+        success: function (data) {
+          if (data["value"]) {
+            
+            swal("Industry growth drivers has been deleted!", {
+                  icon: "success",
+                });
+
+              window.location.reload() ;
+          }
+        else{
+          swal("Failed !", {
+              icon: "error",
+            });
+        }
+        }
+      });
+}
+
+
+
+
+
+
+
 
 </script>
 			

@@ -1,4 +1,5 @@
 {% load static %}
+{% autoescape off %}
 <!DOCTYPE html>
 <html lang="en">
 
@@ -23,6 +24,9 @@
 
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css" integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog==" crossorigin="anonymous" />
 
+  <!-- Quill-->
+  <link rel="stylesheet" href="https://cdn.quilljs.com/1.3.6/quill.snow.css">
+
 
   <style>
   /* Chrome, Safari, Edge, Opera */
@@ -35,6 +39,18 @@ input::-webkit-inner-spin-button {
 /* Firefox */
 input[type=number] {
   -moz-appearance: textfield;
+}
+
+
+
+.inputbox{
+  min-height: 100px;
+  width: 100%;
+  border:1px solid rgba(177, 177, 177, 0.5);
+  border-radius: 5px;
+  padding: 10px;
+  color:black;
+  cursor: pointer;
 }
       
   {% block style %}
@@ -174,22 +190,7 @@ input[type=number] {
         </div>
       </li>
 
-      <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities5" aria-expanded="true" aria-controls="collapseUtilities">
-          <i class="fas fa-city"></i>
-          <span>Industry management</span>
-        </a>
-
-        <div id="collapseUtilities5" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
-          <div class="bg-white py-2 collapse-inner rounded">
-            <h6 class="collapse-header">Utilities:</h6>
-
-            <a class="collapse-item" href="/admin-add-industry">Add Industry</a>
-            <a class="collapse-item" href="/admin-all-industries" >All Industries</a>
-            
-          </div>
-        </div>
-      </li>
+      
 
       <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities6" aria-expanded="true" aria-controls="collapseUtilities">
@@ -224,6 +225,31 @@ input[type=number] {
           </div>
         </div>
       </li>
+
+
+
+
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities5" aria-expanded="true" aria-controls="collapseUtilities">
+          <i class="fas fa-city"></i>
+          <span>Industry management</span>
+        </a>
+
+        <div id="collapseUtilities5" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
+          <div class="bg-white py-2 collapse-inner rounded">
+            <h6 class="collapse-header">Utilities:</h6>
+            <a class="collapse-item" href="/admin-all-industries" >All Industries</a>
+            <a class="collapse-item" href="/admin-add-industry">Add Industry</a>
+            <a class="collapse-item" href="/admin-add-industry-analysis">Add Industry Analysis</a>
+            <a class="collapse-item" href="/admin-add-industry-growth-drivers">Add Growth drivers</a>
+            
+            
+          </div>
+        </div>
+      </li>
+
+
+
 
 
       <li class="nav-item">
@@ -431,6 +457,6 @@ input[type=number] {
 });
   
   </script>
-
+ {% endautoescape %}
 </body>
 </html>

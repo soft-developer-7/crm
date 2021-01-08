@@ -68,7 +68,7 @@
 								<label ><strong>About the company</strong><small class="text-danger"> *Max : 1000 characters</small></label>
               
                 <div id="m1" class="inputbox">
-									<input class="d-none" type="text" name="about_the_company" maxlength="1000" {% if data.about_the_company %} value="{{data.about_the_company}}" {% endif %} />
+									<input class="d-none" type="text" name="about_the_company" maxlength="1000" {% if data.about_the_company %} value='{{data.about_the_company}}' {% endif %} />
 									<div class="content">{% if data.about_the_company %} {{data.about_the_company}} {% endif %}</div>
               </div>
               
@@ -127,13 +127,11 @@
 						<div class="form-group">
 							<label ><strong>Industry Type</strong></label>
 							<select class="form-control" name="industry_type" required>
-                                <option>Select Here</option>
-                                <option value="industry type 1" {% if data.industry_type and data.industry_type == "industry type 1" %}selected{% endif %} >Industry type name 1</option>
-
-                                <option value="industry type 2" {% if data.industry_type and data.industry_type == "industry type 2" %}selected{% endif %}>Industry type name  2</option>
-
-                                <option value="industry type 3" {% if data.industry_type and data.industry_type == "industry type 3" %}selected{% endif %} >Industry type name  3</option>
-
+                                <option value="">Select Here</option>
+								{% for ind in industries%}
+									<option value="{{ind.pk}}" {% if data.industry_type and data.industry_type == ind.pk %}selected{% endif %}  >{{ind.name}}</option>
+								{% endfor %}
+                               
                             </select> 
 						</div>
 					</div>

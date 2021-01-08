@@ -1,5 +1,5 @@
 from django.db import models
-from tasks.models import User_db
+from tasks.models import User_db,super_plan_forms_multiple_inputs
 
 # Create your models here.
 class Packs(models.Model):
@@ -16,15 +16,30 @@ class Packs(models.Model):
 
 class Industries(models.Model):
     name = models.CharField(max_length=300)
-    owner = models.CharField(max_length=100)
-    address = models.CharField(max_length=300)
-    email = models.CharField(max_length=100)
-    mobile = models.CharField(max_length=20)
-    photo = models.ImageField(upload_to='industry/',null=True,blank=True)
     date = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
         return self.name
+
+class Industry_analysis(models.Model):
+    industry = models.ForeignKey(Industries, on_delete=models.CASCADE)
+    india= models.CharField(max_length=3000)
+    india_img= models.ImageField(upload_to='industry/',null=True,blank=True)
+    glob= models.CharField(max_length=3000)
+    glob_img= models.ImageField(upload_to='industry/',null=True,blank=True)
+    date = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return self.industry.name
+
+class Industry_growth_drivers(models.Model):
+    industry = models.ForeignKey(Industries, on_delete=models.CASCADE)
+    drivers_t =  models.ForeignKey(super_plan_forms_multiple_inputs,related_name='drivers_t',on_delete=models.SET_NULL, null=True)
+    drivers_c =  models.ForeignKey(super_plan_forms_multiple_inputs,related_name='drivers_c',on_delete=models.SET_NULL, null=True)
+    date = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return self.industry.name
 
 
 

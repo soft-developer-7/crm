@@ -1,0 +1,229 @@
+{% extends "base-admin.html" %}
+{% load static %}
+
+{% block title %}view industry Analysis{% endblock%}
+{% block page_heading %}view Industry Analysis{% endblock%}
+{% block content %}
+
+{% if message %}
+<div class="alert alert-danger" role="alert">
+  <ul class="text-center">
+
+      <li> {{message}} </li>
+
+    </ul>
+</div>
+{% endif %}
+
+
+<form method="POST" action="/admin_update_industry_analysis_form" enctype="multipart/form-data">
+{% csrf_token %}
+
+	<div class="row">
+
+
+
+		
+		<div class="col-lg-8">
+				<div class="card shadow mb-3">
+					<div class="card-header py-3">
+					<p class="text-primary m-0 font-weight-bold">Industry</p>
+					</div>
+					<div class="card-body">
+					<div class="form-row">
+						<div class="col">
+							<div class="form-group">
+								<label ><strong>Industry type</strong></label>
+									<input type="text" readonly value="{{data.industry.name}}" class="form-control" />
+									<input type="number" hidden name="id" value="{{data.id}}" />
+								</div>
+						</div>
+					</div>
+					</div>
+				</div>
+		</div>
+
+
+		
+</div>
+
+	<div class="row">
+		
+		<div class="col-lg-8">
+				<div class="card shadow mb-3">
+					<div class="card-header py-3">
+					<p class="text-primary m-0 font-weight-bold">Industry Analysis (Global)</p>
+					</div>
+					<div class="card-body">
+					<div class="form-row">
+						<div class="col">
+							<div class="form-group">
+									<div id="glob_an" class="inputbox">
+
+									<input hidden type="text" name="glob" maxlength="3000" value='{{data.glob}}' />
+										
+										<div class="content">{{data.glob}}</div>
+									</div>
+								</div>
+						</div>
+					</div>
+					</div>
+				</div>
+		</div>
+
+
+		<div class="col-lg-4">
+			<div class="card mb-3">
+				<div class="card-body shadow">
+					
+					<label>Supporting Diagram (Global)</label><br>
+					<br><br>
+						
+						{% if data.glob_img %}
+						<a href="{{data.glob_img.url}}" target="_blank"><img src="{{data.glob_img.url}}" alt="No image" width="100%" /></a>
+						{% else %}
+						<p>No image found</p>
+						{% endif %}
+					<br><br>
+					<p>For no change leave it as blank</p>
+					<input  type="file" name="glob_img" accept="image/jpeg,image/png" />
+				</div>				
+			</div>			
+		</div>
+		
+</div>
+
+
+
+
+
+
+<div class="row">
+
+
+
+				
+		<div class="col-lg-8">
+				<div class="card shadow mb-3">
+					<div class="card-header py-3">
+					<p class="text-primary m-0 font-weight-bold">Industry Analysis (India)</p>
+					</div>
+					<div class="card-body">
+					<div class="form-row">
+						<div class="col">
+							<div class="form-group">
+									<div id="india_an" class="inputbox">
+										<input hidden type="text" name="india" maxlength="3000" value='{{data.india}}' />
+										<div class="content">{{data.india}}</div>
+									</div>
+								</div>
+						</div>
+					</div>
+					</div>
+				</div>
+		</div>
+
+
+		<div class="col-lg-4">
+			<div class="card mb-3">
+				<div class="card-body shadow">
+					
+					<label>Supporting Diagram (India)</label><br>
+					<br><br>
+						{% if data.india_img %}
+						<a href="{{data.india_img.url}}" target="_blank"><img src="{{data.india_img.url}}" alt="No image" width="100%" /></a>
+						{% else %}
+						<p>No image found</p>
+						{% endif %}
+					<br><br>
+					<p>For no change leave it as blank</p>
+					<input type="file" name="india_img" accept="image/jpeg,image/png" />
+				</div>				
+			</div>			
+		</div>
+		<div class="form-group">
+	<button class="btn btn-primary" type="submit">Submit</button>
+</div>
+</div>
+
+
+
+
+
+
+
+
+<br><br>
+
+
+
+
+<!-- Modal Texteditor-->
+
+<!-- Modal -->
+<div class="modal fade bd-example-modal-lg" id="richtextModal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="richtextModalTitle">Write your text</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        
+        <!-- Text editor -->
+
+				
+
+
+
+
+            <div class="container text-dark">
+                <div class="row">
+                    <div class="col-md-12">
+						<input name="box" type="hidden">
+                        <div id="editor-container"  style="min-height:200px;"></div>
+						<div id="err" style="position: absolute;padding-left: 10px;"></div>
+						<div id="counter">0 characters</div>
+						
+                    </div>
+                </div>
+            <br/><br/><br/><br/>
+            </div>
+
+			
+        <!-- Text editor finish -->
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+        <button type="button" id="get-content" class="btn btn-primary">Done</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<!-- Modal Text editor finish -->
+
+
+
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+ <!-- Quill -->
+  	<script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
+  	<script src="{% static 'assets-quill/js/Quill-Text-Editor.js' %}"></script>
+  <!-- Quill -->
+
+
+
+
+
+
+
+
+
+
+
+{% endblock %}

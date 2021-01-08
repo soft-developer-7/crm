@@ -61,7 +61,7 @@
 
 
 
-				<form method="POST" action="/user_form_9_submit">
+				<form method="POST" action="/user_form_9_submit" enctype="multipart/form-data">
 				{% csrf_token %}
 					<div class="card shadow mb-3">
 						<div class="card-header py-3">
@@ -78,15 +78,27 @@
 								<label ><strong>Industry Analysis</strong></label>
 								<div id="ind1" class="inputbox">
 								{% if data.industry_analysis %}
-									<input class="d-none" type="text" name="industry_analysis" value="{{data.industry_analysis}}" maxlength="1000" />
+									<input class="d-none" type="text" name="industry_analysis" value='{{data.industry_analysis}}' maxlength="1000" />
 									<div class="content">{{data.industry_analysis}}</div>
 								{% else %}
-									<input class="d-none" type="text" name="industry_analysis"  maxlength="1000" />
-									<div class="content"></div>
+									<input class="d-none" type="text" name="industry_analysis" value='{{industry_analysis.india}}' maxlength="1000" />
+									<div class="content">{{industry_analysis.india}}</div>
 								{% endif %}
 								</div>
 
 								</div>
+						</div>
+						<div class="col-md-4">
+						<div class="form-group">
+								<label ><strong>Industry Analysis Supporting Diagram</strong></label>
+						</div>
+						{% if data.industry_analysis_img %}
+							<a href="{{ data.industry_analysis_img.url}}" target="_blank"> <img src="{{ data.industry_analysis_img.url}}" width="100%" /></a>
+						{% else %}
+							<a href="{{industry_analysis.india_img.url}}" target="_blank"> <img src="{{industry_analysis.india_img.url}}" width="100%" /></a>
+						{% endif %}
+							<p>For No Change Leave it As Blank </p>
+							<input type="file" name="industry_analysis_img" accept="image/jpeg,image/png" />
 						</div>
 					</div>
 						
@@ -621,20 +633,60 @@
 						<div class="form-group">
 							<label ><strong>Industry Growth Drivers</strong><small class="text-danger"> *Max : 300 characters</small></label>
 							<a href="#"  data-toggle="tooltip" title="Help text."><i class="far fa-question-circle"></i></a>
-							<div id="grw1" class="inputbox">
+							
 
 							{% if data.industry_growth_drivers.f_1 %}
+									<div id="grw1" class="inputbox">
 									<input class="d-none" type="text" name="industry_growth_drivers[]" value="{{data.industry_growth_drivers.f_1}}" maxlength="300" />
-									<div class="content">{{data.industry_growth_drivers.f_1}}</div>
-							{% else %}
-									<input class="d-none" type="text" name="industry_growth_drivers[]" maxlength="300" />
-									<div class="content"></div>
+									<div class="content">{{data.industry_growth_drivers.f_1}}</div></div>
+							
 							{% endif %}
-								</div>
+								
 							
 							</div>
 					</div>
 				</div>
+
+
+				{% if not data.industry_growth_drivers.f_1 %}
+					
+
+				<div id="grw_div1" class="form-row"><div class="col-md-8"><div class="form-group">
+				<div id="grw1" class="inputbox"><input class="d-none" type="text" name="industry_growth_drivers[]" value='<b>{{industry_growth_drivers.drivers_t.f_1}}</b><p>{{industry_growth_drivers.drivers_c.f_1}}</p>' maxlength="300" />
+				<div class="content"><b>{{industry_growth_drivers.drivers_t.f_1}}</b><p>{{industry_growth_drivers.drivers_c.f_1}}</p></div></div></div></div></div>
+
+
+				<div id="grw_div2" class="form-row"><div class="col-md-8"><div class="form-group">
+				<div id="grw2" class="inputbox"><input class="d-none" type="text" name="industry_growth_drivers[]" value='<b>{{industry_growth_drivers.drivers_t.f_2}}</b><p>{{industry_growth_drivers.drivers_c.f_2}}</p>' maxlength="300" />
+				<div class="content"><b>{{industry_growth_drivers.drivers_t.f_2}}</b><p>{{industry_growth_drivers.drivers_c.f_2}}</p></div></div></div></div></div>
+
+
+
+				<div id="grw_div3" class="form-row"><div class="col-md-8"><div class="form-group">
+				<div id="grw3" class="inputbox"><input class="d-none" type="text" name="industry_growth_drivers[]" value='<b>{{industry_growth_drivers.drivers_t.f_3}}</b><p>{{industry_growth_drivers.drivers_c.f_3}}</p>' maxlength="300" />
+				<div class="content"><b>{{industry_growth_drivers.drivers_t.f_3}}</b><p>{{industry_growth_drivers.drivers_c.f_3}}</p></div></div></div></div></div>
+
+
+				<div id="grw_div4" class="form-row"><div class="col-md-8"><div class="form-group">
+				<div id="grw4" class="inputbox"><input class="d-none" type="text" name="industry_growth_drivers[]" value='<b>{{industry_growth_drivers.drivers_t.f_4}}</b><p>{{industry_growth_drivers.drivers_c.f_4}}</p>' maxlength="300" />
+				<div class="content"><b>{{industry_growth_drivers.drivers_t.f_4}}</b><p>{{industry_growth_drivers.drivers_c.f_4}}</p></div></div></div></div></div>
+
+					
+
+				{% endif %}
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -704,11 +756,9 @@
 									
 									<button class="btn btn-success" type="button"  onclick="add_grw()" ><i class="fas fa-plus"></i> Add</button>
 
-								{% if data.industry_growth_drivers.f_2 %}
+								
 									<button id="remove_grw_btn" type="button" onclick="remove_grw()" class="btn btn-danger" ><i class="fas fa-trash-alt"></i> Remove</button>
-								{% else %}
-									<button id="remove_grw_btn" type="button" onclick="remove_grw()" class="btn btn-danger" style="display:none;"><i class="fas fa-trash-alt"></i> Remove</button>
-								{% endif %}
+								
 		
 								</div>
 							</div>
@@ -742,7 +792,7 @@
 
 
 								{% if data.usp.f_1 %}
-									<input class="d-none" type="text" name="usp[]" value="{{data.usp.f_1}}" maxlength="350" />
+									<input class="d-none" type="text" name="usp[]" value='{{data.usp.f_1}}' maxlength="350" />
 									<div class="content">{{data.usp.f_1}}</div>
 
 								{% else %}
@@ -760,14 +810,14 @@
 
 				{% if data.usp.f_2 %}
 					<div id="usp_div2" class="form-row"><div class="col-md-8"><div class="form-group">
-					<div id="usp2" class="inputbox"><input class="d-none" type="text" name="usp[]" value="{{data.usp.f_2}}" maxlength="350" />
+					<div id="usp2" class="inputbox"><input class="d-none" type="text" name="usp[]" value='{{data.usp.f_2}}' maxlength="350" />
 					<div class="content">{{data.usp.f_2}}</div></div></div></div></div>
 				{% endif %}
 
 
 				{% if data.usp.f_3 %}
 					<div id="usp_div3" class="form-row"><div class="col-md-8"><div class="form-group">
-					<div id="usp3" class="inputbox"><input class="d-none" type="text" name="usp[]" value="{{data.usp.f_3}}" maxlength="350" />
+					<div id="usp3" class="inputbox"><input class="d-none" type="text" name="usp[]" value='{{data.usp.f_3}}' maxlength="350" />
 					<div class="content">{{data.usp.f_3}}</div></div></div></div></div>
 				{% endif %}
 
@@ -925,7 +975,7 @@ else
 	function add_grw()
 	{
 		
-		if(grw<6)
+		if(grw<5)
 		{
 			$("#grw_rows").append('<div id="grw_div'+grw+'" class="form-row"><div class="col-md-8"><div class="form-group">\
 	<div id="grw'+grw+'" class="inputbox"><input class="d-none" type="text" name="industry_growth_drivers[]" maxlength="300" />\
@@ -937,7 +987,7 @@ else
 	
 		}
 		else{
-			swal('Maximum Reached !', 'You can add maximum 5 Growth Drivers !', 'warning');
+			swal('Maximum Reached !', 'You can add maximum 4 Growth Drivers !', 'warning');
 		}
 	
 		if($("#remove_grw_btn").is(':hidden'))
