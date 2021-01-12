@@ -1442,11 +1442,18 @@ def user_form_9_submit(request):            # User Form 9 Submit
         
 
 
-        if(request.POST.get("industry_analysis")):
-            book.industry_analysis = request.POST["industry_analysis"]
+        if(request.POST.get("industry_analysis_glob")):
+            book.industry_analysis_glob = request.POST["industry_analysis_glob"]
         
-        if(request.FILES.get("industry_analysis_img")):
-            book.industry_analysis_img = request.FILES["industry_analysis_img"]
+        if(request.FILES.get("industry_analysis_glob_img")):
+            book.industry_analysis_glob_img = request.FILES["industry_analysis_glob_img"]
+
+
+        if(request.POST.get("industry_analysis_india")):
+            book.industry_analysis_india = request.POST["industry_analysis_india"]
+        
+        if(request.FILES.get("industry_analysis_india_img")):
+            book.industry_analysis_india_img = request.FILES["industry_analysis_india_img"]
        
         book.competitor_analysis_n = multi_input_insert(request,"competitor_analysis_n[]")
         book.competitor_analysis_p = multi_input_insert(request,"competitor_analysis_p[]")
@@ -1770,8 +1777,14 @@ def superplan_form_number(request,id):                                # User Sup
             ind_types = Industries.objects.all()
 
             if(book.industry_type):
-                ind_an=Industry_analysis.objects.filter(industry__pk=book.industry_type).get()
-                ind_gw=Industry_growth_drivers.objects.filter(industry__pk=book.industry_type).get()
+                ind_an=None
+                ind_gw=None
+                ind_an_c=Industry_analysis.objects.filter(industry__pk=book.industry_type).count()
+                ind_gw_c=Industry_growth_drivers.objects.filter(industry__pk=book.industry_type).count()
+                if(ind_an_c):
+                    ind_an=Industry_analysis.objects.filter(industry__pk=book.industry_type).get()
+                if(ind_gw_c):
+                    ind_gw=Industry_growth_drivers.objects.filter(industry__pk=book.industry_type).get()
                 return render(request,'user-form'+str(id)+'.html',{"data":book,"industries":ind_types,"industry_analysis":ind_an,"industry_growth_drivers":ind_gw})
             else:
                 return render(request,'user-form'+str(id)+'.html',{"data":book,"industries":ind_types})
@@ -1878,8 +1891,16 @@ def user_incomplete_superplan_by_get(request,id):                               
 
 
             if(book.industry_type):
-                ind_an=Industry_analysis.objects.filter(industry__pk=book.industry_type).get()
-                ind_gw=Industry_growth_drivers.objects.filter(industry__pk=book.industry_type).get()
+                ind_an=None
+                ind_gw=None
+                ind_an_c=Industry_analysis.objects.filter(industry__pk=book.industry_type).count()
+                ind_gw_c=Industry_growth_drivers.objects.filter(industry__pk=book.industry_type).count()
+                if(ind_an_c):
+                    ind_an=Industry_analysis.objects.filter(industry__pk=book.industry_type).get()
+                if(ind_gw_c):
+                    ind_gw=Industry_growth_drivers.objects.filter(industry__pk=book.industry_type).get()
+
+                
                 return render(request,form_url,{"data":book,"industries":ind_types,"industry_analysis":ind_an,"industry_growth_drivers":ind_gw})
             else:
                 return render(request,form_url,{"data":book,"industries":ind_types})

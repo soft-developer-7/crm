@@ -36,7 +36,7 @@
 				  <a class="dropdown-item" href="/superplan_form_number/7">7. Marketing Strategies</a>
 				  <a class="dropdown-item" href="/superplan_form_number/8">8. Growth Strategies</a>
 				  <a class="dropdown-item" href="/superplan_form_number/9">9. Industry & Competitor Analysis</a>
-				  <a class="dropdown-item" href="/superplan_form_number/9-1">9.1. Hostorical Data</a>
+				  <a class="dropdown-item" href="/superplan_form_number/9-1">9.1. Historical Data</a>
 				  <a class="dropdown-item" href="/superplan_form_number/10">10. Profit & Loss</a>
 				  <a class="dropdown-item" href="/superplan_form_number/11">11. Balance Sheet</a>
 				  <a class="dropdown-item" href="/superplan_form_number/12">12. CAPEX Schedule</a>
@@ -75,13 +75,48 @@
 						
 						<div class="col-md-8">
 							<div class="form-group">
-								<label ><strong>Industry Analysis</strong></label>
+								<label ><strong>Industry Analysis (Global) </strong></label>
 								<div id="ind1" class="inputbox">
-								{% if data.industry_analysis %}
-									<input class="d-none" type="text" name="industry_analysis" value='{{data.industry_analysis}}' maxlength="1000" />
-									<div class="content">{{data.industry_analysis}}</div>
+								{% if data.industry_analysis_glob %}
+									<input class="d-none" type="text" name="industry_analysis_glob" value='{{data.industry_analysis_glob}}' maxlength="1000" />
+									<div class="content">{{data.industry_analysis_glob}}</div>
 								{% else %}
-									<input class="d-none" type="text" name="industry_analysis" value='{{industry_analysis.india}}' maxlength="1000" />
+									<input class="d-none" type="text" name="industry_analysis_glob" value='{{industry_analysis.glob}}' maxlength="1000" />
+									<div class="content">{{industry_analysis.glob}}</div>
+								{% endif %}
+								</div>
+
+								</div>
+						</div>
+						<div class="col-md-4">
+						<div class="form-group">
+								<label ><strong>Industry Analysis Supporting Diagram (Global)</strong></label>
+						</div>
+						{% if data.industry_analysis_glob_img %}
+							<a href="{{ data.industry_analysis_glob_img.url}}" target="_blank"> <img src="{{ data.industry_analysis_glob_img.url}}" width="100%" /></a>
+						{% else %}
+							<a href="{{industry_analysis.glob_img.url}}" target="_blank"> <img src="{{industry_analysis.glob_img.url}}" width="100%" /></a>
+						{% endif %}
+							<p>For No Change Leave it As Blank </p>
+							<input type="file" name="industry_analysis_glob_img" accept="image/jpeg,image/png" />
+						</div>
+					</div>
+
+
+					<br><br>
+
+
+					<div class="form-row">
+						
+						<div class="col-md-8">
+							<div class="form-group">
+								<label ><strong>Industry Analysis (Indian)</strong></label>
+								<div id="ind2" class="inputbox">
+								{% if data.industry_analysis_india %}
+									<input class="d-none" type="text" name="industry_analysis_india" value='{{data.industry_analysis_india}}' maxlength="1000" />
+									<div class="content">{{data.industry_analysis_india}}</div>
+								{% else %}
+									<input class="d-none" type="text" name="industry_analysis_india" value='{{industry_analysis.india}}' maxlength="1000" />
 									<div class="content">{{industry_analysis.india}}</div>
 								{% endif %}
 								</div>
@@ -90,17 +125,30 @@
 						</div>
 						<div class="col-md-4">
 						<div class="form-group">
-								<label ><strong>Industry Analysis Supporting Diagram</strong></label>
+								<label ><strong>Industry Analysis Supporting Diagram (Indian)</strong></label>
 						</div>
-						{% if data.industry_analysis_img %}
-							<a href="{{ data.industry_analysis_img.url}}" target="_blank"> <img src="{{ data.industry_analysis_img.url}}" width="100%" /></a>
+						{% if data.industry_analysis_india_img %}
+							<a href="{{ data.industry_analysis_india_img.url}}" target="_blank"> <img src="{{ data.industry_analysis_india_img.url}}" width="100%" /></a>
 						{% else %}
 							<a href="{{industry_analysis.india_img.url}}" target="_blank"> <img src="{{industry_analysis.india_img.url}}" width="100%" /></a>
 						{% endif %}
 							<p>For No Change Leave it As Blank </p>
-							<input type="file" name="industry_analysis_img" accept="image/jpeg,image/png" />
+							<input type="file" name="industry_analysis_india_img" accept="image/jpeg,image/png" />
 						</div>
 					</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
 						
 
 					<br><br><br>
@@ -648,7 +696,7 @@
 				</div>
 
 
-				{% if not data.industry_growth_drivers.f_1 %}
+				{% if not data.industry_growth_drivers.f_1 and industry_growth_drivers %}
 					
 
 				<div id="grw_div1" class="form-row"><div class="col-md-8"><div class="form-group">
@@ -671,7 +719,11 @@
 				<div id="grw4" class="inputbox"><input class="d-none" type="text" name="industry_growth_drivers[]" value='<b>{{industry_growth_drivers.drivers_t.f_4}}</b><p>{{industry_growth_drivers.drivers_c.f_4}}</p>' maxlength="300" />
 				<div class="content"><b>{{industry_growth_drivers.drivers_t.f_4}}</b><p>{{industry_growth_drivers.drivers_c.f_4}}</p></div></div></div></div></div>
 
-					
+				{% else %}
+
+					<div id="grw_div1" class="form-row"><div class="col-md-8"><div class="form-group">
+				<div id="grw1" class="inputbox"><input class="d-none" type="text" name="industry_growth_drivers[]" value='' maxlength="300" />
+				<div class="content"></div></div></div></div></div>
 
 				{% endif %}
 

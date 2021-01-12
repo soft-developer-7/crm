@@ -213,8 +213,12 @@ class super_plan_forms(models.Model):
     growth_strategy = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='growth_strategy',on_delete=models.SET_NULL, null=True)
 
     # Form-9-----------------------------------------------------------------------------------------------9 ----------
-    industry_analysis = models.CharField(max_length=8000,null=True)
-    industry_analysis_img = models.ImageField(upload_to='superplan-files/',null=True,blank=True)
+    industry_analysis_glob = models.CharField(max_length=8000,null=True)
+    industry_analysis_glob_img = models.ImageField(upload_to='superplan-files/',null=True,blank=True)
+
+    industry_analysis_india = models.CharField(max_length=8000,null=True)
+    industry_analysis_india_img = models.ImageField(upload_to='superplan-files/',null=True,blank=True)
+    
     competitor_analysis_n = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='competitor_analysis_n',on_delete=models.SET_NULL, null=True)
     competitor_analysis_p = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='competitor_analysis_p',on_delete=models.SET_NULL, null=True)
     competitor_analysis_v1 = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='competitor_analysis_v1',on_delete=models.SET_NULL, null=True)
