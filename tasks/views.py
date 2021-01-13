@@ -7,10 +7,10 @@ import json
 from datetime import date
 import datetime
 from django.http import JsonResponse
-from .models import User_db,Pages,Posts,Banners,super_plan_forms,super_plan_forms_multiple_inputs,super_plan_forms_multiple_images,super_plan_forms_multiple_files
+from .models import User_db,Pages,Posts,Banners,super_plan_forms,super_plan_forms_multiple_inputs,super_plan_forms_multiple_images,super_plan_forms_multiple_files,super_plan_forms_multiple_inputs_xl,super_plan_form_xl_input
 from django.core.paginator import Paginator
 from business_management.models import Packs,Industries,User_bookings,Templates,Industries, Industry_analysis,Industry_growth_drivers
-
+from pyexcel_xlsx import get_data
 
 #--------- custom functions--------------
 def multi_input_insert(request,name):
@@ -51,7 +51,18 @@ def multi_input_insert(request,name):
 
 
 
+def multi_input_insert_xl(request,data,row):
 
+    
+    multi = super_plan_forms_multiple_inputs_xl()
+    multi.form_id = request.session['form']
+    
+    multi.f_1 = data["Historicals"][row][2]
+    multi.f_2 = data["Historicals"][row][3]
+    multi.f_3 = data["Historicals"][row][4]
+
+    multi.save()
+    return multi
 
 
 
@@ -1495,8 +1506,135 @@ def user_form_9_1_historical_submit(request):          #XLSX input form
     if(auth_user(request) and book and request.method=="POST"):
         if(request.FILES.get("historical_xl")):
             book.historical_xl = request.FILES["historical_xl"]
-        book.save()
-        return render(request,'user-form10.html')
+            book.save()
+
+            book = super_plan_forms.objects.filter(id=request.session['form']).get()
+            
+            data = get_data(book.historical_xl.url[1:])
+
+            try:
+                c=0
+                for i in range(3,122):
+                    if(len(data["Historicals"][i])>4):
+                        for j in range(1,5):
+                            c=c+1
+                
+
+
+                xl_form = super_plan_form_xl_input()
+                xl_form.form_id=request.session['form']
+
+                xl_form.capex_schedule_opening_gross = multi_input_insert_xl(request,data,3)
+                xl_form.capex_schedule_additions = multi_input_insert_xl(request,data,4)
+                xl_form.capex_schedule_additions_intangible = multi_input_insert_xl(request,data,5)
+                xl_form.capex_schedule_deletions = multi_input_insert_xl(request,data,6)
+                xl_form.capex_schedule_closing_gross = multi_input_insert_xl(request,data,7)
+                xl_form.capex_schedule_accumulated_depreciation = multi_input_insert_xl(request,data,8)
+                xl_form.capex_schedule_net_value = multi_input_insert_xl(request,data,9)
+                xl_form.capex_schedule_current_depreciation = multi_input_insert_xl(request,data,10)
+                xl_form.capex_schedule_average_depreciation_rate = multi_input_insert_xl(request,data,12)
+
+                xl_form.debt_schedule_secured_loans_from_banks = multi_input_insert_xl(request,data,19)
+                xl_form.debt_schedule_secured_loans_term_loans = multi_input_insert_xl(request,data,20)
+                xl_form.debt_schedule_secured_loans_othe_loans = multi_input_insert_xl(request,data,21)
+                xl_form.debt_schedule_secured_loans_finance_lease_obligation = multi_input_insert_xl(request,data,22)
+                xl_form.debt_schedule_secured_loans_total_secured_loans = multi_input_insert_xl(request,data,23)
+                xl_form.debt_schedule_unsecured_loans = multi_input_insert_xl(request,data,25)
+                xl_form.debt_schedule_total_unsecured_loan = multi_input_insert_xl(request,data,27)
+                xl_form.debt_schedule_total_debt  = multi_input_insert_xl(request,data,29)
+                xl_form.debt_schedule_interest_expense  = multi_input_insert_xl(request,data,31)
+                xl_form.debt_schedule_average_interest_rate = multi_input_insert_xl(request,data,32)
+
+                xl_form.income_statement_revenue_stream_1 = multi_input_insert_xl(request,data,39)
+                xl_form.income_statement_revenue_stream_2 = multi_input_insert_xl(request,data,40)
+                xl_form.income_statement_revenue_stream_3 = multi_input_insert_xl(request,data,41)
+                xl_form.income_statement_revenue_stream_4 = multi_input_insert_xl(request,data,42)
+                xl_form.income_statement_total_revenue_from_operations_services = multi_input_insert_xl(request,data,44)
+                xl_form.income_statement_product_development_expenses_operating_expenses_raw_material = multi_input_insert_xl(request,data,47)
+                xl_form.income_statement_employee_cost = multi_input_insert_xl(request,data,48)
+                xl_form.income_statement_general_and_administrative_expenses = multi_input_insert_xl(request,data,49)
+                xl_form.income_statement_selling_and_marketing_expenses = multi_input_insert_xl(request,data,50)
+                xl_form.income_statement_other_expenses_1 = multi_input_insert_xl(request,data,51)
+                xl_form.income_statement_other_expenses_2 = multi_input_insert_xl(request,data,52)
+                xl_form.income_statement_total_operating_expenses = multi_input_insert_xl(request,data,54)
+                xl_form.income_statement_ebitda_operating_profit = multi_input_insert_xl(request,data,56)
+                xl_form.income_statement_depreciation = multi_input_insert_xl(request,data,57)
+                xl_form.income_statement_other_income = multi_input_insert_xl(request,data,58)
+                xl_form.income_statement_realised_foreign_exchange_gain_loss  = multi_input_insert_xl(request,data,59)
+                xl_form.income_statement_ebit = multi_input_insert_xl(request,data,60)
+                xl_form.income_statement_interest_including_finance_charges  = multi_input_insert_xl(request,data,61)
+                xl_form.income_statement_earnings_before_tax_ebt = multi_input_insert_xl(request,data,62)
+                xl_form.income_statement_provision_for_income_tax  = multi_input_insert_xl(request,data,63)
+                xl_form.income_statement_profit_after_tax  = multi_input_insert_xl(request,data,64)
+                xl_form.income_statement_ebitda_prc = multi_input_insert_xl(request,data,66)
+                xl_form.income_statement_pat_prc = multi_input_insert_xl(request,data,67)
+
+
+
+                xl_form.balance_sheet_shareholders_funds_share_capital = multi_input_insert_xl(request,data,74)
+                xl_form.balance_sheet_shareholders_funds_reserve_and_surplus = multi_input_insert_xl(request,data,75)
+                xl_form.balance_sheet_shareholders_funds_equity_funds_raised = multi_input_insert_xl(request,data,76)
+                xl_form.balance_sheet_shareholders_funds_total_shareholder_funds = multi_input_insert_xl(request,data,77)
+
+
+
+                xl_form.balance_sheet_non_current_liabilities_secured_loans = multi_input_insert_xl(request,data,80)
+                xl_form.balance_sheet_non_current_liabilities_unsecured_loans = multi_input_insert_xl(request,data,81)
+                xl_form.balance_sheet_non_current_liabilities_deferred_tax_liabilities  = multi_input_insert_xl(request,data,82)
+                xl_form.balance_sheet_non_current_liabilities_long_term_provisions = multi_input_insert_xl(request,data,83)
+                xl_form.balance_sheet_non_current_liabilities_other_non_current_liabilities = multi_input_insert_xl(request,data,84)
+                xl_form.balance_sheet_total_non_current_liabilitie = multi_input_insert_xl(request,data,85)
+
+
+                xl_form.balance_sheet_current_liabilities_short_term_borrowings = multi_input_insert_xl(request,data,88)
+                xl_form.balance_sheet_current_liabilities_short_term_provisions = multi_input_insert_xl(request,data,89)
+                xl_form.balance_sheet_current_liabilities_sundry_creditors = multi_input_insert_xl(request,data,90)
+                xl_form.balance_sheet_current_liabilities_other_current_liabilities = multi_input_insert_xl(request,data,91)
+                xl_form.balance_sheet_current_liabilities_total_current_liabilities = multi_input_insert_xl(request,data,92)
+
+                xl_form.balance_sheet_total_liabilities = multi_input_insert_xl(request,data,94)
+
+
+                xl_form.balance_sheet_non_current_assets_gross_fixed_assets = multi_input_insert_xl(request,data,97)
+                xl_form.balance_sheet_non_current_assets_less_accumulated_depreciation = multi_input_insert_xl(request,data,98)
+                xl_form.balance_sheet_non_current_assets_net_fixed_assets = multi_input_insert_xl(request,data,99)
+                xl_form.balance_sheet_non_current_assets_intangible_assets = multi_input_insert_xl(request,data,101)
+                xl_form.balance_sheet_non_current_assets_long_term_loans_and_advances = multi_input_insert_xl(request,data,102)
+                xl_form.balance_sheet_non_current_assets_long_term_investments = multi_input_insert_xl(request,data,103)
+                xl_form.balance_sheet_non_current_assets_deferred_tax_assets = multi_input_insert_xl(request,data,104)
+                xl_form.balance_sheet_non_current_assets_other_non_current_assets = multi_input_insert_xl(request,data,105)
+                xl_form.balance_sheet_non_current_assets_total_non_current_asset = multi_input_insert_xl(request,data,107)
+
+
+                xl_form.balance_sheet_current_assets_cash = multi_input_insert_xl(request,data,110)
+                xl_form.balance_sheet_current_assets_sundry_debtors = multi_input_insert_xl(request,data,111)
+                xl_form.balance_sheet_current_assets_inventory = multi_input_insert_xl(request,data,112)
+                xl_form.balance_sheet_current_assets_short_term_investments = multi_input_insert_xl(request,data,113)
+                xl_form.balance_sheet_current_assets_short_term_loans_and_advances = multi_input_insert_xl(request,data,114)
+                xl_form.balance_sheet_current_assets_other_current_assets = multi_input_insert_xl(request,data,115)
+                xl_form.balance_sheet_current_assets_total_current_assets = multi_input_insert_xl(request,data,117)
+
+                xl_form.balance_sheet_total_assets = multi_input_insert_xl(request,data,119)
+                xl_form.balance_sheet_check = multi_input_insert_xl(request,data,121)
+
+                
+
+                xl_form.save()
+                book.historical_xl_data=xl_form
+                book.save()
+                return render(request,'user-form10.html')
+            except:
+                book.historical_xl=None
+                book.save()
+                messages.info(request,"Invalid Excel file format !")
+                return render(request,'user-form9-1.html')
+
+
+
+        else:
+            messages.info(request,"Something went wrong, Try again !")
+            return render(request,'user-form9-1.html')
+
     else:
         return redirect('/login')
 
@@ -1944,6 +2082,23 @@ def test(request):
     data=super_plan_forms_multiple_inputs.objects.all()
     return render(request,'print_data.html',{'datas':data})
 
+def test_xl(request):
+    data=super_plan_forms_multiple_inputs_xl.objects.all()
+    return render(request,'print_data_xl.html',{'datas':data})
+
 def test_image(request):
     data=super_plan_forms_multiple_images.objects.all()
     return render(request,'print_image.html',{'datas':data})
+
+
+def reset_db(request):
+    #data1=super_plan_forms_multiple_inputs.objects.all()
+    data2=super_plan_forms_multiple_images.objects.all()
+    data3=super_plan_forms_multiple_inputs_xl.objects.all()
+
+    #data1.delete()
+    data2.delete()
+    data3.delete()
+
+    return HttpResponse(request,"Done !")
+    

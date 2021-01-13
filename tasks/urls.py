@@ -115,7 +115,9 @@ urlpatterns = [
 
     path("user_template_view_1",views.user_template_view_1,name="user_template_view_1"),
     path("test",views.test,name="test"), # print all multi input data
+    path("test_xl",views.test_xl,name="test_xl"), # print all multi input xl data
     path("test_image",views.test_image,name="test_image"), # print all multi image data
+    path("reset_db",views.reset_db,name="reset_db"), #reset_db
     
     
 

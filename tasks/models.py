@@ -122,6 +122,19 @@ class super_plan_forms_multiple_images(models.Model):                           
 
 
 
+class super_plan_forms_multiple_inputs_xl(models.Model):                   # Multiple input fields
+    form_id = models.CharField(max_length=10,null=True)
+    f_2 = models.CharField(max_length=100,null=True)
+    f_3 = models.CharField(max_length=100,null=True)
+    f_1 = models.CharField(max_length=100,null=True)
+    f_4 = models.CharField(max_length=100,null=True)
+    f_5 = models.CharField(max_length=100,null=True)
+    date = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return self.id
+
+
 class super_plan_forms_multiple_files(models.Model):                            # Multiple Files
     form_id = models.CharField(max_length=10,null=True)
     user = models.ForeignKey(User_db, on_delete=models.CASCADE)
@@ -142,8 +155,171 @@ class super_plan_forms_multiple_files(models.Model):                            
 
 
 
+class super_plan_form_xl_input(models.Model):
+    form_id=form_id = models.CharField(max_length=10)
+
+    capex_schedule_opening_gross   = models.ForeignKey(super_plan_forms_multiple_inputs_xl,related_name='capex_schedule_opening_gross',on_delete=models.SET_NULL, null=True)
+
+    capex_schedule_additions = models.ForeignKey(super_plan_forms_multiple_inputs_xl,related_name='capex_schedule_additions',on_delete=models.SET_NULL, null=True)
+
+    capex_schedule_additions_intangible = models.ForeignKey(super_plan_forms_multiple_inputs_xl,related_name='capex_schedule_additions_intangible',on_delete=models.SET_NULL, null=True)
+
+    capex_schedule_deletions = models.ForeignKey(super_plan_forms_multiple_inputs_xl,related_name='capex_schedule_deletions',on_delete=models.SET_NULL, null=True)
+
+    capex_schedule_closing_gross = models.ForeignKey(super_plan_forms_multiple_inputs_xl,related_name='capex_schedule_closing_gross',on_delete=models.SET_NULL, null=True)
+
+    capex_schedule_accumulated_depreciation = models.ForeignKey(super_plan_forms_multiple_inputs_xl,related_name='capex_schedule_accumulated_depreciation',on_delete=models.SET_NULL, null=True)
+
+    capex_schedule_net_value = models.ForeignKey(super_plan_forms_multiple_inputs_xl,related_name='capex_schedule_net_value',on_delete=models.SET_NULL, null=True)
+
+    capex_schedule_current_depreciation = models.ForeignKey(super_plan_forms_multiple_inputs_xl,related_name='capex_schedule_current_depreciation',on_delete=models.SET_NULL, null=True)
+
+    capex_schedule_average_depreciation_rate = models.ForeignKey(super_plan_forms_multiple_inputs_xl,related_name='capex_schedule_average_depreciation_rate',on_delete=models.SET_NULL, null=True)
+
+    debt_schedule_secured_loans_from_banks = models.ForeignKey(super_plan_forms_multiple_inputs_xl,related_name='debt_schedule_secured_loans_from_banks',on_delete=models.SET_NULL, null=True)
+
+    debt_schedule_secured_loans_term_loans = models.ForeignKey(super_plan_forms_multiple_inputs_xl,related_name='debt_schedule_secured_loans_term_loans',on_delete=models.SET_NULL, null=True)
+
+    debt_schedule_secured_loans_othe_loans = models.ForeignKey(super_plan_forms_multiple_inputs_xl,related_name='debt_schedule_secured_loans_othe_loans',on_delete=models.SET_NULL, null=True)
+
+    debt_schedule_secured_loans_finance_lease_obligation = models.ForeignKey(super_plan_forms_multiple_inputs_xl,related_name='debt_schedule_secured_loans_finance_lease_obligation',on_delete=models.SET_NULL, null=True)
+
+    debt_schedule_secured_loans_total_secured_loans = models.ForeignKey(super_plan_forms_multiple_inputs_xl,related_name='debt_schedule_secured_loans_total_secured_loans',on_delete=models.SET_NULL, null=True)
+
+    debt_schedule_unsecured_loans = models.ForeignKey(super_plan_forms_multiple_inputs_xl,related_name='debt_schedule_unsecured_loans',on_delete=models.SET_NULL, null=True)
+
+    debt_schedule_total_unsecured_loan = models.ForeignKey(super_plan_forms_multiple_inputs_xl,related_name='debt_schedule_total_unsecured_loan',on_delete=models.SET_NULL, null=True)
+
+    debt_schedule_total_debt  = models.ForeignKey(super_plan_forms_multiple_inputs_xl,related_name='debt_schedule_total_debt',on_delete=models.SET_NULL, null=True)
+
+    debt_schedule_interest_expense  = models.ForeignKey(super_plan_forms_multiple_inputs_xl,related_name='debt_schedule_interest_expense',on_delete=models.SET_NULL, null=True)
+
+    debt_schedule_average_interest_rate = models.ForeignKey(super_plan_forms_multiple_inputs_xl,related_name='debt_schedule_average_interest_rate',on_delete=models.SET_NULL, null=True)
+
+    income_statement_revenue_stream_1 = models.ForeignKey(super_plan_forms_multiple_inputs_xl,related_name='income_statement_revenue_stream_1',on_delete=models.SET_NULL, null=True)
+
+    income_statement_revenue_stream_2 = models.ForeignKey(super_plan_forms_multiple_inputs_xl,related_name='income_statement_revenue_stream_2',on_delete=models.SET_NULL, null=True)
+
+    income_statement_revenue_stream_3 = models.ForeignKey(super_plan_forms_multiple_inputs_xl,related_name='income_statement_revenue_stream_3',on_delete=models.SET_NULL, null=True)
+
+    income_statement_revenue_stream_4 = models.ForeignKey(super_plan_forms_multiple_inputs_xl,related_name='income_statement_revenue_stream_4',on_delete=models.SET_NULL, null=True)
+
+    income_statement_total_revenue_from_operations_services = models.ForeignKey(super_plan_forms_multiple_inputs_xl,related_name='income_statement_total_revenue_from_operations_services',on_delete=models.SET_NULL, null=True)
+
+    income_statement_product_development_expenses_operating_expenses_raw_material = models.ForeignKey(super_plan_forms_multiple_inputs_xl,related_name='income_statement_product_development_expenses_operating_expenses_raw_material',on_delete=models.SET_NULL, null=True)
+
+    income_statement_employee_cost = models.ForeignKey(super_plan_forms_multiple_inputs_xl,related_name='income_statement_employee_cost',on_delete=models.SET_NULL, null=True)
+
+    income_statement_general_and_administrative_expenses = models.ForeignKey(super_plan_forms_multiple_inputs_xl,related_name='income_statement_general_and_administrative_expenses',on_delete=models.SET_NULL, null=True)
+
+    income_statement_selling_and_marketing_expenses = models.ForeignKey(super_plan_forms_multiple_inputs_xl,related_name='income_statement_selling_and_marketing_expenses',on_delete=models.SET_NULL, null=True)
+
+    income_statement_other_expenses_1 = models.ForeignKey(super_plan_forms_multiple_inputs_xl,related_name='income_statement_other_expenses_1',on_delete=models.SET_NULL, null=True)
+
+    income_statement_other_expenses_2 = models.ForeignKey(super_plan_forms_multiple_inputs_xl,related_name='income_statement_other_expenses_2',on_delete=models.SET_NULL, null=True)
+
+    income_statement_total_operating_expenses = models.ForeignKey(super_plan_forms_multiple_inputs_xl,related_name='income_statement_total_operating_expenses',on_delete=models.SET_NULL, null=True)
+
+    income_statement_ebitda_operating_profit = models.ForeignKey(super_plan_forms_multiple_inputs_xl,related_name='income_statement_ebitda_operating_profit',on_delete=models.SET_NULL, null=True)
+
+    income_statement_depreciation = models.ForeignKey(super_plan_forms_multiple_inputs_xl,related_name='income_statement_depreciation',on_delete=models.SET_NULL, null=True)
+
+    income_statement_other_income = models.ForeignKey(super_plan_forms_multiple_inputs_xl,related_name='income_statement_other_income',on_delete=models.SET_NULL, null=True)
+
+    income_statement_realised_foreign_exchange_gain_loss  = models.ForeignKey(super_plan_forms_multiple_inputs_xl,related_name='income_statement_realised_foreign_exchange_gain_loss',on_delete=models.SET_NULL, null=True)
+
+    income_statement_ebit = models.ForeignKey(super_plan_forms_multiple_inputs_xl,related_name='income_statement_ebit',on_delete=models.SET_NULL, null=True)
+
+    income_statement_interest_including_finance_charges  = models.ForeignKey(super_plan_forms_multiple_inputs_xl,related_name='income_statement_interest_including_finance_charges',on_delete=models.SET_NULL, null=True)
+
+    income_statement_earnings_before_tax_ebt = models.ForeignKey(super_plan_forms_multiple_inputs_xl,related_name='income_statement_earnings_before_tax_ebt',on_delete=models.SET_NULL, null=True)
+
+    income_statement_provision_for_income_tax  = models.ForeignKey(super_plan_forms_multiple_inputs_xl,related_name='income_statement_provision_for_income_tax',on_delete=models.SET_NULL, null=True)
+
+    income_statement_profit_after_tax  = models.ForeignKey(super_plan_forms_multiple_inputs_xl,related_name='income_statement_profit_after_tax',on_delete=models.SET_NULL, null=True)
+
+    income_statement_ebitda_prc = models.ForeignKey(super_plan_forms_multiple_inputs_xl,related_name='income_statement_ebitda_prc',on_delete=models.SET_NULL, null=True)
+
+    income_statement_pat_prc = models.ForeignKey(super_plan_forms_multiple_inputs_xl,related_name='income_statement_pat_prc',on_delete=models.SET_NULL, null=True)
 
 
+
+    balance_sheet_shareholders_funds_share_capital = models.ForeignKey(super_plan_forms_multiple_inputs_xl,related_name='balance_sheet_shareholders_funds_share_capital',on_delete=models.SET_NULL, null=True)
+
+    balance_sheet_shareholders_funds_reserve_and_surplus = models.ForeignKey(super_plan_forms_multiple_inputs_xl,related_name='balance_sheet_shareholders_funds_reserve_and_surplus',on_delete=models.SET_NULL, null=True)
+
+    balance_sheet_shareholders_funds_equity_funds_raised = models.ForeignKey(super_plan_forms_multiple_inputs_xl,related_name='balance_sheet_shareholders_funds_equity_funds_raised',on_delete=models.SET_NULL, null=True)
+
+    balance_sheet_shareholders_funds_total_shareholder_funds = models.ForeignKey(super_plan_forms_multiple_inputs_xl,related_name='balance_sheet_shareholders_funds_total_shareholder_funds',on_delete=models.SET_NULL, null=True)
+
+
+
+    balance_sheet_non_current_liabilities_secured_loans = models.ForeignKey(super_plan_forms_multiple_inputs_xl,related_name='balance_sheet_non_current_liabilities_secured_loans',on_delete=models.SET_NULL, null=True)
+
+    balance_sheet_non_current_liabilities_unsecured_loans = models.ForeignKey(super_plan_forms_multiple_inputs_xl,related_name='balance_sheet_non_current_liabilities_unsecured_loans',on_delete=models.SET_NULL, null=True)
+
+    balance_sheet_non_current_liabilities_deferred_tax_liabilities  = models.ForeignKey(super_plan_forms_multiple_inputs_xl,related_name='balance_sheet_non_current_liabilities_deferred_tax_liabilities',on_delete=models.SET_NULL, null=True)
+
+    balance_sheet_non_current_liabilities_long_term_provisions = models.ForeignKey(super_plan_forms_multiple_inputs_xl,related_name='balance_sheet_non_current_liabilities_long_term_provisions',on_delete=models.SET_NULL, null=True)
+
+    balance_sheet_non_current_liabilities_other_non_current_liabilities = models.ForeignKey(super_plan_forms_multiple_inputs_xl,related_name='balance_sheet_non_current_liabilities_other_non_current_liabilities',on_delete=models.SET_NULL, null=True)
+
+    balance_sheet_total_non_current_liabilitie = models.ForeignKey(super_plan_forms_multiple_inputs_xl,related_name='balance_sheet_total_non_current_liabilitie',on_delete=models.SET_NULL, null=True)
+
+
+    balance_sheet_current_liabilities_short_term_borrowings = models.ForeignKey(super_plan_forms_multiple_inputs_xl,related_name='balance_sheet_current_liabilities_short_term_borrowings',on_delete=models.SET_NULL, null=True)
+
+    balance_sheet_current_liabilities_short_term_provisions = models.ForeignKey(super_plan_forms_multiple_inputs_xl,related_name='balance_sheet_current_liabilities_short_term_provisions',on_delete=models.SET_NULL, null=True)
+
+    balance_sheet_current_liabilities_sundry_creditors = models.ForeignKey(super_plan_forms_multiple_inputs_xl,related_name='balance_sheet_current_liabilities_sundry_creditors',on_delete=models.SET_NULL, null=True)
+
+    balance_sheet_current_liabilities_other_current_liabilities = models.ForeignKey(super_plan_forms_multiple_inputs_xl,related_name='balance_sheet_current_liabilities_other_current_liabilities',on_delete=models.SET_NULL, null=True)
+
+    balance_sheet_current_liabilities_total_current_liabilities = models.ForeignKey(super_plan_forms_multiple_inputs_xl,related_name='balance_sheet_current_liabilities_total_current_liabilities',on_delete=models.SET_NULL, null=True)
+
+    balance_sheet_total_liabilities = models.ForeignKey(super_plan_forms_multiple_inputs_xl,related_name='balance_sheet_total_liabilities',on_delete=models.SET_NULL, null=True)
+
+
+
+
+    balance_sheet_non_current_assets_gross_fixed_assets = models.ForeignKey(super_plan_forms_multiple_inputs_xl,related_name='balance_sheet_non_current_assets_gross_fixed_assets',on_delete=models.SET_NULL, null=True)
+
+    balance_sheet_non_current_assets_less_accumulated_depreciation = models.ForeignKey(super_plan_forms_multiple_inputs_xl,related_name='balance_sheet_non_current_assets_less_accumulated_depreciation',on_delete=models.SET_NULL, null=True)
+
+    balance_sheet_non_current_assets_net_fixed_assets = models.ForeignKey(super_plan_forms_multiple_inputs_xl,related_name='balance_sheet_non_current_assets_net_fixed_assets',on_delete=models.SET_NULL, null=True)
+
+    balance_sheet_non_current_assets_intangible_assets = models.ForeignKey(super_plan_forms_multiple_inputs_xl,related_name='balance_sheet_non_current_assets_intangible_assets',on_delete=models.SET_NULL, null=True)
+
+    balance_sheet_non_current_assets_long_term_loans_and_advances = models.ForeignKey(super_plan_forms_multiple_inputs_xl,related_name='balance_sheet_non_current_assets_long_term_loans_and_advances',on_delete=models.SET_NULL, null=True)
+
+    balance_sheet_non_current_assets_long_term_investments = models.ForeignKey(super_plan_forms_multiple_inputs_xl,related_name='balance_sheet_non_current_assets_long_term_investments',on_delete=models.SET_NULL, null=True)
+
+    balance_sheet_non_current_assets_deferred_tax_assets = models.ForeignKey(super_plan_forms_multiple_inputs_xl,related_name='balance_sheet_non_current_assets_deferred_tax_assets',on_delete=models.SET_NULL, null=True)
+
+    balance_sheet_non_current_assets_other_non_current_assets = models.ForeignKey(super_plan_forms_multiple_inputs_xl,related_name='balance_sheet_non_current_assets_other_non_current_assets',on_delete=models.SET_NULL, null=True)
+
+    balance_sheet_non_current_assets_total_non_current_asset = models.ForeignKey(super_plan_forms_multiple_inputs_xl,related_name='balance_sheet_non_current_assets_total_non_current_asset',on_delete=models.SET_NULL, null=True)
+
+
+    balance_sheet_current_assets_cash = models.ForeignKey(super_plan_forms_multiple_inputs_xl,related_name='balance_sheet_current_assets_cash',on_delete=models.SET_NULL, null=True)
+
+    balance_sheet_current_assets_sundry_debtors = models.ForeignKey(super_plan_forms_multiple_inputs_xl,related_name='balance_sheet_current_assets_sundry_debtors',on_delete=models.SET_NULL, null=True)
+
+    balance_sheet_current_assets_inventory = models.ForeignKey(super_plan_forms_multiple_inputs_xl,related_name='balance_sheet_current_assets_inventory',on_delete=models.SET_NULL, null=True)
+
+    balance_sheet_current_assets_short_term_investments = models.ForeignKey(super_plan_forms_multiple_inputs_xl,related_name='balance_sheet_current_assets_short_term_investments',on_delete=models.SET_NULL, null=True)
+
+    balance_sheet_current_assets_short_term_loans_and_advances = models.ForeignKey(super_plan_forms_multiple_inputs_xl,related_name='balance_sheet_current_assets_short_term_loans_and_advances',on_delete=models.SET_NULL, null=True)
+
+    balance_sheet_current_assets_other_current_assets = models.ForeignKey(super_plan_forms_multiple_inputs_xl,related_name='balance_sheet_current_assets_other_current_assets',on_delete=models.SET_NULL, null=True)
+
+    balance_sheet_current_assets_total_current_assets = models.ForeignKey(super_plan_forms_multiple_inputs_xl,related_name='balance_sheet_current_assets_total_current_assets',on_delete=models.SET_NULL, null=True)
+
+    balance_sheet_total_assets = models.ForeignKey(super_plan_forms_multiple_inputs_xl,related_name='balance_sheet_total_assets',on_delete=models.SET_NULL, null=True)
+
+    balance_sheet_check = models.ForeignKey(super_plan_forms_multiple_inputs_xl,related_name='balance_sheet_check',on_delete=models.SET_NULL, null=True)
+
+    date = models.DateTimeField(auto_now_add=True)
 
 
 
@@ -231,6 +407,7 @@ class super_plan_forms(models.Model):
 
     # Form-9.1----------------------------------------------------------------------------------------- 9.1------------
     historical_xl = models.ImageField(upload_to='superplan-files/',null=True,blank=True)
+    historical_xl_data = models.ForeignKey(super_plan_form_xl_input, on_delete=models.CASCADE,null=True)
 
 
     # Form-10-------------------------------------------------------------------------------------------------10 ---------
