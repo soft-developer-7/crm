@@ -11,6 +11,8 @@ from .models import User_db,Pages,Posts,Banners,super_plan_forms,super_plan_form
 from django.core.paginator import Paginator
 from business_management.models import Packs,Industries,User_bookings,Templates,Industries, Industry_analysis,Industry_growth_drivers
 from pyexcel_xlsx import get_data
+from openpyxl import load_workbook
+import os
 
 #--------- custom functions--------------
 def multi_input_insert(request,name):
@@ -1165,7 +1167,7 @@ def user_form_1_submit(request):            # User Form 1 Submit
         book.save()
         request.session["form"] = book.id
 
-        return render(request,'user-form2.html')
+        return render(request,'user-form2.html',{"data":book})
     else:
         return redirect('/login')
 
@@ -1208,7 +1210,7 @@ def user_form_2_submit(request):            # User Form 2 Submit
 
 
 
-            return render(request,'user-form3.html',{"industries":ind_types})
+            return render(request,'user-form3.html',{"data":book,"industries":ind_types})
         else:
             return render(request,'user-form1.html')
     else:
@@ -1237,7 +1239,7 @@ def user_form_3_submit(request):            # User Form 3 Submit
         book.current_fillup_position = 3
         book.save()
 
-        return render(request,'user-form4.html')
+        return render(request,'user-form4.html',{"data":book})
     else:
         return redirect('/login')
 
@@ -1259,7 +1261,7 @@ def user_form_4_submit(request):            # User Form 4 Submit
         book.current_fillup_position = 4
         book.save()
 
-        return render(request,'user-form5.html')
+        return render(request,'user-form5.html',{"data":book})
     else:
         return redirect('/login')
 
@@ -1307,7 +1309,7 @@ def user_form_5_submit(request):            # User Form 5 Submit
 
         book.current_fillup_position = 5
         book.save()
-        return render(request,'user-form6.html')
+        return render(request,'user-form6.html',{"data":book})
     else:
         return redirect('/login')
 
@@ -1393,7 +1395,7 @@ def user_form_6_submit(request):            # User Form 6 Submit
 
         book.current_fillup_position = 6
         book.save()
-        return render(request,'user-form7.html')
+        return render(request,'user-form7.html',{"data":book})
     else:
         return redirect('/login')
 
@@ -1414,7 +1416,7 @@ def user_form_7_submit(request):            # User Form 7 Submit
 
         book.current_fillup_position = 7
         book.save()
-        return render(request,'user-form8.html')
+        return render(request,'user-form8.html',{"data":book})
     else:
         return redirect('/login')
 
@@ -1430,10 +1432,24 @@ def user_form_8_submit(request):            # User Form 8 Submit
         book.current_fillup_position = 8
         book.save()
 
+
+        
+
+        ind_types = Industries.objects.all()
+
         if(book.industry_type):
-            ind_an=Industry_analysis.objects.filter(industry__pk=book.industry_type).get()
-            ind_gw=Industry_growth_drivers.objects.filter(industry__pk=book.industry_type).get()
-        return render(request,'user-form9.html',{"industry_analysis":ind_an,"industry_growth_drivers":ind_gw})
+            ind_an=None
+            ind_gw=None
+            ind_an_c=Industry_analysis.objects.filter(industry__pk=book.industry_type).count()
+            ind_gw_c=Industry_growth_drivers.objects.filter(industry__pk=book.industry_type).count()
+            if(ind_an_c):
+                ind_an=Industry_analysis.objects.filter(industry__pk=book.industry_type).get()
+            if(ind_gw_c):
+                ind_gw=Industry_growth_drivers.objects.filter(industry__pk=book.industry_type).get()
+            return render(request,'user-form9.html',{"data":book,"industries":ind_types,"industry_analysis":ind_an,"industry_growth_drivers":ind_gw})
+        else:
+            return render(request,'user-form9.html',{"data":book,"industries":ind_types})
+
     else:
         return redirect('/login')
 
@@ -1482,7 +1498,7 @@ def user_form_9_submit(request):            # User Form 9 Submit
 
         book.current_fillup_position = 9
         book.save()
-        return render(request,'user-form9-1.html')
+        return render(request,'user-form9-1.html',{"data":book})
     else:
         return redirect('/login')
 
@@ -1494,7 +1510,7 @@ def user_form_9_1_submit(request):            # User Form 9_1 Submit
     book = super_plan_forms.objects.filter(id=request.session['form']).get()
     if(auth_user(request) and book and request.method=="POST"):
 
-        return render(request,'user-form10.html')
+        return render(request,'user-form10.html',{"data":book})
     else:
         return redirect('/login')
 
@@ -1622,7 +1638,7 @@ def user_form_9_1_historical_submit(request):          #XLSX input form
                 xl_form.save()
                 book.historical_xl_data=xl_form
                 book.save()
-                return render(request,'user-form10.html')
+                return render(request,'user-form10.html',{"data":book})
             except:
                 book.historical_xl=None
                 book.save()
@@ -1759,7 +1775,7 @@ def user_form_10_submit(request):            # User Form 10 Submit
         book.current_fillup_position = 10
         book.save()
         
-        return render(request,'user-form11.html')
+        return render(request,'user-form11.html',{"data":book})
     else:
         return redirect('/login')
 
@@ -1853,7 +1869,7 @@ def user_form_11_submit(request):            # User Form 11 Submit
         book.save()
 
         
-        return render(request,'user-form12.html')
+        return render(request,'user-form12.html',{"data":book})
     else:
         return redirect('/login')
 
@@ -2102,3 +2118,57 @@ def reset_db(request):
 
     return HttpResponse(request,"Done !")
     
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    #-------------------------------------------------- XL file operation ---------------------------
+
+
+def xl_file_find(request):
+    name="form1.xlsx"
+    path="media/"
+    for root, dirs, files in os.walk(path):
+        if name in files:
+            return HttpResponse("File Found !")
+    return HttpResponse("Not Found !")
+
+
+
+def new_xl(request):
+    name="no_historicals.xlsx"
+    path="media/"
+    wb = load_workbook(path+name)
+    s1 = wb["Balance Sheet"]
+    s1["J14"]=12
+    s1["K14"]=12/100
+    s1["L14"]=12/100
+    s1["M14"]=12/100
+    s1["N14"]=12/100
+
+    s1["J15"]=12
+    s1["K15"]=12.2/100
+    s1["L15"]=12/100
+    s1["M15"]=12/100
+    s1["N15"]=12/100
+
+    s1["J16"]=12
+    s1["K16"]=12/100
+    s1["L16"]=12/100
+    s1["M16"]=12/100
+    s1["N16"]=12/100
+
+    wb.save(path+'form1.xlsx')
+
+    return HttpResponse("Done !")

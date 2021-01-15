@@ -84,7 +84,7 @@
 					
 
 				<div class="container text-center">
-					<h3>Do you have your companies Historical Data ?</h3>
+					<h3> {% if data.historical_xl_data %} You have already uploaded the Historical Data, Do you want to change the file ? {%else %} Do you have your companies Historical Data ? {% endif %}</h3>
 				</div>
 						
 			<div class="form-group text-center">
@@ -95,7 +95,13 @@
 			</div>
 
             <div id="box" class="container bg-white border shadow text-center" style="display:none; min-height:150px;padding-top:50px;">
-			<a href="{% static 'files/historical.xlsx'%}" target="_blank"> 
+			 {% if data.historical_xl_data %}<a href="{{data.historical_xl.url}}" target="_blank"> <u><h4>Download your Previous Historical excel file here <i class="fas fa-download"></i></h4></u></a> {% endif %}
+
+			 <br>
+
+			 <a href="{% static 'files/historical.xlsx'%}" target="_blank"> 
+			
+
 			<u><h4>Download the Historical data format excel file here <i class="fas fa-download"></i></h4></u></a>
 			<br><br/>
 

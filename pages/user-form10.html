@@ -64,6 +64,15 @@
 						<p class="text-primary m-0 font-weight-bold">10. Profit & Loss</p>
 						</div>
 					<div class="card-body">
+
+
+				<p class="text-danger" style="font-weight:bold;"><i>**Note : Light-Blue highlighted box can take percentage value and normal amount value also. Eg. for 17 percentage please type 17%. The text will be green it means it is a percentage value. Without the % symbol system will be treated as a normal amount value. The text will be black.</i></p>
+				<br>
+				<div style="background-color:rgba(0,255,235,0.13);display:inline-block;padding:20px;">
+				<p style="color:darkgreen;">Green Text = percentage value (%)</p>
+				<p style="color:black;">Black Text = Normal amount value </p>
+				</div>
+				<br><br>
 					
 					
 
@@ -84,7 +93,7 @@
 
 						<div class="col border-right">
 							<div class="form-group">
-								<select class="form-control" name="profit_and_loss_years[]">
+								<select id="year1_select" class="form-control" name="profit_and_loss_years[]">
 									<option value="Year1">Year1</option>
 									{% for i in request.session.years %}
 										<option value="{{i}}">{{ i }}</option>
@@ -96,45 +105,25 @@
 
 						<div class="col border-right">
 							<div class="form-group">
-								<select class="form-control" name="profit_and_loss_years[]">
-									<option value="Year2">Year2</option>
-									{% for i in request.session.years %}
-										<option value="{{i}}">{{ i }}</option>
-									{% endfor %}
-								</select>
+								<input type="text" value="Year2" readonly class="form-control" name="profit_and_loss_years[]"/>
 							</div>
 						</div>
 
 						<div class="col border-right">
 							<div class="form-group">
-								<select class="form-control" name="profit_and_loss_years[]">
-									<option value="Year3">Year3</option>
-									{% for i in request.session.years %}
-										<option value="{{i}}">{{ i }}</option>
-									{% endfor %}
-								</select>
+								<input type="text" value="Year3" readonly class="form-control" name="profit_and_loss_years[]"/>
 							</div>
 						</div>
 
 						<div class="col border-right">
 							<div class="form-group">
-								<select class="form-control" name="profit_and_loss_years[]">
-									<option value="Year4">Year4</option>
-									{% for i in request.session.years %}
-										<option value="{{i}}">{{ i }}</option>
-									{% endfor %}
-								</select>
+								<input type="text" value="Year4" readonly class="form-control" name="profit_and_loss_years[]"/>
 							</div>
 						</div>
 
 						<div class="col border-right">
 							<div class="form-group">
-								<select class="form-control" name="profit_and_loss_years[]">
-									<option value="Year5">Year5</option>
-									{% for i in request.session.years %}
-										<option value="{{i}}">{{ i }}</option>
-									{% endfor %}
-								</select>
+								<input type="text" value="Year5" readonly class="form-control" name="profit_and_loss_years[]"/>
 							</div>
 						</div>
 
@@ -148,7 +137,7 @@
 							<div class="form-group">
 								<input type="text" value="Stream Name 1" name="revenue_growth_or_amount_1[]" class="form-control text-primary" minlength="1" maxlength="200" />
 								
-								<div class="form-group text-info">
+								<div class="form-group text-info d-none">
 
 										<label class="radio-inline">
 											<input type="radio" class="r1" name="revenue_growth_1_or" value="amnt"> Amount &nbsp; &nbsp; &nbsp; 
@@ -169,34 +158,36 @@
 					
 						<div class="col">
 							<div class="form-group">
-								<input type="number"  min=0 max=100  step="0.01" class="form-control" name="revenue_growth_or_amount_1[]"  maxlength="20" minlength="1" />
-								<div class="perc_helper">% value</div>
+								<input type="text"  class="form-control {% if data.historical_xl_data %} text_input_h {%else %} text_input {% endif %}" name="revenue_growth_or_amount_1[]"  maxlength="20" minlength="1" />
+								<div class="perc_helper_h">% value</div>
 								</div>
 						</div>
 						
 						<div class="col">
 							<div class="form-group">
-								<input type="number"  step="0.01" min=0 max=100 class="form-control" name="revenue_growth_or_amount_1[]" maxlength="20" minlength="1" />
-									<div class="perc_helper">% value</div>
+								<input type="text"  class="form-control text_input" name="revenue_growth_or_amount_1[]"  maxlength="20" minlength="1" />
+								<div class="perc_helper_h">% value</div>
 								</div>
 						</div>
+
 						<div class="col">
 							<div class="form-group">
-								<input type="number"  step="0.01" min=0 max=100 class="form-control" name="revenue_growth_or_amount_1[]" maxlength="20" minlength="1" />
-									<div class="perc_helper">% value</div>
+								<input type="text"  class="form-control text_input" name="revenue_growth_or_amount_1[]"  maxlength="20" minlength="1" />
+								<div class="perc_helper_h">% value</div>
 								</div>
 						</div>
 						
 						<div class="col">
 							<div class="form-group">
-								<input type="number"  step="0.01" min=0 max=100 class="form-control" name="revenue_growth_or_amount_1[]" maxlength="20" minlength="1" />
-									<div class="perc_helper">%value</div>
+								<input type="text"  class="form-control text_input" name="revenue_growth_or_amount_1[]"  maxlength="20" minlength="1" />
+								<div class="perc_helper_h">% value</div>
 								</div>
 						</div>
+
 						<div class="col">
 							<div class="form-group">
-								<input type="number"  step="0.01" min=0 max=100 class="form-control" name="revenue_growth_or_amount_1[]" maxlength="20" minlength="1" />
-									<div class="perc_helper">% value</div>
+								<input type="text"  class="form-control text_input" name="revenue_growth_or_amount_1[]"  maxlength="20" minlength="1" />
+								<div class="perc_helper_h">% value</div>
 								</div>
 						</div>
 					
@@ -211,7 +202,7 @@
 							<div class="form-group">
 								<input type="text" value="Stream Name 2" name="revenue_growth_or_amount_2[]" class="form-control text-primary" minlength="1" maxlength="200" />
 								
-								<div class="form-group text-info">
+								<div class="form-group text-info d-none">
 
 										<label class="radio-inline">
 											<input type="radio" class="r2" name="revenue_growth_2_or" value="amnt"> Amount &nbsp; &nbsp; &nbsp; 
@@ -232,33 +223,38 @@
 					
 						<div class="col">
 							<div class="form-group">
-								<input type="number"  step="0.01"  min=0 max=100  class="form-control" name="revenue_growth_or_amount_2[]" maxlength="20" minlength="1" />
-								<div class="perc_helper">% value</div>
+								<input type="text"   class="form-control {% if data.historical_xl_data %} text_input_h {%else %} text_input {% endif %}" name="revenue_growth_or_amount_2[]" maxlength="20" minlength="1" />
+								<div class="perc_helper_h">% value</div>
 								</div>
 						</div>
 						
 						<div class="col">
 							<div class="form-group">
-								<input type="number"  step="0.01" min=0 max=100 class="form-control" name="revenue_growth_or_amount_2[]" maxlength="20" minlength="1" />
-									<div class="perc_helper">% value</div>
+								<input type="text"   class="form-control text_input" name="revenue_growth_or_amount_2[]" maxlength="20" minlength="1" />
+								<div class="perc_helper_h">% value</div>
 								</div>
 						</div>
+
+
 						<div class="col">
 							<div class="form-group">
-								<input type="number"  step="0.01" min=0 max=100 class="form-control" name="revenue_growth_or_amount_2[]" maxlength="20" minlength="1" />
-									<div class="perc_helper">% value</div>
+								<input type="text"   class="form-control text_input" name="revenue_growth_or_amount_2[]" maxlength="20" minlength="1" />
+								<div class="perc_helper_h">% value</div>
 								</div>
 						</div>
+
+
 						<div class="col">
 							<div class="form-group">
-								<input type="number"  step="0.01" min=0 max=100 class="form-control" name="revenue_growth_or_amount_2[]" maxlength="20" minlength="1" />
-									<div class="perc_helper">% value</div>
+								<input type="text"   class="form-control text_input" name="revenue_growth_or_amount_2[]" maxlength="20" minlength="1" />
+								<div class="perc_helper_h">% value</div>
 								</div>
 						</div>
+
 						<div class="col">
 							<div class="form-group">
-								<input type="number"  step="0.01" min=0 max=100 class="form-control" name="revenue_growth_or_amount_2[]" maxlength="20" minlength="1" />
-									<div class="perc_helper">% value</div>
+								<input type="text"   class="form-control text_input" name="revenue_growth_or_amount_2[]" maxlength="20" minlength="1" />
+								<div class="perc_helper_h">% value</div>
 								</div>
 						</div>
 					
@@ -273,7 +269,7 @@
 							<div class="form-group">
 								<input type="text" value="Stream Name 3" name="revenue_growth_or_amount_3[]" class="form-control text-primary" minlength="1" maxlength="200" />
 								
-								<div class="form-group text-info">
+								<div class="form-group text-info d-none">
 
 										<label class="radio-inline">
 											<input type="radio" class="r3" name="revenue_growth_3_or" value="amnt"> Amount &nbsp; &nbsp; &nbsp; 
@@ -294,33 +290,33 @@
 					
 						<div class="col">
 							<div class="form-group">
-								<input type="number"  step="0.01"  min=0 max=100  class="form-control" name="revenue_growth_or_amount_3[]" maxlength="20" minlength="1" />
-								<div class="perc_helper">% value</div>
+								<input type="text"  class="form-control {% if data.historical_xl_data %} text_input_h {%else %} text_input {% endif %}" name="revenue_growth_or_amount_3[]" maxlength="20" minlength="1" />
+								<div class="perc_helper_h">% value</div>
 								</div>
 						</div>
 						
 						<div class="col">
 							<div class="form-group">
-								<input type="number"  step="0.01" min=0 max=100 class="form-control" name="revenue_growth_or_amount_3[]" maxlength="20" minlength="1" />
-									<div class="perc_helper">% value</div>
+								<input type="text"  class="form-control text_input" name="revenue_growth_or_amount_3[]" maxlength="20" minlength="1" />
+								<div class="perc_helper_h">% value</div>
 								</div>
 						</div>
 						<div class="col">
 							<div class="form-group">
-								<input type="number"  step="0.01" min=0 max=100 class="form-control" name="revenue_growth_or_amount_3[]" maxlength="20" minlength="1" />
-									<div class="perc_helper">% value</div>
+								<input type="text"  class="form-control text_input" name="revenue_growth_or_amount_3[]" maxlength="20" minlength="1" />
+								<div class="perc_helper_h">% value</div>
 								</div>
 						</div>
 						<div class="col">
 							<div class="form-group">
-								<input type="number"  step="0.01" min=0 max=100 class="form-control" name="revenue_growth_or_amount_3[]" maxlength="20" minlength="1" />
-									<div class="perc_helper">% value</div>
+								<input type="text"  class="form-control text_input" name="revenue_growth_or_amount_3[]" maxlength="20" minlength="1" />
+								<div class="perc_helper_h">% value</div>
 								</div>
 						</div>
 						<div class="col">
 							<div class="form-group">
-								<input type="number"  step="0.01" min=0 max=100 class="form-control" name="revenue_growth_or_amount_3[]" maxlength="20" minlength="1" />
-									<div class="perc_helper">% value</div>
+								<input type="text"  class="form-control text_input" name="revenue_growth_or_amount_3[]" maxlength="20" minlength="1" />
+								<div class="perc_helper_h">% value</div>
 								</div>
 						</div>
 					
@@ -334,7 +330,7 @@
 							<div class="form-group">
 								<input type="text" value="Stream Name 4" name="revenue_growth_or_amount_4[]" class="form-control text-primary" minlength="1" maxlength="200" />
 								
-								<div class="form-group text-info">
+								<div class="form-group text-info d-none">
 
 										<label class="radio-inline">
 											<input type="radio" class="r4" name="revenue_growth_4_or" value="amnt"> Amount &nbsp; &nbsp; &nbsp; 
@@ -355,33 +351,33 @@
 					
 						<div class="col">
 							<div class="form-group">
-								<input type="number"  step="0.01"  min=0 max=100  class="form-control" name="revenue_growth_or_amount_4[]" maxlength="20" minlength="1" />
-								<div class="perc_helper">% value</div>
+								<input type="text"  class="form-control {% if data.historical_xl_data %} text_input_h {%else %} text_input {% endif %}" name="revenue_growth_or_amount_4[]" maxlength="20" minlength="1" />
+								<div class="perc_helper_h">% value</div>
 								</div>
 						</div>
 						
 						<div class="col">
 							<div class="form-group">
-								<input type="number"  step="0.01" min=0 max=100 class="form-control" name="revenue_growth_or_amount_4[]" maxlength="20" minlength="1" />
-									<div class="perc_helper">% value</div>
+								<input type="text"  class="form-control text_input" name="revenue_growth_or_amount_4[]" maxlength="20" minlength="1" />
+								<div class="perc_helper_h">% value</div>
 								</div>
 						</div>
 						<div class="col">
 							<div class="form-group">
-								<input type="number"  step="0.01" min=0 max=100 class="form-control" name="revenue_growth_or_amount_4[]" maxlength="20" minlength="1" />
-									<div class="perc_helper">% value</div>
+								<input type="text"  class="form-control text_input" name="revenue_growth_or_amount_4[]" maxlength="20" minlength="1" />
+								<div class="perc_helper_h">% value</div>
 								</div>
 						</div>
 						<div class="col">
 							<div class="form-group">
-								<input type="number"  step="0.01" min=0 max=100 class="form-control" name="revenue_growth_or_amount_4[]" maxlength="20" minlength="1" />
-									<div class="perc_helper">% value</div>
+								<input type="text"  class="form-control text_input" name="revenue_growth_or_amount_4[]" maxlength="20" minlength="1" />
+								<div class="perc_helper_h">% value</div>
 								</div>
 						</div>
 						<div class="col">
 							<div class="form-group">
-								<input type="number"  step="0.01" min=0 max=100 class="form-control" name="revenue_growth_or_amount_4[]" maxlength="20" minlength="1" />
-									<div class="perc_helper">% value</div>
+								<input type="text"  class="form-control text_input" name="revenue_growth_or_amount_4[]" maxlength="20" minlength="1" />
+								<div class="perc_helper_h">% value</div>
 								</div>
 						</div>
 					
@@ -399,7 +395,7 @@
 								<label ><strong>Other Income</strong>
                                 <a href="#"  data-toggle="tooltip" title="Help text."><i class="far fa-question-circle"></i></a></label>
 									
-								<div class="form-group text-info">
+								<div class="form-group text-info d-none">
 
 										<label class="radio-inline">
 											<input type="radio" class="r5" name="other_income_growth_or" value="amnt"> Amount &nbsp; &nbsp; &nbsp; 
@@ -419,33 +415,33 @@
 
 						<div class="col">
 							<div class="form-group">
-								<input type="number"  step="0.01"  min=0 max=100  class="form-control" name="other_income_growth_or_amount[]"   maxlength="20" minlength="1"  />
-								<div class="perc_helper">% value</div>
+								<input type="number" step="0.01" class="form-control" name="other_income_growth_or_amount[]"   maxlength="20" minlength="1"  />
+								<div class="perc_helper_h">% value</div>
 								</div>
 						</div>
 
 						<div class="col">
 							<div class="form-group">
-								<input type="number"  step="0.01" min=0 max=100 class="form-control" name="other_income_growth_or_amount[]"  maxlength="20" minlength="1"  />
-									<div class="perc_helper">% value</div>
+								<input type="number" step="0.01" class="form-control" name="other_income_growth_or_amount[]"   maxlength="20" minlength="1"  />
+								<div class="perc_helper_h">% value</div>
 								</div>
 						</div>
 						<div class="col">
 							<div class="form-group">
-								<input type="number"  step="0.01" min=0 max=100 class="form-control" name="other_income_growth_or_amount[]"   maxlength="20" minlength="1"  />
-									<div class="perc_helper">% value</div>
+								<input type="number" step="0.01" class="form-control" name="other_income_growth_or_amount[]"   maxlength="20" minlength="1"  />
+								<div class="perc_helper_h">% value</div>
 								</div>
 						</div>
 						<div class="col">
 							<div class="form-group">
-								<input type="number"  step="0.01" min=0 max=100 class="form-control" name="other_income_growth_or_amount[]"   maxlength="20" minlength="1"  />
-									<div class="perc_helper">% value</div>
+								<input type="number" step="0.01" class="form-control" name="other_income_growth_or_amount[]"   maxlength="20" minlength="1"  />
+								<div class="perc_helper_h">% value</div>
 								</div>
 						</div>
 						<div class="col">
 							<div class="form-group">
-								<input type="number"  step="0.01" min=0 max=100 class="form-control" name="other_income_growth_or_amount[]"  maxlength="20" minlength="1"  />
-									<div class="perc_helper">% value</div>
+								<input type="number" step="0.01" class="form-control" name="other_income_growth_or_amount[]"   maxlength="20" minlength="1"  />
+								<div class="perc_helper_h">% value</div>
 								</div>
 						</div>
 						
@@ -461,7 +457,7 @@
 								<label ><strong>Realised Foreign Exchange Gain or Loss </strong>
                                 <a href="#"  data-toggle="tooltip" title="Help text."><i class="far fa-question-circle"></i></a></label>
 									
-								<div class="form-group text-info">
+								<div class="form-group text-info d-none">
 
 										<label class="radio-inline">
 											<input type="radio" class="r5" name="realised_foreign_exchange_gain_or" value="gain" checked> Gain &nbsp; &nbsp; &nbsp; 
@@ -531,7 +527,7 @@
 				<h5 class="text-primary">Product Development Expenses/ Operating Expenses</h5><br>				
 				
 						
-                <h6 class="text-success">Direct Material <a href="#"  data-toggle="tooltip" title="Help text."><i class="far fa-question-circle"></i></a></h6><br>
+                <h6 class="text-primary">Direct Material <a href="#"  data-toggle="tooltip" title="Help text."><i class="far fa-question-circle"></i></a></h6><br>
 
 
                   <div id="" class="form-row">
@@ -566,25 +562,25 @@
 
 						<div class="col">
 							<div class="form-group">
-								<input type="number"  step="0.01" class="form-control" name="direct_material_units[]"  maxlength="20" minlength="1"  />
+								<input type="text" class="form-control text_input" name="direct_material_units[]"  maxlength="20" minlength="1"  />
 									<div class="perc_helper_h">% value</div>
 								</div>
 						</div>
 						<div class="col">
 							<div class="form-group">
-								<input type="number"  step="0.01"  class="form-control" name="direct_material_units[]"   maxlength="20" minlength="1"  />
+								<input type="text" class="form-control text_input" name="direct_material_units[]"  maxlength="20" minlength="1"  />
 									<div class="perc_helper_h">% value</div>
 								</div>
 						</div>
 						<div class="col">
 							<div class="form-group">
-								<input type="number"  step="0.01"  class="form-control" name="direct_material_units[]"   maxlength="20" minlength="1"  />
+								<input type="text" class="form-control text_input" name="direct_material_units[]"  maxlength="20" minlength="1"  />
 									<div class="perc_helper_h">% value</div>
 								</div>
 						</div>
 						<div class="col">
 							<div class="form-group">
-								<input type="number"  step="0.01"  class="form-control" name="direct_material_units[]"  maxlength="20" minlength="1"  />
+								<input type="text" class="form-control text_input" name="direct_material_units[]"  maxlength="20" minlength="1"  />
 									<div class="perc_helper_h">% value</div>
 								</div>
 						</div>
@@ -630,25 +626,25 @@
 
 						<div class="col">
 							<div class="form-group">
-								<input type="number"  step="0.01"  class="form-control" name="direct_material_average_cost_per_unit[]"  maxlength="20" minlength="1"  />
+								<input type="text"  class="form-control text_input" name="direct_material_average_cost_per_unit[]"  maxlength="20" minlength="1"  />
 									<div class="perc_helper_h">% value</div>
 								</div>
 						</div>
 						<div class="col">
 							<div class="form-group">
-								<input type="number"  step="0.01"  class="form-control" name="direct_material_average_cost_per_unit[]"   maxlength="20" minlength="1"  />
+								<input type="text"  class="form-control text_input" name="direct_material_average_cost_per_unit[]"  maxlength="20" minlength="1"  />
 									<div class="perc_helper_h">% value</div>
 								</div>
 						</div>
 						<div class="col">
 							<div class="form-group">
-								<input type="number"  step="0.01"  class="form-control" name="direct_material_average_cost_per_unit[]"   maxlength="20" minlength="1"  />
+								<input type="text"  class="form-control text_input" name="direct_material_average_cost_per_unit[]"  maxlength="20" minlength="1"  />
 									<div class="perc_helper_h">% value</div>
 								</div>
 						</div>
 						<div class="col">
 							<div class="form-group">
-								<input type="number"  step="0.01"  class="form-control" name="direct_material_average_cost_per_unit[]"  maxlength="20" minlength="1"  />
+								<input type="text"  class="form-control text_input" name="direct_material_average_cost_per_unit[]"  maxlength="20" minlength="1"  />
 									<div class="perc_helper_h">% value</div>
 								</div>
 						</div>
@@ -695,25 +691,25 @@
 
 						<div class="col">
 							<div class="form-group">
-								<input type="number"  step="0.01"  class="form-control" name="direct_labour_no_of_employees[]"  maxlength="20" minlength="1"  />
+								<input type="text"  class="form-control text_input" name="direct_labour_no_of_employees[]"  maxlength="20" minlength="1"  />
 									<div class="perc_helper_h">% value</div>
 								</div>
 						</div>
 						<div class="col">
 							<div class="form-group">
-								<input type="number"  step="0.01"  class="form-control" name="direct_labour_no_of_employees[]"   maxlength="20" minlength="1"  />
+								<input type="text"  class="form-control text_input" name="direct_labour_no_of_employees[]"  maxlength="20" minlength="1"  />
 									<div class="perc_helper_h">% value</div>
 								</div>
 						</div>
 						<div class="col">
 							<div class="form-group">
-								<input type="number"  step="0.01"  class="form-control" name="direct_labour_no_of_employees[]"   maxlength="20" minlength="1"  />
+								<input type="text"  class="form-control text_input" name="direct_labour_no_of_employees[]"  maxlength="20" minlength="1"  />
 									<div class="perc_helper_h">% value</div>
 								</div>
 						</div>
 						<div class="col">
 							<div class="form-group">
-								<input type="number"  step="0.01"  class="form-control" name="direct_labour_no_of_employees[]"  maxlength="20" minlength="1"  />
+								<input type="text"  class="form-control text_input" name="direct_labour_no_of_employees[]"  maxlength="20" minlength="1"  />
 									<div class="perc_helper_h">% value</div>
 								</div>
 						</div>
@@ -757,25 +753,25 @@
 
 						<div class="col">
 							<div class="form-group">
-								<input type="number"  step="0.01"  class="form-control" name="direct_labour_average_cost_per_employee[]"  maxlength="20" minlength="1"  />
+								<input type="text"  class="form-control text_input" name="direct_labour_average_cost_per_employee[]"  maxlength="20" minlength="1"  />
 									<div class="perc_helper_h">% value</div>
 								</div>
 						</div>
 						<div class="col">
 							<div class="form-group">
-								<input type="number"  step="0.01"  class="form-control" name="direct_labour_average_cost_per_employee[]"   maxlength="20" minlength="1"  />
+								<input type="text"  class="form-control text_input" name="direct_labour_average_cost_per_employee[]"  maxlength="20" minlength="1"  />
 									<div class="perc_helper_h">% value</div>
 								</div>
 						</div>
 						<div class="col">
 							<div class="form-group">
-								<input type="number"  step="0.01"  class="form-control" name="direct_labour_average_cost_per_employee[]"   maxlength="20" minlength="1"  />
+								<input type="text"  class="form-control text_input" name="direct_labour_average_cost_per_employee[]"  maxlength="20" minlength="1"  />
 									<div class="perc_helper_h">% value</div>
 								</div>
 						</div>
 						<div class="col">
 							<div class="form-group">
-								<input type="number"  step="0.01"  class="form-control" name="direct_labour_average_cost_per_employee[]"  maxlength="20" minlength="1"  />
+								<input type="text"  class="form-control text_input" name="direct_labour_average_cost_per_employee[]"  maxlength="20" minlength="1"  />
 									<div class="perc_helper_h">% value</div>
 								</div>
 						</div>
@@ -785,7 +781,7 @@
 				</div>
 				<hr>
 
-				<h6 class="text-success">Direct Expenses   <a href="#"  data-toggle="tooltip" title="Help text."><i class="far fa-question-circle"></i></a></h6><br>
+				<h6 class="text-primary">Direct Expenses   <a href="#"  data-toggle="tooltip" title="Help text."><i class="far fa-question-circle"></i></a></h6><br>
 
 
 			                
@@ -821,25 +817,25 @@
 
 						<div class="col">
 							<div class="form-group">
-								<input type="number"  step="0.01" class="form-control" name="other_direct_expenses_1[]"  maxlength="20" minlength="1"  />
+								<input type="text" class="form-control text_input" name="other_direct_expenses_1[]"  maxlength="20" minlength="1"  />
 									<div class="perc_helper_h">% value</div>
 								</div>
 						</div>
 						<div class="col">
 							<div class="form-group">
-								<input type="number"  step="0.01"  class="form-control" name="other_direct_expenses_1[]"   maxlength="20" minlength="1"  />
+								<input type="text"  class="form-control text_input" name="other_direct_expenses_1[]"   maxlength="20" minlength="1"  />
 									<div class="perc_helper_h">% value</div>
 								</div>
 						</div>
 						<div class="col">
 							<div class="form-group">
-								<input type="number"  step="0.01"  class="form-control" name="other_direct_expenses_1[]"   maxlength="20" minlength="1"  />
+								<input type="text"  class="form-control text_input" name="other_direct_expenses_1[]"   maxlength="20" minlength="1"  />
 									<div class="perc_helper_h">% value</div>
 								</div>
 						</div>
 						<div class="col">
 							<div class="form-group">
-								<input type="number"  step="0.01"  class="form-control" name="other_direct_expenses_1[]"  maxlength="20" minlength="1"  />
+								<input type="text"  class="form-control text_input" name="other_direct_expenses_1[]"  maxlength="20" minlength="1"  />
 									<div class="perc_helper_h">% value</div>
 								</div>
 						</div>
@@ -881,25 +877,25 @@
 
 						<div class="col">
 							<div class="form-group">
-								<input type="number"  step="0.01"  class="form-control" name="other_direct_expenses_2[]"  maxlength="20" minlength="1"  />
+								<input type="text"  class="form-control text_input" name="other_direct_expenses_2[]"  maxlength="20" minlength="1"  />
 									<div class="perc_helper_h">% value</div>
 								</div>
 						</div>
 						<div class="col">
 							<div class="form-group">
-								<input type="number"  step="0.01"  class="form-control" name="other_direct_expenses_2[]"   maxlength="20" minlength="1"  />
+								<input type="text"  class="form-control text_input" name="other_direct_expenses_2[]"   maxlength="20" minlength="1"  />
 									<div class="perc_helper_h">% value</div>
 								</div>
 						</div>
 						<div class="col">
 							<div class="form-group">
-								<input type="number"  step="0.01"  class="form-control" name="other_direct_expenses_2[]"   maxlength="20" minlength="1"  />
+								<input type="text"  class="form-control text_input" name="other_direct_expenses_2[]"   maxlength="20" minlength="1"  />
 									<div class="perc_helper_h">% value</div>
 								</div>
 						</div>
 						<div class="col">
 							<div class="form-group">
-								<input type="number"  step="0.01"  class="form-control" name="other_direct_expenses_2[]"  maxlength="20" minlength="1"  />
+								<input type="text"  class="form-control text_input" name="other_direct_expenses_2[]"  maxlength="20" minlength="1"  />
 									<div class="perc_helper_h">% value</div>
 								</div>
 						</div>
@@ -943,25 +939,25 @@
 
 						<div class="col">
 							<div class="form-group">
-								<input type="number"  step="0.01"  class="form-control" name="other_direct_expenses_3[]"  maxlength="20" minlength="1"  />
+								<input type="text"  class="form-control text_input" name="other_direct_expenses_3[]"  maxlength="20" minlength="1"  />
 									<div class="perc_helper_h">% value</div>
 								</div>
 						</div>
 						<div class="col">
 							<div class="form-group">
-								<input type="number"  step="0.01"  class="form-control" name="other_direct_expenses_3[]"   maxlength="20" minlength="1"  />
+								<input type="text"  class="form-control text_input" name="other_direct_expenses_3[]"   maxlength="20" minlength="1"  />
 									<div class="perc_helper_h">% value</div>
 								</div>
 						</div>
 						<div class="col">
 							<div class="form-group">
-								<input type="number"  step="0.01"  class="form-control" name="other_direct_expenses_3[]"   maxlength="20" minlength="1"  />
+								<input type="text"  class="form-control text_input" name="other_direct_expenses_3[]"   maxlength="20" minlength="1"  />
 									<div class="perc_helper_h">% value</div>
 								</div>
 						</div>
 						<div class="col">
 							<div class="form-group">
-								<input type="number"  step="0.01"  class="form-control" name="other_direct_expenses_3[]"  maxlength="20" minlength="1"  />
+								<input type="text"  class="form-control text_input" name="other_direct_expenses_3[]"  maxlength="20" minlength="1"  />
 									<div class="perc_helper_h">% value</div>
 								</div>
 						</div>
@@ -976,7 +972,7 @@
 			<h5 class="text-primary">Employee Expenses</h5><br>
 
 
-			<h6 class="text-success">Administration <a href="#"  data-toggle="tooltip" title="Help text."><i class="far fa-question-circle"></i></a></h6><br>
+			<h6 class="text-primary">Administration <a href="#"  data-toggle="tooltip" title="Help text."><i class="far fa-question-circle"></i></a></h6><br>
 
 
 			
@@ -1013,25 +1009,25 @@
 
 						<div class="col">
 							<div class="form-group">
-								<input type="number"  step="0.01"  class="form-control" name="administration_no_of_employees[]"  maxlength="20" minlength="1"  />
+								<input type="text"  class="form-control text_input" name="administration_no_of_employees[]"  maxlength="20" minlength="1"  />
 									<div class="perc_helper_h">% value</div>
 								</div>
 						</div>
 						<div class="col">
 							<div class="form-group">
-								<input type="number"  step="0.01"  class="form-control" name="administration_no_of_employees[]"   maxlength="20" minlength="1"  />
+								<input type="text"  class="form-control text_input" name="administration_no_of_employees[]"   maxlength="20" minlength="1"  />
 									<div class="perc_helper_h">% value</div>
 								</div>
 						</div>
 						<div class="col">
 							<div class="form-group">
-								<input type="number"  step="0.01"  class="form-control" name="administration_no_of_employees[]"   maxlength="20" minlength="1"  />
+								<input type="text"  class="form-control text_input" name="administration_no_of_employees[]"   maxlength="20" minlength="1"  />
 									<div class="perc_helper_h">% value</div>
 								</div>
 						</div>
 						<div class="col">
 							<div class="form-group">
-								<input type="number"  step="0.01"  class="form-control" name="administration_no_of_employees[]"  maxlength="20" minlength="1"  />
+								<input type="text"  class="form-control text_input" name="administration_no_of_employees[]"  maxlength="20" minlength="1"  />
 									<div class="perc_helper_h">% value</div>
 								</div>
 						</div>
@@ -1075,25 +1071,25 @@
 
 						<div class="col">
 							<div class="form-group">
-								<input type="number"  step="0.01"  class="form-control" name="administration_average_cost_per_employee[]"  maxlength="20" minlength="1"  />
+								<input type="text"  class="form-control text_input" name="administration_average_cost_per_employee[]"  maxlength="20" minlength="1"  />
 									<div class="perc_helper_h">% value</div>
 								</div>
 						</div>
 						<div class="col">
 							<div class="form-group">
-								<input type="number"  step="0.01"  class="form-control" name="administration_average_cost_per_employee[]"   maxlength="20" minlength="1"  />
+								<input type="text"  class="form-control text_input" name="administration_average_cost_per_employee[]"   maxlength="20" minlength="1"  />
 									<div class="perc_helper_h">% value</div>
 								</div>
 						</div>
 						<div class="col">
 							<div class="form-group">
-								<input type="number"  step="0.01"  class="form-control" name="administration_average_cost_per_employee[]"   maxlength="20" minlength="1"  />
+								<input type="text"  class="form-control text_input" name="administration_average_cost_per_employee[]"   maxlength="20" minlength="1"  />
 									<div class="perc_helper_h">% value</div>
 								</div>
 						</div>
 						<div class="col">
 							<div class="form-group">
-								<input type="number"  step="0.01"  class="form-control" name="administration_average_cost_per_employee[]"  maxlength="20" minlength="1"  />
+								<input type="text"  class="form-control text_input" name="administration_average_cost_per_employee[]"  maxlength="20" minlength="1"  />
 									<div class="perc_helper_h">% value</div>
 								</div>
 						</div>
@@ -1107,7 +1103,7 @@
 
 
 
-			<h6 class="text-success">Selling & Distribution  <a href="#"  data-toggle="tooltip" title="Help text."><i class="far fa-question-circle"></i></a></h6><br>
+			<h6 class="text-primary">Selling & Distribution  <a href="#"  data-toggle="tooltip" title="Help text."><i class="far fa-question-circle"></i></a></h6><br>
 
 
 			
@@ -1144,25 +1140,25 @@
 
 						<div class="col">
 							<div class="form-group">
-								<input type="number"  step="0.01"  class="form-control" name="selling_and_distribution_no_of_employees[]"  maxlength="20" minlength="1"  />
+								<input type="text"  class="form-control text_input" name="selling_and_distribution_no_of_employees[]"  maxlength="20" minlength="1"  />
 									<div class="perc_helper_h">% value</div>
 								</div>
 						</div>
 						<div class="col">
 							<div class="form-group">
-								<input type="number"  step="0.01"  class="form-control" name="selling_and_distribution_no_of_employees[]"   maxlength="20" minlength="1"  />
+								<input type="text"  class="form-control text_input" name="selling_and_distribution_no_of_employees[]"   maxlength="20" minlength="1"  />
 									<div class="perc_helper_h">% value</div>
 								</div>
 						</div>
 						<div class="col">
 							<div class="form-group">
-								<input type="number"  step="0.01"  class="form-control" name="selling_and_distribution_no_of_employees[]"   maxlength="20" minlength="1"  />
+								<input type="text"  class="form-control text_input" name="selling_and_distribution_no_of_employees[]"   maxlength="20" minlength="1"  />
 									<div class="perc_helper_h">% value</div>
 								</div>
 						</div>
 						<div class="col">
 							<div class="form-group">
-								<input type="number"  step="0.01"  class="form-control" name="selling_and_distribution_no_of_employees[]"  maxlength="20" minlength="1"  />
+								<input type="text"  class="form-control text_input" name="selling_and_distribution_no_of_employees[]"  maxlength="20" minlength="1"  />
 									<div class="perc_helper_h">% value</div>
 								</div>
 						</div>
@@ -1206,25 +1202,25 @@
 
 						<div class="col">
 							<div class="form-group">
-								<input type="number"  step="0.01"  class="form-control" name="selling_and_distribution_average_cost_per_employee[]"  maxlength="20" minlength="1"  />
+								<input type="text"  class="form-control text_input" name="selling_and_distribution_average_cost_per_employee[]"  maxlength="20" minlength="1"  />
 									<div class="perc_helper_h">% value</div>
 								</div>
 						</div>
 						<div class="col">
 							<div class="form-group">
-								<input type="number"  step="0.01"  class="form-control" name="selling_and_distribution_average_cost_per_employee[]"   maxlength="20" minlength="1"  />
+								<input type="text"  class="form-control text_input" name="selling_and_distribution_average_cost_per_employee[]"   maxlength="20" minlength="1"  />
 									<div class="perc_helper_h">% value</div>
 								</div>
 						</div>
 						<div class="col">
 							<div class="form-group">
-								<input type="number"  step="0.01"  class="form-control" name="selling_and_distribution_average_cost_per_employee[]"   maxlength="20" minlength="1"  />
+								<input type="text"  class="form-control text_input" name="selling_and_distribution_average_cost_per_employee[]"   maxlength="20" minlength="1"  />
 									<div class="perc_helper_h">% value</div>
 								</div>
 						</div>
 						<div class="col">
 							<div class="form-group">
-								<input type="number"  step="0.01"  class="form-control" name="selling_and_distribution_average_cost_per_employee[]"  maxlength="20" minlength="1"  />
+								<input type="text"  class="form-control text_input" name="selling_and_distribution_average_cost_per_employee[]"  maxlength="20" minlength="1"  />
 									<div class="perc_helper_h">% value</div>
 								</div>
 						</div>
@@ -1234,7 +1230,7 @@
 				</div><hr>
 
 
-				<h6 class="text-success">Marketing  <a href="#"  data-toggle="tooltip" title="Help text."><i class="far fa-question-circle"></i></a></h6><br>
+				<h6 class="text-primary">Marketing  <a href="#"  data-toggle="tooltip" title="Help text."><i class="far fa-question-circle"></i></a></h6><br>
 
 
 			
@@ -1271,25 +1267,25 @@
 
 						<div class="col">
 							<div class="form-group">
-								<input type="number"  step="0.01"  class="form-control" name="marketing_no_of_employees[]"  maxlength="20" minlength="1"  />
+								<input type="text"  class="form-control text_input" name="marketing_no_of_employees[]"  maxlength="20" minlength="1"  />
 									<div class="perc_helper_h">% value</div>
 								</div>
 						</div>
 						<div class="col">
 							<div class="form-group">
-								<input type="number"  step="0.01"  class="form-control" name="marketing_no_of_employees[]"   maxlength="20" minlength="1"  />
+								<input type="text"  class="form-control text_input" name="marketing_no_of_employees[]"   maxlength="20" minlength="1"  />
 									<div class="perc_helper_h">% value</div>
 								</div>
 						</div>
 						<div class="col">
 							<div class="form-group">
-								<input type="number"  step="0.01"  class="form-control" name="marketing_no_of_employees[]"   maxlength="20" minlength="1"  />
+								<input type="text"  class="form-control text_input" name="marketing_no_of_employees[]"   maxlength="20" minlength="1"  />
 									<div class="perc_helper_h">% value</div>
 								</div>
 						</div>
 						<div class="col">
 							<div class="form-group">
-								<input type="number"  step="0.01"  class="form-control" name="marketing_no_of_employees[]"  maxlength="20" minlength="1"  />
+								<input type="text"  class="form-control text_input" name="marketing_no_of_employees[]"  maxlength="20" minlength="1"  />
 									<div class="perc_helper_h">% value</div>
 								</div>
 						</div>
@@ -1333,25 +1329,25 @@
 
 						<div class="col">
 							<div class="form-group">
-								<input type="number"  step="0.01"  class="form-control" name="marketing_average_cost_per_employee[]"  maxlength="20" minlength="1"  />
+								<input type="text"  class="form-control text_input" name="marketing_average_cost_per_employee[]"  maxlength="20" minlength="1"  />
 									<div class="perc_helper_h">% value</div>
 								</div>
 						</div>
 						<div class="col">
 							<div class="form-group">
-								<input type="number"  step="0.01"  class="form-control" name="marketing_average_cost_per_employee[]"   maxlength="20" minlength="1"  />
+								<input type="text"  class="form-control text_input" name="marketing_average_cost_per_employee[]"   maxlength="20" minlength="1"  />
 									<div class="perc_helper_h">% value</div>
 								</div>
 						</div>
 						<div class="col">
 							<div class="form-group">
-								<input type="number"  step="0.01"  class="form-control" name="marketing_average_cost_per_employee[]"   maxlength="20" minlength="1"  />
+								<input type="text"  class="form-control text_input" name="marketing_average_cost_per_employee[]"   maxlength="20" minlength="1"  />
 									<div class="perc_helper_h">% value</div>
 								</div>
 						</div>
 						<div class="col">
 							<div class="form-group">
-								<input type="number"  step="0.01"  class="form-control" name="marketing_average_cost_per_employee[]"  maxlength="20" minlength="1"  />
+								<input type="text"  class="form-control text_input" name="marketing_average_cost_per_employee[]"  maxlength="20" minlength="1"  />
 									<div class="perc_helper_h">% value</div>
 								</div>
 						</div>
@@ -1360,7 +1356,7 @@
                        
 				</div><hr>
 
-				<h6 class="text-success">Research & Development  <a href="#"  data-toggle="tooltip" title="Help text."><i class="far fa-question-circle"></i></a></h6><br>
+				<h6 class="text-primary">Research & Development  <a href="#"  data-toggle="tooltip" title="Help text."><i class="far fa-question-circle"></i></a></h6><br>
 
 
 			
@@ -1397,25 +1393,25 @@
 
 						<div class="col">
 							<div class="form-group">
-								<input type="number"  step="0.01"  class="form-control" name="research_and_development_no_of_employees[]"  maxlength="20" minlength="1"  />
+								<input type="text"  class="form-control text_input" name="research_and_development_no_of_employees[]"  maxlength="20" minlength="1"  />
 									<div class="perc_helper_h">% value</div>
 								</div>
 						</div>
 						<div class="col">
 							<div class="form-group">
-								<input type="number"  step="0.01"  class="form-control" name="research_and_development_no_of_employees[]"   maxlength="20" minlength="1"  />
+								<input type="text"  class="form-control text_input" name="research_and_development_no_of_employees[]"   maxlength="20" minlength="1"  />
 									<div class="perc_helper_h">% value</div>
 								</div>
 						</div>
 						<div class="col">
 							<div class="form-group">
-								<input type="number"  step="0.01"  class="form-control" name="research_and_development_no_of_employees[]"   maxlength="20" minlength="1"  />
+								<input type="text"  class="form-control text_input" name="research_and_development_no_of_employees[]"   maxlength="20" minlength="1"  />
 									<div class="perc_helper_h">% value</div>
 								</div>
 						</div>
 						<div class="col">
 							<div class="form-group">
-								<input type="number"  step="0.01"  class="form-control" name="research_and_development_no_of_employees[]"  maxlength="20" minlength="1"  />
+								<input type="text"  class="form-control text_input" name="research_and_development_no_of_employees[]"  maxlength="20" minlength="1"  />
 									<div class="perc_helper_h">% value</div>
 								</div>
 						</div>
@@ -1459,25 +1455,25 @@
 
 						<div class="col">
 							<div class="form-group">
-								<input type="number"  step="0.01"  class="form-control" name="research_and_development_average_cost_per_employee[]"  maxlength="20" minlength="1"  />
+								<input type="text"  class="form-control text_input" name="research_and_development_average_cost_per_employee[]"  maxlength="20" minlength="1"  />
 									<div class="perc_helper_h">% value</div>
 								</div>
 						</div>
 						<div class="col">
 							<div class="form-group">
-								<input type="number"  step="0.01"  class="form-control" name="research_and_development_average_cost_per_employee[]"   maxlength="20" minlength="1"  />
+								<input type="text"  class="form-control text_input" name="research_and_development_average_cost_per_employee[]"   maxlength="20" minlength="1"  />
 									<div class="perc_helper_h">% value</div>
 								</div>
 						</div>
 						<div class="col">
 							<div class="form-group">
-								<input type="number"  step="0.01"  class="form-control" name="research_and_development_average_cost_per_employee[]"   maxlength="20" minlength="1"  />
+								<input type="text"  class="form-control text_input" name="research_and_development_average_cost_per_employee[]"   maxlength="20" minlength="1"  />
 									<div class="perc_helper_h">% value</div>
 								</div>
 						</div>
 						<div class="col">
 							<div class="form-group">
-								<input type="number"  step="0.01"  class="form-control" name="research_and_development_average_cost_per_employee[]"  maxlength="20" minlength="1"  />
+								<input type="text"  class="form-control text_input" name="research_and_development_average_cost_per_employee[]"  maxlength="20" minlength="1"  />
 									<div class="perc_helper_h">% value</div>
 								</div>
 						</div>
@@ -1489,7 +1485,7 @@
 
 
 				<div class="form-row">
-				<div class="col-md-3">	<input type="text" value="Other Employees 1" name="other_employees_1" class="form-control text-success" minlength="1" maxlength="200" /></div>
+				<div class="col-md-3">	<input type="text" value="Other Employees 1" name="other_employees_1" class="form-control text-primary" minlength="1" maxlength="200" /></div>
 				</div><br>
 
 
@@ -1528,25 +1524,25 @@
 
 						<div class="col">
 							<div class="form-group">
-								<input type="number"  step="0.01"  class="form-control" name="other_employees_1_no_of_employees[]"  maxlength="20" minlength="1"  />
+								<input type="text"  class="form-control text_input" name="other_employees_1_no_of_employees[]"  maxlength="20" minlength="1"  />
 									<div class="perc_helper_h">% value</div>
 								</div>
 						</div>
 						<div class="col">
 							<div class="form-group">
-								<input type="number"  step="0.01"  class="form-control" name="other_employees_1_no_of_employees[]"   maxlength="20" minlength="1"  />
+								<input type="text"  class="form-control text_input" name="other_employees_1_no_of_employees[]"   maxlength="20" minlength="1"  />
 									<div class="perc_helper_h">% value</div>
 								</div>
 						</div>
 						<div class="col">
 							<div class="form-group">
-								<input type="number"  step="0.01"  class="form-control" name="other_employees_1_no_of_employees[]"   maxlength="20" minlength="1"  />
+								<input type="text"  class="form-control text_input" name="other_employees_1_no_of_employees[]"   maxlength="20" minlength="1"  />
 									<div class="perc_helper_h">% value</div>
 								</div>
 						</div>
 						<div class="col">
 							<div class="form-group">
-								<input type="number"  step="0.01"  class="form-control" name="other_employees_1_no_of_employees[]"  maxlength="20" minlength="1"  />
+								<input type="text"  class="form-control text_input" name="other_employees_1_no_of_employees[]"  maxlength="20" minlength="1"  />
 									<div class="perc_helper_h">% value</div>
 								</div>
 						</div>
@@ -1590,25 +1586,25 @@
 
 						<div class="col">
 							<div class="form-group">
-								<input type="number"  step="0.01"  class="form-control" name="other_employees_1_average_cost_per_employee[]"  maxlength="20" minlength="1"  />
+								<input type="text"  class="form-control text_input" name="other_employees_1_average_cost_per_employee[]"  maxlength="20" minlength="1"  />
 									<div class="perc_helper_h">% value</div>
 								</div>
 						</div>
 						<div class="col">
 							<div class="form-group">
-								<input type="number"  step="0.01"  class="form-control" name="other_employees_1_average_cost_per_employee[]"   maxlength="20" minlength="1"  />
+								<input type="text"  class="form-control text_input" name="other_employees_1_average_cost_per_employee[]"   maxlength="20" minlength="1"  />
 									<div class="perc_helper_h">% value</div>
 								</div>
 						</div>
 						<div class="col">
 							<div class="form-group">
-								<input type="number"  step="0.01"  class="form-control" name="other_employees_1_average_cost_per_employee[]"   maxlength="20" minlength="1"  />
+								<input type="text"  class="form-control text_input" name="other_employees_1_average_cost_per_employee[]"   maxlength="20" minlength="1"  />
 									<div class="perc_helper_h">% value</div>
 								</div>
 						</div>
 						<div class="col">
 							<div class="form-group">
-								<input type="number"  step="0.01"  class="form-control" name="other_employees_1_average_cost_per_employee[]"  maxlength="20" minlength="1"  />
+								<input type="text"  class="form-control text_input" name="other_employees_1_average_cost_per_employee[]"  maxlength="20" minlength="1"  />
 									<div class="perc_helper_h">% value</div>
 								</div>
 						</div>
@@ -1620,7 +1616,7 @@
 
 
 				<div class="form-row">
-				<div class="col-md-3">	<input type="text" value="Other Employees 2" name="other_employees_2" class="form-control text-success" minlength="1" maxlength="200" /></div>
+				<div class="col-md-3">	<input type="text" value="Other Employees 2" name="other_employees_2" class="form-control text-primary" minlength="1" maxlength="200" /></div>
 				</div><br>
 
 
@@ -1659,25 +1655,25 @@
 
 						<div class="col">
 							<div class="form-group">
-								<input type="number"  step="0.01"  class="form-control" name="other_employees_2_no_of_employees[]"  maxlength="20" minlength="1"  />
+								<input type="text"  class="form-control text_input" name="other_employees_2_no_of_employees[]"  maxlength="20" minlength="1"  />
 									<div class="perc_helper_h">% value</div>
 								</div>
 						</div>
 						<div class="col">
 							<div class="form-group">
-								<input type="number"  step="0.01"  class="form-control" name="other_employees_2_no_of_employees[]"   maxlength="20" minlength="1"  />
+								<input type="text"  class="form-control text_input" name="other_employees_2_no_of_employees[]"   maxlength="20" minlength="1"  />
 									<div class="perc_helper_h">% value</div>
 								</div>
 						</div>
 						<div class="col">
 							<div class="form-group">
-								<input type="number"  step="0.01"  class="form-control" name="other_employees_2_no_of_employees[]"   maxlength="20" minlength="1"  />
+								<input type="text"  class="form-control text_input" name="other_employees_2_no_of_employees[]"   maxlength="20" minlength="1"  />
 									<div class="perc_helper_h">% value</div>
 								</div>
 						</div>
 						<div class="col">
 							<div class="form-group">
-								<input type="number"  step="0.01"  class="form-control" name="other_employees_2_no_of_employees[]"  maxlength="20" minlength="1"  />
+								<input type="text"  class="form-control text_input" name="other_employees_2_no_of_employees[]"  maxlength="20" minlength="1"  />
 									<div class="perc_helper_h">% value</div>
 								</div>
 						</div>
@@ -1721,25 +1717,25 @@
 
 						<div class="col">
 							<div class="form-group">
-								<input type="number"  step="0.01"  class="form-control" name="other_employees_2_average_cost_per_employee[]"  maxlength="20" minlength="1"  />
+								<input type="text"  class="form-control text_input" name="other_employees_2_average_cost_per_employee[]"  maxlength="20" minlength="1"  />
 									<div class="perc_helper_h">% value</div>
 								</div>
 						</div>
 						<div class="col">
 							<div class="form-group">
-								<input type="number"  step="0.01"  class="form-control" name="other_employees_2_average_cost_per_employee[]"   maxlength="20" minlength="1"  />
+								<input type="text"  class="form-control text_input" name="other_employees_2_average_cost_per_employee[]"   maxlength="20" minlength="1"  />
 									<div class="perc_helper_h">% value</div>
 								</div>
 						</div>
 						<div class="col">
 							<div class="form-group">
-								<input type="number"  step="0.01"  class="form-control" name="other_employees_2_average_cost_per_employee[]"   maxlength="20" minlength="1"  />
+								<input type="text"  class="form-control text_input" name="other_employees_2_average_cost_per_employee[]"   maxlength="20" minlength="1"  />
 									<div class="perc_helper_h">% value</div>
 								</div>
 						</div>
 						<div class="col">
 							<div class="form-group">
-								<input type="number"  step="0.01"  class="form-control" name="other_employees_2_average_cost_per_employee[]"  maxlength="20" minlength="1"  />
+								<input type="text"  class="form-control text_input" name="other_employees_2_average_cost_per_employee[]"  maxlength="20" minlength="1"  />
 									<div class="perc_helper_h">% value</div>
 								</div>
 						</div>
@@ -1750,7 +1746,7 @@
 
 
 				<div class="form-row">
-				<div class="col-md-3">	<input type="text" value="Other Employees 3" name="other_employees_3" class="form-control text-success" minlength="1" maxlength="200" /></div>
+				<div class="col-md-3">	<input type="text" value="Other Employees 3" name="other_employees_3" class="form-control text-primary" minlength="1" maxlength="200" /></div>
 				</div><br>
 
 
@@ -1789,25 +1785,25 @@
 
 						<div class="col">
 							<div class="form-group">
-								<input type="number"  step="0.01"  class="form-control" name="other_employees_3_no_of_employees[]"  maxlength="20" minlength="1"  />
+								<input type="text"  class="form-control text_input" name="other_employees_3_no_of_employees[]"  maxlength="20" minlength="1"  />
 									<div class="perc_helper_h">% value</div>
 								</div>
 						</div>
 						<div class="col">
 							<div class="form-group">
-								<input type="number"  step="0.01"  class="form-control" name="other_employees_3_no_of_employees[]"   maxlength="20" minlength="1"  />
+								<input type="text"  class="form-control text_input" name="other_employees_3_no_of_employees[]"   maxlength="20" minlength="1"  />
 									<div class="perc_helper_h">% value</div>
 								</div>
 						</div>
 						<div class="col">
 							<div class="form-group">
-								<input type="number"  step="0.01"  class="form-control" name="other_employees_3_no_of_employees[]"   maxlength="20" minlength="1"  />
+								<input type="text"  class="form-control text_input" name="other_employees_3_no_of_employees[]"   maxlength="20" minlength="1"  />
 									<div class="perc_helper_h">% value</div>
 								</div>
 						</div>
 						<div class="col">
 							<div class="form-group">
-								<input type="number"  step="0.01"  class="form-control" name="other_employees_3_no_of_employees[]"  maxlength="20" minlength="1"  />
+								<input type="text"  class="form-control text_input" name="other_employees_3_no_of_employees[]"  maxlength="20" minlength="1"  />
 									<div class="perc_helper_h">% value</div>
 								</div>
 						</div>
@@ -1851,25 +1847,25 @@
 
 						<div class="col">
 							<div class="form-group">
-								<input type="number"  step="0.01"  class="form-control" name="other_employees_3_average_cost_per_employee[]"  maxlength="20" minlength="1"  />
+								<input type="text"  class="form-control text_input" name="other_employees_3_average_cost_per_employee[]"  maxlength="20" minlength="1"  />
 									<div class="perc_helper_h">% value</div>
 								</div>
 						</div>
 						<div class="col">
 							<div class="form-group">
-								<input type="number"  step="0.01"  class="form-control" name="other_employees_3_average_cost_per_employee[]"   maxlength="20" minlength="1"  />
+								<input type="text"  class="form-control text_input" name="other_employees_3_average_cost_per_employee[]"   maxlength="20" minlength="1"  />
 									<div class="perc_helper_h">% value</div>
 								</div>
 						</div>
 						<div class="col">
 							<div class="form-group">
-								<input type="number"  step="0.01"  class="form-control" name="other_employees_3_average_cost_per_employee[]"   maxlength="20" minlength="1"  />
+								<input type="text"  class="form-control text_input" name="other_employees_3_average_cost_per_employee[]"   maxlength="20" minlength="1"  />
 									<div class="perc_helper_h">% value</div>
 								</div>
 						</div>
 						<div class="col">
 							<div class="form-group">
-								<input type="number"  step="0.01"  class="form-control" name="other_employees_3_average_cost_per_employee[]"  maxlength="20" minlength="1"  />
+								<input type="text"  class="form-control text_input" name="other_employees_3_average_cost_per_employee[]"  maxlength="20" minlength="1"  />
 									<div class="perc_helper_h">% value</div>
 								</div>
 						</div>
@@ -1914,25 +1910,25 @@
 
 						<div class="col">
 							<div class="form-group">
-								<input type="number"  step="0.01"  class="form-control" name="rent[]"  maxlength="20" minlength="1"  />
+								<input type="text"  class="form-control text_input" name="rent[]"  maxlength="20" minlength="1"  />
 									<div class="perc_helper_h">% value</div>
 								</div>
 						</div>
 						<div class="col">
 							<div class="form-group">
-								<input type="number"  step="0.01"  class="form-control" name="rent[]"   maxlength="20" minlength="1"  />
+								<input type="text"  class="form-control text_input" name="rent[]"   maxlength="20" minlength="1"  />
 									<div class="perc_helper_h">% value</div>
 								</div>
 						</div>
 						<div class="col">
 							<div class="form-group">
-								<input type="number"  step="0.01"  class="form-control" name="rent[]"   maxlength="20" minlength="1"  />
+								<input type="text"  class="form-control text_input" name="rent[]"   maxlength="20" minlength="1"  />
 									<div class="perc_helper_h">% value</div>
 								</div>
 						</div>
 						<div class="col">
 							<div class="form-group">
-								<input type="number"  step="0.01"  class="form-control" name="rent[]"  maxlength="20" minlength="1"  />
+								<input type="text"  class="form-control text_input" name="rent[]"  maxlength="20" minlength="1"  />
 									<div class="perc_helper_h">% value</div>
 								</div>
 						</div>
@@ -1975,25 +1971,25 @@
 
 						<div class="col">
 							<div class="form-group">
-								<input type="number"  step="0.01"  class="form-control" name="telephone_expenses[]"  maxlength="20" minlength="1"  />
+								<input type="text"  class="form-control text_input" name="telephone_expenses[]"  maxlength="20" minlength="1"  />
 									<div class="perc_helper_h">% value</div>
 								</div>
 						</div>
 						<div class="col">
 							<div class="form-group">
-								<input type="number"  step="0.01"  class="form-control" name="telephone_expenses[]"   maxlength="20" minlength="1"  />
+								<input type="text"  class="form-control text_input" name="telephone_expenses[]"   maxlength="20" minlength="1"  />
 									<div class="perc_helper_h">% value</div>
 								</div>
 						</div>
 						<div class="col">
 							<div class="form-group">
-								<input type="number"  step="0.01"  class="form-control" name="telephone_expenses[]"   maxlength="20" minlength="1"  />
+								<input type="text"  class="form-control text_input" name="telephone_expenses[]"   maxlength="20" minlength="1"  />
 									<div class="perc_helper_h">% value</div>
 								</div>
 						</div>
 						<div class="col">
 							<div class="form-group">
-								<input type="number"  step="0.01"  class="form-control" name="telephone_expenses[]"  maxlength="20" minlength="1"  />
+								<input type="text"  class="form-control text_input" name="telephone_expenses[]"  maxlength="20" minlength="1"  />
 									<div class="perc_helper_h">% value</div>
 								</div>
 						</div>
@@ -2035,25 +2031,25 @@
 
 						<div class="col">
 							<div class="form-group">
-								<input type="number"  step="0.01"  class="form-control" name="electricity[]"  maxlength="20" minlength="1"  />
+								<input type="text"  class="form-control text_input" name="electricity[]"  maxlength="20" minlength="1"  />
 									<div class="perc_helper_h">% value</div>
 								</div>
 						</div>
 						<div class="col">
 							<div class="form-group">
-								<input type="number"  step="0.01"  class="form-control" name="electricity[]"   maxlength="20" minlength="1"  />
+								<input type="text"  class="form-control text_input" name="electricity[]"   maxlength="20" minlength="1"  />
 									<div class="perc_helper_h">% value</div>
 								</div>
 						</div>
 						<div class="col">
 							<div class="form-group">
-								<input type="number"  step="0.01"  class="form-control" name="electricity[]"   maxlength="20" minlength="1"  />
+								<input type="text"  class="form-control text_input" name="electricity[]"   maxlength="20" minlength="1"  />
 									<div class="perc_helper_h">% value</div>
 								</div>
 						</div>
 						<div class="col">
 							<div class="form-group">
-								<input type="number"  step="0.01"  class="form-control" name="electricity[]"  maxlength="20" minlength="1"  />
+								<input type="text"  class="form-control text_input" name="electricity[]"  maxlength="20" minlength="1"  />
 									<div class="perc_helper_h">% value</div>
 								</div>
 						</div>
@@ -2095,25 +2091,25 @@
 
 						<div class="col">
 							<div class="form-group">
-								<input type="number"  step="0.01"  class="form-control" name="printing_and_stationery[]"  maxlength="20" minlength="1"  />
+								<input type="text"  class="form-control text_input" name="printing_and_stationery[]"  maxlength="20" minlength="1"  />
 									<div class="perc_helper_h">% value</div>
 								</div>
 						</div>
 						<div class="col">
 							<div class="form-group">
-								<input type="number"  step="0.01"  class="form-control" name="printing_and_stationery[]"   maxlength="20" minlength="1"  />
+								<input type="text"  class="form-control text_input" name="printing_and_stationery[]"   maxlength="20" minlength="1"  />
 									<div class="perc_helper_h">% value</div>
 								</div>
 						</div>
 						<div class="col">
 							<div class="form-group">
-								<input type="number"  step="0.01"  class="form-control" name="printing_and_stationery[]"   maxlength="20" minlength="1"  />
+								<input type="text"  class="form-control text_input" name="printing_and_stationery[]"   maxlength="20" minlength="1"  />
 									<div class="perc_helper_h">% value</div>
 								</div>
 						</div>
 						<div class="col">
 							<div class="form-group">
-								<input type="number"  step="0.01"  class="form-control" name="printing_and_stationery[]"  maxlength="20" minlength="1"  />
+								<input type="text"  class="form-control text_input" name="printing_and_stationery[]"  maxlength="20" minlength="1"  />
 									<div class="perc_helper_h">% value</div>
 								</div>
 						</div>
@@ -2156,25 +2152,25 @@
 
 						<div class="col">
 							<div class="form-group">
-								<input type="number"  step="0.01"  class="form-control" name="audit_fees[]"  maxlength="20" minlength="1"  />
+								<input type="text"  class="form-control text_input" name="audit_fees[]"  maxlength="20" minlength="1"  />
 									<div class="perc_helper_h">% value</div>
 								</div>
 						</div>
 						<div class="col">
 							<div class="form-group">
-								<input type="number"  step="0.01"  class="form-control" name="audit_fees[]"   maxlength="20" minlength="1"  />
+								<input type="text"  class="form-control text_input" name="audit_fees[]"   maxlength="20" minlength="1"  />
 									<div class="perc_helper_h">% value</div>
 								</div>
 						</div>
 						<div class="col">
 							<div class="form-group">
-								<input type="number"  step="0.01"  class="form-control" name="audit_fees[]"   maxlength="20" minlength="1"  />
+								<input type="text"  class="form-control text_input" name="audit_fees[]"   maxlength="20" minlength="1"  />
 									<div class="perc_helper_h">% value</div>
 								</div>
 						</div>
 						<div class="col">
 							<div class="form-group">
-								<input type="number"  step="0.01"  class="form-control" name="audit_fees[]"  maxlength="20" minlength="1"  />
+								<input type="text"  class="form-control text_input" name="audit_fees[]"  maxlength="20" minlength="1"  />
 									<div class="perc_helper_h">% value</div>
 								</div>
 						</div>
@@ -2217,25 +2213,25 @@
 
 						<div class="col">
 							<div class="form-group">
-								<input type="number"  step="0.01"  class="form-control" name="other_administration_expenses_1[]"  maxlength="20" minlength="1"  />
+								<input type="text"  class="form-control text_input" name="other_administration_expenses_1[]"  maxlength="20" minlength="1"  />
 									<div class="perc_helper_h">% value</div>
 								</div>
 						</div>
 						<div class="col">
 							<div class="form-group">
-								<input type="number"  step="0.01"  class="form-control" name="other_administration_expenses_1[]"   maxlength="20" minlength="1"  />
+								<input type="text"  class="form-control text_input" name="other_administration_expenses_1[]"   maxlength="20" minlength="1"  />
 									<div class="perc_helper_h">% value</div>
 								</div>
 						</div>
 						<div class="col">
 							<div class="form-group">
-								<input type="number"  step="0.01"  class="form-control" name="other_administration_expenses_1[]"   maxlength="20" minlength="1"  />
+								<input type="text"  class="form-control text_input" name="other_administration_expenses_1[]"   maxlength="20" minlength="1"  />
 									<div class="perc_helper_h">% value</div>
 								</div>
 						</div>
 						<div class="col">
 							<div class="form-group">
-								<input type="number"  step="0.01"  class="form-control" name="other_administration_expenses_1[]"  maxlength="20" minlength="1"  />
+								<input type="text"  class="form-control text_input" name="other_administration_expenses_1[]"  maxlength="20" minlength="1"  />
 									<div class="perc_helper_h">% value</div>
 								</div>
 						</div>
@@ -2277,25 +2273,25 @@
 
 						<div class="col">
 							<div class="form-group">
-								<input type="number"  step="0.01"  class="form-control" name="other_administration_expenses_2[]"  maxlength="20" minlength="1"  />
+								<input type="text"  class="form-control text_input" name="other_administration_expenses_2[]"  maxlength="20" minlength="1"  />
 									<div class="perc_helper_h">% value</div>
 								</div>
 						</div>
 						<div class="col">
 							<div class="form-group">
-								<input type="number"  step="0.01"  class="form-control" name="other_administration_expenses_2[]"   maxlength="20" minlength="1"  />
+								<input type="text"  class="form-control text_input" name="other_administration_expenses_2[]"   maxlength="20" minlength="1"  />
 									<div class="perc_helper_h">% value</div>
 								</div>
 						</div>
 						<div class="col">
 							<div class="form-group">
-								<input type="number"  step="0.01"  class="form-control" name="other_administration_expenses_2[]"   maxlength="20" minlength="1"  />
+								<input type="text"  class="form-control text_input" name="other_administration_expenses_2[]"   maxlength="20" minlength="1"  />
 									<div class="perc_helper_h">% value</div>
 								</div>
 						</div>
 						<div class="col">
 							<div class="form-group">
-								<input type="number"  step="0.01"  class="form-control" name="other_administration_expenses_2[]"  maxlength="20" minlength="1"  />
+								<input type="text"  class="form-control text_input" name="other_administration_expenses_2[]"  maxlength="20" minlength="1"  />
 									<div class="perc_helper_h">% value</div>
 								</div>
 						</div>
@@ -2338,25 +2334,25 @@
 
 						<div class="col">
 							<div class="form-group">
-								<input type="number"  step="0.01"  class="form-control" name="other_administration_expenses_3[]"  maxlength="20" minlength="1"  />
+								<input type="text"  class="form-control text_input" name="other_administration_expenses_3[]"  maxlength="20" minlength="1"  />
 									<div class="perc_helper_h">% value</div>
 								</div>
 						</div>
 						<div class="col">
 							<div class="form-group">
-								<input type="number"  step="0.01"  class="form-control" name="other_administration_expenses_3[]"   maxlength="20" minlength="1"  />
+								<input type="text"  class="form-control text_input" name="other_administration_expenses_3[]"   maxlength="20" minlength="1"  />
 									<div class="perc_helper_h">% value</div>
 								</div>
 						</div>
 						<div class="col">
 							<div class="form-group">
-								<input type="number"  step="0.01"  class="form-control" name="other_administration_expenses_3[]"   maxlength="20" minlength="1"  />
+								<input type="text"  class="form-control text_input" name="other_administration_expenses_3[]"   maxlength="20" minlength="1"  />
 									<div class="perc_helper_h">% value</div>
 								</div>
 						</div>
 						<div class="col">
 							<div class="form-group">
-								<input type="number"  step="0.01"  class="form-control" name="other_administration_expenses_3[]"  maxlength="20" minlength="1"  />
+								<input type="text"  class="form-control text_input" name="other_administration_expenses_3[]"  maxlength="20" minlength="1"  />
 									<div class="perc_helper_h">% value</div>
 								</div>
 						</div>
@@ -2405,25 +2401,25 @@
 
 						<div class="col">
 							<div class="form-group">
-								<input type="number"  step="0.01"  class="form-control" name="digital_marketing_cost[]"  maxlength="20" minlength="1"  />
+								<input type="text"  class="form-control text_input" name="digital_marketing_cost[]"  maxlength="20" minlength="1"  />
 									<div class="perc_helper_h">% value</div>
 								</div>
 						</div>
 						<div class="col">
 							<div class="form-group">
-								<input type="number"  step="0.01"  class="form-control" name="digital_marketing_cost[]"   maxlength="20" minlength="1"  />
+								<input type="text"  class="form-control text_input" name="digital_marketing_cost[]"   maxlength="20" minlength="1"  />
 									<div class="perc_helper_h">% value</div>
 								</div>
 						</div>
 						<div class="col">
 							<div class="form-group">
-								<input type="number"  step="0.01"  class="form-control" name="digital_marketing_cost[]"   maxlength="20" minlength="1"  />
+								<input type="text"  class="form-control text_input" name="digital_marketing_cost[]"   maxlength="20" minlength="1"  />
 									<div class="perc_helper_h">% value</div>
 								</div>
 						</div>
 						<div class="col">
 							<div class="form-group">
-								<input type="number"  step="0.01"  class="form-control" name="digital_marketing_cost[]"  maxlength="20" minlength="1"  />
+								<input type="text"  class="form-control text_input" name="digital_marketing_cost[]"  maxlength="20" minlength="1"  />
 									<div class="perc_helper_h">% value</div>
 								</div>
 						</div>
@@ -2465,25 +2461,25 @@
 
 						<div class="col">
 							<div class="form-group">
-								<input type="number"  step="0.01"  class="form-control" name="sales_commissions[]"  maxlength="20" minlength="1"  />
+								<input type="text"  class="form-control text_input" name="sales_commissions[]"  maxlength="20" minlength="1"  />
 									<div class="perc_helper_h">% value</div>
 								</div>
 						</div>
 						<div class="col">
 							<div class="form-group">
-								<input type="number"  step="0.01"  class="form-control" name="sales_commissions[]"   maxlength="20" minlength="1"  />
+								<input type="text"  class="form-control text_input" name="sales_commissions[]"   maxlength="20" minlength="1"  />
 									<div class="perc_helper_h">% value</div>
 								</div>
 						</div>
 						<div class="col">
 							<div class="form-group">
-								<input type="number"  step="0.01"  class="form-control" name="sales_commissions[]"   maxlength="20" minlength="1"  />
+								<input type="text"  class="form-control text_input" name="sales_commissions[]"   maxlength="20" minlength="1"  />
 									<div class="perc_helper_h">% value</div>
 								</div>
 						</div>
 						<div class="col">
 							<div class="form-group">
-								<input type="number"  step="0.01"  class="form-control" name="sales_commissions[]"  maxlength="20" minlength="1"  />
+								<input type="text"  class="form-control text_input" name="sales_commissions[]"  maxlength="20" minlength="1"  />
 									<div class="perc_helper_h">% value</div>
 								</div>
 						</div>
@@ -2526,25 +2522,25 @@
 
 						<div class="col">
 							<div class="form-group">
-								<input type="number"  step="0.01"  class="form-control" name="travelling_expenses[]"  maxlength="20" minlength="1"  />
+								<input type="text"  class="form-control text_input" name="travelling_expenses[]"  maxlength="20" minlength="1"  />
 									<div class="perc_helper_h">% value</div>
 								</div>
 						</div>
 						<div class="col">
 							<div class="form-group">
-								<input type="number"  step="0.01"  class="form-control" name="travelling_expenses[]"   maxlength="20" minlength="1"  />
+								<input type="text"  class="form-control text_input" name="travelling_expenses[]"   maxlength="20" minlength="1"  />
 									<div class="perc_helper_h">% value</div>
 								</div>
 						</div>
 						<div class="col">
 							<div class="form-group">
-								<input type="number"  step="0.01"  class="form-control" name="travelling_expenses[]"   maxlength="20" minlength="1"  />
+								<input type="text"  class="form-control text_input" name="travelling_expenses[]"   maxlength="20" minlength="1"  />
 									<div class="perc_helper_h">% value</div>
 								</div>
 						</div>
 						<div class="col">
 							<div class="form-group">
-								<input type="number"  step="0.01"  class="form-control" name="travelling_expenses[]"  maxlength="20" minlength="1"  />
+								<input type="text"  class="form-control text_input" name="travelling_expenses[]"  maxlength="20" minlength="1"  />
 									<div class="perc_helper_h">% value</div>
 								</div>
 						</div>
@@ -2587,25 +2583,25 @@
 
 						<div class="col">
 							<div class="form-group">
-								<input type="number"  step="0.01"  class="form-control" name="advertisement[]"  maxlength="20" minlength="1"  />
+								<input type="text"  class="form-control text_input" name="advertisement[]"  maxlength="20" minlength="1"  />
 									<div class="perc_helper_h">% value</div>
 								</div>
 						</div>
 						<div class="col">
 							<div class="form-group">
-								<input type="number"  step="0.01"  class="form-control" name="advertisement[]"   maxlength="20" minlength="1"  />
+								<input type="text"  class="form-control text_input" name="advertisement[]"   maxlength="20" minlength="1"  />
 									<div class="perc_helper_h">% value</div>
 								</div>
 						</div>
 						<div class="col">
 							<div class="form-group">
-								<input type="number"  step="0.01"  class="form-control" name="advertisement[]"   maxlength="20" minlength="1"  />
+								<input type="text"  class="form-control text_input" name="advertisement[]"   maxlength="20" minlength="1"  />
 									<div class="perc_helper_h">% value</div>
 								</div>
 						</div>
 						<div class="col">
 							<div class="form-group">
-								<input type="number"  step="0.01"  class="form-control" name="advertisement[]"  maxlength="20" minlength="1"  />
+								<input type="text"  class="form-control text_input" name="advertisement[]"  maxlength="20" minlength="1"  />
 									<div class="perc_helper_h">% value</div>
 								</div>
 						</div>
@@ -2647,25 +2643,25 @@
 
 						<div class="col">
 							<div class="form-group">
-								<input type="number"  step="0.01"  class="form-control" name="logistics_expenses[]"  maxlength="20" minlength="1"  />
+								<input type="text"  class="form-control text_input" name="logistics_expenses[]"  maxlength="20" minlength="1"  />
 									<div class="perc_helper_h">% value</div>
 								</div>
 						</div>
 						<div class="col">
 							<div class="form-group">
-								<input type="number"  step="0.01"  class="form-control" name="logistics_expenses[]"   maxlength="20" minlength="1"  />
+								<input type="text"  class="form-control text_input" name="logistics_expenses[]"   maxlength="20" minlength="1"  />
 									<div class="perc_helper_h">% value</div>
 								</div>
 						</div>
 						<div class="col">
 							<div class="form-group">
-								<input type="number"  step="0.01"  class="form-control" name="logistics_expenses[]"   maxlength="20" minlength="1"  />
+								<input type="text"  class="form-control text_input" name="logistics_expenses[]"   maxlength="20" minlength="1"  />
 									<div class="perc_helper_h">% value</div>
 								</div>
 						</div>
 						<div class="col">
 							<div class="form-group">
-								<input type="number"  step="0.01"  class="form-control" name="logistics_expenses[]"  maxlength="20" minlength="1"  />
+								<input type="text"  class="form-control text_input" name="logistics_expenses[]"  maxlength="20" minlength="1"  />
 									<div class="perc_helper_h">% value</div>
 								</div>
 						</div>
@@ -2708,25 +2704,25 @@
 
 						<div class="col">
 							<div class="form-group">
-								<input type="number"  step="0.01"  class="form-control" name="other_selling_and_marketing_expenses_1[]"  maxlength="20" minlength="1"  />
+								<input type="text"  class="form-control text_input" name="other_selling_and_marketing_expenses_1[]"  maxlength="20" minlength="1"  />
 									<div class="perc_helper_h">% value</div>
 								</div>
 						</div>
 						<div class="col">
 							<div class="form-group">
-								<input type="number"  step="0.01"  class="form-control" name="other_selling_and_marketing_expenses_1[]"   maxlength="20" minlength="1"  />
+								<input type="text"  class="form-control text_input" name="other_selling_and_marketing_expenses_1[]"   maxlength="20" minlength="1"  />
 									<div class="perc_helper_h">% value</div>
 								</div>
 						</div>
 						<div class="col">
 							<div class="form-group">
-								<input type="number"  step="0.01"  class="form-control" name="other_selling_and_marketing_expenses_1[]"   maxlength="20" minlength="1"  />
+								<input type="text"  class="form-control text_input" name="other_selling_and_marketing_expenses_1[]"   maxlength="20" minlength="1"  />
 									<div class="perc_helper_h">% value</div>
 								</div>
 						</div>
 						<div class="col">
 							<div class="form-group">
-								<input type="number"  step="0.01"  class="form-control" name="other_selling_and_marketing_expenses_1[]"  maxlength="20" minlength="1"  />
+								<input type="text"  class="form-control text_input" name="other_selling_and_marketing_expenses_1[]"  maxlength="20" minlength="1"  />
 									<div class="perc_helper_h">% value</div>
 								</div>
 						</div>
@@ -2769,25 +2765,25 @@
 
 						<div class="col">
 							<div class="form-group">
-								<input type="number"  step="0.01"  class="form-control" name="other_selling_and_marketing_expenses_2[]"  maxlength="20" minlength="1"  />
+								<input type="text"  class="form-control text_input" name="other_selling_and_marketing_expenses_2[]"  maxlength="20" minlength="1"  />
 									<div class="perc_helper_h">% value</div>
 								</div>
 						</div>
 						<div class="col">
 							<div class="form-group">
-								<input type="number"  step="0.01"  class="form-control" name="other_selling_and_marketing_expenses_2[]"   maxlength="20" minlength="1"  />
+								<input type="text"  class="form-control text_input" name="other_selling_and_marketing_expenses_2[]"   maxlength="20" minlength="1"  />
 									<div class="perc_helper_h">% value</div>
 								</div>
 						</div>
 						<div class="col">
 							<div class="form-group">
-								<input type="number"  step="0.01"  class="form-control" name="other_selling_and_marketing_expenses_2[]"   maxlength="20" minlength="1"  />
+								<input type="text"  class="form-control text_input" name="other_selling_and_marketing_expenses_2[]"   maxlength="20" minlength="1"  />
 									<div class="perc_helper_h">% value</div>
 								</div>
 						</div>
 						<div class="col">
 							<div class="form-group">
-								<input type="number"  step="0.01"  class="form-control" name="other_selling_and_marketing_expenses_2[]"  maxlength="20" minlength="1"  />
+								<input type="text"  class="form-control text_input" name="other_selling_and_marketing_expenses_2[]"  maxlength="20" minlength="1"  />
 									<div class="perc_helper_h">% value</div>
 								</div>
 						</div>
@@ -2831,25 +2827,25 @@
 
 						<div class="col">
 							<div class="form-group">
-								<input type="number"  step="0.01"  class="form-control" name="other_selling_and_marketing_expenses_3[]"  maxlength="20" minlength="1"  />
+								<input type="text"  class="form-control text_input" name="other_selling_and_marketing_expenses_3[]"  maxlength="20" minlength="1"  />
 									<div class="perc_helper_h">% value</div>
 								</div>
 						</div>
 						<div class="col">
 							<div class="form-group">
-								<input type="number"  step="0.01"  class="form-control" name="other_selling_and_marketing_expenses_3[]"   maxlength="20" minlength="1"  />
+								<input type="text"  class="form-control text_input" name="other_selling_and_marketing_expenses_3[]"   maxlength="20" minlength="1"  />
 									<div class="perc_helper_h">% value</div>
 								</div>
 						</div>
 						<div class="col">
 							<div class="form-group">
-								<input type="number"  step="0.01"  class="form-control" name="other_selling_and_marketing_expenses_3[]"   maxlength="20" minlength="1"  />
+								<input type="text"  class="form-control text_input" name="other_selling_and_marketing_expenses_3[]"   maxlength="20" minlength="1"  />
 									<div class="perc_helper_h">% value</div>
 								</div>
 						</div>
 						<div class="col">
 							<div class="form-group">
-								<input type="number"  step="0.01"  class="form-control" name="other_selling_and_marketing_expenses_3[]"  maxlength="20" minlength="1"  />
+								<input type="text"  class="form-control text_input" name="other_selling_and_marketing_expenses_3[]"  maxlength="20" minlength="1"  />
 									<div class="perc_helper_h">% value</div>
 								</div>
 						</div>
@@ -2860,14 +2856,14 @@
 
 				
 
-
+		<br><br>
 				
 
 					<div id="" class="form-row">
 						
 						<div class="col-4">
 							<div class="form-group">
-								<input type="text" value="Other Expenses 1" name="other_expenses_1[]" class="form-control text-success" minlength="1" maxlength="200" />
+								<input type="text" value="Other Expenses 1" name="other_expenses_1[]" class="form-control text-primary" minlength="1" maxlength="200" />
 									
 								<div class="perc_helper_h form-group text-info">
 
@@ -2926,7 +2922,7 @@
 						
 						<div class="col-4">
 							<div class="form-group">
-								<input type="text" value="Other Expenses 2" name="other_expenses_2[]" class="form-control text-success" minlength="1" maxlength="200" />
+								<input type="text" value="Other Expenses 2" name="other_expenses_2[]" class="form-control text-primary" minlength="1" maxlength="200" />
 									
 								<div class="perc_helper_h form-group text-info">
 
@@ -3008,33 +3004,33 @@
 
 						<div class="col">
 							<div class="form-group">
-								<input type="number"  step="0.01"  min=0 max=100  class="form-control" name="income_tax_rate[]"   maxlength="20" minlength="1"  />
+								<input type="text"   class="form-control text_input_p" name="income_tax_rate[]"   maxlength="20" minlength="1"  />
 								<div class="perc_helper">% value</div>
 								</div>
 						</div>
 
 						<div class="col">
 							<div class="form-group">
-								<input type="number"  step="0.01"  min=0 max=100  class="form-control" name="income_tax_rate[]"  maxlength="20" minlength="1"  />
-									<div class="perc_helper">% value</div>
+								<input type="text"   class="form-control text_input_p" name="income_tax_rate[]"   maxlength="20" minlength="1"  />
+								<div class="perc_helper">% value</div>
 								</div>
 						</div>
 						<div class="col">
 							<div class="form-group">
-								<input type="number"  step="0.01"  min=0 max=100 class="form-control" name="income_tax_rate[]"   maxlength="20" minlength="1"  />
-									<div class="perc_helper">% value</div>
+								<input type="text"   class="form-control text_input_p" name="income_tax_rate[]"   maxlength="20" minlength="1"  />
+								<div class="perc_helper">% value</div>
 								</div>
 						</div>
 						<div class="col">
 							<div class="form-group">
-								<input type="number"  step="0.01"  min=0 max=100  class="form-control" name="income_tax_rate[]"   maxlength="20" minlength="1"  />
-									<div class="perc_helper">% value</div>
+								<input type="text"   class="form-control text_input_p" name="income_tax_rate[]"   maxlength="20" minlength="1"  />
+								<div class="perc_helper">% value</div>
 								</div>
 						</div>
 						<div class="col">
 							<div class="form-group">
-								<input type="number"  step="0.01"  min=0 max=100 class="form-control" name="income_tax_rate[]"  maxlength="20" minlength="1"  />
-									<div class="perc_helper">% value</div>
+								<input type="text"   class="form-control text_input_p" name="income_tax_rate[]"   maxlength="20" minlength="1"  />
+								<div class="perc_helper">% value</div>
 								</div>
 						</div>
 						
@@ -3062,7 +3058,7 @@
 				</div>
 
 				<div class="col-md-4 text-center p-1">
-					<button class="btn btn-success" type="submit"> <b> Save & Next </b></button>
+					<button id="submit" class="btn btn-success" type="submit" > <b> Save & Next </b></button>
 				</div>
 
 				<div class="col-md-4 text-center p-1">
@@ -3096,7 +3092,7 @@ function total_revenue(){
 	}
 }*/
 
-
+/*
 $('input[type=radio]').change(function(){
 	var cls_name = $(this).attr("class");
 	var rad_val = $(this).val();
@@ -3126,74 +3122,145 @@ $('input[type=radio]').change(function(){
 });
 
 
+*/
+
+
+
+/*--------------------------------------------------- Input validation ---------------------------------------------------*/
+
+$('.text_input').on("input",function(){
+	var inp_val = $(this).val();
+
+
+	if(inp_val.indexOf("%")>-1)
+	{
+		inp_val=inp_val.replace(/%/g,"");
+
+		if(!isNaN(inp_val))
+		{
+			var f = parseFloat(inp_val);
+			if(f>100 || f<0)
+			{
+				alert("Please enter a valid value. (0.1 to 100)");
+				$(this).val("");
+			}
+
+			else
+			{
+				$(this).css("color", "darkgreen");
+			}
+		}
+		else
+		{
+			alert("Please enter a valid value");
+			$(this).val("");
+		}
+	}
+
+	else if(isNaN(inp_val))
+		{
+			alert("Please enter a valid value");
+			$(this).val("");
+		}
+	else{
+		$(this).css("color", "black");
+	}
+
+
+
+});
 
 
 
 
+/*--------------------------------------------------- Input validation Historical -------------------------------------------*/
+
+$('.text_input_h').on("input",function(){
+	var inp_val = $(this).val();
+
+
+	if(inp_val.indexOf("%")>-1)
+	{
+		
+		alert("You don't have Historical data.\n So, Year1 can not be in percentage format!");
+		$(this).val("");
+		
+	}
+
+	else if(isNaN(inp_val))
+		{
+			alert("Please enter a valid value");
+			$(this).val("");
+		}
 
 
 
+});
+
+
+/*--------------------------------------------------- Input validation only perc---------------------------------------------*/
+
+$('.text_input_p').change(function(){
+	var inp_val = $(this).val();
+
+
+	if(inp_val.indexOf("%")>-1)
+	{
+		inp_val=inp_val.replace(/%/g,"");
+
+		if(!isNaN(inp_val))
+		{
+			var f = parseFloat(inp_val);
+			if(f>100 || f<0)
+			{
+				alert("Please enter a valid value. (0.1 to 100)");
+				$(this).val("");
+			}
+
+			else
+			{
+				$(this).css("color", "darkgreen");
+			}
+		}
+		else
+		{
+			alert("Please enter a valid value");
+			$(this).val("");
+		}
+	}
+
+	else
+		{
+			alert("Please enter a valid value");
+			$(this).val("");
+		}
+
+
+
+
+});
 
 /* Year dynamic change */
 
 var year=0;
-$("select").change(function(){
+$("#year1_select").change(function(){
 	var s_name = $(this).attr('name')
 	var all_years = $('select[name="'+s_name+'"]')
-	for(var i=0;i<5;i++)
+	
+	if(!isNaN($(this).val()))
 	{
-		if(!isNaN($(all_years[i]).val()))
-		{
-			year = parseInt($(all_years[i]).val());
-			break;
-		}
-	}
-
-	if(i==0)
-	{
-		year = year;
-	}
-	else if(i==1)
-	{
-		year = year-1;
-	}
-	else if(i==2)
-	{
-		year = year-2;
-	}
-	else if(i==3)
-	{
-		year = year-3;
-	}
-	else if(i==4)
-	{
-		year = year-4;
-	}
-	else if(i==5)
-	{
-		year = year-5;
-	}
-
-	var d = new Date();
-	var n = d.getFullYear();
-
-	if(year>n)
-	{
-		alert("Please select Year-1 in between "+(n-5)+" to "+n);
+		year = parseInt($(this).val());
 		for(var i=0;i<5;i++)
 		{
-			$('select[name="'+s_name+'"]')[i].value="";
+			$('[name="'+s_name+'"]')[i].value=year+i;
 		}
 	}
-	else{
-		for(var i=0;i<5;i++)
-		{
-			$('select[name="'+s_name+'"]')[i].value=year+i;
-		}
+	else
+	{
+		alert("Please correctly select the Year1");
 	}
-
+	
 });
-
 
 
 

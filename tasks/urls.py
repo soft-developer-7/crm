@@ -118,6 +118,9 @@ urlpatterns = [
     path("test_xl",views.test_xl,name="test_xl"), # print all multi input xl data
     path("test_image",views.test_image,name="test_image"), # print all multi image data
     path("reset_db",views.reset_db,name="reset_db"), #reset_db
+
+    path("xl_file_find",views.xl_file_find,name="xl_file_find"), #XL file found
+    path("new_xl",views.new_xl,name="new_xl"), #New xl found
     
     
 
