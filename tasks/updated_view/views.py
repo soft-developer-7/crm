@@ -13,6 +13,8 @@ from business_management.models import Packs,Industries,User_bookings,Templates,
 from pyexcel_xlsx import get_data
 from openpyxl import load_workbook
 import os
+from django.conf import settings
+
 
 #--------- custom functions--------------
 def multi_input_insert(request,name):
@@ -55,10 +57,10 @@ def multi_input_insert(request,name):
 
 def multi_input_insert_xl(request,data,row):
 
-    
+
     multi = super_plan_forms_multiple_inputs_xl()
     multi.form_id = request.session['form']
-    
+
     multi.f_1 = data["Historicals"][row][2]
     multi.f_2 = data["Historicals"][row][3]
     multi.f_3 = data["Historicals"][row][4]
@@ -71,10 +73,10 @@ def multi_input_insert_xl(request,data,row):
 def multi_image_insert(request,name,r_id=None):
     user = User_db.objects.filter(id=request.session['user']).get()
     form_id = request.session['form']
-    
+
     values = request.FILES.getlist(name)
-    
-    
+
+
 
 
     if(r_id):
@@ -84,27 +86,27 @@ def multi_image_insert(request,name,r_id=None):
         if(multi):
             for i in range(1,7):
                 if(request.POST.get(i_name+'_'+str(i)) and request.POST[i_name+'_'+str(i)]=="1"):
-                    
+
                     val = values[c]
                     if i==1:
                         multi.i_1 = val
-                        
+
                     elif i==2:
                         multi.i_2 = val
-                        
+
                     elif i==3:
                         multi.i_3 = val
-                        
+
                     elif i==4:
                         multi.i_4 = val
-                        
+
                     elif i==5:
                         multi.i_5 = val
-                        
+
                     elif i==6:
                         multi.i_6 = val
                     c+=1
-                    
+
                 multi.save()
 
 
@@ -117,23 +119,23 @@ def multi_image_insert(request,name,r_id=None):
                 val = values[i]
                 if i==0:
                     multi.i_1 = val
-                    
+
                 elif i==1:
                     multi.i_2 = val
-                    
+
                 elif i==2:
                     multi.i_3 = val
-                    
+
                 elif i==3:
                     multi.i_4 = val
-                    
+
                 elif i==4:
                     multi.i_5 = val
-                    
+
                 elif i==5:
                     multi.i_6 = val
-                    
-            
+
+
         multi.save()
         return multi
 
@@ -258,8 +260,8 @@ def reg_form(request):
                 user=User_db(name=name,mobile=mobile,email=email,password=password,role=role,address=address)
                 user.save()
                 return redirect('/success')
-                
-            
+
+
 
         else:
             messages.info(request,"Password not same !")
@@ -267,11 +269,11 @@ def reg_form(request):
 
     else:
         messages.info(request,"Method is not POST !")
-        return render(request,'registration.html')    
+        return render(request,'registration.html')
 
 
 
-    
+
 
 
 
@@ -293,21 +295,21 @@ def login_form(request):
                 request.session['role']=user.role
                 request.session['name']=user.name
                 request.session['photo']=user.photo.url
-                
+
                 return redirect('/user-dashboard')
-                
+
 
             else:
-                
+
                 messages.info(request,"Invalid user id or password !")
                 return redirect('/login')
 
         else:
-            
+
             messages.info(request,"Invalid user id or password !")
             return redirect('/login')
 
-    
+
 
 
 
@@ -423,7 +425,7 @@ def admin_all_pages(request):
         pages = Pages.objects.all()
         return render(request,'admin-all-pages.html',{"pages":pages})
     else:
-        return redirect('/login')       
+        return redirect('/login')
 
 
 
@@ -446,7 +448,7 @@ def admin_all_posts(request):
         posts = Posts.objects.order_by('-pub_date')
         return render(request,'admin-all-posts.html',{"posts":posts})
     else:
-        return redirect('/login')    
+        return redirect('/login')
 
 
 
@@ -470,7 +472,7 @@ def admin_all_banners(request):
         banners = Banners.objects.order_by('-date')
         return render(request,'admin-all-banners.html',{"banners":banners})
     else:
-        return redirect('/login')    
+        return redirect('/login')
 
 
 
@@ -502,17 +504,17 @@ def admin_login_form(request):
                 request.session['role']=user.role
                 request.session['name']=user.name
                 request.session['photo']=user.photo.url
-                
+
                 return redirect('/admin-dashboard')
-                
+
 
             else:
-                
+
                 messages.info(request,"Invalid user id or password !")
                 return render(request,'admin-login.html')
 
         else:
-            
+
             messages.info(request,"Invalid user id or password !")
             return render(request,'admin-login.html')
 
@@ -525,12 +527,12 @@ def admin_login_form(request):
 
 
 def admin_profile_update_form(request):                                # Admin Profile Update Form
-    
+
     if(request.session.get('user')):
         user = User_db.objects.filter(id=request.session['user']).get()
         if(user and user.role=="admin" and request.method=="POST"):
             user =  User_db.objects.get(id=request.session['user'])
-            
+
             user.name=request.POST["name"]
             user.mobile=request.POST["mobile"]
             user.address=request.POST["address"]
@@ -556,7 +558,7 @@ def admin_profile_photo_update(request):                                # Admin 
     if(request.session.get('user')):
         user = User_db.objects.filter(id=request.session['user']).get()
         if(user and user.role=="admin" and request.method=="POST"):
-            
+
             photo = request.FILES["photo"]
             user.photo = photo
             user.save()
@@ -565,7 +567,7 @@ def admin_profile_photo_update(request):                                # Admin 
             return redirect('/login')
     else:
         return redirect('/login')
-            
+
 
 
 
@@ -622,7 +624,7 @@ def admin_user_profile_update_form(request):                                # Ad
     if(auth_admin(request) and inp_user and request.method=="POST"):
 
         user =  User_db.objects.get(id=request.POST['id'])
-            
+
         user.name=request.POST["name"]
         user.mobile=request.POST["mobile"]
         user.address=request.POST["address"]
@@ -683,7 +685,7 @@ def admin_new_user_profile_form(request):                                   # Ad
         user.address=request.POST["address"]
         user.role=request.POST["role"]
         user.password = make_password(request.POST['password'])
-        
+
         if(request.FILES):
             user.photo = request.FILES["photo"]
 
@@ -703,7 +705,7 @@ def admin_new_user_profile_form(request):                                   # Ad
 
 
 def admin_new_page_form(request):                                   # Admin New Page Form
-    
+
     page = Pages.objects.filter(slug=request.POST["slug"]).count()
     if(page):
         messages.info(request,"Slug is already exists !")
@@ -711,13 +713,13 @@ def admin_new_page_form(request):                                   # Admin New 
 
     if(auth_admin(request) and request.method=="POST"):
         new_page =  Pages()
-        
+
         new_page.title=request.POST["title"]
         new_page.meta=request.POST["meta"]
         new_page.slug=request.POST["slug"]
         new_page.keywords=request.POST["keywords"]
         new_page.post=request.POST["post"]
-        
+
         if(request.FILES):
             new_page.body_photo = request.FILES["photo"]
 
@@ -766,13 +768,13 @@ def admin_page_update_form(request):                                   # Admin P
             return redirect('/page_update_by_get/'+str(request.POST['id']))
 
 
-    if(auth_admin(request) and page and request.method=="POST"):            
+    if(auth_admin(request) and page and request.method=="POST"):
         page.title=request.POST["title"]
         page.meta=request.POST["meta"]
         page.slug=request.POST["slug"]
         page.keywords=request.POST["keywords"]
         page.post=request.POST["post"]
-    
+
         if(request.FILES):
             page.body_photo = request.FILES["photo"]
         page.save()
@@ -808,7 +810,7 @@ def ajax_call_delete_page(request):                                   # AJAX cal
 
 
 def admin_new_post_form(request):                                   # Admin New Post Form
-    
+
     post = Posts.objects.filter(slug=request.POST["slug"]).count()
     if(post):
         messages.info(request,"Slug is already exists !")
@@ -816,20 +818,20 @@ def admin_new_post_form(request):                                   # Admin New 
 
     if(auth_admin(request) and request.method=="POST"):
         new_post =  Posts()
-        
+
         new_post.title=request.POST["title"]
         new_post.meta=request.POST["meta"]
         new_post.slug=request.POST["slug"]
         new_post.keywords=request.POST["keywords"]
         new_post.post=request.POST["post"]
-        
+
         if(request.FILES.get("banner_photo")):
             new_post.banner_photo = request.FILES["banner_photo"]
 
         if(request.FILES.get("body_photo")):
             new_post.body_photo = request.FILES["body_photo"]
 
-        new_post.author_id = request.session["user"] 
+        new_post.author_id = request.session["user"]
         new_post.save()
 
         return redirect("/admin-all-posts")
@@ -876,13 +878,13 @@ def admin_post_update_form(request):                                   # Admin P
             return redirect('/post_update_by_get/'+str(request.POST['id']))
 
 
-    if(auth_admin(request) and post and request.method=="POST"):            
+    if(auth_admin(request) and post and request.method=="POST"):
         post.title=request.POST["title"]
         post.meta=request.POST["meta"]
         post.slug=request.POST["slug"]
         post.keywords=request.POST["keywords"]
         post.post=request.POST["post"]
-    
+
         if(request.FILES.get("banner_photo")):
             post.banner_photo = request.FILES["banner_photo"]
 
@@ -918,7 +920,7 @@ def ajax_call_delete_post(request):                                   # AJAX cal
 
 
 def admin_new_banner_form(request):                                   # Admin New Banner Form
-    
+
     banner = Banners.objects.filter(title=request.POST["title"]).count()
     if(banner):
         messages.info(request,"Title is already exists !")
@@ -926,12 +928,12 @@ def admin_new_banner_form(request):                                   # Admin Ne
 
     if(auth_admin(request) and request.method=="POST"):
         new_banner =  Banners()
-        
+
         new_banner.title=request.POST["title"]
 
         if(request.POST.get("desc")):
             new_banner.desc=request.POST["desc"]
-        
+
         new_banner.alt=request.POST["alt"]
 
         if(request.POST.get("category")):
@@ -968,7 +970,7 @@ def banner_update_by_get(request,id):                                   # Banner
 
 def admin_banner_update_form(request):                                   # Admin Banner update Form
     banner = Banners.objects.filter(id=request.POST['id']).get()
-    if(banner and auth_admin(request) and request.method=="POST"):            
+    if(banner and auth_admin(request) and request.method=="POST"):
         banner.title=request.POST["title"]
         if(request.POST.get("desc")):
             banner.desc=request.POST["desc"]
@@ -1045,7 +1047,7 @@ def user_profile_update(request):                                # User Profile 
         user = User_db.objects.filter(id=request.session['user']).get()
         if(user and user.role!="admin"):
             user =  User_db.objects.get(id=request.session['user'])
-            
+
             return render(request,'user-profile-update.html',{'name':user.name,'countrycode':user.countrycode,'mobile':user.mobile,
             'email':user.email,'address':user.address,'photo':user.photo.url})
         else:
@@ -1064,7 +1066,7 @@ def user_profile_update(request):                                # User Profile 
 
 
 def user_profile_update_form(request):                                # User Profile Update Form
-    
+
     if(request.session.get('user')):
         user = User_db.objects.filter(id=request.session['user']).get()
 
@@ -1090,7 +1092,7 @@ def user_profile_update_form(request):                                # User Pro
 
             user.save()
 
-            
+
             request.session['name']=user.name
             request.session['photo']=user.photo.url
 
@@ -1160,7 +1162,7 @@ def user_form_1_submit(request):            # User Form 1 Submit
         if(request.POST.get("denomination")):
             book.denomination = request.POST["denomination"]
 
-        
+
         book.pack = 'Starter Pack'
 
         book.current_fillup_position = 1
@@ -1179,12 +1181,12 @@ def user_form_1_submit(request):            # User Form 1 Submit
 def user_form_2_submit(request):            # User Form 2 Submit
     if(auth_user(request) and request.method=="POST"):
 
-        
+
         book = super_plan_forms.objects.filter(id=request.session['form']).get()
         if(auth_user(request) and book and request.method=="POST"):
-            
 
-            
+
+
             book.company_name = request.POST["company_name"]
             book.company_website_link = request.POST["company_website_link"]
             book.owner_name = request.POST["owner_name"]
@@ -1235,7 +1237,7 @@ def user_form_3_submit(request):            # User Form 3 Submit
         if(request.FILES.get("company_logo")):
             book.company_logo = request.FILES["company_logo"]
 
-        
+
         book.current_fillup_position = 3
         book.save()
 
@@ -1274,7 +1276,7 @@ def user_form_4_submit(request):            # User Form 4 Submit
 def user_form_5_submit(request):            # User Form 5 Submit
     book = super_plan_forms.objects.filter(id=request.session['form']).get()
     if(auth_user(request) and book and request.method=="POST"):
-        
+
 
         if(request.FILES.get("products_and_services[]")):
             if(book.products_and_services.id):
@@ -1294,7 +1296,7 @@ def user_form_5_submit(request):            # User Form 5 Submit
         book.milestones_achievement= multi_input_insert(request,"milestones_achievement[]")
         book.locations_served= multi_input_insert(request,"locations_served[]")
 
-        
+
         if(request.POST.get("swot_s")):
             book.swot_s = request.POST["swot_s"]
 
@@ -1324,7 +1326,7 @@ def user_form_6_submit(request):            # User Form 6 Submit
     if(auth_user(request) and book and request.method=="POST"):
 
 
-            
+
         multi = super_plan_forms_multiple_inputs()
         multi.user = User_db.objects.filter(id=request.session['user']).get()
         multi.form_id=request.session['form']
@@ -1391,7 +1393,7 @@ def user_form_6_submit(request):            # User Form 6 Submit
 
         multi.save()
         book.management_team_file=multi
-        
+
 
         book.current_fillup_position = 6
         book.save()
@@ -1433,7 +1435,7 @@ def user_form_8_submit(request):            # User Form 8 Submit
         book.save()
 
 
-        
+
 
         ind_types = Industries.objects.all()
 
@@ -1466,26 +1468,26 @@ def user_form_9_submit(request):            # User Form 9 Submit
 
         user = User_db.objects.filter(id=request.session['user']).get()
         form_id = request.session['form']
-        
+
 
 
         if(request.POST.get("industry_analysis_glob")):
             book.industry_analysis_glob = request.POST["industry_analysis_glob"]
-        
+
         if(request.FILES.get("industry_analysis_glob_img")):
             book.industry_analysis_glob_img = request.FILES["industry_analysis_glob_img"]
 
 
         if(request.POST.get("industry_analysis_india")):
             book.industry_analysis_india = request.POST["industry_analysis_india"]
-        
+
         if(request.FILES.get("industry_analysis_india_img")):
             book.industry_analysis_india_img = request.FILES["industry_analysis_india_img"]
-       
+
         book.competitor_analysis_n = multi_input_insert(request,"competitor_analysis_n[]")
         book.competitor_analysis_p = multi_input_insert(request,"competitor_analysis_p[]")
 
-        
+
         book.competitor_analysis_v1 = competitor_analysis_input(request,"competitor_analysis_v1[]")
         book.competitor_analysis_v2 = competitor_analysis_input(request,"competitor_analysis_v2[]")
         book.competitor_analysis_v3 = competitor_analysis_input(request,"competitor_analysis_v3[]")
@@ -1509,8 +1511,6 @@ def user_form_9_submit(request):            # User Form 9 Submit
 def user_form_9_1_submit(request):            # User Form 9_1 Submit
     book = super_plan_forms.objects.filter(id=request.session['form']).get()
     if(auth_user(request) and book and request.method=="POST"):
-        book.historical_data="no"
-        book.save()
 
         return render(request,'user-form10.html',{"data":book})
     else:
@@ -1520,15 +1520,17 @@ def user_form_9_1_submit(request):            # User Form 9_1 Submit
 
 def user_form_9_1_historical_submit(request):          #XLSX input form
     book = super_plan_forms.objects.filter(id=request.session['form']).get()
-    
+
     if(auth_user(request) and book and request.method=="POST"):
         if(request.FILES.get("historical_xl")):
             book.historical_xl = request.FILES["historical_xl"]
             book.save()
 
             book = super_plan_forms.objects.filter(id=request.session['form']).get()
-            
-            data = get_data(book.historical_xl.url[1:])
+
+
+            file = os.path.join(settings.MEDIA_ROOT, book.historical_xl.url[7:])
+            data = get_data(file)
 
             try:
                 c=0
@@ -1536,7 +1538,7 @@ def user_form_9_1_historical_submit(request):          #XLSX input form
                     if(len(data["Historicals"][i])>4):
                         for j in range(1,5):
                             c=c+1
-                
+
 
 
                 xl_form = super_plan_form_xl_input()
@@ -1635,16 +1637,14 @@ def user_form_9_1_historical_submit(request):          #XLSX input form
                 xl_form.balance_sheet_total_assets = multi_input_insert_xl(request,data,119)
                 xl_form.balance_sheet_check = multi_input_insert_xl(request,data,121)
 
-                
+
 
                 xl_form.save()
                 book.historical_xl_data=xl_form
-                book.historical_data="yes"
                 book.save()
                 return render(request,'user-form10.html',{"data":book})
             except:
                 book.historical_xl=None
-                book.historical_data="no"
                 book.save()
                 messages.info(request,"Invalid Excel file format !")
                 return render(request,'user-form9-1.html')
@@ -1667,26 +1667,54 @@ def user_form_10_submit(request):            # User Form 10 Submit
     if(auth_user(request) and book and request.method=="POST"):
 
         book.profit_and_loss_years = multi_input_insert(request,"profit_and_loss_years[]")
+
         book.revenue_growth_or_amount_1 = multi_input_insert(request,"revenue_growth_or_amount_1[]")
+        book.revenue_growth_1_or = request.POST["revenue_growth_1_or"]
+
         book.revenue_growth_or_amount_2 = multi_input_insert(request,"revenue_growth_or_amount_2[]")
+        book.revenue_growth_2_or = request.POST["revenue_growth_2_or"]
+
         book.revenue_growth_or_amount_3 = multi_input_insert(request,"revenue_growth_or_amount_3[]")
+        book.revenue_growth_3_or = request.POST["revenue_growth_3_or"]
+
         book.revenue_growth_or_amount_4 = multi_input_insert(request,"revenue_growth_or_amount_4[]")
+        book.revenue_growth_4_or = request.POST["revenue_growth_4_or"]
+
         book.other_income_growth_or_amount = multi_input_insert(request,"other_income_growth_or_amount[]")
+        book.other_income_growth_or = request.POST["other_income_growth_or"]
+
         book.realised_foreign_exchange_gain_or_loss = multi_input_insert(request,"realised_foreign_exchange_gain_or_loss[]")
+        book.realised_foreign_exchange_gain_or = request.POST["realised_foreign_exchange_gain_or"]
+
+
         book.direct_material_units = multi_input_insert(request,"direct_material_units[]")
+
         book.direct_material_average_cost_per_unit = multi_input_insert(request,"direct_material_average_cost_per_unit[]")
+
         book.direct_labour_no_of_employees = multi_input_insert(request,"direct_labour_no_of_employees[]")
+
         book.direct_labour_average_cost_per_employee = multi_input_insert(request,"direct_labour_average_cost_per_employee[]")
+
         book.other_direct_expenses_1 = multi_input_insert(request,"other_direct_expenses_1[]")
+
         book.other_direct_expenses_2 = multi_input_insert(request,"other_direct_expenses_2[]")
+
         book.other_direct_expenses_3 = multi_input_insert(request,"other_direct_expenses_3[]")
+
         book.administration_no_of_employees = multi_input_insert(request,"administration_no_of_employees[]")
+
         book.administration_average_cost_per_employee = multi_input_insert(request,"administration_average_cost_per_employee[]")
+
         book.selling_and_distribution_no_of_employees = multi_input_insert(request,"selling_and_distribution_no_of_employees[]")
+
         book.selling_and_distribution_average_cost_per_employee = multi_input_insert(request,"selling_and_distribution_average_cost_per_employee[]")
+
         book.marketing_no_of_employees = multi_input_insert(request,"marketing_no_of_employees[]")
+
         book.marketing_average_cost_per_employee = multi_input_insert(request,"marketing_average_cost_per_employee[]")
+
         book.research_and_development_no_of_employees = multi_input_insert(request,"research_and_development_no_of_employees[]")
+
         book.research_and_development_average_cost_per_employee = multi_input_insert(request,"research_and_development_average_cost_per_employee[]")
 
         if(request.POST.get("other_employees_1")):
@@ -1708,29 +1736,49 @@ def user_form_10_submit(request):            # User Form 10 Submit
 
             book.other_employees_3_no_of_employees = multi_input_insert(request,"other_employees_3_no_of_employees[]")
             book.other_employees_3_average_cost_per_employee = multi_input_insert(request,"other_employees_3_average_cost_per_employee[]")
-        
+
+
         book.rent = multi_input_insert(request,"rent[]")
+
         book.telephone_expenses = multi_input_insert(request,"telephone_expenses[]")
+
         book.electricity = multi_input_insert(request,"electricity[]")
+
         book.printing_and_stationery = multi_input_insert(request,"printing_and_stationery[]")
+
         book.audit_fees = multi_input_insert(request,"audit_fees[]")
+
         book.other_administration_expenses_1 = multi_input_insert(request,"other_administration_expenses_1[]")
+
         book.other_administration_expenses_2 = multi_input_insert(request,"other_administration_expenses_2[]")
+
         book.other_administration_expenses_3 = multi_input_insert(request,"other_administration_expenses_3[]")
+
         book.digital_marketing_cost = multi_input_insert(request,"digital_marketing_cost[]")
+
         book.sales_commissions = multi_input_insert(request,"sales_commissions[]")
+
         book.travelling_expenses = multi_input_insert(request,"travelling_expenses[]")
+
         book.advertisement = multi_input_insert(request,"advertisement[]")
+
         book.logistics_expenses = multi_input_insert(request,"logistics_expenses[]")
+
         book.other_selling_and_marketing_expenses_1 = multi_input_insert(request,"other_selling_and_marketing_expenses_1[]")
+
         book.other_selling_and_marketing_expenses_2 = multi_input_insert(request,"other_selling_and_marketing_expenses_2[]")
+
         book.other_selling_and_marketing_expenses_3 = multi_input_insert(request,"other_selling_and_marketing_expenses_3[]")
+
         book.other_expenses_1 = multi_input_insert(request,"other_expenses_1[]")
+
         book.other_expenses_2 = multi_input_insert(request,"other_expenses_2[]")
+
         book.income_tax_rate = multi_input_insert(request,"income_tax_rate[]")
+
         book.current_fillup_position = 10
         book.save()
-        
+
         return render(request,'user-form11.html',{"data":book})
     else:
         return redirect('/login')
@@ -1750,35 +1798,81 @@ def user_form_11_submit(request):            # User Form 11 Submit
 
         book.balance_sheet_years = multi_input_insert(request,"balance_sheet_years[]")
         book.share_capital = multi_input_insert(request,"share_capital[]")
+        book.reserves_and_surplus = multi_input_insert(request,"reserves_and_surplus[]")
         book.equity_funds_raised = multi_input_insert(request,"equity_funds_raised[]")
+
         book.secured_loans_from_banks = multi_input_insert(request,"secured_loans_from_banks[]")
         book.secured_loans_term_loans = multi_input_insert(request,"secured_loans_term_loans[]")
         book.secured_loans_other_loans = multi_input_insert(request,"secured_loans_other_loans[]")
         book.secured_loans_finance_lease_obligation = multi_input_insert(request,"secured_loans_finance_lease_obligation[]")
+
         book.unsecured_loans = multi_input_insert(request,"unsecured_loans[]")
         book.average_interest_rate_debt = multi_input_insert(request,"average_interest_rate_debt[]")
+
         book.deferred_tax_liabilities  = multi_input_insert(request,"deferred_tax_liabilities[]")
+
+        book.long_term_provisions_growth_or = request.POST["long_term_provisions_growth_or"]
         book.long_term_provisions_growth_or_amount = multi_input_insert(request,"long_term_provisions_growth_or_amount[]")
-        book.other_non_current_liabilities_growth_or_amount = multi_input_insert(request,"other_non_current_liabilities_growth_or_amount[]")        
+
+        book.other_non_current_liabilities_growth_or = request.POST["other_non_current_liabilities_growth_or"]
+        book.other_non_current_liabilities_growth_or_amount = multi_input_insert(request,"other_non_current_liabilities_growth_or_amount[]")
+
+
+
+
+        book.short_term_borrowings_growth_or = request.POST["short_term_borrowings_growth_or"]
         book.short_term_borrowings_growth_or_amount = multi_input_insert(request,"short_term_borrowings_growth_or_amount[]")
+
+
+        book.short_term_provisions_growth_or = request.POST["short_term_provisions_growth_or"]
         book.short_term_provisions_growth_or_amount = multi_input_insert(request,"short_term_provisions_growth_or_amount[]")
+
+
         book.sundry_creditors_no_of_days = multi_input_insert(request,"sundry_creditors_no_of_days[]")
+
+        book.other_current_liabilities_growth_or = request.POST["other_current_liabilities_growth_or"]
         book.other_current_liabilities_growth_or_amount = multi_input_insert(request,"other_current_liabilities_growth_or_amount[]")
+
+
+
+
+        book.intangible_assets_growth_or = request.POST["intangible_assets_growth_or"]
         book.intangible_assets_growth_or_amount = multi_input_insert(request,"intangible_assets_growth_or_amount[]")
+
+
+        book.long_term_loans_and_advances_growth_or = request.POST["long_term_loans_and_advances_growth_or"]
         book.long_term_loans_and_advances_growth_or_amount = multi_input_insert(request,"long_term_loans_and_advances_growth_or_amount[]")
+
+
+        book.long_term_investments_growth_or = request.POST["long_term_investments_growth_or"]
         book.long_term_investments_growth_or_amount = multi_input_insert(request,"long_term_investments_growth_or_amount[]")
-        book.deferred_tax_assets = multi_input_insert(request,"deferred_tax_assets[]")        
+
+        book.deferred_tax_assets_or = request.POST["deferred_tax_assets_or"]
+        book.deferred_tax_assets = multi_input_insert(request,"deferred_tax_assets[]")
+
+        book.other_non_current_assets_growth_or = request.POST["other_non_current_assets_growth_or"]
         book.other_non_current_assets_growth_or_amount = multi_input_insert(request,"other_non_current_assets_growth_or_amount[]")
+
+
+
+
         book.sundry_debtors_no_of_days = multi_input_insert(request,"sundry_debtors_no_of_days[]")
         book.inventory_no_of_days = multi_input_insert(request,"inventory_no_of_days[]")
+        book.short_term_investments_growth_or = request.POST["short_term_investments_growth_or"]
         book.short_term_investments_growth_or_amount = multi_input_insert(request,"short_term_investments_growth_or_amount[]")
+        book.short_term_loans_and_advances_growth_or = request.POST["short_term_loans_and_advances_growth_or"]
         book.short_term_loans_and_advances_growth_or_amount = multi_input_insert(request,"short_term_loans_and_advances_growth_or_amount[]")
+        book.other_current_assets_growth_or = request.POST["other_current_assets_growth_or"]
         book.other_current_assets_growth_or_amount = multi_input_insert(request,"other_current_assets_growth_or_amount[]")
+
+        book.working_capital = multi_input_insert(request,"working_capital[]")
+
+
 
         book.current_fillup_position = 11
         book.save()
 
-        
+
         return render(request,'user-form12.html',{"data":book})
     else:
         return redirect('/login')
@@ -1804,15 +1898,20 @@ def user_form_11_submit(request):            # User Form 11 Submit
 def user_form_12_submit(request):            # User Form 12 Submit
     book = super_plan_forms.objects.filter(id=request.session['form']).get()
     if(auth_user(request) and book and request.method=="POST"):
-
-        
-        book.capex_years = multi_input_insert(request,"capex_years[]")
         book.capex_opening_gross = multi_input_insert(request,"capex_opening_gross[]")
-        book.capex_additions = multi_input_insert(request,"capex_additions[]")
-        book.capex_additions_intangible = multi_input_insert(request,"capex_additions_intangible[]")
-        book.capex_deletions = multi_input_insert(request,"capex_deletions[]")
-        book.capex_average_depreciation_rate = multi_input_insert(request,"capex_average_depreciation_rate[]")
+        book.capex_years = multi_input_insert(request,"capex_years[]")
 
+        book.capex_additions_or=request.POST["capex_additions_or"]
+        book.capex_additions = multi_input_insert(request,"capex_additions[]")
+
+        book.capex_additions_intangible_or=request.POST["capex_additions_intangible_or"]
+        book.capex_additions_intangible = multi_input_insert(request,"capex_additions_intangible[]")
+
+        book.capex_deletions_or=request.POST["capex_deletions_or"]
+        book.capex_deletions = multi_input_insert(request,"capex_deletions[]")
+
+
+        book.capex_average_depreciation_rate = multi_input_insert(request,"capex_average_depreciation_rate[]")
         book.current_fillup_position = 12
         book.save()
         return redirect("/successful-purchased")
@@ -1867,7 +1966,7 @@ def superplan_form_number(request,id):                                # User Sup
 def user_all_superplan_bookings(request):                                # User All Template view
 
     if(auth_user(request)):
-        data = super_plan_forms.objects.filter(user=request.session['user'],current_fillup_position=13) 
+        data = super_plan_forms.objects.filter(user=request.session['user'],current_fillup_position=13)
         return render(request,'user-all-superplan-bookings.html',{"bookings":data})
     else:
         return redirect('/login')
@@ -1959,7 +2058,7 @@ def user_incomplete_superplan_by_get(request,id):                               
                 if(ind_gw_c):
                     ind_gw=Industry_growth_drivers.objects.filter(industry__pk=book.industry_type).get()
 
-                
+
                 return render(request,form_url,{"data":book,"industries":ind_types,"industry_analysis":ind_an,"industry_growth_drivers":ind_gw})
             else:
                 return render(request,form_url,{"data":book,"industries":ind_types})
@@ -2022,7 +2121,7 @@ def reset_db(request):
     data3.delete()
 
     return HttpResponse(request,"Done !")
-    
+
 
 
 
@@ -2043,7 +2142,7 @@ def reset_db(request):
 
 def xl_file_find(request):
     name="form1.xlsx"
-    path="media/"
+    path=settings.MEDIA_ROOT
     for root, dirs, files in os.walk(path):
         if name in files:
             return HttpResponse("File Found !")
@@ -2053,8 +2152,8 @@ def xl_file_find(request):
 
 def new_xl(request):
     name="no_historicals.xlsx"
-    path="media/"
-    wb = load_workbook(path+name)
+    path=settings.MEDIA_ROOT
+    wb = load_workbook(os.path.join(path,name))
     s1 = wb["Balance Sheet"]
     s1["J14"]=12
     s1["K14"]=12/100
@@ -2074,6 +2173,6 @@ def new_xl(request):
     s1["M16"]=12/100
     s1["N16"]=12/100
 
-    wb.save(path+'form1.xlsx')
+    wb.save(os.path.join(path,'form1.xlsx'))
 
     return HttpResponse("Done !")
