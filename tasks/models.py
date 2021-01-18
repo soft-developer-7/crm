@@ -433,6 +433,8 @@ class super_plan_forms(models.Model):
     direct_labour_no_of_employees = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='direct_labour_no_of_employees', on_delete=models.SET_NULL, null=True)
 
     direct_labour_average_cost_per_employee = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='direct_labour_average_cost_per_employee', on_delete=models.SET_NULL, null=True)
+    
+    direct_expenses = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='direct_expenses', on_delete=models.SET_NULL, null=True)
 
     other_direct_expenses_1 = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='other_direct_expenses_1', on_delete=models.SET_NULL, null=True)
 

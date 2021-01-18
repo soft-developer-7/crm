@@ -13,6 +13,12 @@ from business_management.models import Packs,Industries,User_bookings,Templates,
 from pyexcel_xlsx import get_data
 from openpyxl import load_workbook
 import os
+from django.conf import settings
+from shutil import copyfile
+
+
+
+
 
 #--------- custom functions--------------
 def multi_input_insert(request,name):
@@ -1677,6 +1683,7 @@ def user_form_10_submit(request):            # User Form 10 Submit
         book.direct_material_average_cost_per_unit = multi_input_insert(request,"direct_material_average_cost_per_unit[]")
         book.direct_labour_no_of_employees = multi_input_insert(request,"direct_labour_no_of_employees[]")
         book.direct_labour_average_cost_per_employee = multi_input_insert(request,"direct_labour_average_cost_per_employee[]")
+        book.direct_expenses = multi_input_insert(request,"direct_expenses[]")
         book.other_direct_expenses_1 = multi_input_insert(request,"other_direct_expenses_1[]")
         book.other_direct_expenses_2 = multi_input_insert(request,"other_direct_expenses_2[]")
         book.other_direct_expenses_3 = multi_input_insert(request,"other_direct_expenses_3[]")
@@ -2051,29 +2058,2022 @@ def xl_file_find(request):
 
 
 
-def new_xl(request):
-    name="no_historicals.xlsx"
-    path="media/"
-    wb = load_workbook(path+name)
-    s1 = wb["Balance Sheet"]
-    s1["J14"]=12
-    s1["K14"]=12/100
-    s1["L14"]=12/100
-    s1["M14"]=12/100
-    s1["N14"]=12/100
+def perc_to_amount(n,v):
+    if(v.endswith("%")):
+        v=v.replace("%","")
+        try:
+            v=float(v)
+            n=float(n)
+            return[((((v/100)*n))+n),v]
+        except:
+            return [n,0]
+    else:
+        try:
+            v=float(v)
+            n=float(n)
+            return [n+v,((v/n)*100)]
+        except:
+            return [n,0]
 
-    s1["J15"]=12
-    s1["K15"]=12.2/100
-    s1["L15"]=12/100
-    s1["M15"]=12/100
-    s1["N15"]=12/100
 
-    s1["J16"]=12
-    s1["K16"]=12/100
-    s1["L16"]=12/100
-    s1["M16"]=12/100
-    s1["N16"]=12/100
 
-    wb.save(path+'form1.xlsx')
 
-    return HttpResponse("Done !")
+def nperc_to_amount(n,v):
+    if(v.endswith("%")):
+        v=v.replace("%","")
+        try:
+            v=float(v)
+            n=float(n)
+            return[((((v/100)*n))+n),((v/100)*n)]
+        except:
+            return [n,0]
+    else:
+        try:
+            v=float(v)
+            n=float(n)
+            return [n+v,v]
+        except:
+            return [n,0]
+
+
+
+
+def new_xl_get(request,id):
+    directory = str(id)
+    parent_dir = settings.MEDIA_URL[1:]+"/users_xl/"
+    path_xl = os.path.join(parent_dir, directory)
+
+    if(not os.path.exists(path_xl)):
+        os.mkdir(path_xl)
+
+
+    new_xl = os.path.join(path_xl,"superplan.xlsx")
+    copyfile(settings.MEDIA_URL[1:]+"/no_historicals.xlsx",new_xl)
+
+    bv=super_plan_forms.objects.filter(id=int(id)).get()
+    if(bv):
+
+        wb = load_workbook(new_xl)
+
+
+#--------------------------------- Balance sheet -----------------------------------------------------------
+        s1 = wb["Balance Sheet"]
+
+        n=0
+        if(bv.share_capital):
+            if(bv.share_capital.f_1):
+                n=bv.share_capital.f_1
+                s1["J6"]=float(n)
+
+            if(bv.share_capital.f_2):
+                n,r=nperc_to_amount(n,bv.share_capital.f_2)
+                s1["K6"]=r
+            
+            if(bv.share_capital.f_3):
+                n,r=nperc_to_amount(n,bv.share_capital.f_3)
+                s1["L6"]=r
+            
+            if(bv.share_capital.f_4):
+                n,r=nperc_to_amount(n,bv.share_capital.f_4)
+                s1["M6"]=r
+
+            if(bv.share_capital.f_5):
+                n,r=nperc_to_amount(n,bv.share_capital.f_5)
+                s1["N6"]=r
+            
+
+
+
+        n=0
+        if(bv.equity_funds_raised):
+            if(bv.equity_funds_raised.f_1):
+                n=bv.equity_funds_raised.f_1
+                s1["J8"]=float(n)
+
+            if(bv.equity_funds_raised.f_2):
+                n,r=nperc_to_amount(n,bv.equity_funds_raised.f_2)
+                s1["K8"]=r
+            
+            if(bv.equity_funds_raised.f_3):
+                n,r=nperc_to_amount(n,bv.equity_funds_raised.f_3)
+                s1["L8"]=r
+            
+            if(bv.equity_funds_raised.f_4):
+                n,r=nperc_to_amount(n,bv.equity_funds_raised.f_4)
+                s1["M8"]=r
+
+            if(bv.equity_funds_raised.f_5):
+                n,r=nperc_to_amount(n,bv.equity_funds_raised.f_5)
+                s1["N8"]=r
+
+
+
+        n=0
+        if(bv.deferred_tax_liabilities):
+            if(bv.deferred_tax_liabilities.f_1):
+                n=bv.deferred_tax_liabilities.f_1
+                s1["J14"]=float(n)
+
+            if(bv.deferred_tax_liabilities.f_2):
+                n,r=perc_to_amount(n,bv.deferred_tax_liabilities.f_2)
+                s1["K14"]=r/100
+            
+            if(bv.deferred_tax_liabilities.f_3):
+                n,r=perc_to_amount(n,bv.deferred_tax_liabilities.f_3)
+                s1["L14"]=r/100
+            
+            if(bv.deferred_tax_liabilities.f_4):
+                n,r=perc_to_amount(n,bv.deferred_tax_liabilities.f_4)
+                s1["M14"]=r/100
+
+            if(bv.deferred_tax_liabilities.f_5):
+                n,r=perc_to_amount(n,bv.deferred_tax_liabilities.f_5)
+                s1["N14"]=r/100
+
+
+
+        n=0
+        if(bv.long_term_provisions_growth_or_amount):
+            if(bv.long_term_provisions_growth_or_amount.f_1):
+                n=bv.long_term_provisions_growth_or_amount.f_1
+                s1["J15"]=float(n)
+
+            if(bv.long_term_provisions_growth_or_amount.f_2):
+                n,r=perc_to_amount(n,bv.long_term_provisions_growth_or_amount.f_2)
+                s1["K15"]=r/100
+            
+            if(bv.long_term_provisions_growth_or_amount.f_3):
+                n,r=perc_to_amount(n,bv.long_term_provisions_growth_or_amount.f_3)
+                s1["L15"]=r/100
+            
+            if(bv.long_term_provisions_growth_or_amount.f_4):
+                n,r=perc_to_amount(n,bv.long_term_provisions_growth_or_amount.f_4)
+                s1["M15"]=r/100
+
+            if(bv.long_term_provisions_growth_or_amount.f_5):
+                n,r=perc_to_amount(n,bv.long_term_provisions_growth_or_amount.f_5)
+                s1["N15"]=r/100
+
+
+
+            
+        n=0
+        if(bv.other_non_current_liabilities_growth_or_amount):
+            if(bv.other_non_current_liabilities_growth_or_amount.f_1):
+                n=bv.other_non_current_liabilities_growth_or_amount.f_1
+                s1["J16"]=float(n)
+
+            if(bv.other_non_current_liabilities_growth_or_amount.f_2):
+                n,r=perc_to_amount(n,bv.other_non_current_liabilities_growth_or_amount.f_2)
+                s1["K16"]=r/100
+            
+            if(bv.other_non_current_liabilities_growth_or_amount.f_3):
+                n,r=perc_to_amount(n,bv.other_non_current_liabilities_growth_or_amount.f_3)
+                s1["L16"]=r/100
+            
+            if(bv.other_non_current_liabilities_growth_or_amount.f_4):
+                n,r=perc_to_amount(n,bv.other_non_current_liabilities_growth_or_amount.f_4)
+                s1["M16"]=r/100
+
+            if(bv.other_non_current_liabilities_growth_or_amount.f_5):
+                n,r=perc_to_amount(n,bv.other_non_current_liabilities_growth_or_amount.f_5)
+                s1["N16"]=r/100
+
+
+
+            
+        n=0
+        if(bv.short_term_borrowings_growth_or_amount):
+            if(bv.short_term_borrowings_growth_or_amount.f_1):
+                n=bv.short_term_borrowings_growth_or_amount.f_1
+                s1["J20"]=float(n)
+
+            if(bv.short_term_borrowings_growth_or_amount.f_2):
+                n,r=perc_to_amount(n,bv.short_term_borrowings_growth_or_amount.f_2)
+                s1["K20"]=r/100
+            
+            if(bv.short_term_borrowings_growth_or_amount.f_3):
+                n,r=perc_to_amount(n,bv.short_term_borrowings_growth_or_amount.f_3)
+                s1["L20"]=r/100
+            
+            if(bv.short_term_borrowings_growth_or_amount.f_4):
+                n,r=perc_to_amount(n,bv.short_term_borrowings_growth_or_amount.f_4)
+                s1["M20"]=r/100
+
+            if(bv.short_term_borrowings_growth_or_amount.f_5):
+                n,r=perc_to_amount(n,bv.short_term_borrowings_growth_or_amount.f_5)
+                s1["N20"]=r/100
+
+
+
+
+
+        n=0
+        if(bv.short_term_provisions_growth_or_amount):
+            if(bv.short_term_provisions_growth_or_amount.f_1):
+                n=bv.short_term_provisions_growth_or_amount.f_1
+                s1["J21"]=float(n)
+
+            if(bv.short_term_provisions_growth_or_amount.f_2):
+                n,r=perc_to_amount(n,bv.short_term_provisions_growth_or_amount.f_2)
+                s1["K21"]=r/100
+            
+            if(bv.short_term_provisions_growth_or_amount.f_3):
+                n,r=perc_to_amount(n,bv.short_term_provisions_growth_or_amount.f_3)
+                s1["L21"]=r/100
+            
+            if(bv.short_term_provisions_growth_or_amount.f_4):
+                n,r=perc_to_amount(n,bv.short_term_provisions_growth_or_amount.f_4)
+                s1["M21"]=r/100
+
+            if(bv.short_term_provisions_growth_or_amount.f_5):
+                n,r=perc_to_amount(n,bv.short_term_provisions_growth_or_amount.f_5)
+                s1["N21"]=r/100
+
+
+
+        n=0
+        if(bv.sundry_creditors_no_of_days):
+            if(bv.sundry_creditors_no_of_days.f_1):
+                n=bv.sundry_creditors_no_of_days.f_1
+                s1["J22"]=int(n)
+
+            if(bv.sundry_creditors_no_of_days.f_2):
+                n=bv.sundry_creditors_no_of_days.f_2
+                s1["K22"]=int(n)
+            
+            if(bv.sundry_creditors_no_of_days.f_3):
+                n=bv.sundry_creditors_no_of_days.f_3
+                s1["L22"]=int(n)
+            
+            if(bv.sundry_creditors_no_of_days.f_4):
+                n=bv.sundry_creditors_no_of_days.f_4
+                s1["M22"]=int(n)
+
+            if(bv.sundry_creditors_no_of_days.f_5):
+                n=bv.sundry_creditors_no_of_days.f_5
+                s1["N22"]=int(n)
+
+
+
+
+
+        n=0
+        if(bv.other_current_liabilities_growth_or_amount):
+            if(bv.other_current_liabilities_growth_or_amount.f_1):
+                n=bv.other_current_liabilities_growth_or_amount.f_1
+                s1["J23"]=float(n)
+
+            if(bv.other_current_liabilities_growth_or_amount.f_2):
+                n,r=perc_to_amount(n,bv.other_current_liabilities_growth_or_amount.f_2)
+                s1["K23"]=r/100
+            
+            if(bv.other_current_liabilities_growth_or_amount.f_3):
+                n,r=perc_to_amount(n,bv.other_current_liabilities_growth_or_amount.f_3)
+                s1["L23"]=r/100
+            
+            if(bv.other_current_liabilities_growth_or_amount.f_4):
+                n,r=perc_to_amount(n,bv.other_current_liabilities_growth_or_amount.f_4)
+                s1["M23"]=r/100
+
+            if(bv.other_current_liabilities_growth_or_amount.f_5):
+                n,r=perc_to_amount(n,bv.other_current_liabilities_growth_or_amount.f_5)
+                s1["N23"]=r/100
+
+
+
+        n=0
+        if(bv.intangible_assets_growth_or_amount):
+            if(bv.intangible_assets_growth_or_amount.f_1):
+                n=bv.intangible_assets_growth_or_amount.f_1
+                s1["J33"]=float(n)
+
+            if(bv.intangible_assets_growth_or_amount.f_2):
+                n,r=perc_to_amount(n,bv.intangible_assets_growth_or_amount.f_2)
+                s1["K33"]=r/100
+            
+            if(bv.intangible_assets_growth_or_amount.f_3):
+                n,r=perc_to_amount(n,bv.intangible_assets_growth_or_amount.f_3)
+                s1["L33"]=r/100
+            
+            if(bv.intangible_assets_growth_or_amount.f_4):
+                n,r=perc_to_amount(n,bv.intangible_assets_growth_or_amount.f_4)
+                s1["M33"]=r/100
+
+            if(bv.intangible_assets_growth_or_amount.f_5):
+                n,r=perc_to_amount(n,bv.intangible_assets_growth_or_amount.f_5)
+                s1["N33"]=r/100
+
+
+
+
+        n=0
+        if(bv.long_term_loans_and_advances_growth_or_amount):
+            if(bv.long_term_loans_and_advances_growth_or_amount.f_1):
+                n=bv.long_term_loans_and_advances_growth_or_amount.f_1
+                s1["J34"]=float(n)
+
+            if(bv.long_term_loans_and_advances_growth_or_amount.f_2):
+                n,r=perc_to_amount(n,bv.long_term_loans_and_advances_growth_or_amount.f_2)
+                s1["K34"]=r/100
+            
+            if(bv.long_term_loans_and_advances_growth_or_amount.f_3):
+                n,r=perc_to_amount(n,bv.long_term_loans_and_advances_growth_or_amount.f_3)
+                s1["L34"]=r/100
+            
+            if(bv.long_term_loans_and_advances_growth_or_amount.f_4):
+                n,r=perc_to_amount(n,bv.long_term_loans_and_advances_growth_or_amount.f_4)
+                s1["M34"]=r/100
+
+            if(bv.long_term_loans_and_advances_growth_or_amount.f_5):
+                n,r=perc_to_amount(n,bv.long_term_loans_and_advances_growth_or_amount.f_5)
+                s1["N34"]=r/100
+
+
+
+        n=0
+        if(bv.long_term_investments_growth_or_amount):
+            if(bv.long_term_investments_growth_or_amount.f_1):
+                n=bv.long_term_investments_growth_or_amount.f_1
+                s1["J35"]=float(n)
+
+            if(bv.long_term_investments_growth_or_amount.f_2):
+                n,r=perc_to_amount(n,bv.long_term_investments_growth_or_amount.f_2)
+                s1["K35"]=r/100
+            
+            if(bv.long_term_investments_growth_or_amount.f_3):
+                n,r=perc_to_amount(n,bv.long_term_investments_growth_or_amount.f_3)
+                s1["L35"]=r/100
+            
+            if(bv.long_term_investments_growth_or_amount.f_4):
+                n,r=perc_to_amount(n,bv.long_term_investments_growth_or_amount.f_4)
+                s1["M35"]=r/100
+
+            if(bv.long_term_investments_growth_or_amount.f_5):
+                n,r=perc_to_amount(n,bv.long_term_investments_growth_or_amount.f_5)
+                s1["N35"]=r/100
+
+
+
+
+            
+        n=0
+        if(bv.deferred_tax_liabilities):
+            if(bv.deferred_tax_liabilities.f_1):
+                n=bv.deferred_tax_liabilities.f_1
+                s1["J36"]=float(n)
+
+            if(bv.deferred_tax_liabilities.f_2):
+                n,r=perc_to_amount(n,bv.deferred_tax_liabilities.f_2)
+                s1["K36"]=r/100
+            
+            if(bv.deferred_tax_liabilities.f_3):
+                n,r=perc_to_amount(n,bv.deferred_tax_liabilities.f_3)
+                s1["L36"]=r/100
+            
+            if(bv.deferred_tax_liabilities.f_4):
+                n,r=perc_to_amount(n,bv.deferred_tax_liabilities.f_4)
+                s1["M36"]=r/100
+
+            if(bv.deferred_tax_liabilities.f_5):
+                n,r=perc_to_amount(n,bv.deferred_tax_liabilities.f_5)
+                s1["N36"]=r/100
+
+
+
+
+        n=0
+        if(bv.other_non_current_assets_growth_or_amount):
+            if(bv.other_non_current_assets_growth_or_amount.f_1):
+                n=bv.other_non_current_assets_growth_or_amount.f_1
+                s1["J37"]=float(n)
+
+            if(bv.other_non_current_assets_growth_or_amount.f_2):
+                n,r=perc_to_amount(n,bv.other_non_current_assets_growth_or_amount.f_2)
+                s1["K37"]=r/100
+            
+            if(bv.other_non_current_assets_growth_or_amount.f_3):
+                n,r=perc_to_amount(n,bv.other_non_current_assets_growth_or_amount.f_3)
+                s1["L37"]=r/100
+            
+            if(bv.other_non_current_assets_growth_or_amount.f_4):
+                n,r=perc_to_amount(n,bv.other_non_current_assets_growth_or_amount.f_4)
+                s1["M37"]=r/100
+
+            if(bv.other_non_current_assets_growth_or_amount.f_5):
+                n,r=perc_to_amount(n,bv.other_non_current_assets_growth_or_amount.f_5)
+                s1["N37"]=r/100
+
+
+
+
+
+
+        n=0
+        if(bv.sundry_debtors_no_of_days):
+            if(bv.sundry_debtors_no_of_days.f_1):
+                n=bv.sundry_debtors_no_of_days.f_1
+                s1["J43"]=int(n)
+
+            if(bv.sundry_debtors_no_of_days.f_2):
+                n=bv.sundry_debtors_no_of_days.f_2
+                s1["K43"]=int(n)
+            
+            if(bv.sundry_debtors_no_of_days.f_3):
+                n=bv.sundry_debtors_no_of_days.f_3
+                s1["L43"]=int(n)
+            
+            if(bv.sundry_debtors_no_of_days.f_4):
+                n=bv.sundry_debtors_no_of_days.f_4
+                s1["M43"]=int(n)
+
+            if(bv.sundry_debtors_no_of_days.f_5):
+                n=bv.sundry_debtors_no_of_days.f_5
+                s1["N43"]=int(n)
+
+
+
+
+
+
+        n=0
+        if(bv.inventory_no_of_days):
+            if(bv.inventory_no_of_days.f_1):
+                n=bv.inventory_no_of_days.f_1
+                s1["J44"]=int(n)
+
+            if(bv.inventory_no_of_days.f_2):
+                n=bv.inventory_no_of_days.f_2
+                s1["K44"]=int(n)
+            
+            if(bv.inventory_no_of_days.f_3):
+                n=bv.inventory_no_of_days.f_3
+                s1["L44"]=int(n)
+            
+            if(bv.inventory_no_of_days.f_4):
+                n=bv.inventory_no_of_days.f_4
+                s1["M44"]=int(n)
+
+            if(bv.inventory_no_of_days.f_5):
+                n=bv.inventory_no_of_days.f_5
+                s1["N44"]=int(n)
+
+
+
+
+
+
+        n=0
+        if(bv.short_term_investments_growth_or_amount):
+            if(bv.short_term_investments_growth_or_amount.f_1):
+                n=bv.short_term_investments_growth_or_amount.f_1
+                s1["J45"]=float(n)
+
+            if(bv.short_term_investments_growth_or_amount.f_2):
+                n,r=perc_to_amount(n,bv.short_term_investments_growth_or_amount.f_2)
+                s1["K45"]=r/100
+            
+            if(bv.short_term_investments_growth_or_amount.f_3):
+                n,r=perc_to_amount(n,bv.short_term_investments_growth_or_amount.f_3)
+                s1["L45"]=r/100
+            
+            if(bv.short_term_investments_growth_or_amount.f_4):
+                n,r=perc_to_amount(n,bv.short_term_investments_growth_or_amount.f_4)
+                s1["M45"]=r/100
+
+            if(bv.short_term_investments_growth_or_amount.f_5):
+                n,r=perc_to_amount(n,bv.short_term_investments_growth_or_amount.f_5)
+                s1["N45"]=r/100
+
+
+
+
+
+        n=0
+        if(bv.short_term_loans_and_advances_growth_or_amount):
+            if(bv.short_term_loans_and_advances_growth_or_amount.f_1):
+                n=bv.short_term_loans_and_advances_growth_or_amount.f_1
+                s1["J46"]=float(n)
+
+            if(bv.short_term_loans_and_advances_growth_or_amount.f_2):
+                n,r=perc_to_amount(n,bv.short_term_loans_and_advances_growth_or_amount.f_2)
+                s1["K46"]=r/100
+            
+            if(bv.short_term_loans_and_advances_growth_or_amount.f_3):
+                n,r=perc_to_amount(n,bv.short_term_loans_and_advances_growth_or_amount.f_3)
+                s1["L46"]=r/100
+            
+            if(bv.short_term_loans_and_advances_growth_or_amount.f_4):
+                n,r=perc_to_amount(n,bv.short_term_loans_and_advances_growth_or_amount.f_4)
+                s1["M46"]=r/100
+
+            if(bv.short_term_loans_and_advances_growth_or_amount.f_5):
+                n,r=perc_to_amount(n,bv.short_term_loans_and_advances_growth_or_amount.f_5)
+                s1["N46"]=r/100
+
+
+
+
+
+        n=0
+        if(bv.other_current_assets_growth_or_amount):
+            if(bv.other_current_assets_growth_or_amount.f_1):
+                n=bv.other_current_assets_growth_or_amount.f_1
+                s1["J47"]=float(n)
+
+            if(bv.other_current_assets_growth_or_amount.f_2):
+                n,r=perc_to_amount(n,bv.other_current_assets_growth_or_amount.f_2)
+                s1["K47"]=r/100
+            
+            if(bv.other_current_assets_growth_or_amount.f_3):
+                n,r=perc_to_amount(n,bv.other_current_assets_growth_or_amount.f_3)
+                s1["L47"]=r/100
+            
+            if(bv.other_current_assets_growth_or_amount.f_4):
+                n,r=perc_to_amount(n,bv.other_current_assets_growth_or_amount.f_4)
+                s1["M47"]=r/100
+
+            if(bv.other_current_assets_growth_or_amount.f_5):
+                n,r=perc_to_amount(n,bv.other_current_assets_growth_or_amount.f_5)
+                s1["N47"]=r/100
+
+
+
+
+
+        yr1 = bv.balance_sheet_years.f_1
+        yr2 = bv.balance_sheet_years.f_2
+        yr3 = bv.balance_sheet_years.f_3
+        yr4 = bv.balance_sheet_years.f_4
+        yr5 = bv.balance_sheet_years.f_5
+ 
+        s1["C3"]=yr1
+        s1["D3"]=yr2
+        s1["E3"]=yr3
+        s1["F3"]=yr4
+        s1["G3"]=yr5
+
+        s1["C55"]=yr1
+        s1["D55"]=yr2
+        s1["E55"]=yr3
+        s1["F55"]=yr4
+        s1["G55"]=yr5
+
+        s1["J3"]=yr1
+        s1["K3"]=yr2
+        s1["L3"]=yr3
+        s1["M3"]=yr4
+        s1["N3"]=yr5
+
+
+
+
+
+
+
+
+#--------------------------------- Balance sheet end -----------------------------------------------------------
+
+        s2 = wb["Expenses Projection"]
+
+        n=0
+        if(bv.direct_material_units):
+            if(bv.direct_material_units.f_1):
+                n=bv.direct_material_units.f_1
+                s2["J8"]=float(n)
+
+            if(bv.direct_material_units.f_2):
+                n,r=perc_to_amount(n,bv.direct_material_units.f_2)
+                s2["K8"]=r/100
+            
+            if(bv.direct_material_units.f_3):
+                n,r=perc_to_amount(n,bv.direct_material_units.f_3)
+                s2["L8"]=r/100
+            
+            if(bv.direct_material_units.f_4):
+                n,r=perc_to_amount(n,bv.direct_material_units.f_4)
+                s2["M8"]=r/100
+
+            if(bv.direct_material_units.f_5):
+                n,r=perc_to_amount(n,bv.direct_material_units.f_5)
+                s2["N8"]=r/100
+
+
+
+
+        n=0
+        if(bv.direct_material_average_cost_per_unit):
+            if(bv.direct_material_average_cost_per_unit.f_1):
+                n=bv.direct_material_average_cost_per_unit.f_1
+                s2["J9"]=float(n)
+
+            if(bv.direct_material_average_cost_per_unit.f_2):
+                n,r=perc_to_amount(n,bv.direct_material_average_cost_per_unit.f_2)
+                s2["K9"]=r/100
+            
+            if(bv.direct_material_average_cost_per_unit.f_3):
+                n,r=perc_to_amount(n,bv.direct_material_average_cost_per_unit.f_3)
+                s2["L9"]=r/100
+            
+            if(bv.direct_material_average_cost_per_unit.f_4):
+                n,r=perc_to_amount(n,bv.direct_material_average_cost_per_unit.f_4)
+                s2["M9"]=r/100
+
+            if(bv.direct_material_average_cost_per_unit.f_5):
+                n,r=perc_to_amount(n,bv.direct_material_average_cost_per_unit.f_5)
+                s2["N9"]=r/100
+
+
+
+        n=0
+        if(bv.direct_labour_no_of_employees):
+            if(bv.direct_labour_no_of_employees.f_1):
+                n=bv.direct_labour_no_of_employees.f_1
+                s2["J13"]=float(n)
+
+            if(bv.direct_labour_no_of_employees.f_2):
+                n,r=perc_to_amount(n,bv.direct_labour_no_of_employees.f_2)
+                s2["K13"]=r/100
+            
+            if(bv.direct_labour_no_of_employees.f_3):
+                n,r=perc_to_amount(n,bv.direct_labour_no_of_employees.f_3)
+                s2["L13"]=r/100
+            
+            if(bv.direct_labour_no_of_employees.f_4):
+                n,r=perc_to_amount(n,bv.direct_labour_no_of_employees.f_4)
+                s2["M13"]=r/100
+
+            if(bv.direct_labour_no_of_employees.f_5):
+                n,r=perc_to_amount(n,bv.direct_labour_no_of_employees.f_5)
+                s2["N13"]=r/100
+
+
+
+        n=0
+        if(bv.direct_labour_average_cost_per_employee):
+            if(bv.direct_labour_average_cost_per_employee.f_1):
+                n=bv.direct_labour_average_cost_per_employee.f_1
+                s2["J14"]=float(n)
+
+            if(bv.direct_labour_average_cost_per_employee.f_2):
+                n,r=perc_to_amount(n,bv.direct_labour_average_cost_per_employee.f_2)
+                s2["K14"]=r/100
+            
+            if(bv.direct_labour_average_cost_per_employee.f_3):
+                n,r=perc_to_amount(n,bv.direct_labour_average_cost_per_employee.f_3)
+                s2["L14"]=r/100
+            
+            if(bv.direct_labour_average_cost_per_employee.f_4):
+                n,r=perc_to_amount(n,bv.direct_labour_average_cost_per_employee.f_4)
+                s2["M14"]=r/100
+
+            if(bv.direct_labour_average_cost_per_employee.f_5):
+                n,r=perc_to_amount(n,bv.direct_labour_average_cost_per_employee.f_5)
+                s2["N14"]=r/100
+
+
+
+        n=0
+        if(bv.direct_expenses):
+            if(bv.direct_expenses.f_1):
+                n=bv.direct_expenses.f_1
+                s2["J17"]=float(n)
+
+            if(bv.direct_expenses.f_2):
+                n,r=perc_to_amount(n,bv.direct_expenses.f_2)
+                s2["K17"]=r/100
+            
+            if(bv.direct_expenses.f_3):
+                n,r=perc_to_amount(n,bv.direct_expenses.f_3)
+                s2["L17"]=r/100
+            
+            if(bv.direct_expenses.f_4):
+                n,r=perc_to_amount(n,bv.direct_expenses.f_4)
+                s2["M17"]=r/100
+
+            if(bv.direct_expenses.f_5):
+                n,r=perc_to_amount(n,bv.direct_expenses.f_5)
+                s2["N17"]=r/100
+
+
+
+        n=0
+        if(bv.other_direct_expenses_1):
+            if(bv.other_direct_expenses_1.f_2):
+                n=bv.other_direct_expenses_1.f_2
+                s2["J18"]=float(n)
+
+            if(bv.other_direct_expenses_1.f_3):
+                n,r=perc_to_amount(n,bv.other_direct_expenses_1.f_3)
+                s2["K18"]=r/100
+            
+            if(bv.other_direct_expenses_1.f_4):
+                n,r=perc_to_amount(n,bv.other_direct_expenses_1.f_4)
+                s2["L18"]=r/100
+            
+            if(bv.other_direct_expenses_1.f_5):
+                n,r=perc_to_amount(n,bv.other_direct_expenses_1.f_5)
+                s2["M18"]=r/100
+
+            if(bv.other_direct_expenses_1.f_6):
+                n,r=perc_to_amount(n,bv.other_direct_expenses_1.f_6)
+                s2["N18"]=r/100
+
+
+
+
+        n=0
+        if(bv.other_direct_expenses_2):
+            if(bv.other_direct_expenses_2.f_2):
+                n=bv.other_direct_expenses_2.f_2
+                s2["J19"]=float(n)
+
+            if(bv.other_direct_expenses_2.f_3):
+                n,r=perc_to_amount(n,bv.other_direct_expenses_2.f_3)
+                s2["K19"]=r/100
+            
+            if(bv.other_direct_expenses_2.f_4):
+                n,r=perc_to_amount(n,bv.other_direct_expenses_2.f_4)
+                s2["L19"]=r/100
+            
+            if(bv.other_direct_expenses_2.f_5):
+                n,r=perc_to_amount(n,bv.other_direct_expenses_2.f_5)
+                s2["M19"]=r/100
+
+            if(bv.other_direct_expenses_2.f_6):
+                n,r=perc_to_amount(n,bv.other_direct_expenses_2.f_6)
+                s2["N19"]=r/100
+
+
+
+
+        n=0
+        if(bv.other_direct_expenses_3):
+            if(bv.other_direct_expenses_3.f_2):
+                n=bv.other_direct_expenses_3.f_2
+                s2["J20"]=float(n)
+
+            if(bv.other_direct_expenses_3.f_3):
+                n,r=perc_to_amount(n,bv.other_direct_expenses_3.f_3)
+                s2["K20"]=r/100
+            
+            if(bv.other_direct_expenses_3.f_4):
+                n,r=perc_to_amount(n,bv.other_direct_expenses_3.f_4)
+                s2["L20"]=r/100
+            
+            if(bv.other_direct_expenses_3.f_5):
+                n,r=perc_to_amount(n,bv.other_direct_expenses_3.f_5)
+                s2["M20"]=r/100
+
+            if(bv.other_direct_expenses_3.f_6):
+                n,r=perc_to_amount(n,bv.other_direct_expenses_3.f_6)
+                s2["N20"]=r/100
+
+
+
+
+
+
+
+        n=0
+        if(bv.administration_no_of_employees):
+            if(bv.administration_no_of_employees.f_1):
+                n=bv.administration_no_of_employees.f_1
+                s2["J27"]=float(n)
+
+            if(bv.administration_no_of_employees.f_2):
+                n,r=perc_to_amount(n,bv.administration_no_of_employees.f_2)
+                s2["K27"]=r/100
+            
+            if(bv.administration_no_of_employees.f_3):
+                n,r=perc_to_amount(n,bv.administration_no_of_employees.f_3)
+                s2["L27"]=r/100
+            
+            if(bv.administration_no_of_employees.f_4):
+                n,r=perc_to_amount(n,bv.administration_no_of_employees.f_4)
+                s2["M27"]=r/100
+
+            if(bv.administration_no_of_employees.f_5):
+                n,r=perc_to_amount(n,bv.administration_no_of_employees.f_5)
+                s2["N27"]=r/100
+
+
+
+
+        n=0
+        if(bv.administration_average_cost_per_employee):
+            if(bv.administration_average_cost_per_employee.f_1):
+                n=bv.administration_average_cost_per_employee.f_1
+                s2["J28"]=float(n)
+
+            if(bv.administration_average_cost_per_employee.f_2):
+                n,r=perc_to_amount(n,bv.administration_average_cost_per_employee.f_2)
+                s2["K28"]=r/100
+            
+            if(bv.administration_average_cost_per_employee.f_3):
+                n,r=perc_to_amount(n,bv.administration_average_cost_per_employee.f_3)
+                s2["L28"]=r/100
+            
+            if(bv.administration_average_cost_per_employee.f_4):
+                n,r=perc_to_amount(n,bv.administration_average_cost_per_employee.f_4)
+                s2["M28"]=r/100
+
+            if(bv.administration_average_cost_per_employee.f_5):
+                n,r=perc_to_amount(n,bv.administration_average_cost_per_employee.f_5)
+                s2["N28"]=r/100
+
+
+
+        n=0
+        if(bv.selling_and_distribution_no_of_employees):
+            if(bv.selling_and_distribution_no_of_employees.f_1):
+                n=bv.selling_and_distribution_no_of_employees.f_1
+                s2["J32"]=float(n)
+
+            if(bv.selling_and_distribution_no_of_employees.f_2):
+                n,r=perc_to_amount(n,bv.selling_and_distribution_no_of_employees.f_2)
+                s2["K32"]=r/100
+            
+            if(bv.selling_and_distribution_no_of_employees.f_3):
+                n,r=perc_to_amount(n,bv.selling_and_distribution_no_of_employees.f_3)
+                s2["L32"]=r/100
+            
+            if(bv.selling_and_distribution_no_of_employees.f_4):
+                n,r=perc_to_amount(n,bv.selling_and_distribution_no_of_employees.f_4)
+                s2["M32"]=r/100
+
+            if(bv.selling_and_distribution_no_of_employees.f_5):
+                n,r=perc_to_amount(n,bv.selling_and_distribution_no_of_employees.f_5)
+                s2["N32"]=r/100
+
+
+
+
+        n=0
+        if(bv.selling_and_distribution_average_cost_per_employee):
+            if(bv.selling_and_distribution_average_cost_per_employee.f_1):
+                n=bv.selling_and_distribution_average_cost_per_employee.f_1
+                s2["J33"]=float(n)
+
+            if(bv.selling_and_distribution_average_cost_per_employee.f_2):
+                n,r=perc_to_amount(n,bv.selling_and_distribution_average_cost_per_employee.f_2)
+                s2["K33"]=r/100
+            
+            if(bv.selling_and_distribution_average_cost_per_employee.f_3):
+                n,r=perc_to_amount(n,bv.selling_and_distribution_average_cost_per_employee.f_3)
+                s2["L33"]=r/100
+            
+            if(bv.selling_and_distribution_average_cost_per_employee.f_4):
+                n,r=perc_to_amount(n,bv.selling_and_distribution_average_cost_per_employee.f_4)
+                s2["M33"]=r/100
+
+            if(bv.selling_and_distribution_average_cost_per_employee.f_5):
+                n,r=perc_to_amount(n,bv.selling_and_distribution_average_cost_per_employee.f_5)
+                s2["N33"]=r/100
+
+
+
+        n=0
+        if(bv.marketing_no_of_employees):
+            if(bv.marketing_no_of_employees.f_1):
+                n=bv.marketing_no_of_employees.f_1
+                s2["J37"]=float(n)
+
+            if(bv.marketing_no_of_employees.f_2):
+                n,r=perc_to_amount(n,bv.marketing_no_of_employees.f_2)
+                s2["K37"]=r/100
+            
+            if(bv.marketing_no_of_employees.f_3):
+                n,r=perc_to_amount(n,bv.marketing_no_of_employees.f_3)
+                s2["L37"]=r/100
+            
+            if(bv.marketing_no_of_employees.f_4):
+                n,r=perc_to_amount(n,bv.marketing_no_of_employees.f_4)
+                s2["M37"]=r/100
+
+            if(bv.marketing_no_of_employees.f_5):
+                n,r=perc_to_amount(n,bv.marketing_no_of_employees.f_5)
+                s2["N37"]=r/100
+
+
+
+
+        n=0
+        if(bv.marketing_average_cost_per_employee):
+            if(bv.marketing_average_cost_per_employee.f_1):
+                n=bv.marketing_average_cost_per_employee.f_1
+                s2["J38"]=float(n)
+
+            if(bv.marketing_average_cost_per_employee.f_2):
+                n,r=perc_to_amount(n,bv.marketing_average_cost_per_employee.f_2)
+                s2["K38"]=r/100
+            
+            if(bv.marketing_average_cost_per_employee.f_3):
+                n,r=perc_to_amount(n,bv.marketing_average_cost_per_employee.f_3)
+                s2["L38"]=r/100
+            
+            if(bv.marketing_average_cost_per_employee.f_4):
+                n,r=perc_to_amount(n,bv.marketing_average_cost_per_employee.f_4)
+                s2["M38"]=r/100
+
+            if(bv.marketing_average_cost_per_employee.f_5):
+                n,r=perc_to_amount(n,bv.marketing_average_cost_per_employee.f_5)
+                s2["N38"]=r/100
+
+
+
+
+        n=0
+        if(bv.research_and_development_no_of_employees):
+            if(bv.research_and_development_no_of_employees.f_1):
+                n=bv.research_and_development_no_of_employees.f_1
+                s2["J42"]=float(n)
+
+            if(bv.research_and_development_no_of_employees.f_2):
+                n,r=perc_to_amount(n,bv.research_and_development_no_of_employees.f_2)
+                s2["K42"]=r/100
+            
+            if(bv.research_and_development_no_of_employees.f_3):
+                n,r=perc_to_amount(n,bv.research_and_development_no_of_employees.f_3)
+                s2["L42"]=r/100
+            
+            if(bv.research_and_development_no_of_employees.f_4):
+                n,r=perc_to_amount(n,bv.research_and_development_no_of_employees.f_4)
+                s2["M42"]=r/100
+
+            if(bv.research_and_development_no_of_employees.f_5):
+                n,r=perc_to_amount(n,bv.research_and_development_no_of_employees.f_5)
+                s2["N42"]=r/100
+
+
+
+
+
+        n=0
+        if(bv.research_and_development_average_cost_per_employee):
+            if(bv.research_and_development_average_cost_per_employee.f_1):
+                n=bv.research_and_development_average_cost_per_employee.f_1
+                s2["J43"]=float(n)
+
+            if(bv.research_and_development_average_cost_per_employee.f_2):
+                n,r=perc_to_amount(n,bv.research_and_development_average_cost_per_employee.f_2)
+                s2["K43"]=r/100
+            
+            if(bv.research_and_development_average_cost_per_employee.f_3):
+                n,r=perc_to_amount(n,bv.research_and_development_average_cost_per_employee.f_3)
+                s2["L43"]=r/100
+            
+            if(bv.research_and_development_average_cost_per_employee.f_4):
+                n,r=perc_to_amount(n,bv.research_and_development_average_cost_per_employee.f_4)
+                s2["M43"]=r/100
+
+            if(bv.research_and_development_average_cost_per_employee.f_5):
+                n,r=perc_to_amount(n,bv.research_and_development_average_cost_per_employee.f_5)
+                s2["N43"]=r/100
+
+
+
+
+        n=0
+        if(bv.other_employees_1_no_of_employees):
+            if(bv.other_employees_1_no_of_employees.f_1):
+                n=bv.other_employees_1_no_of_employees.f_1
+                s2["J47"]=float(n)
+
+            if(bv.other_employees_1_no_of_employees.f_2):
+                n,r=perc_to_amount(n,bv.other_employees_1_no_of_employees.f_2)
+                s2["K47"]=r/100
+            
+            if(bv.other_employees_1_no_of_employees.f_3):
+                n,r=perc_to_amount(n,bv.other_employees_1_no_of_employees.f_3)
+                s2["L47"]=r/100
+            
+            if(bv.other_employees_1_no_of_employees.f_4):
+                n,r=perc_to_amount(n,bv.other_employees_1_no_of_employees.f_4)
+                s2["M47"]=r/100
+
+            if(bv.other_employees_1_no_of_employees.f_5):
+                n,r=perc_to_amount(n,bv.other_employees_1_no_of_employees.f_5)
+                s2["N47"]=r/100
+
+
+
+
+        n=0
+        if(bv.other_employees_1_average_cost_per_employee):
+            if(bv.other_employees_1_average_cost_per_employee.f_1):
+                n=bv.other_employees_1_average_cost_per_employee.f_1
+                s2["J48"]=float(n)
+
+            if(bv.other_employees_1_average_cost_per_employee.f_2):
+                n,r=perc_to_amount(n,bv.other_employees_1_average_cost_per_employee.f_2)
+                s2["K48"]=r/100
+            
+            if(bv.other_employees_1_average_cost_per_employee.f_3):
+                n,r=perc_to_amount(n,bv.other_employees_1_average_cost_per_employee.f_3)
+                s2["L48"]=r/100
+            
+            if(bv.other_employees_1_average_cost_per_employee.f_4):
+                n,r=perc_to_amount(n,bv.other_employees_1_average_cost_per_employee.f_4)
+                s2["M48"]=r/100
+
+            if(bv.other_employees_1_average_cost_per_employee.f_5):
+                n,r=perc_to_amount(n,bv.other_employees_1_average_cost_per_employee.f_5)
+                s2["N48"]=r/100
+
+
+
+
+
+        n=0
+        if(bv.other_employees_2_no_of_employees):
+            if(bv.other_employees_2_no_of_employees.f_1):
+                n=bv.other_employees_2_no_of_employees.f_1
+                s2["J52"]=float(n)
+
+            if(bv.other_employees_2_no_of_employees.f_2):
+                n,r=perc_to_amount(n,bv.other_employees_2_no_of_employees.f_2)
+                s2["K52"]=r/100
+            
+            if(bv.other_employees_2_no_of_employees.f_3):
+                n,r=perc_to_amount(n,bv.other_employees_2_no_of_employees.f_3)
+                s2["L52"]=r/100
+            
+            if(bv.other_employees_2_no_of_employees.f_4):
+                n,r=perc_to_amount(n,bv.other_employees_2_no_of_employees.f_4)
+                s2["M52"]=r/100
+
+            if(bv.other_employees_2_no_of_employees.f_5):
+                n,r=perc_to_amount(n,bv.other_employees_2_no_of_employees.f_5)
+                s2["N52"]=r/100
+
+
+
+
+
+
+        n=0
+        if(bv.other_employees_2_average_cost_per_employee):
+            if(bv.other_employees_2_average_cost_per_employee.f_1):
+                n=bv.other_employees_2_average_cost_per_employee.f_1
+                s2["J53"]=float(n)
+
+            if(bv.other_employees_2_average_cost_per_employee.f_2):
+                n,r=perc_to_amount(n,bv.other_employees_2_average_cost_per_employee.f_2)
+                s2["K53"]=r/100
+            
+            if(bv.other_employees_2_average_cost_per_employee.f_3):
+                n,r=perc_to_amount(n,bv.other_employees_2_average_cost_per_employee.f_3)
+                s2["L53"]=r/100
+            
+            if(bv.other_employees_2_average_cost_per_employee.f_4):
+                n,r=perc_to_amount(n,bv.other_employees_2_average_cost_per_employee.f_4)
+                s2["M53"]=r/100
+
+            if(bv.other_employees_2_average_cost_per_employee.f_5):
+                n,r=perc_to_amount(n,bv.other_employees_2_average_cost_per_employee.f_5)
+                s2["N53"]=r/100
+
+
+
+
+        n=0
+        if(bv.other_employees_3_no_of_employees):
+            if(bv.other_employees_3_no_of_employees.f_1):
+                n=bv.other_employees_3_no_of_employees.f_1
+                s2["J57"]=float(n)
+
+            if(bv.other_employees_3_no_of_employees.f_2):
+                n,r=perc_to_amount(n,bv.other_employees_3_no_of_employees.f_2)
+                s2["K57"]=r/100
+            
+            if(bv.other_employees_3_no_of_employees.f_3):
+                n,r=perc_to_amount(n,bv.other_employees_3_no_of_employees.f_3)
+                s2["L57"]=r/100
+            
+            if(bv.other_employees_3_no_of_employees.f_4):
+                n,r=perc_to_amount(n,bv.other_employees_3_no_of_employees.f_4)
+                s2["M57"]=r/100
+
+            if(bv.other_employees_3_no_of_employees.f_5):
+                n,r=perc_to_amount(n,bv.other_employees_3_no_of_employees.f_5)
+                s2["N57"]=r/100
+
+
+
+        n=0
+        if(bv.other_employees_3_average_cost_per_employee):
+            if(bv.other_employees_3_average_cost_per_employee.f_1):
+                n=bv.other_employees_3_average_cost_per_employee.f_1
+                s2["J58"]=float(n)
+
+            if(bv.other_employees_3_average_cost_per_employee.f_2):
+                n,r=perc_to_amount(n,bv.other_employees_3_average_cost_per_employee.f_2)
+                s2["K58"]=r/100
+            
+            if(bv.other_employees_3_average_cost_per_employee.f_3):
+                n,r=perc_to_amount(n,bv.other_employees_3_average_cost_per_employee.f_3)
+                s2["L58"]=r/100
+            
+            if(bv.other_employees_3_average_cost_per_employee.f_4):
+                n,r=perc_to_amount(n,bv.other_employees_3_average_cost_per_employee.f_4)
+                s2["M58"]=r/100
+
+            if(bv.other_employees_3_average_cost_per_employee.f_5):
+                n,r=perc_to_amount(n,bv.other_employees_3_average_cost_per_employee.f_5)
+                s2["N58"]=r/100
+
+
+        n=0
+        if(bv.rent):
+            if(bv.rent.f_1):
+                n=bv.rent.f_1
+                s2["J65"]=float(n)
+
+            if(bv.rent.f_2):
+                n,r=perc_to_amount(n,bv.rent.f_2)
+                s2["K65"]=r/100
+            
+            if(bv.rent.f_3):
+                n,r=perc_to_amount(n,bv.rent.f_3)
+                s2["L65"]=r/100
+            
+            if(bv.rent.f_4):
+                n,r=perc_to_amount(n,bv.rent.f_4)
+                s2["M65"]=r/100
+
+            if(bv.rent.f_5):
+                n,r=perc_to_amount(n,bv.rent.f_5)
+                s2["N65"]=r/100
+
+
+
+
+
+        n=0
+        if(bv.telephone_expenses):
+            if(bv.telephone_expenses.f_1):
+                n=bv.telephone_expenses.f_1
+                s2["J66"]=float(n)
+
+            if(bv.telephone_expenses.f_2):
+                n,r=perc_to_amount(n,bv.telephone_expenses.f_2)
+                s2["K66"]=r/100
+            
+            if(bv.telephone_expenses.f_3):
+                n,r=perc_to_amount(n,bv.telephone_expenses.f_3)
+                s2["L66"]=r/100
+            
+            if(bv.telephone_expenses.f_4):
+                n,r=perc_to_amount(n,bv.telephone_expenses.f_4)
+                s2["M66"]=r/100
+
+            if(bv.telephone_expenses.f_5):
+                n,r=perc_to_amount(n,bv.telephone_expenses.f_5)
+                s2["N66"]=r/100
+
+
+
+
+        n=0
+        if(bv.electricity):
+            if(bv.electricity.f_1):
+                n=bv.electricity.f_1
+                s2["J67"]=float(n)
+
+            if(bv.electricity.f_2):
+                n,r=perc_to_amount(n,bv.electricity.f_2)
+                s2["K67"]=r/100
+            
+            if(bv.electricity.f_3):
+                n,r=perc_to_amount(n,bv.electricity.f_3)
+                s2["L67"]=r/100
+            
+            if(bv.electricity.f_4):
+                n,r=perc_to_amount(n,bv.electricity.f_4)
+                s2["M67"]=r/100
+
+            if(bv.electricity.f_5):
+                n,r=perc_to_amount(n,bv.electricity.f_5)
+                s2["N67"]=r/100
+
+
+
+
+
+        n=0
+        if(bv.printing_and_stationery):
+            if(bv.printing_and_stationery.f_1):
+                n=bv.printing_and_stationery.f_1
+                s2["J68"]=float(n)
+
+            if(bv.printing_and_stationery.f_2):
+                n,r=perc_to_amount(n,bv.printing_and_stationery.f_2)
+                s2["K68"]=r/100
+            
+            if(bv.printing_and_stationery.f_3):
+                n,r=perc_to_amount(n,bv.printing_and_stationery.f_3)
+                s2["L68"]=r/100
+            
+            if(bv.printing_and_stationery.f_4):
+                n,r=perc_to_amount(n,bv.printing_and_stationery.f_4)
+                s2["M68"]=r/100
+
+            if(bv.printing_and_stationery.f_5):
+                n,r=perc_to_amount(n,bv.printing_and_stationery.f_5)
+                s2["N68"]=r/100
+
+
+
+        n=0
+        if(bv.audit_fees):
+            if(bv.audit_fees.f_1):
+                n=bv.audit_fees.f_1
+                s2["J69"]=float(n)
+
+            if(bv.audit_fees.f_2):
+                n,r=perc_to_amount(n,bv.audit_fees.f_2)
+                s2["K69"]=r/100
+            
+            if(bv.audit_fees.f_3):
+                n,r=perc_to_amount(n,bv.audit_fees.f_3)
+                s2["L69"]=r/100
+            
+            if(bv.audit_fees.f_4):
+                n,r=perc_to_amount(n,bv.audit_fees.f_4)
+                s2["M69"]=r/100
+
+            if(bv.audit_fees.f_5):
+                n,r=perc_to_amount(n,bv.audit_fees.f_5)
+                s2["N69"]=r/100
+
+
+        n=0
+        if(bv.other_administration_expenses_1):
+            if(bv.other_administration_expenses_1.f_2):
+                n=bv.other_administration_expenses_1.f_2
+                s2["J70"]=float(n)
+
+            if(bv.other_administration_expenses_1.f_3):
+                n,r=perc_to_amount(n,bv.other_administration_expenses_1.f_3)
+                s2["K70"]=r/100
+            
+            if(bv.other_administration_expenses_1.f_4):
+                n,r=perc_to_amount(n,bv.other_administration_expenses_1.f_4)
+                s2["L70"]=r/100
+            
+            if(bv.other_administration_expenses_1.f_5):
+                n,r=perc_to_amount(n,bv.other_administration_expenses_1.f_5)
+                s2["M70"]=r/100
+
+            if(bv.other_administration_expenses_1.f_6):
+                n,r=perc_to_amount(n,bv.other_administration_expenses_1.f_6)
+                s2["N70"]=r/100
+
+
+
+
+        n=0
+        if(bv.other_administration_expenses_2):
+            if(bv.other_administration_expenses_2.f_2):
+                n=bv.other_administration_expenses_2.f_2
+                s2["J71"]=float(n)
+
+            if(bv.other_administration_expenses_2.f_3):
+                n,r=perc_to_amount(n,bv.other_administration_expenses_2.f_3)
+                s2["K71"]=r/100
+            
+            if(bv.other_administration_expenses_2.f_4):
+                n,r=perc_to_amount(n,bv.other_administration_expenses_2.f_4)
+                s2["L71"]=r/100
+            
+            if(bv.other_administration_expenses_2.f_5):
+                n,r=perc_to_amount(n,bv.other_administration_expenses_2.f_5)
+                s2["M71"]=r/100
+
+            if(bv.other_administration_expenses_2.f_6):
+                n,r=perc_to_amount(n,bv.other_administration_expenses_2.f_6)
+                s2["N71"]=r/100
+
+
+
+        n=0
+        if(bv.other_administration_expenses_3):
+            if(bv.other_administration_expenses_3.f_2):
+                n=bv.other_administration_expenses_3.f_2
+                s2["J72"]=float(n)
+
+            if(bv.other_administration_expenses_3.f_3):
+                n,r=perc_to_amount(n,bv.other_administration_expenses_3.f_3)
+                s2["K72"]=r/100
+            
+            if(bv.other_administration_expenses_3.f_4):
+                n,r=perc_to_amount(n,bv.other_administration_expenses_3.f_4)
+                s2["L72"]=r/100
+            
+            if(bv.other_administration_expenses_3.f_5):
+                n,r=perc_to_amount(n,bv.other_administration_expenses_3.f_5)
+                s2["M72"]=r/100
+
+            if(bv.other_administration_expenses_3.f_6):
+                n,r=perc_to_amount(n,bv.other_administration_expenses_3.f_6)
+                s2["N72"]=r/100
+
+
+
+
+        n=0
+        if(bv.digital_marketing_cost):
+            if(bv.digital_marketing_cost.f_1):
+                n=bv.digital_marketing_cost.f_1
+                s2["J78"]=float(n)
+
+            if(bv.digital_marketing_cost.f_2):
+                n,r=perc_to_amount(n,bv.digital_marketing_cost.f_2)
+                s2["K78"]=r/100
+            
+            if(bv.digital_marketing_cost.f_3):
+                n,r=perc_to_amount(n,bv.digital_marketing_cost.f_3)
+                s2["L78"]=r/100
+            
+            if(bv.digital_marketing_cost.f_4):
+                n,r=perc_to_amount(n,bv.digital_marketing_cost.f_4)
+                s2["M78"]=r/100
+
+            if(bv.digital_marketing_cost.f_5):
+                n,r=perc_to_amount(n,bv.digital_marketing_cost.f_5)
+                s2["N78"]=r/100
+
+
+        n=0
+        if(bv.sales_commissions):
+            if(bv.sales_commissions.f_1):
+                n=bv.sales_commissions.f_1
+                s2["J79"]=float(n)
+
+            if(bv.sales_commissions.f_2):
+                n,r=perc_to_amount(n,bv.sales_commissions.f_2)
+                s2["K79"]=r/100
+            
+            if(bv.sales_commissions.f_3):
+                n,r=perc_to_amount(n,bv.sales_commissions.f_3)
+                s2["L79"]=r/100
+            
+            if(bv.sales_commissions.f_4):
+                n,r=perc_to_amount(n,bv.sales_commissions.f_4)
+                s2["M79"]=r/100
+
+            if(bv.sales_commissions.f_5):
+                n,r=perc_to_amount(n,bv.sales_commissions.f_5)
+                s2["N79"]=r/100
+
+
+
+        n=0
+        if(bv.travelling_expenses):
+            if(bv.travelling_expenses.f_1):
+                n=bv.travelling_expenses.f_1
+                s2["J80"]=float(n)
+
+            if(bv.travelling_expenses.f_2):
+                n,r=perc_to_amount(n,bv.travelling_expenses.f_2)
+                s2["K80"]=r/100
+            
+            if(bv.travelling_expenses.f_3):
+                n,r=perc_to_amount(n,bv.travelling_expenses.f_3)
+                s2["L80"]=r/100
+            
+            if(bv.travelling_expenses.f_4):
+                n,r=perc_to_amount(n,bv.travelling_expenses.f_4)
+                s2["M80"]=r/100
+
+            if(bv.travelling_expenses.f_5):
+                n,r=perc_to_amount(n,bv.travelling_expenses.f_5)
+                s2["N80"]=r/100
+
+
+
+
+        n=0
+        if(bv.advertisement):
+            if(bv.advertisement.f_1):
+                n=bv.advertisement.f_1
+                s2["J81"]=float(n)
+
+            if(bv.advertisement.f_2):
+                n,r=perc_to_amount(n,bv.advertisement.f_2)
+                s2["K81"]=r/100
+            
+            if(bv.advertisement.f_3):
+                n,r=perc_to_amount(n,bv.advertisement.f_3)
+                s2["L81"]=r/100
+            
+            if(bv.advertisement.f_4):
+                n,r=perc_to_amount(n,bv.advertisement.f_4)
+                s2["M81"]=r/100
+
+            if(bv.advertisement.f_5):
+                n,r=perc_to_amount(n,bv.advertisement.f_5)
+                s2["N81"]=r/100
+
+
+
+        n=0
+        if(bv.logistics_expenses):
+            if(bv.logistics_expenses.f_1):
+                n=bv.logistics_expenses.f_1
+                s2["J82"]=float(n)
+
+            if(bv.logistics_expenses.f_2):
+                n,r=perc_to_amount(n,bv.logistics_expenses.f_2)
+                s2["K82"]=r/100
+            
+            if(bv.logistics_expenses.f_3):
+                n,r=perc_to_amount(n,bv.logistics_expenses.f_3)
+                s2["L82"]=r/100
+            
+            if(bv.logistics_expenses.f_4):
+                n,r=perc_to_amount(n,bv.logistics_expenses.f_4)
+                s2["M82"]=r/100
+
+            if(bv.logistics_expenses.f_5):
+                n,r=perc_to_amount(n,bv.logistics_expenses.f_5)
+                s2["N82"]=r/100
+
+
+
+        n=0
+        if(bv.other_selling_and_marketing_expenses_1):
+            if(bv.other_selling_and_marketing_expenses_1.f_2):
+                n=bv.other_selling_and_marketing_expenses_1.f_2
+                s2["J83"]=float(n)
+
+            if(bv.other_selling_and_marketing_expenses_1.f_3):
+                n,r=perc_to_amount(n,bv.other_selling_and_marketing_expenses_1.f_3)
+                s2["K83"]=r/100
+            
+            if(bv.other_selling_and_marketing_expenses_1.f_4):
+                n,r=perc_to_amount(n,bv.other_selling_and_marketing_expenses_1.f_4)
+                s2["L83"]=r/100
+            
+            if(bv.other_selling_and_marketing_expenses_1.f_5):
+                n,r=perc_to_amount(n,bv.other_selling_and_marketing_expenses_1.f_5)
+                s2["M83"]=r/100
+
+            if(bv.other_selling_and_marketing_expenses_1.f_6):
+                n,r=perc_to_amount(n,bv.other_selling_and_marketing_expenses_1.f_6)
+                s2["N83"]=r/100
+
+
+
+        n=0
+        if(bv.other_selling_and_marketing_expenses_2):
+            if(bv.other_selling_and_marketing_expenses_2.f_2):
+                n=bv.other_selling_and_marketing_expenses_2.f_2
+                s2["J84"]=float(n)
+
+            if(bv.other_selling_and_marketing_expenses_2.f_3):
+                n,r=perc_to_amount(n,bv.other_selling_and_marketing_expenses_2.f_3)
+                s2["K84"]=r/100
+            
+            if(bv.other_selling_and_marketing_expenses_2.f_4):
+                n,r=perc_to_amount(n,bv.other_selling_and_marketing_expenses_2.f_4)
+                s2["L84"]=r/100
+            
+            if(bv.other_selling_and_marketing_expenses_2.f_5):
+                n,r=perc_to_amount(n,bv.other_selling_and_marketing_expenses_2.f_5)
+                s2["M84"]=r/100
+
+            if(bv.other_selling_and_marketing_expenses_2.f_6):
+                n,r=perc_to_amount(n,bv.other_selling_and_marketing_expenses_2.f_6)
+                s2["N84"]=r/100
+
+
+
+        n=0
+        if(bv.other_selling_and_marketing_expenses_3):
+            if(bv.other_selling_and_marketing_expenses_3.f_2):
+                n=bv.other_selling_and_marketing_expenses_3.f_2
+                s2["J85"]=float(n)
+
+            if(bv.other_selling_and_marketing_expenses_3.f_3):
+                n,r=perc_to_amount(n,bv.other_selling_and_marketing_expenses_3.f_3)
+                s2["K85"]=r/100
+            
+            if(bv.other_selling_and_marketing_expenses_3.f_4):
+                n,r=perc_to_amount(n,bv.other_selling_and_marketing_expenses_3.f_4)
+                s2["L85"]=r/100
+            
+            if(bv.other_selling_and_marketing_expenses_3.f_5):
+                n,r=perc_to_amount(n,bv.other_selling_and_marketing_expenses_3.f_5)
+                s2["M85"]=r/100
+
+            if(bv.other_selling_and_marketing_expenses_3.f_6):
+                n,r=perc_to_amount(n,bv.other_selling_and_marketing_expenses_3.f_6)
+                s2["N85"]=r/100
+
+
+
+        n=0
+        if(bv.other_expenses_1):
+            if(bv.other_expenses_1.f_2):
+                n=bv.other_expenses_1.f_2
+                s2["J89"]=float(n)
+
+            if(bv.other_expenses_1.f_3):
+                n,r=perc_to_amount(n,bv.other_expenses_1.f_3)
+                s2["K89"]=r/100
+            
+            if(bv.other_expenses_1.f_4):
+                n,r=perc_to_amount(n,bv.other_expenses_1.f_4)
+                s2["L89"]=r/100
+            
+            if(bv.other_expenses_1.f_5):
+                n,r=perc_to_amount(n,bv.other_expenses_1.f_5)
+                s2["M89"]=r/100
+
+            if(bv.other_expenses_1.f_6):
+                n,r=perc_to_amount(n,bv.other_expenses_1.f_6)
+                s2["N89"]=r/100
+
+
+
+        n=0
+        if(bv.other_expenses_2):
+            if(bv.other_expenses_2.f_2):
+                n=bv.other_expenses_2.f_2
+                s2["J93"]=float(n)
+
+            if(bv.other_expenses_2.f_3):
+                n,r=perc_to_amount(n,bv.other_expenses_2.f_3)
+                s2["K93"]=r/100
+            
+            if(bv.other_expenses_2.f_4):
+                n,r=perc_to_amount(n,bv.other_expenses_2.f_4)
+                s2["L93"]=r/100
+            
+            if(bv.other_expenses_2.f_5):
+                n,r=perc_to_amount(n,bv.other_expenses_2.f_5)
+                s2["M93"]=r/100
+
+            if(bv.other_expenses_2.f_6):
+                n,r=perc_to_amount(n,bv.other_expenses_2.f_6)
+                s2["N93"]=r/100
+
+
+
+        n=0
+        if(bv.income_tax_rate):
+            if(bv.income_tax_rate.f_1):
+                n,r=perc_to_amount(n,bv.income_tax_rate.f_1)
+                s2["J97"]=r
+
+            if(bv.income_tax_rate.f_2):
+                n,r=perc_to_amount(n,bv.income_tax_rate.f_2)
+                s2["K97"]=r
+            
+            if(bv.income_tax_rate.f_3):
+                n,r=perc_to_amount(n,bv.income_tax_rate.f_3)
+                s2["L97"]=r
+            
+            if(bv.income_tax_rate.f_4):
+                n,r=perc_to_amount(n,bv.income_tax_rate.f_4)
+                s2["M97"]=r
+
+            if(bv.income_tax_rate.f_5):
+                n,r=perc_to_amount(n,bv.income_tax_rate.f_5)
+                s2["N97"]=r
+
+
+
+#--------------------------------- Revenue Projections -----------------------------------------------------------
+        s3 = wb["Revenue Projections"]
+
+        
+        n=0
+        if(bv.revenue_growth_or_amount_1):
+            if(bv.revenue_growth_or_amount_1.f_2):
+                n=bv.revenue_growth_or_amount_1.f_2
+                s3["J7"]=float(n)
+
+            if(bv.revenue_growth_or_amount_1.f_3):
+                n,r=perc_to_amount(n,bv.revenue_growth_or_amount_1.f_3)
+                s3["K7"]=r/100
+            
+            if(bv.revenue_growth_or_amount_1.f_4):
+                n,r=perc_to_amount(n,bv.revenue_growth_or_amount_1.f_4)
+                s3["L7"]=r/100
+            
+            if(bv.revenue_growth_or_amount_1.f_5):
+                n,r=perc_to_amount(n,bv.revenue_growth_or_amount_1.f_5)
+                s3["M7"]=r/100
+
+            if(bv.revenue_growth_or_amount_1.f_6):
+                n,r=perc_to_amount(n,bv.revenue_growth_or_amount_1.f_6)
+                s3["N7"]=r/100
+
+
+
+        n=0
+        if(bv.revenue_growth_or_amount_2):
+            if(bv.revenue_growth_or_amount_2.f_2):
+                n=bv.revenue_growth_or_amount_2.f_2
+                s3["J8"]=float(n)
+
+            if(bv.revenue_growth_or_amount_2.f_3):
+                n,r=perc_to_amount(n,bv.revenue_growth_or_amount_2.f_3)
+                s3["K8"]=r/100
+            
+            if(bv.revenue_growth_or_amount_2.f_4):
+                n,r=perc_to_amount(n,bv.revenue_growth_or_amount_2.f_4)
+                s3["L8"]=r/100
+            
+            if(bv.revenue_growth_or_amount_2.f_5):
+                n,r=perc_to_amount(n,bv.revenue_growth_or_amount_2.f_5)
+                s3["M8"]=r/100
+
+            if(bv.revenue_growth_or_amount_2.f_6):
+                n,r=perc_to_amount(n,bv.revenue_growth_or_amount_2.f_6)
+                s3["N8"]=r/100
+
+
+
+
+        n=0
+        if(bv.revenue_growth_or_amount_3):
+            if(bv.revenue_growth_or_amount_3.f_2):
+                n=bv.revenue_growth_or_amount_3.f_2
+                s3["J9"]=float(n)
+
+            if(bv.revenue_growth_or_amount_3.f_3):
+                n,r=perc_to_amount(n,bv.revenue_growth_or_amount_3.f_3)
+                s3["K9"]=r/100
+            
+            if(bv.revenue_growth_or_amount_3.f_4):
+                n,r=perc_to_amount(n,bv.revenue_growth_or_amount_3.f_4)
+                s3["L9"]=r/100
+            
+            if(bv.revenue_growth_or_amount_3.f_5):
+                n,r=perc_to_amount(n,bv.revenue_growth_or_amount_3.f_5)
+                s3["M9"]=r/100
+
+            if(bv.revenue_growth_or_amount_3.f_6):
+                n,r=perc_to_amount(n,bv.revenue_growth_or_amount_3.f_6)
+                s3["N9"]=r/100
+
+
+
+
+
+        n=0
+        if(bv.revenue_growth_or_amount_4):
+            if(bv.revenue_growth_or_amount_4.f_2):
+                n=bv.revenue_growth_or_amount_4.f_2
+                s3["J10"]=float(n)
+
+            if(bv.revenue_growth_or_amount_4.f_3):
+                n,r=perc_to_amount(n,bv.revenue_growth_or_amount_4.f_3)
+                s3["K10"]=r/100
+            
+            if(bv.revenue_growth_or_amount_4.f_4):
+                n,r=perc_to_amount(n,bv.revenue_growth_or_amount_4.f_4)
+                s3["L10"]=r/100
+            
+            if(bv.revenue_growth_or_amount_4.f_5):
+                n,r=perc_to_amount(n,bv.revenue_growth_or_amount_4.f_5)
+                s3["M10"]=r/100
+
+            if(bv.revenue_growth_or_amount_4.f_6):
+                n,r=perc_to_amount(n,bv.revenue_growth_or_amount_4.f_6)
+                s3["N10"]=r/100
+
+
+
+        n=0
+        if(bv.other_income_growth_or_amount):
+            if(bv.other_income_growth_or_amount.f_1):
+                n=bv.other_income_growth_or_amount.f_1
+                s3["J14"]=float(n)
+
+            if(bv.other_income_growth_or_amount.f_2):
+                n,r=nperc_to_amount(n,bv.other_income_growth_or_amount.f_2)
+                s3["K14"]=r
+            
+            if(bv.other_income_growth_or_amount.f_3):
+                n,r=nperc_to_amount(n,bv.other_income_growth_or_amount.f_3)
+                s3["L14"]=r
+            
+            if(bv.other_income_growth_or_amount.f_4):
+                n,r=nperc_to_amount(n,bv.other_income_growth_or_amount.f_4)
+                s3["M14"]=r
+
+            if(bv.other_income_growth_or_amount.f_5):
+                n,r=nperc_to_amount(n,bv.other_income_growth_or_amount.f_5)
+                s3["N14"]=r
+
+
+        
+        n=0
+        if(bv.realised_foreign_exchange_gain_or_loss):
+            if(bv.realised_foreign_exchange_gain_or_loss.f_1):
+                n=bv.realised_foreign_exchange_gain_or_loss.f_1
+                s3["J15"]=float(n)
+
+            if(bv.realised_foreign_exchange_gain_or_loss.f_2):
+                n,r=nperc_to_amount(n,bv.realised_foreign_exchange_gain_or_loss.f_2)
+                s3["K15"]=r
+            
+            if(bv.realised_foreign_exchange_gain_or_loss.f_3):
+                n,r=nperc_to_amount(n,bv.realised_foreign_exchange_gain_or_loss.f_3)
+                s3["L15"]=r
+            
+            if(bv.realised_foreign_exchange_gain_or_loss.f_4):
+                n,r=nperc_to_amount(n,bv.realised_foreign_exchange_gain_or_loss.f_4)
+                s3["M15"]=r
+
+            if(bv.realised_foreign_exchange_gain_or_loss.f_5):
+                n,r=nperc_to_amount(n,bv.realised_foreign_exchange_gain_or_loss.f_5)
+                s3["N15"]=r
+
+
+
+
+
+#--------------------------------- CAPEX Schedule  -----------------------------------------------------------
+        s4 = wb["CAPEX Schedule "]
+
+        n=0
+        if(bv.capex_opening_gross):
+            if(bv.capex_opening_gross.f_1):
+                n=bv.capex_opening_gross.f_1
+                s4["C4"]=float(n)
+
+
+
+        n=0
+        if(bv.capex_additions):
+            if(bv.capex_additions.f_1):
+                n=bv.capex_additions.f_1
+                s4["J5"]=float(n)
+
+            if(bv.capex_additions.f_2):
+                n,r=perc_to_amount(n,bv.capex_additions.f_2)
+                s4["K5"]=r/100
+            
+            if(bv.capex_additions.f_3):
+                n,r=perc_to_amount(n,bv.capex_additions.f_3)
+                s4["L5"]=r/100
+            
+            if(bv.capex_additions.f_4):
+                n,r=perc_to_amount(n,bv.capex_additions.f_4)
+                s4["M5"]=r/100
+
+            if(bv.capex_additions.f_5):
+                n,r=perc_to_amount(n,bv.capex_additions.f_5)
+                s4["N5"]=r/100
+
+
+
+        n=0
+        if(bv.capex_additions_intangible):
+            if(bv.capex_additions_intangible.f_1):
+                n=bv.capex_additions_intangible.f_1
+                s4["J6"]=float(n)
+
+            if(bv.capex_additions_intangible.f_2):
+                n,r=perc_to_amount(n,bv.capex_additions_intangible.f_2)
+                s4["K6"]=r/100
+            
+            if(bv.capex_additions_intangible.f_3):
+                n,r=perc_to_amount(n,bv.capex_additions_intangible.f_3)
+                s4["L6"]=r/100
+            
+            if(bv.capex_additions_intangible.f_4):
+                n,r=perc_to_amount(n,bv.capex_additions_intangible.f_4)
+                s4["M6"]=r/100
+
+            if(bv.capex_additions_intangible.f_5):
+                n,r=perc_to_amount(n,bv.capex_additions_intangible.f_5)
+                s4["N6"]=r/100
+
+
+
+
+
+
+
+        n=0
+        if(bv.capex_deletions):
+            if(bv.capex_deletions.f_1):
+                n=bv.capex_deletions.f_1
+                s4["J7"]=float(n)
+
+            if(bv.capex_deletions.f_2):
+                n,r=perc_to_amount(n,bv.capex_deletions.f_2)
+                s4["K7"]=r/100
+            
+            if(bv.capex_deletions.f_3):
+                n,r=perc_to_amount(n,bv.capex_deletions.f_3)
+                s4["L7"]=r/100
+            
+            if(bv.capex_deletions.f_4):
+                n,r=perc_to_amount(n,bv.capex_deletions.f_4)
+                s4["M7"]=r/100
+
+            if(bv.capex_deletions.f_5):
+                n,r=perc_to_amount(n,bv.capex_deletions.f_5)
+                s4["N7"]=r/100
+
+
+
+
+
+        n=0
+        if(bv.capex_average_depreciation_rate):
+            if(bv.capex_average_depreciation_rate.f_1):
+                n,r=perc_to_amount(n,bv.capex_average_depreciation_rate.f_1)
+                s4["J13"]=r/100
+
+            if(bv.capex_average_depreciation_rate.f_2):
+                n,r=perc_to_amount(n,bv.capex_average_depreciation_rate.f_2)
+                s4["K13"]=r/100
+            
+            if(bv.capex_average_depreciation_rate.f_3):
+                n,r=perc_to_amount(n,bv.capex_average_depreciation_rate.f_3)
+                s4["L13"]=r/100
+            
+            if(bv.capex_average_depreciation_rate.f_4):
+                n,r=perc_to_amount(n,bv.capex_average_depreciation_rate.f_4)
+                s4["M13"]=r/100
+
+            if(bv.capex_average_depreciation_rate.f_5):
+                n,r=perc_to_amount(n,bv.capex_average_depreciation_rate.f_5)
+                s4["N13"]=r/100
+
+
+
+
+#--------------------------------- Debt Schedule   -----------------------------------------------------------
+        s5 = wb["Debt Schedule "]
+
+        n=0
+        if(bv.secured_loans_from_banks):
+            if(bv.secured_loans_from_banks.f_1):
+                n=bv.secured_loans_from_banks.f_1
+                s5["J6"]=float(n)
+
+            if(bv.secured_loans_from_banks.f_2):
+                n,r=perc_to_amount(n,bv.secured_loans_from_banks.f_2)
+                s5["K6"]=r/100
+            
+            if(bv.secured_loans_from_banks.f_3):
+                n,r=perc_to_amount(n,bv.secured_loans_from_banks.f_3)
+                s5["L6"]=r/100
+            
+            if(bv.secured_loans_from_banks.f_4):
+                n,r=perc_to_amount(n,bv.secured_loans_from_banks.f_4)
+                s5["M6"]=r/100
+
+            if(bv.secured_loans_from_banks.f_5):
+                n,r=perc_to_amount(n,bv.secured_loans_from_banks.f_5)
+                s5["N6"]=r/100
+
+
+
+
+        n=0
+        if(bv.secured_loans_term_loans):
+            if(bv.secured_loans_term_loans.f_1):
+                n=bv.secured_loans_term_loans.f_1
+                s5["J7"]=float(n)
+
+            if(bv.secured_loans_term_loans.f_2):
+                n,r=perc_to_amount(n,bv.secured_loans_term_loans.f_2)
+                s5["K7"]=r/100
+            
+            if(bv.secured_loans_term_loans.f_3):
+                n,r=perc_to_amount(n,bv.secured_loans_term_loans.f_3)
+                s5["L7"]=r/100
+            
+            if(bv.secured_loans_term_loans.f_4):
+                n,r=perc_to_amount(n,bv.secured_loans_term_loans.f_4)
+                s5["M7"]=r/100
+
+            if(bv.secured_loans_term_loans.f_5):
+                n,r=perc_to_amount(n,bv.secured_loans_term_loans.f_5)
+                s5["N7"]=r/100
+
+
+
+
+        n=0
+        if(bv.secured_loans_other_loans):
+            if(bv.secured_loans_other_loans.f_1):
+                n=bv.secured_loans_other_loans.f_1
+                s5["J8"]=float(n)
+
+            if(bv.secured_loans_other_loans.f_2):
+                n,r=perc_to_amount(n,bv.secured_loans_other_loans.f_2)
+                s5["K8"]=r/100
+            
+            if(bv.secured_loans_other_loans.f_3):
+                n,r=perc_to_amount(n,bv.secured_loans_other_loans.f_3)
+                s5["L8"]=r/100
+            
+            if(bv.secured_loans_other_loans.f_4):
+                n,r=perc_to_amount(n,bv.secured_loans_other_loans.f_4)
+                s5["M8"]=r/100
+
+            if(bv.secured_loans_other_loans.f_5):
+                n,r=perc_to_amount(n,bv.secured_loans_other_loans.f_5)
+                s5["N8"]=r/100
+
+
+
+
+        n=0
+        if(bv.secured_loans_finance_lease_obligation):
+            if(bv.secured_loans_finance_lease_obligation.f_1):
+                n=bv.secured_loans_finance_lease_obligation.f_1
+                s5["J9"]=float(n)
+
+            if(bv.secured_loans_finance_lease_obligation.f_2):
+                n,r=perc_to_amount(n,bv.secured_loans_finance_lease_obligation.f_2)
+                s5["K9"]=r/100
+            
+            if(bv.secured_loans_finance_lease_obligation.f_3):
+                n,r=perc_to_amount(n,bv.secured_loans_finance_lease_obligation.f_3)
+                s5["L9"]=r/100
+            
+            if(bv.secured_loans_finance_lease_obligation.f_4):
+                n,r=perc_to_amount(n,bv.secured_loans_finance_lease_obligation.f_4)
+                s5["M9"]=r/100
+
+            if(bv.secured_loans_finance_lease_obligation.f_5):
+                n,r=perc_to_amount(n,bv.secured_loans_finance_lease_obligation.f_5)
+                s5["N9"]=r/100
+
+
+
+        n=0
+        if(bv.unsecured_loans):
+            if(bv.unsecured_loans.f_1):
+                n=bv.unsecured_loans.f_1
+                s5["J12"]=float(n)
+
+            if(bv.unsecured_loans.f_2):
+                n,r=perc_to_amount(n,bv.unsecured_loans.f_2)
+                s5["K12"]=r/100
+            
+            if(bv.unsecured_loans.f_3):
+                n,r=perc_to_amount(n,bv.unsecured_loans.f_3)
+                s5["L12"]=r/100
+            
+            if(bv.unsecured_loans.f_4):
+                n,r=perc_to_amount(n,bv.unsecured_loans.f_4)
+                s5["M12"]=r/100
+
+            if(bv.unsecured_loans.f_5):
+                n,r=perc_to_amount(n,bv.unsecured_loans.f_5)
+                s5["N12"]=r/100
+
+
+
+
+        n=0
+        if(bv.average_interest_rate_debt):
+            if(bv.average_interest_rate_debt.f_1):
+                n,r=perc_to_amount(n,bv.average_interest_rate_debt.f_1)
+                s5["J19"]=r/100
+
+            if(bv.average_interest_rate_debt.f_2):
+                n,r=perc_to_amount(n,bv.average_interest_rate_debt.f_2)
+                s5["K19"]=r/100
+            
+            if(bv.average_interest_rate_debt.f_3):
+                n,r=perc_to_amount(n,bv.average_interest_rate_debt.f_3)
+                s5["L19"]=r/100
+            
+            if(bv.average_interest_rate_debt.f_4):
+                n,r=perc_to_amount(n,bv.average_interest_rate_debt.f_4)
+                s5["M19"]=r/100
+
+            if(bv.average_interest_rate_debt.f_5):
+                n,r=perc_to_amount(n,bv.average_interest_rate_debt.f_5)
+                s5["N19"]=r/100
+
+
+
+
+
+
+
+
+
+
+        wb.save(new_xl)
+        return HttpResponse("<a href='/"+new_xl+"'> Click to Download !</a>")
+
+
+    else:
+        return HttpResponse("Failed !")

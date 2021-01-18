@@ -120,7 +120,7 @@ urlpatterns = [
     path("reset_db",views.reset_db,name="reset_db"), #reset_db
 
     path("xl_file_find",views.xl_file_find,name="xl_file_find"), #XL file found
-    path("new_xl",views.new_xl,name="new_xl"), #New xl found
+    path("new_xl_get/<int:id>",views.new_xl_get,name="new_xl_get"), #New xl found
     
     
 

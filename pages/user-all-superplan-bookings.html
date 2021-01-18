@@ -48,7 +48,7 @@
 <td class="text-truncate" >Theme 1</td>
 <td class="text-truncate" >{{booking.date  | date:"F d Y"}}</td>
 <td><a class="btn btn-success" href="user_template_view_by_get/{{booking.id}}">View</a></td>
-<td><a class="btn btn-primary"  onclick="alert('Under development !');" href="">PDF</a> <a class="btn btn-info" onclick="alert('Please upgrade your plan !');" href="">PPT</a>  <a class="btn btn-danger"  onclick="alert('Please upgrade your plan !');" href="">XLSX</a> </td>
+<td><a class="btn btn-primary"  onclick="alert('Under development !');" href="">PDF</a> <a class="btn btn-info" onclick="alert('Please upgrade your plan !');" href="">PPT</a>  <a class="btn btn-danger"  href="new_xl_get/{{booking.id}}">XLSX</a> </td>
 </tr>
 {% endfor %}
 
