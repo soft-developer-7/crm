@@ -61,10 +61,10 @@ def multi_input_insert(request,name):
 
 def multi_input_insert_xl(request,data,row):
 
-    
+
     multi = super_plan_forms_multiple_inputs_xl()
     multi.form_id = request.session['form']
-    
+
     multi.f_1 = data["Historicals"][row][2]
     multi.f_2 = data["Historicals"][row][3]
     multi.f_3 = data["Historicals"][row][4]
@@ -77,10 +77,10 @@ def multi_input_insert_xl(request,data,row):
 def multi_image_insert(request,name,r_id=None):
     user = User_db.objects.filter(id=request.session['user']).get()
     form_id = request.session['form']
-    
+
     values = request.FILES.getlist(name)
-    
-    
+
+
 
 
     if(r_id):
@@ -90,27 +90,27 @@ def multi_image_insert(request,name,r_id=None):
         if(multi):
             for i in range(1,7):
                 if(request.POST.get(i_name+'_'+str(i)) and request.POST[i_name+'_'+str(i)]=="1"):
-                    
+
                     val = values[c]
                     if i==1:
                         multi.i_1 = val
-                        
+
                     elif i==2:
                         multi.i_2 = val
-                        
+
                     elif i==3:
                         multi.i_3 = val
-                        
+
                     elif i==4:
                         multi.i_4 = val
-                        
+
                     elif i==5:
                         multi.i_5 = val
-                        
+
                     elif i==6:
                         multi.i_6 = val
                     c+=1
-                    
+
                 multi.save()
 
 
@@ -123,23 +123,23 @@ def multi_image_insert(request,name,r_id=None):
                 val = values[i]
                 if i==0:
                     multi.i_1 = val
-                    
+
                 elif i==1:
                     multi.i_2 = val
-                    
+
                 elif i==2:
                     multi.i_3 = val
-                    
+
                 elif i==3:
                     multi.i_4 = val
-                    
+
                 elif i==4:
                     multi.i_5 = val
-                    
+
                 elif i==5:
                     multi.i_6 = val
-                    
-            
+
+
         multi.save()
         return multi
 
@@ -264,8 +264,8 @@ def reg_form(request):
                 user=User_db(name=name,mobile=mobile,email=email,password=password,role=role,address=address)
                 user.save()
                 return redirect('/success')
-                
-            
+
+
 
         else:
             messages.info(request,"Password not same !")
@@ -273,11 +273,11 @@ def reg_form(request):
 
     else:
         messages.info(request,"Method is not POST !")
-        return render(request,'registration.html')    
+        return render(request,'registration.html')
 
 
 
-    
+
 
 
 
@@ -299,21 +299,21 @@ def login_form(request):
                 request.session['role']=user.role
                 request.session['name']=user.name
                 request.session['photo']=user.photo.url
-                
+
                 return redirect('/user-dashboard')
-                
+
 
             else:
-                
+
                 messages.info(request,"Invalid user id or password !")
                 return redirect('/login')
 
         else:
-            
+
             messages.info(request,"Invalid user id or password !")
             return redirect('/login')
 
-    
+
 
 
 
@@ -429,7 +429,7 @@ def admin_all_pages(request):
         pages = Pages.objects.all()
         return render(request,'admin-all-pages.html',{"pages":pages})
     else:
-        return redirect('/login')       
+        return redirect('/login')
 
 
 
@@ -452,7 +452,7 @@ def admin_all_posts(request):
         posts = Posts.objects.order_by('-pub_date')
         return render(request,'admin-all-posts.html',{"posts":posts})
     else:
-        return redirect('/login')    
+        return redirect('/login')
 
 
 
@@ -476,7 +476,7 @@ def admin_all_banners(request):
         banners = Banners.objects.order_by('-date')
         return render(request,'admin-all-banners.html',{"banners":banners})
     else:
-        return redirect('/login')    
+        return redirect('/login')
 
 
 
@@ -508,17 +508,17 @@ def admin_login_form(request):
                 request.session['role']=user.role
                 request.session['name']=user.name
                 request.session['photo']=user.photo.url
-                
+
                 return redirect('/admin-dashboard')
-                
+
 
             else:
-                
+
                 messages.info(request,"Invalid user id or password !")
                 return render(request,'admin-login.html')
 
         else:
-            
+
             messages.info(request,"Invalid user id or password !")
             return render(request,'admin-login.html')
 
@@ -531,12 +531,12 @@ def admin_login_form(request):
 
 
 def admin_profile_update_form(request):                                # Admin Profile Update Form
-    
+
     if(request.session.get('user')):
         user = User_db.objects.filter(id=request.session['user']).get()
         if(user and user.role=="admin" and request.method=="POST"):
             user =  User_db.objects.get(id=request.session['user'])
-            
+
             user.name=request.POST["name"]
             user.mobile=request.POST["mobile"]
             user.address=request.POST["address"]
@@ -562,7 +562,7 @@ def admin_profile_photo_update(request):                                # Admin 
     if(request.session.get('user')):
         user = User_db.objects.filter(id=request.session['user']).get()
         if(user and user.role=="admin" and request.method=="POST"):
-            
+
             photo = request.FILES["photo"]
             user.photo = photo
             user.save()
@@ -571,7 +571,7 @@ def admin_profile_photo_update(request):                                # Admin 
             return redirect('/login')
     else:
         return redirect('/login')
-            
+
 
 
 
@@ -628,7 +628,7 @@ def admin_user_profile_update_form(request):                                # Ad
     if(auth_admin(request) and inp_user and request.method=="POST"):
 
         user =  User_db.objects.get(id=request.POST['id'])
-            
+
         user.name=request.POST["name"]
         user.mobile=request.POST["mobile"]
         user.address=request.POST["address"]
@@ -689,7 +689,7 @@ def admin_new_user_profile_form(request):                                   # Ad
         user.address=request.POST["address"]
         user.role=request.POST["role"]
         user.password = make_password(request.POST['password'])
-        
+
         if(request.FILES):
             user.photo = request.FILES["photo"]
 
@@ -709,7 +709,7 @@ def admin_new_user_profile_form(request):                                   # Ad
 
 
 def admin_new_page_form(request):                                   # Admin New Page Form
-    
+
     page = Pages.objects.filter(slug=request.POST["slug"]).count()
     if(page):
         messages.info(request,"Slug is already exists !")
@@ -717,13 +717,13 @@ def admin_new_page_form(request):                                   # Admin New 
 
     if(auth_admin(request) and request.method=="POST"):
         new_page =  Pages()
-        
+
         new_page.title=request.POST["title"]
         new_page.meta=request.POST["meta"]
         new_page.slug=request.POST["slug"]
         new_page.keywords=request.POST["keywords"]
         new_page.post=request.POST["post"]
-        
+
         if(request.FILES):
             new_page.body_photo = request.FILES["photo"]
 
@@ -772,13 +772,13 @@ def admin_page_update_form(request):                                   # Admin P
             return redirect('/page_update_by_get/'+str(request.POST['id']))
 
 
-    if(auth_admin(request) and page and request.method=="POST"):            
+    if(auth_admin(request) and page and request.method=="POST"):
         page.title=request.POST["title"]
         page.meta=request.POST["meta"]
         page.slug=request.POST["slug"]
         page.keywords=request.POST["keywords"]
         page.post=request.POST["post"]
-    
+
         if(request.FILES):
             page.body_photo = request.FILES["photo"]
         page.save()
@@ -814,7 +814,7 @@ def ajax_call_delete_page(request):                                   # AJAX cal
 
 
 def admin_new_post_form(request):                                   # Admin New Post Form
-    
+
     post = Posts.objects.filter(slug=request.POST["slug"]).count()
     if(post):
         messages.info(request,"Slug is already exists !")
@@ -822,20 +822,20 @@ def admin_new_post_form(request):                                   # Admin New 
 
     if(auth_admin(request) and request.method=="POST"):
         new_post =  Posts()
-        
+
         new_post.title=request.POST["title"]
         new_post.meta=request.POST["meta"]
         new_post.slug=request.POST["slug"]
         new_post.keywords=request.POST["keywords"]
         new_post.post=request.POST["post"]
-        
+
         if(request.FILES.get("banner_photo")):
             new_post.banner_photo = request.FILES["banner_photo"]
 
         if(request.FILES.get("body_photo")):
             new_post.body_photo = request.FILES["body_photo"]
 
-        new_post.author_id = request.session["user"] 
+        new_post.author_id = request.session["user"]
         new_post.save()
 
         return redirect("/admin-all-posts")
@@ -882,13 +882,13 @@ def admin_post_update_form(request):                                   # Admin P
             return redirect('/post_update_by_get/'+str(request.POST['id']))
 
 
-    if(auth_admin(request) and post and request.method=="POST"):            
+    if(auth_admin(request) and post and request.method=="POST"):
         post.title=request.POST["title"]
         post.meta=request.POST["meta"]
         post.slug=request.POST["slug"]
         post.keywords=request.POST["keywords"]
         post.post=request.POST["post"]
-    
+
         if(request.FILES.get("banner_photo")):
             post.banner_photo = request.FILES["banner_photo"]
 
@@ -924,7 +924,7 @@ def ajax_call_delete_post(request):                                   # AJAX cal
 
 
 def admin_new_banner_form(request):                                   # Admin New Banner Form
-    
+
     banner = Banners.objects.filter(title=request.POST["title"]).count()
     if(banner):
         messages.info(request,"Title is already exists !")
@@ -932,12 +932,12 @@ def admin_new_banner_form(request):                                   # Admin Ne
 
     if(auth_admin(request) and request.method=="POST"):
         new_banner =  Banners()
-        
+
         new_banner.title=request.POST["title"]
 
         if(request.POST.get("desc")):
             new_banner.desc=request.POST["desc"]
-        
+
         new_banner.alt=request.POST["alt"]
 
         if(request.POST.get("category")):
@@ -974,7 +974,7 @@ def banner_update_by_get(request,id):                                   # Banner
 
 def admin_banner_update_form(request):                                   # Admin Banner update Form
     banner = Banners.objects.filter(id=request.POST['id']).get()
-    if(banner and auth_admin(request) and request.method=="POST"):            
+    if(banner and auth_admin(request) and request.method=="POST"):
         banner.title=request.POST["title"]
         if(request.POST.get("desc")):
             banner.desc=request.POST["desc"]
@@ -1051,7 +1051,7 @@ def user_profile_update(request):                                # User Profile 
         user = User_db.objects.filter(id=request.session['user']).get()
         if(user and user.role!="admin"):
             user =  User_db.objects.get(id=request.session['user'])
-            
+
             return render(request,'user-profile-update.html',{'name':user.name,'countrycode':user.countrycode,'mobile':user.mobile,
             'email':user.email,'address':user.address,'photo':user.photo.url})
         else:
@@ -1070,7 +1070,7 @@ def user_profile_update(request):                                # User Profile 
 
 
 def user_profile_update_form(request):                                # User Profile Update Form
-    
+
     if(request.session.get('user')):
         user = User_db.objects.filter(id=request.session['user']).get()
 
@@ -1096,7 +1096,7 @@ def user_profile_update_form(request):                                # User Pro
 
             user.save()
 
-            
+
             request.session['name']=user.name
             request.session['photo']=user.photo.url
 
@@ -1166,7 +1166,7 @@ def user_form_1_submit(request):            # User Form 1 Submit
         if(request.POST.get("denomination")):
             book.denomination = request.POST["denomination"]
 
-        
+
         book.pack = 'Starter Pack'
 
         book.current_fillup_position = 1
@@ -1185,12 +1185,12 @@ def user_form_1_submit(request):            # User Form 1 Submit
 def user_form_2_submit(request):            # User Form 2 Submit
     if(auth_user(request) and request.method=="POST"):
 
-        
+
         book = super_plan_forms.objects.filter(id=request.session['form']).get()
         if(auth_user(request) and book and request.method=="POST"):
-            
 
-            
+
+
             book.company_name = request.POST["company_name"]
             book.company_website_link = request.POST["company_website_link"]
             book.owner_name = request.POST["owner_name"]
@@ -1241,7 +1241,7 @@ def user_form_3_submit(request):            # User Form 3 Submit
         if(request.FILES.get("company_logo")):
             book.company_logo = request.FILES["company_logo"]
 
-        
+
         book.current_fillup_position = 3
         book.save()
 
@@ -1280,7 +1280,7 @@ def user_form_4_submit(request):            # User Form 4 Submit
 def user_form_5_submit(request):            # User Form 5 Submit
     book = super_plan_forms.objects.filter(id=request.session['form']).get()
     if(auth_user(request) and book and request.method=="POST"):
-        
+
 
         if(request.FILES.get("products_and_services[]")):
             if(book.products_and_services.id):
@@ -1300,7 +1300,7 @@ def user_form_5_submit(request):            # User Form 5 Submit
         book.milestones_achievement= multi_input_insert(request,"milestones_achievement[]")
         book.locations_served= multi_input_insert(request,"locations_served[]")
 
-        
+
         if(request.POST.get("swot_s")):
             book.swot_s = request.POST["swot_s"]
 
@@ -1330,7 +1330,7 @@ def user_form_6_submit(request):            # User Form 6 Submit
     if(auth_user(request) and book and request.method=="POST"):
 
 
-            
+
         multi = super_plan_forms_multiple_inputs()
         multi.user = User_db.objects.filter(id=request.session['user']).get()
         multi.form_id=request.session['form']
@@ -1397,7 +1397,7 @@ def user_form_6_submit(request):            # User Form 6 Submit
 
         multi.save()
         book.management_team_file=multi
-        
+
 
         book.current_fillup_position = 6
         book.save()
@@ -1439,7 +1439,7 @@ def user_form_8_submit(request):            # User Form 8 Submit
         book.save()
 
 
-        
+
 
         ind_types = Industries.objects.all()
 
@@ -1472,26 +1472,26 @@ def user_form_9_submit(request):            # User Form 9 Submit
 
         user = User_db.objects.filter(id=request.session['user']).get()
         form_id = request.session['form']
-        
+
 
 
         if(request.POST.get("industry_analysis_glob")):
             book.industry_analysis_glob = request.POST["industry_analysis_glob"]
-        
+
         if(request.FILES.get("industry_analysis_glob_img")):
             book.industry_analysis_glob_img = request.FILES["industry_analysis_glob_img"]
 
 
         if(request.POST.get("industry_analysis_india")):
             book.industry_analysis_india = request.POST["industry_analysis_india"]
-        
+
         if(request.FILES.get("industry_analysis_india_img")):
             book.industry_analysis_india_img = request.FILES["industry_analysis_india_img"]
-       
+
         book.competitor_analysis_n = multi_input_insert(request,"competitor_analysis_n[]")
         book.competitor_analysis_p = multi_input_insert(request,"competitor_analysis_p[]")
 
-        
+
         book.competitor_analysis_v1 = competitor_analysis_input(request,"competitor_analysis_v1[]")
         book.competitor_analysis_v2 = competitor_analysis_input(request,"competitor_analysis_v2[]")
         book.competitor_analysis_v3 = competitor_analysis_input(request,"competitor_analysis_v3[]")
@@ -1526,15 +1526,15 @@ def user_form_9_1_submit(request):            # User Form 9_1 Submit
 
 def user_form_9_1_historical_submit(request):          #XLSX input form
     book = super_plan_forms.objects.filter(id=request.session['form']).get()
-    
+
     if(auth_user(request) and book and request.method=="POST"):
         if(request.FILES.get("historical_xl")):
             book.historical_xl = request.FILES["historical_xl"]
             book.save()
 
             book = super_plan_forms.objects.filter(id=request.session['form']).get()
-            
-            data = get_data(book.historical_xl.url[1:])
+
+            data = get_data(settings.MEDIA_ROOT+book.historical_xl.url[7:])
 
             try:
                 c=0
@@ -1542,7 +1542,7 @@ def user_form_9_1_historical_submit(request):          #XLSX input form
                     if(len(data["Historicals"][i])>4):
                         for j in range(1,5):
                             c=c+1
-                
+
 
 
                 xl_form = super_plan_form_xl_input()
@@ -1641,7 +1641,7 @@ def user_form_9_1_historical_submit(request):          #XLSX input form
                 xl_form.balance_sheet_total_assets = multi_input_insert_xl(request,data,119)
                 xl_form.balance_sheet_check = multi_input_insert_xl(request,data,121)
 
-                
+
 
                 xl_form.save()
                 book.historical_xl_data=xl_form
@@ -1715,7 +1715,7 @@ def user_form_10_submit(request):            # User Form 10 Submit
 
             book.other_employees_3_no_of_employees = multi_input_insert(request,"other_employees_3_no_of_employees[]")
             book.other_employees_3_average_cost_per_employee = multi_input_insert(request,"other_employees_3_average_cost_per_employee[]")
-        
+
         book.rent = multi_input_insert(request,"rent[]")
         book.telephone_expenses = multi_input_insert(request,"telephone_expenses[]")
         book.electricity = multi_input_insert(request,"electricity[]")
@@ -1737,7 +1737,7 @@ def user_form_10_submit(request):            # User Form 10 Submit
         book.income_tax_rate = multi_input_insert(request,"income_tax_rate[]")
         book.current_fillup_position = 10
         book.save()
-        
+
         return render(request,'user-form11.html',{"data":book})
     else:
         return redirect('/login')
@@ -1766,7 +1766,7 @@ def user_form_11_submit(request):            # User Form 11 Submit
         book.average_interest_rate_debt = multi_input_insert(request,"average_interest_rate_debt[]")
         book.deferred_tax_liabilities  = multi_input_insert(request,"deferred_tax_liabilities[]")
         book.long_term_provisions_growth_or_amount = multi_input_insert(request,"long_term_provisions_growth_or_amount[]")
-        book.other_non_current_liabilities_growth_or_amount = multi_input_insert(request,"other_non_current_liabilities_growth_or_amount[]")        
+        book.other_non_current_liabilities_growth_or_amount = multi_input_insert(request,"other_non_current_liabilities_growth_or_amount[]")
         book.short_term_borrowings_growth_or_amount = multi_input_insert(request,"short_term_borrowings_growth_or_amount[]")
         book.short_term_provisions_growth_or_amount = multi_input_insert(request,"short_term_provisions_growth_or_amount[]")
         book.sundry_creditors_no_of_days = multi_input_insert(request,"sundry_creditors_no_of_days[]")
@@ -1774,7 +1774,7 @@ def user_form_11_submit(request):            # User Form 11 Submit
         book.intangible_assets_growth_or_amount = multi_input_insert(request,"intangible_assets_growth_or_amount[]")
         book.long_term_loans_and_advances_growth_or_amount = multi_input_insert(request,"long_term_loans_and_advances_growth_or_amount[]")
         book.long_term_investments_growth_or_amount = multi_input_insert(request,"long_term_investments_growth_or_amount[]")
-        book.deferred_tax_assets = multi_input_insert(request,"deferred_tax_assets[]")        
+        book.deferred_tax_assets = multi_input_insert(request,"deferred_tax_assets[]")
         book.other_non_current_assets_growth_or_amount = multi_input_insert(request,"other_non_current_assets_growth_or_amount[]")
         book.sundry_debtors_no_of_days = multi_input_insert(request,"sundry_debtors_no_of_days[]")
         book.inventory_no_of_days = multi_input_insert(request,"inventory_no_of_days[]")
@@ -1785,7 +1785,7 @@ def user_form_11_submit(request):            # User Form 11 Submit
         book.current_fillup_position = 11
         book.save()
 
-        
+
         return render(request,'user-form12.html',{"data":book})
     else:
         return redirect('/login')
@@ -1812,7 +1812,7 @@ def user_form_12_submit(request):            # User Form 12 Submit
     book = super_plan_forms.objects.filter(id=request.session['form']).get()
     if(auth_user(request) and book and request.method=="POST"):
 
-        
+
         book.capex_years = multi_input_insert(request,"capex_years[]")
         book.capex_opening_gross = multi_input_insert(request,"capex_opening_gross[]")
         book.capex_additions = multi_input_insert(request,"capex_additions[]")
@@ -1874,7 +1874,7 @@ def superplan_form_number(request,id):                                # User Sup
 def user_all_superplan_bookings(request):                                # User All Template view
 
     if(auth_user(request)):
-        data = super_plan_forms.objects.filter(user=request.session['user'],current_fillup_position=13) 
+        data = super_plan_forms.objects.filter(user=request.session['user'],current_fillup_position=13)
         return render(request,'user-all-superplan-bookings.html',{"bookings":data})
     else:
         return redirect('/login')
@@ -1966,7 +1966,7 @@ def user_incomplete_superplan_by_get(request,id):                               
                 if(ind_gw_c):
                     ind_gw=Industry_growth_drivers.objects.filter(industry__pk=book.industry_type).get()
 
-                
+
                 return render(request,form_url,{"data":book,"industries":ind_types,"industry_analysis":ind_an,"industry_growth_drivers":ind_gw})
             else:
                 return render(request,form_url,{"data":book,"industries":ind_types})
@@ -2029,7 +2029,7 @@ def reset_db(request):
     data3.delete()
 
     return HttpResponse(request,"Done !")
-    
+
 
 
 
@@ -2050,7 +2050,7 @@ def reset_db(request):
 
 def xl_file_find(request):
     name="form1.xlsx"
-    path="media/"
+    path=settings.MEDIA_ROOT
     for root, dirs, files in os.walk(path):
         if name in files:
             return HttpResponse("File Found !")
@@ -2099,16 +2099,15 @@ def nperc_to_amount(n,v):
 
 
 def new_xl_get(request,id):
-    directory = str(id)
-    parent_dir = settings.MEDIA_URL[1:]+"/users_xl/"
-    path_xl = os.path.join(parent_dir, directory)
 
+    path_u=os.path.join(settings.MEDIA_ROOT,"user_xl")
+    path_xl=os.path.join(path_u,str(id))
     if(not os.path.exists(path_xl)):
         os.mkdir(path_xl)
 
 
     new_xl = os.path.join(path_xl,"superplan.xlsx")
-    copyfile(settings.MEDIA_URL[1:]+"/no_historicals.xlsx",new_xl)
+    copyfile(settings.MEDIA_ROOT+"/no_historicals.xlsx",new_xl)
 
     bv=super_plan_forms.objects.filter(id=int(id)).get()
     if(bv):
@@ -2128,11 +2127,11 @@ def new_xl_get(request,id):
             if(bv.share_capital.f_2):
                 n,r=nperc_to_amount(n,bv.share_capital.f_2)
                 s1["K6"]=r
-            
+
             if(bv.share_capital.f_3):
                 n,r=nperc_to_amount(n,bv.share_capital.f_3)
                 s1["L6"]=r
-            
+
             if(bv.share_capital.f_4):
                 n,r=nperc_to_amount(n,bv.share_capital.f_4)
                 s1["M6"]=r
@@ -2140,7 +2139,7 @@ def new_xl_get(request,id):
             if(bv.share_capital.f_5):
                 n,r=nperc_to_amount(n,bv.share_capital.f_5)
                 s1["N6"]=r
-            
+
 
 
 
@@ -2153,11 +2152,11 @@ def new_xl_get(request,id):
             if(bv.equity_funds_raised.f_2):
                 n,r=nperc_to_amount(n,bv.equity_funds_raised.f_2)
                 s1["K8"]=r
-            
+
             if(bv.equity_funds_raised.f_3):
                 n,r=nperc_to_amount(n,bv.equity_funds_raised.f_3)
                 s1["L8"]=r
-            
+
             if(bv.equity_funds_raised.f_4):
                 n,r=nperc_to_amount(n,bv.equity_funds_raised.f_4)
                 s1["M8"]=r
@@ -2177,11 +2176,11 @@ def new_xl_get(request,id):
             if(bv.deferred_tax_liabilities.f_2):
                 n,r=perc_to_amount(n,bv.deferred_tax_liabilities.f_2)
                 s1["K14"]=r/100
-            
+
             if(bv.deferred_tax_liabilities.f_3):
                 n,r=perc_to_amount(n,bv.deferred_tax_liabilities.f_3)
                 s1["L14"]=r/100
-            
+
             if(bv.deferred_tax_liabilities.f_4):
                 n,r=perc_to_amount(n,bv.deferred_tax_liabilities.f_4)
                 s1["M14"]=r/100
@@ -2201,11 +2200,11 @@ def new_xl_get(request,id):
             if(bv.long_term_provisions_growth_or_amount.f_2):
                 n,r=perc_to_amount(n,bv.long_term_provisions_growth_or_amount.f_2)
                 s1["K15"]=r/100
-            
+
             if(bv.long_term_provisions_growth_or_amount.f_3):
                 n,r=perc_to_amount(n,bv.long_term_provisions_growth_or_amount.f_3)
                 s1["L15"]=r/100
-            
+
             if(bv.long_term_provisions_growth_or_amount.f_4):
                 n,r=perc_to_amount(n,bv.long_term_provisions_growth_or_amount.f_4)
                 s1["M15"]=r/100
@@ -2216,7 +2215,7 @@ def new_xl_get(request,id):
 
 
 
-            
+
         n=0
         if(bv.other_non_current_liabilities_growth_or_amount):
             if(bv.other_non_current_liabilities_growth_or_amount.f_1):
@@ -2226,11 +2225,11 @@ def new_xl_get(request,id):
             if(bv.other_non_current_liabilities_growth_or_amount.f_2):
                 n,r=perc_to_amount(n,bv.other_non_current_liabilities_growth_or_amount.f_2)
                 s1["K16"]=r/100
-            
+
             if(bv.other_non_current_liabilities_growth_or_amount.f_3):
                 n,r=perc_to_amount(n,bv.other_non_current_liabilities_growth_or_amount.f_3)
                 s1["L16"]=r/100
-            
+
             if(bv.other_non_current_liabilities_growth_or_amount.f_4):
                 n,r=perc_to_amount(n,bv.other_non_current_liabilities_growth_or_amount.f_4)
                 s1["M16"]=r/100
@@ -2241,7 +2240,7 @@ def new_xl_get(request,id):
 
 
 
-            
+
         n=0
         if(bv.short_term_borrowings_growth_or_amount):
             if(bv.short_term_borrowings_growth_or_amount.f_1):
@@ -2251,11 +2250,11 @@ def new_xl_get(request,id):
             if(bv.short_term_borrowings_growth_or_amount.f_2):
                 n,r=perc_to_amount(n,bv.short_term_borrowings_growth_or_amount.f_2)
                 s1["K20"]=r/100
-            
+
             if(bv.short_term_borrowings_growth_or_amount.f_3):
                 n,r=perc_to_amount(n,bv.short_term_borrowings_growth_or_amount.f_3)
                 s1["L20"]=r/100
-            
+
             if(bv.short_term_borrowings_growth_or_amount.f_4):
                 n,r=perc_to_amount(n,bv.short_term_borrowings_growth_or_amount.f_4)
                 s1["M20"]=r/100
@@ -2277,11 +2276,11 @@ def new_xl_get(request,id):
             if(bv.short_term_provisions_growth_or_amount.f_2):
                 n,r=perc_to_amount(n,bv.short_term_provisions_growth_or_amount.f_2)
                 s1["K21"]=r/100
-            
+
             if(bv.short_term_provisions_growth_or_amount.f_3):
                 n,r=perc_to_amount(n,bv.short_term_provisions_growth_or_amount.f_3)
                 s1["L21"]=r/100
-            
+
             if(bv.short_term_provisions_growth_or_amount.f_4):
                 n,r=perc_to_amount(n,bv.short_term_provisions_growth_or_amount.f_4)
                 s1["M21"]=r/100
@@ -2301,11 +2300,11 @@ def new_xl_get(request,id):
             if(bv.sundry_creditors_no_of_days.f_2):
                 n=bv.sundry_creditors_no_of_days.f_2
                 s1["K22"]=int(n)
-            
+
             if(bv.sundry_creditors_no_of_days.f_3):
                 n=bv.sundry_creditors_no_of_days.f_3
                 s1["L22"]=int(n)
-            
+
             if(bv.sundry_creditors_no_of_days.f_4):
                 n=bv.sundry_creditors_no_of_days.f_4
                 s1["M22"]=int(n)
@@ -2327,11 +2326,11 @@ def new_xl_get(request,id):
             if(bv.other_current_liabilities_growth_or_amount.f_2):
                 n,r=perc_to_amount(n,bv.other_current_liabilities_growth_or_amount.f_2)
                 s1["K23"]=r/100
-            
+
             if(bv.other_current_liabilities_growth_or_amount.f_3):
                 n,r=perc_to_amount(n,bv.other_current_liabilities_growth_or_amount.f_3)
                 s1["L23"]=r/100
-            
+
             if(bv.other_current_liabilities_growth_or_amount.f_4):
                 n,r=perc_to_amount(n,bv.other_current_liabilities_growth_or_amount.f_4)
                 s1["M23"]=r/100
@@ -2351,11 +2350,11 @@ def new_xl_get(request,id):
             if(bv.intangible_assets_growth_or_amount.f_2):
                 n,r=perc_to_amount(n,bv.intangible_assets_growth_or_amount.f_2)
                 s1["K33"]=r/100
-            
+
             if(bv.intangible_assets_growth_or_amount.f_3):
                 n,r=perc_to_amount(n,bv.intangible_assets_growth_or_amount.f_3)
                 s1["L33"]=r/100
-            
+
             if(bv.intangible_assets_growth_or_amount.f_4):
                 n,r=perc_to_amount(n,bv.intangible_assets_growth_or_amount.f_4)
                 s1["M33"]=r/100
@@ -2376,11 +2375,11 @@ def new_xl_get(request,id):
             if(bv.long_term_loans_and_advances_growth_or_amount.f_2):
                 n,r=perc_to_amount(n,bv.long_term_loans_and_advances_growth_or_amount.f_2)
                 s1["K34"]=r/100
-            
+
             if(bv.long_term_loans_and_advances_growth_or_amount.f_3):
                 n,r=perc_to_amount(n,bv.long_term_loans_and_advances_growth_or_amount.f_3)
                 s1["L34"]=r/100
-            
+
             if(bv.long_term_loans_and_advances_growth_or_amount.f_4):
                 n,r=perc_to_amount(n,bv.long_term_loans_and_advances_growth_or_amount.f_4)
                 s1["M34"]=r/100
@@ -2400,11 +2399,11 @@ def new_xl_get(request,id):
             if(bv.long_term_investments_growth_or_amount.f_2):
                 n,r=perc_to_amount(n,bv.long_term_investments_growth_or_amount.f_2)
                 s1["K35"]=r/100
-            
+
             if(bv.long_term_investments_growth_or_amount.f_3):
                 n,r=perc_to_amount(n,bv.long_term_investments_growth_or_amount.f_3)
                 s1["L35"]=r/100
-            
+
             if(bv.long_term_investments_growth_or_amount.f_4):
                 n,r=perc_to_amount(n,bv.long_term_investments_growth_or_amount.f_4)
                 s1["M35"]=r/100
@@ -2416,7 +2415,7 @@ def new_xl_get(request,id):
 
 
 
-            
+
         n=0
         if(bv.deferred_tax_liabilities):
             if(bv.deferred_tax_liabilities.f_1):
@@ -2426,11 +2425,11 @@ def new_xl_get(request,id):
             if(bv.deferred_tax_liabilities.f_2):
                 n,r=perc_to_amount(n,bv.deferred_tax_liabilities.f_2)
                 s1["K36"]=r/100
-            
+
             if(bv.deferred_tax_liabilities.f_3):
                 n,r=perc_to_amount(n,bv.deferred_tax_liabilities.f_3)
                 s1["L36"]=r/100
-            
+
             if(bv.deferred_tax_liabilities.f_4):
                 n,r=perc_to_amount(n,bv.deferred_tax_liabilities.f_4)
                 s1["M36"]=r/100
@@ -2451,11 +2450,11 @@ def new_xl_get(request,id):
             if(bv.other_non_current_assets_growth_or_amount.f_2):
                 n,r=perc_to_amount(n,bv.other_non_current_assets_growth_or_amount.f_2)
                 s1["K37"]=r/100
-            
+
             if(bv.other_non_current_assets_growth_or_amount.f_3):
                 n,r=perc_to_amount(n,bv.other_non_current_assets_growth_or_amount.f_3)
                 s1["L37"]=r/100
-            
+
             if(bv.other_non_current_assets_growth_or_amount.f_4):
                 n,r=perc_to_amount(n,bv.other_non_current_assets_growth_or_amount.f_4)
                 s1["M37"]=r/100
@@ -2478,11 +2477,11 @@ def new_xl_get(request,id):
             if(bv.sundry_debtors_no_of_days.f_2):
                 n=bv.sundry_debtors_no_of_days.f_2
                 s1["K43"]=int(n)
-            
+
             if(bv.sundry_debtors_no_of_days.f_3):
                 n=bv.sundry_debtors_no_of_days.f_3
                 s1["L43"]=int(n)
-            
+
             if(bv.sundry_debtors_no_of_days.f_4):
                 n=bv.sundry_debtors_no_of_days.f_4
                 s1["M43"]=int(n)
@@ -2505,11 +2504,11 @@ def new_xl_get(request,id):
             if(bv.inventory_no_of_days.f_2):
                 n=bv.inventory_no_of_days.f_2
                 s1["K44"]=int(n)
-            
+
             if(bv.inventory_no_of_days.f_3):
                 n=bv.inventory_no_of_days.f_3
                 s1["L44"]=int(n)
-            
+
             if(bv.inventory_no_of_days.f_4):
                 n=bv.inventory_no_of_days.f_4
                 s1["M44"]=int(n)
@@ -2532,11 +2531,11 @@ def new_xl_get(request,id):
             if(bv.short_term_investments_growth_or_amount.f_2):
                 n,r=perc_to_amount(n,bv.short_term_investments_growth_or_amount.f_2)
                 s1["K45"]=r/100
-            
+
             if(bv.short_term_investments_growth_or_amount.f_3):
                 n,r=perc_to_amount(n,bv.short_term_investments_growth_or_amount.f_3)
                 s1["L45"]=r/100
-            
+
             if(bv.short_term_investments_growth_or_amount.f_4):
                 n,r=perc_to_amount(n,bv.short_term_investments_growth_or_amount.f_4)
                 s1["M45"]=r/100
@@ -2558,11 +2557,11 @@ def new_xl_get(request,id):
             if(bv.short_term_loans_and_advances_growth_or_amount.f_2):
                 n,r=perc_to_amount(n,bv.short_term_loans_and_advances_growth_or_amount.f_2)
                 s1["K46"]=r/100
-            
+
             if(bv.short_term_loans_and_advances_growth_or_amount.f_3):
                 n,r=perc_to_amount(n,bv.short_term_loans_and_advances_growth_or_amount.f_3)
                 s1["L46"]=r/100
-            
+
             if(bv.short_term_loans_and_advances_growth_or_amount.f_4):
                 n,r=perc_to_amount(n,bv.short_term_loans_and_advances_growth_or_amount.f_4)
                 s1["M46"]=r/100
@@ -2584,11 +2583,11 @@ def new_xl_get(request,id):
             if(bv.other_current_assets_growth_or_amount.f_2):
                 n,r=perc_to_amount(n,bv.other_current_assets_growth_or_amount.f_2)
                 s1["K47"]=r/100
-            
+
             if(bv.other_current_assets_growth_or_amount.f_3):
                 n,r=perc_to_amount(n,bv.other_current_assets_growth_or_amount.f_3)
                 s1["L47"]=r/100
-            
+
             if(bv.other_current_assets_growth_or_amount.f_4):
                 n,r=perc_to_amount(n,bv.other_current_assets_growth_or_amount.f_4)
                 s1["M47"]=r/100
@@ -2606,7 +2605,7 @@ def new_xl_get(request,id):
         yr3 = bv.balance_sheet_years.f_3
         yr4 = bv.balance_sheet_years.f_4
         yr5 = bv.balance_sheet_years.f_5
- 
+
         s1["C3"]=yr1
         s1["D3"]=yr2
         s1["E3"]=yr3
@@ -2645,11 +2644,11 @@ def new_xl_get(request,id):
             if(bv.direct_material_units.f_2):
                 n,r=perc_to_amount(n,bv.direct_material_units.f_2)
                 s2["K8"]=r/100
-            
+
             if(bv.direct_material_units.f_3):
                 n,r=perc_to_amount(n,bv.direct_material_units.f_3)
                 s2["L8"]=r/100
-            
+
             if(bv.direct_material_units.f_4):
                 n,r=perc_to_amount(n,bv.direct_material_units.f_4)
                 s2["M8"]=r/100
@@ -2670,11 +2669,11 @@ def new_xl_get(request,id):
             if(bv.direct_material_average_cost_per_unit.f_2):
                 n,r=perc_to_amount(n,bv.direct_material_average_cost_per_unit.f_2)
                 s2["K9"]=r/100
-            
+
             if(bv.direct_material_average_cost_per_unit.f_3):
                 n,r=perc_to_amount(n,bv.direct_material_average_cost_per_unit.f_3)
                 s2["L9"]=r/100
-            
+
             if(bv.direct_material_average_cost_per_unit.f_4):
                 n,r=perc_to_amount(n,bv.direct_material_average_cost_per_unit.f_4)
                 s2["M9"]=r/100
@@ -2694,11 +2693,11 @@ def new_xl_get(request,id):
             if(bv.direct_labour_no_of_employees.f_2):
                 n,r=perc_to_amount(n,bv.direct_labour_no_of_employees.f_2)
                 s2["K13"]=r/100
-            
+
             if(bv.direct_labour_no_of_employees.f_3):
                 n,r=perc_to_amount(n,bv.direct_labour_no_of_employees.f_3)
                 s2["L13"]=r/100
-            
+
             if(bv.direct_labour_no_of_employees.f_4):
                 n,r=perc_to_amount(n,bv.direct_labour_no_of_employees.f_4)
                 s2["M13"]=r/100
@@ -2718,11 +2717,11 @@ def new_xl_get(request,id):
             if(bv.direct_labour_average_cost_per_employee.f_2):
                 n,r=perc_to_amount(n,bv.direct_labour_average_cost_per_employee.f_2)
                 s2["K14"]=r/100
-            
+
             if(bv.direct_labour_average_cost_per_employee.f_3):
                 n,r=perc_to_amount(n,bv.direct_labour_average_cost_per_employee.f_3)
                 s2["L14"]=r/100
-            
+
             if(bv.direct_labour_average_cost_per_employee.f_4):
                 n,r=perc_to_amount(n,bv.direct_labour_average_cost_per_employee.f_4)
                 s2["M14"]=r/100
@@ -2742,11 +2741,11 @@ def new_xl_get(request,id):
             if(bv.direct_expenses.f_2):
                 n,r=perc_to_amount(n,bv.direct_expenses.f_2)
                 s2["K17"]=r/100
-            
+
             if(bv.direct_expenses.f_3):
                 n,r=perc_to_amount(n,bv.direct_expenses.f_3)
                 s2["L17"]=r/100
-            
+
             if(bv.direct_expenses.f_4):
                 n,r=perc_to_amount(n,bv.direct_expenses.f_4)
                 s2["M17"]=r/100
@@ -2766,11 +2765,11 @@ def new_xl_get(request,id):
             if(bv.other_direct_expenses_1.f_3):
                 n,r=perc_to_amount(n,bv.other_direct_expenses_1.f_3)
                 s2["K18"]=r/100
-            
+
             if(bv.other_direct_expenses_1.f_4):
                 n,r=perc_to_amount(n,bv.other_direct_expenses_1.f_4)
                 s2["L18"]=r/100
-            
+
             if(bv.other_direct_expenses_1.f_5):
                 n,r=perc_to_amount(n,bv.other_direct_expenses_1.f_5)
                 s2["M18"]=r/100
@@ -2791,11 +2790,11 @@ def new_xl_get(request,id):
             if(bv.other_direct_expenses_2.f_3):
                 n,r=perc_to_amount(n,bv.other_direct_expenses_2.f_3)
                 s2["K19"]=r/100
-            
+
             if(bv.other_direct_expenses_2.f_4):
                 n,r=perc_to_amount(n,bv.other_direct_expenses_2.f_4)
                 s2["L19"]=r/100
-            
+
             if(bv.other_direct_expenses_2.f_5):
                 n,r=perc_to_amount(n,bv.other_direct_expenses_2.f_5)
                 s2["M19"]=r/100
@@ -2816,11 +2815,11 @@ def new_xl_get(request,id):
             if(bv.other_direct_expenses_3.f_3):
                 n,r=perc_to_amount(n,bv.other_direct_expenses_3.f_3)
                 s2["K20"]=r/100
-            
+
             if(bv.other_direct_expenses_3.f_4):
                 n,r=perc_to_amount(n,bv.other_direct_expenses_3.f_4)
                 s2["L20"]=r/100
-            
+
             if(bv.other_direct_expenses_3.f_5):
                 n,r=perc_to_amount(n,bv.other_direct_expenses_3.f_5)
                 s2["M20"]=r/100
@@ -2844,11 +2843,11 @@ def new_xl_get(request,id):
             if(bv.administration_no_of_employees.f_2):
                 n,r=perc_to_amount(n,bv.administration_no_of_employees.f_2)
                 s2["K27"]=r/100
-            
+
             if(bv.administration_no_of_employees.f_3):
                 n,r=perc_to_amount(n,bv.administration_no_of_employees.f_3)
                 s2["L27"]=r/100
-            
+
             if(bv.administration_no_of_employees.f_4):
                 n,r=perc_to_amount(n,bv.administration_no_of_employees.f_4)
                 s2["M27"]=r/100
@@ -2869,11 +2868,11 @@ def new_xl_get(request,id):
             if(bv.administration_average_cost_per_employee.f_2):
                 n,r=perc_to_amount(n,bv.administration_average_cost_per_employee.f_2)
                 s2["K28"]=r/100
-            
+
             if(bv.administration_average_cost_per_employee.f_3):
                 n,r=perc_to_amount(n,bv.administration_average_cost_per_employee.f_3)
                 s2["L28"]=r/100
-            
+
             if(bv.administration_average_cost_per_employee.f_4):
                 n,r=perc_to_amount(n,bv.administration_average_cost_per_employee.f_4)
                 s2["M28"]=r/100
@@ -2893,11 +2892,11 @@ def new_xl_get(request,id):
             if(bv.selling_and_distribution_no_of_employees.f_2):
                 n,r=perc_to_amount(n,bv.selling_and_distribution_no_of_employees.f_2)
                 s2["K32"]=r/100
-            
+
             if(bv.selling_and_distribution_no_of_employees.f_3):
                 n,r=perc_to_amount(n,bv.selling_and_distribution_no_of_employees.f_3)
                 s2["L32"]=r/100
-            
+
             if(bv.selling_and_distribution_no_of_employees.f_4):
                 n,r=perc_to_amount(n,bv.selling_and_distribution_no_of_employees.f_4)
                 s2["M32"]=r/100
@@ -2918,11 +2917,11 @@ def new_xl_get(request,id):
             if(bv.selling_and_distribution_average_cost_per_employee.f_2):
                 n,r=perc_to_amount(n,bv.selling_and_distribution_average_cost_per_employee.f_2)
                 s2["K33"]=r/100
-            
+
             if(bv.selling_and_distribution_average_cost_per_employee.f_3):
                 n,r=perc_to_amount(n,bv.selling_and_distribution_average_cost_per_employee.f_3)
                 s2["L33"]=r/100
-            
+
             if(bv.selling_and_distribution_average_cost_per_employee.f_4):
                 n,r=perc_to_amount(n,bv.selling_and_distribution_average_cost_per_employee.f_4)
                 s2["M33"]=r/100
@@ -2942,11 +2941,11 @@ def new_xl_get(request,id):
             if(bv.marketing_no_of_employees.f_2):
                 n,r=perc_to_amount(n,bv.marketing_no_of_employees.f_2)
                 s2["K37"]=r/100
-            
+
             if(bv.marketing_no_of_employees.f_3):
                 n,r=perc_to_amount(n,bv.marketing_no_of_employees.f_3)
                 s2["L37"]=r/100
-            
+
             if(bv.marketing_no_of_employees.f_4):
                 n,r=perc_to_amount(n,bv.marketing_no_of_employees.f_4)
                 s2["M37"]=r/100
@@ -2967,11 +2966,11 @@ def new_xl_get(request,id):
             if(bv.marketing_average_cost_per_employee.f_2):
                 n,r=perc_to_amount(n,bv.marketing_average_cost_per_employee.f_2)
                 s2["K38"]=r/100
-            
+
             if(bv.marketing_average_cost_per_employee.f_3):
                 n,r=perc_to_amount(n,bv.marketing_average_cost_per_employee.f_3)
                 s2["L38"]=r/100
-            
+
             if(bv.marketing_average_cost_per_employee.f_4):
                 n,r=perc_to_amount(n,bv.marketing_average_cost_per_employee.f_4)
                 s2["M38"]=r/100
@@ -2992,11 +2991,11 @@ def new_xl_get(request,id):
             if(bv.research_and_development_no_of_employees.f_2):
                 n,r=perc_to_amount(n,bv.research_and_development_no_of_employees.f_2)
                 s2["K42"]=r/100
-            
+
             if(bv.research_and_development_no_of_employees.f_3):
                 n,r=perc_to_amount(n,bv.research_and_development_no_of_employees.f_3)
                 s2["L42"]=r/100
-            
+
             if(bv.research_and_development_no_of_employees.f_4):
                 n,r=perc_to_amount(n,bv.research_and_development_no_of_employees.f_4)
                 s2["M42"]=r/100
@@ -3018,11 +3017,11 @@ def new_xl_get(request,id):
             if(bv.research_and_development_average_cost_per_employee.f_2):
                 n,r=perc_to_amount(n,bv.research_and_development_average_cost_per_employee.f_2)
                 s2["K43"]=r/100
-            
+
             if(bv.research_and_development_average_cost_per_employee.f_3):
                 n,r=perc_to_amount(n,bv.research_and_development_average_cost_per_employee.f_3)
                 s2["L43"]=r/100
-            
+
             if(bv.research_and_development_average_cost_per_employee.f_4):
                 n,r=perc_to_amount(n,bv.research_and_development_average_cost_per_employee.f_4)
                 s2["M43"]=r/100
@@ -3043,11 +3042,11 @@ def new_xl_get(request,id):
             if(bv.other_employees_1_no_of_employees.f_2):
                 n,r=perc_to_amount(n,bv.other_employees_1_no_of_employees.f_2)
                 s2["K47"]=r/100
-            
+
             if(bv.other_employees_1_no_of_employees.f_3):
                 n,r=perc_to_amount(n,bv.other_employees_1_no_of_employees.f_3)
                 s2["L47"]=r/100
-            
+
             if(bv.other_employees_1_no_of_employees.f_4):
                 n,r=perc_to_amount(n,bv.other_employees_1_no_of_employees.f_4)
                 s2["M47"]=r/100
@@ -3068,11 +3067,11 @@ def new_xl_get(request,id):
             if(bv.other_employees_1_average_cost_per_employee.f_2):
                 n,r=perc_to_amount(n,bv.other_employees_1_average_cost_per_employee.f_2)
                 s2["K48"]=r/100
-            
+
             if(bv.other_employees_1_average_cost_per_employee.f_3):
                 n,r=perc_to_amount(n,bv.other_employees_1_average_cost_per_employee.f_3)
                 s2["L48"]=r/100
-            
+
             if(bv.other_employees_1_average_cost_per_employee.f_4):
                 n,r=perc_to_amount(n,bv.other_employees_1_average_cost_per_employee.f_4)
                 s2["M48"]=r/100
@@ -3094,11 +3093,11 @@ def new_xl_get(request,id):
             if(bv.other_employees_2_no_of_employees.f_2):
                 n,r=perc_to_amount(n,bv.other_employees_2_no_of_employees.f_2)
                 s2["K52"]=r/100
-            
+
             if(bv.other_employees_2_no_of_employees.f_3):
                 n,r=perc_to_amount(n,bv.other_employees_2_no_of_employees.f_3)
                 s2["L52"]=r/100
-            
+
             if(bv.other_employees_2_no_of_employees.f_4):
                 n,r=perc_to_amount(n,bv.other_employees_2_no_of_employees.f_4)
                 s2["M52"]=r/100
@@ -3121,11 +3120,11 @@ def new_xl_get(request,id):
             if(bv.other_employees_2_average_cost_per_employee.f_2):
                 n,r=perc_to_amount(n,bv.other_employees_2_average_cost_per_employee.f_2)
                 s2["K53"]=r/100
-            
+
             if(bv.other_employees_2_average_cost_per_employee.f_3):
                 n,r=perc_to_amount(n,bv.other_employees_2_average_cost_per_employee.f_3)
                 s2["L53"]=r/100
-            
+
             if(bv.other_employees_2_average_cost_per_employee.f_4):
                 n,r=perc_to_amount(n,bv.other_employees_2_average_cost_per_employee.f_4)
                 s2["M53"]=r/100
@@ -3146,11 +3145,11 @@ def new_xl_get(request,id):
             if(bv.other_employees_3_no_of_employees.f_2):
                 n,r=perc_to_amount(n,bv.other_employees_3_no_of_employees.f_2)
                 s2["K57"]=r/100
-            
+
             if(bv.other_employees_3_no_of_employees.f_3):
                 n,r=perc_to_amount(n,bv.other_employees_3_no_of_employees.f_3)
                 s2["L57"]=r/100
-            
+
             if(bv.other_employees_3_no_of_employees.f_4):
                 n,r=perc_to_amount(n,bv.other_employees_3_no_of_employees.f_4)
                 s2["M57"]=r/100
@@ -3170,11 +3169,11 @@ def new_xl_get(request,id):
             if(bv.other_employees_3_average_cost_per_employee.f_2):
                 n,r=perc_to_amount(n,bv.other_employees_3_average_cost_per_employee.f_2)
                 s2["K58"]=r/100
-            
+
             if(bv.other_employees_3_average_cost_per_employee.f_3):
                 n,r=perc_to_amount(n,bv.other_employees_3_average_cost_per_employee.f_3)
                 s2["L58"]=r/100
-            
+
             if(bv.other_employees_3_average_cost_per_employee.f_4):
                 n,r=perc_to_amount(n,bv.other_employees_3_average_cost_per_employee.f_4)
                 s2["M58"]=r/100
@@ -3193,11 +3192,11 @@ def new_xl_get(request,id):
             if(bv.rent.f_2):
                 n,r=perc_to_amount(n,bv.rent.f_2)
                 s2["K65"]=r/100
-            
+
             if(bv.rent.f_3):
                 n,r=perc_to_amount(n,bv.rent.f_3)
                 s2["L65"]=r/100
-            
+
             if(bv.rent.f_4):
                 n,r=perc_to_amount(n,bv.rent.f_4)
                 s2["M65"]=r/100
@@ -3219,11 +3218,11 @@ def new_xl_get(request,id):
             if(bv.telephone_expenses.f_2):
                 n,r=perc_to_amount(n,bv.telephone_expenses.f_2)
                 s2["K66"]=r/100
-            
+
             if(bv.telephone_expenses.f_3):
                 n,r=perc_to_amount(n,bv.telephone_expenses.f_3)
                 s2["L66"]=r/100
-            
+
             if(bv.telephone_expenses.f_4):
                 n,r=perc_to_amount(n,bv.telephone_expenses.f_4)
                 s2["M66"]=r/100
@@ -3244,11 +3243,11 @@ def new_xl_get(request,id):
             if(bv.electricity.f_2):
                 n,r=perc_to_amount(n,bv.electricity.f_2)
                 s2["K67"]=r/100
-            
+
             if(bv.electricity.f_3):
                 n,r=perc_to_amount(n,bv.electricity.f_3)
                 s2["L67"]=r/100
-            
+
             if(bv.electricity.f_4):
                 n,r=perc_to_amount(n,bv.electricity.f_4)
                 s2["M67"]=r/100
@@ -3270,11 +3269,11 @@ def new_xl_get(request,id):
             if(bv.printing_and_stationery.f_2):
                 n,r=perc_to_amount(n,bv.printing_and_stationery.f_2)
                 s2["K68"]=r/100
-            
+
             if(bv.printing_and_stationery.f_3):
                 n,r=perc_to_amount(n,bv.printing_and_stationery.f_3)
                 s2["L68"]=r/100
-            
+
             if(bv.printing_and_stationery.f_4):
                 n,r=perc_to_amount(n,bv.printing_and_stationery.f_4)
                 s2["M68"]=r/100
@@ -3294,11 +3293,11 @@ def new_xl_get(request,id):
             if(bv.audit_fees.f_2):
                 n,r=perc_to_amount(n,bv.audit_fees.f_2)
                 s2["K69"]=r/100
-            
+
             if(bv.audit_fees.f_3):
                 n,r=perc_to_amount(n,bv.audit_fees.f_3)
                 s2["L69"]=r/100
-            
+
             if(bv.audit_fees.f_4):
                 n,r=perc_to_amount(n,bv.audit_fees.f_4)
                 s2["M69"]=r/100
@@ -3317,11 +3316,11 @@ def new_xl_get(request,id):
             if(bv.other_administration_expenses_1.f_3):
                 n,r=perc_to_amount(n,bv.other_administration_expenses_1.f_3)
                 s2["K70"]=r/100
-            
+
             if(bv.other_administration_expenses_1.f_4):
                 n,r=perc_to_amount(n,bv.other_administration_expenses_1.f_4)
                 s2["L70"]=r/100
-            
+
             if(bv.other_administration_expenses_1.f_5):
                 n,r=perc_to_amount(n,bv.other_administration_expenses_1.f_5)
                 s2["M70"]=r/100
@@ -3342,11 +3341,11 @@ def new_xl_get(request,id):
             if(bv.other_administration_expenses_2.f_3):
                 n,r=perc_to_amount(n,bv.other_administration_expenses_2.f_3)
                 s2["K71"]=r/100
-            
+
             if(bv.other_administration_expenses_2.f_4):
                 n,r=perc_to_amount(n,bv.other_administration_expenses_2.f_4)
                 s2["L71"]=r/100
-            
+
             if(bv.other_administration_expenses_2.f_5):
                 n,r=perc_to_amount(n,bv.other_administration_expenses_2.f_5)
                 s2["M71"]=r/100
@@ -3366,11 +3365,11 @@ def new_xl_get(request,id):
             if(bv.other_administration_expenses_3.f_3):
                 n,r=perc_to_amount(n,bv.other_administration_expenses_3.f_3)
                 s2["K72"]=r/100
-            
+
             if(bv.other_administration_expenses_3.f_4):
                 n,r=perc_to_amount(n,bv.other_administration_expenses_3.f_4)
                 s2["L72"]=r/100
-            
+
             if(bv.other_administration_expenses_3.f_5):
                 n,r=perc_to_amount(n,bv.other_administration_expenses_3.f_5)
                 s2["M72"]=r/100
@@ -3391,11 +3390,11 @@ def new_xl_get(request,id):
             if(bv.digital_marketing_cost.f_2):
                 n,r=perc_to_amount(n,bv.digital_marketing_cost.f_2)
                 s2["K78"]=r/100
-            
+
             if(bv.digital_marketing_cost.f_3):
                 n,r=perc_to_amount(n,bv.digital_marketing_cost.f_3)
                 s2["L78"]=r/100
-            
+
             if(bv.digital_marketing_cost.f_4):
                 n,r=perc_to_amount(n,bv.digital_marketing_cost.f_4)
                 s2["M78"]=r/100
@@ -3414,11 +3413,11 @@ def new_xl_get(request,id):
             if(bv.sales_commissions.f_2):
                 n,r=perc_to_amount(n,bv.sales_commissions.f_2)
                 s2["K79"]=r/100
-            
+
             if(bv.sales_commissions.f_3):
                 n,r=perc_to_amount(n,bv.sales_commissions.f_3)
                 s2["L79"]=r/100
-            
+
             if(bv.sales_commissions.f_4):
                 n,r=perc_to_amount(n,bv.sales_commissions.f_4)
                 s2["M79"]=r/100
@@ -3438,11 +3437,11 @@ def new_xl_get(request,id):
             if(bv.travelling_expenses.f_2):
                 n,r=perc_to_amount(n,bv.travelling_expenses.f_2)
                 s2["K80"]=r/100
-            
+
             if(bv.travelling_expenses.f_3):
                 n,r=perc_to_amount(n,bv.travelling_expenses.f_3)
                 s2["L80"]=r/100
-            
+
             if(bv.travelling_expenses.f_4):
                 n,r=perc_to_amount(n,bv.travelling_expenses.f_4)
                 s2["M80"]=r/100
@@ -3463,11 +3462,11 @@ def new_xl_get(request,id):
             if(bv.advertisement.f_2):
                 n,r=perc_to_amount(n,bv.advertisement.f_2)
                 s2["K81"]=r/100
-            
+
             if(bv.advertisement.f_3):
                 n,r=perc_to_amount(n,bv.advertisement.f_3)
                 s2["L81"]=r/100
-            
+
             if(bv.advertisement.f_4):
                 n,r=perc_to_amount(n,bv.advertisement.f_4)
                 s2["M81"]=r/100
@@ -3487,11 +3486,11 @@ def new_xl_get(request,id):
             if(bv.logistics_expenses.f_2):
                 n,r=perc_to_amount(n,bv.logistics_expenses.f_2)
                 s2["K82"]=r/100
-            
+
             if(bv.logistics_expenses.f_3):
                 n,r=perc_to_amount(n,bv.logistics_expenses.f_3)
                 s2["L82"]=r/100
-            
+
             if(bv.logistics_expenses.f_4):
                 n,r=perc_to_amount(n,bv.logistics_expenses.f_4)
                 s2["M82"]=r/100
@@ -3511,11 +3510,11 @@ def new_xl_get(request,id):
             if(bv.other_selling_and_marketing_expenses_1.f_3):
                 n,r=perc_to_amount(n,bv.other_selling_and_marketing_expenses_1.f_3)
                 s2["K83"]=r/100
-            
+
             if(bv.other_selling_and_marketing_expenses_1.f_4):
                 n,r=perc_to_amount(n,bv.other_selling_and_marketing_expenses_1.f_4)
                 s2["L83"]=r/100
-            
+
             if(bv.other_selling_and_marketing_expenses_1.f_5):
                 n,r=perc_to_amount(n,bv.other_selling_and_marketing_expenses_1.f_5)
                 s2["M83"]=r/100
@@ -3535,11 +3534,11 @@ def new_xl_get(request,id):
             if(bv.other_selling_and_marketing_expenses_2.f_3):
                 n,r=perc_to_amount(n,bv.other_selling_and_marketing_expenses_2.f_3)
                 s2["K84"]=r/100
-            
+
             if(bv.other_selling_and_marketing_expenses_2.f_4):
                 n,r=perc_to_amount(n,bv.other_selling_and_marketing_expenses_2.f_4)
                 s2["L84"]=r/100
-            
+
             if(bv.other_selling_and_marketing_expenses_2.f_5):
                 n,r=perc_to_amount(n,bv.other_selling_and_marketing_expenses_2.f_5)
                 s2["M84"]=r/100
@@ -3559,11 +3558,11 @@ def new_xl_get(request,id):
             if(bv.other_selling_and_marketing_expenses_3.f_3):
                 n,r=perc_to_amount(n,bv.other_selling_and_marketing_expenses_3.f_3)
                 s2["K85"]=r/100
-            
+
             if(bv.other_selling_and_marketing_expenses_3.f_4):
                 n,r=perc_to_amount(n,bv.other_selling_and_marketing_expenses_3.f_4)
                 s2["L85"]=r/100
-            
+
             if(bv.other_selling_and_marketing_expenses_3.f_5):
                 n,r=perc_to_amount(n,bv.other_selling_and_marketing_expenses_3.f_5)
                 s2["M85"]=r/100
@@ -3583,11 +3582,11 @@ def new_xl_get(request,id):
             if(bv.other_expenses_1.f_3):
                 n,r=perc_to_amount(n,bv.other_expenses_1.f_3)
                 s2["K89"]=r/100
-            
+
             if(bv.other_expenses_1.f_4):
                 n,r=perc_to_amount(n,bv.other_expenses_1.f_4)
                 s2["L89"]=r/100
-            
+
             if(bv.other_expenses_1.f_5):
                 n,r=perc_to_amount(n,bv.other_expenses_1.f_5)
                 s2["M89"]=r/100
@@ -3607,11 +3606,11 @@ def new_xl_get(request,id):
             if(bv.other_expenses_2.f_3):
                 n,r=perc_to_amount(n,bv.other_expenses_2.f_3)
                 s2["K93"]=r/100
-            
+
             if(bv.other_expenses_2.f_4):
                 n,r=perc_to_amount(n,bv.other_expenses_2.f_4)
                 s2["L93"]=r/100
-            
+
             if(bv.other_expenses_2.f_5):
                 n,r=perc_to_amount(n,bv.other_expenses_2.f_5)
                 s2["M93"]=r/100
@@ -3631,11 +3630,11 @@ def new_xl_get(request,id):
             if(bv.income_tax_rate.f_2):
                 n,r=perc_to_amount(n,bv.income_tax_rate.f_2)
                 s2["K97"]=r
-            
+
             if(bv.income_tax_rate.f_3):
                 n,r=perc_to_amount(n,bv.income_tax_rate.f_3)
                 s2["L97"]=r
-            
+
             if(bv.income_tax_rate.f_4):
                 n,r=perc_to_amount(n,bv.income_tax_rate.f_4)
                 s2["M97"]=r
@@ -3649,7 +3648,7 @@ def new_xl_get(request,id):
 #--------------------------------- Revenue Projections -----------------------------------------------------------
         s3 = wb["Revenue Projections"]
 
-        
+
         n=0
         if(bv.revenue_growth_or_amount_1):
             if(bv.revenue_growth_or_amount_1.f_2):
@@ -3659,11 +3658,11 @@ def new_xl_get(request,id):
             if(bv.revenue_growth_or_amount_1.f_3):
                 n,r=perc_to_amount(n,bv.revenue_growth_or_amount_1.f_3)
                 s3["K7"]=r/100
-            
+
             if(bv.revenue_growth_or_amount_1.f_4):
                 n,r=perc_to_amount(n,bv.revenue_growth_or_amount_1.f_4)
                 s3["L7"]=r/100
-            
+
             if(bv.revenue_growth_or_amount_1.f_5):
                 n,r=perc_to_amount(n,bv.revenue_growth_or_amount_1.f_5)
                 s3["M7"]=r/100
@@ -3683,11 +3682,11 @@ def new_xl_get(request,id):
             if(bv.revenue_growth_or_amount_2.f_3):
                 n,r=perc_to_amount(n,bv.revenue_growth_or_amount_2.f_3)
                 s3["K8"]=r/100
-            
+
             if(bv.revenue_growth_or_amount_2.f_4):
                 n,r=perc_to_amount(n,bv.revenue_growth_or_amount_2.f_4)
                 s3["L8"]=r/100
-            
+
             if(bv.revenue_growth_or_amount_2.f_5):
                 n,r=perc_to_amount(n,bv.revenue_growth_or_amount_2.f_5)
                 s3["M8"]=r/100
@@ -3708,11 +3707,11 @@ def new_xl_get(request,id):
             if(bv.revenue_growth_or_amount_3.f_3):
                 n,r=perc_to_amount(n,bv.revenue_growth_or_amount_3.f_3)
                 s3["K9"]=r/100
-            
+
             if(bv.revenue_growth_or_amount_3.f_4):
                 n,r=perc_to_amount(n,bv.revenue_growth_or_amount_3.f_4)
                 s3["L9"]=r/100
-            
+
             if(bv.revenue_growth_or_amount_3.f_5):
                 n,r=perc_to_amount(n,bv.revenue_growth_or_amount_3.f_5)
                 s3["M9"]=r/100
@@ -3734,11 +3733,11 @@ def new_xl_get(request,id):
             if(bv.revenue_growth_or_amount_4.f_3):
                 n,r=perc_to_amount(n,bv.revenue_growth_or_amount_4.f_3)
                 s3["K10"]=r/100
-            
+
             if(bv.revenue_growth_or_amount_4.f_4):
                 n,r=perc_to_amount(n,bv.revenue_growth_or_amount_4.f_4)
                 s3["L10"]=r/100
-            
+
             if(bv.revenue_growth_or_amount_4.f_5):
                 n,r=perc_to_amount(n,bv.revenue_growth_or_amount_4.f_5)
                 s3["M10"]=r/100
@@ -3758,11 +3757,11 @@ def new_xl_get(request,id):
             if(bv.other_income_growth_or_amount.f_2):
                 n,r=nperc_to_amount(n,bv.other_income_growth_or_amount.f_2)
                 s3["K14"]=r
-            
+
             if(bv.other_income_growth_or_amount.f_3):
                 n,r=nperc_to_amount(n,bv.other_income_growth_or_amount.f_3)
                 s3["L14"]=r
-            
+
             if(bv.other_income_growth_or_amount.f_4):
                 n,r=nperc_to_amount(n,bv.other_income_growth_or_amount.f_4)
                 s3["M14"]=r
@@ -3772,7 +3771,7 @@ def new_xl_get(request,id):
                 s3["N14"]=r
 
 
-        
+
         n=0
         if(bv.realised_foreign_exchange_gain_or_loss):
             if(bv.realised_foreign_exchange_gain_or_loss.f_1):
@@ -3782,11 +3781,11 @@ def new_xl_get(request,id):
             if(bv.realised_foreign_exchange_gain_or_loss.f_2):
                 n,r=nperc_to_amount(n,bv.realised_foreign_exchange_gain_or_loss.f_2)
                 s3["K15"]=r
-            
+
             if(bv.realised_foreign_exchange_gain_or_loss.f_3):
                 n,r=nperc_to_amount(n,bv.realised_foreign_exchange_gain_or_loss.f_3)
                 s3["L15"]=r
-            
+
             if(bv.realised_foreign_exchange_gain_or_loss.f_4):
                 n,r=nperc_to_amount(n,bv.realised_foreign_exchange_gain_or_loss.f_4)
                 s3["M15"]=r
@@ -3819,11 +3818,11 @@ def new_xl_get(request,id):
             if(bv.capex_additions.f_2):
                 n,r=perc_to_amount(n,bv.capex_additions.f_2)
                 s4["K5"]=r/100
-            
+
             if(bv.capex_additions.f_3):
                 n,r=perc_to_amount(n,bv.capex_additions.f_3)
                 s4["L5"]=r/100
-            
+
             if(bv.capex_additions.f_4):
                 n,r=perc_to_amount(n,bv.capex_additions.f_4)
                 s4["M5"]=r/100
@@ -3843,11 +3842,11 @@ def new_xl_get(request,id):
             if(bv.capex_additions_intangible.f_2):
                 n,r=perc_to_amount(n,bv.capex_additions_intangible.f_2)
                 s4["K6"]=r/100
-            
+
             if(bv.capex_additions_intangible.f_3):
                 n,r=perc_to_amount(n,bv.capex_additions_intangible.f_3)
                 s4["L6"]=r/100
-            
+
             if(bv.capex_additions_intangible.f_4):
                 n,r=perc_to_amount(n,bv.capex_additions_intangible.f_4)
                 s4["M6"]=r/100
@@ -3871,11 +3870,11 @@ def new_xl_get(request,id):
             if(bv.capex_deletions.f_2):
                 n,r=perc_to_amount(n,bv.capex_deletions.f_2)
                 s4["K7"]=r/100
-            
+
             if(bv.capex_deletions.f_3):
                 n,r=perc_to_amount(n,bv.capex_deletions.f_3)
                 s4["L7"]=r/100
-            
+
             if(bv.capex_deletions.f_4):
                 n,r=perc_to_amount(n,bv.capex_deletions.f_4)
                 s4["M7"]=r/100
@@ -3897,11 +3896,11 @@ def new_xl_get(request,id):
             if(bv.capex_average_depreciation_rate.f_2):
                 n,r=perc_to_amount(n,bv.capex_average_depreciation_rate.f_2)
                 s4["K13"]=r/100
-            
+
             if(bv.capex_average_depreciation_rate.f_3):
                 n,r=perc_to_amount(n,bv.capex_average_depreciation_rate.f_3)
                 s4["L13"]=r/100
-            
+
             if(bv.capex_average_depreciation_rate.f_4):
                 n,r=perc_to_amount(n,bv.capex_average_depreciation_rate.f_4)
                 s4["M13"]=r/100
@@ -3925,11 +3924,11 @@ def new_xl_get(request,id):
             if(bv.secured_loans_from_banks.f_2):
                 n,r=perc_to_amount(n,bv.secured_loans_from_banks.f_2)
                 s5["K6"]=r/100
-            
+
             if(bv.secured_loans_from_banks.f_3):
                 n,r=perc_to_amount(n,bv.secured_loans_from_banks.f_3)
                 s5["L6"]=r/100
-            
+
             if(bv.secured_loans_from_banks.f_4):
                 n,r=perc_to_amount(n,bv.secured_loans_from_banks.f_4)
                 s5["M6"]=r/100
@@ -3950,11 +3949,11 @@ def new_xl_get(request,id):
             if(bv.secured_loans_term_loans.f_2):
                 n,r=perc_to_amount(n,bv.secured_loans_term_loans.f_2)
                 s5["K7"]=r/100
-            
+
             if(bv.secured_loans_term_loans.f_3):
                 n,r=perc_to_amount(n,bv.secured_loans_term_loans.f_3)
                 s5["L7"]=r/100
-            
+
             if(bv.secured_loans_term_loans.f_4):
                 n,r=perc_to_amount(n,bv.secured_loans_term_loans.f_4)
                 s5["M7"]=r/100
@@ -3975,11 +3974,11 @@ def new_xl_get(request,id):
             if(bv.secured_loans_other_loans.f_2):
                 n,r=perc_to_amount(n,bv.secured_loans_other_loans.f_2)
                 s5["K8"]=r/100
-            
+
             if(bv.secured_loans_other_loans.f_3):
                 n,r=perc_to_amount(n,bv.secured_loans_other_loans.f_3)
                 s5["L8"]=r/100
-            
+
             if(bv.secured_loans_other_loans.f_4):
                 n,r=perc_to_amount(n,bv.secured_loans_other_loans.f_4)
                 s5["M8"]=r/100
@@ -4000,11 +3999,11 @@ def new_xl_get(request,id):
             if(bv.secured_loans_finance_lease_obligation.f_2):
                 n,r=perc_to_amount(n,bv.secured_loans_finance_lease_obligation.f_2)
                 s5["K9"]=r/100
-            
+
             if(bv.secured_loans_finance_lease_obligation.f_3):
                 n,r=perc_to_amount(n,bv.secured_loans_finance_lease_obligation.f_3)
                 s5["L9"]=r/100
-            
+
             if(bv.secured_loans_finance_lease_obligation.f_4):
                 n,r=perc_to_amount(n,bv.secured_loans_finance_lease_obligation.f_4)
                 s5["M9"]=r/100
@@ -4024,11 +4023,11 @@ def new_xl_get(request,id):
             if(bv.unsecured_loans.f_2):
                 n,r=perc_to_amount(n,bv.unsecured_loans.f_2)
                 s5["K12"]=r/100
-            
+
             if(bv.unsecured_loans.f_3):
                 n,r=perc_to_amount(n,bv.unsecured_loans.f_3)
                 s5["L12"]=r/100
-            
+
             if(bv.unsecured_loans.f_4):
                 n,r=perc_to_amount(n,bv.unsecured_loans.f_4)
                 s5["M12"]=r/100
@@ -4049,11 +4048,11 @@ def new_xl_get(request,id):
             if(bv.average_interest_rate_debt.f_2):
                 n,r=perc_to_amount(n,bv.average_interest_rate_debt.f_2)
                 s5["K19"]=r/100
-            
+
             if(bv.average_interest_rate_debt.f_3):
                 n,r=perc_to_amount(n,bv.average_interest_rate_debt.f_3)
                 s5["L19"]=r/100
-            
+
             if(bv.average_interest_rate_debt.f_4):
                 n,r=perc_to_amount(n,bv.average_interest_rate_debt.f_4)
                 s5["M19"]=r/100
@@ -4072,7 +4071,8 @@ def new_xl_get(request,id):
 
 
         wb.save(new_xl)
-        return HttpResponse("<a href='/"+new_xl+"'> Click to Download !</a>")
+        new_p=settings.MEDIA_URL+"/user_xl/"+str(id)+"superplan.xlsx"
+        return HttpResponse("<a href='"+new_p+"'> Click Here to Download !</a>")
 
 
     else:
