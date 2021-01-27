@@ -66,13 +66,7 @@
 					<div class="card-body">
 
 
-				<p class="text-danger" style="font-weight:bold;"><i>**Note : Light-Blue highlighted box can take percentage value and normal amount value also. Eg. for 17 percentage please type 17%. The text will be green it means it is a percentage value. Without the % symbol system will be treated as a normal amount value. The text will be black.</i></p>
-				<br>
-				<div style="background-color:rgba(0,255,235,0.13);display:inline-block;padding:20px;">
-				<p style="color:darkgreen;">Green Text = percentage value (%)</p>
-				<p style="color:black;">Black Text = Normal amount value </p>
-				</div>
-				<br><br>
+				
 					
 					
 
@@ -4217,6 +4211,8 @@ $(".direct_material").change(function (){
 
 	}
 
+	total_product_development_expenses_operating_expenses();
+
 });
 
 
@@ -4243,6 +4239,8 @@ $(".direct_labour").change(function (){
 		$(table_total)[i].value=total;
 
 	}
+
+	total_product_development_expenses_operating_expenses();
 
 });
 
@@ -4482,6 +4480,7 @@ function total_product_development_expenses_operating_expenses(){
 		if(v4){total+=parseFloat(v4)};
 		if(v5){total+=parseFloat(v5)};
 		if(v6){total+=parseFloat(v6)};
+
 
 
 		$(total_pd[i]).html(total);
