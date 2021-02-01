@@ -1,0 +1,859 @@
+{% extends "base-user.html" %}
+{% load static %}
+
+{% block title %}Income Statement{% endblock%}
+
+{% block style %}
+
+table td{
+	font-size:12.5px;
+	color:black !important;
+	font-weight:700;
+}
+th{
+	font-size:14px;
+}
+
+{% endblock%}
+
+
+
+{% block page_heading %}Income Statement{% endblock%}
+
+
+{% block form_nav %}
+{% if request.session.form %}
+
+
+
+
+
+{% endif %}
+{% endblock form_nav %}
+
+{% block content %}
+
+<div class="row">
+<div class="col-md-6 m-0">
+
+
+<div class="row">
+
+<div class="col-12">
+<table class="table table-bordered bg-white text-dark text-center">
+  <thead>
+    <tr>
+      <th scope="col"></th>
+      <th scope="col" colspan="5">FORECAST PERIOD</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+	  <th class="text-danger" scope="col">PARTICULARS</th>
+      <th scope="col">Year1</th>
+	  <th scope="col">Year2</th>
+	  <th scope="col">Year3</th>
+	  <th scope="col">Year4</th>
+	  <th scope="col">Year5</th>
+    </tr>
+
+    <tr>
+		<th class="text-primary text-left" scope="row" colspan="6" >REVENUE</th>
+    </tr>
+
+	<tr>
+		<td  class="text-left">Stream 1</td>
+		<td>0</td>
+		<td>0</td>
+		<td>0</td>
+		<td>0</td>
+		<td>0</td>
+    </tr>
+
+
+	<tr>
+		<td  class="text-left">Stream 2</td>
+		<td>0</td>
+		<td>0</td>
+		<td>0</td>
+		<td>0</td>
+		<td>0</td>
+    </tr>
+
+
+	<tr>
+		<td  class="text-left">Stream 3</td>
+		<td>0</td>
+		<td>0</td>
+		<td>0</td>
+		<td>0</td>
+		<td>0</td>
+    </tr>
+
+
+	<tr>
+		<td  class="text-left">Stream 4</td>
+		<td>0</td>
+		<td>0</td>
+		<td>0</td>
+		<td>0</td>
+		<td>0</td>
+    </tr>
+
+
+	<tr>
+		<td  class="text-left">TOTAL REVENUE FROM OPERATIONS/SERVICES</td>
+		<td>0</td>
+		<td>0</td>
+		<td>0</td>
+		<td>0</td>
+		<td>0</td>
+    </tr>
+
+
+	
+<tr  ><td class="border-0" colspan="6" >&nbsp;</td></tr>
+
+
+
+
+
+<tr>
+		<th class="text-primary text-left border-0" scope="row" colspan="6" >EXPENSES </th>
+    </tr>
+
+	<tr>
+		<td  class="text-left">Product Development Expenses/ Operating Expenses/Raw Material</td>
+		<td>0</td>
+		<td>0</td>
+		<td>0</td>
+		<td>0</td>
+		<td>0</td>
+    </tr>
+
+
+	<tr>
+		<td  class="text-left">Employee Cost </td>
+		<td>0</td>
+		<td>0</td>
+		<td>0</td>
+		<td>0</td>
+		<td>0</td>
+    </tr>
+
+
+	<tr>
+		<td  class="text-left">General & Administrative Expenses </td>
+		<td>0</td>
+		<td>0</td>
+		<td>0</td>
+		<td>0</td>
+		<td>0</td>
+    </tr>
+
+
+	<tr>
+		<td  class="text-left">Selling & Marketing Expenses </td>
+		<td>0</td>
+		<td>0</td>
+		<td>0</td>
+		<td>0</td>
+		<td>0</td>
+    </tr>
+
+
+	<tr>
+		<td  class="text-left">Other expenses 1 </td>
+		<td>0</td>
+		<td>0</td>
+		<td>0</td>
+		<td>0</td>
+		<td>0</td>
+    </tr>
+
+
+
+	<tr>
+		<td  class="text-left">Other expenses 2</td>
+		<td>0</td>
+		<td>0</td>
+		<td>0</td>
+		<td>0</td>
+		<td>0</td>
+    </tr>
+
+
+	<tr>
+		<td  class="text-left">TOTAL OPERATING EXPENSES </td>
+		<td>0</td>
+		<td>0</td>
+		<td>0</td>
+		<td>0</td>
+		<td>0</td>
+    </tr>
+
+
+
+
+<tr  ><td class="border-0" colspan="6" >&nbsp;</td></tr>
+
+
+
+
+
+
+
+
+	<tr>
+		<td  class="text-left">EBITDA / Operating Profit </td>
+		<td>0</td>
+		<td>0</td>
+		<td>0</td>
+		<td>0</td>
+		<td>0</td>
+    </tr>
+
+
+	<tr>
+		<td  class="text-left">Depreciation </td>
+		<td>0</td>
+		<td>0</td>
+		<td>0</td>
+		<td>0</td>
+		<td>0</td>
+    </tr>
+
+
+	<tr>
+		<td  class="text-left">Other Income </td>
+		<td>0</td>
+		<td>0</td>
+		<td>0</td>
+		<td>0</td>
+		<td>0</td>
+    </tr>
+
+
+	<tr>
+		<td  class="text-left">Realised Foreign Exchange Gain/(Loss) </td>
+		<td>0</td>
+		<td>0</td>
+		<td>0</td>
+		<td>0</td>
+		<td>0</td>
+    </tr>
+
+
+	<tr>
+		<td  class="text-left">EBIT</td>
+		<td>0</td>
+		<td>0</td>
+		<td>0</td>
+		<td>0</td>
+		<td>0</td>
+    </tr>
+
+
+
+	<tr>
+		<td  class="text-left">Interest including finance charges </td>
+		<td>0</td>
+		<td>0</td>
+		<td>0</td>
+		<td>0</td>
+		<td>0</td>
+    </tr>
+
+
+	<tr>
+		<td  class="text-left">Earnings Before Tax (EBT )</td>
+		<td>0</td>
+		<td>0</td>
+		<td>0</td>
+		<td>0</td>
+		<td>0</td>
+    </tr>
+
+	<tr>
+		<td  class="text-left">Provision for Income Tax </td>
+		<td>0</td>
+		<td>0</td>
+		<td>0</td>
+		<td>0</td>
+		<td>0</td>
+    </tr>
+
+	<tr>
+		<td  class="text-left">Profit after Tax </td>
+		<td>0</td>
+		<td>0</td>
+		<td>0</td>
+		<td>0</td>
+		<td>0</td>
+    </tr>
+
+
+
+<tr  ><td class="border-0" colspan="6" >&nbsp;</td></tr>
+
+
+
+
+
+
+<tr>
+		<td  class="text-left">EBITDA%</td>
+		<td>0%</td>
+		<td>0%</td>
+		<td>0%</td>
+		<td>0%</td>
+		<td>0%</td>
+    </tr>
+
+
+	<tr>
+		<td  class="text-left">PAT%</td>
+		<td>0%</td>
+		<td>0%</td>
+		<td>0%</td>
+		<td>0%</td>
+		<td>0%</td>
+    </tr>
+
+
+	<tr>
+		<td  class="text-left">Interest Cover </td>
+		<td>0</td>
+		<td>0</td>
+		<td>0</td>
+		<td>0</td>
+		<td>0</td>
+    </tr>
+
+
+	<tr>
+		<td  class="text-left">Financial leverage </td>
+		<td>0</td>
+		<td>0</td>
+		<td>0</td>
+		<td>0</td>
+		<td>0</td>
+    </tr>
+  
+  </tbody>
+</table>
+</div>
+</div>
+
+
+
+
+
+
+<br><br>
+
+															
+
+<div class="row">														<!-- 2nd table -->
+
+<div class="col-12">
+<table class="table table-bordered bg-white text-dark text-center">
+  <tbody>
+    <tr>
+	  <th class="text-danger" scope="col">Growth Analysis YOY </th>
+      <th scope="col">Year1</th>
+	  <th scope="col">Year2</th>
+	  <th scope="col">Year3</th>
+	  <th scope="col">Year4</th>
+	  <th scope="col">Year5</th>
+    </tr>
+
+    <tr>
+		<th class="text-primary text-left" scope="row" colspan="6" >REVENUE</th>
+    </tr>
+
+	<tr>
+		<td  class="text-left">Stream 1</td>
+		<td>0%</td>
+		<td>0%</td>
+		<td>0%</td>
+		<td>0%</td>
+		<td>0%</td>
+    </tr>
+
+
+	<tr>
+		<td  class="text-left">Stream 2</td>
+		<td>0%</td>
+		<td>0%</td>
+		<td>0%</td>
+		<td>0%</td>
+		<td>0%</td>
+    </tr>
+
+
+	<tr>
+		<td  class="text-left">Stream 3</td>
+		<td>0%</td>
+		<td>0%</td>
+		<td>0%</td>
+		<td>0%</td>
+		<td>0%</td>
+    </tr>
+
+
+	<tr>
+		<td  class="text-left">Stream 4</td>
+		<td>0%</td>
+		<td>0%</td>
+		<td>0%</td>
+		<td>0%</td>
+		<td>0%</td>
+    </tr>
+
+
+	<tr>
+		<td  class="text-left">TOTAL REVENUE FROM OPERATIONS/SERVICES</td>
+		<td>0%</td>
+		<td>0%</td>
+		<td>0%</td>
+		<td>0%</td>
+		<td>0%</td>
+    </tr>
+
+
+	
+<tr  ><td class="border-0" colspan="6" >&nbsp;</td></tr>
+
+
+
+
+
+<tr>
+		<th class="text-primary text-left border-0" scope="row" colspan="6" >EXPENSES </th>
+    </tr>
+
+	<tr>
+		<td  class="text-left">Product Development Expenses/ Operating Expenses/Raw Material</td>
+		<td>0%</td>
+		<td>0%</td>
+		<td>0%</td>
+		<td>0%</td>
+		<td>0%</td>
+    </tr>
+
+
+	<tr>
+		<td  class="text-left">Employee Cost </td>
+		<td>0%</td>
+		<td>0%</td>
+		<td>0%</td>
+		<td>0%</td>
+		<td>0%</td>
+    </tr>
+
+
+	<tr>
+		<td  class="text-left">General & Administrative Expenses </td>
+		<td>0%</td>
+		<td>0%</td>
+		<td>0%</td>
+		<td>0%</td>
+		<td>0%</td>
+    </tr>
+
+
+	<tr>
+		<td  class="text-left">Selling & Marketing Expenses </td>
+		<td>0%</td>
+		<td>0%</td>
+		<td>0%</td>
+		<td>0%</td>
+		<td>0%</td>
+    </tr>
+
+
+	<tr>
+		<td  class="text-left">Other expenses 1 </td>
+		<td>0%</td>
+		<td>0%</td>
+		<td>0%</td>
+		<td>0%</td>
+		<td>0%</td>
+    </tr>
+
+
+
+	<tr>
+		<td  class="text-left">Other expenses 2</td>
+		<td>0%</td>
+		<td>0%</td>
+		<td>0%</td>
+		<td>0%</td>
+		<td>0%</td>
+    </tr>
+
+
+	<tr>
+		<td  class="text-left">TOTAL OPERATING EXPENSES </td>
+		<td>0%</td>
+		<td>0%</td>
+		<td>0%</td>
+		<td>0%</td>
+		<td>0%</td>
+    </tr>
+
+
+
+
+<tr  ><td class="border-0" colspan="6" >&nbsp;</td></tr>
+
+
+
+
+
+
+
+
+	<tr>
+		<td  class="text-left">EBITDA / Operating Profit </td>
+		<td>0%</td>
+		<td>0%</td>
+		<td>0%</td>
+		<td>0%</td>
+		<td>0%</td>
+    </tr>
+
+
+	<tr>
+		<td  class="text-left">Depreciation </td>
+		<td>0%</td>
+		<td>0%</td>
+		<td>0%</td>
+		<td>0%</td>
+		<td>0%</td>
+    </tr>
+
+
+	<tr>
+		<td  class="text-left">Other Income </td>
+		<td>0%</td>
+		<td>0%</td>
+		<td>0%</td>
+		<td>0%</td>
+		<td>0%</td>
+    </tr>
+
+
+	<tr>
+		<td  class="text-left">Realised Foreign Exchange Gain/(Loss) </td>
+		<td>0%</td>
+		<td>0%</td>
+		<td>0%</td>
+		<td>0%</td>
+		<td>0%</td>
+    </tr>
+
+
+	<tr>
+		<td  class="text-left">EBIT</td>
+		<td>0%</td>
+		<td>0%</td>
+		<td>0%</td>
+		<td>0%</td>
+		<td>0%</td>
+    </tr>
+
+
+
+	<tr>
+		<td  class="text-left">Interest including finance charges </td>
+		<td>0%</td>
+		<td>0%</td>
+		<td>0%</td>
+		<td>0%</td>
+		<td>0%</td>
+    </tr>
+
+
+	<tr>
+		<td  class="text-left">Earnings Before Tax (EBT )</td>
+		<td>0%</td>
+		<td>0%</td>
+		<td>0%</td>
+		<td>0%</td>
+		<td>0%</td>
+    </tr>
+
+	<tr>
+		<td  class="text-left">Provision for Income Tax </td>
+		<td>0%</td>
+		<td>0%</td>
+		<td>0%</td>
+		<td>0%</td>
+		<td>0%</td>
+    </tr>
+
+	<tr>
+		<td  class="text-left">Profit after Tax </td>
+		<td>0%</td>
+		<td>0%</td>
+		<td>0%</td>
+		<td>0%</td>
+		<td>0%</td>
+    </tr>
+
+
+
+  
+  </tbody>
+</table>
+</div>
+</div>
+
+</div>
+
+
+
+
+
+
+
+
+
+
+<!-- Right sided table-->
+
+<div class="col-md-6 m-0">
+<table class="table table-bordered bg-white text-dark text-center">
+  <thead>
+    <tr>
+      <th scope="col"></th>
+      <th scope="col" colspan="5">FORECAST PERIOD</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+	  <th class="text-danger" scope="col">Analysis as % of Revenue  </th>
+      <th scope="col">Year1</th>
+	  <th scope="col">Year2</th>
+	  <th scope="col">Year3</th>
+	  <th scope="col">Year4</th>
+	  <th scope="col">Year5</th>
+    </tr>
+
+    <tr>
+		<th scope="row" colspan="6" >&nbsp;</th>
+    </tr>
+
+	<tr>
+		<td  class="text-left">Stream 1</td>
+		<td>0%</td>
+		<td>0%</td>
+		<td>0%</td>
+		<td>0%</td>
+		<td>0%</td>
+    </tr>
+
+	<tr>
+		<td  class="text-left">Stream 2</td>
+		<td>0%</td>
+		<td>0%</td>
+		<td>0%</td>
+		<td>0%</td>
+		<td>0%</td>
+    </tr>
+
+
+	<tr>
+		<td  class="text-left">Stream 3</td>
+		<td>0%</td>
+		<td>0%</td>
+		<td>0%</td>
+		<td>0%</td>
+		<td>0%</td>
+    </tr>
+
+
+	<tr>
+		<td  class="text-left">Stream 4</td>
+		<td>0%</td>
+		<td>0%</td>
+		<td>0%</td>
+		<td>0%</td>
+		<td>0%</td>
+    </tr>
+
+	<tr ><td class="border-0" colspan="6" >&nbsp;</td></tr>
+	<tr ><td class="border-0" colspan="6">&nbsp;</td></tr>
+	<tr ><td class="border-0" colspan="6">&nbsp;</td></tr>
+	<tr ><td class="border-0" colspan="6"></td></tr>
+
+	<tr>
+		<td  class="text-left">Product Development Expenses/ Operating Expenses/Raw Material</td>
+		<td>0%</td>
+		<td>0%</td>
+		<td>0%</td>
+		<td>0%</td>
+		<td>0%</td>
+    </tr>
+
+	<tr>
+		<td  class="text-left">Employee Cost </td>
+		<td>0%</td>
+		<td>0%</td>
+		<td>0%</td>
+		<td>0%</td>
+		<td>0%</td>
+    </tr>
+
+	<tr>
+		<td  class="text-left">General & Administrative Expenses </td>
+		<td>0%</td>
+		<td>0%</td>
+		<td>0%</td>
+		<td>0%</td>
+		<td>0%</td>
+    </tr>
+
+	<tr>
+		<td  class="text-left">Selling & Marketing Expenses </td>
+		<td>0%</td>
+		<td>0%</td>
+		<td>0%</td>
+		<td>0%</td>
+		<td>0%</td>
+    </tr>
+
+	<tr>
+		<td  class="text-left">Other expenses 1 </td>
+		<td>0%</td>
+		<td>0%</td>
+		<td>0%</td>
+		<td>0%</td>
+		<td>0%</td>
+    </tr>
+  <tr>
+		<td  class="text-left">Other expenses 2</td>
+		<td>0%</td>
+		<td>0%</td>
+		<td>0%</td>
+		<td>0%</td>
+		<td>0%</td>
+    </tr>
+
+	<tr>
+		<td  class="text-left">TOTAL OPERATING EXPENSES </td>
+		<td>0%</td>
+		<td>0%</td>
+		<td>0%</td>
+		<td>0%</td>
+		<td>0%</td>
+    </tr>
+
+
+
+<tr  ><td class="border-0" colspan="6" >&nbsp;</td></tr>
+
+
+<tr>
+		<td  class="text-left">EBITDA / Operating Profit </td>
+		<td>0%</td>
+		<td>0%</td>
+		<td>0%</td>
+		<td>0%</td>
+		<td>0%</td>
+    </tr>
+
+	<tr>
+		<td  class="text-left">Depreciation </td>
+		<td>0%</td>
+		<td>0%</td>
+		<td>0%</td>
+		<td>0%</td>
+		<td>0%</td>
+    </tr>
+
+	<tr>
+		<td  class="text-left">Other Income </td>
+		<td>0%</td>
+		<td>0%</td>
+		<td>0%</td>
+		<td>0%</td>
+		<td>0%</td>
+    </tr>
+
+	<tr>
+		<td  class="text-left">Realised Foreign Exchange Gain/(Loss)  </td>
+		<td>0%</td>
+		<td>0%</td>
+		<td>0%</td>
+		<td>0%</td>
+		<td>0%</td>
+    </tr>
+
+	<tr>
+		<td  class="text-left">EBIT</td>
+		<td>0%</td>
+		<td>0%</td>
+		<td>0%</td>
+		<td>0%</td>
+		<td>0%</td>
+    </tr>
+
+	<tr>
+		<td  class="text-left">Interest including finance charges </td>
+		<td>0%</td>
+		<td>0%</td>
+		<td>0%</td>
+		<td>0%</td>
+		<td>0%</td>
+    </tr>
+
+	<tr>
+		<td  class="text-left">Earnings Before Tax (EBT )</td>
+		<td>0%</td>
+		<td>0%</td>
+		<td>0%</td>
+		<td>0%</td>
+		<td>0%</td>
+    </tr>
+
+	<tr>
+		<td  class="text-left">Provision for Income Tax </td>
+		<td>0%</td>
+		<td>0%</td>
+		<td>0%</td>
+		<td>0%</td>
+		<td>0%</td>
+    </tr>
+
+	<tr>
+		<td  class="text-left">Profit after Tax </td>
+		<td>0%</td>
+		<td>0%</td>
+		<td>0%</td>
+		<td>0%</td>
+		<td>0%</td>
+    </tr>
+
+
+
+
+  </tbody>
+</table>
+</div>
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+{% endblock %}
