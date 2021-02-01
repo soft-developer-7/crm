@@ -112,6 +112,14 @@ urlpatterns = [
 
 
     path("superplan_form_number/<str:id>",views.superplan_form_number,name="superplan_form_number"),
+    path("income_statement/<str:id>",views.income_statement,name="income_statement"),
+
+
+
+
+
+
+
 
     path("user_template_view_1",views.user_template_view_1,name="user_template_view_1"),
     path("test",views.test,name="test"), # print all multi input data

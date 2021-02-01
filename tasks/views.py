@@ -4077,3 +4077,15 @@ def new_xl_get(request,id):
 
     else:
         return HttpResponse("Failed !")
+
+
+
+
+
+def income_statement(request,id):
+    if(auth_user(request)):
+        #data = super_plan_forms.objects.filter(user=request.session['user'],current_fillup_position__lt=10)
+        return render(request,'user-form-income-statement.html')
+    else:
+        return redirect('/login')
+
