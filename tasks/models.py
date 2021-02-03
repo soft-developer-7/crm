@@ -87,16 +87,6 @@ class super_plan_forms_multiple_inputs(models.Model):                   # Multip
     f_8 = models.CharField(max_length=10000,null=True)
     f_9 = models.CharField(max_length=10000,null=True)
     f_10 = models.CharField(max_length=10000,null=True)
-    f_11 = models.CharField(max_length=10000,null=True)
-    f_12 = models.CharField(max_length=10000,null=True)
-    f_13 = models.CharField(max_length=10000,null=True)
-    f_14 = models.CharField(max_length=10000,null=True)
-    f_15 = models.CharField(max_length=10000,null=True)
-    f_16 = models.CharField(max_length=10000,null=True)
-    f_17 = models.CharField(max_length=10000,null=True)
-    f_18 = models.CharField(max_length=10000,null=True)
-    f_19 = models.CharField(max_length=10000,null=True)
-    f_20 = models.CharField(max_length=10000,null=True)
     date = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
@@ -326,6 +316,120 @@ class super_plan_form_xl_input(models.Model):
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+class super_plan_projection(models.Model):
+    form_id = models.CharField(max_length=10,null=True)
+
+    #************************* Profit & Loss *****************
+    p_revenue_growth_or_amount_1 = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='p_revenue_growth_or_amount_1',on_delete=models.SET_NULL, null=True)
+    p_revenue_growth_or_amount_2 = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='p_revenue_growth_or_amount_2',on_delete=models.SET_NULL, null=True)
+    p_revenue_growth_or_amount_3 = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='p_revenue_growth_or_amount_3',on_delete=models.SET_NULL, null=True)
+    p_revenue_growth_or_amount_4 = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='p_revenue_growth_or_amount_4',on_delete=models.SET_NULL, null=True)
+    p_total_revenue_from_operations_services = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='p_total_revenue_from_operations_services',on_delete=models.SET_NULL, null=True)
+    p_other_income_growth_or_amount = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='p_other_income_growth_or_amount',on_delete=models.SET_NULL, null=True)
+    p_realised_foreign_exchange_gain_or_loss = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='p_realised_foreign_exchange_gain_or_loss',on_delete=models.SET_NULL, null=True)
+    p_direct_material_units = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='p_direct_material_units',on_delete=models.SET_NULL, null=True)
+    p_direct_material_average_cost_per_unit = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='p_direct_material_average_cost_per_unit',on_delete=models.SET_NULL, null=True)
+    p_total_direct_material_cost = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='p_total_direct_material_cost',on_delete=models.SET_NULL, null=True)
+    p_direct_labour_no_of_employees = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='p_direct_labour_no_of_employees',on_delete=models.SET_NULL, null=True)
+    p_direct_labour_average_cost_per_employee = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='p_direct_labour_average_cost_per_employee',on_delete=models.SET_NULL, null=True)
+    p_total_labour_cost = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='p_total_labour_cost',on_delete=models.SET_NULL, null=True)
+    p_direct_expenses = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='p_direct_expenses',on_delete=models.SET_NULL, null=True)
+    p_other_direct_expenses_1 = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='p_other_direct_expenses_1',on_delete=models.SET_NULL, null=True)
+    p_other_direct_expenses_2 = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='p_other_direct_expenses_2',on_delete=models.SET_NULL, null=True)
+    p_other_direct_expenses_3 = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='p_other_direct_expenses_3',on_delete=models.SET_NULL, null=True)
+    p_total_product_development_expenses_operating_expenses = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='p_total_product_development_expenses_operating_expenses',on_delete=models.SET_NULL, null=True)
+    p_administration_no_of_employees = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='p_administration_no_of_employees',on_delete=models.SET_NULL, null=True)
+    p_administration_average_cost_per_employee = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='p_administration_average_cost_per_employee',on_delete=models.SET_NULL, null=True)
+    p_administration_employees_total_cost_per_year = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='p_administration_employees_total_cost_per_year',on_delete=models.SET_NULL, null=True)
+    p_selling_and_distribution_no_of_employees = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='p_selling_and_distribution_no_of_employees',on_delete=models.SET_NULL, null=True)
+    p_selling_and_distribution_average_cost_per_employee = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='p_selling_and_distribution_average_cost_per_employee',on_delete=models.SET_NULL, null=True)
+    p_selling_employees_total_cost_per_year = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='p_selling_employees_total_cost_per_year',on_delete=models.SET_NULL, null=True)
+    p_marketing_no_of_employees = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='p_marketing_no_of_employees',on_delete=models.SET_NULL, null=True)
+    p_marketing_average_cost_per_employee = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='p_marketing_average_cost_per_employee',on_delete=models.SET_NULL, null=True)
+    p_marketing_employees_total_cost_per_year = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='p_marketing_employees_total_cost_per_year',on_delete=models.SET_NULL, null=True)
+    p_research_and_development_no_of_employees = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='p_research_and_development_no_of_employees',on_delete=models.SET_NULL, null=True)
+    p_research_and_development_average_cost_per_employee = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='p_research_and_development_average_cost_per_employee',on_delete=models.SET_NULL, null=True)
+    p_research_employees_total_cost_per_year = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='p_research_employees_total_cost_per_year',on_delete=models.SET_NULL, null=True)
+    p_other_employees_1_no_of_employees = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='p_other_employees_1_no_of_employees',on_delete=models.SET_NULL, null=True)
+    p_other_employees_1_average_cost_per_employee = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='p_other_employees_1_average_cost_per_employee',on_delete=models.SET_NULL, null=True)
+    p_other_employees_1_employees_total_cost_per_year = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='p_other_employees_1_employees_total_cost_per_year',on_delete=models.SET_NULL, null=True)
+    p_other_employees_2_no_of_employees = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='p_other_employees_2_no_of_employees',on_delete=models.SET_NULL, null=True)
+    p_other_employees_2_average_cost_per_employee = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='p_other_employees_2_average_cost_per_employee',on_delete=models.SET_NULL, null=True)
+    p_other_employees_2_employees_total_cost_per_year = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='p_other_employees_2_employees_total_cost_per_year',on_delete=models.SET_NULL, null=True)
+    p_other_employees_3_no_of_employees = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='p_other_employees_3_no_of_employees',on_delete=models.SET_NULL, null=True)
+    p_other_employees_3_average_cost_per_employee = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='p_other_employees_3_average_cost_per_employee',on_delete=models.SET_NULL, null=True)
+    p_other_employees_3_employees_total_cost_per_year = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='p_other_employees_3_employees_total_cost_per_year',on_delete=models.SET_NULL, null=True)
+    p_total_employee_expenses = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='p_total_employee_expenses',on_delete=models.SET_NULL, null=True)
+    p_rent = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='p_rent',on_delete=models.SET_NULL, null=True)
+    p_telephone_expenses = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='p_telephone_expenses',on_delete=models.SET_NULL, null=True)
+    p_electricity = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='p_electricity',on_delete=models.SET_NULL, null=True)
+    p_printing_and_stationery = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='p_printing_and_stationery',on_delete=models.SET_NULL, null=True)
+    p_audit_fees = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='p_audit_fees',on_delete=models.SET_NULL, null=True)
+    p_other_administration_expenses_1 = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='p_other_administration_expenses_1',on_delete=models.SET_NULL, null=True)
+    p_other_administration_expenses_2 = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='p_other_administration_expenses_2',on_delete=models.SET_NULL, null=True)
+    p_other_administration_expenses_3 = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='p_other_administration_expenses_3',on_delete=models.SET_NULL, null=True)
+    p_total_general_administrative_expenses = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='p_total_general_administrative_expenses',on_delete=models.SET_NULL, null=True)
+    p_digital_marketing_cost = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='p_digital_marketing_cost',on_delete=models.SET_NULL, null=True)
+    p_sales_commissions = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='p_sales_commissions',on_delete=models.SET_NULL, null=True)
+    p_travelling_expenses = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='p_travelling_expenses',on_delete=models.SET_NULL, null=True)
+    p_advertisement = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='p_advertisement',on_delete=models.SET_NULL, null=True)
+    p_logistics_expenses = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='p_logistics_expenses',on_delete=models.SET_NULL, null=True)
+    p_other_selling_and_marketing_expenses_1 = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='p_other_selling_and_marketing_expenses_1',on_delete=models.SET_NULL, null=True)
+    p_other_selling_and_marketing_expenses_2 = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='p_other_selling_and_marketing_expenses_2',on_delete=models.SET_NULL, null=True)
+    p_other_selling_and_marketing_expenses_3 = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='p_other_selling_and_marketing_expenses_3',on_delete=models.SET_NULL, null=True)
+    p_total_selling_marketing_expenses = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='p_total_selling_marketing_expenses',on_delete=models.SET_NULL, null=True)
+    p_other_expenses_1 = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='p_other_expenses_1',on_delete=models.SET_NULL, null=True)
+    p_other_expenses_2 = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='p_other_expenses_2',on_delete=models.SET_NULL, null=True)
+    p_income_tax_rate = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='p_income_tax_rate',on_delete=models.SET_NULL, null=True)
+
+
+    #************************* Capex *****************
+
+    p_capex_opening_gross = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='p_capex_opening_gross',on_delete=models.SET_NULL, null=True)
+    p_capex_additions = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='p_capex_additions',on_delete=models.SET_NULL, null=True)
+    p_capex_additions_intangible = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='p_capex_additions_intangible',on_delete=models.SET_NULL, null=True)
+    p_capex_deletions = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='p_capex_deletions',on_delete=models.SET_NULL, null=True)
+    p_closing_gross = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='p_closing_gross',on_delete=models.SET_NULL, null=True)
+    p_accumulated_depreciation = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='p_accumulated_depreciation',on_delete=models.SET_NULL, null=True)
+    p_net_value = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='p_net_value',on_delete=models.SET_NULL, null=True)
+    p_current_depreciation = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='p_current_depreciation',on_delete=models.SET_NULL, null=True)
+    p_capex_average_depreciation_rate = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='p_capex_average_depreciation_rate',on_delete=models.SET_NULL, null=True)
+
+    date = models.DateTimeField(auto_now_add=True)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 class super_plan_forms(models.Model):
 
 
@@ -337,6 +441,7 @@ class super_plan_forms(models.Model):
 
     # Form-2------------------------------------------------------------------------------------- 2 --------------------
     user = models.ForeignKey(User_db, on_delete=models.CASCADE,null=True)
+    projection_table=models.ForeignKey(super_plan_projection,on_delete=models.SET_NULL, null=True)
     company_name = models.CharField(max_length=1000,null=True)
     company_website_link = models.CharField(max_length=1000,null=True)
     owner_name = models.CharField(max_length=500,null=True)
@@ -515,8 +620,24 @@ class super_plan_forms(models.Model):
 
 
 
+    # Form- 11 ----------------------------------------------------------------------------------------- 11 -------------
 
-    # Form -11 ----------------------------------------------------------------------------------------------9 ----------
+    capex_years = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='capex_years',on_delete=models.SET_NULL, null=True)
+
+    capex_opening_gross = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='capex_opening_gross',on_delete=models.SET_NULL, null=True)
+    
+    capex_additions = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='capex_additions',on_delete=models.SET_NULL, null=True)
+
+    capex_additions_intangible = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='capex_additions_intangible',on_delete=models.SET_NULL, null=True)
+    
+    capex_deletions = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='capex_deletions',on_delete=models.SET_NULL, null=True)
+
+    capex_average_depreciation_rate = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='capex_average_depreciation_rate',on_delete=models.SET_NULL, null=True)
+
+    current_fillup_position = models.IntegerField(null=True)
+    date = models.DateTimeField(auto_now_add=True)
+
+    # Form -12 ----------------------------------------------------------------------------------------------12 ----------
     
     balance_sheet_years = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='balance_sheet_years',on_delete=models.SET_NULL, null=True)
 
@@ -576,22 +697,6 @@ class super_plan_forms(models.Model):
 
 
 
-    # Form- 12 ----------------------------------------------------------------------------------------- 12 -------------
-
-    capex_years = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='capex_years',on_delete=models.SET_NULL, null=True)
-
-    capex_opening_gross = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='capex_opening_gross',on_delete=models.SET_NULL, null=True)
-    
-    capex_additions = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='capex_additions',on_delete=models.SET_NULL, null=True)
-
-    capex_additions_intangible = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='capex_additions_intangible',on_delete=models.SET_NULL, null=True)
-    
-    capex_deletions = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='capex_deletions',on_delete=models.SET_NULL, null=True)
-
-    capex_average_depreciation_rate = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='capex_average_depreciation_rate',on_delete=models.SET_NULL, null=True)
-
-    current_fillup_position = models.IntegerField(null=True)
-    date = models.DateTimeField(auto_now_add=True)
 
 
 
@@ -606,4 +711,16 @@ class super_plan_forms(models.Model):
 
 
 #-----------------------------------------------------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
 

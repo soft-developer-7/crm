@@ -7,7 +7,7 @@ import json
 from datetime import date
 import datetime
 from django.http import JsonResponse
-from .models import User_db,Pages,Posts,Banners,super_plan_forms,super_plan_forms_multiple_inputs,super_plan_forms_multiple_images,super_plan_forms_multiple_files,super_plan_forms_multiple_inputs_xl,super_plan_form_xl_input
+from .models import User_db,Pages,Posts,Banners,super_plan_forms,super_plan_forms_multiple_inputs,super_plan_forms_multiple_images,super_plan_forms_multiple_files,super_plan_forms_multiple_inputs_xl,super_plan_form_xl_input,super_plan_projection
 from django.core.paginator import Paginator
 from business_management.models import Packs,Industries,User_bookings,Templates,Industries, Industry_analysis,Industry_growth_drivers
 from pyexcel_xlsx import get_data
@@ -54,6 +54,38 @@ def multi_input_insert(request,name):
                 multi.f_10 = val
     multi.save()
     return multi
+
+
+
+
+
+
+
+def multi_input_insert_projection(request,name):
+    user = User_db.objects.filter(id=request.session['user']).get()
+    form_id = request.session['form']
+    values = request.POST.getlist(name)
+    multi = super_plan_forms_multiple_inputs()
+    multi.user = user
+    multi.form_id = form_id
+    
+    for i in range(0,len(values)):
+        if(values[i]):
+            val = values[i]
+            if i==0:
+                multi.f_1 = val
+            elif i==1:
+                multi.f_2 = val
+            elif i==2:
+                multi.f_3 = val
+            elif i==3:
+                multi.f_4 = val
+            elif i==4:
+                multi.f_5 = val
+
+    multi.save()
+    return multi
+
 
 
 
@@ -1152,6 +1184,10 @@ def user_form_1_submit(request):            # User Form 1 Submit
     if(not request.session.get("form")):
         book = super_plan_forms()
         book.user = User_db.objects.filter(id=request.session['user']).get()
+        projection_table = super_plan_projection()
+        projection_table.form_id = book.id
+        projection_table.save()
+        book.projection_table=projection_table
     else:
         book = super_plan_forms.objects.filter(id=request.session['form']).get()
 
@@ -1735,6 +1771,101 @@ def user_form_10_submit(request):            # User Form 10 Submit
         book.other_expenses_1 = multi_input_insert(request,"other_expenses_1[]")
         book.other_expenses_2 = multi_input_insert(request,"other_expenses_2[]")
         book.income_tax_rate = multi_input_insert(request,"income_tax_rate[]")
+        
+        
+
+
+  #********* projection table data ******
+
+
+
+
+        book.projection_table.p_revenue_growth_or_amount_1= multi_input_insert_projection(request,"revenue_growth_or_amount_1_[]")
+        book.projection_table.p_revenue_growth_or_amount_2 = multi_input_insert_projection(request,"revenue_growth_or_amount_2__[]")
+        book.projection_table.p_revenue_growth_or_amount_3 = multi_input_insert_projection(request,"revenue_growth_or_amount_3_[]")
+        book.projection_table.p_revenue_growth_or_amount_4 = multi_input_insert_projection(request,"revenue_growth_or_amount_4_[]")
+        book.projection_table.p_total_revenue_from_operations_services = multi_input_insert_projection(request,"total_revenue_from_operations_services_[]")
+        book.projection_table.p_other_income_growth_or_amount = multi_input_insert_projection(request,"other_income_growth_or_amount_[]")
+        book.projection_table.p_realised_foreign_exchange_gain_or_loss = multi_input_insert_projection(request,"realised_foreign_exchange_gain_or_loss_[]")
+
+        book.projection_table.p_direct_material_units = multi_input_insert_projection(request,"direct_material_units_[]")
+        book.projection_table.p_direct_material_average_cost_per_unit = multi_input_insert_projection(request,"direct_material_average_cost_per_unit_[]")
+        book.projection_table.p_total_direct_material_cost = multi_input_insert_projection(request,"total_direct_material_cost_[]")
+
+
+        book.projection_table.p_direct_labour_no_of_employees = multi_input_insert_projection(request,"direct_labour_no_of_employees_[]")
+        book.projection_table.p_direct_labour_average_cost_per_employee = multi_input_insert_projection(request,"direct_labour_average_cost_per_employee_[]")
+        book.projection_table.p_total_labour_cost = multi_input_insert_projection(request,"total_labour_cost_[]")
+
+        book.projection_table.p_direct_expenses = multi_input_insert_projection(request,"direct_expenses_[]")
+        book.projection_table.p_other_direct_expenses_1 = multi_input_insert_projection(request,"other_direct_expenses_1_[]")
+        book.projection_table.p_other_direct_expenses_2 = multi_input_insert_projection(request,"other_direct_expenses_2_[]")
+        book.projection_table.p_other_direct_expenses_3 = multi_input_insert_projection(request,"other_direct_expenses_3_[]")
+
+        book.projection_table.p_total_product_development_expenses_operating_expenses = multi_input_insert_projection(request,"total_product_development_expenses_operating_expenses_[]")
+
+        book.projection_table.p_administration_no_of_employees = multi_input_insert_projection(request,"administration_no_of_employees_[]")
+        book.projection_table.p_administration_average_cost_per_employee = multi_input_insert_projection(request,"administration_average_cost_per_employee_[]")
+        book.projection_table.p_administration_employees_total_cost_per_year = multi_input_insert_projection(request,"administration_employees_total_cost_per_year_[]")
+
+        book.projection_table.p_selling_and_distribution_no_of_employees = multi_input_insert_projection(request,"selling_and_distribution_no_of_employees_[]")
+        book.projection_table.p_selling_and_distribution_average_cost_per_employee = multi_input_insert_projection(request,"selling_and_distribution_average_cost_per_employee_[]")
+        book.projection_table.p_selling_employees_total_cost_per_year = multi_input_insert_projection(request,"selling_employees_total_cost_per_year_[]")
+
+
+        book.projection_table.p_marketing_no_of_employees = multi_input_insert_projection(request,"marketing_no_of_employees_[]")
+        book.projection_table.p_marketing_average_cost_per_employee = multi_input_insert_projection(request,"marketing_average_cost_per_employee_[]")
+        book.projection_table.p_marketing_employees_total_cost_per_year = multi_input_insert_projection(request,"marketing_employees_total_cost_per_year_[]")
+
+
+        book.projection_table.p_research_and_development_no_of_employees = multi_input_insert_projection(request,"research_and_development_no_of_employees_[]")
+        book.projection_table.p_research_and_development_average_cost_per_employee = multi_input_insert_projection(request,"research_and_development_average_cost_per_employee_[]")
+        book.projection_table.p_research_employees_total_cost_per_year = multi_input_insert_projection(request,"research_employees_total_cost_per_year_[]")
+
+
+        book.projection_table.p_other_employees_1_no_of_employees = multi_input_insert_projection(request,"other_employees_1_no_of_employees_[]")
+        book.projection_table.p_other_employees_1_average_cost_per_employee = multi_input_insert_projection(request,"other_employees_1_average_cost_per_employee_[]")
+        book.projection_table.p_other_employees_1_employees_total_cost_per_year = multi_input_insert_projection(request,"other_employees_1_employees_total_cost_per_year_[]")
+
+
+        book.projection_table.p_other_employees_2_no_of_employees = multi_input_insert_projection(request,"other_employees_2_no_of_employees_[]")
+        book.projection_table.p_other_employees_2_average_cost_per_employee = multi_input_insert_projection(request,"other_employees_2_average_cost_per_employee_[]")
+        book.projection_table.p_other_employees_2_employees_total_cost_per_year = multi_input_insert_projection(request,"other_employees_2_employees_total_cost_per_year_[]")
+
+
+        book.projection_table.p_other_employees_3_no_of_employees = multi_input_insert_projection(request,"other_employees_3_no_of_employees_[]")
+        book.projection_table.p_other_employees_3_average_cost_per_employee = multi_input_insert_projection(request,"other_employees_3_average_cost_per_employee_[]")
+        book.projection_table.p_other_employees_3_employees_total_cost_per_year = multi_input_insert_projection(request,"other_employees_3_employees_total_cost_per_year_[]")
+
+        book.projection_table.p_total_employee_expenses = multi_input_insert_projection(request,"total_employee_expenses_[]")
+
+        book.projection_table.p_rent = multi_input_insert_projection(request,"rent_[]")
+        book.projection_table.p_telephone_expenses = multi_input_insert_projection(request,"telephone_expenses_[]")
+        book.projection_table.p_electricity = multi_input_insert_projection(request,"electricity_[]")
+        book.projection_table.p_printing_and_stationery = multi_input_insert_projection(request,"printing_and_stationery_[]")
+        book.projection_table.p_audit_fees = multi_input_insert_projection(request,"audit_fees_[]")
+        book.projection_table.p_other_administration_expenses_1 = multi_input_insert_projection(request,"other_administration_expenses_1_[]")
+        book.projection_table.p_other_administration_expenses_2 = multi_input_insert_projection(request,"other_administration_expenses_2_[]")
+        book.projection_table.p_other_administration_expenses_3 = multi_input_insert_projection(request,"other_administration_expenses_3_[]")
+        book.projection_table.p_total_general_administrative_expenses = multi_input_insert_projection(request,"total_general_administrative_expenses_[]")
+
+        book.projection_table.p_digital_marketing_cost = multi_input_insert_projection(request,"digital_marketing_cost_[]")
+        book.projection_table.p_sales_commissions = multi_input_insert_projection(request,"sales_commissions_[]")
+        book.projection_table.p_travelling_expenses = multi_input_insert_projection(request,"travelling_expenses_[]")
+        book.projection_table.p_advertisement = multi_input_insert_projection(request,"advertisement_[]")
+        book.projection_table.p_logistics_expenses = multi_input_insert_projection(request,"logistics_expenses_[]")
+        book.projection_table.p_other_selling_and_marketing_expenses_1 = multi_input_insert_projection(request,"other_selling_and_marketing_expenses_1_[]")
+        book.projection_table.p_other_selling_and_marketing_expenses_2 = multi_input_insert_projection(request,"other_selling_and_marketing_expenses_2_[]")
+        book.projection_table.p_other_selling_and_marketing_expenses_3 = multi_input_insert_projection(request,"other_selling_and_marketing_expenses_3_[]")
+        book.projection_table.p_total_selling_marketing_expenses = multi_input_insert_projection(request,"total_selling_marketing_expenses_[]")
+
+        book.projection_table.p_other_expenses_1 = multi_input_insert_projection(request,"other_expenses_1_[]")
+        book.projection_table.p_other_expenses_2 = multi_input_insert_projection(request,"other_expenses_2_[]")
+        book.projection_table.p_income_tax_rate = multi_input_insert_projection(request,"income_tax_rate_[]")
+        
+
+
+
         book.current_fillup_position = 10
         book.save()
 
@@ -1755,33 +1886,30 @@ def user_form_11_submit(request):            # User Form 11 Submit
     book = super_plan_forms.objects.filter(id=request.session['form']).get()
     if(auth_user(request) and book and request.method=="POST"):
 
-        book.balance_sheet_years = multi_input_insert(request,"balance_sheet_years[]")
-        book.share_capital = multi_input_insert(request,"share_capital[]")
-        book.equity_funds_raised = multi_input_insert(request,"equity_funds_raised[]")
-        book.secured_loans_from_banks = multi_input_insert(request,"secured_loans_from_banks[]")
-        book.secured_loans_term_loans = multi_input_insert(request,"secured_loans_term_loans[]")
-        book.secured_loans_other_loans = multi_input_insert(request,"secured_loans_other_loans[]")
-        book.secured_loans_finance_lease_obligation = multi_input_insert(request,"secured_loans_finance_lease_obligation[]")
-        book.unsecured_loans = multi_input_insert(request,"unsecured_loans[]")
-        book.average_interest_rate_debt = multi_input_insert(request,"average_interest_rate_debt[]")
-        book.deferred_tax_liabilities  = multi_input_insert(request,"deferred_tax_liabilities[]")
-        book.long_term_provisions_growth_or_amount = multi_input_insert(request,"long_term_provisions_growth_or_amount[]")
-        book.other_non_current_liabilities_growth_or_amount = multi_input_insert(request,"other_non_current_liabilities_growth_or_amount[]")
-        book.short_term_borrowings_growth_or_amount = multi_input_insert(request,"short_term_borrowings_growth_or_amount[]")
-        book.short_term_provisions_growth_or_amount = multi_input_insert(request,"short_term_provisions_growth_or_amount[]")
-        book.sundry_creditors_no_of_days = multi_input_insert(request,"sundry_creditors_no_of_days[]")
-        book.other_current_liabilities_growth_or_amount = multi_input_insert(request,"other_current_liabilities_growth_or_amount[]")
-        book.intangible_assets_growth_or_amount = multi_input_insert(request,"intangible_assets_growth_or_amount[]")
-        book.long_term_loans_and_advances_growth_or_amount = multi_input_insert(request,"long_term_loans_and_advances_growth_or_amount[]")
-        book.long_term_investments_growth_or_amount = multi_input_insert(request,"long_term_investments_growth_or_amount[]")
-        book.deferred_tax_assets = multi_input_insert(request,"deferred_tax_assets[]")
-        book.other_non_current_assets_growth_or_amount = multi_input_insert(request,"other_non_current_assets_growth_or_amount[]")
-        book.sundry_debtors_no_of_days = multi_input_insert(request,"sundry_debtors_no_of_days[]")
-        book.inventory_no_of_days = multi_input_insert(request,"inventory_no_of_days[]")
-        book.short_term_investments_growth_or_amount = multi_input_insert(request,"short_term_investments_growth_or_amount[]")
-        book.short_term_loans_and_advances_growth_or_amount = multi_input_insert(request,"short_term_loans_and_advances_growth_or_amount[]")
-        book.other_current_assets_growth_or_amount = multi_input_insert(request,"other_current_assets_growth_or_amount[]")
+        
+        book.capex_years = multi_input_insert(request,"capex_years[]")
+        book.capex_opening_gross = multi_input_insert(request,"capex_opening_gross[]")
+        book.capex_additions = multi_input_insert(request,"capex_additions[]")
+        book.capex_additions_intangible = multi_input_insert(request,"capex_additions_intangible[]")
+        book.capex_deletions = multi_input_insert(request,"capex_deletions[]")
+        book.capex_average_depreciation_rate = multi_input_insert(request,"capex_average_depreciation_rate[]")
 
+
+
+
+        #********** Projection table ***********
+
+        book.projection_table.p_capex_opening_gross = multi_input_insert_projection(request,"capex_opening_gross_[]")
+        book.projection_table.p_capex_additions  = multi_input_insert_projection(request,"capex_additions_[]")
+        book.projection_table.p_capex_additions_intangible  = multi_input_insert_projection(request,"capex_additions_intangible_[]")
+        book.projection_table.p_capex_deletions  = multi_input_insert_projection(request,"capex_deletions_[]")
+        book.projection_table.p_closing_gross  = multi_input_insert_projection(request,"closing_gross_[]")
+        book.projection_table.p_accumulated_depreciation  = multi_input_insert_projection(request,"accumulated_depreciation_[]")
+        book.projection_table.p_net_value  = multi_input_insert_projection(request,"net_value_[]")
+        book.projection_table.p_current_depreciation  = multi_input_insert_projection(request,"current_depreciation_[]")
+        book.projection_table.p_capex_average_depreciation_rate  = multi_input_insert_projection(request,"capex_average_depreciation_rate_[]")
+
+        
         book.current_fillup_position = 11
         book.save()
 
@@ -1812,13 +1940,33 @@ def user_form_12_submit(request):            # User Form 12 Submit
     book = super_plan_forms.objects.filter(id=request.session['form']).get()
     if(auth_user(request) and book and request.method=="POST"):
 
+        book.balance_sheet_years = multi_input_insert(request,"balance_sheet_years[]")
+        book.share_capital = multi_input_insert(request,"share_capital[]")
+        book.equity_funds_raised = multi_input_insert(request,"equity_funds_raised[]")
+        book.secured_loans_from_banks = multi_input_insert(request,"secured_loans_from_banks[]")
+        book.secured_loans_term_loans = multi_input_insert(request,"secured_loans_term_loans[]")
+        book.secured_loans_other_loans = multi_input_insert(request,"secured_loans_other_loans[]")
+        book.secured_loans_finance_lease_obligation = multi_input_insert(request,"secured_loans_finance_lease_obligation[]")
+        book.unsecured_loans = multi_input_insert(request,"unsecured_loans[]")
+        book.average_interest_rate_debt = multi_input_insert(request,"average_interest_rate_debt[]")
+        book.deferred_tax_liabilities  = multi_input_insert(request,"deferred_tax_liabilities[]")
+        book.long_term_provisions_growth_or_amount = multi_input_insert(request,"long_term_provisions_growth_or_amount[]")
+        book.other_non_current_liabilities_growth_or_amount = multi_input_insert(request,"other_non_current_liabilities_growth_or_amount[]")
+        book.short_term_borrowings_growth_or_amount = multi_input_insert(request,"short_term_borrowings_growth_or_amount[]")
+        book.short_term_provisions_growth_or_amount = multi_input_insert(request,"short_term_provisions_growth_or_amount[]")
+        book.sundry_creditors_no_of_days = multi_input_insert(request,"sundry_creditors_no_of_days[]")
+        book.other_current_liabilities_growth_or_amount = multi_input_insert(request,"other_current_liabilities_growth_or_amount[]")
+        book.intangible_assets_growth_or_amount = multi_input_insert(request,"intangible_assets_growth_or_amount[]")
+        book.long_term_loans_and_advances_growth_or_amount = multi_input_insert(request,"long_term_loans_and_advances_growth_or_amount[]")
+        book.long_term_investments_growth_or_amount = multi_input_insert(request,"long_term_investments_growth_or_amount[]")
+        book.deferred_tax_assets = multi_input_insert(request,"deferred_tax_assets[]")
+        book.other_non_current_assets_growth_or_amount = multi_input_insert(request,"other_non_current_assets_growth_or_amount[]")
+        book.sundry_debtors_no_of_days = multi_input_insert(request,"sundry_debtors_no_of_days[]")
+        book.inventory_no_of_days = multi_input_insert(request,"inventory_no_of_days[]")
+        book.short_term_investments_growth_or_amount = multi_input_insert(request,"short_term_investments_growth_or_amount[]")
+        book.short_term_loans_and_advances_growth_or_amount = multi_input_insert(request,"short_term_loans_and_advances_growth_or_amount[]")
+        book.other_current_assets_growth_or_amount = multi_input_insert(request,"other_current_assets_growth_or_amount[]")
 
-        book.capex_years = multi_input_insert(request,"capex_years[]")
-        book.capex_opening_gross = multi_input_insert(request,"capex_opening_gross[]")
-        book.capex_additions = multi_input_insert(request,"capex_additions[]")
-        book.capex_additions_intangible = multi_input_insert(request,"capex_additions_intangible[]")
-        book.capex_deletions = multi_input_insert(request,"capex_deletions[]")
-        book.capex_average_depreciation_rate = multi_input_insert(request,"capex_average_depreciation_rate[]")
 
         book.current_fillup_position = 12
         book.save()
