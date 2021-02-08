@@ -16,6 +16,8 @@ import os
 from django.conf import settings
 from shutil import copyfile
 
+from math import ceil
+
 
 
 
@@ -88,7 +90,14 @@ def multi_input_insert_projection(request,name):
 
 
 
-
+def multi_input_blank(request):                                     # Blank multi
+    user = User_db.objects.filter(id=request.session['user']).get()
+    form_id = request.session['form']
+    multi = super_plan_forms_multiple_inputs()
+    multi.user = user
+    multi.form_id = form_id
+    multi.save()
+    return multi
 
 
 def multi_input_insert_xl(request,data,row):
@@ -1160,6 +1169,1844 @@ def successful_purchased(request):                                # User Success
         return redirect('/login')
 
 
+
+#------------------------------------------ Projection Table works --------------------
+
+
+
+def income_statement_init(request,book):
+
+    projection_table=super_plan_projection()
+    projection_table.form_id=request.session['form']
+    
+    projection_table.ins_particulars_stream_1 = multi_input_blank(request)
+    projection_table.ins_particulars_stream_2 = multi_input_blank(request)
+    projection_table.ins_particulars_stream_3 = multi_input_blank(request)
+    projection_table.ins_particulars_stream_4 = multi_input_blank(request)
+    projection_table.ins_particulars_total_revenue_from_operations_services = multi_input_blank(request)
+    projection_table.ins_particulars_product_development_expenses_operating_expenses_raw_material = multi_input_blank(request)
+    projection_table.ins_particulars_employee_cost = multi_input_blank(request)
+    projection_table.ins_particulars_general_administrative_expenses = multi_input_blank(request)
+    projection_table.ins_particulars_selling_marketing_expenses = multi_input_blank(request)
+    projection_table.ins_particulars_other_expenses_1 = multi_input_blank(request)
+    projection_table.ins_particulars_other_expenses_2 = multi_input_blank(request)
+    projection_table.ins_particulars_total_operating_expenses = multi_input_blank(request)
+    projection_table.ins_particulars_ebitda_operating_profit = multi_input_blank(request)
+    projection_table.ins_particulars_depreciation = multi_input_blank(request)
+    projection_table.ins_particulars_other_income = multi_input_blank(request)
+    projection_table.ins_particulars_realised_foreign_exchange_gain_loss = multi_input_blank(request)
+    projection_table.ins_particulars_ebit = multi_input_blank(request)
+    projection_table.ins_particulars_interest_including_finance_charges = multi_input_blank(request)
+    projection_table.ins_particulars_earnings_before_tax_ebt = multi_input_blank(request)
+    projection_table.ins_particulars_provision_for_income_tax = multi_input_blank(request)
+    projection_table.ins_particulars_profit_after_tax = multi_input_blank(request)
+    projection_table.ins_particulars_ebitda_perc = multi_input_blank(request)
+    projection_table.ins_particulars_pat_perc = multi_input_blank(request)
+    projection_table.ins_particulars_interest_cover = multi_input_blank(request)
+    projection_table.ins_particulars_financial_leverage = multi_input_blank(request)
+
+    projection_table.ins_growth_analysis_yoy_stream_1 = multi_input_blank(request)
+    projection_table.ins_growth_analysis_yoy_stream_2 = multi_input_blank(request)
+    projection_table.ins_growth_analysis_yoy_stream_3 = multi_input_blank(request)
+    projection_table.ins_growth_analysis_yoy_stream_4 = multi_input_blank(request)
+    projection_table.ins_growth_analysis_yoy_total_revenue_from_operations_services = multi_input_blank(request)
+    projection_table.ins_growth_analysis_yoy_product_development_expenses_operating_expenses_raw_material = multi_input_blank(request)
+    projection_table.ins_growth_analysis_yoy_employee_cost = multi_input_blank(request)
+    projection_table.ins_growth_analysis_yoy_general_administrative_expenses = multi_input_blank(request)
+    projection_table.ins_growth_analysis_yoy_selling_marketing_expenses = multi_input_blank(request)
+    projection_table.ins_growth_analysis_yoy_other_expenses_1 = multi_input_blank(request)
+    projection_table.ins_growth_analysis_yoy_other_expenses_2 = multi_input_blank(request)
+    projection_table.ins_growth_analysis_yoy_total_operating_expenses = multi_input_blank(request)
+    projection_table.ins_growth_analysis_yoy_ebitda_operating_profit = multi_input_blank(request)
+    projection_table.ins_growth_analysis_yoy_depreciation = multi_input_blank(request)
+    projection_table.ins_growth_analysis_yoy_other_income = multi_input_blank(request)
+    projection_table.ins_growth_analysis_yoy_foreign_exchange_gain_loss = multi_input_blank(request)
+    projection_table.ins_growth_analysis_yoy_ebit = multi_input_blank(request)
+    projection_table.ins_growth_analysis_yoy_interest_including_finance_charges = multi_input_blank(request)
+    projection_table.ins_growth_analysis_yoy_earnings_before_tax_ebt = multi_input_blank(request)
+    projection_table.ins_growth_analysis_yoy_provision_for_income_tax = multi_input_blank(request)
+    projection_table.ins_growth_analysis_yoy_profit_after_tax = multi_input_blank(request)
+
+    projection_table.ins_analysis_as_of_revenue_stream_1 = multi_input_blank(request)
+    projection_table.ins_analysis_as_of_revenue_stream_2 = multi_input_blank(request)
+    projection_table.ins_analysis_as_of_revenue_stream_3 = multi_input_blank(request)
+    projection_table.ins_analysis_as_of_revenue_stream_4 = multi_input_blank(request)
+    projection_table.ins_analysis_as_of_revenue_total_revenue_from_operations_services = multi_input_blank(request)
+    projection_table.ins_analysis_as_of_revenue_product_development_expenses_operating_expenses_raw_material = multi_input_blank(request)
+    projection_table.ins_analysis_as_of_revenue_employee_cost = multi_input_blank(request)
+    projection_table.ins_analysis_as_of_revenue_general_administrative_expenses = multi_input_blank(request)
+    projection_table.ins_analysis_as_of_revenue_selling_marketing_expenses = multi_input_blank(request)
+    projection_table.ins_analysis_as_of_revenue_other_expenses_1 = multi_input_blank(request)
+    projection_table.ins_analysis_as_of_revenue_other_expenses_2 = multi_input_blank(request)
+    projection_table.ins_analysis_as_of_revenue_total_operating_expenses = multi_input_blank(request)
+    projection_table.ins_analysis_as_of_revenue_ebitda_operating_profit = multi_input_blank(request)
+    projection_table.ins_analysis_as_of_revenue_depreciation = multi_input_blank(request)
+    projection_table.ins_analysis_as_of_revenue_other_income = multi_input_blank(request)
+    projection_table.ins_analysis_as_of_revenue_realised_foreign_exchange_gain_loss = multi_input_blank(request)
+    projection_table.ins_analysis_as_of_revenue_ebit = multi_input_blank(request)
+    projection_table.ins_analysis_as_of_revenue_interest_including_finance_charges = multi_input_blank(request)
+    projection_table.ins_analysis_as_of_revenue_earnings_before_tax_ebt = multi_input_blank(request)
+    projection_table.ins_analysis_as_of_revenue_provision_for_income_tax = multi_input_blank(request)
+    projection_table.ins_analysis_as_of_revenue_profit_after_tax = multi_input_blank(request)
+
+    projection_table.save()
+    book.projection_table=projection_table
+    book.save()
+
+
+
+
+
+
+def cal_income_statement(request):                                      # Calculate the income statement
+
+    if(auth_user(request)):
+        book = super_plan_forms.objects.filter(id=request.session['form']).get()
+        if(auth_user(request) and book ):
+
+            book.projection_table.ins_particulars_stream_1 = book.projection_table.p_revenue_growth_or_amount_1
+            book.projection_table.ins_particulars_stream_2 = book.projection_table.p_revenue_growth_or_amount_2
+            book.projection_table.ins_particulars_stream_3 = book.projection_table.p_revenue_growth_or_amount_3
+            book.projection_table.ins_particulars_stream_4 = book.projection_table.p_revenue_growth_or_amount_4
+            book.projection_table.ins_particulars_total_revenue_from_operations_services = book.projection_table.p_total_revenue_from_operations_services
+            
+
+
+
+
+
+            book.projection_table.ins_particulars_product_development_expenses_operating_expenses_raw_material = book.projection_table.p_total_product_development_expenses_operating_expenses
+            book.projection_table.ins_particulars_employee_cost =book.projection_table.p_total_employee_expenses
+            book.projection_table.ins_particulars_general_administrative_expenses = book.projection_table.p_total_general_administrative_expenses
+            book.projection_table.ins_particulars_selling_marketing_expenses = book.projection_table.p_total_selling_marketing_expenses
+            book.projection_table.ins_particulars_other_expenses_1 = book.projection_table.p_other_expenses_1
+            book.projection_table.ins_particulars_other_expenses_2 = book.projection_table.p_other_expenses_2
+
+
+           
+            try:
+                book.projection_table.ins_particulars_total_operating_expenses.f_1 =ceil(float(book.projection_table.ins_particulars_product_development_expenses_operating_expenses_raw_material.f_1) + float(book.projection_table.ins_particulars_employee_cost.f_1) + float(book.projection_table.ins_particulars_general_administrative_expenses.f_1) + float(book.projection_table.ins_particulars_selling_marketing_expenses.f_1) + float(book.projection_table.ins_particulars_other_expenses_1.f_1) + float(book.projection_table.ins_particulars_other_expenses_2.f_1))
+            except:
+                book.projection_table.ins_particulars_total_operating_expenses.f_1 =None
+
+            try:
+                book.projection_table.ins_particulars_total_operating_expenses.f_2 =ceil(float(book.projection_table.ins_particulars_product_development_expenses_operating_expenses_raw_material.f_2) + float(book.projection_table.ins_particulars_employee_cost.f_2) + float(book.projection_table.ins_particulars_general_administrative_expenses.f_2) + float(book.projection_table.ins_particulars_selling_marketing_expenses.f_2) + float(book.projection_table.ins_particulars_other_expenses_1.f_2) + float(book.projection_table.ins_particulars_other_expenses_2.f_2))
+            except:
+                book.projection_table.ins_particulars_total_operating_expenses.f_2 =None
+
+            try:
+                book.projection_table.ins_particulars_total_operating_expenses.f_3 =ceil(float(book.projection_table.ins_particulars_product_development_expenses_operating_expenses_raw_material.f_3) + float(book.projection_table.ins_particulars_employee_cost.f_3) + float(book.projection_table.ins_particulars_general_administrative_expenses.f_3) + float(book.projection_table.ins_particulars_selling_marketing_expenses.f_3) + float(book.projection_table.ins_particulars_other_expenses_1.f_3) + float(book.projection_table.ins_particulars_other_expenses_2.f_3))
+            except:
+                book.projection_table.ins_particulars_total_operating_expenses.f_3 =None
+
+
+
+            try:
+                book.projection_table.ins_particulars_total_operating_expenses.f_4 =ceil(float(book.projection_table.ins_particulars_product_development_expenses_operating_expenses_raw_material.f_4) + float(book.projection_table.ins_particulars_employee_cost.f_4) + float(book.projection_table.ins_particulars_general_administrative_expenses.f_4) + float(book.projection_table.ins_particulars_selling_marketing_expenses.f_4) + float(book.projection_table.ins_particulars_other_expenses_1.f_4) + float(book.projection_table.ins_particulars_other_expenses_2.f_4))
+            except:
+                book.projection_table.ins_particulars_total_operating_expenses.f_4 =None
+
+            try:
+                book.projection_table.ins_particulars_total_operating_expenses.f_5 =ceil(float(book.projection_table.ins_particulars_product_development_expenses_operating_expenses_raw_material.f_5) + float(book.projection_table.ins_particulars_employee_cost.f_5) + float(book.projection_table.ins_particulars_general_administrative_expenses.f_5) + float(book.projection_table.ins_particulars_selling_marketing_expenses.f_5) + float(book.projection_table.ins_particulars_other_expenses_1.f_5) + float(book.projection_table.ins_particulars_other_expenses_2.f_5))
+            except:
+                book.projection_table.ins_particulars_total_operating_expenses.f_5 =None
+
+
+
+
+
+
+
+
+            try:
+                book.projection_table.ins_particulars_ebitda_operating_profit.f_1 = ceil(float(book.projection_table.ins_particulars_total_operating_expenses.f_1) - float(book.projection_table.ins_particulars_total_revenue_from_operations_services.f_1))
+            except:
+                book.projection_table.ins_particulars_ebitda_operating_profit.f_1 = None
+
+            try:
+                book.projection_table.ins_particulars_ebitda_operating_profit.f_2 = ceil(float(book.projection_table.ins_particulars_total_operating_expenses.f_2) - float(book.projection_table.ins_particulars_total_revenue_from_operations_services.f_2))
+            except:
+                book.projection_table.ins_particulars_ebitda_operating_profit.f_2 = None
+
+            try:
+                book.projection_table.ins_particulars_ebitda_operating_profit.f_3 = ceil(float(book.projection_table.ins_particulars_total_operating_expenses.f_3) - float(book.projection_table.ins_particulars_total_revenue_from_operations_services.f_3))
+            except:
+                book.projection_table.ins_particulars_ebitda_operating_profit.f_3 = None
+
+
+            try:
+                book.projection_table.ins_particulars_ebitda_operating_profit.f_4 = ceil(float(book.projection_table.ins_particulars_total_operating_expenses.f_4) - float(book.projection_table.ins_particulars_total_revenue_from_operations_services.f_4))
+            except:
+                book.projection_table.ins_particulars_ebitda_operating_profit.f_4 = None
+
+
+            try:
+                book.projection_table.ins_particulars_ebitda_operating_profit.f_5 = ceil(float(book.projection_table.ins_particulars_total_operating_expenses.f_5) - float(book.projection_table.ins_particulars_total_revenue_from_operations_services.f_5))
+            except:
+                book.projection_table.ins_particulars_ebitda_operating_profit.f_5 = None
+
+
+
+            book.projection_table.ins_particulars_depreciation = book.projection_table.p_current_depreciation
+
+            book.projection_table.ins_particulars_other_income = book.projection_table.p_other_income_growth_or_amount
+
+            book.projection_table.ins_particulars_realised_foreign_exchange_gain_loss = book.projection_table.p_realised_foreign_exchange_gain_or_loss
+
+
+            try:
+                book.projection_table.ins_particulars_ebit.f_1 = ceil(float(book.projection_table.ins_particulars_ebitda_operating_profit.f_1) - (float(book.projection_table.ins_particulars_depreciation.f_1)+float(book.projection_table.ins_particulars_other_income.f_1)+float(book.projection_table.ins_particulars_realised_foreign_exchange_gain_loss.f_1)))
+            except:
+                book.projection_table.ins_particulars_ebit.f_1 = None
+
+
+            try:
+                book.projection_table.ins_particulars_ebit.f_2 = ceil(float(book.projection_table.ins_particulars_ebitda_operating_profit.f_2) - (float(book.projection_table.ins_particulars_depreciation.f_2)+float(book.projection_table.ins_particulars_other_income.f_2)+float(book.projection_table.ins_particulars_realised_foreign_exchange_gain_loss.f_2)))
+            except:
+                book.projection_table.ins_particulars_ebit.f_2 = None
+
+            try:
+                book.projection_table.ins_particulars_ebit.f_3 = ceil(float(book.projection_table.ins_particulars_ebitda_operating_profit.f_3) - (float(book.projection_table.ins_particulars_depreciation.f_3)+float(book.projection_table.ins_particulars_other_income.f_3)+float(book.projection_table.ins_particulars_realised_foreign_exchange_gain_loss.f_3)))
+            except:
+                book.projection_table.ins_particulars_ebit.f_3 = None
+
+            try:
+                book.projection_table.ins_particulars_ebit.f_4 = ceil(float(book.projection_table.ins_particulars_ebitda_operating_profit.f_4) - (float(book.projection_table.ins_particulars_depreciation.f_4)+float(book.projection_table.ins_particulars_other_income.f_4)+float(book.projection_table.ins_particulars_realised_foreign_exchange_gain_loss.f_4)))
+            except:
+                book.projection_table.ins_particulars_ebit.f_4 = None
+
+            try:
+                book.projection_table.ins_particulars_ebit.f_5 = ceil(float(book.projection_table.ins_particulars_ebitda_operating_profit.f_5) - (float(book.projection_table.ins_particulars_depreciation.f_5)+float(book.projection_table.ins_particulars_other_income.f_5)+float(book.projection_table.ins_particulars_realised_foreign_exchange_gain_loss.f_5)))
+            except:
+                book.projection_table.ins_particulars_ebit.f_5 = None
+
+
+            book.projection_table.ins_particulars_interest_including_finance_charges.f_1=0
+            book.projection_table.ins_particulars_interest_including_finance_charges.f_2=0
+            book.projection_table.ins_particulars_interest_including_finance_charges.f_3=0
+            book.projection_table.ins_particulars_interest_including_finance_charges.f_4=0
+            book.projection_table.ins_particulars_interest_including_finance_charges.f_5=0
+
+
+
+            try:
+                book.projection_table.ins_particulars_earnings_before_tax_ebt.f_1 = ceil( float(book.projection_table.ins_particulars_ebit.f_1)-float(book.projection_table.ins_particulars_interest_including_finance_charges.f_1))
+            except:
+                book.projection_table.ins_particulars_earnings_before_tax_ebt.f_1 = 0
+
+            try:
+                book.projection_table.ins_particulars_earnings_before_tax_ebt.f_2 = ceil( float(book.projection_table.ins_particulars_ebit.f_2)-float(book.projection_table.ins_particulars_interest_including_finance_charges.f_2))
+            except:
+                book.projection_table.ins_particulars_earnings_before_tax_ebt.f_2 = 0
+
+            try:
+                book.projection_table.ins_particulars_earnings_before_tax_ebt.f_3 = ceil( float(book.projection_table.ins_particulars_ebit.f_3)-float(book.projection_table.ins_particulars_interest_including_finance_charges.f_3))
+            except:
+                book.projection_table.ins_particulars_earnings_before_tax_ebt.f_3 = 0
+
+            try:
+                book.projection_table.ins_particulars_earnings_before_tax_ebt.f_4 = ceil( float(book.projection_table.ins_particulars_ebit.f_4)-float(book.projection_table.ins_particulars_interest_including_finance_charges.f_4))
+            except:
+                book.projection_table.ins_particulars_earnings_before_tax_ebt.f_4 = 0
+
+            try:
+                book.projection_table.ins_particulars_earnings_before_tax_ebt.f_5 = ceil( float(book.projection_table.ins_particulars_ebit.f_5)-float(book.projection_table.ins_particulars_interest_including_finance_charges.f_5))
+            except:
+                book.projection_table.ins_particulars_earnings_before_tax_ebt.f_5 = 0
+
+
+
+
+
+
+
+            try:
+                book.projection_table.ins_particulars_provision_for_income_tax.f_1 = ceil(float(book.projection_table.ins_particulars_earnings_before_tax_ebt.f_1)*float(book.projection_table.p_income_tax_rate.f_1))
+            except:
+                 book.projection_table.ins_particulars_provision_for_income_tax.f_1 = 0
+
+            try:
+                book.projection_table.ins_particulars_provision_for_income_tax.f_2 = ceil(float(book.projection_table.ins_particulars_earnings_before_tax_ebt.f_2)*float(book.projection_table.p_income_tax_rate.f_2))
+            except:
+                 book.projection_table.ins_particulars_provision_for_income_tax.f_2 = 0
+
+            try:
+                book.projection_table.ins_particulars_provision_for_income_tax.f_3 = ceil(float(book.projection_table.ins_particulars_earnings_before_tax_ebt.f_3)*float(book.projection_table.p_income_tax_rate.f_3))
+            except:
+                 book.projection_table.ins_particulars_provision_for_income_tax.f_3 = 0
+
+
+            try:
+                book.projection_table.ins_particulars_provision_for_income_tax.f_4 = ceil(float(book.projection_table.ins_particulars_earnings_before_tax_ebt.f_4)*float(book.projection_table.p_income_tax_rate.f_4))
+            except:
+                 book.projection_table.ins_particulars_provision_for_income_tax.f_4 = 0
+
+
+            try:
+                book.projection_table.ins_particulars_provision_for_income_tax.f_5 = ceil(float(book.projection_table.ins_particulars_earnings_before_tax_ebt.f_5)*float(book.projection_table.p_income_tax_rate.f_5))
+            except:
+                 book.projection_table.ins_particulars_provision_for_income_tax.f_5 = 0
+
+
+
+
+
+            
+
+
+
+            try:
+                book.projection_table.ins_particulars_profit_after_tax.f_1 = ceil(float(book.projection_table.ins_particulars_earnings_before_tax_ebt.f_1)-float(book.projection_table.ins_particulars_provision_for_income_tax.f_1))
+            except:
+                book.projection_table.ins_particulars_profit_after_tax.f_1 =0
+
+
+            try:
+                book.projection_table.ins_particulars_profit_after_tax.f_2 = ceil(float(book.projection_table.ins_particulars_earnings_before_tax_ebt.f_2)-float(book.projection_table.ins_particulars_provision_for_income_tax.f_2))
+            except:
+                book.projection_table.ins_particulars_profit_after_tax.f_2 =0
+
+
+            try:
+                book.projection_table.ins_particulars_profit_after_tax.f_3 = ceil(float(book.projection_table.ins_particulars_earnings_before_tax_ebt.f_3)-float(book.projection_table.ins_particulars_provision_for_income_tax.f_3))
+            except:
+                book.projection_table.ins_particulars_profit_after_tax.f_3 =0
+
+            try:
+                book.projection_table.ins_particulars_profit_after_tax.f_4 = ceil(float(book.projection_table.ins_particulars_earnings_before_tax_ebt.f_4)-float(book.projection_table.ins_particulars_provision_for_income_tax.f_4))
+            except:
+                book.projection_table.ins_particulars_profit_after_tax.f_4 =0
+
+            try:
+                book.projection_table.ins_particulars_profit_after_tax.f_5 = ceil(float(book.projection_table.ins_particulars_earnings_before_tax_ebt.f_5)-float(book.projection_table.ins_particulars_provision_for_income_tax.f_5))
+            except:
+                book.projection_table.ins_particulars_profit_after_tax.f_5 =0
+
+
+
+
+
+
+
+            try:
+                book.projection_table.ins_particulars_ebitda_perc.f_1 = ceil(float(book.projection_table.ins_particulars_ebitda_operating_profit.f_1)/float(book.projection_table.ins_particulars_total_revenue_from_operations_services.f_1))
+            except:
+                book.projection_table.ins_particulars_ebitda_perc.f_1 = 0
+
+            try:
+                book.projection_table.ins_particulars_ebitda_perc.f_2 = ceil(float(book.projection_table.ins_particulars_ebitda_operating_profit.f_2)/float(book.projection_table.ins_particulars_total_revenue_from_operations_services.f_2))
+            except:
+                book.projection_table.ins_particulars_ebitda_perc.f_2 = 0
+
+            try:
+                book.projection_table.ins_particulars_ebitda_perc.f_3 = ceil(float(book.projection_table.ins_particulars_ebitda_operating_profit.f_3)/float(book.projection_table.ins_particulars_total_revenue_from_operations_services.f_3))
+            except:
+                book.projection_table.ins_particulars_ebitda_perc.f_3 = 0
+
+            try:
+                book.projection_table.ins_particulars_ebitda_perc.f_4 = ceil(float(book.projection_table.ins_particulars_ebitda_operating_profit.f_4)/float(book.projection_table.ins_particulars_total_revenue_from_operations_services.f_4))
+            except:
+                book.projection_table.ins_particulars_ebitda_perc.f_4 = 0
+
+            try:
+                book.projection_table.ins_particulars_ebitda_perc.f_5 = ceil(float(book.projection_table.ins_particulars_ebitda_operating_profit.f_5)/float(book.projection_table.ins_particulars_total_revenue_from_operations_services.f_5))
+            except:
+                book.projection_table.ins_particulars_ebitda_perc.f_5 = 0
+
+
+
+
+
+
+
+            try:
+                book.projection_table.ins_particulars_pat_perc.f_1 = ceil(float(book.projection_table.ins_particulars_profit_after_tax.f_1)/float(book.projection_table.ins_particulars_total_revenue_from_operations_services.f_1))
+            except:
+                book.projection_table.ins_particulars_pat_perc.f_1 = 0
+
+            try:
+                book.projection_table.ins_particulars_pat_perc.f_2 = ceil(float(book.projection_table.ins_particulars_profit_after_tax.f_2)/float(book.projection_table.ins_particulars_total_revenue_from_operations_services.f_2))
+            except:
+                book.projection_table.ins_particulars_pat_perc.f_2 = 0
+
+            try:
+                book.projection_table.ins_particulars_pat_perc.f_3 = ceil(float(book.projection_table.ins_particulars_profit_after_tax.f_3)/float(book.projection_table.ins_particulars_total_revenue_from_operations_services.f_3))
+            except:
+                book.projection_table.ins_particulars_pat_perc.f_3 = 0
+
+            try:
+                book.projection_table.ins_particulars_pat_perc.f_4 = ceil(float(book.projection_table.ins_particulars_profit_after_tax.f_4)/float(book.projection_table.ins_particulars_total_revenue_from_operations_services.f_4))
+            except:
+                book.projection_table.ins_particulars_pat_perc.f_4 = 0
+
+            try:
+                book.projection_table.ins_particulars_pat_perc.f_5 = ceil(float(book.projection_table.ins_particulars_profit_after_tax.f_5)/float(book.projection_table.ins_particulars_total_revenue_from_operations_services.f_5))
+            except:
+                book.projection_table.ins_particulars_pat_perc.f_5 = 0
+
+
+
+
+
+
+
+
+            try:
+                book.projection_table.ins_particulars_interest_cover.f_1=ceil(float(book.projection_table.ins_particulars_ebit.f_1)/float(book.projection_table.ins_particulars_interest_including_finance_charges.f_1))
+            except:
+                book.projection_table.ins_particulars_interest_cover.f_1=0
+
+            try:
+                book.projection_table.ins_particulars_interest_cover.f_2=ceil(float(book.projection_table.ins_particulars_ebit.f_2)/float(book.projection_table.ins_particulars_interest_including_finance_charges.f_2))
+            except:
+                book.projection_table.ins_particulars_interest_cover.f_2=0
+
+            try:
+                book.projection_table.ins_particulars_interest_cover.f_3=ceil(float(book.projection_table.ins_particulars_ebit.f_3)/float(book.projection_table.ins_particulars_interest_including_finance_charges.f_3))
+            except:
+                book.projection_table.ins_particulars_interest_cover.f_3=0
+
+            try:
+                book.projection_table.ins_particulars_interest_cover.f_4=ceil(float(book.projection_table.ins_particulars_ebit.f_4)/float(book.projection_table.ins_particulars_interest_including_finance_charges.f_4))
+            except:
+                book.projection_table.ins_particulars_interest_cover.f_4=0
+
+            try:
+                book.projection_table.ins_particulars_interest_cover.f_5=ceil(float(book.projection_table.ins_particulars_ebit.f_5)/float(book.projection_table.ins_particulars_interest_including_finance_charges.f_5))
+            except:
+                book.projection_table.ins_particulars_interest_cover.f_5=0
+
+            
+
+
+
+
+
+
+
+
+
+
+
+            try:
+                book.projection_table.ins_particulars_financial_leverage.f_1=ceil(float(book.projection_table.ins_particulars_ebit.f_1)/float(book.projection_table.ins_particulars_earnings_before_tax_ebt.f_1))
+            except:
+                book.projection_table.ins_particulars_financial_leverage.f_1=0
+
+            try:
+                book.projection_table.ins_particulars_financial_leverage.f_2=ceil(float(book.projection_table.ins_particulars_ebit.f_2)/float(book.projection_table.ins_particulars_earnings_before_tax_ebt.f_2))
+            except:
+                book.projection_table.ins_particulars_financial_leverage.f_2=0
+
+
+            try:
+                book.projection_table.ins_particulars_financial_leverage.f_3=ceil(float(book.projection_table.ins_particulars_ebit.f_3)/float(book.projection_table.ins_particulars_earnings_before_tax_ebt.f_3))
+            except:
+                book.projection_table.ins_particulars_financial_leverage.f_3=0
+
+            try:
+                book.projection_table.ins_particulars_financial_leverage.f_4=ceil(float(book.projection_table.ins_particulars_ebit.f_4)/float(book.projection_table.ins_particulars_earnings_before_tax_ebt.f_4))
+            except:
+                book.projection_table.ins_particulars_financial_leverage.f_4=0
+
+            try:
+                book.projection_table.ins_particulars_financial_leverage.f_5=ceil(float(book.projection_table.ins_particulars_ebit.f_5)/float(book.projection_table.ins_particulars_earnings_before_tax_ebt.f_5))
+            except:
+                book.projection_table.ins_particulars_financial_leverage.f_5=0
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                        #----------------------------
+            
+            try:
+                book.projection_table.ins_growth_analysis_yoy_stream_1.f_2=ceil(((float(book.projection_table.ins_particulars_stream_1.f_2)-float(book.projection_table.ins_particulars_stream_1.f_1))/float(book.projection_table.ins_particulars_stream_1.f_1))*100)
+            except:
+                book.projection_table.ins_growth_analysis_yoy_stream_1.f_2=0
+            try:
+                book.projection_table.ins_growth_analysis_yoy_stream_1.f_3=ceil(((float(book.projection_table.ins_particulars_stream_1.f_3)-float(book.projection_table.ins_particulars_stream_1.f_2))/float(book.projection_table.ins_particulars_stream_1.f_2))*100)
+            except:
+                book.projection_table.ins_growth_analysis_yoy_stream_1.f_3=0
+            try:
+                book.projection_table.ins_growth_analysis_yoy_stream_1.f_4=ceil(((float(book.projection_table.ins_particulars_stream_1.f_4)-float(book.projection_table.ins_particulars_stream_1.f_3))/float(book.projection_table.ins_particulars_stream_1.f_3))*100)
+            except:
+                book.projection_table.ins_growth_analysis_yoy_stream_1.f_4=0
+            try:
+                book.projection_table.ins_growth_analysis_yoy_stream_1.f_5=ceil(((float(book.projection_table.ins_particulars_stream_1.f_5)-float(book.projection_table.ins_particulars_stream_1.f_4))/float(book.projection_table.ins_particulars_stream_1.f_4))*100)
+            except:
+                book.projection_table.ins_growth_analysis_yoy_stream_1.f_5=0
+
+
+
+
+
+
+
+
+
+
+            try:
+                book.projection_table.ins_growth_analysis_yoy_stream_2.f_2=ceil(((float(book.projection_table.ins_particulars_stream_2.f_2)-float(book.projection_table.ins_particulars_stream_2.f_1))/float(book.projection_table.ins_particulars_stream_2.f_1))*100)
+            except:
+                book.projection_table.ins_growth_analysis_yoy_stream_2.f_2=0
+
+            try:
+                book.projection_table.ins_growth_analysis_yoy_stream_2.f_3=ceil(((float(book.projection_table.ins_particulars_stream_2.f_3)-float(book.projection_table.ins_particulars_stream_2.f_2))/float(book.projection_table.ins_particulars_stream_2.f_2))*100)
+            except:
+                book.projection_table.ins_growth_analysis_yoy_stream_2.f_3=0
+
+            try:
+                book.projection_table.ins_growth_analysis_yoy_stream_2.f_4=ceil(((float(book.projection_table.ins_particulars_stream_2.f_4)-float(book.projection_table.ins_particulars_stream_2.f_3))/float(book.projection_table.ins_particulars_stream_2.f_3))*100)
+            except:
+                book.projection_table.ins_growth_analysis_yoy_stream_2.f_4=0
+
+            try:
+                book.projection_table.ins_growth_analysis_yoy_stream_2.f_5=ceil(((float(book.projection_table.ins_particulars_stream_2.f_5)-float(book.projection_table.ins_particulars_stream_2.f_4))/float(book.projection_table.ins_particulars_stream_2.f_4))*100)
+            except:
+                book.projection_table.ins_growth_analysis_yoy_stream_2.f_5=0
+
+
+
+            
+
+
+
+
+            try:
+                book.projection_table.ins_growth_analysis_yoy_stream_3.f_2=ceil(((float(book.projection_table.ins_particulars_stream_3.f_2)-float(book.projection_table.ins_particulars_stream_3.f_1))/float(book.projection_table.ins_particulars_stream_3.f_1))*100)
+            except:
+                book.projection_table.ins_growth_analysis_yoy_stream_3.f_2=0
+
+            try:
+                book.projection_table.ins_growth_analysis_yoy_stream_3.f_3=ceil(((float(book.projection_table.ins_particulars_stream_3.f_3)-float(book.projection_table.ins_particulars_stream_3.f_2))/float(book.projection_table.ins_particulars_stream_3.f_2))*100)
+            except:
+                book.projection_table.ins_growth_analysis_yoy_stream_3.f_3=0
+
+            try:
+                book.projection_table.ins_growth_analysis_yoy_stream_3.f_4=ceil(((float(book.projection_table.ins_particulars_stream_3.f_4)-float(book.projection_table.ins_particulars_stream_3.f_3))/float(book.projection_table.ins_particulars_stream_3.f_3))*100)
+            except:
+                book.projection_table.ins_growth_analysis_yoy_stream_3.f_4=0
+
+            try:
+                book.projection_table.ins_growth_analysis_yoy_stream_3.f_5=ceil(((float(book.projection_table.ins_particulars_stream_3.f_5)-float(book.projection_table.ins_particulars_stream_3.f_4))/float(book.projection_table.ins_particulars_stream_3.f_4))*100)
+            except:
+                book.projection_table.ins_growth_analysis_yoy_stream_3.f_5=0
+
+
+
+
+
+
+        
+
+
+            try:
+                book.projection_table.ins_growth_analysis_yoy_stream_4.f_2=ceil(((float(book.projection_table.ins_particulars_stream_4.f_2)-float(book.projection_table.ins_particulars_stream_4.f_1))/float(book.projection_table.ins_particulars_stream_4.f_1))*100)
+            except:
+                book.projection_table.ins_growth_analysis_yoy_stream_4.f_2=0
+
+            try:
+                book.projection_table.ins_growth_analysis_yoy_stream_4.f_3=ceil(((float(book.projection_table.ins_particulars_stream_4.f_3)-float(book.projection_table.ins_particulars_stream_4.f_2))/float(book.projection_table.ins_particulars_stream_4.f_2))*100)
+            except:
+                book.projection_table.ins_growth_analysis_yoy_stream_4.f_3=0
+
+            try:
+                book.projection_table.ins_growth_analysis_yoy_stream_4.f_4=ceil(((float(book.projection_table.ins_particulars_stream_4.f_4)-float(book.projection_table.ins_particulars_stream_4.f_3))/float(book.projection_table.ins_particulars_stream_4.f_3))*100)
+            except:
+                book.projection_table.ins_growth_analysis_yoy_stream_4.f_4=0
+
+            try:
+                book.projection_table.ins_growth_analysis_yoy_stream_4.f_5=ceil(((float(book.projection_table.ins_particulars_stream_4.f_5)-float(book.projection_table.ins_particulars_stream_4.f_4))/float(book.projection_table.ins_particulars_stream_4.f_4))*100)
+            except:
+                book.projection_table.ins_growth_analysis_yoy_stream_4.f_5=0
+             
+
+
+
+
+
+
+            try:
+                book.projection_table.ins_growth_analysis_yoy_total_revenue_from_operations_services.f_2=ceil(((float(book.projection_table.ins_particulars_total_revenue_from_operations_services.f_2)-float(book.projection_table.ins_particulars_total_revenue_from_operations_services.f_1))/float(book.projection_table.ins_particulars_total_revenue_from_operations_services.f_1))*100)
+            except:
+                book.projection_table.ins_growth_analysis_yoy_total_revenue_from_operations_services.f_2=0
+
+            try:
+                book.projection_table.ins_growth_analysis_yoy_total_revenue_from_operations_services.f_3=ceil(((float(book.projection_table.ins_particulars_total_revenue_from_operations_services.f_3)-float(book.projection_table.ins_particulars_total_revenue_from_operations_services.f_2))/float(book.projection_table.ins_particulars_total_revenue_from_operations_services.f_2))*100)
+            except:
+                book.projection_table.ins_growth_analysis_yoy_total_revenue_from_operations_services.f_3=0
+
+            try:
+                book.projection_table.ins_growth_analysis_yoy_total_revenue_from_operations_services.f_4=ceil(((float(book.projection_table.ins_particulars_total_revenue_from_operations_services.f_4)-float(book.projection_table.ins_particulars_total_revenue_from_operations_services.f_3))/float(book.projection_table.ins_particulars_total_revenue_from_operations_services.f_3))*100)
+            except:
+                book.projection_table.ins_growth_analysis_yoy_total_revenue_from_operations_services.f_4=0
+
+            try:
+                book.projection_table.ins_growth_analysis_yoy_total_revenue_from_operations_services.f_5=ceil(((float(book.projection_table.ins_particulars_total_revenue_from_operations_services.f_5)-float(book.projection_table.ins_particulars_total_revenue_from_operations_services.f_4))/float(book.projection_table.ins_particulars_total_revenue_from_operations_services.f_4))*100)
+            except:
+                book.projection_table.ins_growth_analysis_yoy_total_revenue_from_operations_services.f_5=0
+             
+            
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            try:
+                book.projection_table.ins_growth_analysis_yoy_product_development_expenses_operating_expenses_raw_material.f_2=ceil(((float(book.projection_table.ins_particulars_product_development_expenses_operating_expenses_raw_material.f_2)-float(book.projection_table.ins_particulars_product_development_expenses_operating_expenses_raw_material.f_1))/float(book.projection_table.ins_particulars_product_development_expenses_operating_expenses_raw_material.f_1))*100)
+            except:
+                book.projection_table.ins_growth_analysis_yoy_product_development_expenses_operating_expenses_raw_material.f_2=0
+
+            try:
+                book.projection_table.ins_growth_analysis_yoy_product_development_expenses_operating_expenses_raw_material.f_3=ceil(((float(book.projection_table.ins_particulars_product_development_expenses_operating_expenses_raw_material.f_3)-float(book.projection_table.ins_particulars_product_development_expenses_operating_expenses_raw_material.f_2))/float(book.projection_table.ins_particulars_product_development_expenses_operating_expenses_raw_material.f_2))*100)
+            except:
+                book.projection_table.ins_growth_analysis_yoy_product_development_expenses_operating_expenses_raw_material.f_3=0
+
+            try:
+                book.projection_table.ins_growth_analysis_yoy_product_development_expenses_operating_expenses_raw_material.f_4=ceil(((float(book.projection_table.ins_particulars_product_development_expenses_operating_expenses_raw_material.f_4)-float(book.projection_table.ins_particulars_product_development_expenses_operating_expenses_raw_material.f_3))/float(book.projection_table.ins_particulars_product_development_expenses_operating_expenses_raw_material.f_3))*100)
+            except:
+                book.projection_table.ins_growth_analysis_yoy_product_development_expenses_operating_expenses_raw_material.f_4=0
+
+            try:
+                book.projection_table.ins_growth_analysis_yoy_product_development_expenses_operating_expenses_raw_material.f_5=ceil(((float(book.projection_table.ins_particulars_product_development_expenses_operating_expenses_raw_material.f_5)-float(book.projection_table.ins_particulars_product_development_expenses_operating_expenses_raw_material.f_4))/float(book.projection_table.ins_particulars_product_development_expenses_operating_expenses_raw_material.f_4))*100)
+            except:
+                book.projection_table.ins_growth_analysis_yoy_product_development_expenses_operating_expenses_raw_material.f_5=0
+             
+
+
+
+
+
+
+
+
+
+            try:
+                book.projection_table.ins_growth_analysis_yoy_employee_cost.f_2=ceil(((float(book.projection_table.ins_particulars_employee_cost.f_2)-float(book.projection_table.ins_particulars_employee_cost.f_1))/float(book.projection_table.ins_particulars_employee_cost.f_1))*100)
+            except:
+                book.projection_table.ins_growth_analysis_yoy_employee_cost.f_2=0
+
+            try:
+                book.projection_table.ins_growth_analysis_yoy_employee_cost.f_3=ceil(((float(book.projection_table.ins_particulars_employee_cost.f_3)-float(book.projection_table.ins_particulars_employee_cost.f_2))/float(book.projection_table.ins_particulars_employee_cost.f_2))*100)
+            except:
+                book.projection_table.ins_growth_analysis_yoy_employee_cost.f_3=0
+
+            try:
+                book.projection_table.ins_growth_analysis_yoy_employee_cost.f_4=ceil(((float(book.projection_table.ins_particulars_employee_cost.f_4)-float(book.projection_table.ins_particulars_employee_cost.f_3))/float(book.projection_table.ins_particulars_employee_cost.f_3))*100)
+            except:
+                book.projection_table.ins_growth_analysis_yoy_employee_cost.f_4=0
+
+            try:
+                book.projection_table.ins_growth_analysis_yoy_employee_cost.f_5=ceil(((float(book.projection_table.ins_particulars_employee_cost.f_5)-float(book.projection_table.ins_particulars_employee_cost.f_4))/float(book.projection_table.ins_particulars_employee_cost.f_4))*100)
+            except:
+                book.projection_table.ins_growth_analysis_yoy_employee_cost.f_5=0
+             
+
+
+
+
+
+
+
+
+            try:
+                book.projection_table.ins_growth_analysis_yoy_general_administrative_expenses.f_2=ceil(((float(book.projection_table.ins_particulars_general_administrative_expenses.f_2)-float(book.projection_table.ins_particulars_general_administrative_expenses.f_1))/float(book.projection_table.ins_particulars_general_administrative_expenses.f_1))*100)
+            except:
+                book.projection_table.ins_growth_analysis_yoy_general_administrative_expenses.f_2=0
+
+            try:
+                book.projection_table.ins_growth_analysis_yoy_general_administrative_expenses.f_3=ceil(((float(book.projection_table.ins_particulars_general_administrative_expenses.f_3)-float(book.projection_table.ins_particulars_general_administrative_expenses.f_2))/float(book.projection_table.ins_particulars_general_administrative_expenses.f_2))*100)
+            except:
+                book.projection_table.ins_growth_analysis_yoy_general_administrative_expenses.f_3=0
+
+            try:
+                book.projection_table.ins_growth_analysis_yoy_general_administrative_expenses.f_4=ceil(((float(book.projection_table.ins_particulars_general_administrative_expenses.f_4)-float(book.projection_table.ins_particulars_general_administrative_expenses.f_3))/float(book.projection_table.ins_particulars_general_administrative_expenses.f_3))*100)
+            except:
+                book.projection_table.ins_growth_analysis_yoy_general_administrative_expenses.f_4=0
+
+            try:
+                book.projection_table.ins_growth_analysis_yoy_general_administrative_expenses.f_5=ceil(((float(book.projection_table.ins_particulars_general_administrative_expenses.f_5)-float(book.projection_table.ins_particulars_general_administrative_expenses.f_4))/float(book.projection_table.ins_particulars_general_administrative_expenses.f_4))*100)
+            except:
+                book.projection_table.ins_growth_analysis_yoy_general_administrative_expenses.f_5=0
+
+
+
+
+
+
+
+
+
+            try:
+                book.projection_table.ins_growth_analysis_yoy_selling_marketing_expenses.f_2=ceil(((float(book.projection_table.ins_particulars_selling_marketing_expenses.f_2)-float(book.projection_table.ins_particulars_selling_marketing_expenses.f_1))/float(book.projection_table.ins_particulars_selling_marketing_expenses.f_1))*100)
+            except:
+                book.projection_table.ins_growth_analysis_yoy_selling_marketing_expenses.f_2=0
+
+            try:
+                book.projection_table.ins_growth_analysis_yoy_selling_marketing_expenses.f_3=ceil(((float(book.projection_table.ins_particulars_selling_marketing_expenses.f_3)-float(book.projection_table.ins_particulars_selling_marketing_expenses.f_2))/float(book.projection_table.ins_particulars_selling_marketing_expenses.f_2))*100)
+            except:
+                book.projection_table.ins_growth_analysis_yoy_selling_marketing_expenses.f_3=0
+
+            try:
+                book.projection_table.ins_growth_analysis_yoy_selling_marketing_expenses.f_4=ceil(((float(book.projection_table.ins_particulars_selling_marketing_expenses.f_4)-float(book.projection_table.ins_particulars_selling_marketing_expenses.f_3))/float(book.projection_table.ins_particulars_selling_marketing_expenses.f_3))*100)
+            except:
+                book.projection_table.ins_growth_analysis_yoy_selling_marketing_expenses.f_4=0
+
+            try:
+                book.projection_table.ins_growth_analysis_yoy_selling_marketing_expenses.f_5=ceil(((float(book.projection_table.ins_particulars_selling_marketing_expenses.f_5)-float(book.projection_table.ins_particulars_selling_marketing_expenses.f_4))/float(book.projection_table.ins_particulars_selling_marketing_expenses.f_4))*100)
+            except:
+                book.projection_table.ins_growth_analysis_yoy_selling_marketing_expenses.f_5=0
+             
+
+
+
+
+
+
+
+
+
+            try:
+                book.projection_table.ins_growth_analysis_yoy_other_expenses_1.f_2=ceil(((float(book.projection_table.ins_particulars_other_expenses_1.f_2)-float(book.projection_table.ins_particulars_other_expenses_1.f_1))/float(book.projection_table.ins_particulars_other_expenses_1.f_1))*100)
+            except:
+                book.projection_table.ins_growth_analysis_yoy_other_expenses_1.f_2=0
+
+            try:
+                book.projection_table.ins_growth_analysis_yoy_other_expenses_1.f_3=ceil(((float(book.projection_table.ins_particulars_other_expenses_1.f_3)-float(book.projection_table.ins_particulars_other_expenses_1.f_2))/float(book.projection_table.ins_particulars_other_expenses_1.f_2))*100)
+            except:
+                book.projection_table.ins_growth_analysis_yoy_other_expenses_1.f_3=0
+
+            try:
+                book.projection_table.ins_growth_analysis_yoy_other_expenses_1.f_4=ceil(((float(book.projection_table.ins_particulars_other_expenses_1.f_4)-float(book.projection_table.ins_particulars_other_expenses_1.f_3))/float(book.projection_table.ins_particulars_other_expenses_1.f_3))*100)
+            except:
+                book.projection_table.ins_growth_analysis_yoy_other_expenses_1.f_4=0
+
+            try:
+                book.projection_table.ins_growth_analysis_yoy_other_expenses_1.f_5=ceil(((float(book.projection_table.ins_particulars_other_expenses_1.f_5)-float(book.projection_table.ins_particulars_other_expenses_1.f_4))/float(book.projection_table.ins_particulars_other_expenses_1.f_4))*100)
+            except:
+                book.projection_table.ins_growth_analysis_yoy_other_expenses_1.f_5=0
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            try:
+                book.projection_table.ins_growth_analysis_yoy_other_expenses_2.f_2=ceil(((float(book.projection_table.ins_particulars_other_expenses_2.f_2)-float(book.projection_table.ins_particulars_other_expenses_2.f_1))/float(book.projection_table.ins_particulars_other_expenses_2.f_1))*100)
+            except:
+                book.projection_table.ins_growth_analysis_yoy_other_expenses_2.f_2=0
+
+            try:
+                book.projection_table.ins_growth_analysis_yoy_other_expenses_2.f_3=ceil(((float(book.projection_table.ins_particulars_other_expenses_2.f_3)-float(book.projection_table.ins_particulars_other_expenses_2.f_2))/float(book.projection_table.ins_particulars_other_expenses_2.f_2))*100)
+            except:
+                book.projection_table.ins_growth_analysis_yoy_other_expenses_2.f_3=0
+
+            try:
+                book.projection_table.ins_growth_analysis_yoy_other_expenses_2.f_4=ceil(((float(book.projection_table.ins_particulars_other_expenses_2.f_4)-float(book.projection_table.ins_particulars_other_expenses_2.f_3))/float(book.projection_table.ins_particulars_other_expenses_2.f_3))*100)
+            except:
+                book.projection_table.ins_growth_analysis_yoy_other_expenses_2.f_4=0
+
+            try:
+                book.projection_table.ins_growth_analysis_yoy_other_expenses_2.f_5=ceil(((float(book.projection_table.ins_particulars_other_expenses_2.f_5)-float(book.projection_table.ins_particulars_other_expenses_2.f_4))/float(book.projection_table.ins_particulars_other_expenses_2.f_4))*100)
+            except:
+                book.projection_table.ins_growth_analysis_yoy_other_expenses_2.f_5=0
+             
+
+
+
+
+
+
+
+
+
+
+
+
+
+            try:
+                book.projection_table.ins_growth_analysis_yoy_total_operating_expenses.f_2=ceil(((float(book.projection_table.ins_particulars_total_operating_expenses.f_2)-float(book.projection_table.ins_particulars_total_operating_expenses.f_1))/float(book.projection_table.ins_particulars_total_operating_expenses.f_1))*100)
+            except:
+                book.projection_table.ins_growth_analysis_yoy_total_operating_expenses.f_2=0
+
+            try:
+                book.projection_table.ins_growth_analysis_yoy_total_operating_expenses.f_3=ceil(((float(book.projection_table.ins_particulars_total_operating_expenses.f_3)-float(book.projection_table.ins_particulars_total_operating_expenses.f_2))/float(book.projection_table.ins_particulars_total_operating_expenses.f_2))*100)
+            except:
+                book.projection_table.ins_growth_analysis_yoy_total_operating_expenses.f_3=0
+
+            try:
+                book.projection_table.ins_growth_analysis_yoy_total_operating_expenses.f_4=ceil(((float(book.projection_table.ins_particulars_total_operating_expenses.f_4)-float(book.projection_table.ins_particulars_total_operating_expenses.f_3))/float(book.projection_table.ins_particulars_total_operating_expenses.f_3))*100)
+            except:
+                book.projection_table.ins_growth_analysis_yoy_total_operating_expenses.f_4=0
+
+            try:
+                book.projection_table.ins_growth_analysis_yoy_total_operating_expenses.f_5=ceil(((float(book.projection_table.ins_particulars_total_operating_expenses.f_5)-float(book.projection_table.ins_particulars_total_operating_expenses.f_4))/float(book.projection_table.ins_particulars_total_operating_expenses.f_4))*100)
+            except:
+                book.projection_table.ins_growth_analysis_yoy_total_operating_expenses.f_5=0
+
+
+
+
+
+
+
+
+
+
+            try:
+                book.projection_table.ins_growth_analysis_yoy_ebitda_operating_profit.f_2=ceil(((float(book.projection_table.ins_particulars_ebitda_operating_profit.f_2)-float(book.projection_table.ins_particulars_ebitda_operating_profit.f_1))/float(book.projection_table.ins_particulars_ebitda_operating_profit.f_1))*100)
+            except:
+                book.projection_table.ins_growth_analysis_yoy_ebitda_operating_profit.f_2=0
+
+            try:
+                book.projection_table.ins_growth_analysis_yoy_ebitda_operating_profit.f_3=ceil(((float(book.projection_table.ins_particulars_ebitda_operating_profit.f_3)-float(book.projection_table.ins_particulars_ebitda_operating_profit.f_2))/float(book.projection_table.ins_particulars_ebitda_operating_profit.f_2))*100)
+            except:
+                book.projection_table.ins_growth_analysis_yoy_ebitda_operating_profit.f_3=0
+
+            try:
+                book.projection_table.ins_growth_analysis_yoy_ebitda_operating_profit.f_4=ceil(((float(book.projection_table.ins_particulars_ebitda_operating_profit.f_4)-float(book.projection_table.ins_particulars_ebitda_operating_profit.f_3))/float(book.projection_table.ins_particulars_ebitda_operating_profit.f_3))*100)
+            except:
+                book.projection_table.ins_growth_analysis_yoy_ebitda_operating_profit.f_4=0
+
+            try:
+                book.projection_table.ins_growth_analysis_yoy_ebitda_operating_profit.f_5=ceil(((float(book.projection_table.ins_particulars_ebitda_operating_profit.f_5)-float(book.projection_table.ins_particulars_ebitda_operating_profit.f_4))/float(book.projection_table.ins_particulars_ebitda_operating_profit.f_4))*100)
+            except:
+                book.projection_table.ins_growth_analysis_yoy_ebitda_operating_profit.f_5=0
+
+
+
+
+
+
+
+
+
+
+
+            try:
+                book.projection_table.ins_growth_analysis_yoy_depreciation.f_2=ceil(((float(book.projection_table.ins_particulars_depreciation.f_2)-float(book.projection_table.ins_particulars_depreciation.f_1))/float(book.projection_table.ins_particulars_depreciation.f_1))*100)
+            except:
+                book.projection_table.ins_growth_analysis_yoy_depreciation.f_2=0
+
+            try:
+                book.projection_table.ins_growth_analysis_yoy_depreciation.f_3=ceil(((float(book.projection_table.ins_particulars_depreciation.f_3)-float(book.projection_table.ins_particulars_depreciation.f_2))/float(book.projection_table.ins_particulars_depreciation.f_2))*100)
+            except:
+                book.projection_table.ins_growth_analysis_yoy_depreciation.f_3=0
+
+            try:
+                book.projection_table.ins_growth_analysis_yoy_depreciation.f_4=ceil(((float(book.projection_table.ins_particulars_depreciation.f_4)-float(book.projection_table.ins_particulars_depreciation.f_3))/float(book.projection_table.ins_particulars_depreciation.f_3))*100)
+            except:
+                book.projection_table.ins_growth_analysis_yoy_depreciation.f_4=0
+
+            try:
+                book.projection_table.ins_growth_analysis_yoy_depreciation.f_5=ceil(((float(book.projection_table.ins_particulars_depreciation.f_5)-float(book.projection_table.ins_particulars_depreciation.f_4))/float(book.projection_table.ins_particulars_depreciation.f_4))*100)
+            except:
+                book.projection_table.ins_growth_analysis_yoy_depreciation.f_5=0
+
+
+
+
+
+
+
+
+
+
+            try:
+                book.projection_table.ins_growth_analysis_yoy_other_income.f_2=ceil(((float(book.projection_table.ins_particulars_other_income.f_2)-float(book.projection_table.ins_particulars_other_income.f_1))/float(book.projection_table.ins_particulars_other_income.f_1))*100)
+            except:
+                book.projection_table.ins_growth_analysis_yoy_other_income.f_2=0
+
+            try:
+                book.projection_table.ins_growth_analysis_yoy_other_income.f_3=ceil(((float(book.projection_table.ins_particulars_other_income.f_3)-float(book.projection_table.ins_particulars_other_income.f_2))/float(book.projection_table.ins_particulars_other_income.f_2))*100)
+            except:
+                book.projection_table.ins_growth_analysis_yoy_other_income.f_3=0
+
+            try:
+                book.projection_table.ins_growth_analysis_yoy_other_income.f_4=ceil(((float(book.projection_table.ins_particulars_other_income.f_4)-float(book.projection_table.ins_particulars_other_income.f_3))/float(book.projection_table.ins_particulars_other_income.f_3))*100)
+            except:
+                book.projection_table.ins_growth_analysis_yoy_other_income.f_4=0
+
+            try:
+                book.projection_table.ins_growth_analysis_yoy_other_income.f_5=ceil(((float(book.projection_table.ins_particulars_other_income.f_5)-float(book.projection_table.ins_particulars_other_income.f_4))/float(book.projection_table.ins_particulars_other_income.f_4))*100)
+            except:
+                book.projection_table.ins_growth_analysis_yoy_other_income.f_5=0
+
+
+
+
+
+
+
+
+
+
+
+
+
+            try:
+                book.projection_table.ins_growth_analysis_yoy_foreign_exchange_gain_loss.f_2=ceil(((float(book.projection_table.ins_particulars_realised_foreign_exchange_gain_loss.f_2)-float(book.projection_table.ins_particulars_realised_foreign_exchange_gain_loss.f_1))/float(book.projection_table.ins_particulars_realised_foreign_exchange_gain_loss.f_1))*100)
+            except:
+                book.projection_table.ins_growth_analysis_yoy_foreign_exchange_gain_loss.f_2=0
+
+            try:
+                book.projection_table.ins_growth_analysis_yoy_foreign_exchange_gain_loss.f_3=ceil(((float(book.projection_table.ins_particulars_realised_foreign_exchange_gain_loss.f_3)-float(book.projection_table.ins_particulars_realised_foreign_exchange_gain_loss.f_2))/float(book.projection_table.ins_particulars_realised_foreign_exchange_gain_loss.f_2))*100)
+            except:
+                book.projection_table.ins_growth_analysis_yoy_foreign_exchange_gain_loss.f_3=0
+
+            try:
+                book.projection_table.ins_growth_analysis_yoy_foreign_exchange_gain_loss.f_4=ceil(((float(book.projection_table.ins_particulars_realised_foreign_exchange_gain_loss.f_4)-float(book.projection_table.ins_particulars_realised_foreign_exchange_gain_loss.f_3))/float(book.projection_table.ins_particulars_realised_foreign_exchange_gain_loss.f_3))*100)
+            except:
+                book.projection_table.ins_growth_analysis_yoy_foreign_exchange_gain_loss.f_4=0
+
+            try:
+                book.projection_table.ins_growth_analysis_yoy_foreign_exchange_gain_loss.f_5=ceil(((float(book.projection_table.ins_particulars_realised_foreign_exchange_gain_loss.f_5)-float(book.projection_table.ins_particulars_realised_foreign_exchange_gain_loss.f_4))/float(book.projection_table.ins_particulars_realised_foreign_exchange_gain_loss.f_4))*100)
+            except:
+                book.projection_table.ins_growth_analysis_yoy_foreign_exchange_gain_loss.f_5=0
+
+
+
+
+
+
+
+
+
+
+
+            try:
+                book.projection_table.ins_growth_analysis_yoy_ebit.f_2=ceil(((float(book.projection_table.ins_particulars_ebit.f_2)-float(book.projection_table.ins_particulars_ebit.f_1))/float(book.projection_table.ins_particulars_ebit.f_1))*100)
+            except:
+                book.projection_table.ins_growth_analysis_yoy_ebit.f_2=0
+
+            try:
+                book.projection_table.ins_growth_analysis_yoy_ebit.f_3=ceil(((float(book.projection_table.ins_particulars_ebit.f_3)-float(book.projection_table.ins_particulars_ebit.f_2))/float(book.projection_table.ins_particulars_ebit.f_2))*100)
+            except:
+                book.projection_table.ins_growth_analysis_yoy_ebit.f_3=0
+
+            try:
+                book.projection_table.ins_growth_analysis_yoy_ebit.f_4=ceil(((float(book.projection_table.ins_particulars_ebit.f_4)-float(book.projection_table.ins_particulars_ebit.f_3))/float(book.projection_table.ins_particulars_ebit.f_3))*100)
+            except:
+                book.projection_table.ins_growth_analysis_yoy_ebit.f_4=0
+
+            try:
+                book.projection_table.ins_growth_analysis_yoy_ebit.f_5=ceil(((float(book.projection_table.ins_particulars_ebit.f_5)-float(book.projection_table.ins_particulars_ebit.f_4))/float(book.projection_table.ins_particulars_ebit.f_4))*100)
+            except:
+                book.projection_table.ins_growth_analysis_yoy_ebit.f_5=0
+
+
+
+
+
+
+
+
+
+            try:
+                book.projection_table.ins_growth_analysis_yoy_interest_including_finance_charges.f_2=ceil(((float(book.projection_table.ins_particulars_interest_including_finance_charges.f_2)-float(book.projection_table.ins_particulars_interest_including_finance_charges.f_1))/float(book.projection_table.ins_particulars_interest_including_finance_charges.f_1))*100)
+            except:
+                book.projection_table.ins_growth_analysis_yoy_interest_including_finance_charges.f_2=0
+
+            try:
+                book.projection_table.ins_growth_analysis_yoy_interest_including_finance_charges.f_3=ceil(((float(book.projection_table.ins_particulars_interest_including_finance_charges.f_3)-float(book.projection_table.ins_particulars_interest_including_finance_charges.f_2))/float(book.projection_table.ins_particulars_interest_including_finance_charges.f_2))*100)
+            except:
+                book.projection_table.ins_growth_analysis_yoy_interest_including_finance_charges.f_3=0
+
+            try:
+                book.projection_table.ins_growth_analysis_yoy_interest_including_finance_charges.f_4=ceil(((float(book.projection_table.ins_particulars_interest_including_finance_charges.f_4)-float(book.projection_table.ins_particulars_interest_including_finance_charges.f_3))/float(book.projection_table.ins_particulars_interest_including_finance_charges.f_3))*100)
+            except:
+                book.projection_table.ins_growth_analysis_yoy_interest_including_finance_charges.f_4=0
+
+            try:
+                book.projection_table.ins_growth_analysis_yoy_interest_including_finance_charges.f_5=ceil(((float(book.projection_table.ins_particulars_interest_including_finance_charges.f_5)-float(book.projection_table.ins_particulars_interest_including_finance_charges.f_4))/float(book.projection_table.ins_particulars_interest_including_finance_charges.f_4))*100)
+            except:
+                book.projection_table.ins_growth_analysis_yoy_interest_including_finance_charges.f_5=0
+
+
+
+
+
+
+
+
+
+
+            try:
+                book.projection_table.ins_growth_analysis_yoy_earnings_before_tax_ebt.f_2=ceil(((float(book.projection_table.ins_particulars_earnings_before_tax_ebt.f_2)-float(book.projection_table.ins_particulars_earnings_before_tax_ebt.f_1))/float(book.projection_table.ins_particulars_earnings_before_tax_ebt.f_1))*100)
+            except:
+                book.projection_table.ins_growth_analysis_yoy_earnings_before_tax_ebt.f_2=0
+
+            try:
+                book.projection_table.ins_growth_analysis_yoy_earnings_before_tax_ebt.f_3=ceil(((float(book.projection_table.ins_particulars_earnings_before_tax_ebt.f_3)-float(book.projection_table.ins_particulars_earnings_before_tax_ebt.f_2))/float(book.projection_table.ins_particulars_earnings_before_tax_ebt.f_2))*100)
+            except:
+                book.projection_table.ins_growth_analysis_yoy_earnings_before_tax_ebt.f_3=0
+
+            try:
+                book.projection_table.ins_growth_analysis_yoy_earnings_before_tax_ebt.f_4=ceil(((float(book.projection_table.ins_particulars_earnings_before_tax_ebt.f_4)-float(book.projection_table.ins_particulars_earnings_before_tax_ebt.f_3))/float(book.projection_table.ins_particulars_earnings_before_tax_ebt.f_3))*100)
+            except:
+                book.projection_table.ins_growth_analysis_yoy_earnings_before_tax_ebt.f_4=0
+
+            try:
+                book.projection_table.ins_growth_analysis_yoy_earnings_before_tax_ebt.f_5=ceil(((float(book.projection_table.ins_particulars_earnings_before_tax_ebt.f_5)-float(book.projection_table.ins_particulars_earnings_before_tax_ebt.f_4))/float(book.projection_table.ins_particulars_earnings_before_tax_ebt.f_4))*100)
+            except:
+                book.projection_table.ins_growth_analysis_yoy_earnings_before_tax_ebt.f_5=0
+
+
+
+
+
+
+
+            try:
+                book.projection_table.ins_growth_analysis_yoy_provision_for_income_tax.f_2=ceil(((float(book.projection_table.ins_particulars_provision_for_income_tax.f_2)-float(book.projection_table.ins_particulars_provision_for_income_tax.f_1))/float(book.projection_table.ins_particulars_provision_for_income_tax.f_1))*100)
+            except:
+                book.projection_table.ins_growth_analysis_yoy_provision_for_income_tax.f_2=0
+
+            try:
+                book.projection_table.ins_growth_analysis_yoy_provision_for_income_tax.f_3=ceil(((float(book.projection_table.ins_particulars_provision_for_income_tax.f_3)-float(book.projection_table.ins_particulars_provision_for_income_tax.f_2))/float(book.projection_table.ins_particulars_provision_for_income_tax.f_2))*100)
+            except:
+                book.projection_table.ins_growth_analysis_yoy_provision_for_income_tax.f_3=0
+
+            try:
+                book.projection_table.ins_growth_analysis_yoy_provision_for_income_tax.f_4=ceil(((float(book.projection_table.ins_particulars_provision_for_income_tax.f_4)-float(book.projection_table.ins_particulars_provision_for_income_tax.f_3))/float(book.projection_table.ins_particulars_provision_for_income_tax.f_3))*100)
+            except:
+                book.projection_table.ins_growth_analysis_yoy_provision_for_income_tax.f_4=0
+
+            try:
+                book.projection_table.ins_growth_analysis_yoy_provision_for_income_tax.f_5=ceil(((float(book.projection_table.ins_particulars_provision_for_income_tax.f_5)-float(book.projection_table.ins_particulars_provision_for_income_tax.f_4))/float(book.projection_table.ins_particulars_provision_for_income_tax.f_4))*100)
+            except:
+                book.projection_table.ins_growth_analysis_yoy_provision_for_income_tax.f_5=0
+
+
+
+
+
+
+
+
+
+
+
+            try:
+                book.projection_table.ins_growth_analysis_yoy_profit_after_tax.f_2=ceil(((float(book.projection_table.ins_particulars_profit_after_tax.f_2)-float(book.projection_table.ins_particulars_profit_after_tax.f_1))/float(book.projection_table.ins_particulars_profit_after_tax.f_1))*100)
+            except:
+                book.projection_table.ins_growth_analysis_yoy_profit_after_tax.f_2=0
+
+            try:
+                book.projection_table.ins_growth_analysis_yoy_profit_after_tax.f_3=ceil(((float(book.projection_table.ins_particulars_profit_after_tax.f_3)-float(book.projection_table.ins_particulars_profit_after_tax.f_2))/float(book.projection_table.ins_particulars_profit_after_tax.f_2))*100)
+            except:
+                book.projection_table.ins_growth_analysis_yoy_profit_after_tax.f_3=0
+
+            try:
+                book.projection_table.ins_growth_analysis_yoy_profit_after_tax.f_4=ceil(((float(book.projection_table.ins_particulars_profit_after_tax.f_4)-float(book.projection_table.ins_particulars_profit_after_tax.f_3))/float(book.projection_table.ins_particulars_profit_after_tax.f_3))*100)
+            except:
+                book.projection_table.ins_growth_analysis_yoy_profit_after_tax.f_4=0
+
+            try:
+                book.projection_table.ins_growth_analysis_yoy_profit_after_tax.f_5=ceil(((float(book.projection_table.ins_particulars_profit_after_tax.f_5)-float(book.projection_table.ins_particulars_profit_after_tax.f_4))/float(book.projection_table.ins_particulars_profit_after_tax.f_4))*100)
+            except:
+                book.projection_table.ins_growth_analysis_yoy_profit_after_tax.f_5=0
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            try:
+                book.projection_table.ins_analysis_as_of_revenue_stream_1.f_1=ceil((float(book.projection_table.ins_particulars_stream_1.f_1)/float(book.projection_table.ins_particulars_total_revenue_from_operations_services.f_1))*100)
+            except:
+                book.projection_table.ins_analysis_as_of_revenue_stream_1.f_1=0
+
+            try:
+                book.projection_table.ins_analysis_as_of_revenue_stream_1.f_2=ceil((float(book.projection_table.ins_particulars_stream_1.f_2)/float(book.projection_table.ins_particulars_total_revenue_from_operations_services.f_2))*100)
+            except:
+                book.projection_table.ins_analysis_as_of_revenue_stream_1.f_2=0
+
+            try:
+                book.projection_table.ins_analysis_as_of_revenue_stream_1.f_3=ceil((float(book.projection_table.ins_particulars_stream_1.f_3)/float(book.projection_table.ins_particulars_total_revenue_from_operations_services.f_3))*100)
+            except:
+                book.projection_table.ins_analysis_as_of_revenue_stream_1.f_3=0
+
+            try:
+                book.projection_table.ins_analysis_as_of_revenue_stream_1.f_4=ceil((float(book.projection_table.ins_particulars_stream_1.f_4)/float(book.projection_table.ins_particulars_total_revenue_from_operations_services.f_4))*100)
+            except:
+                book.projection_table.ins_analysis_as_of_revenue_stream_1.f_4=0
+
+            try:
+                book.projection_table.ins_analysis_as_of_revenue_stream_1.f_5=ceil((float(book.projection_table.ins_particulars_stream_1.f_5)/float(book.projection_table.ins_particulars_total_revenue_from_operations_services.f_5))*100)
+            except:
+                book.projection_table.ins_analysis_as_of_revenue_stream_1.f_5=0
+
+
+
+
+
+
+
+
+
+
+
+            try:
+                book.projection_table.ins_analysis_as_of_revenue_stream_2.f_1=ceil((float(book.projection_table.ins_particulars_stream_2.f_1)/float(book.projection_table.ins_particulars_total_revenue_from_operations_services.f_1))*100)
+            except:
+                book.projection_table.ins_analysis_as_of_revenue_stream_2.f_1=0
+
+            try:
+                book.projection_table.ins_analysis_as_of_revenue_stream_2.f_2=ceil((float(book.projection_table.ins_particulars_stream_2.f_2)/float(book.projection_table.ins_particulars_total_revenue_from_operations_services.f_2))*100)
+            except:
+                book.projection_table.ins_analysis_as_of_revenue_stream_2.f_2=0
+
+            try:
+                book.projection_table.ins_analysis_as_of_revenue_stream_2.f_3=ceil((float(book.projection_table.ins_particulars_stream_2.f_3)/float(book.projection_table.ins_particulars_total_revenue_from_operations_services.f_3))*100)
+            except:
+                book.projection_table.ins_analysis_as_of_revenue_stream_2.f_3=0
+
+            try:
+                book.projection_table.ins_analysis_as_of_revenue_stream_2.f_4=ceil((float(book.projection_table.ins_particulars_stream_2.f_4)/float(book.projection_table.ins_particulars_total_revenue_from_operations_services.f_4))*100)
+            except:
+                book.projection_table.ins_analysis_as_of_revenue_stream_2.f_4=0
+                
+            try:
+                book.projection_table.ins_analysis_as_of_revenue_stream_2.f_5=ceil((float(book.projection_table.ins_particulars_stream_2.f_5)/float(book.projection_table.ins_particulars_total_revenue_from_operations_services.f_5))*100)
+            except:
+                book.projection_table.ins_analysis_as_of_revenue_stream_2.f_5=0
+
+
+
+
+
+
+
+
+
+
+            try:
+                book.projection_table.ins_analysis_as_of_revenue_stream_3.f_1=ceil((float(book.projection_table.ins_particulars_stream_3.f_1)/float(book.projection_table.ins_particulars_total_revenue_from_operations_services.f_1))*100)
+            except:
+                book.projection_table.ins_analysis_as_of_revenue_stream_3.f_1=0
+
+            try:
+                book.projection_table.ins_analysis_as_of_revenue_stream_3.f_2=ceil((float(book.projection_table.ins_particulars_stream_3.f_2)/float(book.projection_table.ins_particulars_total_revenue_from_operations_services.f_2))*100)
+            except:
+                book.projection_table.ins_analysis_as_of_revenue_stream_3.f_2=0
+
+            try:
+                book.projection_table.ins_analysis_as_of_revenue_stream_3.f_3=ceil((float(book.projection_table.ins_particulars_stream_3.f_3)/float(book.projection_table.ins_particulars_total_revenue_from_operations_services.f_3))*100)
+            except:
+                book.projection_table.ins_analysis_as_of_revenue_stream_3.f_3=0
+
+            try:
+                book.projection_table.ins_analysis_as_of_revenue_stream_3.f_4=ceil((float(book.projection_table.ins_particulars_stream_3.f_4)/float(book.projection_table.ins_particulars_total_revenue_from_operations_services.f_4))*100)
+            except:
+                book.projection_table.ins_analysis_as_of_revenue_stream_3.f_4=0
+                
+            try:
+                book.projection_table.ins_analysis_as_of_revenue_stream_3.f_5=ceil((float(book.projection_table.ins_particulars_stream_3.f_5)/float(book.projection_table.ins_particulars_total_revenue_from_operations_services.f_5))*100)
+            except:
+                book.projection_table.ins_analysis_as_of_revenue_stream_3.f_5=0
+
+
+
+
+
+
+
+            try:
+                book.projection_table.ins_analysis_as_of_revenue_stream_4.f_1=ceil((float(book.projection_table.ins_particulars_stream_4.f_1)/float(book.projection_table.ins_particulars_total_revenue_from_operations_services.f_1))*100)
+            except:
+                book.projection_table.ins_analysis_as_of_revenue_stream_4.f_1=0
+
+            try:
+                book.projection_table.ins_analysis_as_of_revenue_stream_4.f_2=ceil((float(book.projection_table.ins_particulars_stream_4.f_2)/float(book.projection_table.ins_particulars_total_revenue_from_operations_services.f_2))*100)
+            except:
+                book.projection_table.ins_analysis_as_of_revenue_stream_4.f_2=0
+
+            try:
+                book.projection_table.ins_analysis_as_of_revenue_stream_4.f_3=ceil((float(book.projection_table.ins_particulars_stream_4.f_3)/float(book.projection_table.ins_particulars_total_revenue_from_operations_services.f_3))*100)
+            except:
+                book.projection_table.ins_analysis_as_of_revenue_stream_4.f_3=0
+
+            try:
+                book.projection_table.ins_analysis_as_of_revenue_stream_4.f_4=ceil((float(book.projection_table.ins_particulars_stream_4.f_4)/float(book.projection_table.ins_particulars_total_revenue_from_operations_services.f_4))*100)
+            except:
+                book.projection_table.ins_analysis_as_of_revenue_stream_4.f_4=0
+                
+            try:
+                book.projection_table.ins_analysis_as_of_revenue_stream_4.f_5=ceil((float(book.projection_table.ins_particulars_stream_4.f_5)/float(book.projection_table.ins_particulars_total_revenue_from_operations_services.f_5))*100)
+            except:
+                book.projection_table.ins_analysis_as_of_revenue_stream_4.f_5=0
+
+           
+
+
+
+
+
+
+
+            try:
+                book.projection_table.ins_analysis_as_of_revenue_product_development_expenses_operating_expenses_raw_material.f_1=ceil((float(book.projection_table.ins_particulars_product_development_expenses_operating_expenses_raw_material.f_1)/float(book.projection_table.ins_particulars_total_revenue_from_operations_services.f_1))*100)
+            except:
+                book.projection_table.ins_analysis_as_of_revenue_product_development_expenses_operating_expenses_raw_material.f_1=0
+
+            try:
+                book.projection_table.ins_analysis_as_of_revenue_product_development_expenses_operating_expenses_raw_material.f_2=ceil((float(book.projection_table.ins_particulars_product_development_expenses_operating_expenses_raw_material.f_2)/float(book.projection_table.ins_particulars_total_revenue_from_operations_services.f_2))*100)
+            except:
+                book.projection_table.ins_analysis_as_of_revenue_product_development_expenses_operating_expenses_raw_material.f_2=0
+
+            try:
+                book.projection_table.ins_analysis_as_of_revenue_product_development_expenses_operating_expenses_raw_material.f_3=ceil((float(book.projection_table.ins_particulars_product_development_expenses_operating_expenses_raw_material.f_3)/float(book.projection_table.ins_particulars_total_revenue_from_operations_services.f_3))*100)
+            except:
+                book.projection_table.ins_analysis_as_of_revenue_product_development_expenses_operating_expenses_raw_material.f_3=0
+
+            try:
+                book.projection_table.ins_analysis_as_of_revenue_product_development_expenses_operating_expenses_raw_material.f_4=ceil((float(book.projection_table.ins_particulars_product_development_expenses_operating_expenses_raw_material.f_4)/float(book.projection_table.ins_particulars_total_revenue_from_operations_services.f_4))*100)
+            except:
+                book.projection_table.ins_analysis_as_of_revenue_product_development_expenses_operating_expenses_raw_material.f_4=0
+                
+            try:
+                book.projection_table.ins_analysis_as_of_revenue_product_development_expenses_operating_expenses_raw_material.f_5=ceil((float(book.projection_table.ins_particulars_product_development_expenses_operating_expenses_raw_material.f_5)/float(book.projection_table.ins_particulars_total_revenue_from_operations_services.f_5))*100)
+            except:
+                book.projection_table.ins_analysis_as_of_revenue_product_development_expenses_operating_expenses_raw_material.f_5=0
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            try:
+                book.projection_table.ins_analysis_as_of_revenue_employee_cost.f_1=ceil((float(book.projection_table.ins_particulars_employee_cost.f_1)/float(book.projection_table.ins_particulars_total_revenue_from_operations_services.f_1))*100)
+            except:
+                book.projection_table.ins_analysis_as_of_revenue_employee_cost.f_1=0
+
+            try:
+                book.projection_table.ins_analysis_as_of_revenue_employee_cost.f_2=ceil((float(book.projection_table.ins_particulars_employee_cost.f_2)/float(book.projection_table.ins_particulars_total_revenue_from_operations_services.f_2))*100)
+            except:
+                book.projection_table.ins_analysis_as_of_revenue_employee_cost.f_2=0
+
+            try:
+                book.projection_table.ins_analysis_as_of_revenue_employee_cost.f_3=ceil((float(book.projection_table.ins_particulars_employee_cost.f_3)/float(book.projection_table.ins_particulars_total_revenue_from_operations_services.f_3))*100)
+            except:
+                book.projection_table.ins_analysis_as_of_revenue_employee_cost.f_3=0
+
+            try:
+                book.projection_table.ins_analysis_as_of_revenue_employee_cost.f_4=ceil((float(book.projection_table.ins_particulars_employee_cost.f_4)/float(book.projection_table.ins_particulars_total_revenue_from_operations_services.f_4))*100)
+            except:
+                book.projection_table.ins_analysis_as_of_revenue_employee_cost.f_4=0
+                
+            try:
+                book.projection_table.ins_analysis_as_of_revenue_employee_cost.f_5=ceil((float(book.projection_table.ins_particulars_employee_cost.f_5)/float(book.projection_table.ins_particulars_total_revenue_from_operations_services.f_5))*100)
+            except:
+                book.projection_table.ins_analysis_as_of_revenue_employee_cost.f_5=0
+
+
+
+
+
+
+
+
+
+
+            try:
+                book.projection_table.ins_analysis_as_of_revenue_general_administrative_expenses.f_1=ceil((float(book.projection_table.ins_particulars_general_administrative_expenses.f_1)/float(book.projection_table.ins_particulars_total_revenue_from_operations_services.f_1))*100)
+            except:
+                book.projection_table.ins_analysis_as_of_revenue_general_administrative_expenses.f_1=0
+
+            try:
+                book.projection_table.ins_analysis_as_of_revenue_general_administrative_expenses.f_2=ceil((float(book.projection_table.ins_particulars_general_administrative_expenses.f_2)/float(book.projection_table.ins_particulars_total_revenue_from_operations_services.f_2))*100)
+            except:
+                book.projection_table.ins_analysis_as_of_revenue_general_administrative_expenses.f_2=0
+
+            try:
+                book.projection_table.ins_analysis_as_of_revenue_general_administrative_expenses.f_3=ceil((float(book.projection_table.ins_particulars_general_administrative_expenses.f_3)/float(book.projection_table.ins_particulars_total_revenue_from_operations_services.f_3))*100)
+            except:
+                book.projection_table.ins_analysis_as_of_revenue_general_administrative_expenses.f_3=0
+
+            try:
+                book.projection_table.ins_analysis_as_of_revenue_general_administrative_expenses.f_4=ceil((float(book.projection_table.ins_particulars_general_administrative_expenses.f_4)/float(book.projection_table.ins_particulars_total_revenue_from_operations_services.f_4))*100)
+            except:
+                book.projection_table.ins_analysis_as_of_revenue_general_administrative_expenses.f_4=0
+                
+            try:
+                book.projection_table.ins_analysis_as_of_revenue_general_administrative_expenses.f_5=ceil((float(book.projection_table.ins_particulars_general_administrative_expenses.f_5)/float(book.projection_table.ins_particulars_total_revenue_from_operations_services.f_5))*100)
+            except:
+                book.projection_table.ins_analysis_as_of_revenue_general_administrative_expenses.f_5=0
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            try:
+                book.projection_table.ins_analysis_as_of_revenue_selling_marketing_expenses.f_1=ceil((float(book.projection_table.ins_particulars_selling_marketing_expenses.f_1)/float(book.projection_table.ins_particulars_total_revenue_from_operations_services.f_1))*100)
+            except:
+                book.projection_table.ins_analysis_as_of_revenue_selling_marketing_expenses.f_1=0
+
+            try:
+                book.projection_table.ins_analysis_as_of_revenue_selling_marketing_expenses.f_2=ceil((float(book.projection_table.ins_particulars_selling_marketing_expenses.f_2)/float(book.projection_table.ins_particulars_total_revenue_from_operations_services.f_2))*100)
+            except:
+                book.projection_table.ins_analysis_as_of_revenue_selling_marketing_expenses.f_2=0
+
+            try:
+                book.projection_table.ins_analysis_as_of_revenue_selling_marketing_expenses.f_3=ceil((float(book.projection_table.ins_particulars_selling_marketing_expenses.f_3)/float(book.projection_table.ins_particulars_total_revenue_from_operations_services.f_3))*100)
+            except:
+                book.projection_table.ins_analysis_as_of_revenue_selling_marketing_expenses.f_3=0
+
+            try:
+                book.projection_table.ins_analysis_as_of_revenue_selling_marketing_expenses.f_4=ceil((float(book.projection_table.ins_particulars_selling_marketing_expenses.f_4)/float(book.projection_table.ins_particulars_total_revenue_from_operations_services.f_4))*100)
+            except:
+                book.projection_table.ins_analysis_as_of_revenue_selling_marketing_expenses.f_4=0
+                
+            try:
+                book.projection_table.ins_analysis_as_of_revenue_selling_marketing_expenses.f_5=ceil((float(book.projection_table.ins_particulars_selling_marketing_expenses.f_5)/float(book.projection_table.ins_particulars_total_revenue_from_operations_services.f_5))*100)
+            except:
+                book.projection_table.ins_analysis_as_of_revenue_selling_marketing_expenses.f_5=0
+
+
+
+
+
+
+
+
+
+
+            try:
+                book.projection_table.ins_analysis_as_of_revenue_other_expenses_1.f_1=ceil((float(book.projection_table.ins_particulars_other_expenses_1.f_1)/float(book.projection_table.ins_particulars_total_revenue_from_operations_services.f_1))*100)
+            except:
+                book.projection_table.ins_analysis_as_of_revenue_other_expenses_1.f_1=0
+
+            try:
+                book.projection_table.ins_analysis_as_of_revenue_other_expenses_1.f_2=ceil((float(book.projection_table.ins_particulars_other_expenses_1.f_2)/float(book.projection_table.ins_particulars_total_revenue_from_operations_services.f_2))*100)
+            except:
+                book.projection_table.ins_analysis_as_of_revenue_other_expenses_1.f_2=0
+
+            try:
+                book.projection_table.ins_analysis_as_of_revenue_other_expenses_1.f_3=ceil((float(book.projection_table.ins_particulars_other_expenses_1.f_3)/float(book.projection_table.ins_particulars_total_revenue_from_operations_services.f_3))*100)
+            except:
+                book.projection_table.ins_analysis_as_of_revenue_other_expenses_1.f_3=0
+
+            try:
+                book.projection_table.ins_analysis_as_of_revenue_other_expenses_1.f_4=ceil((float(book.projection_table.ins_particulars_other_expenses_1.f_4)/float(book.projection_table.ins_particulars_total_revenue_from_operations_services.f_4))*100)
+            except:
+                book.projection_table.ins_analysis_as_of_revenue_other_expenses_1.f_4=0
+                
+            try:
+                book.projection_table.ins_analysis_as_of_revenue_other_expenses_1.f_5=ceil((float(book.projection_table.ins_particulars_other_expenses_1.f_5)/float(book.projection_table.ins_particulars_total_revenue_from_operations_services.f_5))*100)
+            except:
+                book.projection_table.ins_analysis_as_of_revenue_other_expenses_1.f_5=0
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            try:
+                book.projection_table.ins_analysis_as_of_revenue_other_expenses_2.f_1=ceil((float(book.projection_table.ins_particulars_other_expenses_2.f_1)/float(book.projection_table.ins_particulars_total_revenue_from_operations_services.f_1))*100)
+            except:
+                book.projection_table.ins_analysis_as_of_revenue_other_expenses_2.f_1=0
+
+            try:
+                book.projection_table.ins_analysis_as_of_revenue_other_expenses_2.f_2=ceil((float(book.projection_table.ins_particulars_other_expenses_2.f_2)/float(book.projection_table.ins_particulars_total_revenue_from_operations_services.f_2))*100)
+            except:
+                book.projection_table.ins_analysis_as_of_revenue_other_expenses_2.f_2=0
+
+            try:
+                book.projection_table.ins_analysis_as_of_revenue_other_expenses_2.f_3=ceil((float(book.projection_table.ins_particulars_other_expenses_2.f_3)/float(book.projection_table.ins_particulars_total_revenue_from_operations_services.f_3))*100)
+            except:
+                book.projection_table.ins_analysis_as_of_revenue_other_expenses_2.f_3=0
+
+            try:
+                book.projection_table.ins_analysis_as_of_revenue_other_expenses_2.f_4=ceil((float(book.projection_table.ins_particulars_other_expenses_2.f_4)/float(book.projection_table.ins_particulars_total_revenue_from_operations_services.f_4))*100)
+            except:
+                book.projection_table.ins_analysis_as_of_revenue_other_expenses_2.f_4=0
+                
+            try:
+                book.projection_table.ins_analysis_as_of_revenue_other_expenses_2.f_5=ceil((float(book.projection_table.ins_particulars_other_expenses_2.f_5)/float(book.projection_table.ins_particulars_total_revenue_from_operations_services.f_5))*100)
+            except:
+                book.projection_table.ins_analysis_as_of_revenue_other_expenses_2.f_5=0
+
+
+
+
+
+
+
+
+
+
+
+            try:
+                book.projection_table.ins_analysis_as_of_revenue_total_operating_expenses.f_1=ceil((float(book.projection_table.ins_particulars_total_operating_expenses.f_1)/float(book.projection_table.ins_particulars_total_revenue_from_operations_services.f_1))*100)
+            except:
+                book.projection_table.ins_analysis_as_of_revenue_total_operating_expenses.f_1=0
+
+            try:
+                book.projection_table.ins_analysis_as_of_revenue_total_operating_expenses.f_2=ceil((float(book.projection_table.ins_particulars_total_operating_expenses.f_2)/float(book.projection_table.ins_particulars_total_revenue_from_operations_services.f_2))*100)
+            except:
+                book.projection_table.ins_analysis_as_of_revenue_total_operating_expenses.f_2=0
+
+            try:
+                book.projection_table.ins_analysis_as_of_revenue_total_operating_expenses.f_3=ceil((float(book.projection_table.ins_particulars_total_operating_expenses.f_3)/float(book.projection_table.ins_particulars_total_revenue_from_operations_services.f_3))*100)
+            except:
+                book.projection_table.ins_analysis_as_of_revenue_total_operating_expenses.f_3=0
+
+            try:
+                book.projection_table.ins_analysis_as_of_revenue_total_operating_expenses.f_4=ceil((float(book.projection_table.ins_particulars_total_operating_expenses.f_4)/float(book.projection_table.ins_particulars_total_revenue_from_operations_services.f_4))*100)
+            except:
+                book.projection_table.ins_analysis_as_of_revenue_total_operating_expenses.f_4=0
+                
+            try:
+                book.projection_table.ins_analysis_as_of_revenue_total_operating_expenses.f_5=ceil((float(book.projection_table.ins_particulars_total_operating_expenses.f_5)/float(book.projection_table.ins_particulars_total_revenue_from_operations_services.f_5))*100)
+            except:
+                book.projection_table.ins_analysis_as_of_revenue_total_operating_expenses.f_5=0
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            try:
+                book.projection_table.ins_analysis_as_of_revenue_ebitda_operating_profit.f_1=ceil((float(book.projection_table.ins_particulars_ebitda_operating_profit.f_1)/float(book.projection_table.ins_particulars_total_revenue_from_operations_services.f_1))*100)
+            except:
+                book.projection_table.ins_analysis_as_of_revenue_ebitda_operating_profit.f_1=0
+
+            try:
+                book.projection_table.ins_analysis_as_of_revenue_ebitda_operating_profit.f_2=ceil((float(book.projection_table.ins_particulars_ebitda_operating_profit.f_2)/float(book.projection_table.ins_particulars_total_revenue_from_operations_services.f_2))*100)
+            except:
+                book.projection_table.ins_analysis_as_of_revenue_ebitda_operating_profit.f_2=0
+
+            try:
+                book.projection_table.ins_analysis_as_of_revenue_ebitda_operating_profit.f_3=ceil((float(book.projection_table.ins_particulars_ebitda_operating_profit.f_3)/float(book.projection_table.ins_particulars_total_revenue_from_operations_services.f_3))*100)
+            except:
+                book.projection_table.ins_analysis_as_of_revenue_ebitda_operating_profit.f_3=0
+
+            try:
+                book.projection_table.ins_analysis_as_of_revenue_ebitda_operating_profit.f_4=ceil((float(book.projection_table.ins_particulars_ebitda_operating_profit.f_4)/float(book.projection_table.ins_particulars_total_revenue_from_operations_services.f_4))*100)
+            except:
+                book.projection_table.ins_analysis_as_of_revenue_ebitda_operating_profit.f_4=0
+                
+            try:
+                book.projection_table.ins_analysis_as_of_revenue_ebitda_operating_profit.f_5=ceil((float(book.projection_table.ins_particulars_ebitda_operating_profit.f_5)/float(book.projection_table.ins_particulars_total_revenue_from_operations_services.f_5))*100)
+            except:
+                book.projection_table.ins_analysis_as_of_revenue_ebitda_operating_profit.f_5=0
+
+
+
+
+
+
+
+
+
+
+
+
+
+            try:
+                book.projection_table.ins_analysis_as_of_revenue_depreciation.f_1=ceil((float(book.projection_table.ins_particulars_depreciation.f_1)/float(book.projection_table.ins_particulars_total_revenue_from_operations_services.f_1))*100)
+            except:
+                book.projection_table.ins_analysis_as_of_revenue_depreciation.f_1=0
+
+            try:
+                book.projection_table.ins_analysis_as_of_revenue_depreciation.f_2=ceil((float(book.projection_table.ins_particulars_depreciation.f_2)/float(book.projection_table.ins_particulars_total_revenue_from_operations_services.f_2))*100)
+            except:
+                book.projection_table.ins_analysis_as_of_revenue_depreciation.f_2=0
+
+            try:
+                book.projection_table.ins_analysis_as_of_revenue_depreciation.f_3=ceil((float(book.projection_table.ins_particulars_depreciation.f_3)/float(book.projection_table.ins_particulars_total_revenue_from_operations_services.f_3))*100)
+            except:
+                book.projection_table.ins_analysis_as_of_revenue_depreciation.f_3=0
+
+            try:
+                book.projection_table.ins_analysis_as_of_revenue_depreciation.f_4=ceil((float(book.projection_table.ins_particulars_depreciation.f_4)/float(book.projection_table.ins_particulars_total_revenue_from_operations_services.f_4))*100)
+            except:
+                book.projection_table.ins_analysis_as_of_revenue_depreciation.f_4=0
+                
+            try:
+                book.projection_table.ins_analysis_as_of_revenue_depreciation.f_5=ceil((float(book.projection_table.ins_particulars_depreciation.f_5)/float(book.projection_table.ins_particulars_total_revenue_from_operations_services.f_5))*100)
+            except:
+                book.projection_table.ins_analysis_as_of_revenue_depreciation.f_5=0
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            try:
+                book.projection_table.ins_analysis_as_of_revenue_other_income.f_1=ceil((float(book.projection_table.ins_particulars_other_income.f_1)/float(book.projection_table.ins_particulars_total_revenue_from_operations_services.f_1))*100)
+            except:
+                book.projection_table.ins_analysis_as_of_revenue_other_income.f_1=0
+
+            try:
+                book.projection_table.ins_analysis_as_of_revenue_other_income.f_2=ceil((float(book.projection_table.ins_particulars_other_income.f_2)/float(book.projection_table.ins_particulars_total_revenue_from_operations_services.f_2))*100)
+            except:
+                book.projection_table.ins_analysis_as_of_revenue_other_income.f_2=0
+
+            try:
+                book.projection_table.ins_analysis_as_of_revenue_other_income.f_3=ceil((float(book.projection_table.ins_particulars_other_income.f_3)/float(book.projection_table.ins_particulars_total_revenue_from_operations_services.f_3))*100)
+            except:
+                book.projection_table.ins_analysis_as_of_revenue_other_income.f_3=0
+
+            try:
+                book.projection_table.ins_analysis_as_of_revenue_other_income.f_4=ceil((float(book.projection_table.ins_particulars_other_income.f_4)/float(book.projection_table.ins_particulars_total_revenue_from_operations_services.f_4))*100)
+            except:
+                book.projection_table.ins_analysis_as_of_revenue_other_income.f_4=0
+                
+            try:
+                book.projection_table.ins_analysis_as_of_revenue_other_income.f_5=ceil((float(book.projection_table.ins_particulars_other_income.f_5)/float(book.projection_table.ins_particulars_total_revenue_from_operations_services.f_5))*100)
+            except:
+                book.projection_table.ins_analysis_as_of_revenue_other_income.f_5=0
+
+
+
+
+
+
+
+
+
+
+
+
+            try:
+                book.projection_table.ins_analysis_as_of_revenue_realised_foreign_exchange_gain_loss.f_1=ceil((float(book.projection_table.ins_particulars_realised_foreign_exchange_gain_loss.f_1)/float(book.projection_table.ins_particulars_total_revenue_from_operations_services.f_1))*100)
+            except:
+                book.projection_table.ins_analysis_as_of_revenue_realised_foreign_exchange_gain_loss.f_1=0
+
+            try:
+                book.projection_table.ins_analysis_as_of_revenue_realised_foreign_exchange_gain_loss.f_2=ceil((float(book.projection_table.ins_particulars_realised_foreign_exchange_gain_loss.f_2)/float(book.projection_table.ins_particulars_total_revenue_from_operations_services.f_2))*100)
+            except:
+                book.projection_table.ins_analysis_as_of_revenue_realised_foreign_exchange_gain_loss.f_2=0
+
+            try:
+                book.projection_table.ins_analysis_as_of_revenue_realised_foreign_exchange_gain_loss.f_3=ceil((float(book.projection_table.ins_particulars_realised_foreign_exchange_gain_loss.f_3)/float(book.projection_table.ins_particulars_total_revenue_from_operations_services.f_3))*100)
+            except:
+                book.projection_table.ins_analysis_as_of_revenue_realised_foreign_exchange_gain_loss.f_3=0
+
+            try:
+                book.projection_table.ins_analysis_as_of_revenue_realised_foreign_exchange_gain_loss.f_4=ceil((float(book.projection_table.ins_particulars_realised_foreign_exchange_gain_loss.f_4)/float(book.projection_table.ins_particulars_total_revenue_from_operations_services.f_4))*100)
+            except:
+                book.projection_table.ins_analysis_as_of_revenue_realised_foreign_exchange_gain_loss.f_4=0
+                
+            try:
+                book.projection_table.ins_analysis_as_of_revenue_realised_foreign_exchange_gain_loss.f_5=ceil((float(book.projection_table.ins_particulars_realised_foreign_exchange_gain_loss.f_5)/float(book.projection_table.ins_particulars_total_revenue_from_operations_services.f_5))*100)
+            except:
+                book.projection_table.ins_analysis_as_of_revenue_realised_foreign_exchange_gain_loss.f_5=0
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            try:
+                book.projection_table.ins_analysis_as_of_revenue_ebit.f_1=ceil((float(book.projection_table.ins_particulars_ebit.f_1)/float(book.projection_table.ins_particulars_total_revenue_from_operations_services.f_1))*100)
+            except:
+                book.projection_table.ins_analysis_as_of_revenue_ebit.f_1=0
+
+            try:
+                book.projection_table.ins_analysis_as_of_revenue_ebit.f_2=ceil((float(book.projection_table.ins_particulars_ebit.f_2)/float(book.projection_table.ins_particulars_total_revenue_from_operations_services.f_2))*100)
+            except:
+                book.projection_table.ins_analysis_as_of_revenue_ebit.f_2=0
+
+            try:
+                book.projection_table.ins_analysis_as_of_revenue_ebit.f_3=ceil((float(book.projection_table.ins_particulars_ebit.f_3)/float(book.projection_table.ins_particulars_total_revenue_from_operations_services.f_3))*100)
+            except:
+                book.projection_table.ins_analysis_as_of_revenue_ebit.f_3=0
+
+            try:
+                book.projection_table.ins_analysis_as_of_revenue_ebit.f_4=ceil((float(book.projection_table.ins_particulars_ebit.f_4)/float(book.projection_table.ins_particulars_total_revenue_from_operations_services.f_4))*100)
+            except:
+                book.projection_table.ins_analysis_as_of_revenue_ebit.f_4=0
+                
+            try:
+                book.projection_table.ins_analysis_as_of_revenue_ebit.f_5=ceil((float(book.projection_table.ins_particulars_ebit.f_5)/float(book.projection_table.ins_particulars_total_revenue_from_operations_services.f_5))*100)
+            except:
+                book.projection_table.ins_analysis_as_of_revenue_ebit.f_5=0
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            try:
+                book.projection_table.ins_analysis_as_of_revenue_interest_including_finance_charges.f_1=ceil((float(book.projection_table.ins_particulars_interest_including_finance_charges.f_1)/float(book.projection_table.ins_particulars_total_revenue_from_operations_services.f_1))*100)
+            except:
+                book.projection_table.ins_analysis_as_of_revenue_interest_including_finance_charges.f_1=0
+
+            try:
+                book.projection_table.ins_analysis_as_of_revenue_interest_including_finance_charges.f_2=ceil((float(book.projection_table.ins_particulars_interest_including_finance_charges.f_2)/float(book.projection_table.ins_particulars_total_revenue_from_operations_services.f_2))*100)
+            except:
+                book.projection_table.ins_analysis_as_of_revenue_interest_including_finance_charges.f_2=0
+
+            try:
+                book.projection_table.ins_analysis_as_of_revenue_interest_including_finance_charges.f_3=ceil((float(book.projection_table.ins_particulars_interest_including_finance_charges.f_3)/float(book.projection_table.ins_particulars_total_revenue_from_operations_services.f_3))*100)
+            except:
+                book.projection_table.ins_analysis_as_of_revenue_interest_including_finance_charges.f_3=0
+
+            try:
+                book.projection_table.ins_analysis_as_of_revenue_interest_including_finance_charges.f_4=ceil((float(book.projection_table.ins_particulars_interest_including_finance_charges.f_4)/float(book.projection_table.ins_particulars_total_revenue_from_operations_services.f_4))*100)
+            except:
+                book.projection_table.ins_analysis_as_of_revenue_interest_including_finance_charges.f_4=0
+                
+            try:
+                book.projection_table.ins_analysis_as_of_revenue_interest_including_finance_charges.f_5=ceil((float(book.projection_table.ins_particulars_interest_including_finance_charges.f_5)/float(book.projection_table.ins_particulars_total_revenue_from_operations_services.f_5))*100)
+            except:
+                book.projection_table.ins_analysis_as_of_revenue_interest_including_finance_charges.f_5=0
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            try:
+                book.projection_table.ins_analysis_as_of_revenue_earnings_before_tax_ebt.f_1=ceil((float(book.projection_table.ins_particulars_earnings_before_tax_ebt.f_1)/float(book.projection_table.ins_particulars_total_revenue_from_operations_services.f_1))*100)
+            except:
+                book.projection_table.ins_analysis_as_of_revenue_earnings_before_tax_ebt.f_1=0
+
+            try:
+                book.projection_table.ins_analysis_as_of_revenue_earnings_before_tax_ebt.f_2=ceil((float(book.projection_table.ins_particulars_earnings_before_tax_ebt.f_2)/float(book.projection_table.ins_particulars_total_revenue_from_operations_services.f_2))*100)
+            except:
+                book.projection_table.ins_analysis_as_of_revenue_earnings_before_tax_ebt.f_2=0
+
+            try:
+                book.projection_table.ins_analysis_as_of_revenue_earnings_before_tax_ebt.f_3=ceil((float(book.projection_table.ins_particulars_earnings_before_tax_ebt.f_3)/float(book.projection_table.ins_particulars_total_revenue_from_operations_services.f_3))*100)
+            except:
+                book.projection_table.ins_analysis_as_of_revenue_earnings_before_tax_ebt.f_3=0
+
+            try:
+                book.projection_table.ins_analysis_as_of_revenue_earnings_before_tax_ebt.f_4=ceil((float(book.projection_table.ins_particulars_earnings_before_tax_ebt.f_4)/float(book.projection_table.ins_particulars_total_revenue_from_operations_services.f_4))*100)
+            except:
+                book.projection_table.ins_analysis_as_of_revenue_earnings_before_tax_ebt.f_4=0
+                
+            try:
+                book.projection_table.ins_analysis_as_of_revenue_earnings_before_tax_ebt.f_5=ceil((float(book.projection_table.ins_particulars_earnings_before_tax_ebt.f_5)/float(book.projection_table.ins_particulars_total_revenue_from_operations_services.f_5))*100)
+            except:
+                book.projection_table.ins_analysis_as_of_revenue_earnings_before_tax_ebt.f_5=0
+
+
+
+
+
+
+
+
+
+
+
+
+
+            try:
+                book.projection_table.ins_analysis_as_of_revenue_provision_for_income_tax.f_1=ceil((float(book.projection_table.ins_particulars_provision_for_income_tax.f_1)/float(book.projection_table.ins_particulars_total_revenue_from_operations_services.f_1))*100)
+            except:
+                book.projection_table.ins_analysis_as_of_revenue_provision_for_income_tax.f_1=0
+
+            try:
+                book.projection_table.ins_analysis_as_of_revenue_provision_for_income_tax.f_2=ceil((float(book.projection_table.ins_particulars_provision_for_income_tax.f_2)/float(book.projection_table.ins_particulars_total_revenue_from_operations_services.f_2))*100)
+            except:
+                book.projection_table.ins_analysis_as_of_revenue_provision_for_income_tax.f_2=0
+
+            try:
+                book.projection_table.ins_analysis_as_of_revenue_provision_for_income_tax.f_3=ceil((float(book.projection_table.ins_particulars_provision_for_income_tax.f_3)/float(book.projection_table.ins_particulars_total_revenue_from_operations_services.f_3))*100)
+            except:
+                book.projection_table.ins_analysis_as_of_revenue_provision_for_income_tax.f_3=0
+
+            try:
+                book.projection_table.ins_analysis_as_of_revenue_provision_for_income_tax.f_4=ceil((float(book.projection_table.ins_particulars_provision_for_income_tax.f_4)/float(book.projection_table.ins_particulars_total_revenue_from_operations_services.f_4))*100)
+            except:
+                book.projection_table.ins_analysis_as_of_revenue_provision_for_income_tax.f_4=0
+                
+            try:
+                book.projection_table.ins_analysis_as_of_revenue_provision_for_income_tax.f_5=ceil((float(book.projection_table.ins_particulars_provision_for_income_tax.f_5)/float(book.projection_table.ins_particulars_total_revenue_from_operations_services.f_5))*100)
+            except:
+                book.projection_table.ins_analysis_as_of_revenue_provision_for_income_tax.f_5=0
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            try:
+                book.projection_table.ins_analysis_as_of_revenue_profit_after_tax.f_1=ceil((float(book.projection_table.ins_particulars_profit_after_tax.f_1)/float(book.projection_table.ins_particulars_total_revenue_from_operations_services.f_1))*100)
+            except:
+                book.projection_table.ins_analysis_as_of_revenue_profit_after_tax.f_1=0
+
+            try:
+                book.projection_table.ins_analysis_as_of_revenue_profit_after_tax.f_2=ceil((float(book.projection_table.ins_particulars_profit_after_tax.f_2)/float(book.projection_table.ins_particulars_total_revenue_from_operations_services.f_2))*100)
+            except:
+                book.projection_table.ins_analysis_as_of_revenue_profit_after_tax.f_2=0
+
+            try:
+                book.projection_table.ins_analysis_as_of_revenue_profit_after_tax.f_3=ceil((float(book.projection_table.ins_particulars_profit_after_tax.f_3)/float(book.projection_table.ins_particulars_total_revenue_from_operations_services.f_3))*100)
+            except:
+                book.projection_table.ins_analysis_as_of_revenue_profit_after_tax.f_3=0
+
+            try:
+                book.projection_table.ins_analysis_as_of_revenue_profit_after_tax.f_4=ceil((float(book.projection_table.ins_particulars_profit_after_tax.f_4)/float(book.projection_table.ins_particulars_total_revenue_from_operations_services.f_4))*100)
+            except:
+                book.projection_table.ins_analysis_as_of_revenue_profit_after_tax.f_4=0
+                
+            try:
+                book.projection_table.ins_analysis_as_of_revenue_profit_after_tax.f_5=ceil((float(book.projection_table.ins_particulars_profit_after_tax.f_5)/float(book.projection_table.ins_particulars_total_revenue_from_operations_services.f_5))*100)
+            except:
+                book.projection_table.ins_analysis_as_of_revenue_profit_after_tax.f_5=0
+
+
+
+            book.save()
+
+
+           
+            return render(request,'user-form-income-statement.html',{"data":book})
+
+
+        else:
+            return redirect('/login')
+    else:
+        return redirect('/login')
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 #--------------------------------------------------- User Forms -------------------------------------------
 
 
@@ -1207,6 +3054,12 @@ def user_form_1_submit(request):            # User Form 1 Submit
 
         book.current_fillup_position = 1
         book.save()
+
+
+
+        income_statement_init(request,book) # initialize the incomestatement table
+
+
         request.session["form"] = book.id
 
         return render(request,'user-form2.html',{"data":book})
@@ -1778,96 +3631,98 @@ def user_form_10_submit(request):            # User Form 10 Submit
   #********* projection table data ******
 
 
+        projection_table=book.projection_table
+
+        projection_table.p_revenue_growth_or_amount_1= multi_input_insert_projection(request,"revenue_growth_or_amount_1_[]")
+        projection_table.p_revenue_growth_or_amount_2 = multi_input_insert_projection(request,"revenue_growth_or_amount_2_[]")
+        projection_table.p_revenue_growth_or_amount_3 = multi_input_insert_projection(request,"revenue_growth_or_amount_3_[]")
+        projection_table.p_revenue_growth_or_amount_4 = multi_input_insert_projection(request,"revenue_growth_or_amount_4_[]")
+        projection_table.p_total_revenue_from_operations_services = multi_input_insert_projection(request,"total_revenue_from_operations_services_[]")
+        projection_table.p_other_income_growth_or_amount = multi_input_insert_projection(request,"other_income_growth_or_amount_[]")
+        projection_table.p_realised_foreign_exchange_gain_or_loss = multi_input_insert_projection(request,"realised_foreign_exchange_gain_or_loss_[]")
+
+        projection_table.p_direct_material_units = multi_input_insert_projection(request,"direct_material_units_[]")
+        projection_table.p_direct_material_average_cost_per_unit = multi_input_insert_projection(request,"direct_material_average_cost_per_unit_[]")
+        projection_table.p_total_direct_material_cost = multi_input_insert_projection(request,"total_direct_material_cost_[]")
 
 
-        book.projection_table.p_revenue_growth_or_amount_1= multi_input_insert_projection(request,"revenue_growth_or_amount_1_[]")
-        book.projection_table.p_revenue_growth_or_amount_2 = multi_input_insert_projection(request,"revenue_growth_or_amount_2__[]")
-        book.projection_table.p_revenue_growth_or_amount_3 = multi_input_insert_projection(request,"revenue_growth_or_amount_3_[]")
-        book.projection_table.p_revenue_growth_or_amount_4 = multi_input_insert_projection(request,"revenue_growth_or_amount_4_[]")
-        book.projection_table.p_total_revenue_from_operations_services = multi_input_insert_projection(request,"total_revenue_from_operations_services_[]")
-        book.projection_table.p_other_income_growth_or_amount = multi_input_insert_projection(request,"other_income_growth_or_amount_[]")
-        book.projection_table.p_realised_foreign_exchange_gain_or_loss = multi_input_insert_projection(request,"realised_foreign_exchange_gain_or_loss_[]")
+        projection_table.p_direct_labour_no_of_employees = multi_input_insert_projection(request,"direct_labour_no_of_employees_[]")
+        projection_table.p_direct_labour_average_cost_per_employee = multi_input_insert_projection(request,"direct_labour_average_cost_per_employee_[]")
+        projection_table.p_total_labour_cost = multi_input_insert_projection(request,"total_labour_cost_[]")
 
-        book.projection_table.p_direct_material_units = multi_input_insert_projection(request,"direct_material_units_[]")
-        book.projection_table.p_direct_material_average_cost_per_unit = multi_input_insert_projection(request,"direct_material_average_cost_per_unit_[]")
-        book.projection_table.p_total_direct_material_cost = multi_input_insert_projection(request,"total_direct_material_cost_[]")
+        projection_table.p_direct_expenses = multi_input_insert_projection(request,"direct_expenses_[]")
+        projection_table.p_other_direct_expenses_1 = multi_input_insert_projection(request,"other_direct_expenses_1_[]")
+        projection_table.p_other_direct_expenses_2 = multi_input_insert_projection(request,"other_direct_expenses_2_[]")
+        projection_table.p_other_direct_expenses_3 = multi_input_insert_projection(request,"other_direct_expenses_3_[]")
 
+        projection_table.p_total_product_development_expenses_operating_expenses = multi_input_insert_projection(request,"total_product_development_expenses_operating_expenses_[]")
 
-        book.projection_table.p_direct_labour_no_of_employees = multi_input_insert_projection(request,"direct_labour_no_of_employees_[]")
-        book.projection_table.p_direct_labour_average_cost_per_employee = multi_input_insert_projection(request,"direct_labour_average_cost_per_employee_[]")
-        book.projection_table.p_total_labour_cost = multi_input_insert_projection(request,"total_labour_cost_[]")
+        projection_table.p_administration_no_of_employees = multi_input_insert_projection(request,"administration_no_of_employees_[]")
+        projection_table.p_administration_average_cost_per_employee = multi_input_insert_projection(request,"administration_average_cost_per_employee_[]")
+        projection_table.p_administration_employees_total_cost_per_year = multi_input_insert_projection(request,"administration_employees_total_cost_per_year_[]")
 
-        book.projection_table.p_direct_expenses = multi_input_insert_projection(request,"direct_expenses_[]")
-        book.projection_table.p_other_direct_expenses_1 = multi_input_insert_projection(request,"other_direct_expenses_1_[]")
-        book.projection_table.p_other_direct_expenses_2 = multi_input_insert_projection(request,"other_direct_expenses_2_[]")
-        book.projection_table.p_other_direct_expenses_3 = multi_input_insert_projection(request,"other_direct_expenses_3_[]")
-
-        book.projection_table.p_total_product_development_expenses_operating_expenses = multi_input_insert_projection(request,"total_product_development_expenses_operating_expenses_[]")
-
-        book.projection_table.p_administration_no_of_employees = multi_input_insert_projection(request,"administration_no_of_employees_[]")
-        book.projection_table.p_administration_average_cost_per_employee = multi_input_insert_projection(request,"administration_average_cost_per_employee_[]")
-        book.projection_table.p_administration_employees_total_cost_per_year = multi_input_insert_projection(request,"administration_employees_total_cost_per_year_[]")
-
-        book.projection_table.p_selling_and_distribution_no_of_employees = multi_input_insert_projection(request,"selling_and_distribution_no_of_employees_[]")
-        book.projection_table.p_selling_and_distribution_average_cost_per_employee = multi_input_insert_projection(request,"selling_and_distribution_average_cost_per_employee_[]")
-        book.projection_table.p_selling_employees_total_cost_per_year = multi_input_insert_projection(request,"selling_employees_total_cost_per_year_[]")
+        projection_table.p_selling_and_distribution_no_of_employees = multi_input_insert_projection(request,"selling_and_distribution_no_of_employees_[]")
+        projection_table.p_selling_and_distribution_average_cost_per_employee = multi_input_insert_projection(request,"selling_and_distribution_average_cost_per_employee_[]")
+        projection_table.p_selling_employees_total_cost_per_year = multi_input_insert_projection(request,"selling_employees_total_cost_per_year_[]")
 
 
-        book.projection_table.p_marketing_no_of_employees = multi_input_insert_projection(request,"marketing_no_of_employees_[]")
-        book.projection_table.p_marketing_average_cost_per_employee = multi_input_insert_projection(request,"marketing_average_cost_per_employee_[]")
-        book.projection_table.p_marketing_employees_total_cost_per_year = multi_input_insert_projection(request,"marketing_employees_total_cost_per_year_[]")
+        projection_table.p_marketing_no_of_employees = multi_input_insert_projection(request,"marketing_no_of_employees_[]")
+        projection_table.p_marketing_average_cost_per_employee = multi_input_insert_projection(request,"marketing_average_cost_per_employee_[]")
+        projection_table.p_marketing_employees_total_cost_per_year = multi_input_insert_projection(request,"marketing_employees_total_cost_per_year_[]")
 
 
-        book.projection_table.p_research_and_development_no_of_employees = multi_input_insert_projection(request,"research_and_development_no_of_employees_[]")
-        book.projection_table.p_research_and_development_average_cost_per_employee = multi_input_insert_projection(request,"research_and_development_average_cost_per_employee_[]")
-        book.projection_table.p_research_employees_total_cost_per_year = multi_input_insert_projection(request,"research_employees_total_cost_per_year_[]")
+        projection_table.p_research_and_development_no_of_employees = multi_input_insert_projection(request,"research_and_development_no_of_employees_[]")
+        projection_table.p_research_and_development_average_cost_per_employee = multi_input_insert_projection(request,"research_and_development_average_cost_per_employee_[]")
+        projection_table.p_research_employees_total_cost_per_year = multi_input_insert_projection(request,"research_employees_total_cost_per_year_[]")
 
 
-        book.projection_table.p_other_employees_1_no_of_employees = multi_input_insert_projection(request,"other_employees_1_no_of_employees_[]")
-        book.projection_table.p_other_employees_1_average_cost_per_employee = multi_input_insert_projection(request,"other_employees_1_average_cost_per_employee_[]")
-        book.projection_table.p_other_employees_1_employees_total_cost_per_year = multi_input_insert_projection(request,"other_employees_1_employees_total_cost_per_year_[]")
+        projection_table.p_other_employees_1_no_of_employees = multi_input_insert_projection(request,"other_employees_1_no_of_employees_[]")
+        projection_table.p_other_employees_1_average_cost_per_employee = multi_input_insert_projection(request,"other_employees_1_average_cost_per_employee_[]")
+        projection_table.p_other_employees_1_employees_total_cost_per_year = multi_input_insert_projection(request,"other_employees_1_employees_total_cost_per_year_[]")
 
 
-        book.projection_table.p_other_employees_2_no_of_employees = multi_input_insert_projection(request,"other_employees_2_no_of_employees_[]")
-        book.projection_table.p_other_employees_2_average_cost_per_employee = multi_input_insert_projection(request,"other_employees_2_average_cost_per_employee_[]")
-        book.projection_table.p_other_employees_2_employees_total_cost_per_year = multi_input_insert_projection(request,"other_employees_2_employees_total_cost_per_year_[]")
+        projection_table.p_other_employees_2_no_of_employees = multi_input_insert_projection(request,"other_employees_2_no_of_employees_[]")
+        projection_table.p_other_employees_2_average_cost_per_employee = multi_input_insert_projection(request,"other_employees_2_average_cost_per_employee_[]")
+        projection_table.p_other_employees_2_employees_total_cost_per_year = multi_input_insert_projection(request,"other_employees_2_employees_total_cost_per_year_[]")
 
 
-        book.projection_table.p_other_employees_3_no_of_employees = multi_input_insert_projection(request,"other_employees_3_no_of_employees_[]")
-        book.projection_table.p_other_employees_3_average_cost_per_employee = multi_input_insert_projection(request,"other_employees_3_average_cost_per_employee_[]")
-        book.projection_table.p_other_employees_3_employees_total_cost_per_year = multi_input_insert_projection(request,"other_employees_3_employees_total_cost_per_year_[]")
+        projection_table.p_other_employees_3_no_of_employees = multi_input_insert_projection(request,"other_employees_3_no_of_employees_[]")
+        projection_table.p_other_employees_3_average_cost_per_employee = multi_input_insert_projection(request,"other_employees_3_average_cost_per_employee_[]")
+        projection_table.p_other_employees_3_employees_total_cost_per_year = multi_input_insert_projection(request,"other_employees_3_employees_total_cost_per_year_[]")
 
-        book.projection_table.p_total_employee_expenses = multi_input_insert_projection(request,"total_employee_expenses_[]")
+        projection_table.p_total_employee_expenses = multi_input_insert_projection(request,"total_employee_expenses_[]")
 
-        book.projection_table.p_rent = multi_input_insert_projection(request,"rent_[]")
-        book.projection_table.p_telephone_expenses = multi_input_insert_projection(request,"telephone_expenses_[]")
-        book.projection_table.p_electricity = multi_input_insert_projection(request,"electricity_[]")
-        book.projection_table.p_printing_and_stationery = multi_input_insert_projection(request,"printing_and_stationery_[]")
-        book.projection_table.p_audit_fees = multi_input_insert_projection(request,"audit_fees_[]")
-        book.projection_table.p_other_administration_expenses_1 = multi_input_insert_projection(request,"other_administration_expenses_1_[]")
-        book.projection_table.p_other_administration_expenses_2 = multi_input_insert_projection(request,"other_administration_expenses_2_[]")
-        book.projection_table.p_other_administration_expenses_3 = multi_input_insert_projection(request,"other_administration_expenses_3_[]")
-        book.projection_table.p_total_general_administrative_expenses = multi_input_insert_projection(request,"total_general_administrative_expenses_[]")
+        projection_table.p_rent = multi_input_insert_projection(request,"rent_[]")
+        projection_table.p_telephone_expenses = multi_input_insert_projection(request,"telephone_expenses_[]")
+        projection_table.p_electricity = multi_input_insert_projection(request,"electricity_[]")
+        projection_table.p_printing_and_stationery = multi_input_insert_projection(request,"printing_and_stationery_[]")
+        projection_table.p_audit_fees = multi_input_insert_projection(request,"audit_fees_[]")
+        projection_table.p_other_administration_expenses_1 = multi_input_insert_projection(request,"other_administration_expenses_1_[]")
+        projection_table.p_other_administration_expenses_2 = multi_input_insert_projection(request,"other_administration_expenses_2_[]")
+        projection_table.p_other_administration_expenses_3 = multi_input_insert_projection(request,"other_administration_expenses_3_[]")
+        projection_table.p_total_general_administrative_expenses = multi_input_insert_projection(request,"total_general_administrative_expenses_[]")
 
-        book.projection_table.p_digital_marketing_cost = multi_input_insert_projection(request,"digital_marketing_cost_[]")
-        book.projection_table.p_sales_commissions = multi_input_insert_projection(request,"sales_commissions_[]")
-        book.projection_table.p_travelling_expenses = multi_input_insert_projection(request,"travelling_expenses_[]")
-        book.projection_table.p_advertisement = multi_input_insert_projection(request,"advertisement_[]")
-        book.projection_table.p_logistics_expenses = multi_input_insert_projection(request,"logistics_expenses_[]")
-        book.projection_table.p_other_selling_and_marketing_expenses_1 = multi_input_insert_projection(request,"other_selling_and_marketing_expenses_1_[]")
-        book.projection_table.p_other_selling_and_marketing_expenses_2 = multi_input_insert_projection(request,"other_selling_and_marketing_expenses_2_[]")
-        book.projection_table.p_other_selling_and_marketing_expenses_3 = multi_input_insert_projection(request,"other_selling_and_marketing_expenses_3_[]")
-        book.projection_table.p_total_selling_marketing_expenses = multi_input_insert_projection(request,"total_selling_marketing_expenses_[]")
+        projection_table.p_digital_marketing_cost = multi_input_insert_projection(request,"digital_marketing_cost_[]")
+        projection_table.p_sales_commissions = multi_input_insert_projection(request,"sales_commissions_[]")
+        projection_table.p_travelling_expenses = multi_input_insert_projection(request,"travelling_expenses_[]")
+        projection_table.p_advertisement = multi_input_insert_projection(request,"advertisement_[]")
+        projection_table.p_logistics_expenses = multi_input_insert_projection(request,"logistics_expenses_[]")
+        projection_table.p_other_selling_and_marketing_expenses_1 = multi_input_insert_projection(request,"other_selling_and_marketing_expenses_1_[]")
+        projection_table.p_other_selling_and_marketing_expenses_2 = multi_input_insert_projection(request,"other_selling_and_marketing_expenses_2_[]")
+        projection_table.p_other_selling_and_marketing_expenses_3 = multi_input_insert_projection(request,"other_selling_and_marketing_expenses_3_[]")
+        projection_table.p_total_selling_marketing_expenses = multi_input_insert_projection(request,"total_selling_marketing_expenses_[]")
 
-        book.projection_table.p_other_expenses_1 = multi_input_insert_projection(request,"other_expenses_1_[]")
-        book.projection_table.p_other_expenses_2 = multi_input_insert_projection(request,"other_expenses_2_[]")
-        book.projection_table.p_income_tax_rate = multi_input_insert_projection(request,"income_tax_rate_[]")
+        projection_table.p_other_expenses_1 = multi_input_insert_projection(request,"other_expenses_1_[]")
+        projection_table.p_other_expenses_2 = multi_input_insert_projection(request,"other_expenses_2_[]")
+        projection_table.p_income_tax_rate = multi_input_insert_projection(request,"income_tax_rate_[]")
         
 
-
+        projection_table.save()
 
         book.current_fillup_position = 10
         book.save()
+
+        
 
         return render(request,'user-form11.html',{"data":book})
     else:
@@ -1899,17 +3754,19 @@ def user_form_11_submit(request):            # User Form 11 Submit
 
         #********** Projection table ***********
 
-        book.projection_table.p_capex_opening_gross = multi_input_insert_projection(request,"capex_opening_gross_[]")
-        book.projection_table.p_capex_additions  = multi_input_insert_projection(request,"capex_additions_[]")
-        book.projection_table.p_capex_additions_intangible  = multi_input_insert_projection(request,"capex_additions_intangible_[]")
-        book.projection_table.p_capex_deletions  = multi_input_insert_projection(request,"capex_deletions_[]")
-        book.projection_table.p_closing_gross  = multi_input_insert_projection(request,"closing_gross_[]")
-        book.projection_table.p_accumulated_depreciation  = multi_input_insert_projection(request,"accumulated_depreciation_[]")
-        book.projection_table.p_net_value  = multi_input_insert_projection(request,"net_value_[]")
-        book.projection_table.p_current_depreciation  = multi_input_insert_projection(request,"current_depreciation_[]")
-        book.projection_table.p_capex_average_depreciation_rate  = multi_input_insert_projection(request,"capex_average_depreciation_rate_[]")
+        projection_table=book.projection_table
 
-        
+        projection_table.p_capex_opening_gross = multi_input_insert_projection(request,"capex_opening_gross_[]")
+        projection_table.p_capex_additions  = multi_input_insert_projection(request,"capex_additions_[]")
+        projection_table.p_capex_additions_intangible  = multi_input_insert_projection(request,"capex_additions_intangible_[]")
+        projection_table.p_capex_deletions  = multi_input_insert_projection(request,"capex_deletions_[]")
+        projection_table.p_closing_gross  = multi_input_insert_projection(request,"closing_gross_[]")
+        projection_table.p_accumulated_depreciation  = multi_input_insert_projection(request,"accumulated_depreciation_[]")
+        projection_table.p_net_value  = multi_input_insert_projection(request,"net_value_[]")
+        projection_table.p_current_depreciation  = multi_input_insert_projection(request,"current_depreciation_[]")
+        projection_table.p_capex_average_depreciation_rate  = multi_input_insert_projection(request,"capex_average_depreciation_rate_[]")
+
+        projection_table.save()
         book.current_fillup_position = 11
         book.save()
 
@@ -4230,10 +6087,5 @@ def new_xl_get(request,id):
 
 
 
-def income_statement(request,id):
-    if(auth_user(request)):
-        #data = super_plan_forms.objects.filter(user=request.session['user'],current_fillup_position__lt=10)
-        return render(request,'user-form-income-statement.html')
-    else:
-        return redirect('/login')
+
 

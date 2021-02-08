@@ -345,6 +345,7 @@ class super_plan_projection(models.Model):
     p_total_revenue_from_operations_services = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='p_total_revenue_from_operations_services',on_delete=models.SET_NULL, null=True)
     p_other_income_growth_or_amount = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='p_other_income_growth_or_amount',on_delete=models.SET_NULL, null=True)
     p_realised_foreign_exchange_gain_or_loss = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='p_realised_foreign_exchange_gain_or_loss',on_delete=models.SET_NULL, null=True)
+    
     p_direct_material_units = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='p_direct_material_units',on_delete=models.SET_NULL, null=True)
     p_direct_material_average_cost_per_unit = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='p_direct_material_average_cost_per_unit',on_delete=models.SET_NULL, null=True)
     p_total_direct_material_cost = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='p_total_direct_material_cost',on_delete=models.SET_NULL, null=True)
@@ -412,6 +413,88 @@ class super_plan_projection(models.Model):
     p_net_value = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='p_net_value',on_delete=models.SET_NULL, null=True)
     p_current_depreciation = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='p_current_depreciation',on_delete=models.SET_NULL, null=True)
     p_capex_average_depreciation_rate = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='p_capex_average_depreciation_rate',on_delete=models.SET_NULL, null=True)
+
+
+
+
+
+    #************************* income statement ********************** [ins]
+
+    ins_particulars_stream_1 = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='ins_particulars_stream_1',on_delete=models.SET_NULL, null=True)
+    ins_particulars_stream_2 = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='ins_particulars_stream_2',on_delete=models.SET_NULL, null=True) 
+    ins_particulars_stream_3 = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='ins_particulars_stream_3',on_delete=models.SET_NULL, null=True)
+    ins_particulars_stream_4 = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='ins_particulars_stream_4',on_delete=models.SET_NULL, null=True)
+    ins_particulars_total_revenue_from_operations_services = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='ins_particulars_total_revenue_from_operations_services',on_delete=models.SET_NULL, null=True)
+    ins_particulars_product_development_expenses_operating_expenses_raw_material = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='ins_particulars_product_development_expenses_operating_expenses_raw_material',on_delete=models.SET_NULL, null=True)
+    ins_particulars_employee_cost = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='ins_particulars_employee_cost',on_delete=models.SET_NULL, null=True)
+    ins_particulars_general_administrative_expenses = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='ins_particulars_general_administrative_expenses',on_delete=models.SET_NULL, null=True)
+    ins_particulars_selling_marketing_expenses = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='ins_particulars_selling_marketing_expenses',on_delete=models.SET_NULL, null=True)
+    ins_particulars_other_expenses_1 = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='ins_particulars_other_expenses_1',on_delete=models.SET_NULL, null=True)
+    ins_particulars_other_expenses_2 = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='ins_particulars_other_expenses_2',on_delete=models.SET_NULL, null=True)
+    ins_particulars_total_operating_expenses = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='ins_particulars_total_operating_expenses',on_delete=models.SET_NULL, null=True)
+    ins_particulars_ebitda_operating_profit = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='ins_particulars_ebitda_operating_profit',on_delete=models.SET_NULL, null=True)
+    ins_particulars_depreciation = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='ins_particulars_depreciation',on_delete=models.SET_NULL, null=True)
+    ins_particulars_other_income = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='ins_particulars_other_income',on_delete=models.SET_NULL, null=True)
+    ins_particulars_realised_foreign_exchange_gain_loss = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='ins_particulars_realised_foreign_exchange_gain_loss',on_delete=models.SET_NULL, null=True)
+    ins_particulars_ebit = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='ins_particulars_ebit',on_delete=models.SET_NULL, null=True)
+    ins_particulars_interest_including_finance_charges = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='ins_particulars_interest_including_finance_charges',on_delete=models.SET_NULL, null=True)
+    ins_particulars_earnings_before_tax_ebt = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='ins_particulars_earnings_before_tax_ebt',on_delete=models.SET_NULL, null=True)
+    ins_particulars_provision_for_income_tax = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='ins_particulars_provision_for_income_tax',on_delete=models.SET_NULL, null=True)
+    ins_particulars_profit_after_tax = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='ins_particulars_profit_after_tax',on_delete=models.SET_NULL, null=True)
+    ins_particulars_ebitda_perc = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='ins_particulars_ebitda_perc',on_delete=models.SET_NULL, null=True)
+    ins_particulars_pat_perc = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='ins_particulars_pat_perc',on_delete=models.SET_NULL, null=True)
+    ins_particulars_interest_cover = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='ins_particulars_interest_cover',on_delete=models.SET_NULL, null=True)
+    ins_particulars_financial_leverage = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='ins_particulars_financial_leverage',on_delete=models.SET_NULL, null=True)
+
+    ins_growth_analysis_yoy_stream_1 = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='ins_growth_analysis_yoy_stream_1',on_delete=models.SET_NULL, null=True)
+    ins_growth_analysis_yoy_stream_2 = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='ins_growth_analysis_yoy_stream_2',on_delete=models.SET_NULL, null=True)
+    ins_growth_analysis_yoy_stream_3 = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='ins_growth_analysis_yoy_stream_3',on_delete=models.SET_NULL, null=True)
+    ins_growth_analysis_yoy_stream_4 = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='ins_growth_analysis_yoy_stream_4',on_delete=models.SET_NULL, null=True)
+    ins_growth_analysis_yoy_total_revenue_from_operations_services = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='ins_growth_analysis_yoy_total_revenue_from_operations_services',on_delete=models.SET_NULL, null=True)
+    ins_growth_analysis_yoy_product_development_expenses_operating_expenses_raw_material = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='ins_growth_analysis_yoy_product_development_expenses_operating_expenses_raw_material',on_delete=models.SET_NULL, null=True)
+    ins_growth_analysis_yoy_employee_cost = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='ins_growth_analysis_yoy_employee_cost',on_delete=models.SET_NULL, null=True)
+    ins_growth_analysis_yoy_general_administrative_expenses = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='ins_growth_analysis_yoy_general_administrative_expenses',on_delete=models.SET_NULL, null=True)
+    ins_growth_analysis_yoy_selling_marketing_expenses = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='ins_growth_analysis_yoy_selling_marketing_expenses',on_delete=models.SET_NULL, null=True)
+    ins_growth_analysis_yoy_other_expenses_1 = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='ins_growth_analysis_yoy_other_expenses_1',on_delete=models.SET_NULL, null=True)
+    ins_growth_analysis_yoy_other_expenses_2 = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='ins_growth_analysis_yoy_other_expenses_2',on_delete=models.SET_NULL, null=True)
+    ins_growth_analysis_yoy_total_operating_expenses = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='ins_growth_analysis_yoy_total_operating_expenses',on_delete=models.SET_NULL, null=True)
+    ins_growth_analysis_yoy_ebitda_operating_profit = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='ins_growth_analysis_yoy_ebitda_operating_profit',on_delete=models.SET_NULL, null=True)
+    ins_growth_analysis_yoy_depreciation = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='ins_growth_analysis_yoy_depreciation',on_delete=models.SET_NULL, null=True)
+    ins_growth_analysis_yoy_other_income = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='ins_growth_analysis_yoy_other_income',on_delete=models.SET_NULL, null=True)
+    ins_growth_analysis_yoy_foreign_exchange_gain_loss = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='ins_growth_analysis_yoy_foreign_exchange_gain_loss',on_delete=models.SET_NULL, null=True)
+    ins_growth_analysis_yoy_ebit = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='ins_growth_analysis_yoy_ebit',on_delete=models.SET_NULL, null=True)
+    ins_growth_analysis_yoy_interest_including_finance_charges = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='ins_growth_analysis_yoy_interest_including_finance_charges',on_delete=models.SET_NULL, null=True)
+    ins_growth_analysis_yoy_earnings_before_tax_ebt = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='ins_growth_analysis_yoy_earnings_before_tax_ebt',on_delete=models.SET_NULL, null=True)
+    ins_growth_analysis_yoy_provision_for_income_tax = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='ins_growth_analysis_yoy_provision_for_income_tax',on_delete=models.SET_NULL, null=True)
+    ins_growth_analysis_yoy_profit_after_tax = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='ins_growth_analysis_yoy_profit_after_tax',on_delete=models.SET_NULL, null=True)
+
+    ins_analysis_as_of_revenue_stream_1 = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='ins_analysis_as_of_revenue_stream_1',on_delete=models.SET_NULL, null=True)
+    ins_analysis_as_of_revenue_stream_2 = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='ins_analysis_as_of_revenue_stream_2',on_delete=models.SET_NULL, null=True)
+    ins_analysis_as_of_revenue_stream_3 = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='ins_analysis_as_of_revenue_stream_3',on_delete=models.SET_NULL, null=True)
+    ins_analysis_as_of_revenue_stream_4 = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='ins_analysis_as_of_revenue_stream_4',on_delete=models.SET_NULL, null=True)
+    ins_analysis_as_of_revenue_total_revenue_from_operations_services = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='ins_analysis_as_of_revenue_total_revenue_from_operations_services',on_delete=models.SET_NULL, null=True)
+    ins_analysis_as_of_revenue_product_development_expenses_operating_expenses_raw_material = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='ins_analysis_as_of_revenue_product_development_expenses_operating_expenses_raw_material',on_delete=models.SET_NULL, null=True)
+    ins_analysis_as_of_revenue_employee_cost = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='ins_analysis_as_of_revenue_employee_cost',on_delete=models.SET_NULL, null=True)
+    ins_analysis_as_of_revenue_general_administrative_expenses = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='ins_analysis_as_of_revenue_general_administrative_expenses',on_delete=models.SET_NULL, null=True)
+    ins_analysis_as_of_revenue_selling_marketing_expenses = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='ins_analysis_as_of_revenue_selling_marketing_expenses',on_delete=models.SET_NULL, null=True)
+    ins_analysis_as_of_revenue_other_expenses_1 = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='ins_analysis_as_of_revenue_other_expenses_1',on_delete=models.SET_NULL, null=True)
+    ins_analysis_as_of_revenue_other_expenses_2 = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='ins_analysis_as_of_revenue_other_expenses_2',on_delete=models.SET_NULL, null=True)
+    ins_analysis_as_of_revenue_total_operating_expenses = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='ins_analysis_as_of_revenue_total_operating_expenses',on_delete=models.SET_NULL, null=True)
+    ins_analysis_as_of_revenue_ebitda_operating_profit = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='ins_analysis_as_of_revenue_ebitda_operating_profit',on_delete=models.SET_NULL, null=True)
+    ins_analysis_as_of_revenue_depreciation = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='ins_analysis_as_of_revenue_depreciation',on_delete=models.SET_NULL, null=True)
+    ins_analysis_as_of_revenue_other_income = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='ins_analysis_as_of_revenue_other_income',on_delete=models.SET_NULL, null=True)
+    ins_analysis_as_of_revenue_realised_foreign_exchange_gain_loss = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='ins_analysis_as_of_revenue_realised_foreign_exchange_gain_loss',on_delete=models.SET_NULL, null=True)
+    ins_analysis_as_of_revenue_ebit = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='ins_analysis_as_of_revenue_ebit',on_delete=models.SET_NULL, null=True)
+    ins_analysis_as_of_revenue_interest_including_finance_charges = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='ins_analysis_as_of_revenue_interest_including_finance_charges',on_delete=models.SET_NULL, null=True)
+    ins_analysis_as_of_revenue_earnings_before_tax_ebt = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='ins_analysis_as_of_revenue_earnings_before_tax_ebt',on_delete=models.SET_NULL, null=True)
+    ins_analysis_as_of_revenue_provision_for_income_tax = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='ins_analysis_as_of_revenue_provision_for_income_tax',on_delete=models.SET_NULL, null=True)
+    ins_analysis_as_of_revenue_profit_after_tax = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='ins_analysis_as_of_revenue_profit_after_tax',on_delete=models.SET_NULL, null=True)
+
+
+
+
+
+
 
     date = models.DateTimeField(auto_now_add=True)
 

@@ -98,6 +98,9 @@ urlpatterns = [
     path("user_form_10_submit",views.user_form_10_submit,name="user_form_10_submit"),
     path("user_form_11_submit",views.user_form_11_submit,name="user_form_11_submit"),
     path("user_form_12_submit",views.user_form_12_submit,name="user_form_12_submit"),
+
+
+    path("view_income_statement",views.cal_income_statement,name="view_income_statement"),
     
 
     path("user-all-superplan-bookings",views.user_all_superplan_bookings,name="user-all-superplan-bookings"),
@@ -112,7 +115,7 @@ urlpatterns = [
 
 
     path("superplan_form_number/<str:id>",views.superplan_form_number,name="superplan_form_number"),
-    path("income_statement/<str:id>",views.income_statement,name="income_statement"),
+    
 
 
 
