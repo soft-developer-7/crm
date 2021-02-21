@@ -1,10 +1,11 @@
 from django.contrib import admin
-from .models import User_db,Posts,Pages,Banners,super_plan_forms,super_plan_forms_multiple_inputs
+from .models import  User_db,Pages,Posts,Banners,super_plan_forms,super_plan_forms_multiple_inputs,super_plan_forms_multiple_images,super_plan_forms_multiple_files,super_plan_forms_multiple_inputs_xl,super_plan_form_xl_input,super_plan_projection
 # Register your models here.
 
 admin.site.register(User_db)
-admin.site.register(Posts)
-admin.site.register(Pages)
-admin.site.register(Banners)
 admin.site.register(super_plan_forms)
 admin.site.register(super_plan_forms_multiple_inputs)
+admin.site.register(super_plan_forms_multiple_images)
+admin.site.register(super_plan_forms_multiple_files)
+admin.site.register(super_plan_forms_multiple_inputs_xl)
+admin.site.register(super_plan_projection)

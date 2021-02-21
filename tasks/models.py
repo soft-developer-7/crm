@@ -16,7 +16,7 @@ class User_db (models.Model):
 
 
     def __str__(self):
-        return "%s %s" % (self.name)
+        return str(self.name)
 
 
 class Posts(models.Model):
@@ -34,7 +34,7 @@ class Posts(models.Model):
     author = models.ForeignKey(User_db, on_delete=models.CASCADE)
 
     def __str__(self):
-        return self.title
+        return str(self.title)
 
     class Meta:
         ordering = ['title']
@@ -54,7 +54,7 @@ class Pages(models.Model):
     date = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        return self.title
+        return str(self.title)
 
 
 
@@ -69,7 +69,7 @@ class Banners(models.Model):
     date = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        return self.title
+        return str(self.title)
 
 
 
@@ -90,7 +90,7 @@ class super_plan_forms_multiple_inputs(models.Model):                   # Multip
     date = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        return self.id
+        return str(self.id)
 
 
 
@@ -107,7 +107,7 @@ class super_plan_forms_multiple_images(models.Model):                           
     date = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        return self.id
+        return str(self.id)
 
 
 
@@ -122,7 +122,7 @@ class super_plan_forms_multiple_inputs_xl(models.Model):                   # Mul
     date = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        return self.id
+        return str(self.id)
 
 
 class super_plan_forms_multiple_files(models.Model):                            # Multiple Files
@@ -141,7 +141,7 @@ class super_plan_forms_multiple_files(models.Model):                            
     date = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        return self.id
+        return str(self.id)
 
 
 
@@ -310,6 +310,15 @@ class super_plan_form_xl_input(models.Model):
     balance_sheet_check = models.ForeignKey(super_plan_forms_multiple_inputs_xl,related_name='balance_sheet_check',on_delete=models.SET_NULL, null=True)
 
     date = models.DateTimeField(auto_now_add=True)
+
+
+
+
+
+
+
+    def __str__(self):
+        return str(self.id)
 
 
 
@@ -499,6 +508,10 @@ class super_plan_projection(models.Model):
     date = models.DateTimeField(auto_now_add=True)
 
 
+    def __str__(self):
+        return str(self.id)
+
+
 
 
 
@@ -524,7 +537,7 @@ class super_plan_forms(models.Model):
 
     # Form-2------------------------------------------------------------------------------------- 2 --------------------
     user = models.ForeignKey(User_db, on_delete=models.CASCADE,null=True)
-    projection_table=models.ForeignKey(super_plan_projection,on_delete=models.SET_NULL, null=True)
+    projection_table = models.ForeignKey(super_plan_projection,related_name='projection_table',on_delete=models.SET_NULL, null=True)
     company_name = models.CharField(max_length=1000,null=True)
     company_website_link = models.CharField(max_length=1000,null=True)
     owner_name = models.CharField(max_length=500,null=True)

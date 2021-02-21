@@ -64,7 +64,8 @@
 
 
 					
-
+<p class="text-danger" style="font-weight:bold;"><i>**Note : Input of the <span  style="color:black;background-color:rgba(255,0,23,0.08);">&nbsp; Brown cells &nbsp;</span> will treated as percentage. Like if you put 17 then it will be treated as 17%</i></p>
+				<br>
 
 
 
@@ -127,19 +128,6 @@
 						<div class="col-4">
 							<div class="form-group">
 								<label ><strong> Share Capital   </strong> <a href="#"  data-toggle="tooltip" title="Help text."><i class="far fa-question-circle"></i></a>  </label>
-									
-								<div class="perc_helper_h form-group text-info">
-
-										<label class="radio-inline">
-											<input type="radio" class="r" name="" value="amnt"> Amount   
-										</label>
-
-										<label class="radio-inline">
-											<input type="radio" class="r" name="" value="perc" checked> % &nbsp; &nbsp; &nbsp; 
-										</label>
-
-									</div>
-
 								</div>
 						</div>
 
@@ -147,32 +135,32 @@
 
 						<div class="col">
 							<div class="form-group">
-								<input type="text"  class="form-control {% if data.historical_xl_data %} text_input {%else %} text_input_nh {% endif %}" name="share_capital[]"   maxlength="20" minlength="1"  />
+								<input type="number" min=0 step=0.001  class="form-control  ptext_input2"  name="share_capital[]"   maxlength="20" minlength="1"  />
 								</div>
 						</div>
 
 						<div class="col">
 							<div class="form-group">
-								<input type="text" class="form-control text_input" name="share_capital[]"  maxlength="20" minlength="1"  />
-									<div class="perc_helper_h">% value</div>
+								<input type="number" min=0 step=0.001  class="form-control  ptext_input2" name="share_capital[]"  maxlength="20" minlength="1"  />
+								
 								</div>
 						</div>
 						<div class="col">
 							<div class="form-group">
-								<input type="text" class="form-control text_input" name="share_capital[]"   maxlength="20" minlength="1"  />
-									<div class="perc_helper_h">% value</div>
+								<input type="number" min=0 step=0.001  class="form-control  ptext_input2" name="share_capital[]"   maxlength="20" minlength="1"  />
+								
 								</div>
 						</div>
 						<div class="col">
 							<div class="form-group">
-								<input type="text" class="form-control text_input" name="share_capital[]"   maxlength="20" minlength="1"  />
-									<div class="perc_helper_h">% value</div>
+								<input type="number" min=0 step=0.001  class="form-control  ptext_input2" name="share_capital[]"   maxlength="20" minlength="1"  />
+								
 								</div>
 						</div>
 						<div class="col">
 							<div class="form-group">
-								<input type="text" class="form-control text_input" name="share_capital[]"  maxlength="20" minlength="1"  />
-									<div class="perc_helper_h">% value</div>
+								<input type="number" min=0 step=0.001  class="form-control  ptext_input2" name="share_capital[]"  maxlength="20" minlength="1"  />
+								
 								</div>
 						</div>
 						
@@ -185,83 +173,17 @@
 
 
 
-               	<div id="" class="form-row d-none">
-						
-						<div class="col-4">
-							<div class="form-group">
-								<label ><strong> Reserves & Surplus  </strong> <a href="#"  data-toggle="tooltip" title="Help text."><i class="far fa-question-circle"></i></a>  </label>
-									
-								<div class="perc_helper_h form-group text-info">
-
-										<label class="radio-inline">
-											<input type="radio" class="r" name="" value="amnt"> Amount   
-										</label>
-
-										<label class="radio-inline">
-											<input type="radio" class="r" name="" value="perc" checked> % &nbsp; &nbsp; &nbsp; 
-										</label>
-
-									</div>
-
-								</div>
-						</div>
-
-						
-
-						<div class="col">
-							<div class="form-group">
-								<input type="number"  step="0.01"  class="form-control" name="reserves_and_surplus[]"   maxlength="20" minlength="1"  />
-								</div>
-						</div>
-
-						<div class="col">
-							<div class="form-group">
-								<input type="number"  step="0.01"  class="form-control" name="reserves_and_surplus[]"  maxlength="20" minlength="1"  />
-									<div class="perc_helper_h">% value</div>
-								</div>
-						</div>
-						<div class="col">
-							<div class="form-group">
-								<input type="number"  step="0.01"  class="form-control" name="reserves_and_surplus[]"   maxlength="20" minlength="1"  />
-									<div class="perc_helper_h">% value</div>
-								</div>
-						</div>
-						<div class="col">
-							<div class="form-group">
-								<input type="number"  step="0.01"  class="form-control" name="reserves_and_surplus[]"   maxlength="20" minlength="1"  />
-									<div class="perc_helper_h">% value</div>
-								</div>
-						</div>
-						<div class="col">
-							<div class="form-group">
-								<input type="number"  step="0.01"  class="form-control" name="reserves_and_surplus[]"  maxlength="20" minlength="1"  />
-									<div class="perc_helper_h">% value</div>
-								</div>
-						</div>
-						
-						
-                       
-				</div>
+               	
 
 
 
-           				<div id="" class="form-row">
+           	<div id="" class="form-row">
 						
 						<div class="col-4">
 							<div class="form-group">
 								<label ><strong> Equity Funds Raised    </strong> <a href="#"  data-toggle="tooltip" title="Help text."><i class="far fa-question-circle"></i></a>  </label>
 									
-								<div class="perc_helper_h form-group text-info">
-
-										<label class="radio-inline">
-											<input type="radio" class="r" name="" value="amnt"> Amount   
-										</label>
-
-										<label class="radio-inline">
-											<input type="radio" class="r" name="" value="perc" checked> % &nbsp; &nbsp; &nbsp; 
-										</label>
-
-									</div>
+								
 
 								</div>
 						</div>
@@ -270,32 +192,32 @@
 
 						<div class="col">
 							<div class="form-group">
-								<input type="text"  class="form-control {% if data.historical_xl_data %} text_input {%else %} text_input_nh {% endif %}" name="equity_funds_raised[]"   maxlength="20" minlength="1"  />
+								<input type="number" min=0 step=0.001  class="form-control  ptext_input2"  name="equity_funds_raised[]"   maxlength="20" minlength="1"  />
 								</div>
 						</div>
 
 						<div class="col">
 							<div class="form-group">
-								<input type="text" class="form-control text_input" name="equity_funds_raised[]"  maxlength="20" minlength="1"  />
-									<div class="perc_helper_h">% value</div>
+								<input type="number" min=0 step=0.001  class="form-control  ptext_input2" name="equity_funds_raised[]"  maxlength="20" minlength="1"  />
+								
 								</div>
 						</div>
 						<div class="col">
 							<div class="form-group">
-								<input type="text" class="form-control text_input" name="equity_funds_raised[]"   maxlength="20" minlength="1"  />
-									<div class="perc_helper_h">% value</div>
+								<input type="number" min=0 step=0.001  class="form-control  ptext_input2" name="equity_funds_raised[]"   maxlength="20" minlength="1"  />
+								
 								</div>
 						</div>
 						<div class="col">
 							<div class="form-group">
-								<input type="text" class="form-control text_input" name="equity_funds_raised[]"   maxlength="20" minlength="1"  />
-									<div class="perc_helper_h">% value</div>
+								<input type="number" min=0 step=0.001  class="form-control  ptext_input2" name="equity_funds_raised[]"   maxlength="20" minlength="1"  />
+								
 								</div>
 						</div>
 						<div class="col">
 							<div class="form-group">
-								<input type="text" class="form-control text_input" name="equity_funds_raised[]"  maxlength="20" minlength="1"  />
-									<div class="perc_helper_h">% value</div>
+								<input type="number" min=0 step=0.001  class="form-control  ptext_input2" name="equity_funds_raised[]"  maxlength="20" minlength="1"  />
+								
 								</div>
 						</div>
 						
@@ -305,6 +227,114 @@
 
 
                  
+<br><br><button type="button" class="btn btn-warning" onclick="projection(1);">Show or Hide Projection Report</button>
+
+
+
+
+
+<!-- Shareholders Funds Projection table -->
+				<div id="table1" style="display:none;"><br>
+									<table  class="table text-dark">
+										<thead>
+											<tr>
+												<th scope="col"></th>
+												<th  class="year_1" scope="col"> {% if data.balance_sheet_years.f_1 %} {{data.balance_sheet_years.f_1}} {% else %} Year 1 {% endif %} </th>
+												<th  class="year_2" scope="col">{% if data.balance_sheet_years.f_2 %} {{data.balance_sheet_years.f_2}} {% else %} Year 2 {% endif %}</th>
+												<th  class="year_3" scope="col">{% if data.balance_sheet_years.f_3 %} {{data.balance_sheet_years.f_3}} {% else %} Year 3 {% endif %}</th>
+												<th  class="year_4" scope="col">{% if data.balance_sheet_years.f_4 %} {{data.balance_sheet_years.f_4}} {% else %} Year 4 {% endif %}</th>
+												<th  class="year_5" scope="col">{% if data.balance_sheet_years.f_5 %} {{data.balance_sheet_years.f_5}} {% else %} Year 5 {% endif %}</th>
+											</tr>
+										</thead>
+											<tbody>
+
+												<tr id="share_capital">
+													<th scope="row">Share Capital</th>
+													<td>--</td>
+													<td>--</td>
+													<td>--</td>
+													<td>--</td>
+													<td>--</td>
+													<input hidden name="share_capital_[]" value=0>
+													<input hidden name="share_capital_[]" value=0>
+													<input hidden name="share_capital_[]" value=0>
+													<input hidden name="share_capital_[]" value=0>
+													<input hidden name="share_capital_[]" value=0>
+												</tr>
+
+												<tr id="reserve_surplus">
+													<th scope="row">Reserve & Surplus</th>
+													<td>--</td>
+													<td>--</td>
+													<td>--</td>
+													<td>--</td>
+													<td>--</td>
+													<input hidden name="reserve_surplus_[]" value=0>
+													<input hidden name="reserve_surplus_[]" value=0>
+													<input hidden name="reserve_surplus_[]" value=0>
+													<input hidden name="reserve_surplus_[]" value=0>
+													<input hidden name="reserve_surplus_[]" value=0>
+												</tr>
+
+
+												<tr id="equity_funds_raised">
+													<th scope="row">Equity Funds Raised</th>
+													<td>--</td>
+													<td>--</td>
+													<td>--</td>
+													<td>--</td>
+													<td>--</td>
+													<input hidden name="equity_funds_raised_[]" value=0>
+													<input hidden name="equity_funds_raised_[]" value=0>
+													<input hidden name="equity_funds_raised_[]" value=0>
+													<input hidden name="equity_funds_raised_[]" value=0>
+													<input hidden name="equity_funds_raised_[]" value=0>
+												</tr>
+
+
+												<tr id="total_shareholder_funds_a">
+													<th scope="row">Total Shareholder funds(A)</th>
+													<td>--</td>
+													<td>--</td>
+													<td>--</td>
+													<td>--</td>
+													<td>--</td>
+													<input hidden name="total_shareholder_funds_a_[]" value=0>
+													<input hidden name="total_shareholder_funds_a_[]" value=0>
+													<input hidden name="total_shareholder_funds_a_[]" value=0>
+													<input hidden name="total_shareholder_funds_a_[]" value=0>
+													<input hidden name="total_shareholder_funds_a_[]" value=0>
+												</tr>
+
+												
+												
+											</tbody>
+										</table>
+										<br>
+
+				</div>
+<!-- Shareholders Funds Projection table end -->
+
+				<hr>                
+
+
+    
+				
+				
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -327,18 +357,7 @@
 							<div class="form-group">
 								<label ><strong> From Banks   </strong> <a href="#"  data-toggle="tooltip" title="Help text."><i class="far fa-question-circle"></i></a>  </label>
 									
-								<div class="perc_helper_h form-group text-info">
-
-										<label class="radio-inline">
-											<input type="radio" class="r" name="" value="amnt"> Amount   
-										</label>
-
-										<label class="radio-inline">
-											<input type="radio" class="r" name="" value="perc" checked> % &nbsp; &nbsp; &nbsp; 
-										</label>
-
-									</div>
-
+								
 								</div>
 						</div>
 
@@ -346,32 +365,32 @@
 
 						<div class="col">
 							<div class="form-group">
-								<input type="text"  class="form-control {% if data.historical_xl_data %} text_input {%else %} text_input_nh {% endif %}" name="secured_loans_from_banks[]"   maxlength="20" minlength="1"  />
+								<input type="number" min=0 step=0.001  class="form-control  ptext_input" name="secured_loans_from_banks[]"   maxlength="20" minlength="1"  />
 								</div>
 						</div>
 
 						<div class="col">
 							<div class="form-group">
-								<input type="text"  class="form-control text_input" name="secured_loans_from_banks[]"  maxlength="20" minlength="1"  />
-									<div class="perc_helper_h">% value</div>
+								<input type="number" min=0 step=0.001  class="form-control  ptext_input ptext_input_c" name="secured_loans_from_banks[]"  maxlength="20" minlength="1"  />
+								
 								</div>
 						</div>
 						<div class="col">
 							<div class="form-group">
-								<input type="text"  class="form-control text_input" name="secured_loans_from_banks[]"   maxlength="20" minlength="1"  />
-									<div class="perc_helper_h">% value</div>
+								<input type="number" min=0 step=0.001  class="form-control  ptext_input ptext_input_c" name="secured_loans_from_banks[]"   maxlength="20" minlength="1"  />
+								
 								</div>
 						</div>
 						<div class="col">
 							<div class="form-group">
-								<input type="text"  class="form-control text_input" name="secured_loans_from_banks[]"   maxlength="20" minlength="1"  />
-									<div class="perc_helper_h">% value</div>
+								<input type="number" min=0 step=0.001  class="form-control  ptext_input ptext_input_c" name="secured_loans_from_banks[]"   maxlength="20" minlength="1"  />
+								
 								</div>
 						</div>
 						<div class="col">
 							<div class="form-group">
-								<input type="text"  class="form-control text_input" name="secured_loans_from_banks[]"  maxlength="20" minlength="1"  />
-									<div class="perc_helper_h">% value</div>
+								<input type="number" min=0 step=0.001  class="form-control  ptext_input ptext_input_c" name="secured_loans_from_banks[]"  maxlength="20" minlength="1"  />
+								
 								</div>
 						</div>
 						
@@ -389,17 +408,7 @@
 							<div class="form-group">
 								<label ><strong> Term Loans  </strong> <a href="#"  data-toggle="tooltip" title="Help text."><i class="far fa-question-circle"></i></a>  </label>
 									
-								<div class="perc_helper_h form-group text-info">
-
-										<label class="radio-inline">
-											<input type="radio" class="r" name="" value="amnt"> Amount   
-										</label>
-
-										<label class="radio-inline">
-											<input type="radio" class="r" name="" value="perc" checked> % &nbsp; &nbsp; &nbsp; 
-										</label>
-
-									</div>
+							
 
 								</div>
 						</div>
@@ -408,32 +417,32 @@
 
 						<div class="col">
 							<div class="form-group">
-								<input type="text"  class="form-control {% if data.historical_xl_data %} text_input {%else %} text_input_nh {% endif %}" name="secured_loans_term_loans[]"   maxlength="20" minlength="1"  />
+								<input ttype="number" min=0 step=0.001  class="form-control  ptext_input" name="secured_loans_term_loans[]"   maxlength="20" minlength="1"  />
 								</div>
 						</div>
 
 						<div class="col">
 							<div class="form-group">
-								<input type="text"  class="form-control text_input" name="secured_loans_term_loans[]"  maxlength="20" minlength="1"  />
-									<div class="perc_helper_h">% value</div>
+								<input type="number" min=0 step=0.001  class="form-control  ptext_input ptext_input_c" name="secured_loans_term_loans[]"  maxlength="20" minlength="1"  />
+								
 								</div>
 						</div>
 						<div class="col">
 							<div class="form-group">
-								<input type="text"  class="form-control text_input" name="secured_loans_term_loans[]"   maxlength="20" minlength="1"  />
-									<div class="perc_helper_h">% value</div>
+								<input type="number" min=0 step=0.001  class="form-control  ptext_input ptext_input_c" name="secured_loans_term_loans[]"   maxlength="20" minlength="1"  />
+								
 								</div>
 						</div>
 						<div class="col">
 							<div class="form-group">
-								<input type="text"  class="form-control text_input" name="secured_loans_term_loans[]"   maxlength="20" minlength="1"  />
-									<div class="perc_helper_h">% value</div>
+								<input type="number" min=0 step=0.001  class="form-control  ptext_input ptext_input_c" name="secured_loans_term_loans[]"   maxlength="20" minlength="1"  />
+								
 								</div>
 						</div>
 						<div class="col">
 							<div class="form-group">
-								<input type="text"  class="form-control text_input" name="secured_loans_term_loans[]"  maxlength="20" minlength="1"  />
-									<div class="perc_helper_h">% value</div>
+								<input type="number" min=0 step=0.001  class="form-control  ptext_input ptext_input_c" name="secured_loans_term_loans[]"  maxlength="20" minlength="1"  />
+								
 								</div>
 						</div>
 						
@@ -448,17 +457,7 @@
 							<div class="form-group">
 								<label ><strong> Other Loans  </strong> <a href="#"  data-toggle="tooltip" title="Help text."><i class="far fa-question-circle"></i></a>  </label>
 									
-								<div class="perc_helper_h form-group text-info">
-
-										<label class="radio-inline">
-											<input type="radio" class="r" name="" value="amnt"> Amount   
-										</label>
-
-										<label class="radio-inline">
-											<input type="radio" class="r" name="" value="perc" checked> % &nbsp; &nbsp; &nbsp; 
-										</label>
-
-									</div>
+								
 
 								</div>
 						</div>
@@ -467,32 +466,32 @@
 
 						<div class="col">
 							<div class="form-group">
-								<input type="text"  class="form-control {% if data.historical_xl_data %} text_input {%else %} text_input_nh {% endif %}" name="secured_loans_other_loans[]"   maxlength="20" minlength="1"  />
+								<input type="number" min=0 step=0.001  class="form-control  ptext_input" name="secured_loans_other_loans[]"   maxlength="20" minlength="1"  />
 								</div>
 						</div>
 
 						<div class="col">
 							<div class="form-group">
-								<input type="text"  class="form-control text_input" name="secured_loans_other_loans[]"  maxlength="20" minlength="1"  />
-									<div class="perc_helper_h">% value</div>
+								<input type="number" min=0 step=0.001  class="form-control  ptext_input ptext_input_c" name="secured_loans_other_loans[]"  maxlength="20" minlength="1"  />
+								
 								</div>
 						</div>
 						<div class="col">
 							<div class="form-group">
-								<input type="text"  class="form-control text_input" name="secured_loans_other_loans[]"   maxlength="20" minlength="1"  />
-									<div class="perc_helper_h">% value</div>
+								<input type="number" min=0 step=0.001  class="form-control  ptext_input ptext_input_c" name="secured_loans_other_loans[]"   maxlength="20" minlength="1"  />
+								
 								</div>
 						</div>
 						<div class="col">
 							<div class="form-group">
-								<input type="text"  class="form-control text_input" name="secured_loans_other_loans[]"   maxlength="20" minlength="1"  />
-									<div class="perc_helper_h">% value</div>
+								<input type="number" min=0 step=0.001  class="form-control  ptext_input ptext_input_c" name="secured_loans_other_loans[]"   maxlength="20" minlength="1"  />
+								
 								</div>
 						</div>
 						<div class="col">
 							<div class="form-group">
-								<input type="text"  class="form-control text_input" name="secured_loans_other_loans[]"  maxlength="20" minlength="1"  />
-									<div class="perc_helper_h">% value</div>
+								<input type="number" min=0 step=0.001  class="form-control  ptext_input ptext_input_c" name="secured_loans_other_loans[]"  maxlength="20" minlength="1"  />
+								
 								</div>
 						</div>
 						
@@ -508,17 +507,7 @@
 							<div class="form-group">
 								<label ><strong> Finance lease obligation  </strong> <a href="#"  data-toggle="tooltip" title="Help text."><i class="far fa-question-circle"></i></a>  </label>
 									
-								<div class="perc_helper_h form-group text-info">
-
-										<label class="radio-inline">
-											<input type="radio" class="r" name="" value="amnt"> Amount   
-										</label>
-
-										<label class="radio-inline">
-											<input type="radio" class="r" name="" value="perc" checked> % &nbsp; &nbsp; &nbsp; 
-										</label>
-
-									</div>
+								
 
 								</div>
 						</div>
@@ -527,32 +516,32 @@
 
 						<div class="col">
 							<div class="form-group">
-								<input type="text"  class="form-control {% if data.historical_xl_data %} text_input {%else %} text_input_nh {% endif %}" name="secured_loans_finance_lease_obligation[]"   maxlength="20" minlength="1"  />
+								<input type="number" min=0 step=0.001  class="form-control  ptext_input" name="secured_loans_finance_lease_obligation[]"   maxlength="20" minlength="1"  />
 								</div>
 						</div>
 
 						<div class="col">
 							<div class="form-group">
-								<input type="text"  class="form-control text_input" name="secured_loans_finance_lease_obligation[]"  maxlength="20" minlength="1"  />
-									<div class="perc_helper_h">% value</div>
+								<input type="number" min=0 step=0.001  class="form-control  ptext_input ptext_input_c" name="secured_loans_finance_lease_obligation[]"  maxlength="20" minlength="1"  />
+								
 								</div>
 						</div>
 						<div class="col">
 							<div class="form-group">
-								<input type="text"  class="form-control text_input" name="secured_loans_finance_lease_obligation[]"   maxlength="20" minlength="1"  />
-									<div class="perc_helper_h">% value</div>
+								<input type="number" min=0 step=0.001  class="form-control  ptext_input ptext_input_c" name="secured_loans_finance_lease_obligation[]"   maxlength="20" minlength="1"  />
+								
 								</div>
 						</div>
 						<div class="col">
 							<div class="form-group">
-								<input type="text"  class="form-control text_input" name="secured_loans_finance_lease_obligation[]"   maxlength="20" minlength="1"  />
-									<div class="perc_helper_h">% value</div>
+								<input type="number" min=0 step=0.001  class="form-control  ptext_input ptext_input_c" name="secured_loans_finance_lease_obligation[]"   maxlength="20" minlength="1"  />
+								
 								</div>
 						</div>
 						<div class="col">
 							<div class="form-group">
-								<input type="text"  class="form-control text_input" name="secured_loans_finance_lease_obligation[]"  maxlength="20" minlength="1"  />
-									<div class="perc_helper_h">% value</div>
+								<input type="number" min=0 step=0.001  class="form-control  ptext_input ptext_input_c" name="secured_loans_finance_lease_obligation[]"  maxlength="20" minlength="1"  />
+								
 								</div>
 						</div>
 						
@@ -568,17 +557,7 @@
 							<div class="form-group">
 								<label ><strong> Unsecured Loans   </strong> <a href="#"  data-toggle="tooltip" title="Help text."><i class="far fa-question-circle"></i></a>  </label>
 									
-								<div class="perc_helper_h form-group text-info">
-
-										<label class="radio-inline">
-											<input type="radio" class="r" name="" value="amnt"> Amount   
-										</label>
-
-										<label class="radio-inline">
-											<input type="radio" class="r" name="" value="perc" checked> % &nbsp; &nbsp; &nbsp; 
-										</label>
-
-									</div>
+							
 
 								</div>
 						</div>
@@ -587,32 +566,32 @@
 
 						<div class="col">
 							<div class="form-group">
-								<input type="text"  class="form-control {% if data.historical_xl_data %} text_input {%else %} text_input_nh {% endif %}" name="unsecured_loans[]"   maxlength="20" minlength="1"  />
+								<input type="number" min=0 step=0.001  class="form-control  ptext_input_uns" name="unsecured_loans[]"   maxlength="20" minlength="1"  />
 								</div>
 						</div>
 
 						<div class="col">
 							<div class="form-group">
-								<input type="text"  class="form-control text_input" name="unsecured_loans[]"  maxlength="20" minlength="1"  />
-									<div class="perc_helper_h">% value</div>
+								<input type="number" min=0 step=0.001  class="form-control  ptext_input_uns ptext_input_c" name="unsecured_loans[]"  maxlength="20" minlength="1"  />
+								
 								</div>
 						</div>
 						<div class="col">
 							<div class="form-group">
-								<input type="text"  class="form-control text_input" name="unsecured_loans[]"   maxlength="20" minlength="1"  />
-									<div class="perc_helper_h">% value</div>
+								<input type="number" min=0 step=0.001  class="form-control  ptext_input_uns ptext_input_c" name="unsecured_loans[]"   maxlength="20" minlength="1"  />
+								
 								</div>
 						</div>
 						<div class="col">
 							<div class="form-group">
-								<input type="text"  class="form-control text_input" name="unsecured_loans[]"   maxlength="20" minlength="1"  />
-									<div class="perc_helper_h">% value</div>
+								<input type="number" min=0 step=0.001  class="form-control  ptext_input_uns ptext_input_c" name="unsecured_loans[]"   maxlength="20" minlength="1"  />
+								
 								</div>
 						</div>
 						<div class="col">
 							<div class="form-group">
-								<input type="text"  class="form-control text_input" name="unsecured_loans[]"  maxlength="20" minlength="1"  />
-									<div class="perc_helper_h">% value</div>
+								<input type="number" min=0 step=0.001  class="form-control  ptext_input_uns ptext_input_c" name="unsecured_loans[]"  maxlength="20" minlength="1"  />
+								
 								</div>
 						</div>
 						
@@ -635,33 +614,33 @@
 
 						<div class="col">
 							<div class="form-group">
-								<input type="text" class="form-control text_input_p" name="average_interest_rate_debt[]"   maxlength="20" minlength="1"  />
-								<div class="perc_helper_h">% value</div>
+								<input type="number" min=0 step=0.001  class="form-control  ptext_input_smp ptext_input_c"  name="average_interest_rate_debt[]"   maxlength="20" minlength="1"  />
+							
 								</div>
 						</div>
 
 						<div class="col">
 							<div class="form-group">
-								<input type="text" class="form-control text_input_p" name="average_interest_rate_debt[]"  maxlength="20" minlength="1"  />
-									<div class="perc_helper_h">% value</div>
+								<input type="number" min=0 step=0.001  class="form-control  ptext_input_smp ptext_input_c"  name="average_interest_rate_debt[]"  maxlength="20" minlength="1"  />
+								
 								</div>
 						</div>
 						<div class="col">
 							<div class="form-group">
-								<input type="text" class="form-control text_input_p"name="average_interest_rate_debt[]"   maxlength="20" minlength="1"  />
-									<div class="perc_helper_h">% value</div>
+								<input type="number" min=0 step=0.001  class="form-control  ptext_input_smp ptext_input_c" name="average_interest_rate_debt[]"   maxlength="20" minlength="1"  />
+								
 								</div>
 						</div>
 						<div class="col">
 							<div class="form-group">
-								<input type="text" class="form-control text_input_p"name="average_interest_rate_debt[]"   maxlength="20" minlength="1"  />
-									<div class="perc_helper_h">% value</div>
+								<input type="number" min=0 step=0.001  class="form-control  ptext_input_smp ptext_input_c" name="average_interest_rate_debt[]"   maxlength="20" minlength="1"  />
+								
 								</div>
 						</div>
 						<div class="col">
 							<div class="form-group">
-								<input type="text" class="form-control text_input_p"name="average_interest_rate_debt[]"  maxlength="20" minlength="1"  />
-									<div class="perc_helper_h">% value</div>
+								<input type="number" min=0 step=0.001  class="form-control  ptext_input_smp ptext_input_c" name="average_interest_rate_debt[]"  maxlength="20" minlength="1"  />
+								
 								</div>
 						</div>
 						
@@ -669,7 +648,227 @@
                        
 				</div>
 
-<hr><br>
+
+
+
+
+
+
+
+
+
+
+                 
+<br><br><button type="button" class="btn btn-warning" onclick="projection(2);">Show or Hide Projection Report</button>
+
+
+
+
+
+<!-- Debt Schedule Projection table -->
+				<div id="table2" style="display:none;"><br>
+									<table  class="table text-dark">
+										<thead>
+											<tr>
+												<th scope="col"></th>
+												<th  class="year_1" scope="col"> {% if data.balance_sheet_years.f_1 %} {{data.balance_sheet_years.f_1}} {% else %} Year 1 {% endif %} </th>
+												<th  class="year_2" scope="col">{% if data.balance_sheet_years.f_2 %} {{data.balance_sheet_years.f_2}} {% else %} Year 2 {% endif %}</th>
+												<th  class="year_3" scope="col">{% if data.balance_sheet_years.f_3 %} {{data.balance_sheet_years.f_3}} {% else %} Year 3 {% endif %}</th>
+												<th  class="year_4" scope="col">{% if data.balance_sheet_years.f_4 %} {{data.balance_sheet_years.f_4}} {% else %} Year 4 {% endif %}</th>
+												<th  class="year_5" scope="col">{% if data.balance_sheet_years.f_5 %} {{data.balance_sheet_years.f_5}} {% else %} Year 5 {% endif %}</th>
+											</tr>
+										</thead>
+											<tbody>
+
+												<thead class="thead text-primary"><tr><th colspan="6" scope="col">Secured Loans  </th></tr></thead>
+
+												<tr id="secured_loans_from_banks">
+													<th scope="row">From Banks</th>
+													<td>--</td>
+													<td>--</td>
+													<td>--</td>
+													<td>--</td>
+													<td>--</td>
+													<input hidden name="secured_loans_from_banks_[]" value=0>
+													<input hidden name="secured_loans_from_banks_[]" value=0>
+													<input hidden name="secured_loans_from_banks_[]" value=0>
+													<input hidden name="secured_loans_from_banks_[]" value=0>
+													<input hidden name="secured_loans_from_banks_[]" value=0>
+												</tr>
+
+												<tr id="secured_loans_term_loans">
+													<th scope="row">Term Loans</th>
+													<td>--</td>
+													<td>--</td>
+													<td>--</td>
+													<td>--</td>
+													<td>--</td>
+													<input hidden name="secured_loans_term_loans_[]" value=0>
+													<input hidden name="secured_loans_term_loans_[]" value=0>
+													<input hidden name="secured_loans_term_loans_[]" value=0>
+													<input hidden name="secured_loans_term_loans_[]" value=0>
+													<input hidden name="secured_loans_term_loans_[]" value=0>
+												</tr>
+
+												<tr id="secured_loans_other_loans">
+													<th scope="row">Other Loans</th>
+													<td>--</td>
+													<td>--</td>
+													<td>--</td>
+													<td>--</td>
+													<td>--</td>
+													<input hidden name="secured_loans_other_loans_[]" value=0>
+													<input hidden name="secured_loans_other_loans_[]" value=0>
+													<input hidden name="secured_loans_other_loans_[]" value=0>
+													<input hidden name="secured_loans_other_loans_[]" value=0>
+													<input hidden name="secured_loans_other_loans_[]" value=0>
+												</tr>
+
+												<tr id="secured_loans_finance_lease_obligation">
+													<th scope="row">Finance lease obligation</th>
+													<td>--</td>
+													<td>--</td>
+													<td>--</td>
+													<td>--</td>
+													<td>--</td>
+													<input hidden name="secured_loans_finance_lease_obligation_[]" value=0>
+													<input hidden name="secured_loans_finance_lease_obligation_[]" value=0>
+													<input hidden name="secured_loans_finance_lease_obligation_[]" value=0>
+													<input hidden name="secured_loans_finance_lease_obligation_[]" value=0>
+													<input hidden name="secured_loans_finance_lease_obligation_[]" value=0>
+												</tr>
+
+												<tr id="total_secured_loans">
+													<th scope="row">Total Secured Loans</th>
+													<td>--</td>
+													<td>--</td>
+													<td>--</td>
+													<td>--</td>
+													<td>--</td>
+													<input hidden name="total_secured_loans_[]" value=0>
+													<input hidden name="total_secured_loans_[]" value=0>
+													<input hidden name="total_secured_loans_[]" value=0>
+													<input hidden name="total_secured_loans_[]" value=0>
+													<input hidden name="total_secured_loans_[]" value=0>
+												</tr>
+
+
+												<tr id="unsecured_loans">
+													<th class="text-primary" scope="row">Unsecured Loans</th>
+													<td>--</td>
+													<td>--</td>
+													<td>--</td>
+													<td>--</td>
+													<td>--</td>
+													<input hidden name="unsecured_loans_[]" value=0>
+													<input hidden name="unsecured_loans_[]" value=0>
+													<input hidden name="unsecured_loans_[]" value=0>
+													<input hidden name="unsecured_loans_[]" value=0>
+													<input hidden name="unsecured_loans_[]" value=0>
+												</tr>
+
+												<tr id="total_unsecured_loans">
+													<th scope="row">Total Unsecured Loan</th>
+													<td>--</td>
+													<td>--</td>
+													<td>--</td>
+													<td>--</td>
+													<td>--</td>
+													<input hidden name="total_unsecured_loans_[]" value=0>
+													<input hidden name="total_unsecured_loans_[]" value=0>
+													<input hidden name="total_unsecured_loans_[]" value=0>
+													<input hidden name="total_unsecured_loans_[]" value=0>
+													<input hidden name="total_unsecured_loans_[]" value=0>
+												</tr>
+
+
+												<tr id="total_debt">
+													<th scope="row">Total Debt</th>
+													<td>--</td>
+													<td>--</td>
+													<td>--</td>
+													<td>--</td>
+													<td>--</td>
+													<input hidden name="total_debt_[]" value=0>
+													<input hidden name="total_debt_[]" value=0>
+													<input hidden name="total_debt_[]" value=0>
+													<input hidden name="total_debt_[]" value=0>
+													<input hidden name="total_debt_[]" value=0>
+												</tr>
+
+
+												<tr id="interest_expense">
+													<th scope="row">Interest Expense</th>
+													<td>--</td>
+													<td>--</td>
+													<td>--</td>
+													<td>--</td>
+													<td>--</td>
+													<input hidden name="interest_expense_[]" value=0>
+													<input hidden name="interest_expense_[]" value=0>
+													<input hidden name="interest_expense_[]" value=0>
+													<input hidden name="interest_expense_[]" value=0>
+													<input hidden name="interest_expense_[]" value=0>
+												</tr>
+
+
+												<tr id="average_interest_rate_debt">
+													<th scope="row">Average Interest Rate (%)</th>
+													<td>--</td>
+													<td>--</td>
+													<td>--</td>
+													<td>--</td>
+													<td>--</td>
+													<input hidden name="average_interest_rate_debt_[]" value=0>
+													<input hidden name="average_interest_rate_debt_[]" value=0>
+													<input hidden name="average_interest_rate_debt_[]" value=0>
+													<input hidden name="average_interest_rate_debt_[]" value=0>
+													<input hidden name="average_interest_rate_debt_[]" value=0>
+												</tr>
+
+												
+											</tbody>
+										</table>
+										<br>
+
+				</div>
+<!-- Debt Schedule Projection table end -->
+
+				<hr>    <br><br>            
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 <h5 class="text-primary">Non-Current Liabilities</h5>
                 <hr>
@@ -680,18 +879,7 @@
 							<div class="form-group">
 								<label ><strong> Deferred Tax liabilities   </strong> <a href="#"  data-toggle="tooltip" title="Help text."><i class="far fa-question-circle"></i></a>  </label>
 									
-								<div class="perc_helper_h form-group text-info">
-
-										<label class="radio-inline">
-											<input type="radio" class="r" name="" value="amnt"> Amount   
-										</label>
-
-										<label class="radio-inline">
-											<input type="radio" class="r" name="" value="perc" checked> % &nbsp; &nbsp; &nbsp; 
-										</label>
-
-									</div>
-
+						
 								</div>
 						</div>
 
@@ -699,32 +887,32 @@
 
 						<div class="col">
 							<div class="form-group">
-								<input type="text"  class="form-control {% if data.historical_xl_data %} text_input {%else %} text_input_nh {% endif %}" name="deferred_tax_liabilities[]"   maxlength="20" minlength="1"  />
+								<input type="number" min=0 step=0.001  class="form-control  ptext_input" name="deferred_tax_liabilities[]"   maxlength="20" minlength="1"  />
 								</div>
 						</div>
 
 						<div class="col">
 							<div class="form-group">
-								<input type="text"  class="form-control text_input" name="deferred_tax_liabilities[]"  maxlength="20" minlength="1"  />
-									<div class="perc_helper_h">% value</div>
+								<input type="number" min=0 step=0.001  class="form-control  ptext_input ptext_input_c" name="deferred_tax_liabilities[]"  maxlength="20" minlength="1"  />
+								
 								</div>
 						</div>
 						<div class="col">
 							<div class="form-group">
-								<input type="text"  class="form-control text_input" name="deferred_tax_liabilities[]"   maxlength="20" minlength="1"  />
-									<div class="perc_helper_h">% value</div>
+								<input type="number" min=0 step=0.001  class="form-control  ptext_input ptext_input_c" name="deferred_tax_liabilities[]"   maxlength="20" minlength="1"  />
+								
 								</div>
 						</div>
 						<div class="col">
 							<div class="form-group">
-								<input type="text"  class="form-control text_input" name="deferred_tax_liabilities[]"   maxlength="20" minlength="1"  />
-									<div class="perc_helper_h">% value</div>
+								<input type="number" min=0 step=0.001  class="form-control  ptext_input ptext_input_c" name="deferred_tax_liabilities[]"   maxlength="20" minlength="1"  />
+								
 								</div>
 						</div>
 						<div class="col">
 							<div class="form-group">
-								<input type="text"  class="form-control text_input" name="deferred_tax_liabilities[]"  maxlength="20" minlength="1"  />
-									<div class="perc_helper_h">% value</div>
+								<input type="number" min=0 step=0.001  class="form-control  ptext_input ptext_input_c" name="deferred_tax_liabilities[]"  maxlength="20" minlength="1"  />
+								
 								</div>
 						</div>
 						
@@ -739,19 +927,6 @@
 							<div class="form-group">
 								<label ><strong>Long-term Provisions </strong>
                                 <a href="#"  data-toggle="tooltip" title="Help text."><i class="far fa-question-circle"></i></a></label>
-								<div class="form-group text-info d-none">
-
-										<label class="radio-inline">
-											<input type="radio" class="r1" name="long_term_provisions_growth_or" value="amnt" > Amount &nbsp; &nbsp; &nbsp; 
-										</label>
-
-										<label class="radio-inline">
-											<input type="radio" class="r1" name="long_term_provisions_growth_or" value="perc" checked > %    
-										</label>
-
-										
-									</div>
-								
 								
 								</div>
 						</div>
@@ -759,32 +934,32 @@
 
                         <div class="col">
 							<div class="form-group">
-								<input type="text"  class="form-control {% if data.historical_xl_data %} text_input {%else %} text_input_nh {% endif %}" name="long_term_provisions_growth_or_amount[]" maxlength="20" minlength="1" />
-								<div class="perc_helper_h">% value</div>
+								<input type="number" min=0 step=0.001  class="form-control  ptext_input" name="long_term_provisions_growth_or_amount[]" maxlength="20" minlength="1" />
+							
 								</div>
 						</div>
                         <div class="col">
 							<div class="form-group">
-								<input type="text" class="form-control text_input" name="long_term_provisions_growth_or_amount[]" maxlength="20" minlength="1" />
-								<div class="perc_helper_h">% value</div>
+								<input type="number" min=0 step=0.001  class="form-control  ptext_input ptext_input_c" name="long_term_provisions_growth_or_amount[]" maxlength="20" minlength="1" />
+							
 								</div>
 						</div>
                         <div class="col">
 							<div class="form-group">
-								<input type="text" class="form-control text_input" name="long_term_provisions_growth_or_amount[]" maxlength="20" minlength="1" />
-								<div class="perc_helper_h">% value</div>
+								<input type="number" min=0 step=0.001  class="form-control  ptext_input ptext_input_c" name="long_term_provisions_growth_or_amount[]" maxlength="20" minlength="1" />
+							
 								</div>
 						</div>
                         <div class="col">
 							<div class="form-group">
-								<input type="text" class="form-control text_input" name="long_term_provisions_growth_or_amount[]" maxlength="20" minlength="1" />
-								<div class="perc_helper_h">% value</div>
+								<input type="number" min=0 step=0.001  class="form-control  ptext_input ptext_input_c" name="long_term_provisions_growth_or_amount[]" maxlength="20" minlength="1" />
+							
 								</div>
 						</div>
                         <div class="col">
 							<div class="form-group">
-								<input type="text" class="form-control text_input" name="long_term_provisions_growth_or_amount[]" maxlength="20" minlength="1" />
-								<div class="perc_helper_h">% value</div>
+								<input type="number" min=0 step=0.001  class="form-control  ptext_input ptext_input_c" name="long_term_provisions_growth_or_amount[]" maxlength="20" minlength="1" />
+							
 								</div>
 						</div>
 						
@@ -800,18 +975,7 @@
 								<label ><strong>Other Non-Current Liabilities </strong>
                                 <a href="#"  data-toggle="tooltip" title="Help text."><i class="far fa-question-circle"></i></a></label>
 								
-								<div class="form-group text-info d-none">
-
-										<label class="radio-inline">
-											<input type="radio" class="r2" name="other_non_current_liabilities_growth_or" value="amnt" > Amount &nbsp; &nbsp; &nbsp; 
-										</label>
-
-										<label class="radio-inline">
-											<input type="radio" class="r2" name="other_non_current_liabilities_growth_or" value="perc" checked> %    
-										</label>
-
-										
-									</div>
+								
 								
 								</div>
 						</div>
@@ -819,37 +983,191 @@
 
                         <div class="col">
 							<div class="form-group">
-								<input type="text"  class="form-control {% if data.historical_xl_data %} text_input {%else %} text_input_nh {% endif %}" name="other_non_current_liabilities_growth_or_amount[]" maxlength="20" minlength="1" />
-								<div class="perc_helper_h">% value</div>
+								<input type="number" min=0 step=0.001  class="form-control  ptext_input" name="other_non_current_liabilities_growth_or_amount[]" maxlength="20" minlength="1" />
+							
 								</div>
 						</div>
                          <div class="col">
 							<div class="form-group">
-								<input type="text" class="form-control text_input" name="other_non_current_liabilities_growth_or_amount[]" maxlength="20" minlength="1" />
-								<div class="perc_helper_h">% value</div>
+								<input type="number" min=0 step=0.001  class="form-control  ptext_input ptext_input_c" name="other_non_current_liabilities_growth_or_amount[]" maxlength="20" minlength="1" />
+							
 								</div>
 						</div>
                          <div class="col">
 							<div class="form-group">
-								<input type="text" class="form-control text_input" name="other_non_current_liabilities_growth_or_amount[]" maxlength="20" minlength="1" />
-								<div class="perc_helper_h">% value</div>
+								<input type="number" min=0 step=0.001  class="form-control  ptext_input ptext_input_c" name="other_non_current_liabilities_growth_or_amount[]" maxlength="20" minlength="1" />
+							
 								</div>
 						</div>
                          <div class="col">
 							<div class="form-group">
-								<input type="text" class="form-control text_input" name="other_non_current_liabilities_growth_or_amount[]" maxlength="20" minlength="1" />
-								<div class="perc_helper_h">% value</div>
+								<input type="number" min=0 step=0.001  class="form-control  ptext_input ptext_input_c" name="other_non_current_liabilities_growth_or_amount[]" maxlength="20" minlength="1" />
+							
 								</div>
 						</div>
                          <div class="col">
 							<div class="form-group">
-								<input type="text" class="form-control text_input"  name="other_non_current_liabilities_growth_or_amount[]" maxlength="20" minlength="1" />
-								<div class="perc_helper_h">% value</div>
+								<input type="number" min=0 step=0.001  class="form-control  ptext_input ptext_input_c"  name="other_non_current_liabilities_growth_or_amount[]" maxlength="20" minlength="1" />
+							
 								</div>
 						</div>
 						
                         
 				</div>
+
+
+
+
+
+
+                 
+<br><br><button type="button" class="btn btn-warning" onclick="projection(3);">Show or Hide Projection Report</button>
+
+
+
+
+
+<!-- Non- Current Liabilities  Projection table -->
+				<div id="table3" style="display:none;"><br>
+									<table  class="table text-dark">
+										<thead>
+											<tr>
+												<th scope="col"></th>
+												<th  class="year_1" scope="col"> {% if data.balance_sheet_years.f_1 %} {{data.balance_sheet_years.f_1}} {% else %} Year 1 {% endif %} </th>
+												<th  class="year_2" scope="col">{% if data.balance_sheet_years.f_2 %} {{data.balance_sheet_years.f_2}} {% else %} Year 2 {% endif %}</th>
+												<th  class="year_3" scope="col">{% if data.balance_sheet_years.f_3 %} {{data.balance_sheet_years.f_3}} {% else %} Year 3 {% endif %}</th>
+												<th  class="year_4" scope="col">{% if data.balance_sheet_years.f_4 %} {{data.balance_sheet_years.f_4}} {% else %} Year 4 {% endif %}</th>
+												<th  class="year_5" scope="col">{% if data.balance_sheet_years.f_5 %} {{data.balance_sheet_years.f_5}} {% else %} Year 5 {% endif %}</th>
+											</tr>
+										</thead>
+											<tbody>
+
+											
+												<tr id="secured_loans2">
+													<th scope="row">Secured Loans </th>
+													<td>--</td>
+													<td>--</td>
+													<td>--</td>
+													<td>--</td>
+													<td>--</td>
+													<input hidden name="secured_loans2_[]" value=0>
+													<input hidden name="secured_loans2_[]" value=0>
+													<input hidden name="secured_loans2_[]" value=0>
+													<input hidden name="secured_loans2_[]" value=0>
+													<input hidden name="secured_loans2_[]" value=0>
+												</tr>
+
+
+												
+												<tr id="unsecured_loans2">
+													<th scope="row">Unsecured Loans</th>
+													<td>--</td>
+													<td>--</td>
+													<td>--</td>
+													<td>--</td>
+													<td>--</td>
+													<input hidden name="unsecured_loans2_[]" value=0>
+													<input hidden name="unsecured_loans2_[]" value=0>
+													<input hidden name="unsecured_loans2_[]" value=0>
+													<input hidden name="unsecured_loans2_[]" value=0>
+													<input hidden name="unsecured_loans2_[]" value=0>
+												</tr>
+
+
+
+
+												<tr id="deferred_tax_liabilities">
+													<th scope="row">Deferred Tax liabilities  </th>
+													<td>--</td>
+													<td>--</td>
+													<td>--</td>
+													<td>--</td>
+													<td>--</td>
+													<input hidden name="deferred_tax_liabilities_[]" value=0>
+													<input hidden name="deferred_tax_liabilities_[]" value=0>
+													<input hidden name="deferred_tax_liabilities_[]" value=0>
+													<input hidden name="deferred_tax_liabilities_[]" value=0>
+													<input hidden name="deferred_tax_liabilities_[]" value=0>
+												</tr>
+
+
+
+
+												<tr id="long_term_provisions_growth_or_amount">
+													<th scope="row">Long Term provisions </th>
+													<td>--</td>
+													<td>--</td>
+													<td>--</td>
+													<td>--</td>
+													<td>--</td>
+													<input hidden name="long_term_provisions_growth_or_amount_[]" value=0>
+													<input hidden name="long_term_provisions_growth_or_amount_[]" value=0>
+													<input hidden name="long_term_provisions_growth_or_amount_[]" value=0>
+													<input hidden name="long_term_provisions_growth_or_amount_[]" value=0>
+													<input hidden name="long_term_provisions_growth_or_amount_[]" value=0>
+												</tr>
+
+
+
+
+												<tr id="other_non_current_liabilities_growth_or_amount">
+													<th scope="row">Other Non- Current Liabilities  </th>
+													<td>--</td>
+													<td>--</td>
+													<td>--</td>
+													<td>--</td>
+													<td>--</td>
+													<input hidden name="other_non_current_liabilities_growth_or_amount_[]" value=0>
+													<input hidden name="other_non_current_liabilities_growth_or_amount_[]" value=0>
+													<input hidden name="other_non_current_liabilities_growth_or_amount_[]" value=0>
+													<input hidden name="other_non_current_liabilities_growth_or_amount_[]" value=0>
+													<input hidden name="other_non_current_liabilities_growth_or_amount_[]" value=0>
+												</tr>
+
+
+												
+												<tr id="total_non_current_liabilities_b">
+													<th scope="row">Total Non Current Liabilities (B)</th>
+													<td>--</td>
+													<td>--</td>
+													<td>--</td>
+													<td>--</td>
+													<td>--</td>
+													<input hidden name="total_non_current_liabilities_b_[]" value=0>
+													<input hidden name="total_non_current_liabilities_b_[]" value=0>
+													<input hidden name="total_non_current_liabilities_b_[]" value=0>
+													<input hidden name="total_non_current_liabilities_b_[]" value=0>
+													<input hidden name="total_non_current_liabilities_b_[]" value=0>
+												</tr>
+
+
+
+											</tbody>
+										</table>
+										<br>
+
+				</div>
+<!-- Non- Current Liabilities  Projection table end -->
+
+				<hr>    <br><br>    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
                 
@@ -864,50 +1182,38 @@
 								<label ><strong>Short-Term Borrowings</strong>
                                 <a href="#"  data-toggle="tooltip" title="Help text."><i class="far fa-question-circle"></i></a></label>
 								
-								<div class="form-group text-info d-none">
-
-										<label class="radio-inline">
-											<input type="radio" class="r3" name="short_term_borrowings_growth_or" value="amnt" > Amount &nbsp; &nbsp; &nbsp; 
-										</label>
-
-										<label class="radio-inline">
-											<input type="radio" class="r3" name="short_term_borrowings_growth_or" value="perc" checked> %    
-										</label>
-
-										
-									</div>
 								
 								</div>
 						</div>
 						
 						<div class="col">
 							<div class="form-group">
-								<input type="text"  class="form-control {% if data.historical_xl_data %} text_input {%else %} text_input_nh {% endif %}" name="short_term_borrowings_growth_or_amount[]" maxlength="20" minlength="1" />
-								<div class="perc_helper_h">% value</div>
+								<input type="number" min=0 step=0.001  class="form-control  ptext_input" name="short_term_borrowings_growth_or_amount[]" maxlength="20" minlength="1" />
+							
 								</div>
 						</div>
                         <div class="col">
 							<div class="form-group">
-								<input type="text" class="form-control text_input" name="short_term_borrowings_growth_or_amount[]" maxlength="20" minlength="1" />
-								<div class="perc_helper_h">% value</div>
+								<input type="number" min=0 step=0.001  class="form-control  ptext_input ptext_input_c" name="short_term_borrowings_growth_or_amount[]" maxlength="20" minlength="1" />
+							
 								</div>
 						</div>
                         <div class="col">
 							<div class="form-group">
-								<input type="text" class="form-control text_input" name="short_term_borrowings_growth_or_amount[]" maxlength="20" minlength="1" />
-								<div class="perc_helper_h">% value</div>
+								<input type="number" min=0 step=0.001  class="form-control  ptext_input ptext_input_c" name="short_term_borrowings_growth_or_amount[]" maxlength="20" minlength="1" />
+							
 								</div>
 						</div>
                         <div class="col">
 							<div class="form-group">
-								<input type="text" class="form-control text_input" name="short_term_borrowings_growth_or_amount[]" maxlength="20" minlength="1" />
-								<div class="perc_helper_h">% value</div>
+								<input type="number" min=0 step=0.001  class="form-control  ptext_input ptext_input_c" name="short_term_borrowings_growth_or_amount[]" maxlength="20" minlength="1" />
+							
 								</div>
 						</div>
                         <div class="col">
 							<div class="form-group">
-								<input type="text" class="form-control text_input" name="short_term_borrowings_growth_or_amount[]" maxlength="20" minlength="1" />
-								<div class="perc_helper_h">% value</div>
+								<input type="number" min=0 step=0.001  class="form-control  ptext_input ptext_input_c" name="short_term_borrowings_growth_or_amount[]" maxlength="20" minlength="1" />
+							
 								</div>
 						</div>
                        
@@ -921,50 +1227,39 @@
 								<label ><strong>Short-Term Provisions </strong>
                                 <a href="#"  data-toggle="tooltip" title="Help text."><i class="far fa-question-circle"></i></a></label>
 								
-								<div class="form-group text-info d-none">
-
-										<label class="radio-inline">
-											<input type="radio" class="r4" name="short_term_provisions_growth_or" value="amnt" > Amount &nbsp; &nbsp; &nbsp; 
-										</label>
-
-										<label class="radio-inline">
-											<input type="radio" class="r4" name="short_term_provisions_growth_or" value="perc" checked> %    
-										</label>
-
-										
-									</div>
+							
 								
 								</div>
 						</div>
 						
                         <div class="col">
 							<div class="form-group">
-								<input type="text"  class="form-control {% if data.historical_xl_data %} text_input {%else %} text_input_nh {% endif %}" name="short_term_provisions_growth_or_amount[]" maxlength="20" minlength="1" />
-								<div class="perc_helper_h">% value</div>
+								<input type="number" min=0 step=0.001  class="form-control  ptext_input" name="short_term_provisions_growth_or_amount[]" maxlength="20" minlength="1" />
+							
 								</div>
 						</div>
                         <div class="col">
 							<div class="form-group">
-								<input type="text" class="form-control text_input" name="short_term_provisions_growth_or_amount[]" maxlength="20" minlength="1" />
-								<div class="perc_helper_h">% value</div>
+								<input type="number" min=0 step=0.001  class="form-control  ptext_input ptext_input_c" name="short_term_provisions_growth_or_amount[]" maxlength="20" minlength="1" />
+							
 								</div>
 						</div>
                         <div class="col">
 							<div class="form-group">
-								<input type="text" class="form-control text_input"  name="short_term_provisions_growth_or_amount[]" maxlength="20" minlength="1" />
-								<div class="perc_helper_h">% value</div>
+								<input type="number" min=0 step=0.001  class="form-control  ptext_input ptext_input_c"  name="short_term_provisions_growth_or_amount[]" maxlength="20" minlength="1" />
+							
 								</div>
 						</div>
                         <div class="col">
 							<div class="form-group">
-								<input type="text" class="form-control text_input"  name="short_term_provisions_growth_or_amount[]" maxlength="20" minlength="1" />
-								<div class="perc_helper_h">% value</div>
+								<input type="number" min=0 step=0.001  class="form-control  ptext_input ptext_input_c"  name="short_term_provisions_growth_or_amount[]" maxlength="20" minlength="1" />
+							
 								</div>
 						</div>
                         <div class="col">
 							<div class="form-group">
-								<input type="text" class="form-control text_input" name="short_term_provisions_growth_or_amount[]" maxlength="20" minlength="1" />
-								<div class="perc_helper_h">% value</div>
+								<input type="number" min=0 step=0.001  class="form-control  ptext_input ptext_input_c" name="short_term_provisions_growth_or_amount[]" maxlength="20" minlength="1" />
+							
 								</div>
 						</div>
 						
@@ -976,7 +1271,7 @@
 						
 						<div class="col-4">
 							<div class="form-group">
-								<label ><strong>Sundry Creditors No of Days </strong>
+								<label ><strong>Creditor Period Days</strong>
                                 <a href="#"  data-toggle="tooltip" title="Help text."><i class="far fa-question-circle"></i></a></label>
 								
 								
@@ -988,27 +1283,27 @@
 						
                         <div class="col">
 							<div class="form-group">
-								<input type="number"  class="form-control" name="sundry_creditors_no_of_days[]" maxlength="20" minlength="1" />
+								<input type="number"  class="form-control ptext_input_sund " name="sundry_creditors_no_of_days[]" maxlength="20" minlength="1" />
 								</div>
 						</div>
                         <div class="col">
 							<div class="form-group">
-								<input type="number"  class="form-control" name="sundry_creditors_no_of_days[]" maxlength="20" minlength="1" />
+								<input type="number"  class="form-control ptext_input_sund" name="sundry_creditors_no_of_days[]" maxlength="20" minlength="1" />
 								</div>
 						</div>
                         <div class="col">
 							<div class="form-group">
-								<input type="number"  class="form-control" name="sundry_creditors_no_of_days[]" maxlength="20" minlength="1" />
+								<input type="number"  class="form-control ptext_input_sund" name="sundry_creditors_no_of_days[]" maxlength="20" minlength="1" />
 								</div>
 						</div>
                         <div class="col">
 							<div class="form-group">
-								<input type="number"  class="form-control" name="sundry_creditors_no_of_days[]" maxlength="20" minlength="1" />
+								<input type="number"  class="form-control ptext_input_sund" name="sundry_creditors_no_of_days[]" maxlength="20" minlength="1" />
 								</div>
 						</div>
                         <div class="col">
 							<div class="form-group">
-								<input type="number"  class="form-control" name="sundry_creditors_no_of_days[]" maxlength="20" minlength="1" />
+								<input type="number"  class="form-control ptext_input_sund" name="sundry_creditors_no_of_days[]" maxlength="20" minlength="1" />
 								</div>
 						</div>
 						
@@ -1022,56 +1317,190 @@
 							<div class="form-group">
 								<label ><strong>Other Current Liabilities</strong>
                                 <a href="#"  data-toggle="tooltip" title="Help text."><i class="far fa-question-circle"></i></a></label>
-								
-								<div class="form-group text-info d-none">
-
-										<label class="radio-inline">
-											<input type="radio" class="r5" name="other_current_liabilities_growth_or" value="amnt" > Amount &nbsp; &nbsp; &nbsp; 
-										</label>
-
-										<label class="radio-inline">
-											<input type="radio" class="r5" name="other_current_liabilities_growth_or" value="perc" checked> %    
-										</label>
-
-										
-									</div>
+							
 								
 								</div>
 						</div>
 						
                         <div class="col">
 							<div class="form-group">
-								<input type="text"  class="form-control {% if data.historical_xl_data %} text_input {%else %} text_input_nh {% endif %}" name="other_current_liabilities_growth_or_amount[]" maxlength="20" minlength="1" />
-								<div class="perc_helper_h">% value</div>
+								<input type="number" min=0 step=0.001  class="form-control  ptext_input" name="other_current_liabilities_growth_or_amount[]" maxlength="20" minlength="1" />
+							
 								</div>
 						</div>
                         <div class="col">
 							<div class="form-group">
-								<input type="text" class="form-control text_input" name="other_current_liabilities_growth_or_amount[]" maxlength="20" minlength="1" />
-								<div class="perc_helper_h">% value</div>
+								<input type="number" min=0 step=0.001  class="form-control  ptext_input ptext_input_c" name="other_current_liabilities_growth_or_amount[]" maxlength="20" minlength="1" />
+							
 								</div>
 						</div>
                         <div class="col">
 							<div class="form-group">
-								<input type="text" class="form-control text_input" name="other_current_liabilities_growth_or_amount[]" maxlength="20" minlength="1" />
-								<div class="perc_helper_h">% value</div>
+								<input type="number" min=0 step=0.001  class="form-control  ptext_input ptext_input_c" name="other_current_liabilities_growth_or_amount[]" maxlength="20" minlength="1" />
+							
 								</div>
 						</div>
                         <div class="col">
 							<div class="form-group">
-								<input type="text" class="form-control text_input" name="other_current_liabilities_growth_or_amount[]" maxlength="20" minlength="1" />
-								<div class="perc_helper_h">% value</div>
+								<input type="number" min=0 step=0.001  class="form-control  ptext_input ptext_input_c" name="other_current_liabilities_growth_or_amount[]" maxlength="20" minlength="1" />
+							
 								</div>
 						</div>
                         <div class="col">
 							<div class="form-group">
-								<input type="text" class="form-control text_input" name="other_current_liabilities_growth_or_amount[]" maxlength="20" minlength="1" />
-								<div class="perc_helper_h">% value</div>
+								<input type="number" min=0 step=0.001  class="form-control  ptext_input ptext_input_c" name="other_current_liabilities_growth_or_amount[]" maxlength="20" minlength="1" />
+							
 								</div>
 						</div>
 						
                         
 				</div>
+
+
+
+
+
+
+
+                 
+<br><br><button type="button" class="btn btn-warning" onclick="projection(4);">Show or Hide Projection Report</button>
+
+
+
+
+
+<!-- Current Liabilities  Projection table -->
+				<div id="table4" style="display:none;"><br>
+									<table  class="table text-dark">
+										<thead>
+											<tr>
+												<th scope="col"></th>
+												<th  class="year_1" scope="col"> {% if data.balance_sheet_years.f_1 %} {{data.balance_sheet_years.f_1}} {% else %} Year 1 {% endif %} </th>
+												<th  class="year_2" scope="col">{% if data.balance_sheet_years.f_2 %} {{data.balance_sheet_years.f_2}} {% else %} Year 2 {% endif %}</th>
+												<th  class="year_3" scope="col">{% if data.balance_sheet_years.f_3 %} {{data.balance_sheet_years.f_3}} {% else %} Year 3 {% endif %}</th>
+												<th  class="year_4" scope="col">{% if data.balance_sheet_years.f_4 %} {{data.balance_sheet_years.f_4}} {% else %} Year 4 {% endif %}</th>
+												<th  class="year_5" scope="col">{% if data.balance_sheet_years.f_5 %} {{data.balance_sheet_years.f_5}} {% else %} Year 5 {% endif %}</th>
+											</tr>
+										</thead>
+											<tbody>
+
+											
+												<tr id="short_term_borrowings_growth_or_amount">
+													<th scope="row">Short Term borrowings</th>
+													<td>--</td>
+													<td>--</td>
+													<td>--</td>
+													<td>--</td>
+													<td>--</td>
+													<input hidden name="short_term_borrowings_growth_or_amount_[]" value=0>
+													<input hidden name="short_term_borrowings_growth_or_amount_[]" value=0>
+													<input hidden name="short_term_borrowings_growth_or_amount_[]" value=0>
+													<input hidden name="short_term_borrowings_growth_or_amount_[]" value=0>
+													<input hidden name="short_term_borrowings_growth_or_amount_[]" value=0>
+												</tr>
+
+
+												<tr id="short_term_provisions_growth_or_amount">
+													<th scope="row">Short term provisions </th>
+													<td>--</td>
+													<td>--</td>
+													<td>--</td>
+													<td>--</td>
+													<td>--</td>
+													<input hidden name="short_term_provisions_growth_or_amount_[]" value=0>
+													<input hidden name="short_term_provisions_growth_or_amount_[]" value=0>
+													<input hidden name="short_term_provisions_growth_or_amount_[]" value=0>
+													<input hidden name="short_term_provisions_growth_or_amount_[]" value=0>
+													<input hidden name="short_term_provisions_growth_or_amount_[]" value=0>
+												</tr>
+
+
+												<tr id="sundry_creditors_no_of_days">
+													<th scope="row">Sundry Creditors</th>
+													<td>--</td>
+													<td>--</td>
+													<td>--</td>
+													<td>--</td>
+													<td>--</td>
+													<input hidden name="sundry_creditors_no_of_days_[]" value=0>
+													<input hidden name="sundry_creditors_no_of_days_[]" value=0>
+													<input hidden name="sundry_creditors_no_of_days_[]" value=0>
+													<input hidden name="sundry_creditors_no_of_days_[]" value=0>
+													<input hidden name="sundry_creditors_no_of_days_[]" value=0>
+												</tr>
+
+
+												<tr id="other_current_liabilities_growth_or_amount">
+													<th scope="row">Other Current Liabilities</th>
+													<td>--</td>
+													<td>--</td>
+													<td>--</td>
+													<td>--</td>
+													<td>--</td>
+													<input hidden name="other_current_liabilities_growth_or_amount_[]" value=0>
+													<input hidden name="other_current_liabilities_growth_or_amount_[]" value=0>
+													<input hidden name="other_current_liabilities_growth_or_amount_[]" value=0>
+													<input hidden name="other_current_liabilities_growth_or_amount_[]" value=0>
+													<input hidden name="other_current_liabilities_growth_or_amount_[]" value=0>
+												</tr>
+
+
+												<tr id="total_current_liabilities_c">
+													<th scope="row">Total Current Liabilities (C)</th>
+													<td>--</td>
+													<td>--</td>
+													<td>--</td>
+													<td>--</td>
+													<td>--</td>
+													<input hidden name="total_current_liabilities_c_[]" value=0>
+													<input hidden name="total_current_liabilities_c_[]" value=0>
+													<input hidden name="total_current_liabilities_c_[]" value=0>
+													<input hidden name="total_current_liabilities_c_[]" value=0>
+													<input hidden name="total_current_liabilities_c_[]" value=0>
+												</tr>
+
+
+												<tr id="total_liabilities_abc" class="bg-dark text-light">
+													<th scope="row">TOTAL LIABILITIES (A+B+C)</th>
+													<td>--</td>
+													<td>--</td>
+													<td>--</td>
+													<td>--</td>
+													<td>--</td>
+													<input hidden name="total_liabilities_abc_[]" value=0>
+													<input hidden name="total_liabilities_abc_[]" value=0>
+													<input hidden name="total_liabilities_abc_[]" value=0>
+													<input hidden name="total_liabilities_abc_[]" value=0>
+													<input hidden name="total_liabilities_abc_[]" value=0>
+												</tr>
+
+
+
+											</tbody>
+										</table>
+										<br>
+
+				</div>
+<!-- Current Liabilities  Projection table end -->
+
+				<hr>    <br><br>    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
                 
@@ -1095,50 +1524,37 @@
 								<label ><strong>Intangible Assets</strong>
                                 <a href="#"  data-toggle="tooltip" title="Help text."><i class="far fa-question-circle"></i></a></label>
 								
-								<div class="form-group text-info d-none">
-
-										<label class="radio-inline">
-											<input type="radio" class="r9" name="intangible_assets_growth_or" value="amnt" > Amount &nbsp; &nbsp; &nbsp; 
-										</label>
-
-										<label class="radio-inline">
-											<input type="radio" class="r9" name="intangible_assets_growth_or" value="perc" checked> %    
-										</label>
-
-										
-									</div>
-								
 								</div>
 						</div>
 						
                         <div class="col">
 							<div class="form-group">
-								<input type="text"  class="form-control {% if data.historical_xl_data %} text_input {%else %} text_input_nh {% endif %}" name="intangible_assets_growth_or_amount[]" maxlength="20" minlength="1" />
-								<div class="perc_helper_h">% value</div>
+								<input type="number" min=0 step=0.001  class="form-control  ptext_input" name="intangible_assets_growth_or_amount[]" maxlength="20" minlength="1" />
+							
 								</div>
 						</div>
                         <div class="col">
 							<div class="form-group">
-								<input type="text" class="form-control text_input"  name="intangible_assets_growth_or_amount[]" maxlength="20" minlength="1" />
-								<div class="perc_helper_h">% value</div>
+								<input type="number" min=0 step=0.001  class="form-control  ptext_input ptext_input_c"  name="intangible_assets_growth_or_amount[]" maxlength="20" minlength="1" />
+							
 								</div>
 						</div>
                         <div class="col">
 							<div class="form-group">
-								<input type="text" class="form-control text_input" name="intangible_assets_growth_or_amount[]" maxlength="20" minlength="1" />
-								<div class="perc_helper_h">% value</div>
+								<input type="number" min=0 step=0.001  class="form-control  ptext_input ptext_input_c" name="intangible_assets_growth_or_amount[]" maxlength="20" minlength="1" />
+							
 								</div>
 						</div>
                         <div class="col">
 							<div class="form-group">
-								<input type="text" class="form-control text_input" name="intangible_assets_growth_or_amount[]" maxlength="20" minlength="1" />
-								<div class="perc_helper_h">% value</div>
+								<input type="number" min=0 step=0.001  class="form-control  ptext_input ptext_input_c" name="intangible_assets_growth_or_amount[]" maxlength="20" minlength="1" />
+							
 								</div>
 						</div>
                         <div class="col">
 							<div class="form-group">
-								<input type="text" class="form-control text_input" name="intangible_assets_growth_or_amount[]" maxlength="20" minlength="1" />
-								<div class="perc_helper_h">% value</div>
+								<input type="number" min=0 step=0.001  class="form-control  ptext_input ptext_input_c" name="intangible_assets_growth_or_amount[]" maxlength="20" minlength="1" />
+							
 								</div>
 						</div>
 						
@@ -1154,52 +1570,39 @@
 								<label ><strong>Long Term Loans & Advances</strong>
                                 <a href="#"  data-toggle="tooltip" title="Help text."><i class="far fa-question-circle"></i></a></label>
 								
-								<div class="form-group text-info d-none">
-
-										<label class="radio-inline">
-											<input type="radio" class="r10" name="long_term_loans_and_advances_growth_or" value="amnt" > Amount &nbsp; &nbsp; &nbsp; 
-										</label>
-
-										<label class="radio-inline">
-											<input type="radio" class="r10" name="long_term_loans_and_advances_growth_or" value="perc" checked> %    
-										</label>
-
-										
-									</div>
-								
 								
 								</div>
 						</div>
 
 						<div class="col">
 							<div class="form-group">
-								<input type="text"  class="form-control {% if data.historical_xl_data %} text_input {%else %} text_input_nh {% endif %}" name="long_term_loans_and_advances_growth_or_amount[]" maxlength="20" minlength="1" />
-								<div class="perc_helper_h">% value</div>
+								<input type="number" min=0 step=0.001  class="form-control  ptext_input" name="long_term_loans_and_advances_growth_or_amount[]" maxlength="20" minlength="1" />
+							
 								</div>
 						</div>
 
                         <div class="col">
 							<div class="form-group">
-								<input type="text" class="form-control text_input" name="long_term_loans_and_advances_growth_or_amount[]" maxlength="20" minlength="1" />
-								<div class="perc_helper_h">% value</div>
+								<input type="number" min=0 step=0.001  class="form-control  ptext_input ptext_input_c" name="long_term_loans_and_advances_growth_or_amount[]" maxlength="20" minlength="1" />
+							
 								</div>
 						</div>
                         <div class="col">
 							<div class="form-group">
-								<input type="text" class="form-control text_input" name="long_term_loans_and_advances_growth_or_amount[]" maxlength="20" minlength="1" />
-								<div class="perc_helper_h">% value</div>
+								<input type="number" min=0 step=0.001  class="form-control  ptext_input ptext_input_c" name="long_term_loans_and_advances_growth_or_amount[]" maxlength="20" minlength="1" />
+							
 								</div>
 						</div>
                         <div class="col">
 							<div class="form-group">
-								<input type="text" class="form-control text_input"  name="long_term_loans_and_advances_growth_or_amount[]" maxlength="20" minlength="1" />
-								<div class="perc_helper_h">% value</div>
+								<input type="number" min=0 step=0.001  class="form-control  ptext_input ptext_input_c"  name="long_term_loans_and_advances_growth_or_amount[]" maxlength="20" minlength="1" />
+							
 								</div>
 						</div>
                         <div class="col">
 							<div class="form-group">
-								<input type="text" class="form-control text_input" name="long_term_loans_and_advances_growth_or_amount[]" maxlength="20" minlength="1" />
-								<div class="perc_helper_h">% value</div>
+								<input type="number" min=0 step=0.001  class="form-control  ptext_input ptext_input_c" name="long_term_loans_and_advances_growth_or_amount[]" maxlength="20" minlength="1" />
+							
 								</div>
 						</div>
 						
@@ -1214,49 +1617,38 @@
 								<label ><strong>Long Term Investments</strong>
                                 <a href="#"  data-toggle="tooltip" title="Help text."><i class="far fa-question-circle"></i></a></label>
 								
-								<div class="form-group text-info d-none">
-
-										<label class="radio-inline">
-											<input type="radio" class="r11" name="long_term_investments_growth_or" value="amnt" > Amount &nbsp; &nbsp; &nbsp; 
-										</label>
-
-										<label class="radio-inline">
-											<input type="radio" class="r11" name="long_term_investments_growth_or" value="perc" checked> %    
-										</label>
-
-										
-									</div>
+								
 								</div>
 						</div>
 						
 						<div class="col">
 							<div class="form-group">
-								<input type="text"  class="form-control {% if data.historical_xl_data %} text_input {%else %} text_input_nh {% endif %}" name="long_term_investments_growth_or_amount[]" maxlength="20" minlength="1" />
-								<div class="perc_helper_h">% value</div>
+								<input type="number" min=0 step=0.001  class="form-control  ptext_input" name="long_term_investments_growth_or_amount[]" maxlength="20" minlength="1" />
+							
 								</div>
 						</div>
                         <div class="col">
 							<div class="form-group">
-								<input type="text" class="form-control text_input" name="long_term_investments_growth_or_amount[]" maxlength="20" minlength="1" />
-								<div class="perc_helper_h">% value</div>
+								<input type="number" min=0 step=0.001  class="form-control  ptext_input ptext_input_c" name="long_term_investments_growth_or_amount[]" maxlength="20" minlength="1" />
+							
 								</div>
 						</div>
                         <div class="col">
 							<div class="form-group">
-								<input type="text" class="form-control text_input"  name="long_term_investments_growth_or_amount[]" maxlength="20" minlength="1" />
-								<div class="perc_helper_h">% value</div>
+								<input type="number" min=0 step=0.001  class="form-control  ptext_input ptext_input_c"  name="long_term_investments_growth_or_amount[]" maxlength="20" minlength="1" />
+							
 								</div>
 						</div>
                         <div class="col">
 							<div class="form-group">
-								<input type="text" class="form-control text_input"  name="long_term_investments_growth_or_amount[]" maxlength="20" minlength="1" />
-								<div class="perc_helper_h">% value</div>
+								<input type="number" min=0 step=0.001  class="form-control  ptext_input ptext_input_c"  name="long_term_investments_growth_or_amount[]" maxlength="20" minlength="1" />
+							
 								</div>
 						</div>
                         <div class="col">
 							<div class="form-group">
-								<input type="text" class="form-control text_input" name="long_term_investments_growth_or_amount[]" maxlength="20" minlength="1" />
-								<div class="perc_helper_h">% value</div>
+								<input type="number" min=0 step=0.001  class="form-control  ptext_input ptext_input_c" name="long_term_investments_growth_or_amount[]" maxlength="20" minlength="1" />
+							
 								</div>
 						</div>
                         
@@ -1270,48 +1662,37 @@
 								<label ><strong>Deferred tax assets </strong>
                                 <a href="#"  data-toggle="tooltip" title="Help text."><i class="far fa-question-circle"></i></a></label>
 								
-								<div class="form-group text-info d-none">
-
-										<label class="radio-inline">
-											<input type="radio" class="r111" name="deferred_tax_assets_or" value="amnt" > Amount &nbsp; &nbsp; &nbsp; 
-										</label>
-
-										<label class="radio-inline">
-											<input type="radio" class="r111" name="deferred_tax_assets_or" value="perc" checked> %    
-										</label>
-
-										
-									</div>
+								
 								</div>
 						</div>
 						
 						<div class="col">
 							<div class="form-group">
-								<input type="text"  class="form-control {% if data.historical_xl_data %} text_input {%else %} text_input_nh {% endif %}" name="deferred_tax_assets[]" maxlength="20" minlength="1" />
-								<div class="perc_helper_h">% value</div></div>
+								<input type="number" min=0 step=0.001  class="form-control  ptext_input" name="deferred_tax_assets[]" maxlength="20" minlength="1" />
+							</div>
 						</div>
                         <div class="col">
 							<div class="form-group">
-								<input type="text" class="form-control text_input" name="deferred_tax_assets[]" maxlength="20" minlength="1" />
-								<div class="perc_helper_h">% value</div>
+								<input type="number" min=0 step=0.001  class="form-control  ptext_input ptext_input_c" name="deferred_tax_assets[]" maxlength="20" minlength="1" />
+							
 								</div>
 						</div>
                         <div class="col">
 							<div class="form-group">
-								<input type="text" class="form-control text_input"  name="deferred_tax_assets[]" maxlength="20" minlength="1" />
-								<div class="perc_helper_h">% value</div>
+								<input type="number" min=0 step=0.001  class="form-control  ptext_input ptext_input_c"  name="deferred_tax_assets[]" maxlength="20" minlength="1" />
+							
 								</div>
 						</div>
                         <div class="col">
 							<div class="form-group">
-								<input type="text" class="form-control text_input"  name="deferred_tax_assets[]" maxlength="20" minlength="1" />
-								<div class="perc_helper_h">% value</div>
+								<input type="number" min=0 step=0.001  class="form-control  ptext_input ptext_input_c"  name="deferred_tax_assets[]" maxlength="20" minlength="1" />
+							
 								</div>
 						</div>
                         <div class="col">
 							<div class="form-group">
-								<input type="text" class="form-control text_input" name="deferred_tax_assets[]" maxlength="20" minlength="1" />
-								<div class="perc_helper_h">% value</div>
+								<input type="number" min=0 step=0.001  class="form-control  ptext_input ptext_input_c" name="deferred_tax_assets[]" maxlength="20" minlength="1" />
+							
 								</div>
 						</div>
                         
@@ -1328,18 +1709,7 @@
 								<label ><strong>Other Non-Current Assets</strong>
                                 <a href="#"  data-toggle="tooltip" title="Help text."><i class="far fa-question-circle"></i></a></label>
 								
-								<div class="form-group text-info d-none">
-
-										<label class="radio-inline">
-											<input type="radio" class="r12" name="other_non_current_assets_growth_or" value="amnt" > Amount &nbsp; &nbsp; &nbsp; 
-										</label>
-
-										<label class="radio-inline">
-											<input type="radio" class="r12" name="other_non_current_assets_growth_or" value="perc" checked> %    
-										</label>
-
-										
-									</div>
+								
 								
 								
 								</div>
@@ -1347,32 +1717,32 @@
 						
                         <div class="col">
 							<div class="form-group">
-								<input type="text"  class="form-control {% if data.historical_xl_data %} text_input {%else %} text_input_nh {% endif %}" name="other_non_current_assets_growth_or_amount[]" maxlength="20" minlength="1" />
-								<div class="perc_helper_h">% value</div>
+								<input type="number" min=0 step=0.001  class="form-control  ptext_input" name="other_non_current_assets_growth_or_amount[]" maxlength="20" minlength="1" />
+							
 								</div>
 						</div>
                         <div class="col">
 							<div class="form-group">
-								<input type="text" class="form-control text_input"  name="other_non_current_assets_growth_or_amount[]" maxlength="20" minlength="1" />
-								<div class="perc_helper_h">% value</div>
+								<input type="number" min=0 step=0.001  class="form-control  ptext_input ptext_input_c"  name="other_non_current_assets_growth_or_amount[]" maxlength="20" minlength="1" />
+							
 								</div>
 						</div>
                         <div class="col">
 							<div class="form-group">
-								<input type="text" class="form-control text_input"  name="other_non_current_assets_growth_or_amount[]" maxlength="20" minlength="1" />
-								<div class="perc_helper_h">% value</div>
+								<input type="number" min=0 step=0.001  class="form-control  ptext_input ptext_input_c"  name="other_non_current_assets_growth_or_amount[]" maxlength="20" minlength="1" />
+							
 								</div>
 						</div>
                         <div class="col">
 							<div class="form-group">
-								<input type="text" class="form-control text_input"  name="other_non_current_assets_growth_or_amount[]" maxlength="20" minlength="1" />
-								<div class="perc_helper_h">% value</div>
+								<input type="number" min=0 step=0.001  class="form-control  ptext_input ptext_input_c"  name="other_non_current_assets_growth_or_amount[]" maxlength="20" minlength="1" />
+							
 								</div>
 						</div>
                         <div class="col">
 							<div class="form-group">
-								<input type="text" class="form-control text_input"  name="other_non_current_assets_growth_or_amount[]" maxlength="20" minlength="1" />
-								<div class="perc_helper_h">% value</div>
+								<input type="number" min=0 step=0.001  class="form-control  ptext_input ptext_input_c"  name="other_non_current_assets_growth_or_amount[]" maxlength="20" minlength="1" />
+							
 								</div>
 						</div>
 						
@@ -1381,6 +1751,220 @@
 
 
                 
+
+
+
+
+
+
+
+
+
+
+
+                 
+<br><br><button type="button" class="btn btn-warning" onclick="projection(5);">Show or Hide Projection Report</button>
+
+
+
+
+
+<!-- Non-Current Assets  Projection table -->
+				<div id="table5" style="display:none;"><br>
+									<table  class="table text-dark">
+										<thead>
+											<tr>
+												<th scope="col"></th>
+												<th  class="year_1" scope="col"> {% if data.balance_sheet_years.f_1 %} {{data.balance_sheet_years.f_1}} {% else %} Year 1 {% endif %} </th>
+												<th  class="year_2" scope="col">{% if data.balance_sheet_years.f_2 %} {{data.balance_sheet_years.f_2}} {% else %} Year 2 {% endif %}</th>
+												<th  class="year_3" scope="col">{% if data.balance_sheet_years.f_3 %} {{data.balance_sheet_years.f_3}} {% else %} Year 3 {% endif %}</th>
+												<th  class="year_4" scope="col">{% if data.balance_sheet_years.f_4 %} {{data.balance_sheet_years.f_4}} {% else %} Year 4 {% endif %}</th>
+												<th  class="year_5" scope="col">{% if data.balance_sheet_years.f_5 %} {{data.balance_sheet_years.f_5}} {% else %} Year 5 {% endif %}</th>
+											</tr>
+										</thead>
+											<tbody>
+
+											
+
+												<tr id="gross_fixed_assets">
+													<th scope="row">Gross Fixed Assets</th>
+													<td>--</td>
+													<td>--</td>
+													<td>--</td>
+													<td>--</td>
+													<td>--</td>
+													<input hidden name="gross_fixed_assets_[]" value=0>
+													<input hidden name="gross_fixed_assets_[]" value=0>
+													<input hidden name="gross_fixed_assets_[]" value=0>
+													<input hidden name="gross_fixed_assets_[]" value=0>
+													<input hidden name="gross_fixed_assets_[]" value=0>
+												</tr>
+
+
+												
+
+												<tr id="less_accumulated_depreciation">
+													<th scope="row">less: Accumulated depreciation</th>
+													<td>--</td>
+													<td>--</td>
+													<td>--</td>
+													<td>--</td>
+													<td>--</td>
+													<input hidden name="less_accumulated_depreciation_[]" value=0>
+													<input hidden name="less_accumulated_depreciation_[]" value=0>
+													<input hidden name="less_accumulated_depreciation_[]" value=0>
+													<input hidden name="less_accumulated_depreciation_[]" value=0>
+													<input hidden name="less_accumulated_depreciation_[]" value=0>
+												</tr>
+
+
+												
+
+												<tr id="net_fixed_assets">
+													<th scope="row">Net Fixed Assets</th>
+													<td>--</td>
+													<td>--</td>
+													<td>--</td>
+													<td>--</td>
+													<td>--</td>
+													<input hidden name="net_fixed_assets_[]" value=0>
+													<input hidden name="net_fixed_assets_[]" value=0>
+													<input hidden name="net_fixed_assets_[]" value=0>
+													<input hidden name="net_fixed_assets_[]" value=0>
+													<input hidden name="net_fixed_assets_[]" value=0>
+												</tr>
+
+
+												
+
+												<tr id="intangible_assets_growth_or_amount">
+													<th scope="row">Intangible assets</th>
+													<td>--</td>
+													<td>--</td>
+													<td>--</td>
+													<td>--</td>
+													<td>--</td>
+													<input hidden name="intangible_assets_growth_or_amount_[]" value=0>
+													<input hidden name="intangible_assets_growth_or_amount_[]" value=0>
+													<input hidden name="intangible_assets_growth_or_amount_[]" value=0>
+													<input hidden name="intangible_assets_growth_or_amount_[]" value=0>
+													<input hidden name="intangible_assets_growth_or_amount_[]" value=0>
+												</tr>
+
+
+												
+
+												<tr id="long_term_loans_and_advances_growth_or_amount">
+													<th scope="row">Long Term loans & advances</th>
+													<td>--</td>
+													<td>--</td>
+													<td>--</td>
+													<td>--</td>
+													<td>--</td>
+													<input hidden name="long_term_loans_and_advances_growth_or_amount_[]" value=0>
+													<input hidden name="long_term_loans_and_advances_growth_or_amount_[]" value=0>
+													<input hidden name="long_term_loans_and_advances_growth_or_amount_[]" value=0>
+													<input hidden name="long_term_loans_and_advances_growth_or_amount_[]" value=0>
+													<input hidden name="long_term_loans_and_advances_growth_or_amount_[]" value=0>
+												</tr>
+
+
+												
+
+												<tr id="long_term_investments_growth_or_amount">
+													<th scope="row">Long term Investments</th>
+													<td>--</td>
+													<td>--</td>
+													<td>--</td>
+													<td>--</td>
+													<td>--</td>
+													<input hidden name="long_term_investments_growth_or_amount_[]" value=0>
+													<input hidden name="long_term_investments_growth_or_amount_[]" value=0>
+													<input hidden name="long_term_investments_growth_or_amount_[]" value=0>
+													<input hidden name="long_term_investments_growth_or_amount_[]" value=0>
+													<input hidden name="long_term_investments_growth_or_amount_[]" value=0>
+												</tr>
+
+
+												
+
+												<tr id="deferred_tax_assets">
+													<th scope="row">Deferred tax assets </th>
+													<td>--</td>
+													<td>--</td>
+													<td>--</td>
+													<td>--</td>
+													<td>--</td>
+													<input hidden name="deferred_tax_assets_[]" value=0>
+													<input hidden name="deferred_tax_assets_[]" value=0>
+													<input hidden name="deferred_tax_assets_[]" value=0>
+													<input hidden name="deferred_tax_assets_[]" value=0>
+													<input hidden name="deferred_tax_assets_[]" value=0>
+												</tr>
+
+
+												
+
+												<tr id="other_non_current_assets_growth_or_amount">
+													<th scope="row">Other Non-current assets </th>
+													<td>--</td>
+													<td>--</td>
+													<td>--</td>
+													<td>--</td>
+													<td>--</td>
+													<input hidden name="other_non_current_assets_growth_or_amount_[]" value=0>
+													<input hidden name="other_non_current_assets_growth_or_amount_[]" value=0>
+													<input hidden name="other_non_current_assets_growth_or_amount_[]" value=0>
+													<input hidden name="other_non_current_assets_growth_or_amount_[]" value=0>
+													<input hidden name="other_non_current_assets_growth_or_amount_[]" value=0>
+												</tr>
+
+
+												
+
+												<tr id="total_noncurrent_asset_a">
+													<th scope="row">Total Non-Current Asset (A)</th>
+													<td>--</td>
+													<td>--</td>
+													<td>--</td>
+													<td>--</td>
+													<td>--</td>
+													<input hidden name="total_noncurrent_asset_a_[]" value=0>
+													<input hidden name="total_noncurrent_asset_a_[]" value=0>
+													<input hidden name="total_noncurrent_asset_a_[]" value=0>
+													<input hidden name="total_noncurrent_asset_a_[]" value=0>
+													<input hidden name="total_noncurrent_asset_a_[]" value=0>
+												</tr>
+
+
+
+
+
+
+											</tbody>
+										</table>
+										<br>
+
+				</div>
+<!-- Non-Current Assets  Projection table end -->
+
+				<hr>    <br><br>    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+				
                 
 
                 
@@ -1399,18 +1983,6 @@
 								<label ><strong>Sundry Debtors No of Days</strong>
                                 <a href="#"  data-toggle="tooltip" title="Help text."><i class="far fa-question-circle"></i></a></label>
 								
-								<div class="form-group text-info d-none">
-
-										<label class="radio-inline">
-											<input type="radio" class="d2" name="" value="amnt" checked> Amount &nbsp; &nbsp; &nbsp; 
-										</label>
-
-										<label class="radio-inline">
-											<input type="radio" class="d2" name="" value="day"> Days    
-										</label>
-
-										
-									</div>
 								
 								
 								</div>
@@ -1418,27 +1990,27 @@
 						
 						<div class="col">
 							<div class="form-group">
-								<input type="number"  class="form-control" name="sundry_debtors_no_of_days[]" maxlength="20" minlength="1" />
+								<input type="number"  class="form-control ptext_input_sund_d" name="sundry_debtors_no_of_days[]" maxlength="20" minlength="1" />
 								</div>
 						</div>
                         <div class="col">
 							<div class="form-group">
-								<input type="number"  class="form-control" name="sundry_debtors_no_of_days[]" maxlength="20" minlength="1" />
+								<input type="number"  class="form-control ptext_input_sund_d" name="sundry_debtors_no_of_days[]" maxlength="20" minlength="1" />
 								</div>
 						</div>
                         <div class="col">
 							<div class="form-group">
-								<input type="number"  class="form-control" name="sundry_debtors_no_of_days[]" maxlength="20" minlength="1" />
+								<input type="number"  class="form-control ptext_input_sund_d" name="sundry_debtors_no_of_days[]" maxlength="20" minlength="1" />
 								</div>
 						</div>
                         <div class="col">
 							<div class="form-group">
-								<input type="number"  class="form-control" name="sundry_debtors_no_of_days[]" maxlength="20" minlength="1" />
+								<input type="number"  class="form-control ptext_input_sund_d" name="sundry_debtors_no_of_days[]" maxlength="20" minlength="1" />
 								</div>
 						</div>
                         <div class="col">
 							<div class="form-group">
-								<input type="number"  class="form-control" name="sundry_debtors_no_of_days[]" maxlength="20" minlength="1" />
+								<input type="number"  class="form-control ptext_input_sund_d" name="sundry_debtors_no_of_days[]" maxlength="20" minlength="1" />
 								</div>
 						</div>
                         
@@ -1452,18 +2024,7 @@
 								<label ><strong>Inventory No of Days</strong>
                                 <a href="#"  data-toggle="tooltip" title="Help text."><i class="far fa-question-circle"></i></a></label>
 								
-								<div class="form-group text-info d-none">
-
-										<label class="radio-inline">
-											<input type="radio" class="d3" name="" value="amnt" checked> Amount &nbsp; &nbsp; &nbsp; 
-										</label>
-
-										<label class="radio-inline">
-											<input type="radio" class="d3" name="" value="day"> Days    
-										</label>
-
-										
-									</div>
+								
 								
 								
 								
@@ -1472,27 +2033,27 @@
 						
 						<div class="col">
 							<div class="form-group">
-								<input type="number"   class="form-control" name="inventory_no_of_days[]" maxlength="20" minlength="1" />
+								<input type="number"   class="form-control ptext_input_inv" name="inventory_no_of_days[]" maxlength="20" minlength="1" />
 								</div>
 						</div>
                         <div class="col">
 							<div class="form-group">
-								<input type="number"   class="form-control" name="inventory_no_of_days[]" maxlength="20" minlength="1" />
+								<input type="number"   class="form-control ptext_input_inv" name="inventory_no_of_days[]" maxlength="20" minlength="1" />
 								</div>
 						</div>
                         <div class="col">
 							<div class="form-group">
-								<input type="number"   class="form-control" name="inventory_no_of_days[]" maxlength="20" minlength="1" />
+								<input type="number"   class="form-control ptext_input_inv" name="inventory_no_of_days[]" maxlength="20" minlength="1" />
 								</div>
 						</div>
                         <div class="col">
 							<div class="form-group">
-								<input type="number"   class="form-control" name="inventory_no_of_days[]" maxlength="20" minlength="1" />
+								<input type="number"   class="form-control ptext_input_inv" name="inventory_no_of_days[]" maxlength="20" minlength="1" />
 								</div>
 						</div>
                         <div class="col">
 							<div class="form-group">
-								<input type="number"   class="form-control" name="inventory_no_of_days[]" maxlength="20" minlength="1" />
+								<input type="number"   class="form-control ptext_input_inv" name="inventory_no_of_days[]" maxlength="20" minlength="1" />
 								</div>
 						</div>
                         
@@ -1506,18 +2067,6 @@
 								<label ><strong>Short-Term Investments</strong>
                                 <a href="#"  data-toggle="tooltip" title="Help text."><i class="far fa-question-circle"></i></a></label>
 								
-								<div class="form-group text-info d-none">
-
-										<label class="radio-inline">
-											<input type="radio" class="r13" name="short_term_investments_growth_or" value="amnt" > Amount &nbsp; &nbsp; &nbsp; 
-										</label>
-
-										<label class="radio-inline">
-											<input type="radio" class="r13" name="short_term_investments_growth_or" value="perc" checked> %    
-										</label>
-
-										
-									</div>
 								
 								
 								</div>
@@ -1525,33 +2074,33 @@
 						
 						<div class="col">
 							<div class="form-group">
-								<input type="text"  class="form-control {% if data.historical_xl_data %} text_input {%else %} text_input_nh {% endif %}" name="short_term_investments_growth_or_amount[]" maxlength="20" minlength="1" />
-								<div class="perc_helper_h">% value</div>
+								<input type="number" min=0 step=0.001  class="form-control  ptext_input" name="short_term_investments_growth_or_amount[]" maxlength="20" minlength="1" />
+							
 								</div>
 						</div>
                         <div class="col">
 							<div class="form-group">
-								<input type="text" class="form-control text_input"  name="short_term_investments_growth_or_amount[]" maxlength="20" minlength="1" />
-								<div class="perc_helper_h">% value</div>
+								<input type="number" min=0 step=0.001  class="form-control  ptext_input ptext_input_c"  name="short_term_investments_growth_or_amount[]" maxlength="20" minlength="1" />
+							
 								</div>
 						</div>
                         <div class="col">
 							<div class="form-group">
-								<input type="text" class="form-control text_input"  
+								<input type="number" min=0 step=0.001  class="form-control  ptext_input ptext_input_c"  
 								name="short_term_investments_growth_or_amount[]" maxlength="20" minlength="1" />
-								<div class="perc_helper_h">% value</div>
+							
 								</div>
 						</div>
                         <div class="col">
 							<div class="form-group">
-								<input type="text" class="form-control text_input"  name="short_term_investments_growth_or_amount[]" maxlength="20" minlength="1" />
-								<div class="perc_helper_h">% value</div>
+								<input type="number" min=0 step=0.001  class="form-control  ptext_input ptext_input_c"  name="short_term_investments_growth_or_amount[]" maxlength="20" minlength="1" />
+							
 								</div>
 						</div>
                         <div class="col">
 							<div class="form-group">
-								<input type="text" class="form-control text_input"  name="short_term_investments_growth_or_amount[]" maxlength="20" minlength="1" />
-								<div class="perc_helper_h">% value</div>
+								<input type="number" min=0 step=0.001  class="form-control  ptext_input ptext_input_c"  name="short_term_investments_growth_or_amount[]" maxlength="20" minlength="1" />
+							
 								</div>
 						</div>
                         
@@ -1566,50 +2115,39 @@
 								<label ><strong>Short-Term Loans & Advances</strong>
                                 <a href="#"  data-toggle="tooltip" title="Help text."><i class="far fa-question-circle"></i></a></label>
 								
-								<div class="form-group text-info d-none">
-
-										<label class="radio-inline">
-											<input type="radio" class="r14" name="short_term_loans_and_advances_growth_or" value="amnt" > Amount &nbsp; &nbsp; &nbsp; 
-										</label>
-
-										<label class="radio-inline">
-											<input type="radio" class="r14" name="short_term_loans_and_advances_growth_or" value="perc" checked> %    
-										</label>
-
-										
-									</div>
+								
 								
 								</div>
 						</div>
 						
                         <div class="col">
 							<div class="form-group">
-								<input type="text"  class="form-control {% if data.historical_xl_data %} text_input {%else %} text_input_nh {% endif %}" name="short_term_loans_and_advances_growth_or_amount[]" maxlength="20" minlength="1" />
-								<div class="perc_helper_h">% value</div>
+								<input type="number" min=0 step=0.001  class="form-control  ptext_input" name="short_term_loans_and_advances_growth_or_amount[]" maxlength="20" minlength="1" />
+							
 								</div>
 						</div>
                         <div class="col">
 							<div class="form-group">
-								<input type="text" class="form-control text_input"  name="short_term_loans_and_advances_growth_or_amount[]" maxlength="20" minlength="1" />
-								<div class="perc_helper_h">% value</div>
+								<input type="number" min=0 step=0.001  class="form-control  ptext_input ptext_input_c"  name="short_term_loans_and_advances_growth_or_amount[]" maxlength="20" minlength="1" />
+							
 								</div>
 						</div>
                         <div class="col">
 							<div class="form-group">
-								<input type="text" class="form-control text_input"  name="short_term_loans_and_advances_growth_or_amount[]" maxlength="20" minlength="1" />
-								<div class="perc_helper_h">% value</div>
+								<input type="number" min=0 step=0.001  class="form-control  ptext_input ptext_input_c"  name="short_term_loans_and_advances_growth_or_amount[]" maxlength="20" minlength="1" />
+							
 								</div>
 						</div>
                         <div class="col">
 							<div class="form-group">
-								<input type="text" class="form-control text_input"  name="short_term_loans_and_advances_growth_or_amount[]" maxlength="20" minlength="1" />
-								<div class="perc_helper_h">% value</div>
+								<input type="number" min=0 step=0.001  class="form-control  ptext_input ptext_input_c"  name="short_term_loans_and_advances_growth_or_amount[]" maxlength="20" minlength="1" />
+							
 								</div>
 						</div>
                         <div class="col">
 							<div class="form-group">
-								<input type="text" class="form-control text_input"  name="short_term_loans_and_advances_growth_or_amount[]" maxlength="20" minlength="1" />
-								<div class="perc_helper_h">% value</div>
+								<input type="number" min=0 step=0.001  class="form-control  ptext_input ptext_input_c"  name="short_term_loans_and_advances_growth_or_amount[]" maxlength="20" minlength="1" />
+							
 								</div>
 						</div>
 						
@@ -1624,90 +2162,43 @@
 								<label ><strong>Other Current Assets</strong>
                                 <a href="#"  data-toggle="tooltip" title="Help text."><i class="far fa-question-circle"></i></a></label>
 								
-								<div class="form-group text-info d-none">
-
-										<label class="radio-inline">
-											<input type="radio" class="r15" name="other_current_assets_growth_or" value="amnt" > Amount &nbsp; &nbsp; &nbsp; 
-										</label>
-
-										<label class="radio-inline">
-											<input type="radio" class="r15" name="other_current_assets_growth_or" value="perc" checked> %    
-										</label>
-
-										
-									</div>
-								
-								
 								</div>
 						</div>
 						
 						<div class="col">
 							<div class="form-group">
-								<input type="text"  class="form-control {% if data.historical_xl_data %} text_input {%else %} text_input_nh {% endif %}" name="other_current_assets_growth_or_amount[]" maxlength="20" minlength="1" />
-								<div class="perc_helper_h">% value</div>
+								<input type="number" min=0 step=0.001  class="form-control  ptext_input" name="other_current_assets_growth_or_amount[]" maxlength="20" minlength="1" />
+							
 								</div>
 						</div>
                         <div class="col">
 							<div class="form-group">
-								<input type="text" class="form-control text_input"  name="other_current_assets_growth_or_amount[]" maxlength="20" minlength="1" />
-								<div class="perc_helper_h">% value</div>
+								<input type="number" min=0 step=0.001  class="form-control  ptext_input ptext_input_c"  name="other_current_assets_growth_or_amount[]" maxlength="20" minlength="1" />
+							
 								</div>
 						</div>
                         <div class="col">
 							<div class="form-group">
-								<input type="text" class="form-control text_input"  name="other_current_assets_growth_or_amount[]" maxlength="20" minlength="1" />
-								<div class="perc_helper_h">% value</div>
+								<input type="number" min=0 step=0.001  class="form-control  ptext_input ptext_input_c"  name="other_current_assets_growth_or_amount[]" maxlength="20" minlength="1" />
+							
 								</div>
 						</div>
                         <div class="col">
 							<div class="form-group">
-								<input type="text" class="form-control text_input"  name="other_current_assets_growth_or_amount[]" maxlength="20" minlength="1" />
-								<div class="perc_helper_h">% value</div>
+								<input type="number" min=0 step=0.001  class="form-control  ptext_input ptext_input_c"  name="other_current_assets_growth_or_amount[]" maxlength="20" minlength="1" />
+							
 								</div>
 						</div>
                         <div class="col">
 							<div class="form-group">
-								<input type="text" class="form-control text_input" name="other_current_assets_growth_or_amount[]" maxlength="20" minlength="1" />
-								<div class="perc_helper_h">% value</div>
+								<input type="number" min=0 step=0.001  class="form-control  ptext_input ptext_input_c" name="other_current_assets_growth_or_amount[]" maxlength="20" minlength="1" />
+							
 								</div>
 						</div>
                        
 				</div>
 
-                 <div class="form-row d-none">
-						
-						<div class="col-4">
-							<div class="form-group">
-								<label ><strong>Working Capital </strong></label></div>
-						</div>
-						
-						<div class="col">
-							<div class="form-group">
-								<input type="number" readonly  step="0.01" class="form-control" name="working_capital[]" maxlength="20" minlength="1" />
-								</div>
-						</div>
-                        <div class="col">
-							<div class="form-group">
-								<input type="number" readonly  step="0.01" class="form-control" name="working_capital[]" maxlength="20" minlength="1" />
-								</div>
-						</div>
-                        <div class="col">
-							<div class="form-group">
-								<input type="number" readonly  step="0.01" class="form-control" name="working_capital[]" maxlength="20" minlength="1" />
-								</div>
-						</div>
-                        <div class="col">
-							<div class="form-group">
-								<input type="number" readonly step="0.01" class="form-control" name="working_capital[]" maxlength="20" minlength="1" />
-								</div>
-						</div>
-                        <div class="col">
-							<div class="form-group">
-								<input type="number" readonly step="0.01" class="form-control" name="working_capital[]" maxlength="20" minlength="1" />
-								</div>
-						</div>
-                       
-				</div>
+            
 
 
 
@@ -1715,11 +2206,335 @@
              
 
 
-						
-						<br>
-			<br>
-			<hr>
+                 
+<br><br><button type="button" class="btn btn-warning" onclick="projection(6);">Show or Hide Projection Report</button>
 
+
+
+
+
+<!-- Current Assets  Projection table -->
+				<div id="table6" style="display:none;"><br>
+									<table  class="table text-dark">
+										<thead>
+											<tr>
+												<th scope="col"></th>
+												<th  class="year_1" scope="col"> {% if data.balance_sheet_years.f_1 %} {{data.balance_sheet_years.f_1}} {% else %} Year 1 {% endif %} </th>
+												<th  class="year_2" scope="col">{% if data.balance_sheet_years.f_2 %} {{data.balance_sheet_years.f_2}} {% else %} Year 2 {% endif %}</th>
+												<th  class="year_3" scope="col">{% if data.balance_sheet_years.f_3 %} {{data.balance_sheet_years.f_3}} {% else %} Year 3 {% endif %}</th>
+												<th  class="year_4" scope="col">{% if data.balance_sheet_years.f_4 %} {{data.balance_sheet_years.f_4}} {% else %} Year 4 {% endif %}</th>
+												<th  class="year_5" scope="col">{% if data.balance_sheet_years.f_5 %} {{data.balance_sheet_years.f_5}} {% else %} Year 5 {% endif %}</th>
+											</tr>
+										</thead>
+											<tbody>
+
+											
+
+												
+
+												<tr id="cash">
+													<th scope="row">Cash</th>
+													<td>--</td>
+													<td>--</td>
+													<td>--</td>
+													<td>--</td>
+													<td>--</td>
+													<input hidden name="cash_[]" value=0>
+													<input hidden name="cash_[]" value=0>
+													<input hidden name="cash_[]" value=0>
+													<input hidden name="cash_[]" value=0>
+													<input hidden name="cash_[]" value=0>
+												</tr>
+
+												<tr id="sundry_debtors_no_of_days">
+													<th scope="row">Sundry Debtors</th>
+													<td>--</td>
+													<td>--</td>
+													<td>--</td>
+													<td>--</td>
+													<td>--</td>
+													<input hidden name="sundry_debtors_no_of_days_[]" value=0>
+													<input hidden name="sundry_debtors_no_of_days_[]" value=0>
+													<input hidden name="sundry_debtors_no_of_days_[]" value=0>
+													<input hidden name="sundry_debtors_no_of_days_[]" value=0>
+													<input hidden name="sundry_debtors_no_of_days_[]" value=0>
+												</tr>
+
+												<tr id="inventory_no_of_days">
+													<th scope="row">Inventory</th>
+													<td>--</td>
+													<td>--</td>
+													<td>--</td>
+													<td>--</td>
+													<td>--</td>
+													<input hidden name="inventory_no_of_days_[]" value=0>
+													<input hidden name="inventory_no_of_days_[]" value=0>
+													<input hidden name="inventory_no_of_days_[]" value=0>
+													<input hidden name="inventory_no_of_days_[]" value=0>
+													<input hidden name="inventory_no_of_days_[]" value=0>
+												</tr>
+
+												<tr id="short_term_investments_growth_or_amount">
+													<th scope="row">Short term Investments</th>
+													<td>--</td>
+													<td>--</td>
+													<td>--</td>
+													<td>--</td>
+													<td>--</td>
+													<input hidden name="short_term_investments_growth_or_amount_[]" value=0>
+													<input hidden name="short_term_investments_growth_or_amount_[]" value=0>
+													<input hidden name="short_term_investments_growth_or_amount_[]" value=0>
+													<input hidden name="short_term_investments_growth_or_amount_[]" value=0>
+													<input hidden name="short_term_investments_growth_or_amount_[]" value=0>
+												</tr>
+
+												<tr id="short_term_loans_and_advances_growth_or_amount">
+													<th scope="row">Short term loans & advances</th>
+													<td>--</td>
+													<td>--</td>
+													<td>--</td>
+													<td>--</td>
+													<td>--</td>
+													<input hidden name="short_term_loans_and_advances_growth_or_amount_[]" value=0>
+													<input hidden name="short_term_loans_and_advances_growth_or_amount_[]" value=0>
+													<input hidden name="short_term_loans_and_advances_growth_or_amount_[]" value=0>
+													<input hidden name="short_term_loans_and_advances_growth_or_amount_[]" value=0>
+													<input hidden name="short_term_loans_and_advances_growth_or_amount_[]" value=0>
+												</tr>
+
+												<tr id="other_current_assets_growth_or_amount">
+													<th scope="row">Other current assets</th>
+													<td>--</td>
+													<td>--</td>
+													<td>--</td>
+													<td>--</td>
+													<td>--</td>
+													<input hidden name="other_current_assets_growth_or_amount_[]" value=0>
+													<input hidden name="other_current_assets_growth_or_amount_[]" value=0>
+													<input hidden name="other_current_assets_growth_or_amount_[]" value=0>
+													<input hidden name="other_current_assets_growth_or_amount_[]" value=0>
+													<input hidden name="other_current_assets_growth_or_amount_[]" value=0>
+												</tr>
+
+												<tr id="total_current_assets_b">
+													<th scope="row">Total Current Assets (B)</th>
+													<td>--</td>
+													<td>--</td>
+													<td>--</td>
+													<td>--</td>
+													<td>--</td>
+													<input hidden name="total_current_assets_b_[]" value=0>
+													<input hidden name="total_current_assets_b_[]" value=0>
+													<input hidden name="total_current_assets_b_[]" value=0>
+													<input hidden name="total_current_assets_b_[]" value=0>
+													<input hidden name="total_current_assets_b_[]" value=0>
+												</tr>
+
+												<tr id="total_assets_ab" class="bg-dark text-light">
+													<th scope="row">Total Assets (A+B)</th>
+													<td>--</td>
+													<td>--</td>
+													<td>--</td>
+													<td>--</td>
+													<td>--</td>
+													<input hidden name="total_assets_ab_[]" value=0>
+													<input hidden name="total_assets_ab_[]" value=0>
+													<input hidden name="total_assets_ab_[]" value=0>
+													<input hidden name="total_assets_ab_[]" value=0>
+													<input hidden name="total_assets_ab_[]" value=0>
+												</tr>
+
+												<tr id="check">
+													<th scope="row">Check</th>
+													<td>--</td>
+													<td>--</td>
+													<td>--</td>
+													<td>--</td>
+													<td>--</td>
+													<input hidden name="check_[]" value=0>
+													<input hidden name="check_[]" value=0>
+													<input hidden name="check_[]" value=0>
+													<input hidden name="check_[]" value=0>
+													<input hidden name="check_[]" value=0>
+												</tr>
+
+
+
+
+
+
+											</tbody>
+										</table>
+										<br>
+
+				</div>
+<!-- Current Assets  Projection table end -->
+
+				<hr>    <br>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                 
+<button type="button" class="btn btn-danger" onclick="projection(7);">Ratios Projection Report</button>
+
+
+
+
+
+<!-- RATIOS  Projection table -->
+				<div id="table7" style="display:none;"><br>
+									<table  class="table text-dark">
+										<thead>
+											<tr>
+												<th scope="col"></th>
+												<th  class="year_1" scope="col"> {% if data.balance_sheet_years.f_1 %} {{data.balance_sheet_years.f_1}} {% else %} Year 1 {% endif %} </th>
+												<th  class="year_2" scope="col">{% if data.balance_sheet_years.f_2 %} {{data.balance_sheet_years.f_2}} {% else %} Year 2 {% endif %}</th>
+												<th  class="year_3" scope="col">{% if data.balance_sheet_years.f_3 %} {{data.balance_sheet_years.f_3}} {% else %} Year 3 {% endif %}</th>
+												<th  class="year_4" scope="col">{% if data.balance_sheet_years.f_4 %} {{data.balance_sheet_years.f_4}} {% else %} Year 4 {% endif %}</th>
+												<th  class="year_5" scope="col">{% if data.balance_sheet_years.f_5 %} {{data.balance_sheet_years.f_5}} {% else %} Year 5 {% endif %}</th>
+											</tr>
+										</thead>
+											<tbody>
+
+											
+
+												
+
+												<tr id="return_on_equity">
+													<th scope="row">Return On Equity (%)</th>
+													<td>--</td>
+													<td>--</td>
+													<td>--</td>
+													<td>--</td>
+													<td>--</td>
+													<input hidden name="return_on_equity_[]" value=0>
+													<input hidden name="return_on_equity_[]" value=0>
+													<input hidden name="return_on_equity_[]" value=0>
+													<input hidden name="return_on_equity_[]" value=0>
+													<input hidden name="return_on_equity_[]" value=0>
+												</tr>
+
+
+												<thead class="thead text-primary"><tr><th colspan="6" scope="col">Liquidity Ratio</th></tr></thead>
+
+
+												<tr id="current_ratio">
+													<th scope="row">Current Ratio</th>
+													<td>--</td>
+													<td>--</td>
+													<td>--</td>
+													<td>--</td>
+													<td>--</td>
+													<input hidden name="current_ratio_[]" value=0>
+													<input hidden name="current_ratio_[]" value=0>
+													<input hidden name="current_ratio_[]" value=0>
+													<input hidden name="current_ratio_[]" value=0>
+													<input hidden name="current_ratio_[]" value=0>
+												</tr>
+
+
+												<tr id="quick_ratio">
+													<th scope="row">Quick Ratio</th>
+													<td>--</td>
+													<td>--</td>
+													<td>--</td>
+													<td>--</td>
+													<td>--</td>
+													<input hidden name="quick_ratio_[]" value=0>
+													<input hidden name="quick_ratio_[]" value=0>
+													<input hidden name="quick_ratio_[]" value=0>
+													<input hidden name="quick_ratio_[]" value=0>
+													<input hidden name="quick_ratio_[]" value=0>
+												</tr>
+
+												<thead class="thead text-primary"><tr><th colspan="6" scope="col">Capital Structure ratio</th></tr></thead>
+
+												<tr id="debt_equity_ratiotimes">
+													<th scope="row">Debt Equity Ratio(Times)</th>
+													<td>--</td>
+													<td>--</td>
+													<td>--</td>
+													<td>--</td>
+													<td>--</td>
+													<input hidden name="debt_equity_ratiotimes_[]" value=0>
+													<input hidden name="debt_equity_ratiotimes_[]" value=0>
+													<input hidden name="debt_equity_ratiotimes_[]" value=0>
+													<input hidden name="debt_equity_ratiotimes_[]" value=0>
+													<input hidden name="debt_equity_ratiotimes_[]" value=0>
+												</tr>
+
+
+												<tr id="debt_to_total_funds">
+													<th scope="row">Debt to Total Funds(%)</th>
+													<td>--</td>
+													<td>--</td>
+													<td>--</td>
+													<td>--</td>
+													<td>--</td>
+													<input hidden name="debt_to_total_funds_[]" value=0>
+													<input hidden name="debt_to_total_funds_[]" value=0>
+													<input hidden name="debt_to_total_funds_[]" value=0>
+													<input hidden name="debt_to_total_funds_[]" value=0>
+													<input hidden name="debt_to_total_funds_[]" value=0>
+												</tr>
+
+
+
+												<thead class="thead text-primary"><tr><th colspan="6" scope="col">Turnover Ratio</th></tr></thead>
+												<tr id="asset_turnover">
+													<th scope="row">Asset Turnover</th>
+													<td>--</td>
+													<td>--</td>
+													<td>--</td>
+													<td>--</td>
+													<td>--</td>
+													<input hidden name="asset_turnover_[]" value=0>
+													<input hidden name="asset_turnover_[]" value=0>
+													<input hidden name="asset_turnover_[]" value=0>
+													<input hidden name="asset_turnover_[]" value=0>
+													<input hidden name="asset_turnover_[]" value=0>
+												</tr>
+
+												
+
+
+
+
+											</tbody>
+										</table>
+										<br>
+
+				</div>
+<!-- RATIOS Projection table end -->
+
+
+
+
+
+
+
+<hr>
+
+<br><br><br>
 
 			<div class="form-row">
 				<div class="col-md-4 text-center p-1">
@@ -1748,424 +2563,1489 @@
 </div>
 
 <script>
-/*
-$("input[name='share_capital[]']").focusout(function(){total_shareholder_funds();});
-$("input[name='reserves_and_surplus[]']").focusout(function(){total_shareholder_funds();});
-$("input[name='fund_requirement[]']").focusout(function(){total_shareholder_funds();});
 
-function total_shareholder_funds(){
-	
-	for (var i=0; i<5;i++)
-	{
-		var total = 0;
-		var s_f = $("input[name='share_capital[]']")[i].value;
-		var r_f = $("input[name='reserves_and_surplus[]']")[i].value;
-		var f_f = $("input[name='fund_requirement[]']")[i].value;
+//--------------------------------------- Scripts ----------------------------------------------------------
 
-		if(s_f){total+=parseFloat(s_f)};
-		if(r_f){total+=parseFloat(r_f)};
-		if(f_f){total+=parseFloat(f_f)};
 
-		$("input[name='total_shareholder_funds[]']")[i].value=total;
+
+
+
+
+
+function numberWithCommas(x) {												// Number to money
+	var mon="{{data.denomination}}";
+	if(mon && mon=="Lakh"){
+		nfObject = new Intl.NumberFormat('en-IN'); 
 	}
-	total_liabilities();
-}
-
-
-
-
-
-
-
-
-
-$("input[name='secured_loans[]']").focusout(function(){total_non_current_liabilities();});
-$("input[name='unsecured_loans[]']").focusout(function(){total_non_current_liabilities();});
-$("input[name='long_term_provisions_growth_or_amount[]']").focusout(function(){total_non_current_liabilities();});
-$("input[name='other_non_current_liabilities_growth_or_amount[]']").focusout(function(){total_non_current_liabilities();});
-
-
-function total_non_current_liabilities(){
-	
-	for (var i=0; i<5;i++)
-	{
-		var total = 0;
-		var s_l = $("input[name='secured_loans[]']")[i].value;
-		var u_l = $("input[name='unsecured_loans[]']")[i].value;
-		var l_l = $("input[name='long_term_provisions_growth_or_amount[]']")[i].value;
-		var o_l = $("input[name='other_non_current_liabilities_growth_or_amount[]']")[i].value;
-		
-		if(s_l){total+=parseFloat(s_l)};
-		if(u_l){total+=parseFloat(u_l)};
-		if(l_l){total+=parseFloat(l_l)};
-		if(o_l){total+=parseFloat(o_l)};
-		
-
-		$("input[name='total_non_current_liabilities[]']")[i].value=total;
-	}
-	total_liabilities();
-}
-
-
-
-
-
-
-
-
-$("input[name='short_term_borrowings_growth_or_amount[]']").focusout(function(){total_current_liabilities();});
-$("input[name='short_term_provisions_growth_or_amount[]']").focusout(function(){total_current_liabilities();});
-$("input[name='sundry_creditors_no_of_days_or_amount[]']").focusout(function(){total_current_liabilities();});
-$("input[name='other_current_liabilities_growth_or_amount[]']").focusout(function(){total_current_liabilities();});
-
-
-function total_current_liabilities(){
-	
-	for (var i=0; i<5;i++)
-	{
-		var total = 0;
-		var sb_t_l = $("input[name='short_term_borrowings_growth_or_amount[]']")[i].value;
-		var sp_t_l = $("input[name='short_term_provisions_growth_or_amount[]']")[i].value;
-		var sc_t_l = $("input[name='sundry_creditors_no_of_days_or_amount[]']")[i].value;
-		var o_t_l = $("input[name='other_current_liabilities_growth_or_amount[]']")[i].value;
-		
-		if(sb_t_l){total+=parseFloat(sb_t_l)};
-		if(sp_t_l){total+=parseFloat(sp_t_l)};
-		if(sc_t_l){total+=parseFloat(sc_t_l)};
-		if(o_t_l){total+=parseFloat(o_t_l)};
-		
-
-		$("input[name='total_current_liabilities[]']")[i].value=total;
-	}
-
-	total_liabilities();
-}
-
-
-
-function total_liabilities(){
-
-	for (var i=0; i<5;i++)
-	{
-		var total = 0;
-		var	t_s_f  = $("input[name='total_shareholder_funds[]']")[i].value;
-		var t_n_l = $("input[name='total_non_current_liabilities[]']")[i].value;
-		var t_c_l = $("input[name='total_current_liabilities[]']")[i].value;
-		
-		if(t_s_f){total+=parseFloat(t_s_f)};
-		if(t_n_l){total+=parseFloat(t_n_l)};
-		if(t_c_l){total+=parseFloat(t_c_l)};
-		
-
-		$("input[name='total_liabilities[]']")[i].value=total;
-	}
-}
-
-
-
-
-
-
-//--------------------------------------------------------------------------------------------------
-
-
-$("input[name='gross_fixed_assets_growth_or_amount[]']").focusout(function(){total_non_current_assets();});
-$("input[name='less_accumulated_depreciation_or_amount[]']").focusout(function(){total_non_current_assets();});
-$("input[name='net_fixed_assets_growth_or_amount[]']").focusout(function(){total_non_current_assets();});
-$("input[name='intangible_assets_growth_or_amount[]']").focusout(function(){total_non_current_assets();});
-$("input[name='long_term_loans_and_advances_growth_or_amount[]']").focusout(function(){total_non_current_assets();});
-$("input[name='long_term_investments_growth_or_amount[]']").focusout(function(){total_non_current_assets();});
-$("input[name='other_non_current_assets_growth_or_amount[]']").focusout(function(){total_non_current_assets();});
-
-
-function total_non_current_assets(){
-	
-	for (var i=0; i<5;i++)
-	{
-		var total = 0;
-		var  g_a= $("input[name='gross_fixed_assets_growth_or_amount[]']")[i].value;
-		var  l_a= $("input[name='less_accumulated_depreciation_or_amount[]']")[i].value;
-		var  n_a= $("input[name='net_fixed_assets_growth_or_amount[]']")[i].value;
-		var  i_a= $("input[name='intangible_assets_growth_or_amount[]']")[i].value;
-		var  lt_a= $("input[name='long_term_loans_and_advances_growth_or_amount[]']")[i].value;
-		var  li_a= $("input[name='long_term_investments_growth_or_amount[]']")[i].value;
-		var  o_a= $("input[name='other_non_current_assets_growth_or_amount[]']")[i].value;
-		
-		if(g_a){total+=parseFloat(g_a)};
-		if(l_a){total+=parseFloat(l_a)};
-		if(n_a){total+=parseFloat(n_a)};
-		if(i_a){total+=parseFloat(i_a)};
-		if(lt_a){total+=parseFloat(lt_a)};
-		if(li_a){total+=parseFloat(li_a)};
-		if(o_a){total+=parseFloat(o_a)};
-		
-
-		$("input[name='total_non_current_assets[]']")[i].value=total;
-	}
-
-	total_assets();
-}
-
-
-
-
-$("input[name='cash[]']").focusout(function(){total_current_assets();});
-$("input[name='sundry_debtors_no_of_days_or_amount[]']").focusout(function(){total_current_assets();});
-$("input[name='inventory_no_of_days_or_amount[]']").focusout(function(){total_current_assets();});
-$("input[name='short_term_investments_growth_or_amount[]']").focusout(function(){total_current_assets();});
-$("input[name='short_term_loans_and_advances_growth_or_amount[]']").focusout(function(){total_current_assets();});
-$("input[name='other_current_assets_growth_or_amount[]']").focusout(function(){total_current_assets();});
-
-
-function total_current_assets(){
-	
-	for (var i=0; i<5;i++)
-	{
-		var total = 0;
-		var  c_as= $("input[name='cash[]']")[i].value;
-		var  s_as= $("input[name='sundry_debtors_no_of_days_or_amount[]']")[i].value;
-		var  i_as= $("input[name='inventory_no_of_days_or_amount[]']")[i].value;
-		var  s_ss= $("input[name='short_term_investments_growth_or_amount[]']")[i].value;
-		var  s_t_ss= $("input[name='short_term_loans_and_advances_growth_or_amount[]']")[i].value;
-		var  o_ss= $("input[name='other_current_assets_growth_or_amount[]']")[i].value;
-		
-		if(c_as){total+=parseFloat(c_as)};
-		if(s_as){total+=parseFloat(s_as)};
-		if(i_as){total+=parseFloat(i_as)};
-		if(s_ss){total+=parseFloat(s_ss)};
-		if(s_t_ss){total+=parseFloat(s_t_ss)};
-		if(o_ss){total+=parseFloat(o_ss)};
-		
-
-		$("input[name='total_current_assets[]']")[i].value=total;
-	}
-
-	total_assets();
-}
-
-
-
-
-
-
-function total_assets(){
-	
-	for (var i=0; i<5;i++)
-	{
-		var total = 0;
-		var t_nt_as = $("input[name='total_non_current_assets[]']")[i].value;
-		var t_t_as = $("input[name='total_current_assets[]']")[i].value;
-		
-		if(t_nt_as){total+=parseFloat(t_nt_as)};
-		if(t_t_as){total+=parseFloat(t_t_as)};
-		
-		$("input[name='total_assets[]']")[i].value=total;
-	}
-}
-*/
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/*
-
-$('input[type=radio]').change(function(){
-	var cls_name = $(this).attr("class");
-	var rad_val = $(this).val();
-	var inputboxes = $("#c"+cls_name+' input[type=number]');
-	
-	if(rad_val=="amnt")
-	{
-		$("#c"+cls_name+" .perc_helper").hide();
-		for(var i=0;i<inputboxes.length;i++)
-			{
-				$(inputboxes[i]).removeAttr('min');
-				$(inputboxes[i]).removeAttr('max');
-			}
-	}
-
-	if(rad_val=="perc")
-	{
-		$("#c"+cls_name+" .perc_helper").show();
-		for(var i=0;i<inputboxes.length;i++)
-			{
-				$(inputboxes[i]).attr('min','0');
-				$(inputboxes[i]).attr('max','100');
-			}
-	}
-	
-		
-});*/
-
-
-
-
-
-
-
-
-
-
-
-
-/*
-$("input[name='sundry_creditors_no_of_days[]']").focusout(function(){working_capital();});
-$("input[name='sundry_debtors_no_of_days[]']").focusout(function(){working_capital();});
-$("input[name='inventory_no_of_days[]']").focusout(function(){working_capital();});
-
-function working_capital(){
-	
-	for (var i=0; i<5;i++)
-	{
-		var total = 0;
-		var  s_cd= $("input[name='sundry_creditors_no_of_days[]']")[i].value;
-		var  s_dd= $("input[name='sundry_debtors_no_of_days[]']")[i].value;
-		var  i_d= $("input[name='inventory_no_of_days[]']")[i].value;
-		
-		
-		if(s_dd && i_d && s_cd){
-			total=(parseFloat(s_dd)+parseFloat(i_d))-parseFloat(s_cd);
-			};
-		
-
-		$("input[name='working_capital[]']")[i].value=total;
-	}
-}
-
-
-*/
-
-
-
-
-
-
-
-
-/*--------------------------------------------------- Input validation ---------------------------------------------------*/
-
-$('.text_input').on("input",function(){
-	var inp_val = $(this).val();
-
-
-	if((inp_val.match(/%/g)||[]).length==1 && inp_val[(inp_val.length - 1)]=="%")
-	{
-		inp_val=inp_val.replace(/%/g,"");
-
-		if(inp_val && !isNaN(inp_val))
-		{
-			var f = parseFloat(inp_val);
-			if(f>100 || f<0)
-			{
-				alert("Please enter a valid value. (0.01 to 100)");
-				$(this).val("");
-			}
-
-			else
-			{
-				$(this).css("color", "darkgreen");
-			}
-		}
-		else
-		{
-			alert("Please enter a valid value");
-			$(this).val("");
-		}
-	}
-
-	else if(isNaN(inp_val))
-		{
-			alert("Please enter a valid value");
-			$(this).val("");
-		}
 	else{
-		$(this).css("color", "black");
+		nfObject = new Intl.NumberFormat('en-US'); 
 	}
+    return (nfObject.format(x));
+}
 
 
 
-});
 
 
 
 
-/*--------------------------------------------------- Input validation Non Historical -------------------------------------------*/
-
-$('.text_input_nh').on("input",function(){
-	var inp_val = $(this).val();
+																		/* Projection Calculation */
 
 
-	if(inp_val.indexOf("%")>-1)
-	{
-		
-		alert("You don't have Historical data.\n So, Year1 can not be in percentage format!");
-		$(this).val("");
-		
-	}
+$(".ptext_input").on("input",function(){
+	var inp_name = $(this).attr("name");
+	var all_inps = $('input[name="'+inp_name+'"]');
 
-	else if(isNaN(inp_val))
+	var prev=$(all_inps[0]).val();
+	if(prev && !isNaN(prev))
 		{
-			alert("Please enter a valid value");
-			$(this).val("");
+			prev = parseFloat(prev);
 		}
-
-
-
-});
-
-
-/*--------------------------------------------------- Input validation only perc---------------------------------------------*/
-
-$('.text_input_p').change(function(){
-	var inp_val = $(this).val();
-
-
-	if((inp_val.match(/%/g)||[]).length==1 && inp_val[(inp_val.length - 1)]=="%")
-	{
-		inp_val=inp_val.replace(/%/g,"");
-
-		if(inp_val && !isNaN(inp_val))
-		{
-			var f = parseFloat(inp_val);
-			if(f>100 || f<0)
-			{
-				alert("Please enter a valid value. (0.01 to 100)");
-				$(this).val("");
-			}
-
-			else
-			{
-				$(this).css("color", "darkgreen");
-			}
-		}
-		else
-		{
-			alert("Please enter a valid  % value, eg. 17%");
-			$(this).val("");
-		}
-	}
 
 	else
+	{
+		prev=0;
+	}
+
+	var temp_array =[prev];
+
+
+	for(var i=1;i<all_inps.length;i++)
+	{
+		var temp_val = $(all_inps[i]).val();
+		if(temp_val && !isNaN(temp_val))
 		{
-			alert("Please enter a valid  % value, eg. 17%");
-			$(this).val("");
+			temp_val=parseFloat(temp_val)/100;
+			var temp = parseInt(prev*(temp_val+1));
+			temp_array.push(temp);
+			prev = temp;
+		}
+		else
+		{
+		
+			temp_array.push(0);
+		}
+		
+	}
+
+	row_name = inp_name.replace("[]","");
+	var table_row=$("#"+row_name+" td");
+	var table_inputs=$("input[name='"+row_name+"_[]']");
+
+	for(var i=0;i<table_row.length;i++)
+	{
+		$(table_row[i]).html(numberWithCommas(temp_array[i]));
+		$(table_inputs)[i].value=temp_array[i];
+
+	}
+
+	total_secured_loans();
+	total_non_current_liabilities_b();
+	total_current_liabilities_c();
+	total_noncurrent_asset_a();
+	total_current_assets_b();
+});
+
+
+
+
+
+
+$(".ptext_input_abs").on("input",function(){
+	var inp_name = $(this).attr("name");
+	var all_inps = $('input[name="'+inp_name+'"]');
+
+	var prev=$(all_inps[0]).val();
+	if(prev && !isNaN(prev))
+		{
+			prev = parseFloat(prev);
 		}
 
+	else
+	{
+		prev=0;
+	}
 
+	var temp_array =[prev];
+
+
+	for(var i=1;i<all_inps.length;i++)
+	{
+		var temp_val = $(all_inps[i]).val();
+		if(temp_val && !isNaN(temp_val))
+		{
+			temp_val=parseFloat(temp_val);
+			var temp = parseInt(prev*(temp_val+1));
+			temp_array.push(temp);
+			prev = temp;
+		}
+		else
+		{
+		
+			temp_array.push(0);
+		}
+		
+	}
+
+	row_name = inp_name.replace("[]","");
+	var table_row=$("#"+row_name+" td");
+	var table_inputs=$("input[name='"+row_name+"_[]']");
+
+	for(var i=0;i<table_row.length;i++)
+	{
+		$(table_row[i]).html(numberWithCommas(temp_array[i]));
+		$(table_inputs)[i].value=temp_array[i];
+
+	}
 
 
 });
+
+
+
+$(".ptext_input_perc").on("input",function(){
+	var inp_name = $(this).attr("name");
+	var all_inps = $('input[name="'+inp_name+'"]');
+	var temp_array =[];
+
+	for(var i=0;i<all_inps.length;i++)
+	{
+		var temp_val = $(all_inps[i]).val();
+		if(temp_val && !isNaN(temp_val))
+		{
+			temp_val=parseFloat(temp_val);
+			var temp = parseInt(100*temp_val);
+			temp_array.push(temp);
+		}
+		else
+		{
+		
+			temp_array.push(0);
+		}
+		
+	}
+
+	row_name = inp_name.replace("[]","");
+	var table_row=$("#"+row_name+" td");
+	var table_inputs=$("input[name='"+row_name+"_[]']");
+
+	for(var i=0;i<table_row.length;i++)
+	{
+		$(table_row[i]).html(temp_array[i]+"%");
+		$(table_inputs)[i].value=temp_array[i];
+
+	}
+
+
+});
+
+
+
+
+
+
+
+$(".ptext_input_smp").on("input",function(){
+	var inp_name = $(this).attr("name");
+	var all_inps = $('input[name="'+inp_name+'"]');
+	var temp_array =[];
+	for(var i=0;i<all_inps.length;i++)
+	{
+		var temp_val = $(all_inps[i]).val();
+		if(temp_val && !isNaN(temp_val))
+		{
+			temp_val=parseFloat(temp_val);
+			temp_array.push(temp_val);
+		}
+		else
+		{
+		
+			temp_array.push(0);
+		}
+		
+	}
+
+	row_name = inp_name.replace("[]","");
+	var table_row=$("#"+row_name+" td");
+	var table_inputs=$("input[name='"+row_name+"_[]']");
+
+	for(var i=0;i<table_row.length;i++)
+	{
+		$(table_row[i]).html(temp_array[i]+"%");
+		$(table_inputs)[i].value=(temp_array[i]/100);
+		
+
+	}
+
+	interest_expense();
+
+});
+
+
+
+
+
+
+
+
+
+
+
+$(".ptext_input2").on("input",function(){
+	var inp_name = $(this).attr("name");
+	var all_inps = $('input[name="'+inp_name+'"]');
+
+	var prev=$(all_inps[0]).val();
+	if(prev && !isNaN(prev))
+		{
+			prev = parseFloat(prev);
+		}
+
+	else
+	{
+		prev=0;
+	}
+
+	var temp_array =[prev];
+
+
+	for(var i=1;i<all_inps.length;i++)
+	{
+		var temp_val = $(all_inps[i]).val();
+		if(temp_val && !isNaN(temp_val))
+		{
+			prev+=parseFloat(temp_val);
+			temp_array.push(prev);
+			
+		}
+		else
+		{
+		
+			temp_array.push(0);
+		}
+		
+	}
+
+	row_name = inp_name.replace("[]","");
+	var table_row=$("#"+row_name+" td");
+	var table_inputs=$("input[name='"+row_name+"_[]']");
+
+	for(var i=0;i<table_row.length;i++)
+	{
+		$(table_row[i]).html(numberWithCommas(temp_array[i]));
+		$(table_inputs)[i].value=temp_array[i];
+
+	}
+
+
+
+
+	total_shareholder_funds_a();
+
+});
+
+
+
+
+
+
+
+
+
+
+$(".ptext_input_uns").on("input",function(){
+	var inp_name = $(this).attr("name");
+	var all_inps = $('input[name="'+inp_name+'"]');
+
+	var prev=$(all_inps[0]).val();
+	if(prev && !isNaN(prev))
+		{
+			prev = parseFloat(prev);
+		}
+
+	else
+	{
+		prev=0;
+	}
+
+	var temp_array =[prev];
+
+
+	for(var i=1;i<all_inps.length;i++)
+	{
+		var temp_val = $(all_inps[i]).val();
+		if(temp_val && !isNaN(temp_val))
+		{
+			prev+=parseFloat(temp_val);
+			temp_array.push(prev);
+			
+		}
+		else
+		{
+		
+			temp_array.push(0);
+		}
+		
+	}
+
+	row_name = inp_name.replace("[]","");
+	var table_row=$("#"+row_name+" td");
+	var table_inputs=$("input[name='"+row_name+"_[]']");
+
+	var table2_row=$("#total_unsecured_loans td");
+	var table2_inputs=$("input[name='total_unsecured_loans_[]']");
+
+
+	var table3_row=$("#unsecured_loans2 td");
+	var table3_inputs=$("input[name='unsecured_loans2_[]']");
+
+	for(var i=0;i<table_row.length;i++)
+	{
+		$(table_row[i]).html(numberWithCommas(temp_array[i]));
+		$(table_inputs)[i].value=temp_array[i];
+
+		$(table2_row[i]).html(numberWithCommas(temp_array[i]));
+		$(table2_inputs)[i].value=temp_array[i];
+
+		$(table3_row[i]).html(numberWithCommas(temp_array[i]));
+		$(table3_inputs)[i].value=temp_array[i];
+
+	}
+
+
+
+
+	total_debt();
+	debt_equity_ratiotimes();
+
+});
+
+
+
+
+
+
+
+
+$(".ptext_input_sund").on("input",function(){
+	var inp_name = $(this).attr("name");
+	var all_inps = $('input[name="'+inp_name+'"]');
+
+	var prev=0;
+	var temp_array =[];
+
+	var temp_val=0;
+
+	temp_val = $(all_inps[0]).val();
+	if(temp_val && !isNaN(temp_val))
+	{
+		prev=parseFloat(temp_val);
+		prev = Math.ceil((prev * parseFloat("{{data.projection_table.ins_particulars_product_development_expenses_operating_expenses_raw_material.f_1}}"))/365);
+		temp_array.push(prev);
+		
+	}
+	else
+	{
+	
+		temp_array.push(0);
+	}
+
+
+
+	temp_val = $(all_inps[1]).val();
+	if(temp_val && !isNaN(temp_val))
+	{
+		prev=parseFloat(temp_val);
+		prev = Math.ceil((prev * parseFloat("{{data.projection_table.ins_particulars_product_development_expenses_operating_expenses_raw_material.f_2}}"))/365);
+		temp_array.push(prev);
+		
+	}
+	else
+	{
+	
+		temp_array.push(0);
+	}
+
+
+	temp_val = $(all_inps[2]).val();
+	if(temp_val && !isNaN(temp_val))
+	{
+		prev=parseFloat(temp_val);
+		prev = Math.ceil((prev * parseFloat("{{data.projection_table.ins_particulars_product_development_expenses_operating_expenses_raw_material.f_3}}"))/365);
+		temp_array.push(prev);
+		
+	}
+	else
+	{
+	
+		temp_array.push(0);
+	}
+
+
+	temp_val = $(all_inps[3]).val();
+	if(temp_val && !isNaN(temp_val))
+	{
+		prev=parseFloat(temp_val);
+		prev = Math.ceil((prev * parseFloat("{{data.projection_table.ins_particulars_product_development_expenses_operating_expenses_raw_material.f_4}}"))/365);
+		temp_array.push(prev);
+		
+	}
+	else
+	{
+	
+		temp_array.push(0);
+	}
+
+
+	temp_val = $(all_inps[4]).val();
+	if(temp_val && !isNaN(temp_val))
+	{
+		prev=parseFloat(temp_val);
+		prev = Math.ceil((prev * parseFloat("{{data.projection_table.ins_particulars_product_development_expenses_operating_expenses_raw_material.f_5}}"))/365);
+		temp_array.push(prev);
+		
+	}
+	else
+	{
+	
+		temp_array.push(0);
+	}
+		
+	
+
+	row_name = inp_name.replace("[]","");
+	var table_row=$("#"+row_name+" td");
+	var table_inputs=$("input[name='"+row_name+"_[]']");
+
+	for(var i=0;i<table_row.length;i++)
+	{
+		$(table_row[i]).html(numberWithCommas(temp_array[i]));
+		$(table_inputs)[i].value=temp_array[i];
+
+	}
+
+
+	total_current_liabilities_c();
+
+
+});
+
+
+
+
+
+
+$(".ptext_input_sund_d").on("input",function(){
+	var inp_name = $(this).attr("name");
+	var all_inps = $('input[name="'+inp_name+'"]');
+
+	var prev=0;
+	var temp_array =[];
+
+	var temp_val=0;
+
+	temp_val = $(all_inps[0]).val();
+	if(temp_val && !isNaN(temp_val))
+	{
+		prev=parseFloat(temp_val);
+		prev = Math.ceil((prev * parseFloat("{{data.projection_table.ins_particulars_total_revenue_from_operations_services.f_1}}"))/365);
+		temp_array.push(prev);
+		
+	}
+	else
+	{
+	
+		temp_array.push(0);
+	}
+
+
+
+	temp_val = $(all_inps[1]).val();
+	if(temp_val && !isNaN(temp_val))
+	{
+		prev=parseFloat(temp_val);
+		prev = Math.ceil((prev * parseFloat("{{data.projection_table.ins_particulars_total_revenue_from_operations_services.f_2}}"))/365);
+		temp_array.push(prev);
+		
+	}
+	else
+	{
+	
+		temp_array.push(0);
+	}
+
+
+	temp_val = $(all_inps[2]).val();
+	if(temp_val && !isNaN(temp_val))
+	{
+		prev=parseFloat(temp_val);
+		prev = Math.ceil((prev * parseFloat("{{data.projection_table.ins_particulars_total_revenue_from_operations_services.f_3}}"))/365);
+		temp_array.push(prev);
+		
+	}
+	else
+	{
+	
+		temp_array.push(0);
+	}
+
+
+	temp_val = $(all_inps[3]).val();
+	if(temp_val && !isNaN(temp_val))
+	{
+		prev=parseFloat(temp_val);
+		prev = Math.ceil((prev * parseFloat("{{data.projection_table.ins_particulars_total_revenue_from_operations_services.f_4}}"))/365);
+		temp_array.push(prev);
+		
+	}
+	else
+	{
+	
+		temp_array.push(0);
+	}
+
+
+	temp_val = $(all_inps[4]).val();
+	if(temp_val && !isNaN(temp_val))
+	{
+		prev=parseFloat(temp_val);
+		prev = Math.ceil((prev * parseFloat("{{data.projection_table.ins_particulars_total_revenue_from_operations_services.f_5}}"))/365);
+		temp_array.push(prev);
+		
+	}
+	else
+	{
+	
+		temp_array.push(0);
+	}
+		
+	
+
+	row_name = inp_name.replace("[]","");
+	var table_row=$("#"+row_name+" td");
+	var table_inputs=$("input[name='"+row_name+"_[]']");
+
+	for(var i=0;i<table_row.length;i++)
+	{
+		$(table_row[i]).html(numberWithCommas(temp_array[i]));
+		$(table_inputs)[i].value=temp_array[i];
+
+	}
+
+
+	cash();
+
+});
+
+
+
+
+
+
+
+
+$(".ptext_input_inv").on("input",function(){
+	var inp_name = $(this).attr("name");
+	var all_inps = $('input[name="'+inp_name+'"]');
+
+	var prev=0;
+	var temp_array =[];
+
+	var temp_val=0;
+
+	temp_val = $(all_inps[0]).val();
+	if(temp_val && !isNaN(temp_val))
+	{
+		prev=parseFloat(temp_val);
+		prev = Math.ceil((prev * parseFloat("{{data.projection_table.ins_particulars_product_development_expenses_operating_expenses_raw_material.f_1}}"))/365);
+		temp_array.push(prev);
+		
+	}
+	else
+	{
+	
+		temp_array.push(0);
+	}
+
+
+
+	temp_val = $(all_inps[1]).val();
+	if(temp_val && !isNaN(temp_val))
+	{
+		prev=parseFloat(temp_val);
+		prev = Math.ceil((prev * parseFloat("{{data.projection_table.ins_particulars_product_development_expenses_operating_expenses_raw_material.f_2}}"))/365);
+		temp_array.push(prev);
+		
+	}
+	else
+	{
+	
+		temp_array.push(0);
+	}
+
+
+	temp_val = $(all_inps[2]).val();
+	if(temp_val && !isNaN(temp_val))
+	{
+		prev=parseFloat(temp_val);
+		prev = Math.ceil((prev * parseFloat("{{data.projection_table.ins_particulars_product_development_expenses_operating_expenses_raw_material.f_3}}"))/365);
+		temp_array.push(prev);
+		
+	}
+	else
+	{
+	
+		temp_array.push(0);
+	}
+
+
+	temp_val = $(all_inps[3]).val();
+	if(temp_val && !isNaN(temp_val))
+	{
+		prev=parseFloat(temp_val);
+		prev = Math.ceil((prev * parseFloat("{{data.projection_table.ins_particulars_product_development_expenses_operating_expenses_raw_material.f_4}}"))/365);
+		temp_array.push(prev);
+		
+	}
+	else
+	{
+	
+		temp_array.push(0);
+	}
+
+
+	temp_val = $(all_inps[4]).val();
+	if(temp_val && !isNaN(temp_val))
+	{
+		prev=parseFloat(temp_val);
+		prev = Math.ceil((prev * parseFloat("{{data.projection_table.ins_particulars_product_development_expenses_operating_expenses_raw_material.f_5}}"))/365);
+		temp_array.push(prev);
+		
+	}
+	else
+	{
+	
+		temp_array.push(0);
+	}
+		
+	
+
+	row_name = inp_name.replace("[]","");
+	var table_row=$("#"+row_name+" td");
+	var table_inputs=$("input[name='"+row_name+"_[]']");
+
+	for(var i=0;i<table_row.length;i++)
+	{
+		$(table_row[i]).html(numberWithCommas(temp_array[i]));
+		$(table_inputs)[i].value=temp_array[i];
+
+	}
+
+
+	cash();
+	quick_ratio();
+
+
+});
+
+
+/*------------------------------------- Reverse Surplus ---------------------------------------------------------*/
+
+var table_row=$("#reserve_surplus td");
+var table_inputs=$("input[name='reserve_surplus_[]']");
+
+var temp=0;
+temp=parseFloat("{{data.projection_table.ins_particulars_profit_after_tax.f_1}}");
+$(table_row[0]).html(numberWithCommas(temp));
+$(table_inputs)[0].value=temp;
+
+temp = temp+parseFloat("{{data.projection_table.ins_particulars_profit_after_tax.f_2}}");
+$(table_row[1]).html(numberWithCommas(temp));
+$(table_inputs)[1].value=temp;
+
+temp = temp+parseFloat("{{data.projection_table.ins_particulars_profit_after_tax.f_3}}");
+$(table_row[2]).html(numberWithCommas(temp));
+$(table_inputs)[2].value=temp;
+
+temp = temp+parseFloat("{{data.projection_table.ins_particulars_profit_after_tax.f_4}}");
+$(table_row[3]).html(numberWithCommas(temp));
+$(table_inputs)[3].value=temp;
+
+temp = temp+parseFloat("{{data.projection_table.ins_particulars_profit_after_tax.f_5}}");
+$(table_row[4]).html(numberWithCommas(temp));
+$(table_inputs)[4].value=temp;
+
+
+
+
+
+
+
+
+
+function total_shareholder_funds_a(){
+	var total_sm = $("#total_shareholder_funds_a td");
+	var table_total=$("input[name='total_shareholder_funds_a_[]']");
+	for (var i=0; i<5;i++)
+	{
+		var total = 0;
+		var v1= $("input[name='share_capital_[]']")[i].value;
+		var v2= $("input[name='reserve_surplus_[]']")[i].value;
+		var v3= $("input[name='equity_funds_raised_[]']")[i].value;
+		
+		if(v1){total=parseFloat(v1)};
+		if(v2){total+=parseFloat(v2)};
+		if(v3){total+=parseFloat(v3)};
+
+
+		$(total_sm[i]).html(numberWithCommas(total));
+		$(table_total)[i].value=total;
+
+	}
+	return_on_equity();
+	total_liabilities_abc();
+	debt_equity_ratiotimes();
+	
+
+}
+
+
+
+
+
+
+
+
+
+
+function total_secured_loans(){
+	var total_sm = $("#total_secured_loans td");
+	var table_total=$("input[name='total_secured_loans_[]']");
+
+	var total2_sm = $("#secured_loans2 td");
+	var table2_total=$("input[name='secured_loans2_[]']");
+	
+	for (var i=0; i<5;i++)
+	{
+		var total = 0;
+		var v1= $("input[name='secured_loans_from_banks_[]']")[i].value;
+		var v2= $("input[name='secured_loans_term_loans_[]']")[i].value;
+		var v3= $("input[name='secured_loans_other_loans_[]']")[i].value;
+		var v4= $("input[name='secured_loans_finance_lease_obligation_[]']")[i].value;
+		
+		if(v1){total=parseFloat(v1)};
+		if(v2){total+=parseFloat(v2)};
+		if(v3){total+=parseFloat(v3)};
+		if(v4){total+=parseFloat(v4)};
+
+
+		$(total_sm[i]).html(numberWithCommas(total));
+		$(table_total)[i].value=total;
+
+		$(total2_sm[i]).html(numberWithCommas(total));
+		$(table2_total)[i].value=total;
+
+	}
+
+
+	total_debt();
+	debt_equity_ratiotimes();
+
+}
+
+
+
+
+
+
+
+function total_debt(){
+	var total_sm = $("#total_debt td");
+	var table_total=$("input[name='total_debt_[]']");
+	for (var i=0; i<5;i++)
+	{
+		var total = 0;
+		var v1= $("input[name='total_secured_loans_[]']")[i].value;
+		var v2= $("input[name='total_unsecured_loans_[]']")[i].value;
+		
+		if(v1){total=parseFloat(v1)};
+		if(v2){total+=parseFloat(v2)};
+
+
+		$(total_sm[i]).html(numberWithCommas(total));
+		$(table_total)[i].value=total;
+
+	}
+
+
+	interest_expense();
+
+}
+
+
+
+
+
+
+
+
+
+function interest_expense(){
+	var total_sm = $("#interest_expense td");
+	var table_total=$("input[name='interest_expense_[]']");
+	for (var i=0; i<5;i++)
+	{
+		var total = 0;
+		var v1= $("input[name='total_debt_[]']")[i].value;
+		var v2= $("input[name='average_interest_rate_debt_[]']")[i].value;
+		
+		if(v1){total=parseFloat(v1)};
+		if(v2){total*=parseFloat(v2)};
+
+		total=Math.ceil(total);
+		$(total_sm[i]).html(numberWithCommas(total));
+		$(table_total)[i].value=total;
+
+	}
+
+}
+
+
+
+
+
+
+
+
+
+
+
+function total_non_current_liabilities_b(){
+	var total_sm = $("#total_non_current_liabilities_b td");
+	var table_total=$("input[name='total_non_current_liabilities_b_[]']");
+	
+	for (var i=0; i<5;i++)
+	{
+		var total = 0;
+		var v1= $("input[name='secured_loans2_[]']")[i].value;
+		var v2= $("input[name='unsecured_loans2_[]']")[i].value;
+		var v3= $("input[name='deferred_tax_liabilities_[]']")[i].value;
+		var v4= $("input[name='long_term_provisions_growth_or_amount_[]']")[i].value;
+		var v5= $("input[name='other_non_current_liabilities_growth_or_amount_[]']")[i].value;
+		
+		if(v1){total=parseFloat(v1)};
+		if(v2){total+=parseFloat(v2)};
+		if(v3){total+=parseFloat(v3)};
+		if(v4){total+=parseFloat(v4)};
+		if(v5){total+=parseFloat(v5)};
+
+
+		$(total_sm[i]).html(numberWithCommas(total));
+		$(table_total)[i].value=total;
+	}
+
+	total_liabilities_abc();
+
+}
+
+
+
+
+
+
+
+
+
+
+
+function total_current_liabilities_c(){
+	var total_sm = $("#total_current_liabilities_c td");
+	var table_total=$("input[name='total_current_liabilities_c_[]']");
+	
+	for (var i=0; i<5;i++)
+	{
+		var total = 0;
+		var v1= $("input[name='short_term_borrowings_growth_or_amount_[]']")[i].value;
+		var v2= $("input[name='short_term_provisions_growth_or_amount_[]']")[i].value;
+		var v3= $("input[name='sundry_creditors_no_of_days_[]']")[i].value;
+		var v4= $("input[name='other_current_liabilities_growth_or_amount_[]']")[i].value;
+		
+		if(v1){total=parseFloat(v1)};
+		if(v2){total+=parseFloat(v2)};
+		if(v3){total+=parseFloat(v3)};
+		if(v4){total+=parseFloat(v4)};
+
+
+		$(total_sm[i]).html(numberWithCommas(total));
+		$(table_total)[i].value=total;
+	}
+
+	total_liabilities_abc();
+	current_ratio();
+	quick_ratio();
+
+}
+
+
+
+
+
+function total_liabilities_abc(){
+	var total_sm = $("#total_liabilities_abc td");
+	var table_total=$("input[name='total_liabilities_abc_[]']");
+	
+	for (var i=0; i<5;i++)
+	{
+		var total = 0;
+		var v1= $("input[name='total_shareholder_funds_a_[]']")[i].value;
+		var v2= $("input[name='total_non_current_liabilities_b_[]']")[i].value;
+		var v3= $("input[name='total_current_liabilities_c_[]']")[i].value;
+		
+		if(v1){total=parseFloat(v1)};
+		if(v2){total+=parseFloat(v2)};
+		if(v3){total+=parseFloat(v3)};
+
+
+		$(total_sm[i]).html(numberWithCommas(total));
+		$(table_total)[i].value=total;
+	}
+
+	cash();
+	check();
+
+}
+
+
+
+
+
+/*-------------------------------------  Gross Fixed Assets ---------------------------------------------------------*/
+
+var table_row=$("#gross_fixed_assets td");
+var table_inputs=$("input[name='gross_fixed_assets_[]']");
+
+var temp=0;
+temp=Math.ceil(parseFloat("{{data.projection_table.p_closing_gross.f_1}}"));
+$(table_row[0]).html(numberWithCommas(temp));
+$(table_inputs)[0].value=temp;
+
+temp = Math.ceil(parseFloat("{{data.projection_table.p_closing_gross.f_2}}"));
+$(table_row[1]).html(numberWithCommas(temp));
+$(table_inputs)[1].value=temp;
+
+temp = Math.ceil(parseFloat("{{data.projection_table.p_closing_gross.f_3}}"));
+$(table_row[2]).html(numberWithCommas(temp));
+$(table_inputs)[2].value=temp;
+
+temp = Math.ceil(parseFloat("{{data.projection_table.p_closing_gross.f_4}}"));
+$(table_row[3]).html(numberWithCommas(temp));
+$(table_inputs)[3].value=temp;
+
+temp = Math.ceil(parseFloat("{{data.projection_table.p_closing_gross.f_5}}"));
+$(table_row[4]).html(numberWithCommas(temp));
+$(table_inputs)[4].value=temp;
+
+
+/*------------------------------------- less: Accumulated depreciation -----------------------------------------------------*/
+
+var table_row=$("#less_accumulated_depreciation td");
+var table_inputs=$("input[name='less_accumulated_depreciation_[]']");
+
+var temp=0;
+temp=Math.ceil(parseFloat("{{data.projection_table.p_accumulated_depreciation.f_1}}"));
+$(table_row[0]).html(numberWithCommas(temp));
+$(table_inputs)[0].value=temp;
+
+temp = Math.ceil(parseFloat("{{data.projection_table.p_accumulated_depreciation.f_2}}"));
+$(table_row[1]).html(numberWithCommas(temp));
+$(table_inputs)[1].value=temp;
+
+temp = Math.ceil(parseFloat("{{data.projection_table.p_accumulated_depreciation.f_3}}"));
+$(table_row[2]).html(numberWithCommas(temp));
+$(table_inputs)[2].value=temp;
+
+temp = Math.ceil(parseFloat("{{data.projection_table.p_accumulated_depreciation.f_4}}"));
+$(table_row[3]).html(numberWithCommas(temp));
+$(table_inputs)[3].value=temp;
+
+temp = Math.ceil(parseFloat("{{data.projection_table.p_accumulated_depreciation.f_5}}"));
+$(table_row[4]).html(numberWithCommas(temp));
+$(table_inputs)[4].value=temp;
+
+
+
+/*------------------------------------- Net Fixed Assets  -----------------------------------------------------*/
+
+var table_row=$("#net_fixed_assets td");
+var table_inputs=$("input[name='net_fixed_assets_[]']");
+
+var temp=0;
+temp= Math.ceil(parseFloat("{{data.projection_table.p_net_value.f_1}}"));
+$(table_row[0]).html(numberWithCommas(temp));
+$(table_inputs)[0].value=temp;
+
+temp = Math.ceil(parseFloat("{{data.projection_table.p_net_value.f_2}}"));
+$(table_row[1]).html(numberWithCommas(temp));
+$(table_inputs)[1].value=temp;
+
+temp = Math.ceil(parseFloat("{{data.projection_table.p_net_value.f_3}}"));
+$(table_row[2]).html(numberWithCommas(temp));
+$(table_inputs)[2].value=temp;
+
+temp = Math.ceil(parseFloat("{{data.projection_table.p_net_value.f_4}}"));
+$(table_row[3]).html(numberWithCommas(temp));
+$(table_inputs)[3].value=temp;
+
+temp = Math.ceil(parseFloat("{{data.projection_table.p_net_value.f_5}}"));
+$(table_row[4]).html(numberWithCommas(temp));
+$(table_inputs)[4].value=temp;
+
+
+
+
+
+
+
+
+
+
+
+function total_noncurrent_asset_a(){
+	var total_sm = $("#total_noncurrent_asset_a td");
+	var table_total=$("input[name='total_noncurrent_asset_a_[]']");
+	
+	for (var i=0; i<5;i++)
+	{
+		var total = 0;
+		var v1= $("input[name='net_fixed_assets_[]']")[i].value;
+		var v2= $("input[name='intangible_assets_growth_or_amount_[]']")[i].value;
+		var v3= $("input[name='long_term_loans_and_advances_growth_or_amount_[]']")[i].value;
+		var v4= $("input[name='long_term_investments_growth_or_amount_[]']")[i].value;
+		var v5= $("input[name='deferred_tax_assets_[]']")[i].value;
+		var v6= $("input[name='other_non_current_assets_growth_or_amount_[]']")[i].value;
+		
+		if(v1){total=parseFloat(v1)};
+		if(v2){total+=parseFloat(v2)};
+		if(v3){total+=parseFloat(v3)};
+		if(v4){total+=parseFloat(v4)};
+		if(v5){total+=parseFloat(v5)};
+		if(v6){total+=parseFloat(v6)};
+
+
+		$(total_sm[i]).html(numberWithCommas(total));
+		$(table_total)[i].value=total;
+	}
+
+	total_assets_ab();
+
+}
+
+
+
+
+
+
+
+
+function cash(){
+	var total_sm = $("#cash td");
+	var table_total=$("input[name='cash_[]']");
+	
+	for (var i=0; i<5;i++)
+	{
+		var total = 0;
+		var v1= $("input[name='total_liabilities_abc_[]']")[i].value;
+		var v2= $("input[name='net_fixed_assets_[]']")[i].value;
+		var v3= $("input[name='intangible_assets_growth_or_amount_[]']")[i].value;
+		var v4= $("input[name='long_term_loans_and_advances_growth_or_amount_[]']")[i].value;
+		var v5= $("input[name='long_term_investments_growth_or_amount_[]']")[i].value;
+		var v6= $("input[name='deferred_tax_assets_[]']")[i].value;
+		var v7= $("input[name='other_non_current_assets_growth_or_amount_[]']")[i].value;
+		var v8= $("input[name='sundry_debtors_no_of_days_[]']")[i].value;
+		var v9= $("input[name='inventory_no_of_days_[]']")[i].value;
+		var v10= $("input[name='short_term_investments_growth_or_amount_[]']")[i].value;
+		var v11= $("input[name='short_term_loans_and_advances_growth_or_amount_[]']")[i].value;
+		var v12= $("input[name='other_current_assets_growth_or_amount_[]']")[i].value;
+		
+		if(v1){total=parseFloat(v1)};
+		if(v2){total-=parseFloat(v2)};
+		if(v3){total-=parseFloat(v3)};
+		if(v4){total-=parseFloat(v4)};
+		if(v5){total-=parseFloat(v5)};
+		if(v6){total-=parseFloat(v6)};
+		if(v7){total-=parseFloat(v7)};
+		if(v8){total-=parseFloat(v8)};
+		if(v9){total-=parseFloat(v9)};
+		if(v10){total-=parseFloat(v10)};
+		if(v11){total-=parseFloat(v11)};
+		if(v12){total-=parseFloat(v12)};
+
+
+		$(total_sm[i]).html(numberWithCommas(total));
+		$(table_total)[i].value=total;
+
+	}
+
+}
+
+
+
+
+
+
+
+
+
+
+function total_current_assets_b(){
+	var total_sm = $("#total_current_assets_b td");
+	var table_total=$("input[name='total_current_assets_b_[]']");
+	for (var i=0; i<5;i++)
+	{
+		var total = 0;
+		var v1= $("input[name='cash_[]']")[i].value;
+		var v2= $("input[name='sundry_debtors_no_of_days_[]']")[i].value;
+		var v3= $("input[name='inventory_no_of_days_[]']")[i].value;
+		var v4= $("input[name='short_term_investments_growth_or_amount_[]']")[i].value;
+		var v5= $("input[name='short_term_loans_and_advances_growth_or_amount_[]']")[i].value;
+		var v6= $("input[name='other_current_assets_growth_or_amount_[]']")[i].value;
+		
+		if(v1){total=parseFloat(v1)};
+		if(v2){total+=parseFloat(v2)};
+		if(v3){total+=parseFloat(v3)};
+		if(v4){total+=parseFloat(v4)};
+		if(v5){total+=parseFloat(v5)};
+		if(v6){total+=parseFloat(v6)};
+
+		$(total_sm[i]).html(numberWithCommas(total));
+		$(table_total)[i].value=total;
+
+	}
+
+	
+
+	total_assets_ab();
+	current_ratio();
+	quick_ratio();
+
+}
+
+
+
+
+function total_assets_ab(){
+	var total_sm = $("#total_assets_ab td");
+	var table_total=$("input[name='total_assets_ab_[]']");
+	for (var i=0; i<5;i++)
+	{
+		var total = 0;
+		var v1= $("input[name='total_noncurrent_asset_a_[]']")[i].value;
+		var v2= $("input[name='total_current_assets_b_[]']")[i].value;
+		
+		
+		if(v1){total=parseFloat(v1)};
+		if(v2){total+=parseFloat(v2)};
+		
+
+
+		$(total_sm[i]).html(numberWithCommas(total));
+		$(table_total)[i].value=total;
+
+	}
+
+
+	check();
+	asset_turnover();
+
+	
+
+}
+
+
+
+
+
+function check(){
+	var total_sm = $("#check td");
+	var table_total=$("input[name='check_[]']");
+	for (var i=0; i<5;i++)
+	{
+		var total = 0;
+		var v1= $("input[name='total_liabilities_abc_[]']")[i].value;
+		var v2= $("input[name='total_assets_ab_[]']")[i].value;
+		
+		
+		if(v1){total=parseFloat(v1)};
+		if(v2){total-=parseFloat(v2)};
+		
+
+
+		$(total_sm[i]).html(numberWithCommas(total));
+		$(table_total)[i].value=total;
+
+	}
+}
+
+
+
+
+
+
+
+
+/*------------------------------ Ratio projection------------------------------------*/
+
+function return_on_equity(){
+	
+		var table_row=$("#return_on_equity td");
+		var table_inputs=$("input[name='return_on_equity_[]']");
+		var table2 = $("input[name='total_shareholder_funds_a_[]']");
+
+		var temp=0;
+		if($(table2)[0].value){
+			temp=Math.ceil(parseFloat($(table2)[0].value)/parseFloat("{{data.projection_table.ins_particulars_profit_after_tax.f_1}}"));}
+		
+		$(table_row[0]).html(numberWithCommas(temp)+"%");
+		$(table_inputs)[0].value=temp;
+
+
+		var temp=0;
+		if($(table2)[1].value){
+			temp=Math.ceil(parseFloat($(table2)[1].value)/parseFloat("{{data.projection_table.ins_particulars_profit_after_tax.f_2}}"));}
+		
+		$(table_row[1]).html(numberWithCommas(temp)+"%");
+		$(table_inputs)[1].value=temp;
+
+
+		var temp=0;
+		if($(table2)[2].value){
+			temp=Math.ceil(parseFloat($(table2)[2].value)/parseFloat("{{data.projection_table.ins_particulars_profit_after_tax.f_3}}"));}
+		
+		$(table_row[2]).html(numberWithCommas(temp)+"%");
+		$(table_inputs)[2].value=temp;
+
+
+		var temp=0;
+		if($(table2)[3].value){
+			temp=Math.ceil(parseFloat($(table2)[3].value)/parseFloat("{{data.projection_table.ins_particulars_profit_after_tax.f_4}}"));}
+		
+		$(table_row[3]).html(numberWithCommas(temp)+"%");
+		$(table_inputs)[3].value=temp;
+
+		var temp=0;
+		if($(table2)[4].value){
+			temp=Math.ceil(parseFloat($(table2)[4].value)/parseFloat("{{data.projection_table.ins_particulars_profit_after_tax.f_5}}"));}
+		
+		$(table_row[4]).html(numberWithCommas(temp)+"%");
+		$(table_inputs)[4].value=temp;
+
+}
+
+
+
+
+function current_ratio(){
+	
+		var table_row=$("#current_ratio td");
+		var table_inputs=$("input[name='current_ratio_[]']");
+
+		for (var i=0; i<5;i++)
+		{
+			var temp = 0;
+			var v1= $("input[name='total_current_assets_b_[]']")[i].value;
+			var v2= $("input[name='total_current_liabilities_c_[]']")[i].value;
+			
+			
+			if(v1){temp=parseFloat(v1)};
+			if(v2){temp/=parseFloat(v2)};
+			
+
+
+			$(table_row[i]).html(numberWithCommas(temp));
+			$(table_inputs)[i].value=temp;
+
+		}
+
+		
+}
+
+
+function quick_ratio(){
+	
+		var table_row=$("#quick_ratio td");
+		var table_inputs=$("input[name='quick_ratio_[]']");
+
+		for (var i=0; i<5;i++)
+		{
+			var temp = 0;
+			var v1= $("input[name='total_current_assets_b_[]']")[i].value;
+			var v2= $("input[name='inventory_no_of_days_[]']")[i].value;
+			var v3= $("input[name='total_current_liabilities_c_[]']")[i].value;
+			
+			
+			if(v1){temp=parseFloat(v1)};
+			if(v2){temp-=parseFloat(v2)};
+			if(v3){temp/=parseFloat(v3)};
+			
+
+
+			$(table_row[i]).html(numberWithCommas(temp));
+			$(table_inputs)[i].value=temp;
+
+		}
+
+		
+}
+
+
+
+
+
+
+
+function debt_equity_ratiotimes(){
+	
+		var table_row=$("#debt_equity_ratiotimes td");
+		var table_inputs=$("input[name='debt_equity_ratiotimes_[]']");
+
+		for (var i=0; i<5;i++)
+		{
+			var temp = 0;
+			var v1= $("input[name='secured_loans2_[]']")[i].value;
+			var v2= $("input[name='unsecured_loans2_[]']")[i].value;
+			var v3= $("input[name='short_term_borrowings_growth_or_amount_[]']")[i].value;
+			var v4= $("input[name='total_shareholder_funds_a_[]']")[i].value;
+			
+			
+			if(v1){temp=parseFloat(v1)};
+			if(v2){temp+=parseFloat(v2)};
+			if(v3){temp+=parseFloat(v3)};
+			if(v4){temp/=parseFloat(v4)};
+			
+
+
+			$(table_row[i]).html(numberWithCommas(temp));
+			$(table_inputs)[i].value=temp;
+
+		}
+
+		debt_to_total_funds();
+}
+
+
+
+
+
+
+
+
+
+
+
+
+function debt_to_total_funds(){
+	
+		var table_row=$("#debt_to_total_funds td");
+		var table_inputs=$("input[name='debt_to_total_funds_[]']");
+
+		for (var i=0; i<5;i++)
+		{
+			var temp = 0;
+			var v1= $("input[name='secured_loans2_[]']")[i].value; //c12
+			var v2= $("input[name='unsecured_loans2_[]']")[i].value; //c13
+			var v3= $("input[name='short_term_borrowings_growth_or_amount_[]']")[i].value; //c20
+			var v4= $("input[name='total_shareholder_funds_a_[]']")[i].value; //c9
+			
+			
+			if(v1){v1=parseFloat(v1)};
+			if(v2){v2=parseFloat(v2)};
+			if(v3){v3=parseFloat(v3)};
+			if(v4){v4=parseFloat(v4)};
+
+			temp=Math.ceil((v1+v2+v3)/(v4+v1+v2));
+
+			$(table_row[i]).html(numberWithCommas(temp)+"%");
+			$(table_inputs)[i].value=temp;
+
+		}
+
+		
+}
+
+
+
+
+
+
+
+
+
+
+function asset_turnover(){
+	
+		var table_row=$("#asset_turnover td");
+		var table_inputs=$("input[name='asset_turnover_[]']");
+
+		var table2 = $("input[name='total_assets_ab_[]']");
+
+		var temp=0;
+		if($(table2)[0].value){
+			temp=(parseFloat("{{data.projection_table.ins_particulars_total_revenue_from_operations_services.f_1}}")/parseFloat($(table2)[0].value));}
+		
+		$(table_row[0]).html(numberWithCommas(temp));
+		$(table_inputs)[0].value=temp;
+
+
+		var temp=0;
+		if($(table2)[1].value){
+			temp=(parseFloat("{{data.projection_table.ins_particulars_total_revenue_from_operations_services.f_2}}")/parseFloat($(table2)[1].value));}
+		
+		$(table_row[1]).html(numberWithCommas(temp));
+		$(table_inputs)[1].value=temp;
+
+
+		var temp=0;
+		if($(table2)[2].value){
+			temp=(parseFloat("{{data.projection_table.ins_particulars_total_revenue_from_operations_services.f_3}}")/parseFloat($(table2)[2].value));}
+		
+		$(table_row[2]).html(numberWithCommas(temp));
+		$(table_inputs)[2].value=temp;
+
+
+		var temp=0;
+		if($(table2)[3].value){
+			temp=(parseFloat("{{data.projection_table.ins_particulars_total_revenue_from_operations_services.f_4}}")/parseFloat($(table2)[3].value));}
+		
+		$(table_row[3]).html(numberWithCommas(temp));
+		$(table_inputs)[3].value=temp;
+
+		var temp=0;
+		if($(table2)[4].value){
+			temp=(parseFloat("{{data.projection_table.ins_particulars_total_revenue_from_operations_services.f_5}}")/parseFloat($(table2)[4].value));}
+		
+		$(table_row[4]).html(numberWithCommas(temp));
+		$(table_inputs)[4].value=temp;
+
+}
+
+
+
+
+
+/*----------------------------- Projection table show/hide ----------------------------------------------------*/
+
+function projection(id){
+	if($("#table"+id).is(':hidden'))
+	{
+		$("#table"+id).show()
+		
+	}
+	else
+	{
+		$("#table"+id).hide()
+	}
+}
+
 
 
 

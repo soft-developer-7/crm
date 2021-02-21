@@ -70,7 +70,7 @@
 				
 					
 					
-
+				
 
 				<br>
                 <h5 class="text-primary">Revenue Growth
@@ -89,7 +89,12 @@
 						<div class="col border-right">
 							<div class="form-group">
 								<select id="year1_select" class="form-control" name="profit_and_loss_years[]">
-									<option value="Year1">Year1</option>
+
+									<option {% if data.profit_and_loss_years.f_1 %} value="{{data.profit_and_loss_years.f_1}}" {% else %} value="Year1" {% endif %} >
+									{% if data.profit_and_loss_years.f_1 %} {{data.profit_and_loss_years.f_1}} {% else %} Year1 {% endif %}
+									</option>
+
+
 									{% for i in request.session.years %}
 										<option value="{{i}}">{{ i }}</option>
 									{% endfor %}
@@ -100,25 +105,25 @@
 
 						<div class="col border-right">
 							<div class="form-group">
-								<input type="text" value="Year2" readonly class="form-control" name="profit_and_loss_years[]"/>
+								<input type="text"  {% if data.profit_and_loss_years.f_2 %} value="{{data.profit_and_loss_years.f_2}}" {% else %} value="Year2" {% endif %} readonly class="form-control" name="profit_and_loss_years[]"/>
 							</div>
 						</div>
 
 						<div class="col border-right">
 							<div class="form-group">
-								<input type="text" value="Year3" readonly class="form-control" name="profit_and_loss_years[]"/>
+								<input type="text"{% if data.profit_and_loss_years.f_3 %} value="{{data.profit_and_loss_years.f_3}}" {% else %} value="Year3" {% endif %} readonly class="form-control" name="profit_and_loss_years[]"/>
 							</div>
 						</div>
 
 						<div class="col border-right">
 							<div class="form-group">
-								<input type="text" value="Year4" readonly class="form-control" name="profit_and_loss_years[]"/>
+								<input type="text" {% if data.profit_and_loss_years.f_4 %} value="{{data.profit_and_loss_years.f_4}}" {% else %} value="Year4" {% endif %} readonly class="form-control" name="profit_and_loss_years[]"/>
 							</div>
 						</div>
 
 						<div class="col border-right">
 							<div class="form-group">
-								<input type="text" value="Year5" readonly class="form-control" name="profit_and_loss_years[]"/>
+								<input type="text" {% if data.profit_and_loss_years.f_5 %} value="{{data.profit_and_loss_years.f_5}}" {% else %} value="Year5" {% endif %} readonly class="form-control" name="profit_and_loss_years[]"/>
 							</div>
 						</div>
 
@@ -130,7 +135,7 @@
 						
 						<div class="col-4">
 							<div class="form-group">
-								<input type="text" value="Stream Name 1" name="revenue_growth_or_amount_1[]" class="form-control text-primary" oninput="dynamic_name_change(this,'stream_name_1');" minlength="1" maxlength="200" />
+								<input type="text" {% if data.revenue_growth_or_amount_1.f_1 %} value="{{data.revenue_growth_or_amount_1.f_1}}" {% else %} value="Stream Name 1" {% endif %}  name="revenue_growth_or_amount_1[]" class="form-control text-primary" oninput="dynamic_name_change(this,'stream_name_1');" minlength="1" maxlength="200" />
 							
 
 								</div>
@@ -141,31 +146,31 @@
 					
 						<div class="col">
 							<div class="form-group">
-								<input type="text"  class="form-control {% if data.historical_xl_data %} text_input {%else %} text_input_nh ptext_input1 {% endif %}" name="revenue_growth_or_amount_1[]"  maxlength="20" minlength="1" />
+								<input type="text"  class="form-control {% if data.historical_xl_data %} text_input {%else %} text_input_nh ptext_input1 {% endif %}"    {% if data.revenue_growth_or_amount_1.f_2 %} value="{{data.revenue_growth_or_amount_1.f_2}}" {% endif %}  name="revenue_growth_or_amount_1[]"  maxlength="20" minlength="1" />
 								</div>
 						</div>
 						
 						<div class="col">
 							<div class="form-group">
-								<input type="number" min=0 step=0.001  class="form-control ptext_input1 ptext_input1_c" name="revenue_growth_or_amount_1[]"  maxlength="20" minlength="1" />
+								<input type="number" min=0 step=0.001  class="form-control ptext_input1 ptext_input1_c"  {% if data.revenue_growth_or_amount_1.f_3 %} value="{{data.revenue_growth_or_amount_1.f_3}}" {% endif %}name="revenue_growth_or_amount_1[]"  maxlength="20" minlength="1" />
 								</div>
 						</div>
 
 						<div class="col">
 							<div class="form-group">
-								<input type="number" min=0 step=0.001  class="form-control ptext_input1 ptext_input1_c" name="revenue_growth_or_amount_1[]"  maxlength="20" minlength="1" />
+								<input type="number" min=0 step=0.001  class="form-control ptext_input1 ptext_input1_c"  {% if data.revenue_growth_or_amount_1.f_4 %} value="{{data.revenue_growth_or_amount_1.f_4}}" {% endif %} name="revenue_growth_or_amount_1[]"  maxlength="20" minlength="1" />
 								</div>
 						</div>
 						
 						<div class="col">
 							<div class="form-group">
-								<input type="number" min=0 step=0.001  class="form-control ptext_input1 ptext_input1_c" name="revenue_growth_or_amount_1[]"  maxlength="20" minlength="1" />
+								<input type="number" min=0 step=0.001  class="form-control ptext_input1 ptext_input1_c"  {% if data.revenue_growth_or_amount_1.f_5 %} value="{{data.revenue_growth_or_amount_1.f_5}}" {% endif %} name="revenue_growth_or_amount_1[]"  maxlength="20" minlength="1" />
 								</div>
 						</div>
 
 						<div class="col">
 							<div class="form-group">
-								<input type="number" min=0 step=0.001  class="form-control ptext_input1 ptext_input1_c" name="revenue_growth_or_amount_1[]"  maxlength="20" minlength="1" />
+								<input type="number" min=0 step=0.001  class="form-control ptext_input1 ptext_input1_c"  {% if data.revenue_growth_or_amount_1.f_6 %} value="{{data.revenue_growth_or_amount_1.f_6}}" {% endif %} name="revenue_growth_or_amount_1[]"  maxlength="20" minlength="1" />
 								</div>
 						</div>
 					
@@ -178,7 +183,7 @@
 						
 						<div class="col-4">
 							<div class="form-group">
-								<input type="text" value="Stream Name 2" name="revenue_growth_or_amount_2[]" class="form-control text-primary" oninput="dynamic_name_change(this,'stream_name_2');" minlength="1" maxlength="200" />
+								<input type="text"  {% if data.revenue_growth_or_amount_2.f_1 %} value="{{data.revenue_growth_or_amount_2.f_1}}" {%else%} value="Stream Name 2" {% endif %}  name="revenue_growth_or_amount_2[]" class="form-control text-primary" oninput="dynamic_name_change(this,'stream_name_2');" minlength="1" maxlength="200" />
 								</div>
 						</div>
 
@@ -187,33 +192,33 @@
 					
 						<div class="col">
 							<div class="form-group">
-								<input type="text"  class="form-control {% if data.historical_xl_data %} text_input {%else %} text_input_nh ptext_input1 {% endif %}" name="revenue_growth_or_amount_2[]" maxlength="20" minlength="1" />
+								<input type="text"  class="form-control {% if data.historical_xl_data %} text_input {%else %} text_input_nh ptext_input1 {% endif %}" {% if data.revenue_growth_or_amount_2.f_2 %} value="{{data.revenue_growth_or_amount_1.f_2}}" {% endif %} name="revenue_growth_or_amount_2[]" maxlength="20" minlength="1" />
 								</div>
 						</div>
 						
 						<div class="col">
 							<div class="form-group">
-								<input type="number" min=0 step=0.001  class="form-control ptext_input1 ptext_input1_c"  name="revenue_growth_or_amount_2[]" maxlength="20" minlength="1" />
+								<input type="number" min=0 step=0.001  class="form-control ptext_input1 ptext_input1_c"  {% if data.revenue_growth_or_amount_2.f_3 %} value="{{data.revenue_growth_or_amount_1.f_3}}" {% endif %} name="revenue_growth_or_amount_2[]" maxlength="20" minlength="1" />
 								</div>
 						</div>
 
 
 						<div class="col">
 							<div class="form-group">
-								<input type="number" min=0 step=0.001  class="form-control ptext_input1 ptext_input1_c"  name="revenue_growth_or_amount_2[]" maxlength="20" minlength="1" />
+								<input type="number" min=0 step=0.001  class="form-control ptext_input1 ptext_input1_c"  {% if data.revenue_growth_or_amount_2.f_4 %} value="{{data.revenue_growth_or_amount_1.f_4}}" {% endif %} name="revenue_growth_or_amount_2[]" maxlength="20" minlength="1" />
 								</div>
 						</div>
 
 
 						<div class="col">
 							<div class="form-group">
-								<input type="number" min=0 step=0.001  class="form-control ptext_input1 ptext_input1_c"  name="revenue_growth_or_amount_2[]" maxlength="20" minlength="1" />
+								<input type="number" min=0 step=0.001  class="form-control ptext_input1 ptext_input1_c"  {% if data.revenue_growth_or_amount_2.f_5 %} value="{{data.revenue_growth_or_amount_1.f_5}}" {% endif %} name="revenue_growth_or_amount_2[]" maxlength="20" minlength="1" />
 								</div>
 						</div>
 
 						<div class="col">
 							<div class="form-group">
-								<input type="number" min=0 step=0.001  class="form-control ptext_input1 ptext_input1_c"  name="revenue_growth_or_amount_2[]" maxlength="20" minlength="1" />
+								<input type="number" min=0 step=0.001  class="form-control ptext_input1 ptext_input1_c"  {% if data.revenue_growth_or_amount_2.f_6 %} value="{{data.revenue_growth_or_amount_1.f_6}}" {% endif %} name="revenue_growth_or_amount_2[]" maxlength="20" minlength="1" />
 								</div>
 						</div>
 					
@@ -226,7 +231,7 @@
 						
 						<div class="col-4">
 							<div class="form-group">
-								<input type="text" value="Stream Name 3" name="revenue_growth_or_amount_3[]" class="form-control text-primary" oninput="dynamic_name_change(this,'stream_name_3');" minlength="1" maxlength="200" />
+								<input type="text" {% if data.revenue_growth_or_amount_3.f_1 %} value="{{data.revenue_growth_or_amount_3.f_1}}" {%else%} value="Stream Name 3" {% endif %} name="revenue_growth_or_amount_3[]" class="form-control text-primary" oninput="dynamic_name_change(this,'stream_name_3');" minlength="1" maxlength="200" />
 								</div>
 						</div>
 
@@ -235,28 +240,28 @@
 					
 						<div class="col">
 							<div class="form-group">
-								<input type="text"  class="form-control {% if data.historical_xl_data %} text_input {%else %} text_input_nh ptext_input1 {% endif %}" name="revenue_growth_or_amount_3[]" maxlength="20" minlength="1" />
+								<input type="text"  class="form-control {% if data.historical_xl_data %} text_input {%else %} text_input_nh ptext_input1 {% endif %}"  {% if data.revenue_growth_or_amount_3.f_2 %} value="{{data.revenue_growth_or_amount_3.f_2}}"  {% endif %}  name="revenue_growth_or_amount_3[]" maxlength="20" minlength="1" />
 								</div>
 						</div>
 						
 						<div class="col">
 							<div class="form-group">
-								<input type="number" min=0 step=0.001  class="form-control ptext_input1 ptext_input1_c"  name="revenue_growth_or_amount_3[]" maxlength="20" minlength="1" />
+								<input type="number" min=0 step=0.001  class="form-control ptext_input1 ptext_input1_c"   {% if data.revenue_growth_or_amount_3.f_3 %} value="{{data.revenue_growth_or_amount_3.f_3}}"  {% endif %}  name="revenue_growth_or_amount_3[]" maxlength="20" minlength="1" />
 								</div>
 						</div>
 						<div class="col">
 							<div class="form-group">
-								<input type="number" min=0 step=0.001  class="form-control ptext_input1 ptext_input1_c"  name="revenue_growth_or_amount_3[]" maxlength="20" minlength="1" />
+								<input type="number" min=0 step=0.001  class="form-control ptext_input1 ptext_input1_c"   {% if data.revenue_growth_or_amount_3.f_4 %} value="{{data.revenue_growth_or_amount_3.f_4}}"  {% endif %}  name="revenue_growth_or_amount_3[]" maxlength="20" minlength="1" />
 								</div>
 						</div>
 						<div class="col">
 							<div class="form-group">
-								<input type="number" min=0 step=0.001  class="form-control ptext_input1 ptext_input1_c"  name="revenue_growth_or_amount_3[]" maxlength="20" minlength="1" />
+								<input type="number" min=0 step=0.001  class="form-control ptext_input1 ptext_input1_c"   {% if data.revenue_growth_or_amount_3.f_5 %} value="{{data.revenue_growth_or_amount_3.f_5}}"  {% endif %}  name="revenue_growth_or_amount_3[]" maxlength="20" minlength="1" />
 								</div>
 						</div>
 						<div class="col">
 							<div class="form-group">
-								<input type="number" min=0 step=0.001  class="form-control ptext_input1 ptext_input1_c"  name="revenue_growth_or_amount_3[]" maxlength="20" minlength="1" />
+								<input type="number" min=0 step=0.001  class="form-control ptext_input1 ptext_input1_c"   {% if data.revenue_growth_or_amount_3.f_6 %} value="{{data.revenue_growth_or_amount_3.f_6}}"  {% endif %}  name="revenue_growth_or_amount_3[]" maxlength="20" minlength="1" />
 								</div>
 						</div>
 					
@@ -268,7 +273,7 @@
 						
 						<div class="col-4">
 							<div class="form-group">
-								<input type="text" value="Stream Name 4" name="revenue_growth_or_amount_4[]" class="form-control text-primary" oninput="dynamic_name_change(this,'stream_name_4');" minlength="1" maxlength="200" />
+								<input type="text"  {% if data.revenue_growth_or_amount_4.f_1 %} value="{{data.revenue_growth_or_amount_4.f_1}}" {%else%} value="Stream Name 4" {% endif %}  name="revenue_growth_or_amount_4[]" class="form-control text-primary" oninput="dynamic_name_change(this,'stream_name_4');" minlength="1" maxlength="200" />
 								
 
 								</div>
@@ -279,32 +284,32 @@
 					
 						<div class="col">
 							<div class="form-group">
-								<input type="text"  class="form-control {% if data.historical_xl_data %} text_input {%else %} text_input_nh ptext_input1 {% endif %}" name="revenue_growth_or_amount_4[]" maxlength="20" minlength="1" />
+								<input type="text"  class="form-control {% if data.historical_xl_data %} text_input {%else %} text_input_nh ptext_input1 {% endif %}"  {% if data.revenue_growth_or_amount_4.f_2 %} value="{{data.revenue_growth_or_amount_4.f_2}}" {% endif %} name="revenue_growth_or_amount_4[]" maxlength="20" minlength="1" />
 								
 								</div>
 						</div>
 						
 						<div class="col">
 							<div class="form-group">
-								<input type="number" min=0 step=0.001  class="form-control ptext_input1 ptext_input1_c"  name="revenue_growth_or_amount_4[]" maxlength="20" minlength="1" />
+								<input type="number" min=0 step=0.001  class="form-control ptext_input1 ptext_input1_c"   {% if data.revenue_growth_or_amount_4.f_3 %} value="{{data.revenue_growth_or_amount_4.f_3}}" {% endif %} name="revenue_growth_or_amount_4[]" maxlength="20" minlength="1" />
 								
 								</div>
 						</div>
 						<div class="col">
 							<div class="form-group">
-								<input type="number" min=0 step=0.001  class="form-control ptext_input1 ptext_input1_c"  name="revenue_growth_or_amount_4[]" maxlength="20" minlength="1" />
+								<input type="number" min=0 step=0.001  class="form-control ptext_input1 ptext_input1_c"   {% if data.revenue_growth_or_amount_4.f_4 %} value="{{data.revenue_growth_or_amount_4.f_4}}" {% endif %} name="revenue_growth_or_amount_4[]" maxlength="20" minlength="1" />
 								
 								</div>
 						</div>
 						<div class="col">
 							<div class="form-group">
-								<input type="number" min=0 step=0.001  class="form-control ptext_input1 ptext_input1_c"  name="revenue_growth_or_amount_4[]" maxlength="20" minlength="1" />
+								<input type="number" min=0 step=0.001  class="form-control ptext_input1 ptext_input1_c"   {% if data.revenue_growth_or_amount_4.f_5 %} value="{{data.revenue_growth_or_amount_4.f_5}}" {% endif %} name="revenue_growth_or_amount_4[]" maxlength="20" minlength="1" />
 								
 								</div>
 						</div>
 						<div class="col">
 							<div class="form-group">
-								<input type="number" min=0 step=0.001  class="form-control ptext_input1 ptext_input1_c"  name="revenue_growth_or_amount_4[]" maxlength="20" minlength="1" />
+								<input type="number" min=0 step=0.001  class="form-control ptext_input1 ptext_input1_c"   {% if data.revenue_growth_or_amount_4.f_6 %} value="{{data.revenue_growth_or_amount_4.f_6}}" {% endif %} name="revenue_growth_or_amount_4[]" maxlength="20" minlength="1" />
 								
 								</div>
 						</div>
@@ -331,32 +336,32 @@
 
 						<div class="col">
 							<div class="form-group">
-								<input type="number" step="0.01" min=0 class="form-control ptext_input" name="other_income_growth_or_amount[]"   maxlength="20" minlength="1"  />
+								<input type="number" step="0.01" min=0 class="form-control ptext_input"  {% if data.other_income_growth_or_amount.f_1 %} value="{{data.other_income_growth_or_amount.f_1}}" {% endif %} name="other_income_growth_or_amount[]"   maxlength="20" minlength="1"  />
 								
 								</div>
 						</div>
 
 						<div class="col">
 							<div class="form-group">
-								<input type="number" step="0.01" min=0 class="form-control ptext_input ptext_input_c" name="other_income_growth_or_amount[]"   maxlength="20" minlength="1"  />
+								<input type="number" step="0.01" min=0 class="form-control ptext_input ptext_input_c"  {% if data.other_income_growth_or_amount.f_2 %} value="{{data.other_income_growth_or_amount.f_2}}" {% endif %} name="other_income_growth_or_amount[]"   maxlength="20" minlength="1"  />
 								
 								</div>
 						</div>
 						<div class="col">
 							<div class="form-group">
-								<input type="number" step="0.01" min=0 class="form-control ptext_input ptext_input_c" name="other_income_growth_or_amount[]"   maxlength="20" minlength="1"  />
+								<input type="number" step="0.01" min=0 class="form-control ptext_input ptext_input_c"  {% if data.other_income_growth_or_amount.f_3 %} value="{{data.other_income_growth_or_amount.f_3}}" {% endif %} name="other_income_growth_or_amount[]"   maxlength="20" minlength="1"  />
 								
 								</div>
 						</div>
 						<div class="col">
 							<div class="form-group">
-								<input type="number" step="0.01" min=0 class="form-control ptext_input ptext_input_c" name="other_income_growth_or_amount[]"   maxlength="20" minlength="1"  />
+								<input type="number" step="0.01" min=0 class="form-control ptext_input ptext_input_c"  {% if data.other_income_growth_or_amount.f_4 %} value="{{data.other_income_growth_or_amount.f_4}}" {% endif %} name="other_income_growth_or_amount[]"   maxlength="20" minlength="1"  />
 								
 								</div>
 						</div>
 						<div class="col">
 							<div class="form-group">
-								<input type="number" step="0.01" min=0 class="form-control ptext_input ptext_input_c" name="other_income_growth_or_amount[]"   maxlength="20" minlength="1"  />
+								<input type="number" step="0.01" min=0 class="form-control ptext_input ptext_input_c"  {% if data.other_income_growth_or_amount.f_5 %} value="{{data.other_income_growth_or_amount.f_5}}" {% endif %} name="other_income_growth_or_amount[]"   maxlength="20" minlength="1"  />
 								
 								</div>
 						</div>
@@ -381,31 +386,31 @@
 
 						<div class="col">
 							<div class="form-group">
-								<input type="number"  step="0.01" min=0  class="form-control ptext_input" name="realised_foreign_exchange_gain_or_loss[]"   maxlength="20" minlength="1"  />
+								<input type="number"  step="0.01" min=0  class="form-control ptext_input"  {% if data.realised_foreign_exchange_gain_or_loss.f_1 %} value="{{data.realised_foreign_exchange_gain_or_loss.f_1}}" {% endif %} name="realised_foreign_exchange_gain_or_loss[]"   maxlength="20" minlength="1"  />
 								</div>
 						</div>
 
 						<div class="col">
 							<div class="form-group">
-								<input type="number"  step="0.01" min=0  class="form-control ptext_input ptext_input_c" name="realised_foreign_exchange_gain_or_loss[]"  maxlength="20" minlength="1"  />
+								<input type="number"  step="0.01" min=0  class="form-control ptext_input ptext_input_c" {% if data.realised_foreign_exchange_gain_or_loss.f_2 %} value="{{data.realised_foreign_exchange_gain_or_loss.f_2}}" {% endif %}  name="realised_foreign_exchange_gain_or_loss[]"  maxlength="20" minlength="1"  />
 									
 								</div>
 						</div>
 						<div class="col">
 							<div class="form-group">
-								<input type="number"  step="0.01" min=0  class="form-control ptext_input ptext_input_c" name="realised_foreign_exchange_gain_or_loss[]"   maxlength="20" minlength="1"  />
+								<input type="number"  step="0.01" min=0  class="form-control ptext_input ptext_input_c" {% if data.realised_foreign_exchange_gain_or_loss.f_3 %} value="{{data.realised_foreign_exchange_gain_or_loss.f_3}}" {% endif %}  name="realised_foreign_exchange_gain_or_loss[]"   maxlength="20" minlength="1"  />
 									
 								</div>
 						</div>
 						<div class="col">
 							<div class="form-group">
-								<input type="number"  step="0.01" min=0  class="form-control ptext_input ptext_input_c" name="realised_foreign_exchange_gain_or_loss[]"   maxlength="20" minlength="1"  />
+								<input type="number"  step="0.01" min=0  class="form-control ptext_input ptext_input_c" {% if data.realised_foreign_exchange_gain_or_loss.f_4 %} value="{{data.realised_foreign_exchange_gain_or_loss.f_4}}" {% endif %}  name="realised_foreign_exchange_gain_or_loss[]"   maxlength="20" minlength="1"  />
 									
 								</div>
 						</div>
 						<div class="col">
 							<div class="form-group">
-								<input type="number"  step="0.01" min=0  class="form-control ptext_input ptext_input_c" name="realised_foreign_exchange_gain_or_loss[]"  maxlength="20" minlength="1"  />
+								<input type="number"  step="0.01" min=0  class="form-control ptext_input ptext_input_c" {% if data.realised_foreign_exchange_gain_or_loss.f_5 %} value="{{data.realised_foreign_exchange_gain_or_loss.f_5}}" {% endif %}  name="realised_foreign_exchange_gain_or_loss[]"  maxlength="20" minlength="1"  />
 									
 								</div>
 						</div>
@@ -423,11 +428,11 @@
 										<thead>
 											<tr>
 												<th scope="col"></th>
-												<th  class="year_1" scope="col">Year 1</th>
-												<th  class="year_2" scope="col">Year 2</th>
-												<th  class="year_3" scope="col">Year 3</th>
-												<th  class="year_4" scope="col">Year 4</th>
-												<th  class="year_5" scope="col">Year 5</th>
+												<th  class="year_1" scope="col"> {% if data.profit_and_loss_years.f_1 %} {{data.profit_and_loss_years.f_1}} {% else %} Year 1 {% endif %} </th>
+												<th  class="year_2" scope="col">{% if data.profit_and_loss_years.f_2 %} {{data.profit_and_loss_years.f_2}} {% else %} Year 2 {% endif %}</th>
+												<th  class="year_3" scope="col">{% if data.profit_and_loss_years.f_3 %} {{data.profit_and_loss_years.f_3}} {% else %} Year 3 {% endif %}</th>
+												<th  class="year_4" scope="col">{% if data.profit_and_loss_years.f_4 %} {{data.profit_and_loss_years.f_4}} {% else %} Year 4 {% endif %}</th>
+												<th  class="year_5" scope="col">{% if data.profit_and_loss_years.f_5 %} {{data.profit_and_loss_years.f_5}} {% else %} Year 5 {% endif %}</th>
 											</tr>
 										</thead>
 											<tbody>
@@ -1011,11 +1016,11 @@
 										<thead>
 											<tr>
 												<th scope="col"></th>
-												<th  class="year_1" scope="col">Year 1</th>
-												<th  class="year_2" scope="col">Year 2</th>
-												<th  class="year_3" scope="col">Year 3</th>
-												<th  class="year_4" scope="col">Year 4</th>
-												<th  class="year_5" scope="col">Year 5</th>
+												<th  class="year_1" scope="col"> {% if data.profit_and_loss_years.f_1 %} {{data.profit_and_loss_years.f_1}} {% else %} Year 1 {% endif %} </th>
+												<th  class="year_2" scope="col">{% if data.profit_and_loss_years.f_2 %} {{data.profit_and_loss_years.f_2}} {% else %} Year 2 {% endif %}</th>
+												<th  class="year_3" scope="col">{% if data.profit_and_loss_years.f_3 %} {{data.profit_and_loss_years.f_3}} {% else %} Year 3 {% endif %}</th>
+												<th  class="year_4" scope="col">{% if data.profit_and_loss_years.f_4 %} {{data.profit_and_loss_years.f_4}} {% else %} Year 4 {% endif %}</th>
+												<th  class="year_5" scope="col">{% if data.profit_and_loss_years.f_5 %} {{data.profit_and_loss_years.f_5}} {% else %} Year 5 {% endif %}</th>
 											</tr>
 										</thead>
 											<tbody>
