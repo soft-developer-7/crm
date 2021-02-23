@@ -505,6 +505,63 @@ class super_plan_projection(models.Model):
 
 
 
+    #************************* Balance sheet ********************** [blnc]
+
+
+
+    blnc_share_capital = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='blnc_share_capital',on_delete=models.SET_NULL, null=True)
+    blnc_reserve_surplus = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='blnc_reserve_surplus',on_delete=models.SET_NULL, null=True)
+    blnc_equity_funds_raised = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='blnc_equity_funds_raised',on_delete=models.SET_NULL, null=True)
+    blnc_total_shareholder_funds_a = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='blnc_total_shareholder_funds_a',on_delete=models.SET_NULL, null=True)
+    blnc_secured_loans_from_banks = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='blnc_secured_loans_from_banks',on_delete=models.SET_NULL, null=True)
+    blnc_secured_loans_term_loans = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='blnc_secured_loans_term_loans',on_delete=models.SET_NULL, null=True)
+    blnc_secured_loans_other_loans = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='blnc_secured_loans_other_loans',on_delete=models.SET_NULL, null=True)
+    blnc_secured_loans_finance_lease_obligation = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='blnc_secured_loans_finance_lease_obligation',on_delete=models.SET_NULL, null=True)
+    blnc_total_secured_loans = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='blnc_total_secured_loans',on_delete=models.SET_NULL, null=True)
+    blnc_unsecured_loans = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='blnc_unsecured_loans',on_delete=models.SET_NULL, null=True)
+    blnc_total_unsecured_loans = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='blnc_total_unsecured_loans',on_delete=models.SET_NULL, null=True)
+    blnc_total_debt = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='blnc_total_debt',on_delete=models.SET_NULL, null=True)
+    blnc_interest_expense = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='blnc_interest_expense',on_delete=models.SET_NULL, null=True)
+    blnc_average_interest_rate_debt = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='blnc_average_interest_rate_debt',on_delete=models.SET_NULL, null=True)
+    blnc_deferred_tax_liabilities = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='blnc_deferred_tax_liabilities',on_delete=models.SET_NULL, null=True)
+    blnc_long_term_provisions_growth_or_amount = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='blnc_long_term_provisions_growth_or_amount',on_delete=models.SET_NULL, null=True)
+    blnc_other_non_current_liabilities_growth_or_amount = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='blnc_other_non_current_liabilities_growth_or_amount',on_delete=models.SET_NULL, null=True)
+    blnc_total_non_current_liabilities_b = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='blnc_total_non_current_liabilities_b',on_delete=models.SET_NULL, null=True)
+    blnc_short_term_borrowings_growth_or_amount = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='blnc_short_term_borrowings_growth_or_amount',on_delete=models.SET_NULL, null=True)
+    blnc_short_term_provisions_growth_or_amount = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='blnc_short_term_provisions_growth_or_amount',on_delete=models.SET_NULL, null=True)
+    blnc_sundry_creditors_no_of_days = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='blnc_sundry_creditors_no_of_days',on_delete=models.SET_NULL, null=True)
+    blnc_other_current_liabilities_growth_or_amount = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='blnc_other_current_liabilities_growth_or_amount',on_delete=models.SET_NULL, null=True)
+    blnc_total_current_liabilities_c = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='blnc_total_current_liabilities_c',on_delete=models.SET_NULL, null=True)
+    blnc_total_liabilities_abc = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='blnc_total_liabilities_abc',on_delete=models.SET_NULL, null=True)
+    blnc_gross_fixed_assets = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='blnc_gross_fixed_assets',on_delete=models.SET_NULL, null=True)
+    blnc_less_accumulated_depreciation = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='blnc_less_accumulated_depreciation',on_delete=models.SET_NULL, null=True)
+    blnc_net_fixed_assets = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='blnc_net_fixed_assets',on_delete=models.SET_NULL, null=True)
+    blnc_intangible_assets_growth_or_amount = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='blnc_intangible_assets_growth_or_amount',on_delete=models.SET_NULL, null=True)
+    blnc_long_term_loans_and_advances_growth_or_amount = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='blnc_long_term_loans_and_advances_growth_or_amount',on_delete=models.SET_NULL, null=True)
+    blnc_long_term_investments_growth_or_amount = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='blnc_long_term_investments_growth_or_amount',on_delete=models.SET_NULL, null=True)
+    blnc_deferred_tax_assets = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='blnc_deferred_tax_assets',on_delete=models.SET_NULL, null=True)
+    blnc_other_non_current_assets_growth_or_amount = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='blnc_other_non_current_assets_growth_or_amount',on_delete=models.SET_NULL, null=True)
+    blnc_total_noncurrent_asset_a = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='blnc_total_noncurrent_asset_a',on_delete=models.SET_NULL, null=True)
+    blnc_cash = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='blnc_cash',on_delete=models.SET_NULL, null=True)
+    blnc_sundry_debtors_no_of_days = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='blnc_sundry_debtors_no_of_days',on_delete=models.SET_NULL, null=True)
+    blnc_inventory_no_of_days = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='blnc_inventory_no_of_days',on_delete=models.SET_NULL, null=True)
+    blnc_short_term_investments_growth_or_amount = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='blnc_short_term_investments_growth_or_amount',on_delete=models.SET_NULL, null=True)
+    blnc_short_term_loans_and_advances_growth_or_amount = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='blnc_short_term_loans_and_advances_growth_or_amount',on_delete=models.SET_NULL, null=True)
+    blnc_other_current_assets_growth_or_amount = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='blnc_other_current_assets_growth_or_amount',on_delete=models.SET_NULL, null=True)
+    blnc_total_current_assets_b = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='blnc_total_current_assets_b',on_delete=models.SET_NULL, null=True)
+    blnc_total_assets_ab = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='blnc_total_assets_ab',on_delete=models.SET_NULL, null=True)
+    blnc_check = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='blnc_check',on_delete=models.SET_NULL, null=True)
+    blnc_return_on_equity = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='blnc_return_on_equity',on_delete=models.SET_NULL, null=True)
+    blnc_current_ratio = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='blnc_current_ratio',on_delete=models.SET_NULL, null=True)
+    blnc_quick_ratio = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='blnc_quick_ratio',on_delete=models.SET_NULL, null=True)
+    blnc_debt_equity_ratiotimes = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='blnc_debt_equity_ratiotimes',on_delete=models.SET_NULL, null=True)
+    blnc_debt_to_total_funds = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='blnc_debt_to_total_funds',on_delete=models.SET_NULL, null=True)
+    blnc_asset_turnover = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='blnc_asset_turnover',on_delete=models.SET_NULL, null=True)
+
+
+
+
+
     date = models.DateTimeField(auto_now_add=True)
 
 

@@ -2567,6 +2567,15 @@
 //--------------------------------------- Scripts ----------------------------------------------------------
 
 
+function finite_number(num){
+	if(num && !isNaN(num) && isFinite(num)){
+		return(num);
+	}
+	else{
+		return 0;
+	}
+}
+
 
 
 
@@ -3805,6 +3814,7 @@ function return_on_equity(){
 		if($(table2)[0].value){
 			temp=Math.ceil(parseFloat($(table2)[0].value)/parseFloat("{{data.projection_table.ins_particulars_profit_after_tax.f_1}}"));}
 		
+		temp=finite_number(temp);
 		$(table_row[0]).html(numberWithCommas(temp)+"%");
 		$(table_inputs)[0].value=temp;
 
@@ -3812,7 +3822,7 @@ function return_on_equity(){
 		var temp=0;
 		if($(table2)[1].value){
 			temp=Math.ceil(parseFloat($(table2)[1].value)/parseFloat("{{data.projection_table.ins_particulars_profit_after_tax.f_2}}"));}
-		
+		temp=finite_number(temp);
 		$(table_row[1]).html(numberWithCommas(temp)+"%");
 		$(table_inputs)[1].value=temp;
 
@@ -3820,7 +3830,7 @@ function return_on_equity(){
 		var temp=0;
 		if($(table2)[2].value){
 			temp=Math.ceil(parseFloat($(table2)[2].value)/parseFloat("{{data.projection_table.ins_particulars_profit_after_tax.f_3}}"));}
-		
+		temp=finite_number(temp);
 		$(table_row[2]).html(numberWithCommas(temp)+"%");
 		$(table_inputs)[2].value=temp;
 
@@ -3828,14 +3838,14 @@ function return_on_equity(){
 		var temp=0;
 		if($(table2)[3].value){
 			temp=Math.ceil(parseFloat($(table2)[3].value)/parseFloat("{{data.projection_table.ins_particulars_profit_after_tax.f_4}}"));}
-		
+		temp=finite_number(temp);
 		$(table_row[3]).html(numberWithCommas(temp)+"%");
 		$(table_inputs)[3].value=temp;
 
 		var temp=0;
 		if($(table2)[4].value){
 			temp=Math.ceil(parseFloat($(table2)[4].value)/parseFloat("{{data.projection_table.ins_particulars_profit_after_tax.f_5}}"));}
-		
+		temp=finite_number(temp);
 		$(table_row[4]).html(numberWithCommas(temp)+"%");
 		$(table_inputs)[4].value=temp;
 
@@ -3860,7 +3870,7 @@ function current_ratio(){
 			if(v2){temp/=parseFloat(v2)};
 			
 
-
+			temp=finite_number(temp);
 			$(table_row[i]).html(numberWithCommas(temp));
 			$(table_inputs)[i].value=temp;
 
@@ -3888,7 +3898,7 @@ function quick_ratio(){
 			if(v3){temp/=parseFloat(v3)};
 			
 
-
+			temp=finite_number(temp);
 			$(table_row[i]).html(numberWithCommas(temp));
 			$(table_inputs)[i].value=temp;
 
@@ -3923,7 +3933,7 @@ function debt_equity_ratiotimes(){
 			if(v4){temp/=parseFloat(v4)};
 			
 
-
+			temp=finite_number(temp);
 			$(table_row[i]).html(numberWithCommas(temp));
 			$(table_inputs)[i].value=temp;
 
@@ -3964,6 +3974,7 @@ function debt_to_total_funds(){
 
 			temp=Math.ceil((v1+v2+v3)/(v4+v1+v2));
 
+			temp=finite_number(temp);
 			$(table_row[i]).html(numberWithCommas(temp)+"%");
 			$(table_inputs)[i].value=temp;
 
@@ -3991,7 +4002,7 @@ function asset_turnover(){
 		var temp=0;
 		if($(table2)[0].value){
 			temp=(parseFloat("{{data.projection_table.ins_particulars_total_revenue_from_operations_services.f_1}}")/parseFloat($(table2)[0].value));}
-		
+		temp=finite_number(temp);
 		$(table_row[0]).html(numberWithCommas(temp));
 		$(table_inputs)[0].value=temp;
 
@@ -3999,7 +4010,7 @@ function asset_turnover(){
 		var temp=0;
 		if($(table2)[1].value){
 			temp=(parseFloat("{{data.projection_table.ins_particulars_total_revenue_from_operations_services.f_2}}")/parseFloat($(table2)[1].value));}
-		
+		temp=finite_number(temp);
 		$(table_row[1]).html(numberWithCommas(temp));
 		$(table_inputs)[1].value=temp;
 
@@ -4007,7 +4018,7 @@ function asset_turnover(){
 		var temp=0;
 		if($(table2)[2].value){
 			temp=(parseFloat("{{data.projection_table.ins_particulars_total_revenue_from_operations_services.f_3}}")/parseFloat($(table2)[2].value));}
-		
+		temp=finite_number(temp);
 		$(table_row[2]).html(numberWithCommas(temp));
 		$(table_inputs)[2].value=temp;
 
@@ -4015,14 +4026,14 @@ function asset_turnover(){
 		var temp=0;
 		if($(table2)[3].value){
 			temp=(parseFloat("{{data.projection_table.ins_particulars_total_revenue_from_operations_services.f_4}}")/parseFloat($(table2)[3].value));}
-		
+		temp=finite_number(temp);
 		$(table_row[3]).html(numberWithCommas(temp));
 		$(table_inputs)[3].value=temp;
 
 		var temp=0;
 		if($(table2)[4].value){
 			temp=(parseFloat("{{data.projection_table.ins_particulars_total_revenue_from_operations_services.f_5}}")/parseFloat($(table2)[4].value));}
-		
+		temp=finite_number(temp);
 		$(table_row[4]).html(numberWithCommas(temp));
 		$(table_inputs)[4].value=temp;
 
@@ -4049,6 +4060,7 @@ function projection(id){
 
 
 
+
 /* Year dynamic change */
 
 var year=0;
@@ -4063,12 +4075,29 @@ $("#year1_select").change(function(){
 		{
 			$('[name="'+s_name+'"]')[i].value=year+i;
 		}
+		projection_table_yr(year)
 	}
 	else
 	{
 		alert("Please correctly select the Year1");
+		$('[name="'+s_name+'"]')[0].value="Year1";
+		$('[name="'+s_name+'"]')[1].value="Year2";
+		$('[name="'+s_name+'"]')[2].value="Year3";
+		$('[name="'+s_name+'"]')[3].value="Year4";
+		$('[name="'+s_name+'"]')[4].value="Year5";
 	}
 	
 });
+
+
+
+function projection_table_yr(yr){
+	$(".year_1").html(yr);
+	$(".year_2").html(yr+1);
+	$(".year_3").html(yr+2);
+	$(".year_4").html(yr+3);
+	$(".year_5").html(yr+4);
+}
+
 </script>
 {% endblock %}

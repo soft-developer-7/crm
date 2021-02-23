@@ -1267,43 +1267,148 @@ def calculate_income_statement(request):                                      # 
 
             projection_table1 = book.projection_table
 
-            projection_table1.ins_particulars_stream_1.f_1 = projection_table1.p_revenue_growth_or_amount_1.f_1
-            projection_table1.ins_particulars_stream_1.f_2 = projection_table1.p_revenue_growth_or_amount_1.f_2
-            projection_table1.ins_particulars_stream_1.f_3 = projection_table1.p_revenue_growth_or_amount_1.f_3
-            projection_table1.ins_particulars_stream_1.f_4 = projection_table1.p_revenue_growth_or_amount_1.f_4
-            projection_table1.ins_particulars_stream_1.f_5 = projection_table1.p_revenue_growth_or_amount_1.f_5
+            try:
+                projection_table1.ins_particulars_stream_1.f_1 = projection_table1.p_revenue_growth_or_amount_1.f_1
+            except:
+                projection_table1.ins_particulars_stream_1.f_1 =0
+
+            try:
+                projection_table1.ins_particulars_stream_1.f_2 = projection_table1.p_revenue_growth_or_amount_1.f_2
+            except:
+                projection_table1.ins_particulars_stream_1.f_2 = 0
+
+            try:
+                projection_table1.ins_particulars_stream_1.f_3 = projection_table1.p_revenue_growth_or_amount_1.f_3
+            except:
+                projection_table1.ins_particulars_stream_1.f_3 = 0
+
+            try:
+                projection_table1.ins_particulars_stream_1.f_4 = projection_table1.p_revenue_growth_or_amount_1.f_4
+            except:
+                projection_table1.ins_particulars_stream_1.f_4 = 0
+
+            try:
+                projection_table1.ins_particulars_stream_1.f_5 = projection_table1.p_revenue_growth_or_amount_1.f_5
+            except:
+                projection_table1.ins_particulars_stream_1.f_5 = 0
+
+
             projection_table1.ins_particulars_stream_1.save()
             
 
 
-            projection_table1.ins_particulars_stream_2.f_1 = projection_table1.p_revenue_growth_or_amount_2.f_1
-            projection_table1.ins_particulars_stream_2.f_2 = projection_table1.p_revenue_growth_or_amount_2.f_2
-            projection_table1.ins_particulars_stream_2.f_3 = projection_table1.p_revenue_growth_or_amount_2.f_3
-            projection_table1.ins_particulars_stream_2.f_4 = projection_table1.p_revenue_growth_or_amount_2.f_4
-            projection_table1.ins_particulars_stream_2.f_5 = projection_table1.p_revenue_growth_or_amount_2.f_5
+            try:
+                projection_table1.ins_particulars_stream_2.f_1 = projection_table1.p_revenue_growth_or_amount_2.f_1
+            except:
+                projection_table1.ins_particulars_stream_2.f_1 = 0
+
+            try:
+                projection_table1.ins_particulars_stream_2.f_2 = projection_table1.p_revenue_growth_or_amount_2.f_2
+            except:
+                projection_table1.ins_particulars_stream_2.f_2 = 0
+
+            try:
+                projection_table1.ins_particulars_stream_2.f_3 = projection_table1.p_revenue_growth_or_amount_2.f_3
+            except:
+                projection_table1.ins_particulars_stream_2.f_3 = 0
+
+            try:
+                projection_table1.ins_particulars_stream_2.f_4 = projection_table1.p_revenue_growth_or_amount_2.f_4
+            except:
+                projection_table1.ins_particulars_stream_2.f_4 = 0
+
+            try:
+                projection_table1.ins_particulars_stream_2.f_5 = projection_table1.p_revenue_growth_or_amount_2.f_5
+            except:
+                projection_table1.ins_particulars_stream_2.f_5 = 0
+
             projection_table1.ins_particulars_stream_2.save()
 
 
-            projection_table1.ins_particulars_stream_3.f_1 = projection_table1.p_revenue_growth_or_amount_3.f_1
-            projection_table1.ins_particulars_stream_3.f_2 = projection_table1.p_revenue_growth_or_amount_3.f_2
-            projection_table1.ins_particulars_stream_3.f_3 = projection_table1.p_revenue_growth_or_amount_3.f_3
-            projection_table1.ins_particulars_stream_3.f_4 = projection_table1.p_revenue_growth_or_amount_3.f_4
-            projection_table1.ins_particulars_stream_3.f_5 = projection_table1.p_revenue_growth_or_amount_3.f_5
+
+
+            try:
+                projection_table1.ins_particulars_stream_3.f_1 = projection_table1.p_revenue_growth_or_amount_3.f_1
+            except:
+                projection_table1.ins_particulars_stream_3.f_1 = 0
+
+            try:
+                projection_table1.ins_particulars_stream_3.f_2 = projection_table1.p_revenue_growth_or_amount_3.f_2
+            except:
+                projection_table1.ins_particulars_stream_3.f_2 = 0
+
+            try:
+                projection_table1.ins_particulars_stream_3.f_3 = projection_table1.p_revenue_growth_or_amount_3.f_3
+            except:
+                projection_table1.ins_particulars_stream_3.f_3 = 0
+
+            try:
+                projection_table1.ins_particulars_stream_3.f_4 = projection_table1.p_revenue_growth_or_amount_3.f_4
+            except:
+                projection_table1.ins_particulars_stream_3.f_4 = 0
+
+            try:
+                projection_table1.ins_particulars_stream_3.f_5 = projection_table1.p_revenue_growth_or_amount_3.f_5
+            except:
+                projection_table1.ins_particulars_stream_3.f_5 = 0
+
             projection_table1.ins_particulars_stream_3.save()
 
 
-            projection_table1.ins_particulars_stream_4.f_1 = projection_table1.p_revenue_growth_or_amount_4.f_1
-            projection_table1.ins_particulars_stream_4.f_2 = projection_table1.p_revenue_growth_or_amount_4.f_2
-            projection_table1.ins_particulars_stream_4.f_3 = projection_table1.p_revenue_growth_or_amount_4.f_3
-            projection_table1.ins_particulars_stream_4.f_4 = projection_table1.p_revenue_growth_or_amount_4.f_4
-            projection_table1.ins_particulars_stream_4.f_5 = projection_table1.p_revenue_growth_or_amount_4.f_5
+            try:
+                projection_table1.ins_particulars_stream_4.f_1 = projection_table1.p_revenue_growth_or_amount_4.f_1
+            except:
+                projection_table1.ins_particulars_stream_4.f_1 = 0
+
+            try:
+                projection_table1.ins_particulars_stream_4.f_2 = projection_table1.p_revenue_growth_or_amount_4.f_2
+            except:
+                projection_table1.ins_particulars_stream_4.f_2 = 0
+
+            try:
+                projection_table1.ins_particulars_stream_4.f_3 = projection_table1.p_revenue_growth_or_amount_4.f_3
+            except:
+                projection_table1.ins_particulars_stream_4.f_3 = 0
+
+            try:
+                projection_table1.ins_particulars_stream_4.f_4 = projection_table1.p_revenue_growth_or_amount_4.f_4
+            except:
+                projection_table1.ins_particulars_stream_4.f_4 = 0
+
+            try:
+                projection_table1.ins_particulars_stream_4.f_5 = projection_table1.p_revenue_growth_or_amount_4.f_5
+            except:
+                projection_table1.ins_particulars_stream_4.f_5 = 0
+
             projection_table1.ins_particulars_stream_4.save()
 
-            projection_table1.ins_particulars_total_revenue_from_operations_services.f_1 = projection_table1.p_total_revenue_from_operations_services.f_1
-            projection_table1.ins_particulars_total_revenue_from_operations_services.f_2 = projection_table1.p_total_revenue_from_operations_services.f_2
-            projection_table1.ins_particulars_total_revenue_from_operations_services.f_3 = projection_table1.p_total_revenue_from_operations_services.f_3
-            projection_table1.ins_particulars_total_revenue_from_operations_services.f_4 = projection_table1.p_total_revenue_from_operations_services.f_4
-            projection_table1.ins_particulars_total_revenue_from_operations_services.f_5 = projection_table1.p_total_revenue_from_operations_services.f_5
+
+
+            try:
+                projection_table1.ins_particulars_total_revenue_from_operations_services.f_1 = projection_table1.p_total_revenue_from_operations_services.f_1
+            except:
+                projection_table1.ins_particulars_total_revenue_from_operations_services.f_1 = 0
+
+            try:
+                projection_table1.ins_particulars_total_revenue_from_operations_services.f_2 = projection_table1.p_total_revenue_from_operations_services.f_2
+            except:
+                projection_table1.ins_particulars_total_revenue_from_operations_services.f_2 = 0
+
+            try:
+                projection_table1.ins_particulars_total_revenue_from_operations_services.f_3 = projection_table1.p_total_revenue_from_operations_services.f_3
+            except:
+                projection_table1.ins_particulars_total_revenue_from_operations_services.f_3 = 0
+
+            try:
+                projection_table1.ins_particulars_total_revenue_from_operations_services.f_4 = projection_table1.p_total_revenue_from_operations_services.f_4
+            except:
+                projection_table1.ins_particulars_total_revenue_from_operations_services.f_4 = 0
+
+            try:
+                projection_table1.ins_particulars_total_revenue_from_operations_services.f_5 = projection_table1.p_total_revenue_from_operations_services.f_5
+            except:
+                projection_table1.ins_particulars_total_revenue_from_operations_services.f_5 = 0
+
             projection_table1.ins_particulars_total_revenue_from_operations_services.save()
             
             
@@ -1312,11 +1417,31 @@ def calculate_income_statement(request):                                      # 
 
 
 
-            projection_table1.ins_particulars_product_development_expenses_operating_expenses_raw_material.f_1 = projection_table1.p_total_product_development_expenses_operating_expenses.f_1
-            projection_table1.ins_particulars_product_development_expenses_operating_expenses_raw_material.f_2 = projection_table1.p_total_product_development_expenses_operating_expenses.f_2
-            projection_table1.ins_particulars_product_development_expenses_operating_expenses_raw_material.f_3 = projection_table1.p_total_product_development_expenses_operating_expenses.f_3
-            projection_table1.ins_particulars_product_development_expenses_operating_expenses_raw_material.f_4 = projection_table1.p_total_product_development_expenses_operating_expenses.f_4
-            projection_table1.ins_particulars_product_development_expenses_operating_expenses_raw_material.f_5 = projection_table1.p_total_product_development_expenses_operating_expenses.f_5
+            try:
+                projection_table1.ins_particulars_product_development_expenses_operating_expenses_raw_material.f_1 = projection_table1.p_total_product_development_expenses_operating_expenses.f_1
+            except:
+                projection_table1.ins_particulars_product_development_expenses_operating_expenses_raw_material.f_1 = 0
+
+            try:
+                projection_table1.ins_particulars_product_development_expenses_operating_expenses_raw_material.f_2 = projection_table1.p_total_product_development_expenses_operating_expenses.f_2
+            except:
+                projection_table1.ins_particulars_product_development_expenses_operating_expenses_raw_material.f_2 = 0
+
+            try:
+                projection_table1.ins_particulars_product_development_expenses_operating_expenses_raw_material.f_3 = projection_table1.p_total_product_development_expenses_operating_expenses.f_3
+            except:
+                projection_table1.ins_particulars_product_development_expenses_operating_expenses_raw_material.f_3 = 0
+
+            try:
+                projection_table1.ins_particulars_product_development_expenses_operating_expenses_raw_material.f_4 = projection_table1.p_total_product_development_expenses_operating_expenses.f_4
+            except:
+                projection_table1.ins_particulars_product_development_expenses_operating_expenses_raw_material.f_4 = 0
+
+            try:
+                projection_table1.ins_particulars_product_development_expenses_operating_expenses_raw_material.f_5 = projection_table1.p_total_product_development_expenses_operating_expenses.f_5
+            except:
+                projection_table1.ins_particulars_product_development_expenses_operating_expenses_raw_material.f_5 = 0
+
             projection_table1.ins_particulars_product_development_expenses_operating_expenses_raw_material.save()
 
 
@@ -1324,46 +1449,154 @@ def calculate_income_statement(request):                                      # 
 
 
 
-            projection_table1.ins_particulars_employee_cost.f_1 =projection_table1.p_total_employee_expenses.f_1
-            projection_table1.ins_particulars_employee_cost.f_2 =projection_table1.p_total_employee_expenses.f_2
-            projection_table1.ins_particulars_employee_cost.f_3 =projection_table1.p_total_employee_expenses.f_3
-            projection_table1.ins_particulars_employee_cost.f_4 =projection_table1.p_total_employee_expenses.f_4
-            projection_table1.ins_particulars_employee_cost.f_5 =projection_table1.p_total_employee_expenses.f_5
+            try:
+                projection_table1.ins_particulars_employee_cost.f_1 =projection_table1.p_total_employee_expenses.f_1
+            except:
+                projection_table1.ins_particulars_employee_cost.f_1 = 0
+
+            try:
+                projection_table1.ins_particulars_employee_cost.f_2 =projection_table1.p_total_employee_expenses.f_2
+            except:
+                projection_table1.ins_particulars_employee_cost.f_2 = 0
+
+            try:
+                projection_table1.ins_particulars_employee_cost.f_3 =projection_table1.p_total_employee_expenses.f_3
+            except:
+                projection_table1.ins_particulars_employee_cost.f_3 = 0
+
+            try:
+                projection_table1.ins_particulars_employee_cost.f_4 =projection_table1.p_total_employee_expenses.f_4
+            except:
+                projection_table1.ins_particulars_employee_cost.f_4 = 0
+
+            try:
+                projection_table1.ins_particulars_employee_cost.f_5 =projection_table1.p_total_employee_expenses.f_5
+            except:
+                projection_table1.ins_particulars_employee_cost.f_5 = 0
+
             projection_table1.ins_particulars_employee_cost.save()
 
 
 
 
-            projection_table1.ins_particulars_general_administrative_expenses.f_1 = projection_table1.p_total_general_administrative_expenses.f_1
-            projection_table1.ins_particulars_general_administrative_expenses.f_2 = projection_table1.p_total_general_administrative_expenses.f_2
-            projection_table1.ins_particulars_general_administrative_expenses.f_3 = projection_table1.p_total_general_administrative_expenses.f_3
-            projection_table1.ins_particulars_general_administrative_expenses.f_4 = projection_table1.p_total_general_administrative_expenses.f_4
-            projection_table1.ins_particulars_general_administrative_expenses.f_5 = projection_table1.p_total_general_administrative_expenses.f_5
+            try:
+                projection_table1.ins_particulars_general_administrative_expenses.f_1 = projection_table1.p_total_general_administrative_expenses.f_1
+            except:
+                projection_table1.ins_particulars_general_administrative_expenses.f_1 = 0
+
+            try:
+                projection_table1.ins_particulars_general_administrative_expenses.f_2 = projection_table1.p_total_general_administrative_expenses.f_2
+            except:
+                projection_table1.ins_particulars_general_administrative_expenses.f_2 = 0
+
+            try:
+                projection_table1.ins_particulars_general_administrative_expenses.f_3 = projection_table1.p_total_general_administrative_expenses.f_3
+            except:
+                projection_table1.ins_particulars_general_administrative_expenses.f_3 = 0
+
+            try:
+                projection_table1.ins_particulars_general_administrative_expenses.f_4 = projection_table1.p_total_general_administrative_expenses.f_4
+            except:
+                projection_table1.ins_particulars_general_administrative_expenses.f_4 = 0
+
+            try:
+                projection_table1.ins_particulars_general_administrative_expenses.f_5 = projection_table1.p_total_general_administrative_expenses.f_5
+            except:
+                projection_table1.ins_particulars_general_administrative_expenses.f_5 = 0
+
             projection_table1.ins_particulars_general_administrative_expenses.save()
 
 
-            projection_table1.ins_particulars_selling_marketing_expenses.f_1 = projection_table1.p_total_selling_marketing_expenses.f_1
-            projection_table1.ins_particulars_selling_marketing_expenses.f_2 = projection_table1.p_total_selling_marketing_expenses.f_2
-            projection_table1.ins_particulars_selling_marketing_expenses.f_3 = projection_table1.p_total_selling_marketing_expenses.f_3
-            projection_table1.ins_particulars_selling_marketing_expenses.f_4 = projection_table1.p_total_selling_marketing_expenses.f_4
-            projection_table1.ins_particulars_selling_marketing_expenses.f_5 = projection_table1.p_total_selling_marketing_expenses.f_5
+
+
+            try:
+                projection_table1.ins_particulars_selling_marketing_expenses.f_1 = projection_table1.p_total_selling_marketing_expenses.f_1
+            except:
+                projection_table1.ins_particulars_selling_marketing_expenses.f_1 = 0
+
+            try:
+                projection_table1.ins_particulars_selling_marketing_expenses.f_2 = projection_table1.p_total_selling_marketing_expenses.f_2
+            except:
+                projection_table1.ins_particulars_selling_marketing_expenses.f_2 = 0
+
+            try:
+                projection_table1.ins_particulars_selling_marketing_expenses.f_3 = projection_table1.p_total_selling_marketing_expenses.f_3
+            except:
+                projection_table1.ins_particulars_selling_marketing_expenses.f_3 = 0
+
+            try:
+                projection_table1.ins_particulars_selling_marketing_expenses.f_4 = projection_table1.p_total_selling_marketing_expenses.f_4
+            except:
+                projection_table1.ins_particulars_selling_marketing_expenses.f_4 = 0
+
+            try:
+                projection_table1.ins_particulars_selling_marketing_expenses.f_5 = projection_table1.p_total_selling_marketing_expenses.f_5
+            except:
+                projection_table1.ins_particulars_selling_marketing_expenses.f_5 = 0
+
             projection_table1.ins_particulars_selling_marketing_expenses.save()
 
 
-            projection_table1.ins_particulars_other_expenses_1.f_1 = projection_table1.p_other_expenses_1.f_1
-            projection_table1.ins_particulars_other_expenses_1.f_2 = projection_table1.p_other_expenses_1.f_2
-            projection_table1.ins_particulars_other_expenses_1.f_3 = projection_table1.p_other_expenses_1.f_3
-            projection_table1.ins_particulars_other_expenses_1.f_4 = projection_table1.p_other_expenses_1.f_4
-            projection_table1.ins_particulars_other_expenses_1.f_5 = projection_table1.p_other_expenses_1.f_5
+
+
+
+            try:
+                projection_table1.ins_particulars_other_expenses_1.f_1 = projection_table1.p_other_expenses_1.f_1
+            except:
+                projection_table1.ins_particulars_other_expenses_1.f_1 = 0
+
+            try:
+                projection_table1.ins_particulars_other_expenses_1.f_2 = projection_table1.p_other_expenses_1.f_2
+            except:
+                projection_table1.ins_particulars_other_expenses_1.f_2 = 0
+
+            try:
+                projection_table1.ins_particulars_other_expenses_1.f_3 = projection_table1.p_other_expenses_1.f_3
+            except:
+                projection_table1.ins_particulars_other_expenses_1.f_3 = 0
+
+            try:
+                projection_table1.ins_particulars_other_expenses_1.f_4 = projection_table1.p_other_expenses_1.f_4
+            except:
+                projection_table1.ins_particulars_other_expenses_1.f_4 = 0
+
+            try:
+                projection_table1.ins_particulars_other_expenses_1.f_5 = projection_table1.p_other_expenses_1.f_5
+            except:
+                projection_table1.ins_particulars_other_expenses_1.f_5 = 0
+
             projection_table1.ins_particulars_other_expenses_1.save()
 
 
 
-            projection_table1.ins_particulars_other_expenses_2.f_1 = projection_table1.p_other_expenses_2.f_1
-            projection_table1.ins_particulars_other_expenses_2.f_2 = projection_table1.p_other_expenses_2.f_2
-            projection_table1.ins_particulars_other_expenses_2.f_3 = projection_table1.p_other_expenses_2.f_3
-            projection_table1.ins_particulars_other_expenses_2.f_4 = projection_table1.p_other_expenses_2.f_4
-            projection_table1.ins_particulars_other_expenses_2.f_5 = projection_table1.p_other_expenses_2.f_5
+
+
+
+            try:
+                projection_table1.ins_particulars_other_expenses_2.f_1 = projection_table1.p_other_expenses_2.f_1
+            except:
+                projection_table1.ins_particulars_other_expenses_2.f_1 = 0
+
+            try:
+                projection_table1.ins_particulars_other_expenses_2.f_2 = projection_table1.p_other_expenses_2.f_2
+            except:
+                projection_table1.ins_particulars_other_expenses_2.f_2 = 0
+
+            try:
+                projection_table1.ins_particulars_other_expenses_2.f_3 = projection_table1.p_other_expenses_2.f_3
+            except:
+                projection_table1.ins_particulars_other_expenses_2.f_3 = 0
+
+            try:
+                projection_table1.ins_particulars_other_expenses_2.f_4 = projection_table1.p_other_expenses_2.f_4
+            except:
+                projection_table1.ins_particulars_other_expenses_2.f_4 = 0
+
+            try:
+                projection_table1.ins_particulars_other_expenses_2.f_5 = projection_table1.p_other_expenses_2.f_5
+            except:
+                projection_table1.ins_particulars_other_expenses_2.f_5 = 0
+
             projection_table1.ins_particulars_other_expenses_2.save()
 
 
@@ -4222,6 +4455,69 @@ def user_form_12_submit(request):            # User Form 12 Submit
         book.short_term_investments_growth_or_amount = multi_input_insert(request,"short_term_investments_growth_or_amount[]")
         book.short_term_loans_and_advances_growth_or_amount = multi_input_insert(request,"short_term_loans_and_advances_growth_or_amount[]")
         book.other_current_assets_growth_or_amount = multi_input_insert(request,"other_current_assets_growth_or_amount[]")
+
+
+
+        projection_table = book.projection_table
+
+        projection_table.blnc_share_capital = multi_input_insert_projection(request,"share_capital_[]")
+        projection_table.blnc_reserve_surplus = multi_input_insert_projection(request,"reserve_surplus_[]")
+        projection_table.blnc_equity_funds_raised = multi_input_insert_projection(request,"equity_funds_raised_[]")
+        projection_table.blnc_total_shareholder_funds_a = multi_input_insert_projection(request,"total_shareholder_funds_a_[]")
+
+        projection_table.blnc_secured_loans_from_banks = multi_input_insert_projection(request,"secured_loans_from_banks_[]")
+        projection_table.blnc_secured_loans_term_loans = multi_input_insert_projection(request,"secured_loans_term_loans_[]")
+        projection_table.blnc_secured_loans_other_loans = multi_input_insert_projection(request,"secured_loans_other_loans_[]")
+        projection_table.blnc_secured_loans_finance_lease_obligation = multi_input_insert_projection(request,"secured_loans_finance_lease_obligation_[]")
+        projection_table.blnc_total_secured_loans = multi_input_insert_projection(request,"total_secured_loans_[]")
+        projection_table.blnc_unsecured_loans = multi_input_insert_projection(request,"unsecured_loans_[]")
+        projection_table.blnc_total_unsecured_loans = multi_input_insert_projection(request,"total_unsecured_loans_[]")
+        projection_table.blnc_total_debt = multi_input_insert_projection(request,"total_debt_[]")
+        projection_table.blnc_interest_expense = multi_input_insert_projection(request,"interest_expense_[]")
+        projection_table.blnc_average_interest_rate_debt = multi_input_insert_projection(request,"average_interest_rate_debt_[]")
+
+        projection_table.blnc_deferred_tax_liabilities = multi_input_insert_projection(request,"deferred_tax_liabilities_[]")
+        projection_table.blnc_long_term_provisions_growth_or_amount = multi_input_insert_projection(request,"long_term_provisions_growth_or_amount_[]")
+        projection_table.blnc_other_non_current_liabilities_growth_or_amount = multi_input_insert_projection(request,"other_non_current_liabilities_growth_or_amount_[]")
+        projection_table.blnc_total_non_current_liabilities_b = multi_input_insert_projection(request,"total_non_current_liabilities_b_[]")
+
+        projection_table.blnc_short_term_borrowings_growth_or_amount = multi_input_insert_projection(request,"short_term_borrowings_growth_or_amount_[]")
+        projection_table.blnc_short_term_provisions_growth_or_amount = multi_input_insert_projection(request,"short_term_provisions_growth_or_amount_[]")
+        projection_table.blnc_sundry_creditors_no_of_days = multi_input_insert_projection(request,"sundry_creditors_no_of_days_ []")
+        projection_table.blnc_other_current_liabilities_growth_or_amount = multi_input_insert_projection(request,"other_current_liabilities_growth_or_amount_[]")
+        projection_table.blnc_total_current_liabilities_c = multi_input_insert_projection(request,"total_current_liabilities_c_[]")
+        projection_table.blnc_total_liabilities_abc = multi_input_insert_projection(request,"total_liabilities_abc_[]")
+
+        projection_table.blnc_gross_fixed_assets = multi_input_insert_projection(request,"gross_fixed_assets_[]")
+        projection_table.blnc_less_accumulated_depreciation = multi_input_insert_projection(request,"less_accumulated_depreciation_[]")
+        projection_table.blnc_net_fixed_assets = multi_input_insert_projection(request,"net_fixed_assets_[]")
+        projection_table.blnc_intangible_assets_growth_or_amount = multi_input_insert_projection(request,"intangible_assets_growth_or_amount_[]")
+        projection_table.blnc_long_term_loans_and_advances_growth_or_amount = multi_input_insert_projection(request,"long_term_loans_and_advances_growth_or_amount_[]")
+        projection_table.blnc_long_term_investments_growth_or_amount = multi_input_insert_projection(request,"long_term_investments_growth_or_amount_[]")
+        projection_table.blnc_deferred_tax_assets = multi_input_insert_projection(request,"deferred_tax_assets_[]")
+        projection_table.blnc_other_non_current_assets_growth_or_amount = multi_input_insert_projection(request,"other_non_current_assets_growth_or_amount_[]")
+        projection_table.blnc_total_noncurrent_asset_a = multi_input_insert_projection(request,"total_noncurrent_asset_a_[]")
+
+        projection_table.blnc_cash = multi_input_insert_projection(request,"cash_[]")
+        projection_table.blnc_sundry_debtors_no_of_days = multi_input_insert_projection(request,"sundry_debtors_no_of_days_[]")
+        projection_table.blnc_inventory_no_of_days = multi_input_insert_projection(request,"inventory_no_of_days_[]")
+        projection_table.blnc_short_term_investments_growth_or_amount = multi_input_insert_projection(request,"short_term_investments_growth_or_amount_[]")
+        projection_table.blnc_short_term_loans_and_advances_growth_or_amount = multi_input_insert_projection(request,"short_term_loans_and_advances_growth_or_amount_[]")
+        projection_table.blnc_other_current_assets_growth_or_amount = multi_input_insert_projection(request,"other_current_assets_growth_or_amount_[]")
+        projection_table.blnc_total_current_assets_b = multi_input_insert_projection(request,"total_current_assets_b_[]")
+        projection_table.blnc_total_assets_ab = multi_input_insert_projection(request,"total_assets_ab_[]")
+        projection_table.blnc_check = multi_input_insert_projection(request,"check_[]")
+
+        projection_table.blnc_return_on_equity = multi_input_insert_projection(request,"return_on_equity_[]")
+        projection_table.blnc_current_ratio = multi_input_insert_projection(request,"current_ratio_[]")
+        projection_table.blnc_quick_ratio = multi_input_insert_projection(request,"quick_ratio_[]")
+        projection_table.blnc_debt_equity_ratiotimes = multi_input_insert_projection(request,"debt_equity_ratiotimes_[]")
+        projection_table.blnc_debt_to_total_funds = multi_input_insert_projection(request,"debt_to_total_funds_[]")
+        projection_table.blnc_asset_turnover = multi_input_insert_projection(request,"asset_turnover_[]")
+
+
+        projection_table.save()
+
 
 
         book.current_fillup_position = 12
