@@ -1699,11 +1699,102 @@ def calculate_income_statement(request):                                      # 
 
 
 
-            projection_table1.ins_particulars_depreciation = projection_table1.p_current_depreciation
 
-            projection_table1.ins_particulars_other_income = projection_table1.p_other_income_growth_or_amount
 
-            projection_table1.ins_particulars_realised_foreign_exchange_gain_loss = projection_table1.p_realised_foreign_exchange_gain_or_loss
+
+
+
+            try:
+                projection_table1.ins_particulars_depreciation.f_1 = projection_table1.p_current_depreciation.f_1
+            except:
+                projection_table1.ins_particulars_depreciation.f_1 = 0
+            
+            try:
+                projection_table1.ins_particulars_depreciation.f_2 = projection_table1.p_current_depreciation.f_2
+            except:
+                projection_table1.ins_particulars_depreciation.f_2 = 0
+            
+            try:
+                projection_table1.ins_particulars_depreciation.f_3 = projection_table1.p_current_depreciation.f_3
+            except:
+                projection_table1.ins_particulars_depreciation.f_3 = 0
+            
+            try:
+                projection_table1.ins_particulars_depreciation.f_4 = projection_table1.p_current_depreciation.f_4
+            except:
+                projection_table1.ins_particulars_depreciation.f_4 = 0
+            
+            try:
+                projection_table1.ins_particulars_depreciation.f_5 = projection_table1.p_current_depreciation.f_5
+            except:
+                projection_table1.ins_particulars_depreciation.f_5 = 0
+
+            projection_table1.ins_particulars_depreciation.save()
+
+
+
+
+
+            try:
+                projection_table1.ins_particulars_other_income.f_1 = projection_table1.p_other_income_growth_or_amount.f_1
+            except:
+                projection_table1.ins_particulars_other_income.f_1 = 0
+            
+            try:
+                projection_table1.ins_particulars_other_income.f_2 = projection_table1.p_other_income_growth_or_amount.f_2
+            except:
+                projection_table1.ins_particulars_other_income.f_2 = 0
+
+            try:
+                projection_table1.ins_particulars_other_income.f_3 = projection_table1.p_other_income_growth_or_amount.f_3
+            except:
+                projection_table1.ins_particulars_other_income.f_3 = 0
+
+            try:
+                projection_table1.ins_particulars_other_income.f_4 = projection_table1.p_other_income_growth_or_amount.f_4
+            except:
+                projection_table1.ins_particulars_other_income.f_4= 0
+
+            try:
+                projection_table1.ins_particulars_other_income.f_5 = projection_table1.p_other_income_growth_or_amount.f_5
+            except:
+                projection_table1.ins_particulars_other_income.f_5 = 0
+
+            projection_table1.ins_particulars_other_income.save()
+
+
+
+
+
+
+
+
+            try:
+                projection_table1.ins_particulars_realised_foreign_exchange_gain_loss.f_1 = projection_table1.p_realised_foreign_exchange_gain_or_loss.f_1
+            except:
+                projection_table1.ins_particulars_realised_foreign_exchange_gain_loss.f_1 = 0
+
+            try:
+                projection_table1.ins_particulars_realised_foreign_exchange_gain_loss.f_2 = projection_table1.p_realised_foreign_exchange_gain_or_loss.f_2
+            except:
+                projection_table1.ins_particulars_realised_foreign_exchange_gain_loss.f_2 = 0
+
+            try:
+                projection_table1.ins_particulars_realised_foreign_exchange_gain_loss.f_3 = projection_table1.p_realised_foreign_exchange_gain_or_loss.f_3
+            except:
+                projection_table1.ins_particulars_realised_foreign_exchange_gain_loss.f_3 = 0
+
+            try:
+                projection_table1.ins_particulars_realised_foreign_exchange_gain_loss.f_4 = projection_table1.p_realised_foreign_exchange_gain_or_loss.f_4
+            except:
+                projection_table1.ins_particulars_realised_foreign_exchange_gain_loss.f_4 = 0
+
+            try:
+                projection_table1.ins_particulars_realised_foreign_exchange_gain_loss.f_5 = projection_table1.p_realised_foreign_exchange_gain_or_loss.f_5
+            except:
+                projection_table1.ins_particulars_realised_foreign_exchange_gain_loss.f_5 = 0
+
+            projection_table1.ins_particulars_realised_foreign_exchange_gain_loss.save()
 
 
 
@@ -1744,12 +1835,42 @@ def calculate_income_statement(request):                                      # 
             projection_table1.ins_particulars_ebit.save()
 
 
-            projection_table1.ins_particulars_interest_including_finance_charges.f_1=0
-            projection_table1.ins_particulars_interest_including_finance_charges.f_2=0
-            projection_table1.ins_particulars_interest_including_finance_charges.f_3=0
-            projection_table1.ins_particulars_interest_including_finance_charges.f_4=0
-            projection_table1.ins_particulars_interest_including_finance_charges.f_5=0
+
+
+
+            try:
+                projection_table1.ins_particulars_interest_including_finance_charges.f_1= projection_table1.blnc_interest_expense.f_1
+            except:
+                projection_table1.ins_particulars_interest_including_finance_charges.f_1=0
+            
+            try:
+                projection_table1.ins_particulars_interest_including_finance_charges.f_2= projection_table1.blnc_interest_expense.f_2
+            except:
+                projection_table1.ins_particulars_interest_including_finance_charges.f_2=0
+
+            try:
+                projection_table1.ins_particulars_interest_including_finance_charges.f_3= projection_table1.blnc_interest_expense.f_3
+            except:
+                projection_table1.ins_particulars_interest_including_finance_charges.f_3=0
+
+            try:
+                projection_table1.ins_particulars_interest_including_finance_charges.f_4= projection_table1.blnc_interest_expense.f_4
+            except:
+                projection_table1.ins_particulars_interest_including_finance_charges.f_4=0
+
+            try:
+                projection_table1.ins_particulars_interest_including_finance_charges.f_5= projection_table1.blnc_interest_expense.f_5
+            except:
+                projection_table1.ins_particulars_interest_including_finance_charges.f_5=0
+
+
             projection_table1.ins_particulars_interest_including_finance_charges.save()
+
+
+
+
+
+            
 
 
             try:
