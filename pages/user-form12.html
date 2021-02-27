@@ -87,7 +87,10 @@
 						<div class="col border-right">
 							<div class="form-group">
 								<select id="year1_select" class="form-control" name="balance_sheet_years[]">
-									<option value="Year1">Year1</option>
+									<option {% if data.balance_sheet_years.f_1 %} value="{{data.balance_sheet_years.f_1}}" {% else %} value="Year1" {% endif %} >
+									{% if data.balance_sheet_years.f_1 %} {{data.balance_sheet_years.f_1}} {% else %} Year1 {% endif %}
+									</option>
+
 									{% for i in request.session.years %}
 										<option value="{{i}}">{{ i }}</option>
 									{% endfor %}
@@ -98,25 +101,25 @@
 
 						<div class="col border-right">
 							<div class="form-group">
-								<input type="text" value="Year2" readonly class="form-control" name="balance_sheet_years[]"/>
+								<input type="text"  {% if data.balance_sheet_years.f_2 %} value="{{data.balance_sheet_years.f_2}}" {% else %} value="Year2" {% endif %} readonly class="form-control" name="balance_sheet_years[]"/>
 							</div>
 						</div>
 
 						<div class="col border-right">
 							<div class="form-group">
-								<input type="text" value="Year3" readonly class="form-control" name="balance_sheet_years[]"/>
+								<input type="text" {% if data.balance_sheet_years.f_3 %} value="{{data.balance_sheet_years.f_3}}" {% else %} value="Year3" {% endif %} readonly class="form-control" name="balance_sheet_years[]"/>
 							</div>
 						</div>
 
 						<div class="col border-right">
 							<div class="form-group">
-								<input type="text" value="Year4" readonly class="form-control" name="balance_sheet_years[]"/>
+								<input type="text" {% if data.balance_sheet_years.f_4 %} value="{{data.balance_sheet_years.f_4}}" {% else %} value="Year4" {% endif %} readonly class="form-control" name="balance_sheet_years[]"/>
 							</div>
 						</div>
 
 						<div class="col border-right">
 							<div class="form-group">
-								<input type="text" value="Year5" readonly class="form-control" name="balance_sheet_years[]"/>
+								<input type="text" {% if data.balance_sheet_years.f_5 %} value="{{data.balance_sheet_years.f_5}}" {% else %} value="Year5" {% endif %} readonly class="form-control" name="balance_sheet_years[]"/>
 							</div>
 						</div>
 				</div>
@@ -135,31 +138,31 @@
 
 						<div class="col">
 							<div class="form-group">
-								<input type="number" min=0 step=0.001  class="form-control  ptext_input2"  name="share_capital[]"   maxlength="20" minlength="1"  />
+								<input type="number" min=0 step=0.001  class="form-control  ptext_input2"  name="share_capital[]" {% if data.share_capital.f_1 %} value="{{data.share_capital.f_1}}" {% endif %}   maxlength="20" minlength="1"  />
 								</div>
 						</div>
 
 						<div class="col">
 							<div class="form-group">
-								<input type="number" min=0 step=0.001  class="form-control  ptext_input2" name="share_capital[]"  maxlength="20" minlength="1"  />
+								<input type="number" min=0 step=0.001  class="form-control  ptext_input2" name="share_capital[]" {% if data.share_capital.f_2 %} value="{{data.share_capital.f_2}}" {% endif %}  maxlength="20" minlength="1"  />
 								
 								</div>
 						</div>
 						<div class="col">
 							<div class="form-group">
-								<input type="number" min=0 step=0.001  class="form-control  ptext_input2" name="share_capital[]"   maxlength="20" minlength="1"  />
+								<input type="number" min=0 step=0.001  class="form-control  ptext_input2" name="share_capital[]" {% if data.share_capital.f_3 %} value="{{data.share_capital.f_3}}" {% endif %}   maxlength="20" minlength="1"  />
 								
 								</div>
 						</div>
 						<div class="col">
 							<div class="form-group">
-								<input type="number" min=0 step=0.001  class="form-control  ptext_input2" name="share_capital[]"   maxlength="20" minlength="1"  />
+								<input type="number" min=0 step=0.001  class="form-control  ptext_input2" name="share_capital[]" {% if data.share_capital.f_4 %} value="{{data.share_capital.f_4}}" {% endif %}   maxlength="20" minlength="1"  />
 								
 								</div>
 						</div>
 						<div class="col">
 							<div class="form-group">
-								<input type="number" min=0 step=0.001  class="form-control  ptext_input2" name="share_capital[]"  maxlength="20" minlength="1"  />
+								<input type="number" min=0 step=0.001  class="form-control  ptext_input2" name="share_capital[]" {% if data.share_capital.f_5 %} value="{{data.share_capital.f_5}}" {% endif %}  maxlength="20" minlength="1"  />
 								
 								</div>
 						</div>
@@ -192,31 +195,31 @@
 
 						<div class="col">
 							<div class="form-group">
-								<input type="number" min=0 step=0.001  class="form-control  ptext_input2"  name="equity_funds_raised[]"   maxlength="20" minlength="1"  />
+								<input type="number" min=0 step=0.001  class="form-control  ptext_input2"  name="equity_funds_raised[]" {% if data.equity_funds_raised.f_1 %} value="{{data.equity_funds_raised.f_1}}" {% endif %}   maxlength="20" minlength="1"  />
 								</div>
 						</div>
 
 						<div class="col">
 							<div class="form-group">
-								<input type="number" min=0 step=0.001  class="form-control  ptext_input2" name="equity_funds_raised[]"  maxlength="20" minlength="1"  />
+								<input type="number" min=0 step=0.001  class="form-control  ptext_input2" name="equity_funds_raised[]" {% if data.equity_funds_raised.f_2 %} value="{{data.equity_funds_raised.f_2}}" {% endif %}  maxlength="20" minlength="1"  />
 								
 								</div>
 						</div>
 						<div class="col">
 							<div class="form-group">
-								<input type="number" min=0 step=0.001  class="form-control  ptext_input2" name="equity_funds_raised[]"   maxlength="20" minlength="1"  />
+								<input type="number" min=0 step=0.001  class="form-control  ptext_input2" name="equity_funds_raised[]" {% if data.equity_funds_raised.f_3 %} value="{{data.equity_funds_raised.f_3}}" {% endif %}   maxlength="20" minlength="1"  />
 								
 								</div>
 						</div>
 						<div class="col">
 							<div class="form-group">
-								<input type="number" min=0 step=0.001  class="form-control  ptext_input2" name="equity_funds_raised[]"   maxlength="20" minlength="1"  />
+								<input type="number" min=0 step=0.001  class="form-control  ptext_input2" name="equity_funds_raised[]" {% if data.equity_funds_raised.f_4 %} value="{{data.equity_funds_raised.f_4}}" {% endif %}   maxlength="20" minlength="1"  />
 								
 								</div>
 						</div>
 						<div class="col">
 							<div class="form-group">
-								<input type="number" min=0 step=0.001  class="form-control  ptext_input2" name="equity_funds_raised[]"  maxlength="20" minlength="1"  />
+								<input type="number" min=0 step=0.001  class="form-control  ptext_input2" name="equity_funds_raised[]" {% if data.equity_funds_raised.f_5 %} value="{{data.equity_funds_raised.f_5}}" {% endif %}  maxlength="20" minlength="1"  />
 								
 								</div>
 						</div>
@@ -250,60 +253,64 @@
 
 												<tr id="share_capital">
 													<th scope="row">Share Capital</th>
-													<td>--</td>
-													<td>--</td>
-													<td>--</td>
-													<td>--</td>
-													<td>--</td>
-													<input hidden name="share_capital_[]" value=0>
-													<input hidden name="share_capital_[]" value=0>
-													<input hidden name="share_capital_[]" value=0>
-													<input hidden name="share_capital_[]" value=0>
-													<input hidden name="share_capital_[]" value=0>
+													<td>{% if data.projection_table.blnc_share_capital.f_1 %} {{data.projection_table.blnc_share_capital.f_1}} {%else%} -- {% endif %}</td>
+													<td>{% if data.projection_table.blnc_share_capital.f_2 %} {{data.projection_table.blnc_share_capital.f_2}} {%else%} -- {% endif %}</td>
+													<td>{% if data.projection_table.blnc_share_capital.f_3 %} {{data.projection_table.blnc_share_capital.f_3}} {%else%} -- {% endif %}</td>
+													<td>{% if data.projection_table.blnc_share_capital.f_4 %} {{data.projection_table.blnc_share_capital.f_4}} {%else%} -- {% endif %}</td>
+													<td>{% if data.projection_table.blnc_share_capital.f_5 %} {{data.projection_table.blnc_share_capital.f_5}} {%else%} -- {% endif %}</td>
+
+													<input hidden name="share_capital_[]" {% if data.projection_table.blnc_share_capital.f_1 %} value={{data.projection_table.blnc_share_capital.f_1}}  {% else %} value=0 {% endif %}>
+													<input hidden name="share_capital_[]" {% if data.projection_table.blnc_share_capital.f_2 %} value={{data.projection_table.blnc_share_capital.f_2}}  {% else %} value=0 {% endif %}>
+													<input hidden name="share_capital_[]" {% if data.projection_table.blnc_share_capital.f_3 %} value={{data.projection_table.blnc_share_capital.f_3}}  {% else %} value=0 {% endif %}>
+													<input hidden name="share_capital_[]" {% if data.projection_table.blnc_share_capital.f_4 %} value={{data.projection_table.blnc_share_capital.f_4}}  {% else %} value=0 {% endif %}>
+													<input hidden name="share_capital_[]" {% if data.projection_table.blnc_share_capital.f_5 %} value={{data.projection_table.blnc_share_capital.f_5}}  {% else %} value=0 {% endif %}>
 												</tr>
 
 												<tr id="reserve_surplus">
 													<th scope="row">Reserve & Surplus</th>
-													<td>--</td>
-													<td>--</td>
-													<td>--</td>
-													<td>--</td>
-													<td>--</td>
-													<input hidden name="reserve_surplus_[]" value=0>
-													<input hidden name="reserve_surplus_[]" value=0>
-													<input hidden name="reserve_surplus_[]" value=0>
-													<input hidden name="reserve_surplus_[]" value=0>
-													<input hidden name="reserve_surplus_[]" value=0>
+													<td>{% if data.projection_table.blnc_reserve_surplus.f_1 %} {{data.projection_table.blnc_reserve_surplus.f_1}} {%else%} -- {% endif %}</td>
+													<td>{% if data.projection_table.blnc_reserve_surplus.f_2 %} {{data.projection_table.blnc_reserve_surplus.f_2}} {%else%} -- {% endif %}</td>
+													<td>{% if data.projection_table.blnc_reserve_surplus.f_3 %} {{data.projection_table.blnc_reserve_surplus.f_3}} {%else%} -- {% endif %}</td>
+													<td>{% if data.projection_table.blnc_reserve_surplus.f_4 %} {{data.projection_table.blnc_reserve_surplus.f_4}} {%else%} -- {% endif %}</td>
+													<td>{% if data.projection_table.blnc_reserve_surplus.f_5 %} {{data.projection_table.blnc_reserve_surplus.f_5}} {%else%} -- {% endif %}</td>
+
+													<input hidden name="reserve_surplus_[]" {% if data.projection_table.blnc_reserve_surplus.f_1 %} value={{data.projection_table.blnc_reserve_surplus.f_1}}  {% else %} value=0 {% endif %}>
+													<input hidden name="reserve_surplus_[]" {% if data.projection_table.blnc_reserve_surplus.f_2 %} value={{data.projection_table.blnc_reserve_surplus.f_2}}  {% else %} value=0 {% endif %}>
+													<input hidden name="reserve_surplus_[]" {% if data.projection_table.blnc_reserve_surplus.f_3 %} value={{data.projection_table.blnc_reserve_surplus.f_3}}  {% else %} value=0 {% endif %}>
+													<input hidden name="reserve_surplus_[]" {% if data.projection_table.blnc_reserve_surplus.f_4 %} value={{data.projection_table.blnc_reserve_surplus.f_4}}  {% else %} value=0 {% endif %}>
+													<input hidden name="reserve_surplus_[]" {% if data.projection_table.blnc_reserve_surplus.f_5 %} value={{data.projection_table.blnc_reserve_surplus.f_5}}  {% else %} value=0 {% endif %}>
 												</tr>
 
 
 												<tr id="equity_funds_raised">
 													<th scope="row">Equity Funds Raised</th>
-													<td>--</td>
-													<td>--</td>
-													<td>--</td>
-													<td>--</td>
-													<td>--</td>
-													<input hidden name="equity_funds_raised_[]" value=0>
-													<input hidden name="equity_funds_raised_[]" value=0>
-													<input hidden name="equity_funds_raised_[]" value=0>
-													<input hidden name="equity_funds_raised_[]" value=0>
-													<input hidden name="equity_funds_raised_[]" value=0>
+													<td>{% if data.projection_table.blnc_equity_funds_raised.f_1 %} {{data.projection_table.blnc_equity_funds_raised.f_1}} {%else%} -- {% endif %}</td>
+													<td>{% if data.projection_table.blnc_equity_funds_raised.f_2 %} {{data.projection_table.blnc_equity_funds_raised.f_2}} {%else%} -- {% endif %}</td>
+													<td>{% if data.projection_table.blnc_equity_funds_raised.f_3 %} {{data.projection_table.blnc_equity_funds_raised.f_3}} {%else%} -- {% endif %}</td>
+													<td>{% if data.projection_table.blnc_equity_funds_raised.f_4 %} {{data.projection_table.blnc_equity_funds_raised.f_4}} {%else%} -- {% endif %}</td>
+													<td>{% if data.projection_table.blnc_equity_funds_raised.f_5 %} {{data.projection_table.blnc_equity_funds_raised.f_5}} {%else%} -- {% endif %}</td>
+
+													<input hidden name="equity_funds_raised_[]" {% if data.projection_table.blnc_equity_funds_raised.f_1 %} value={{data.projection_table.blnc_equity_funds_raised.f_1}}  {% else %} value=0 {% endif %}>
+													<input hidden name="equity_funds_raised_[]" {% if data.projection_table.blnc_equity_funds_raised.f_2 %} value={{data.projection_table.blnc_equity_funds_raised.f_2}}  {% else %} value=0 {% endif %}>
+													<input hidden name="equity_funds_raised_[]" {% if data.projection_table.blnc_equity_funds_raised.f_3 %} value={{data.projection_table.blnc_equity_funds_raised.f_3}}  {% else %} value=0 {% endif %}>
+													<input hidden name="equity_funds_raised_[]" {% if data.projection_table.blnc_equity_funds_raised.f_4 %} value={{data.projection_table.blnc_equity_funds_raised.f_4}}  {% else %} value=0 {% endif %}>
+													<input hidden name="equity_funds_raised_[]" {% if data.projection_table.blnc_equity_funds_raised.f_5 %} value={{data.projection_table.blnc_equity_funds_raised.f_5}}  {% else %} value=0 {% endif %}>
 												</tr>
 
 
 												<tr id="total_shareholder_funds_a">
 													<th scope="row">Total Shareholder funds(A)</th>
-													<td>--</td>
-													<td>--</td>
-													<td>--</td>
-													<td>--</td>
-													<td>--</td>
-													<input hidden name="total_shareholder_funds_a_[]" value=0>
-													<input hidden name="total_shareholder_funds_a_[]" value=0>
-													<input hidden name="total_shareholder_funds_a_[]" value=0>
-													<input hidden name="total_shareholder_funds_a_[]" value=0>
-													<input hidden name="total_shareholder_funds_a_[]" value=0>
+													<td>{% if data.projection_table.blnc_total_shareholder_funds_a.f_1 %} {{data.projection_table.blnc_total_shareholder_funds_a.f_1}} {%else%} -- {% endif %}</td>
+													<td>{% if data.projection_table.blnc_total_shareholder_funds_a.f_2 %} {{data.projection_table.blnc_total_shareholder_funds_a.f_2}} {%else%} -- {% endif %}</td>
+													<td>{% if data.projection_table.blnc_total_shareholder_funds_a.f_3 %} {{data.projection_table.blnc_total_shareholder_funds_a.f_3}} {%else%} -- {% endif %}</td>
+													<td>{% if data.projection_table.blnc_total_shareholder_funds_a.f_4 %} {{data.projection_table.blnc_total_shareholder_funds_a.f_4}} {%else%} -- {% endif %}</td>
+													<td>{% if data.projection_table.blnc_total_shareholder_funds_a.f_5 %} {{data.projection_table.blnc_total_shareholder_funds_a.f_5}} {%else%} -- {% endif %}</td>
+
+													<input hidden name="total_shareholder_funds_a_[]" {% if data.projection_table.blnc_total_shareholder_funds_a.f_1 %} value={{data.projection_table.blnc_total_shareholder_funds_a.f_1}}  {% else %} value=0 {% endif %}>
+													<input hidden name="total_shareholder_funds_a_[]" {% if data.projection_table.blnc_total_shareholder_funds_a.f_2 %} value={{data.projection_table.blnc_total_shareholder_funds_a.f_2}}  {% else %} value=0 {% endif %}>
+													<input hidden name="total_shareholder_funds_a_[]" {% if data.projection_table.blnc_total_shareholder_funds_a.f_3 %} value={{data.projection_table.blnc_total_shareholder_funds_a.f_3}}  {% else %} value=0 {% endif %}>
+													<input hidden name="total_shareholder_funds_a_[]" {% if data.projection_table.blnc_total_shareholder_funds_a.f_4 %} value={{data.projection_table.blnc_total_shareholder_funds_a.f_4}}  {% else %} value=0 {% endif %}>
+													<input hidden name="total_shareholder_funds_a_[]" {% if data.projection_table.blnc_total_shareholder_funds_a.f_5 %} value={{data.projection_table.blnc_total_shareholder_funds_a.f_5}}  {% else %} value=0 {% endif %}>
 												</tr>
 
 												
@@ -365,31 +372,31 @@
 
 						<div class="col">
 							<div class="form-group">
-								<input type="number" min=0 step=0.001  class="form-control  ptext_input" name="secured_loans_from_banks[]"   maxlength="20" minlength="1"  />
+								<input type="number" min=0 step=0.001  class="form-control  ptext_input" name="secured_loans_from_banks[]" {% if data.secured_loans_from_banks.f_1 %} value="{{data.secured_loans_from_banks.f_1}}" {% endif %}   maxlength="20" minlength="1"  />
 								</div>
 						</div>
 
 						<div class="col">
 							<div class="form-group">
-								<input type="number" min=0 step=0.001  class="form-control  ptext_input ptext_input_c" name="secured_loans_from_banks[]"  maxlength="20" minlength="1"  />
+								<input type="number" min=0 step=0.001  class="form-control  ptext_input ptext_input_c" name="secured_loans_from_banks[]" {% if data.secured_loans_from_banks.f_2 %} value="{{data.secured_loans_from_banks.f_2}}" {% endif %}  maxlength="20" minlength="1"  />
 								
 								</div>
 						</div>
 						<div class="col">
 							<div class="form-group">
-								<input type="number" min=0 step=0.001  class="form-control  ptext_input ptext_input_c" name="secured_loans_from_banks[]"   maxlength="20" minlength="1"  />
+								<input type="number" min=0 step=0.001  class="form-control  ptext_input ptext_input_c" name="secured_loans_from_banks[]" {% if data.secured_loans_from_banks.f_3 %} value="{{data.secured_loans_from_banks.f_3}}" {% endif %}   maxlength="20" minlength="1"  />
 								
 								</div>
 						</div>
 						<div class="col">
 							<div class="form-group">
-								<input type="number" min=0 step=0.001  class="form-control  ptext_input ptext_input_c" name="secured_loans_from_banks[]"   maxlength="20" minlength="1"  />
+								<input type="number" min=0 step=0.001  class="form-control  ptext_input ptext_input_c" name="secured_loans_from_banks[]" {% if data.secured_loans_from_banks.f_4 %} value="{{data.secured_loans_from_banks.f_4}}" {% endif %}   maxlength="20" minlength="1"  />
 								
 								</div>
 						</div>
 						<div class="col">
 							<div class="form-group">
-								<input type="number" min=0 step=0.001  class="form-control  ptext_input ptext_input_c" name="secured_loans_from_banks[]"  maxlength="20" minlength="1"  />
+								<input type="number" min=0 step=0.001  class="form-control  ptext_input ptext_input_c" name="secured_loans_from_banks[]" {% if data.secured_loans_from_banks.f_5 %} value="{{data.secured_loans_from_banks.f_5}}" {% endif %}  maxlength="20" minlength="1"  />
 								
 								</div>
 						</div>
@@ -417,31 +424,31 @@
 
 						<div class="col">
 							<div class="form-group">
-								<input ttype="number" min=0 step=0.001  class="form-control  ptext_input" name="secured_loans_term_loans[]"   maxlength="20" minlength="1"  />
+								<input ttype="number" min=0 step=0.001  class="form-control  ptext_input" name="secured_loans_term_loans[]" {% if data.secured_loans_term_loans.f_1 %} value="{{data.secured_loans_term_loans.f_1}}" {% endif %}   maxlength="20" minlength="1"  />
 								</div>
 						</div>
 
 						<div class="col">
 							<div class="form-group">
-								<input type="number" min=0 step=0.001  class="form-control  ptext_input ptext_input_c" name="secured_loans_term_loans[]"  maxlength="20" minlength="1"  />
+								<input type="number" min=0 step=0.001  class="form-control  ptext_input ptext_input_c" name="secured_loans_term_loans[]" {% if data.secured_loans_term_loans.f_2 %} value="{{data.secured_loans_term_loans.f_2}}" {% endif %}  maxlength="20" minlength="1"  />
 								
 								</div>
 						</div>
 						<div class="col">
 							<div class="form-group">
-								<input type="number" min=0 step=0.001  class="form-control  ptext_input ptext_input_c" name="secured_loans_term_loans[]"   maxlength="20" minlength="1"  />
+								<input type="number" min=0 step=0.001  class="form-control  ptext_input ptext_input_c" name="secured_loans_term_loans[]" {% if data.secured_loans_term_loans.f_3 %} value="{{data.secured_loans_term_loans.f_3}}" {% endif %}   maxlength="20" minlength="1"  />
 								
 								</div>
 						</div>
 						<div class="col">
 							<div class="form-group">
-								<input type="number" min=0 step=0.001  class="form-control  ptext_input ptext_input_c" name="secured_loans_term_loans[]"   maxlength="20" minlength="1"  />
+								<input type="number" min=0 step=0.001  class="form-control  ptext_input ptext_input_c" name="secured_loans_term_loans[]" {% if data.secured_loans_term_loans.f_4 %} value="{{data.secured_loans_term_loans.f_4}}" {% endif %}   maxlength="20" minlength="1"  />
 								
 								</div>
 						</div>
 						<div class="col">
 							<div class="form-group">
-								<input type="number" min=0 step=0.001  class="form-control  ptext_input ptext_input_c" name="secured_loans_term_loans[]"  maxlength="20" minlength="1"  />
+								<input type="number" min=0 step=0.001  class="form-control  ptext_input ptext_input_c" name="secured_loans_term_loans[]" {% if data.secured_loans_term_loans.f_5 %} value="{{data.secured_loans_term_loans.f_5}}" {% endif %}  maxlength="20" minlength="1"  />
 								
 								</div>
 						</div>
@@ -466,31 +473,31 @@
 
 						<div class="col">
 							<div class="form-group">
-								<input type="number" min=0 step=0.001  class="form-control  ptext_input" name="secured_loans_other_loans[]"   maxlength="20" minlength="1"  />
+								<input type="number" min=0 step=0.001  class="form-control  ptext_input" name="secured_loans_other_loans[]" {% if data.secured_loans_other_loans.f_1 %} value="{{data.secured_loans_other_loans.f_1}}" {% endif %}   maxlength="20" minlength="1"  />
 								</div>
 						</div>
 
 						<div class="col">
 							<div class="form-group">
-								<input type="number" min=0 step=0.001  class="form-control  ptext_input ptext_input_c" name="secured_loans_other_loans[]"  maxlength="20" minlength="1"  />
+								<input type="number" min=0 step=0.001  class="form-control  ptext_input ptext_input_c" name="secured_loans_other_loans[]" {% if data.secured_loans_other_loans.f_2 %} value="{{data.secured_loans_other_loans.f_2}}" {% endif %}  maxlength="20" minlength="1"  />
 								
 								</div>
 						</div>
 						<div class="col">
 							<div class="form-group">
-								<input type="number" min=0 step=0.001  class="form-control  ptext_input ptext_input_c" name="secured_loans_other_loans[]"   maxlength="20" minlength="1"  />
+								<input type="number" min=0 step=0.001  class="form-control  ptext_input ptext_input_c" name="secured_loans_other_loans[]" {% if data.secured_loans_other_loans.f_3 %} value="{{data.secured_loans_other_loans.f_3}}" {% endif %}   maxlength="20" minlength="1"  />
 								
 								</div>
 						</div>
 						<div class="col">
 							<div class="form-group">
-								<input type="number" min=0 step=0.001  class="form-control  ptext_input ptext_input_c" name="secured_loans_other_loans[]"   maxlength="20" minlength="1"  />
+								<input type="number" min=0 step=0.001  class="form-control  ptext_input ptext_input_c" name="secured_loans_other_loans[]" {% if data.secured_loans_other_loans.f_4 %} value="{{data.secured_loans_other_loans.f_4}}" {% endif %}   maxlength="20" minlength="1"  />
 								
 								</div>
 						</div>
 						<div class="col">
 							<div class="form-group">
-								<input type="number" min=0 step=0.001  class="form-control  ptext_input ptext_input_c" name="secured_loans_other_loans[]"  maxlength="20" minlength="1"  />
+								<input type="number" min=0 step=0.001  class="form-control  ptext_input ptext_input_c" name="secured_loans_other_loans[]" {% if data.secured_loans_other_loans.f_5 %} value="{{data.secured_loans_other_loans.f_5}}" {% endif %}  maxlength="20" minlength="1"  />
 								
 								</div>
 						</div>
@@ -516,31 +523,31 @@
 
 						<div class="col">
 							<div class="form-group">
-								<input type="number" min=0 step=0.001  class="form-control  ptext_input" name="secured_loans_finance_lease_obligation[]"   maxlength="20" minlength="1"  />
+								<input type="number" min=0 step=0.001  class="form-control  ptext_input" name="secured_loans_finance_lease_obligation[]" {% if data.secured_loans_finance_lease_obligation.f_1 %} value="{{data.secured_loans_finance_lease_obligation.f_1}}" {% endif %}   maxlength="20" minlength="1"  />
 								</div>
 						</div>
 
 						<div class="col">
 							<div class="form-group">
-								<input type="number" min=0 step=0.001  class="form-control  ptext_input ptext_input_c" name="secured_loans_finance_lease_obligation[]"  maxlength="20" minlength="1"  />
+								<input type="number" min=0 step=0.001  class="form-control  ptext_input ptext_input_c" name="secured_loans_finance_lease_obligation[]" {% if data.secured_loans_finance_lease_obligation.f_2 %} value="{{data.secured_loans_finance_lease_obligation.f_2}}" {% endif %}  maxlength="20" minlength="1"  />
 								
 								</div>
 						</div>
 						<div class="col">
 							<div class="form-group">
-								<input type="number" min=0 step=0.001  class="form-control  ptext_input ptext_input_c" name="secured_loans_finance_lease_obligation[]"   maxlength="20" minlength="1"  />
+								<input type="number" min=0 step=0.001  class="form-control  ptext_input ptext_input_c" name="secured_loans_finance_lease_obligation[]" {% if data.secured_loans_finance_lease_obligation.f_3 %} value="{{data.secured_loans_finance_lease_obligation.f_3}}" {% endif %}   maxlength="20" minlength="1"  />
 								
 								</div>
 						</div>
 						<div class="col">
 							<div class="form-group">
-								<input type="number" min=0 step=0.001  class="form-control  ptext_input ptext_input_c" name="secured_loans_finance_lease_obligation[]"   maxlength="20" minlength="1"  />
+								<input type="number" min=0 step=0.001  class="form-control  ptext_input ptext_input_c" name="secured_loans_finance_lease_obligation[]" {% if data.secured_loans_finance_lease_obligation.f_4 %} value="{{data.secured_loans_finance_lease_obligation.f_4}}" {% endif %}   maxlength="20" minlength="1"  />
 								
 								</div>
 						</div>
 						<div class="col">
 							<div class="form-group">
-								<input type="number" min=0 step=0.001  class="form-control  ptext_input ptext_input_c" name="secured_loans_finance_lease_obligation[]"  maxlength="20" minlength="1"  />
+								<input type="number" min=0 step=0.001  class="form-control  ptext_input ptext_input_c" name="secured_loans_finance_lease_obligation[]" {% if data.secured_loans_finance_lease_obligation.f_5 %} value="{{data.secured_loans_finance_lease_obligation.f_5}}" {% endif %}  maxlength="20" minlength="1"  />
 								
 								</div>
 						</div>
@@ -566,31 +573,31 @@
 
 						<div class="col">
 							<div class="form-group">
-								<input type="number" min=0 step=0.001  class="form-control  ptext_input_uns" name="unsecured_loans[]"   maxlength="20" minlength="1"  />
+								<input type="number" min=0 step=0.001  class="form-control  ptext_input_uns" name="unsecured_loans[]" {% if data.unsecured_loans.f_1 %} value="{{data.unsecured_loans.f_1}}" {% endif %}   maxlength="20" minlength="1"  />
 								</div>
 						</div>
 
 						<div class="col">
 							<div class="form-group">
-								<input type="number" min=0 step=0.001  class="form-control  ptext_input_uns ptext_input_c" name="unsecured_loans[]"  maxlength="20" minlength="1"  />
+								<input type="number" min=0 step=0.001  class="form-control  ptext_input_uns ptext_input_c" name="unsecured_loans[]" {% if data.unsecured_loans.f_2 %} value="{{data.unsecured_loans.f_2}}" {% endif %}  maxlength="20" minlength="1"  />
 								
 								</div>
 						</div>
 						<div class="col">
 							<div class="form-group">
-								<input type="number" min=0 step=0.001  class="form-control  ptext_input_uns ptext_input_c" name="unsecured_loans[]"   maxlength="20" minlength="1"  />
+								<input type="number" min=0 step=0.001  class="form-control  ptext_input_uns ptext_input_c" name="unsecured_loans[]" {% if data.unsecured_loans.f_3 %} value="{{data.unsecured_loans.f_3}}" {% endif %}   maxlength="20" minlength="1"  />
 								
 								</div>
 						</div>
 						<div class="col">
 							<div class="form-group">
-								<input type="number" min=0 step=0.001  class="form-control  ptext_input_uns ptext_input_c" name="unsecured_loans[]"   maxlength="20" minlength="1"  />
+								<input type="number" min=0 step=0.001  class="form-control  ptext_input_uns ptext_input_c" name="unsecured_loans[]" {% if data.unsecured_loans.f_4 %} value="{{data.unsecured_loans.f_4}}" {% endif %}   maxlength="20" minlength="1"  />
 								
 								</div>
 						</div>
 						<div class="col">
 							<div class="form-group">
-								<input type="number" min=0 step=0.001  class="form-control  ptext_input_uns ptext_input_c" name="unsecured_loans[]"  maxlength="20" minlength="1"  />
+								<input type="number" min=0 step=0.001  class="form-control  ptext_input_uns ptext_input_c" name="unsecured_loans[]" {% if data.unsecured_loans.f_5 %} value="{{data.unsecured_loans.f_5}}" {% endif %}  maxlength="20" minlength="1"  />
 								
 								</div>
 						</div>
@@ -614,32 +621,32 @@
 
 						<div class="col">
 							<div class="form-group">
-								<input type="number" min=0 step=0.001  class="form-control  ptext_input_smp ptext_input_c"  name="average_interest_rate_debt[]"   maxlength="20" minlength="1"  />
+								<input type="number" min=0 step=0.001  class="form-control  ptext_input_smp ptext_input_c"  name="average_interest_rate_debt[]" {% if data.average_interest_rate_debt.f_1 %} value="{{data.average_interest_rate_debt.f_1}}" {% endif %}   maxlength="20" minlength="1"  />
 							
 								</div>
 						</div>
 
 						<div class="col">
 							<div class="form-group">
-								<input type="number" min=0 step=0.001  class="form-control  ptext_input_smp ptext_input_c"  name="average_interest_rate_debt[]"  maxlength="20" minlength="1"  />
+								<input type="number" min=0 step=0.001  class="form-control  ptext_input_smp ptext_input_c"  name="average_interest_rate_debt[]" {% if data.average_interest_rate_debt.f_2 %} value="{{data.average_interest_rate_debt.f_2}}" {% endif %}  maxlength="20" minlength="1"  />
 								
 								</div>
 						</div>
 						<div class="col">
 							<div class="form-group">
-								<input type="number" min=0 step=0.001  class="form-control  ptext_input_smp ptext_input_c" name="average_interest_rate_debt[]"   maxlength="20" minlength="1"  />
+								<input type="number" min=0 step=0.001  class="form-control  ptext_input_smp ptext_input_c" name="average_interest_rate_debt[]" {% if data.average_interest_rate_debt.f_3 %} value="{{data.average_interest_rate_debt.f_3}}" {% endif %}   maxlength="20" minlength="1"  />
 								
 								</div>
 						</div>
 						<div class="col">
 							<div class="form-group">
-								<input type="number" min=0 step=0.001  class="form-control  ptext_input_smp ptext_input_c" name="average_interest_rate_debt[]"   maxlength="20" minlength="1"  />
+								<input type="number" min=0 step=0.001  class="form-control  ptext_input_smp ptext_input_c" name="average_interest_rate_debt[]" {% if data.average_interest_rate_debt.f_4 %} value="{{data.average_interest_rate_debt.f_4}}" {% endif %}   maxlength="20" minlength="1"  />
 								
 								</div>
 						</div>
 						<div class="col">
 							<div class="form-group">
-								<input type="number" min=0 step=0.001  class="form-control  ptext_input_smp ptext_input_c" name="average_interest_rate_debt[]"  maxlength="20" minlength="1"  />
+								<input type="number" min=0 step=0.001  class="form-control  ptext_input_smp ptext_input_c" name="average_interest_rate_debt[]" {% if data.average_interest_rate_debt.f_5 %} value="{{data.average_interest_rate_debt.f_5}}" {% endif %}  maxlength="20" minlength="1"  />
 								
 								</div>
 						</div>
@@ -684,146 +691,156 @@
 
 												<tr id="secured_loans_from_banks">
 													<th scope="row">From Banks</th>
-													<td>--</td>
-													<td>--</td>
-													<td>--</td>
-													<td>--</td>
-													<td>--</td>
-													<input hidden name="secured_loans_from_banks_[]" value=0>
-													<input hidden name="secured_loans_from_banks_[]" value=0>
-													<input hidden name="secured_loans_from_banks_[]" value=0>
-													<input hidden name="secured_loans_from_banks_[]" value=0>
-													<input hidden name="secured_loans_from_banks_[]" value=0>
+													<td> {% if data.projection_table.blnc_secured_loans_from_banks.f_1 %} {{data.projection_table.blnc_secured_loans_from_banks.f_1}} {%else%} -- {% endif %}</td>
+													<td> {% if data.projection_table.blnc_secured_loans_from_banks.f_2 %} {{data.projection_table.blnc_secured_loans_from_banks.f_2}} {%else%} -- {% endif %}</td>
+													<td> {% if data.projection_table.blnc_secured_loans_from_banks.f_3 %} {{data.projection_table.blnc_secured_loans_from_banks.f_3}} {%else%} -- {% endif %}</td>
+													<td> {% if data.projection_table.blnc_secured_loans_from_banks.f_4 %} {{data.projection_table.blnc_secured_loans_from_banks.f_4}} {%else%} -- {% endif %}</td>
+													<td> {% if data.projection_table.blnc_secured_loans_from_banks.f_5 %} {{data.projection_table.blnc_secured_loans_from_banks.f_5}} {%else%} -- {% endif %}</td>
+
+													<input hidden name="secured_loans_from_banks_[]"{% if data.projection_table.blnc_secured_loans_from_banks.f_1 %} value={{data.projection_table.blnc_secured_loans_from_banks.f_1}}  {% else %} value=0 {% endif %}>
+													<input hidden name="secured_loans_from_banks_[]"{% if data.projection_table.blnc_secured_loans_from_banks.f_2 %} value={{data.projection_table.blnc_secured_loans_from_banks.f_2}}  {% else %} value=0 {% endif %}>
+													<input hidden name="secured_loans_from_banks_[]"{% if data.projection_table.blnc_secured_loans_from_banks.f_3 %} value={{data.projection_table.blnc_secured_loans_from_banks.f_3}}  {% else %} value=0 {% endif %}>
+													<input hidden name="secured_loans_from_banks_[]"{% if data.projection_table.blnc_secured_loans_from_banks.f_4 %} value={{data.projection_table.blnc_secured_loans_from_banks.f_4}}  {% else %} value=0 {% endif %}>
+													<input hidden name="secured_loans_from_banks_[]"{% if data.projection_table.blnc_secured_loans_from_banks.f_5 %} value={{data.projection_table.blnc_secured_loans_from_banks.f_5}}  {% else %} value=0 {% endif %}>
 												</tr>
 
 												<tr id="secured_loans_term_loans">
 													<th scope="row">Term Loans</th>
-													<td>--</td>
-													<td>--</td>
-													<td>--</td>
-													<td>--</td>
-													<td>--</td>
-													<input hidden name="secured_loans_term_loans_[]" value=0>
-													<input hidden name="secured_loans_term_loans_[]" value=0>
-													<input hidden name="secured_loans_term_loans_[]" value=0>
-													<input hidden name="secured_loans_term_loans_[]" value=0>
-													<input hidden name="secured_loans_term_loans_[]" value=0>
+													<td> {% if data.projection_table.blnc_secured_loans_term_loans.f_1 %} {{data.projection_table.blnc_secured_loans_term_loans.f_1}} {%else%} -- {% endif %}</td>
+													<td> {% if data.projection_table.blnc_secured_loans_term_loans.f_2 %} {{data.projection_table.blnc_secured_loans_term_loans.f_2}} {%else%} -- {% endif %}</td>
+													<td> {% if data.projection_table.blnc_secured_loans_term_loans.f_3 %} {{data.projection_table.blnc_secured_loans_term_loans.f_3}} {%else%} -- {% endif %}</td>
+													<td> {% if data.projection_table.blnc_secured_loans_term_loans.f_4 %} {{data.projection_table.blnc_secured_loans_term_loans.f_4}} {%else%} -- {% endif %}</td>
+													<td> {% if data.projection_table.blnc_secured_loans_term_loans.f_5 %} {{data.projection_table.blnc_secured_loans_term_loans.f_5}} {%else%} -- {% endif %}</td>
+
+													<input hidden name="secured_loans_term_loans_[]"{% if data.projection_table.blnc_secured_loans_term_loans.f_1 %} value={{data.projection_table.blnc_secured_loans_term_loans.f_1}}  {% else %} value=0 {% endif %}>
+													<input hidden name="secured_loans_term_loans_[]"{% if data.projection_table.blnc_secured_loans_term_loans.f_2 %} value={{data.projection_table.blnc_secured_loans_term_loans.f_2}}  {% else %} value=0 {% endif %}>
+													<input hidden name="secured_loans_term_loans_[]"{% if data.projection_table.blnc_secured_loans_term_loans.f_3 %} value={{data.projection_table.blnc_secured_loans_term_loans.f_3}}  {% else %} value=0 {% endif %}>
+													<input hidden name="secured_loans_term_loans_[]"{% if data.projection_table.blnc_secured_loans_term_loans.f_4 %} value={{data.projection_table.blnc_secured_loans_term_loans.f_4}}  {% else %} value=0 {% endif %}>
+													<input hidden name="secured_loans_term_loans_[]"{% if data.projection_table.blnc_secured_loans_term_loans.f_5 %} value={{data.projection_table.blnc_secured_loans_term_loans.f_5}}  {% else %} value=0 {% endif %}>
 												</tr>
 
 												<tr id="secured_loans_other_loans">
 													<th scope="row">Other Loans</th>
-													<td>--</td>
-													<td>--</td>
-													<td>--</td>
-													<td>--</td>
-													<td>--</td>
-													<input hidden name="secured_loans_other_loans_[]" value=0>
-													<input hidden name="secured_loans_other_loans_[]" value=0>
-													<input hidden name="secured_loans_other_loans_[]" value=0>
-													<input hidden name="secured_loans_other_loans_[]" value=0>
-													<input hidden name="secured_loans_other_loans_[]" value=0>
+													<td> {% if data.projection_table.blnc_secured_loans_other_loans.f_1 %} {{data.projection_table.blnc_secured_loans_other_loans.f_1}} {%else%} -- {% endif %}</td>
+													<td> {% if data.projection_table.blnc_secured_loans_other_loans.f_2 %} {{data.projection_table.blnc_secured_loans_other_loans.f_2}} {%else%} -- {% endif %}</td>
+													<td> {% if data.projection_table.blnc_secured_loans_other_loans.f_3 %} {{data.projection_table.blnc_secured_loans_other_loans.f_3}} {%else%} -- {% endif %}</td>
+													<td> {% if data.projection_table.blnc_secured_loans_other_loans.f_4 %} {{data.projection_table.blnc_secured_loans_other_loans.f_4}} {%else%} -- {% endif %}</td>
+													<td> {% if data.projection_table.blnc_secured_loans_other_loans.f_5 %} {{data.projection_table.blnc_secured_loans_other_loans.f_5}} {%else%} -- {% endif %}</td>
+													
+													<input hidden name="secured_loans_other_loans_[]"{% if data.projection_table.blnc_secured_loans_other_loans.f_1 %} value={{data.projection_table.blnc_secured_loans_other_loans.f_1}}  {% else %} value=0 {% endif %}>
+													<input hidden name="secured_loans_other_loans_[]"{% if data.projection_table.blnc_secured_loans_other_loans.f_2 %} value={{data.projection_table.blnc_secured_loans_other_loans.f_2}}  {% else %} value=0 {% endif %}>
+													<input hidden name="secured_loans_other_loans_[]"{% if data.projection_table.blnc_secured_loans_other_loans.f_3 %} value={{data.projection_table.blnc_secured_loans_other_loans.f_3}}  {% else %} value=0 {% endif %}>
+													<input hidden name="secured_loans_other_loans_[]"{% if data.projection_table.blnc_secured_loans_other_loans.f_4 %} value={{data.projection_table.blnc_secured_loans_other_loans.f_4}}  {% else %} value=0 {% endif %}>
+													<input hidden name="secured_loans_other_loans_[]"{% if data.projection_table.blnc_secured_loans_other_loans.f_5 %} value={{data.projection_table.blnc_secured_loans_other_loans.f_5}}  {% else %} value=0 {% endif %}>
 												</tr>
 
 												<tr id="secured_loans_finance_lease_obligation">
 													<th scope="row">Finance lease obligation</th>
-													<td>--</td>
-													<td>--</td>
-													<td>--</td>
-													<td>--</td>
-													<td>--</td>
-													<input hidden name="secured_loans_finance_lease_obligation_[]" value=0>
-													<input hidden name="secured_loans_finance_lease_obligation_[]" value=0>
-													<input hidden name="secured_loans_finance_lease_obligation_[]" value=0>
-													<input hidden name="secured_loans_finance_lease_obligation_[]" value=0>
-													<input hidden name="secured_loans_finance_lease_obligation_[]" value=0>
+													<td> {% if data.projection_table.blnc_secured_loans_finance_lease_obligation.f_1 %} {{data.projection_table.blnc_secured_loans_finance_lease_obligation.f_1}} {%else%} -- {% endif %}</td>
+													<td> {% if data.projection_table.blnc_secured_loans_finance_lease_obligation.f_2 %} {{data.projection_table.blnc_secured_loans_finance_lease_obligation.f_2}} {%else%} -- {% endif %}</td>
+													<td> {% if data.projection_table.blnc_secured_loans_finance_lease_obligation.f_3 %} {{data.projection_table.blnc_secured_loans_finance_lease_obligation.f_3}} {%else%} -- {% endif %}</td>
+													<td> {% if data.projection_table.blnc_secured_loans_finance_lease_obligation.f_4 %} {{data.projection_table.blnc_secured_loans_finance_lease_obligation.f_4}} {%else%} -- {% endif %}</td>
+													<td> {% if data.projection_table.blnc_secured_loans_finance_lease_obligation.f_5 %} {{data.projection_table.blnc_secured_loans_finance_lease_obligation.f_5}} {%else%} -- {% endif %}</td>
+
+													<input hidden name="secured_loans_finance_lease_obligation_[]"{% if data.projection_table.blnc_secured_loans_finance_lease_obligation.f_1 %} value={{data.projection_table.blnc_secured_loans_finance_lease_obligation.f_1}}  {% else %} value=0 {% endif %}>
+													<input hidden name="secured_loans_finance_lease_obligation_[]"{% if data.projection_table.blnc_secured_loans_finance_lease_obligation.f_2 %} value={{data.projection_table.blnc_secured_loans_finance_lease_obligation.f_2}}  {% else %} value=0 {% endif %}>
+													<input hidden name="secured_loans_finance_lease_obligation_[]"{% if data.projection_table.blnc_secured_loans_finance_lease_obligation.f_3 %} value={{data.projection_table.blnc_secured_loans_finance_lease_obligation.f_3}}  {% else %} value=0 {% endif %}>
+													<input hidden name="secured_loans_finance_lease_obligation_[]"{% if data.projection_table.blnc_secured_loans_finance_lease_obligation.f_4 %} value={{data.projection_table.blnc_secured_loans_finance_lease_obligation.f_4}}  {% else %} value=0 {% endif %}>
+													<input hidden name="secured_loans_finance_lease_obligation_[]"{% if data.projection_table.blnc_secured_loans_finance_lease_obligation.f_5 %} value={{data.projection_table.blnc_secured_loans_finance_lease_obligation.f_5}}  {% else %} value=0 {% endif %}>
 												</tr>
 
 												<tr id="total_secured_loans">
 													<th scope="row">Total Secured Loans</th>
-													<td>--</td>
-													<td>--</td>
-													<td>--</td>
-													<td>--</td>
-													<td>--</td>
-													<input hidden name="total_secured_loans_[]" value=0>
-													<input hidden name="total_secured_loans_[]" value=0>
-													<input hidden name="total_secured_loans_[]" value=0>
-													<input hidden name="total_secured_loans_[]" value=0>
-													<input hidden name="total_secured_loans_[]" value=0>
+													<td> {% if data.projection_table.blnc_total_secured_loans.f_1 %} {{data.projection_table.blnc_total_secured_loans.f_1}} {%else%} -- {% endif %}</td>
+													<td> {% if data.projection_table.blnc_total_secured_loans.f_2 %} {{data.projection_table.blnc_total_secured_loans.f_2}} {%else%} -- {% endif %}</td>
+													<td> {% if data.projection_table.blnc_total_secured_loans.f_3 %} {{data.projection_table.blnc_total_secured_loans.f_3}} {%else%} -- {% endif %}</td>
+													<td> {% if data.projection_table.blnc_total_secured_loans.f_4 %} {{data.projection_table.blnc_total_secured_loans.f_4}} {%else%} -- {% endif %}</td>
+													<td> {% if data.projection_table.blnc_total_secured_loans.f_5 %} {{data.projection_table.blnc_total_secured_loans.f_5}} {%else%} -- {% endif %}</td>
+
+													<input hidden name="total_secured_loans_[]"{% if data.projection_table.blnc_total_secured_loans.f_1 %} value={{data.projection_table.blnc_total_secured_loans.f_1}}  {% else %} value=0 {% endif %}>
+													<input hidden name="total_secured_loans_[]"{% if data.projection_table.blnc_total_secured_loans.f_2 %} value={{data.projection_table.blnc_total_secured_loans.f_2}}  {% else %} value=0 {% endif %}>
+													<input hidden name="total_secured_loans_[]"{% if data.projection_table.blnc_total_secured_loans.f_3 %} value={{data.projection_table.blnc_total_secured_loans.f_3}}  {% else %} value=0 {% endif %}>
+													<input hidden name="total_secured_loans_[]"{% if data.projection_table.blnc_total_secured_loans.f_4 %} value={{data.projection_table.blnc_total_secured_loans.f_4}}  {% else %} value=0 {% endif %}>
+													<input hidden name="total_secured_loans_[]"{% if data.projection_table.blnc_total_secured_loans.f_5 %} value={{data.projection_table.blnc_total_secured_loans.f_5}}  {% else %} value=0 {% endif %}>
 												</tr>
 
 
 												<tr id="unsecured_loans">
 													<th class="text-primary" scope="row">Unsecured Loans</th>
-													<td>--</td>
-													<td>--</td>
-													<td>--</td>
-													<td>--</td>
-													<td>--</td>
-													<input hidden name="unsecured_loans_[]" value=0>
-													<input hidden name="unsecured_loans_[]" value=0>
-													<input hidden name="unsecured_loans_[]" value=0>
-													<input hidden name="unsecured_loans_[]" value=0>
-													<input hidden name="unsecured_loans_[]" value=0>
+													<td> {% if data.projection_table.blnc_unsecured_loans.f_1 %} {{data.projection_table.blnc_unsecured_loans.f_1}} {%else%} -- {% endif %}</td>
+													<td> {% if data.projection_table.blnc_unsecured_loans.f_2 %} {{data.projection_table.blnc_unsecured_loans.f_2}} {%else%} -- {% endif %}</td>
+													<td> {% if data.projection_table.blnc_unsecured_loans.f_3 %} {{data.projection_table.blnc_unsecured_loans.f_3}} {%else%} -- {% endif %}</td>
+													<td> {% if data.projection_table.blnc_unsecured_loans.f_4 %} {{data.projection_table.blnc_unsecured_loans.f_4}} {%else%} -- {% endif %}</td>
+													<td> {% if data.projection_table.blnc_unsecured_loans.f_5 %} {{data.projection_table.blnc_unsecured_loans.f_5}} {%else%} -- {% endif %}</td>
+
+													<input hidden name="unsecured_loans_[]"{% if data.projection_table.blnc_unsecured_loans.f_1 %} value={{data.projection_table.blnc_unsecured_loans.f_1}}  {% else %} value=0 {% endif %}>
+													<input hidden name="unsecured_loans_[]"{% if data.projection_table.blnc_unsecured_loans.f_2 %} value={{data.projection_table.blnc_unsecured_loans.f_2}}  {% else %} value=0 {% endif %}>
+													<input hidden name="unsecured_loans_[]"{% if data.projection_table.blnc_unsecured_loans.f_3 %} value={{data.projection_table.blnc_unsecured_loans.f_3}}  {% else %} value=0 {% endif %}>
+													<input hidden name="unsecured_loans_[]"{% if data.projection_table.blnc_unsecured_loans.f_4 %} value={{data.projection_table.blnc_unsecured_loans.f_4}}  {% else %} value=0 {% endif %}>
+													<input hidden name="unsecured_loans_[]"{% if data.projection_table.blnc_unsecured_loans.f_5 %} value={{data.projection_table.blnc_unsecured_loans.f_5}}  {% else %} value=0 {% endif %}>
 												</tr>
 
 												<tr id="total_unsecured_loans">
 													<th scope="row">Total Unsecured Loan</th>
-													<td>--</td>
-													<td>--</td>
-													<td>--</td>
-													<td>--</td>
-													<td>--</td>
-													<input hidden name="total_unsecured_loans_[]" value=0>
-													<input hidden name="total_unsecured_loans_[]" value=0>
-													<input hidden name="total_unsecured_loans_[]" value=0>
-													<input hidden name="total_unsecured_loans_[]" value=0>
-													<input hidden name="total_unsecured_loans_[]" value=0>
+													<td> {% if data.projection_table.blnc_total_unsecured_loans.f_1 %} {{data.projection_table.blnc_total_unsecured_loans.f_1}} {%else%} -- {% endif %}</td>
+													<td> {% if data.projection_table.blnc_total_unsecured_loans.f_2 %} {{data.projection_table.blnc_total_unsecured_loans.f_2}} {%else%} -- {% endif %}</td>
+													<td> {% if data.projection_table.blnc_total_unsecured_loans.f_3 %} {{data.projection_table.blnc_total_unsecured_loans.f_3}} {%else%} -- {% endif %}</td>
+													<td> {% if data.projection_table.blnc_total_unsecured_loans.f_4 %} {{data.projection_table.blnc_total_unsecured_loans.f_4}} {%else%} -- {% endif %}</td>
+													<td> {% if data.projection_table.blnc_total_unsecured_loans.f_5 %} {{data.projection_table.blnc_total_unsecured_loans.f_5}} {%else%} -- {% endif %}</td>
+
+													<input hidden name="total_unsecured_loans_[]"{% if data.projection_table.blnc_total_unsecured_loans.f_1 %} value={{data.projection_table.blnc_total_unsecured_loans.f_1}}  {% else %} value=0 {% endif %}>
+													<input hidden name="total_unsecured_loans_[]"{% if data.projection_table.blnc_total_unsecured_loans.f_2 %} value={{data.projection_table.blnc_total_unsecured_loans.f_2}}  {% else %} value=0 {% endif %}>
+													<input hidden name="total_unsecured_loans_[]"{% if data.projection_table.blnc_total_unsecured_loans.f_3 %} value={{data.projection_table.blnc_total_unsecured_loans.f_3}}  {% else %} value=0 {% endif %}>
+													<input hidden name="total_unsecured_loans_[]"{% if data.projection_table.blnc_total_unsecured_loans.f_4 %} value={{data.projection_table.blnc_total_unsecured_loans.f_4}}  {% else %} value=0 {% endif %}>
+													<input hidden name="total_unsecured_loans_[]"{% if data.projection_table.blnc_total_unsecured_loans.f_5 %} value={{data.projection_table.blnc_total_unsecured_loans.f_5}}  {% else %} value=0 {% endif %}>
 												</tr>
 
 
 												<tr id="total_debt">
 													<th scope="row">Total Debt</th>
-													<td>--</td>
-													<td>--</td>
-													<td>--</td>
-													<td>--</td>
-													<td>--</td>
-													<input hidden name="total_debt_[]" value=0>
-													<input hidden name="total_debt_[]" value=0>
-													<input hidden name="total_debt_[]" value=0>
-													<input hidden name="total_debt_[]" value=0>
-													<input hidden name="total_debt_[]" value=0>
+													<td> {% if data.projection_table.blnc_total_debt.f_1 %} {{data.projection_table.blnc_total_debt.f_1}} {%else%} -- {% endif %}</td>
+													<td> {% if data.projection_table.blnc_total_debt.f_2 %} {{data.projection_table.blnc_total_debt.f_2}} {%else%} -- {% endif %}</td>
+													<td> {% if data.projection_table.blnc_total_debt.f_3 %} {{data.projection_table.blnc_total_debt.f_3}} {%else%} -- {% endif %}</td>
+													<td> {% if data.projection_table.blnc_total_debt.f_4 %} {{data.projection_table.blnc_total_debt.f_4}} {%else%} -- {% endif %}</td>
+													<td> {% if data.projection_table.blnc_total_debt.f_5 %} {{data.projection_table.blnc_total_debt.f_5}} {%else%} -- {% endif %}</td>
+
+													<input hidden name="total_debt_[]"{% if data.projection_table.blnc_total_debt.f_1 %} value={{data.projection_table.blnc_total_debt.f_1}}  {% else %} value=0 {% endif %}>
+													<input hidden name="total_debt_[]"{% if data.projection_table.blnc_total_debt.f_2 %} value={{data.projection_table.blnc_total_debt.f_2}}  {% else %} value=0 {% endif %}>
+													<input hidden name="total_debt_[]"{% if data.projection_table.blnc_total_debt.f_3 %} value={{data.projection_table.blnc_total_debt.f_3}}  {% else %} value=0 {% endif %}>
+													<input hidden name="total_debt_[]"{% if data.projection_table.blnc_total_debt.f_4 %} value={{data.projection_table.blnc_total_debt.f_4}}  {% else %} value=0 {% endif %}>
+													<input hidden name="total_debt_[]"{% if data.projection_table.blnc_total_debt.f_5 %} value={{data.projection_table.blnc_total_debt.f_5}}  {% else %} value=0 {% endif %}>
 												</tr>
 
 
 												<tr id="interest_expense">
 													<th scope="row">Interest Expense</th>
-													<td>--</td>
-													<td>--</td>
-													<td>--</td>
-													<td>--</td>
-													<td>--</td>
-													<input hidden name="interest_expense_[]" value=0>
-													<input hidden name="interest_expense_[]" value=0>
-													<input hidden name="interest_expense_[]" value=0>
-													<input hidden name="interest_expense_[]" value=0>
-													<input hidden name="interest_expense_[]" value=0>
+													<td> {% if data.projection_table.blnc_interest_expense.f_1 %} {{data.projection_table.blnc_interest_expense.f_1}} {%else%} -- {% endif %}</td>
+													<td> {% if data.projection_table.blnc_interest_expense.f_2 %} {{data.projection_table.blnc_interest_expense.f_2}} {%else%} -- {% endif %}</td>
+													<td> {% if data.projection_table.blnc_interest_expense.f_3 %} {{data.projection_table.blnc_interest_expense.f_3}} {%else%} -- {% endif %}</td>
+													<td> {% if data.projection_table.blnc_interest_expense.f_4 %} {{data.projection_table.blnc_interest_expense.f_4}} {%else%} -- {% endif %}</td>
+													<td> {% if data.projection_table.blnc_interest_expense.f_5 %} {{data.projection_table.blnc_interest_expense.f_5}} {%else%} -- {% endif %}</td>
+
+													<input hidden name="interest_expense_[]"{% if data.projection_table.blnc_interest_expense.f_1 %} value={{data.projection_table.blnc_interest_expense.f_1}}  {% else %} value=0 {% endif %}>
+													<input hidden name="interest_expense_[]"{% if data.projection_table.blnc_interest_expense.f_2 %} value={{data.projection_table.blnc_interest_expense.f_2}}  {% else %} value=0 {% endif %}>
+													<input hidden name="interest_expense_[]"{% if data.projection_table.blnc_interest_expense.f_3 %} value={{data.projection_table.blnc_interest_expense.f_3}}  {% else %} value=0 {% endif %}>
+													<input hidden name="interest_expense_[]"{% if data.projection_table.blnc_interest_expense.f_4 %} value={{data.projection_table.blnc_interest_expense.f_4}}  {% else %} value=0 {% endif %}>
+													<input hidden name="interest_expense_[]"{% if data.projection_table.blnc_interest_expense.f_5 %} value={{data.projection_table.blnc_interest_expense.f_5}}  {% else %} value=0 {% endif %}>
 												</tr>
 
 
 												<tr id="average_interest_rate_debt">
 													<th scope="row">Average Interest Rate (%)</th>
-													<td>--</td>
-													<td>--</td>
-													<td>--</td>
-													<td>--</td>
-													<td>--</td>
-													<input hidden name="average_interest_rate_debt_[]" value=0>
-													<input hidden name="average_interest_rate_debt_[]" value=0>
-													<input hidden name="average_interest_rate_debt_[]" value=0>
-													<input hidden name="average_interest_rate_debt_[]" value=0>
-													<input hidden name="average_interest_rate_debt_[]" value=0>
+													<td> {% if data.projection_table.blnc_average_interest_rate_debt.f_1 %} {% widthratio data.projection_table.blnc_average_interest_rate_debt.f_1 1 100 %}% {%else%} -- {% endif %}</td>
+													<td> {% if data.projection_table.blnc_average_interest_rate_debt.f_2 %} {% widthratio data.projection_table.blnc_average_interest_rate_debt.f_2 1 100 %}% {%else%} -- {% endif %}</td>
+													<td> {% if data.projection_table.blnc_average_interest_rate_debt.f_3 %} {% widthratio data.projection_table.blnc_average_interest_rate_debt.f_3 1 100 %}% {%else%} -- {% endif %}</td>
+													<td> {% if data.projection_table.blnc_average_interest_rate_debt.f_4 %} {% widthratio data.projection_table.blnc_average_interest_rate_debt.f_4 1 100 %}% {%else%} -- {% endif %}</td>
+													<td> {% if data.projection_table.blnc_average_interest_rate_debt.f_5 %} {% widthratio data.projection_table.blnc_average_interest_rate_debt.f_5 1 100 %}% {%else%} -- {% endif %}</td>
+
+													<input hidden name="average_interest_rate_debt_[]"{% if data.projection_table.blnc_average_interest_rate_debt.f_1 %} value={{data.projection_table.blnc_average_interest_rate_debt.f_1}}  {% else %} value=0 {% endif %}>
+													<input hidden name="average_interest_rate_debt_[]"{% if data.projection_table.blnc_average_interest_rate_debt.f_2 %} value={{data.projection_table.blnc_average_interest_rate_debt.f_2}}  {% else %} value=0 {% endif %}>
+													<input hidden name="average_interest_rate_debt_[]"{% if data.projection_table.blnc_average_interest_rate_debt.f_3 %} value={{data.projection_table.blnc_average_interest_rate_debt.f_3}}  {% else %} value=0 {% endif %}>
+													<input hidden name="average_interest_rate_debt_[]"{% if data.projection_table.blnc_average_interest_rate_debt.f_4 %} value={{data.projection_table.blnc_average_interest_rate_debt.f_4}}  {% else %} value=0 {% endif %}>
+													<input hidden name="average_interest_rate_debt_[]"{% if data.projection_table.blnc_average_interest_rate_debt.f_5 %} value={{data.projection_table.blnc_average_interest_rate_debt.f_5}}  {% else %} value=0 {% endif %}>
 												</tr>
 
 												
@@ -887,31 +904,31 @@
 
 						<div class="col">
 							<div class="form-group">
-								<input type="number" min=0 step=0.001  class="form-control  ptext_input" name="deferred_tax_liabilities[]"   maxlength="20" minlength="1"  />
+								<input type="number" min=0 step=0.001  class="form-control  ptext_input" name="deferred_tax_liabilities[]" {% if data.deferred_tax_liabilities.f_1 %} value="{{data.deferred_tax_liabilities.f_1}}" {% endif %}   maxlength="20" minlength="1"  />
 								</div>
 						</div>
 
 						<div class="col">
 							<div class="form-group">
-								<input type="number" min=0 step=0.001  class="form-control  ptext_input ptext_input_c" name="deferred_tax_liabilities[]"  maxlength="20" minlength="1"  />
+								<input type="number" min=0 step=0.001  class="form-control  ptext_input ptext_input_c" name="deferred_tax_liabilities[]" {% if data.deferred_tax_liabilities.f_2 %} value="{{data.deferred_tax_liabilities.f_2}}" {% endif %}  maxlength="20" minlength="1"  />
 								
 								</div>
 						</div>
 						<div class="col">
 							<div class="form-group">
-								<input type="number" min=0 step=0.001  class="form-control  ptext_input ptext_input_c" name="deferred_tax_liabilities[]"   maxlength="20" minlength="1"  />
+								<input type="number" min=0 step=0.001  class="form-control  ptext_input ptext_input_c" name="deferred_tax_liabilities[]" {% if data.deferred_tax_liabilities.f_3 %} value="{{data.deferred_tax_liabilities.f_3}}" {% endif %}   maxlength="20" minlength="1"  />
 								
 								</div>
 						</div>
 						<div class="col">
 							<div class="form-group">
-								<input type="number" min=0 step=0.001  class="form-control  ptext_input ptext_input_c" name="deferred_tax_liabilities[]"   maxlength="20" minlength="1"  />
+								<input type="number" min=0 step=0.001  class="form-control  ptext_input ptext_input_c" name="deferred_tax_liabilities[]" {% if data.deferred_tax_liabilities.f_4 %} value="{{data.deferred_tax_liabilities.f_4}}" {% endif %}   maxlength="20" minlength="1"  />
 								
 								</div>
 						</div>
 						<div class="col">
 							<div class="form-group">
-								<input type="number" min=0 step=0.001  class="form-control  ptext_input ptext_input_c" name="deferred_tax_liabilities[]"  maxlength="20" minlength="1"  />
+								<input type="number" min=0 step=0.001  class="form-control  ptext_input ptext_input_c" name="deferred_tax_liabilities[]" {% if data.deferred_tax_liabilities.f_5 %} value="{{data.deferred_tax_liabilities.f_5}}" {% endif %}  maxlength="20" minlength="1"  />
 								
 								</div>
 						</div>
@@ -934,31 +951,31 @@
 
                         <div class="col">
 							<div class="form-group">
-								<input type="number" min=0 step=0.001  class="form-control  ptext_input" name="long_term_provisions_growth_or_amount[]" maxlength="20" minlength="1" />
+								<input type="number" min=0 step=0.001  class="form-control  ptext_input" name="long_term_provisions_growth_or_amount[]" {% if data.long_term_provisions_growth_or_amount.f_1 %} value="{{data.long_term_provisions_growth_or_amount.f_1}}" {% endif %} maxlength="20" minlength="1" />
 							
 								</div>
 						</div>
                         <div class="col">
 							<div class="form-group">
-								<input type="number" min=0 step=0.001  class="form-control  ptext_input ptext_input_c" name="long_term_provisions_growth_or_amount[]" maxlength="20" minlength="1" />
+								<input type="number" min=0 step=0.001  class="form-control  ptext_input ptext_input_c" name="long_term_provisions_growth_or_amount[]" {% if data.long_term_provisions_growth_or_amount.f_2 %} value="{{data.long_term_provisions_growth_or_amount.f_2}}" {% endif %} maxlength="20" minlength="1" />
 							
 								</div>
 						</div>
                         <div class="col">
 							<div class="form-group">
-								<input type="number" min=0 step=0.001  class="form-control  ptext_input ptext_input_c" name="long_term_provisions_growth_or_amount[]" maxlength="20" minlength="1" />
+								<input type="number" min=0 step=0.001  class="form-control  ptext_input ptext_input_c" name="long_term_provisions_growth_or_amount[]" {% if data.long_term_provisions_growth_or_amount.f_3 %} value="{{data.long_term_provisions_growth_or_amount.f_3}}" {% endif %} maxlength="20" minlength="1" />
 							
 								</div>
 						</div>
                         <div class="col">
 							<div class="form-group">
-								<input type="number" min=0 step=0.001  class="form-control  ptext_input ptext_input_c" name="long_term_provisions_growth_or_amount[]" maxlength="20" minlength="1" />
+								<input type="number" min=0 step=0.001  class="form-control  ptext_input ptext_input_c" name="long_term_provisions_growth_or_amount[]" {% if data.long_term_provisions_growth_or_amount.f_4 %} value="{{data.long_term_provisions_growth_or_amount.f_4}}" {% endif %} maxlength="20" minlength="1" />
 							
 								</div>
 						</div>
                         <div class="col">
 							<div class="form-group">
-								<input type="number" min=0 step=0.001  class="form-control  ptext_input ptext_input_c" name="long_term_provisions_growth_or_amount[]" maxlength="20" minlength="1" />
+								<input type="number" min=0 step=0.001  class="form-control  ptext_input ptext_input_c" name="long_term_provisions_growth_or_amount[]" {% if data.long_term_provisions_growth_or_amount.f_5 %} value="{{data.long_term_provisions_growth_or_amount.f_5}}" {% endif %} maxlength="20" minlength="1" />
 							
 								</div>
 						</div>
@@ -983,31 +1000,31 @@
 
                         <div class="col">
 							<div class="form-group">
-								<input type="number" min=0 step=0.001  class="form-control  ptext_input" name="other_non_current_liabilities_growth_or_amount[]" maxlength="20" minlength="1" />
+								<input type="number" min=0 step=0.001  class="form-control  ptext_input" name="other_non_current_liabilities_growth_or_amount[]" {% if data.other_non_current_liabilities_growth_or_amount.f_1 %} value="{{data.other_non_current_liabilities_growth_or_amount.f_1}}" {% endif %} maxlength="20" minlength="1" />
 							
 								</div>
 						</div>
                          <div class="col">
 							<div class="form-group">
-								<input type="number" min=0 step=0.001  class="form-control  ptext_input ptext_input_c" name="other_non_current_liabilities_growth_or_amount[]" maxlength="20" minlength="1" />
+								<input type="number" min=0 step=0.001  class="form-control  ptext_input ptext_input_c" name="other_non_current_liabilities_growth_or_amount[]" {% if data.other_non_current_liabilities_growth_or_amount.f_2 %} value="{{data.other_non_current_liabilities_growth_or_amount.f_2}}" {% endif %} maxlength="20" minlength="1" />
 							
 								</div>
 						</div>
                          <div class="col">
 							<div class="form-group">
-								<input type="number" min=0 step=0.001  class="form-control  ptext_input ptext_input_c" name="other_non_current_liabilities_growth_or_amount[]" maxlength="20" minlength="1" />
+								<input type="number" min=0 step=0.001  class="form-control  ptext_input ptext_input_c" name="other_non_current_liabilities_growth_or_amount[]" {% if data.other_non_current_liabilities_growth_or_amount.f_3 %} value="{{data.other_non_current_liabilities_growth_or_amount.f_3}}" {% endif %} maxlength="20" minlength="1" />
 							
 								</div>
 						</div>
                          <div class="col">
 							<div class="form-group">
-								<input type="number" min=0 step=0.001  class="form-control  ptext_input ptext_input_c" name="other_non_current_liabilities_growth_or_amount[]" maxlength="20" minlength="1" />
+								<input type="number" min=0 step=0.001  class="form-control  ptext_input ptext_input_c" name="other_non_current_liabilities_growth_or_amount[]" {% if data.other_non_current_liabilities_growth_or_amount.f_4 %} value="{{data.other_non_current_liabilities_growth_or_amount.f_4}}" {% endif %} maxlength="20" minlength="1" />
 							
 								</div>
 						</div>
                          <div class="col">
 							<div class="form-group">
-								<input type="number" min=0 step=0.001  class="form-control  ptext_input ptext_input_c"  name="other_non_current_liabilities_growth_or_amount[]" maxlength="20" minlength="1" />
+								<input type="number" min=0 step=0.001  class="form-control  ptext_input ptext_input_c"  name="other_non_current_liabilities_growth_or_amount[]" {% if data.other_non_current_liabilities_growth_or_amount.f_5 %} value="{{data.other_non_current_liabilities_growth_or_amount.f_5}}" {% endif %} maxlength="20" minlength="1" />
 							
 								</div>
 						</div>
@@ -1045,32 +1062,34 @@
 											
 												<tr id="secured_loans2">
 													<th scope="row">Secured Loans </th>
-													<td>--</td>
-													<td>--</td>
-													<td>--</td>
-													<td>--</td>
-													<td>--</td>
-													<input hidden name="secured_loans2_[]" value=0>
-													<input hidden name="secured_loans2_[]" value=0>
-													<input hidden name="secured_loans2_[]" value=0>
-													<input hidden name="secured_loans2_[]" value=0>
-													<input hidden name="secured_loans2_[]" value=0>
+													<td>{% if data.projection_table.blnc_total_secured_loans.f_1 %} {{data.projection_table.blnc_total_secured_loans.f_1}} {%else%} -- {% endif %}</td>
+													<td>{% if data.projection_table.blnc_total_secured_loans.f_2 %} {{data.projection_table.blnc_total_secured_loans.f_2}} {%else%} -- {% endif %}</td>
+													<td>{% if data.projection_table.blnc_total_secured_loans.f_3 %} {{data.projection_table.blnc_total_secured_loans.f_3}} {%else%} -- {% endif %}</td>
+													<td>{% if data.projection_table.blnc_total_secured_loans.f_4 %} {{data.projection_table.blnc_total_secured_loans.f_4}} {%else%} -- {% endif %}</td>
+													<td>{% if data.projection_table.blnc_total_secured_loans.f_5 %} {{data.projection_table.blnc_total_secured_loans.f_5}} {%else%} -- {% endif %}</td>
+
+													<input hidden name="secured_loans2_[]" {% if data.projection_table.blnc_total_secured_loans.f_1 %} value={{data.projection_table.blnc_total_secured_loans.f_1}}  {% else %} value=0 {% endif %}>
+													<input hidden name="secured_loans2_[]" {% if data.projection_table.blnc_total_secured_loans.f_2 %} value={{data.projection_table.blnc_total_secured_loans.f_2}}  {% else %} value=0 {% endif %}>
+													<input hidden name="secured_loans2_[]" {% if data.projection_table.blnc_total_secured_loans.f_3 %} value={{data.projection_table.blnc_total_secured_loans.f_3}}  {% else %} value=0 {% endif %}>
+													<input hidden name="secured_loans2_[]" {% if data.projection_table.blnc_total_secured_loans.f_4 %} value={{data.projection_table.blnc_total_secured_loans.f_4}}  {% else %} value=0 {% endif %}>
+													<input hidden name="secured_loans2_[]" {% if data.projection_table.blnc_total_secured_loans.f_5 %} value={{data.projection_table.blnc_total_secured_loans.f_5}}  {% else %} value=0 {% endif %}>
 												</tr>
 
 
 												
 												<tr id="unsecured_loans2">
 													<th scope="row">Unsecured Loans</th>
-													<td>--</td>
-													<td>--</td>
-													<td>--</td>
-													<td>--</td>
-													<td>--</td>
-													<input hidden name="unsecured_loans2_[]" value=0>
-													<input hidden name="unsecured_loans2_[]" value=0>
-													<input hidden name="unsecured_loans2_[]" value=0>
-													<input hidden name="unsecured_loans2_[]" value=0>
-													<input hidden name="unsecured_loans2_[]" value=0>
+													<td>{% if data.projection_table.blnc_total_unsecured_loans.f_1 %} {{data.projection_table.blnc_total_unsecured_loans.f_1}} {%else%} -- {% endif %}</td>
+													<td>{% if data.projection_table.blnc_total_unsecured_loans.f_2 %} {{data.projection_table.blnc_total_unsecured_loans.f_2}} {%else%} -- {% endif %}</td>
+													<td>{% if data.projection_table.blnc_total_unsecured_loans.f_3 %} {{data.projection_table.blnc_total_unsecured_loans.f_3}} {%else%} -- {% endif %}</td>
+													<td>{% if data.projection_table.blnc_total_unsecured_loans.f_4 %} {{data.projection_table.blnc_total_unsecured_loans.f_4}} {%else%} -- {% endif %}</td>
+													<td>{% if data.projection_table.blnc_total_unsecured_loans.f_5 %} {{data.projection_table.blnc_total_unsecured_loans.f_5}} {%else%} -- {% endif %}</td>
+
+													<input hidden name="unsecured_loans2_[]" {% if data.projection_table.blnc_total_unsecured_loans.f_1 %} value={{data.projection_table.blnc_total_unsecured_loans.f_1}}  {% else %} value=0 {% endif %}>
+													<input hidden name="unsecured_loans2_[]" {% if data.projection_table.blnc_total_unsecured_loans.f_2 %} value={{data.projection_table.blnc_total_unsecured_loans.f_2}}  {% else %} value=0 {% endif %}>
+													<input hidden name="unsecured_loans2_[]" {% if data.projection_table.blnc_total_unsecured_loans.f_3 %} value={{data.projection_table.blnc_total_unsecured_loans.f_3}}  {% else %} value=0 {% endif %}>
+													<input hidden name="unsecured_loans2_[]" {% if data.projection_table.blnc_total_unsecured_loans.f_4 %} value={{data.projection_table.blnc_total_unsecured_loans.f_4}}  {% else %} value=0 {% endif %}>
+													<input hidden name="unsecured_loans2_[]" {% if data.projection_table.blnc_total_unsecured_loans.f_5 %} value={{data.projection_table.blnc_total_unsecured_loans.f_5}}  {% else %} value=0 {% endif %}>
 												</tr>
 
 
@@ -1078,16 +1097,17 @@
 
 												<tr id="deferred_tax_liabilities">
 													<th scope="row">Deferred Tax liabilities  </th>
-													<td>--</td>
-													<td>--</td>
-													<td>--</td>
-													<td>--</td>
-													<td>--</td>
-													<input hidden name="deferred_tax_liabilities_[]" value=0>
-													<input hidden name="deferred_tax_liabilities_[]" value=0>
-													<input hidden name="deferred_tax_liabilities_[]" value=0>
-													<input hidden name="deferred_tax_liabilities_[]" value=0>
-													<input hidden name="deferred_tax_liabilities_[]" value=0>
+													<td>{% if data.projection_table.blnc_deferred_tax_liabilities.f_1 %} {{data.projection_table.blnc_deferred_tax_liabilities.f_1}} {%else%} -- {% endif %}</td>
+													<td>{% if data.projection_table.blnc_deferred_tax_liabilities.f_2 %} {{data.projection_table.blnc_deferred_tax_liabilities.f_2}} {%else%} -- {% endif %}</td>
+													<td>{% if data.projection_table.blnc_deferred_tax_liabilities.f_3 %} {{data.projection_table.blnc_deferred_tax_liabilities.f_3}} {%else%} -- {% endif %}</td>
+													<td>{% if data.projection_table.blnc_deferred_tax_liabilities.f_4 %} {{data.projection_table.blnc_deferred_tax_liabilities.f_4}} {%else%} -- {% endif %}</td>
+													<td>{% if data.projection_table.blnc_deferred_tax_liabilities.f_5 %} {{data.projection_table.blnc_deferred_tax_liabilities.f_5}} {%else%} -- {% endif %}</td>
+
+													<input hidden name="deferred_tax_liabilities_[]" {% if data.projection_table.blnc_deferred_tax_liabilities.f_1 %} value={{data.projection_table.blnc_deferred_tax_liabilities.f_1}}  {% else %} value=0 {% endif %}>
+													<input hidden name="deferred_tax_liabilities_[]" {% if data.projection_table.blnc_deferred_tax_liabilities.f_2 %} value={{data.projection_table.blnc_deferred_tax_liabilities.f_2}}  {% else %} value=0 {% endif %}>
+													<input hidden name="deferred_tax_liabilities_[]" {% if data.projection_table.blnc_deferred_tax_liabilities.f_3 %} value={{data.projection_table.blnc_deferred_tax_liabilities.f_3}}  {% else %} value=0 {% endif %}>
+													<input hidden name="deferred_tax_liabilities_[]" {% if data.projection_table.blnc_deferred_tax_liabilities.f_4 %} value={{data.projection_table.blnc_deferred_tax_liabilities.f_4}}  {% else %} value=0 {% endif %}>
+													<input hidden name="deferred_tax_liabilities_[]" {% if data.projection_table.blnc_deferred_tax_liabilities.f_5 %} value={{data.projection_table.blnc_deferred_tax_liabilities.f_5}}  {% else %} value=0 {% endif %}>
 												</tr>
 
 
@@ -1095,16 +1115,17 @@
 
 												<tr id="long_term_provisions_growth_or_amount">
 													<th scope="row">Long Term provisions </th>
-													<td>--</td>
-													<td>--</td>
-													<td>--</td>
-													<td>--</td>
-													<td>--</td>
-													<input hidden name="long_term_provisions_growth_or_amount_[]" value=0>
-													<input hidden name="long_term_provisions_growth_or_amount_[]" value=0>
-													<input hidden name="long_term_provisions_growth_or_amount_[]" value=0>
-													<input hidden name="long_term_provisions_growth_or_amount_[]" value=0>
-													<input hidden name="long_term_provisions_growth_or_amount_[]" value=0>
+													<td>{% if data.projection_table.blnc_long_term_provisions_growth_or_amount.f_1 %} {{data.projection_table.blnc_long_term_provisions_growth_or_amount.f_1}} {%else%} -- {% endif %}</td>
+													<td>{% if data.projection_table.blnc_long_term_provisions_growth_or_amount.f_2 %} {{data.projection_table.blnc_long_term_provisions_growth_or_amount.f_2}} {%else%} -- {% endif %}</td>
+													<td>{% if data.projection_table.blnc_long_term_provisions_growth_or_amount.f_3 %} {{data.projection_table.blnc_long_term_provisions_growth_or_amount.f_3}} {%else%} -- {% endif %}</td>
+													<td>{% if data.projection_table.blnc_long_term_provisions_growth_or_amount.f_4 %} {{data.projection_table.blnc_long_term_provisions_growth_or_amount.f_4}} {%else%} -- {% endif %}</td>
+													<td>{% if data.projection_table.blnc_long_term_provisions_growth_or_amount.f_5 %} {{data.projection_table.blnc_long_term_provisions_growth_or_amount.f_5}} {%else%} -- {% endif %}</td>
+
+													<input hidden name="long_term_provisions_growth_or_amount_[]" {% if data.projection_table.blnc_long_term_provisions_growth_or_amount.f_1 %} value={{data.projection_table.blnc_long_term_provisions_growth_or_amount.f_1}}  {% else %} value=0 {% endif %}>
+													<input hidden name="long_term_provisions_growth_or_amount_[]" {% if data.projection_table.blnc_long_term_provisions_growth_or_amount.f_2 %} value={{data.projection_table.blnc_long_term_provisions_growth_or_amount.f_2}}  {% else %} value=0 {% endif %}>
+													<input hidden name="long_term_provisions_growth_or_amount_[]" {% if data.projection_table.blnc_long_term_provisions_growth_or_amount.f_3 %} value={{data.projection_table.blnc_long_term_provisions_growth_or_amount.f_3}}  {% else %} value=0 {% endif %}>
+													<input hidden name="long_term_provisions_growth_or_amount_[]" {% if data.projection_table.blnc_long_term_provisions_growth_or_amount.f_4 %} value={{data.projection_table.blnc_long_term_provisions_growth_or_amount.f_4}}  {% else %} value=0 {% endif %}>
+													<input hidden name="long_term_provisions_growth_or_amount_[]" {% if data.projection_table.blnc_long_term_provisions_growth_or_amount.f_5 %} value={{data.projection_table.blnc_long_term_provisions_growth_or_amount.f_5}}  {% else %} value=0 {% endif %}>
 												</tr>
 
 
@@ -1112,32 +1133,34 @@
 
 												<tr id="other_non_current_liabilities_growth_or_amount">
 													<th scope="row">Other Non- Current Liabilities  </th>
-													<td>--</td>
-													<td>--</td>
-													<td>--</td>
-													<td>--</td>
-													<td>--</td>
-													<input hidden name="other_non_current_liabilities_growth_or_amount_[]" value=0>
-													<input hidden name="other_non_current_liabilities_growth_or_amount_[]" value=0>
-													<input hidden name="other_non_current_liabilities_growth_or_amount_[]" value=0>
-													<input hidden name="other_non_current_liabilities_growth_or_amount_[]" value=0>
-													<input hidden name="other_non_current_liabilities_growth_or_amount_[]" value=0>
+													<td>{% if data.projection_table.blnc_other_non_current_liabilities_growth_or_amount.f_1 %} {{data.projection_table.blnc_other_non_current_liabilities_growth_or_amount.f_1}} {%else%} -- {% endif %}</td>
+													<td>{% if data.projection_table.blnc_other_non_current_liabilities_growth_or_amount.f_2 %} {{data.projection_table.blnc_other_non_current_liabilities_growth_or_amount.f_2}} {%else%} -- {% endif %}</td>
+													<td>{% if data.projection_table.blnc_other_non_current_liabilities_growth_or_amount.f_3 %} {{data.projection_table.blnc_other_non_current_liabilities_growth_or_amount.f_3}} {%else%} -- {% endif %}</td>
+													<td>{% if data.projection_table.blnc_other_non_current_liabilities_growth_or_amount.f_4 %} {{data.projection_table.blnc_other_non_current_liabilities_growth_or_amount.f_4}} {%else%} -- {% endif %}</td>
+													<td>{% if data.projection_table.blnc_other_non_current_liabilities_growth_or_amount.f_5 %} {{data.projection_table.blnc_other_non_current_liabilities_growth_or_amount.f_5}} {%else%} -- {% endif %}</td>
+
+													<input hidden name="other_non_current_liabilities_growth_or_amount_[]" {% if data.projection_table.blnc_other_non_current_liabilities_growth_or_amount.f_1 %} value={{data.projection_table.blnc_other_non_current_liabilities_growth_or_amount.f_1}}  {% else %} value=0 {% endif %}>
+													<input hidden name="other_non_current_liabilities_growth_or_amount_[]" {% if data.projection_table.blnc_other_non_current_liabilities_growth_or_amount.f_2 %} value={{data.projection_table.blnc_other_non_current_liabilities_growth_or_amount.f_2}}  {% else %} value=0 {% endif %}>
+													<input hidden name="other_non_current_liabilities_growth_or_amount_[]" {% if data.projection_table.blnc_other_non_current_liabilities_growth_or_amount.f_3 %} value={{data.projection_table.blnc_other_non_current_liabilities_growth_or_amount.f_3}}  {% else %} value=0 {% endif %}>
+													<input hidden name="other_non_current_liabilities_growth_or_amount_[]" {% if data.projection_table.blnc_other_non_current_liabilities_growth_or_amount.f_4 %} value={{data.projection_table.blnc_other_non_current_liabilities_growth_or_amount.f_4}}  {% else %} value=0 {% endif %}>
+													<input hidden name="other_non_current_liabilities_growth_or_amount_[]" {% if data.projection_table.blnc_other_non_current_liabilities_growth_or_amount.f_5 %} value={{data.projection_table.blnc_other_non_current_liabilities_growth_or_amount.f_5}}  {% else %} value=0 {% endif %}>
 												</tr>
 
 
 												
 												<tr id="total_non_current_liabilities_b">
 													<th scope="row">Total Non Current Liabilities (B)</th>
-													<td>--</td>
-													<td>--</td>
-													<td>--</td>
-													<td>--</td>
-													<td>--</td>
-													<input hidden name="total_non_current_liabilities_b_[]" value=0>
-													<input hidden name="total_non_current_liabilities_b_[]" value=0>
-													<input hidden name="total_non_current_liabilities_b_[]" value=0>
-													<input hidden name="total_non_current_liabilities_b_[]" value=0>
-													<input hidden name="total_non_current_liabilities_b_[]" value=0>
+													<td>{% if data.projection_table.blnc_total_non_current_liabilities_b.f_1 %} {{data.projection_table.blnc_total_non_current_liabilities_b.f_1}} {%else%} -- {% endif %}</td>
+													<td>{% if data.projection_table.blnc_total_non_current_liabilities_b.f_2 %} {{data.projection_table.blnc_total_non_current_liabilities_b.f_2}} {%else%} -- {% endif %}</td>
+													<td>{% if data.projection_table.blnc_total_non_current_liabilities_b.f_3 %} {{data.projection_table.blnc_total_non_current_liabilities_b.f_3}} {%else%} -- {% endif %}</td>
+													<td>{% if data.projection_table.blnc_total_non_current_liabilities_b.f_4 %} {{data.projection_table.blnc_total_non_current_liabilities_b.f_4}} {%else%} -- {% endif %}</td>
+													<td>{% if data.projection_table.blnc_total_non_current_liabilities_b.f_5 %} {{data.projection_table.blnc_total_non_current_liabilities_b.f_5}} {%else%} -- {% endif %}</td>
+
+													<input hidden name="total_non_current_liabilities_b_[]" {% if data.projection_table.blnc_total_non_current_liabilities_b.f_1 %} value={{data.projection_table.blnc_total_non_current_liabilities_b.f_1}}  {% else %} value=0 {% endif %}>
+													<input hidden name="total_non_current_liabilities_b_[]" {% if data.projection_table.blnc_total_non_current_liabilities_b.f_2 %} value={{data.projection_table.blnc_total_non_current_liabilities_b.f_2}}  {% else %} value=0 {% endif %}>
+													<input hidden name="total_non_current_liabilities_b_[]" {% if data.projection_table.blnc_total_non_current_liabilities_b.f_3 %} value={{data.projection_table.blnc_total_non_current_liabilities_b.f_3}}  {% else %} value=0 {% endif %}>
+													<input hidden name="total_non_current_liabilities_b_[]" {% if data.projection_table.blnc_total_non_current_liabilities_b.f_4 %} value={{data.projection_table.blnc_total_non_current_liabilities_b.f_4}}  {% else %} value=0 {% endif %}>
+													<input hidden name="total_non_current_liabilities_b_[]" {% if data.projection_table.blnc_total_non_current_liabilities_b.f_5 %} value={{data.projection_table.blnc_total_non_current_liabilities_b.f_5}}  {% else %} value=0 {% endif %}>
 												</tr>
 
 
@@ -1188,31 +1211,31 @@
 						
 						<div class="col">
 							<div class="form-group">
-								<input type="number" min=0 step=0.001  class="form-control  ptext_input" name="short_term_borrowings_growth_or_amount[]" maxlength="20" minlength="1" />
+								<input type="number" min=0 step=0.001  class="form-control  ptext_input" name="short_term_borrowings_growth_or_amount[]" {% if data.short_term_borrowings_growth_or_amount.f_1 %} value="{{data.short_term_borrowings_growth_or_amount.f_1}}" {% endif %} maxlength="20" minlength="1" />
 							
 								</div>
 						</div>
                         <div class="col">
 							<div class="form-group">
-								<input type="number" min=0 step=0.001  class="form-control  ptext_input ptext_input_c" name="short_term_borrowings_growth_or_amount[]" maxlength="20" minlength="1" />
+								<input type="number" min=0 step=0.001  class="form-control  ptext_input ptext_input_c" name="short_term_borrowings_growth_or_amount[]" {% if data.short_term_borrowings_growth_or_amount.f_2 %} value="{{data.short_term_borrowings_growth_or_amount.f_2}}" {% endif %} maxlength="20" minlength="1" />
 							
 								</div>
 						</div>
                         <div class="col">
 							<div class="form-group">
-								<input type="number" min=0 step=0.001  class="form-control  ptext_input ptext_input_c" name="short_term_borrowings_growth_or_amount[]" maxlength="20" minlength="1" />
+								<input type="number" min=0 step=0.001  class="form-control  ptext_input ptext_input_c" name="short_term_borrowings_growth_or_amount[]" {% if data.short_term_borrowings_growth_or_amount.f_3 %} value="{{data.short_term_borrowings_growth_or_amount.f_3}}" {% endif %} maxlength="20" minlength="1" />
 							
 								</div>
 						</div>
                         <div class="col">
 							<div class="form-group">
-								<input type="number" min=0 step=0.001  class="form-control  ptext_input ptext_input_c" name="short_term_borrowings_growth_or_amount[]" maxlength="20" minlength="1" />
+								<input type="number" min=0 step=0.001  class="form-control  ptext_input ptext_input_c" name="short_term_borrowings_growth_or_amount[]" {% if data.short_term_borrowings_growth_or_amount.f_4 %} value="{{data.short_term_borrowings_growth_or_amount.f_4}}" {% endif %} maxlength="20" minlength="1" />
 							
 								</div>
 						</div>
                         <div class="col">
 							<div class="form-group">
-								<input type="number" min=0 step=0.001  class="form-control  ptext_input ptext_input_c" name="short_term_borrowings_growth_or_amount[]" maxlength="20" minlength="1" />
+								<input type="number" min=0 step=0.001  class="form-control  ptext_input ptext_input_c" name="short_term_borrowings_growth_or_amount[]" {% if data.short_term_borrowings_growth_or_amount.f_5 %} value="{{data.short_term_borrowings_growth_or_amount.f_5}}" {% endif %} maxlength="20" minlength="1" />
 							
 								</div>
 						</div>
@@ -1234,31 +1257,31 @@
 						
                         <div class="col">
 							<div class="form-group">
-								<input type="number" min=0 step=0.001  class="form-control  ptext_input" name="short_term_provisions_growth_or_amount[]" maxlength="20" minlength="1" />
+								<input type="number" min=0 step=0.001  class="form-control  ptext_input" name="short_term_provisions_growth_or_amount[]" {% if data.short_term_provisions_growth_or_amount.f_1 %} value="{{data.short_term_provisions_growth_or_amount.f_1}}" {% endif %} maxlength="20" minlength="1" />
 							
 								</div>
 						</div>
                         <div class="col">
 							<div class="form-group">
-								<input type="number" min=0 step=0.001  class="form-control  ptext_input ptext_input_c" name="short_term_provisions_growth_or_amount[]" maxlength="20" minlength="1" />
+								<input type="number" min=0 step=0.001  class="form-control  ptext_input ptext_input_c" name="short_term_provisions_growth_or_amount[]" {% if data.short_term_provisions_growth_or_amount.f_2 %} value="{{data.short_term_provisions_growth_or_amount.f_2}}" {% endif %} maxlength="20" minlength="1" />
 							
 								</div>
 						</div>
                         <div class="col">
 							<div class="form-group">
-								<input type="number" min=0 step=0.001  class="form-control  ptext_input ptext_input_c"  name="short_term_provisions_growth_or_amount[]" maxlength="20" minlength="1" />
+								<input type="number" min=0 step=0.001  class="form-control  ptext_input ptext_input_c"  name="short_term_provisions_growth_or_amount[]" {% if data.short_term_provisions_growth_or_amount.f_3 %} value="{{data.short_term_provisions_growth_or_amount.f_3}}" {% endif %} maxlength="20" minlength="1" />
 							
 								</div>
 						</div>
                         <div class="col">
 							<div class="form-group">
-								<input type="number" min=0 step=0.001  class="form-control  ptext_input ptext_input_c"  name="short_term_provisions_growth_or_amount[]" maxlength="20" minlength="1" />
+								<input type="number" min=0 step=0.001  class="form-control  ptext_input ptext_input_c"  name="short_term_provisions_growth_or_amount[]" {% if data.short_term_provisions_growth_or_amount.f_4 %} value="{{data.short_term_provisions_growth_or_amount.f_4}}" {% endif %} maxlength="20" minlength="1" />
 							
 								</div>
 						</div>
                         <div class="col">
 							<div class="form-group">
-								<input type="number" min=0 step=0.001  class="form-control  ptext_input ptext_input_c" name="short_term_provisions_growth_or_amount[]" maxlength="20" minlength="1" />
+								<input type="number" min=0 step=0.001  class="form-control  ptext_input ptext_input_c" name="short_term_provisions_growth_or_amount[]" {% if data.short_term_provisions_growth_or_amount.f_5 %} value="{{data.short_term_provisions_growth_or_amount.f_5}}" {% endif %} maxlength="20" minlength="1" />
 							
 								</div>
 						</div>
@@ -1283,27 +1306,27 @@
 						
                         <div class="col">
 							<div class="form-group">
-								<input type="number"  class="form-control ptext_input_sund " name="sundry_creditors_no_of_days[]" maxlength="20" minlength="1" />
+								<input type="number"  class="form-control ptext_input_sund " name="sundry_creditors_no_of_days[]" {% if data.sundry_creditors_no_of_days.f_1 %} value="{{data.sundry_creditors_no_of_days.f_1}}" {% endif %} maxlength="20" minlength="1" />
 								</div>
 						</div>
                         <div class="col">
 							<div class="form-group">
-								<input type="number"  class="form-control ptext_input_sund" name="sundry_creditors_no_of_days[]" maxlength="20" minlength="1" />
+								<input type="number"  class="form-control ptext_input_sund" name="sundry_creditors_no_of_days[]" {% if data.sundry_creditors_no_of_days.f_2 %} value="{{data.sundry_creditors_no_of_days.f_2}}" {% endif %} maxlength="20" minlength="1" />
 								</div>
 						</div>
                         <div class="col">
 							<div class="form-group">
-								<input type="number"  class="form-control ptext_input_sund" name="sundry_creditors_no_of_days[]" maxlength="20" minlength="1" />
+								<input type="number"  class="form-control ptext_input_sund" name="sundry_creditors_no_of_days[]" {% if data.sundry_creditors_no_of_days.f_3 %} value="{{data.sundry_creditors_no_of_days.f_3}}" {% endif %} maxlength="20" minlength="1" />
 								</div>
 						</div>
                         <div class="col">
 							<div class="form-group">
-								<input type="number"  class="form-control ptext_input_sund" name="sundry_creditors_no_of_days[]" maxlength="20" minlength="1" />
+								<input type="number"  class="form-control ptext_input_sund" name="sundry_creditors_no_of_days[]" {% if data.sundry_creditors_no_of_days.f_4 %} value="{{data.sundry_creditors_no_of_days.f_4}}" {% endif %} maxlength="20" minlength="1" />
 								</div>
 						</div>
                         <div class="col">
 							<div class="form-group">
-								<input type="number"  class="form-control ptext_input_sund" name="sundry_creditors_no_of_days[]" maxlength="20" minlength="1" />
+								<input type="number"  class="form-control ptext_input_sund" name="sundry_creditors_no_of_days[]" {% if data.sundry_creditors_no_of_days.f_5 %} value="{{data.sundry_creditors_no_of_days.f_5}}" {% endif %} maxlength="20" minlength="1" />
 								</div>
 						</div>
 						
@@ -1324,31 +1347,31 @@
 						
                         <div class="col">
 							<div class="form-group">
-								<input type="number" min=0 step=0.001  class="form-control  ptext_input" name="other_current_liabilities_growth_or_amount[]" maxlength="20" minlength="1" />
+								<input type="number" min=0 step=0.001  class="form-control  ptext_input" name="other_current_liabilities_growth_or_amount[]" {% if data.other_current_liabilities_growth_or_amount.f_1 %} value="{{data.other_current_liabilities_growth_or_amount.f_1}}" {% endif %} maxlength="20" minlength="1" />
 							
 								</div>
 						</div>
                         <div class="col">
 							<div class="form-group">
-								<input type="number" min=0 step=0.001  class="form-control  ptext_input ptext_input_c" name="other_current_liabilities_growth_or_amount[]" maxlength="20" minlength="1" />
+								<input type="number" min=0 step=0.001  class="form-control  ptext_input ptext_input_c" name="other_current_liabilities_growth_or_amount[]" {% if data.other_current_liabilities_growth_or_amount.f_2 %} value="{{data.other_current_liabilities_growth_or_amount.f_2}}" {% endif %} maxlength="20" minlength="1" />
 							
 								</div>
 						</div>
                         <div class="col">
 							<div class="form-group">
-								<input type="number" min=0 step=0.001  class="form-control  ptext_input ptext_input_c" name="other_current_liabilities_growth_or_amount[]" maxlength="20" minlength="1" />
+								<input type="number" min=0 step=0.001  class="form-control  ptext_input ptext_input_c" name="other_current_liabilities_growth_or_amount[]" {% if data.other_current_liabilities_growth_or_amount.f_3 %} value="{{data.other_current_liabilities_growth_or_amount.f_3}}" {% endif %} maxlength="20" minlength="1" />
 							
 								</div>
 						</div>
                         <div class="col">
 							<div class="form-group">
-								<input type="number" min=0 step=0.001  class="form-control  ptext_input ptext_input_c" name="other_current_liabilities_growth_or_amount[]" maxlength="20" minlength="1" />
+								<input type="number" min=0 step=0.001  class="form-control  ptext_input ptext_input_c" name="other_current_liabilities_growth_or_amount[]" {% if data.other_current_liabilities_growth_or_amount.f_4 %} value="{{data.other_current_liabilities_growth_or_amount.f_4}}" {% endif %} maxlength="20" minlength="1" />
 							
 								</div>
 						</div>
                         <div class="col">
 							<div class="form-group">
-								<input type="number" min=0 step=0.001  class="form-control  ptext_input ptext_input_c" name="other_current_liabilities_growth_or_amount[]" maxlength="20" minlength="1" />
+								<input type="number" min=0 step=0.001  class="form-control  ptext_input ptext_input_c" name="other_current_liabilities_growth_or_amount[]" {% if data.other_current_liabilities_growth_or_amount.f_5 %} value="{{data.other_current_liabilities_growth_or_amount.f_5}}" {% endif %} maxlength="20" minlength="1" />
 							
 								</div>
 						</div>
@@ -1387,91 +1410,97 @@
 											
 												<tr id="short_term_borrowings_growth_or_amount">
 													<th scope="row">Short Term borrowings</th>
-													<td>--</td>
-													<td>--</td>
-													<td>--</td>
-													<td>--</td>
-													<td>--</td>
-													<input hidden name="short_term_borrowings_growth_or_amount_[]" value=0>
-													<input hidden name="short_term_borrowings_growth_or_amount_[]" value=0>
-													<input hidden name="short_term_borrowings_growth_or_amount_[]" value=0>
-													<input hidden name="short_term_borrowings_growth_or_amount_[]" value=0>
-													<input hidden name="short_term_borrowings_growth_or_amount_[]" value=0>
+													<td>{% if data.projection_table.blnc_short_term_borrowings_growth_or_amount.f_1 %} {{data.projection_table.blnc_short_term_borrowings_growth_or_amount.f_1}} {%else%} -- {% endif %}</td>
+													<td>{% if data.projection_table.blnc_short_term_borrowings_growth_or_amount.f_2 %} {{data.projection_table.blnc_short_term_borrowings_growth_or_amount.f_2}} {%else%} -- {% endif %}</td>
+													<td>{% if data.projection_table.blnc_short_term_borrowings_growth_or_amount.f_3 %} {{data.projection_table.blnc_short_term_borrowings_growth_or_amount.f_3}} {%else%} -- {% endif %}</td>
+													<td>{% if data.projection_table.blnc_short_term_borrowings_growth_or_amount.f_4 %} {{data.projection_table.blnc_short_term_borrowings_growth_or_amount.f_4}} {%else%} -- {% endif %}</td>
+													<td>{% if data.projection_table.blnc_short_term_borrowings_growth_or_amount.f_5 %} {{data.projection_table.blnc_short_term_borrowings_growth_or_amount.f_5}} {%else%} -- {% endif %}</td>
+
+													<input hidden name="short_term_borrowings_growth_or_amount_[]" {% if data.projection_table.blnc_short_term_borrowings_growth_or_amount.f_1 %} value={{data.projection_table.blnc_short_term_borrowings_growth_or_amount.f_1}}  {% else %} value=0 {% endif %}>
+													<input hidden name="short_term_borrowings_growth_or_amount_[]" {% if data.projection_table.blnc_short_term_borrowings_growth_or_amount.f_2 %} value={{data.projection_table.blnc_short_term_borrowings_growth_or_amount.f_2}}  {% else %} value=0 {% endif %}>
+													<input hidden name="short_term_borrowings_growth_or_amount_[]" {% if data.projection_table.blnc_short_term_borrowings_growth_or_amount.f_3 %} value={{data.projection_table.blnc_short_term_borrowings_growth_or_amount.f_3}}  {% else %} value=0 {% endif %}>
+													<input hidden name="short_term_borrowings_growth_or_amount_[]" {% if data.projection_table.blnc_short_term_borrowings_growth_or_amount.f_4 %} value={{data.projection_table.blnc_short_term_borrowings_growth_or_amount.f_4}}  {% else %} value=0 {% endif %}>
+													<input hidden name="short_term_borrowings_growth_or_amount_[]" {% if data.projection_table.blnc_short_term_borrowings_growth_or_amount.f_5 %} value={{data.projection_table.blnc_short_term_borrowings_growth_or_amount.f_5}}  {% else %} value=0 {% endif %}>
 												</tr>
 
 
 												<tr id="short_term_provisions_growth_or_amount">
 													<th scope="row">Short term provisions </th>
-													<td>--</td>
-													<td>--</td>
-													<td>--</td>
-													<td>--</td>
-													<td>--</td>
-													<input hidden name="short_term_provisions_growth_or_amount_[]" value=0>
-													<input hidden name="short_term_provisions_growth_or_amount_[]" value=0>
-													<input hidden name="short_term_provisions_growth_or_amount_[]" value=0>
-													<input hidden name="short_term_provisions_growth_or_amount_[]" value=0>
-													<input hidden name="short_term_provisions_growth_or_amount_[]" value=0>
+													<td>{% if data.projection_table.blnc_short_term_provisions_growth_or_amount.f_1 %} {{data.projection_table.blnc_short_term_provisions_growth_or_amount.f_1}} {%else%} -- {% endif %}</td>
+													<td>{% if data.projection_table.blnc_short_term_provisions_growth_or_amount.f_2 %} {{data.projection_table.blnc_short_term_provisions_growth_or_amount.f_2}} {%else%} -- {% endif %}</td>
+													<td>{% if data.projection_table.blnc_short_term_provisions_growth_or_amount.f_3 %} {{data.projection_table.blnc_short_term_provisions_growth_or_amount.f_3}} {%else%} -- {% endif %}</td>
+													<td>{% if data.projection_table.blnc_short_term_provisions_growth_or_amount.f_4 %} {{data.projection_table.blnc_short_term_provisions_growth_or_amount.f_4}} {%else%} -- {% endif %}</td>
+													<td>{% if data.projection_table.blnc_short_term_provisions_growth_or_amount.f_5 %} {{data.projection_table.blnc_short_term_provisions_growth_or_amount.f_5}} {%else%} -- {% endif %}</td>
+
+													<input hidden name="short_term_provisions_growth_or_amount_[]" {% if data.projection_table.blnc_short_term_provisions_growth_or_amount.f_1 %} value={{data.projection_table.blnc_short_term_provisions_growth_or_amount.f_1}}  {% else %} value=0 {% endif %}>
+													<input hidden name="short_term_provisions_growth_or_amount_[]" {% if data.projection_table.blnc_short_term_provisions_growth_or_amount.f_2 %} value={{data.projection_table.blnc_short_term_provisions_growth_or_amount.f_2}}  {% else %} value=0 {% endif %}>
+													<input hidden name="short_term_provisions_growth_or_amount_[]" {% if data.projection_table.blnc_short_term_provisions_growth_or_amount.f_3 %} value={{data.projection_table.blnc_short_term_provisions_growth_or_amount.f_3}}  {% else %} value=0 {% endif %}>
+													<input hidden name="short_term_provisions_growth_or_amount_[]" {% if data.projection_table.blnc_short_term_provisions_growth_or_amount.f_4 %} value={{data.projection_table.blnc_short_term_provisions_growth_or_amount.f_4}}  {% else %} value=0 {% endif %}>
+													<input hidden name="short_term_provisions_growth_or_amount_[]" {% if data.projection_table.blnc_short_term_provisions_growth_or_amount.f_5 %} value={{data.projection_table.blnc_short_term_provisions_growth_or_amount.f_5}}  {% else %} value=0 {% endif %}>
 												</tr>
 
 
 												<tr id="sundry_creditors_no_of_days">
 													<th scope="row">Sundry Creditors</th>
-													<td>--</td>
-													<td>--</td>
-													<td>--</td>
-													<td>--</td>
-													<td>--</td>
-													<input hidden name="sundry_creditors_no_of_days_[]" value=0>
-													<input hidden name="sundry_creditors_no_of_days_[]" value=0>
-													<input hidden name="sundry_creditors_no_of_days_[]" value=0>
-													<input hidden name="sundry_creditors_no_of_days_[]" value=0>
-													<input hidden name="sundry_creditors_no_of_days_[]" value=0>
+													<td>{% if data.projection_table.blnc_sundry_creditors_no_of_days.f_1 %} {{data.projection_table.blnc_sundry_creditors_no_of_days.f_1}} {%else%} -- {% endif %}</td>
+													<td>{% if data.projection_table.blnc_sundry_creditors_no_of_days.f_2 %} {{data.projection_table.blnc_sundry_creditors_no_of_days.f_2}} {%else%} -- {% endif %}</td>
+													<td>{% if data.projection_table.blnc_sundry_creditors_no_of_days.f_3 %} {{data.projection_table.blnc_sundry_creditors_no_of_days.f_3}} {%else%} -- {% endif %}</td>
+													<td>{% if data.projection_table.blnc_sundry_creditors_no_of_days.f_4 %} {{data.projection_table.blnc_sundry_creditors_no_of_days.f_4}} {%else%} -- {% endif %}</td>
+													<td>{% if data.projection_table.blnc_sundry_creditors_no_of_days.f_5 %} {{data.projection_table.blnc_sundry_creditors_no_of_days.f_5}} {%else%} -- {% endif %}</td>
+
+													<input hidden name="sundry_creditors_no_of_days_[]" {% if data.projection_table.blnc_sundry_creditors_no_of_days.f_1 %} value={{data.projection_table.blnc_sundry_creditors_no_of_days.f_1}}  {% else %} value=0 {% endif %}>
+													<input hidden name="sundry_creditors_no_of_days_[]" {% if data.projection_table.blnc_sundry_creditors_no_of_days.f_2 %} value={{data.projection_table.blnc_sundry_creditors_no_of_days.f_2}}  {% else %} value=0 {% endif %}>
+													<input hidden name="sundry_creditors_no_of_days_[]" {% if data.projection_table.blnc_sundry_creditors_no_of_days.f_3 %} value={{data.projection_table.blnc_sundry_creditors_no_of_days.f_3}}  {% else %} value=0 {% endif %}>
+													<input hidden name="sundry_creditors_no_of_days_[]" {% if data.projection_table.blnc_sundry_creditors_no_of_days.f_4 %} value={{data.projection_table.blnc_sundry_creditors_no_of_days.f_4}}  {% else %} value=0 {% endif %}>
+													<input hidden name="sundry_creditors_no_of_days_[]" {% if data.projection_table.blnc_sundry_creditors_no_of_days.f_5 %} value={{data.projection_table.blnc_sundry_creditors_no_of_days.f_5}}  {% else %} value=0 {% endif %}>
 												</tr>
 
 
 												<tr id="other_current_liabilities_growth_or_amount">
 													<th scope="row">Other Current Liabilities</th>
-													<td>--</td>
-													<td>--</td>
-													<td>--</td>
-													<td>--</td>
-													<td>--</td>
-													<input hidden name="other_current_liabilities_growth_or_amount_[]" value=0>
-													<input hidden name="other_current_liabilities_growth_or_amount_[]" value=0>
-													<input hidden name="other_current_liabilities_growth_or_amount_[]" value=0>
-													<input hidden name="other_current_liabilities_growth_or_amount_[]" value=0>
-													<input hidden name="other_current_liabilities_growth_or_amount_[]" value=0>
+													<td>{% if data.projection_table.blnc_other_current_liabilities_growth_or_amount.f_1 %} {{data.projection_table.blnc_other_current_liabilities_growth_or_amount.f_1}} {%else%} -- {% endif %}</td>
+													<td>{% if data.projection_table.blnc_other_current_liabilities_growth_or_amount.f_2 %} {{data.projection_table.blnc_other_current_liabilities_growth_or_amount.f_2}} {%else%} -- {% endif %}</td>
+													<td>{% if data.projection_table.blnc_other_current_liabilities_growth_or_amount.f_3 %} {{data.projection_table.blnc_other_current_liabilities_growth_or_amount.f_3}} {%else%} -- {% endif %}</td>
+													<td>{% if data.projection_table.blnc_other_current_liabilities_growth_or_amount.f_4 %} {{data.projection_table.blnc_other_current_liabilities_growth_or_amount.f_4}} {%else%} -- {% endif %}</td>
+													<td>{% if data.projection_table.blnc_other_current_liabilities_growth_or_amount.f_5 %} {{data.projection_table.blnc_other_current_liabilities_growth_or_amount.f_5}} {%else%} -- {% endif %}</td>
+
+													<input hidden name="other_current_liabilities_growth_or_amount_[]" {% if data.projection_table.blnc_other_current_liabilities_growth_or_amount.f_1 %} value={{data.projection_table.blnc_other_current_liabilities_growth_or_amount.f_1}}  {% else %} value=0 {% endif %}>
+													<input hidden name="other_current_liabilities_growth_or_amount_[]" {% if data.projection_table.blnc_other_current_liabilities_growth_or_amount.f_2 %} value={{data.projection_table.blnc_other_current_liabilities_growth_or_amount.f_2}}  {% else %} value=0 {% endif %}>
+													<input hidden name="other_current_liabilities_growth_or_amount_[]" {% if data.projection_table.blnc_other_current_liabilities_growth_or_amount.f_3 %} value={{data.projection_table.blnc_other_current_liabilities_growth_or_amount.f_3}}  {% else %} value=0 {% endif %}>
+													<input hidden name="other_current_liabilities_growth_or_amount_[]" {% if data.projection_table.blnc_other_current_liabilities_growth_or_amount.f_4 %} value={{data.projection_table.blnc_other_current_liabilities_growth_or_amount.f_4}}  {% else %} value=0 {% endif %}>
+													<input hidden name="other_current_liabilities_growth_or_amount_[]" {% if data.projection_table.blnc_other_current_liabilities_growth_or_amount.f_5 %} value={{data.projection_table.blnc_other_current_liabilities_growth_or_amount.f_5}}  {% else %} value=0 {% endif %}>
 												</tr>
 
 
 												<tr id="total_current_liabilities_c">
 													<th scope="row">Total Current Liabilities (C)</th>
-													<td>--</td>
-													<td>--</td>
-													<td>--</td>
-													<td>--</td>
-													<td>--</td>
-													<input hidden name="total_current_liabilities_c_[]" value=0>
-													<input hidden name="total_current_liabilities_c_[]" value=0>
-													<input hidden name="total_current_liabilities_c_[]" value=0>
-													<input hidden name="total_current_liabilities_c_[]" value=0>
-													<input hidden name="total_current_liabilities_c_[]" value=0>
+													<td>{% if data.projection_table.blnc_total_current_liabilities_c.f_1 %} {{data.projection_table.blnc_total_current_liabilities_c.f_1}} {%else%} -- {% endif %}</td>
+													<td>{% if data.projection_table.blnc_total_current_liabilities_c.f_2 %} {{data.projection_table.blnc_total_current_liabilities_c.f_2}} {%else%} -- {% endif %}</td>
+													<td>{% if data.projection_table.blnc_total_current_liabilities_c.f_3 %} {{data.projection_table.blnc_total_current_liabilities_c.f_3}} {%else%} -- {% endif %}</td>
+													<td>{% if data.projection_table.blnc_total_current_liabilities_c.f_4 %} {{data.projection_table.blnc_total_current_liabilities_c.f_4}} {%else%} -- {% endif %}</td>
+													<td>{% if data.projection_table.blnc_total_current_liabilities_c.f_5 %} {{data.projection_table.blnc_total_current_liabilities_c.f_5}} {%else%} -- {% endif %}</td>
+
+													<input hidden name="total_current_liabilities_c_[]" {% if data.projection_table.blnc_total_current_liabilities_c.f_1 %} value={{data.projection_table.blnc_total_current_liabilities_c.f_1}}  {% else %} value=0 {% endif %}>
+													<input hidden name="total_current_liabilities_c_[]" {% if data.projection_table.blnc_total_current_liabilities_c.f_2 %} value={{data.projection_table.blnc_total_current_liabilities_c.f_2}}  {% else %} value=0 {% endif %}>
+													<input hidden name="total_current_liabilities_c_[]" {% if data.projection_table.blnc_total_current_liabilities_c.f_3 %} value={{data.projection_table.blnc_total_current_liabilities_c.f_3}}  {% else %} value=0 {% endif %}>
+													<input hidden name="total_current_liabilities_c_[]" {% if data.projection_table.blnc_total_current_liabilities_c.f_4 %} value={{data.projection_table.blnc_total_current_liabilities_c.f_4}}  {% else %} value=0 {% endif %}>
+													<input hidden name="total_current_liabilities_c_[]" {% if data.projection_table.blnc_total_current_liabilities_c.f_5 %} value={{data.projection_table.blnc_total_current_liabilities_c.f_5}}  {% else %} value=0 {% endif %}>
 												</tr>
 
 
 												<tr id="total_liabilities_abc" class="bg-dark text-light">
 													<th scope="row">TOTAL LIABILITIES (A+B+C)</th>
-													<td>--</td>
-													<td>--</td>
-													<td>--</td>
-													<td>--</td>
-													<td>--</td>
-													<input hidden name="total_liabilities_abc_[]" value=0>
-													<input hidden name="total_liabilities_abc_[]" value=0>
-													<input hidden name="total_liabilities_abc_[]" value=0>
-													<input hidden name="total_liabilities_abc_[]" value=0>
-													<input hidden name="total_liabilities_abc_[]" value=0>
+													<td>{% if data.projection_table.blnc_total_liabilities_abc.f_1 %} {{data.projection_table.blnc_total_liabilities_abc.f_1}} {%else%} -- {% endif %}</td>
+													<td>{% if data.projection_table.blnc_total_liabilities_abc.f_2 %} {{data.projection_table.blnc_total_liabilities_abc.f_2}} {%else%} -- {% endif %}</td>
+													<td>{% if data.projection_table.blnc_total_liabilities_abc.f_3 %} {{data.projection_table.blnc_total_liabilities_abc.f_3}} {%else%} -- {% endif %}</td>
+													<td>{% if data.projection_table.blnc_total_liabilities_abc.f_4 %} {{data.projection_table.blnc_total_liabilities_abc.f_4}} {%else%} -- {% endif %}</td>
+													<td>{% if data.projection_table.blnc_total_liabilities_abc.f_5 %} {{data.projection_table.blnc_total_liabilities_abc.f_5}} {%else%} -- {% endif %}</td>
+
+													<input hidden name="total_liabilities_abc_[]" {% if data.projection_table.blnc_total_liabilities_abc.f_1 %} value={{data.projection_table.blnc_total_liabilities_abc.f_1}}  {% else %} value=0 {% endif %}>
+													<input hidden name="total_liabilities_abc_[]" {% if data.projection_table.blnc_total_liabilities_abc.f_2 %} value={{data.projection_table.blnc_total_liabilities_abc.f_2}}  {% else %} value=0 {% endif %}>
+													<input hidden name="total_liabilities_abc_[]" {% if data.projection_table.blnc_total_liabilities_abc.f_3 %} value={{data.projection_table.blnc_total_liabilities_abc.f_3}}  {% else %} value=0 {% endif %}>
+													<input hidden name="total_liabilities_abc_[]" {% if data.projection_table.blnc_total_liabilities_abc.f_4 %} value={{data.projection_table.blnc_total_liabilities_abc.f_4}}  {% else %} value=0 {% endif %}>
+													<input hidden name="total_liabilities_abc_[]" {% if data.projection_table.blnc_total_liabilities_abc.f_5 %} value={{data.projection_table.blnc_total_liabilities_abc.f_5}}  {% else %} value=0 {% endif %}>
 												</tr>
 
 
@@ -1529,31 +1558,31 @@
 						
                         <div class="col">
 							<div class="form-group">
-								<input type="number" min=0 step=0.001  class="form-control  ptext_input" name="intangible_assets_growth_or_amount[]" maxlength="20" minlength="1" />
+								<input type="number" min=0 step=0.001  class="form-control  ptext_input" name="intangible_assets_growth_or_amount[]" {% if data.intangible_assets_growth_or_amount.f_1 %} value="{{data.intangible_assets_growth_or_amount.f_1}}" {% endif %} maxlength="20" minlength="1" />
 							
 								</div>
 						</div>
                         <div class="col">
 							<div class="form-group">
-								<input type="number" min=0 step=0.001  class="form-control  ptext_input ptext_input_c"  name="intangible_assets_growth_or_amount[]" maxlength="20" minlength="1" />
+								<input type="number" min=0 step=0.001  class="form-control  ptext_input ptext_input_c"  name="intangible_assets_growth_or_amount[]" {% if data.intangible_assets_growth_or_amount.f_2 %} value="{{data.intangible_assets_growth_or_amount.f_2}}" {% endif %} maxlength="20" minlength="1" />
 							
 								</div>
 						</div>
                         <div class="col">
 							<div class="form-group">
-								<input type="number" min=0 step=0.001  class="form-control  ptext_input ptext_input_c" name="intangible_assets_growth_or_amount[]" maxlength="20" minlength="1" />
+								<input type="number" min=0 step=0.001  class="form-control  ptext_input ptext_input_c" name="intangible_assets_growth_or_amount[]" {% if data.intangible_assets_growth_or_amount.f_3 %} value="{{data.intangible_assets_growth_or_amount.f_3}}" {% endif %} maxlength="20" minlength="1" />
 							
 								</div>
 						</div>
                         <div class="col">
 							<div class="form-group">
-								<input type="number" min=0 step=0.001  class="form-control  ptext_input ptext_input_c" name="intangible_assets_growth_or_amount[]" maxlength="20" minlength="1" />
+								<input type="number" min=0 step=0.001  class="form-control  ptext_input ptext_input_c" name="intangible_assets_growth_or_amount[]" {% if data.intangible_assets_growth_or_amount.f_4 %} value="{{data.intangible_assets_growth_or_amount.f_4}}" {% endif %} maxlength="20" minlength="1" />
 							
 								</div>
 						</div>
                         <div class="col">
 							<div class="form-group">
-								<input type="number" min=0 step=0.001  class="form-control  ptext_input ptext_input_c" name="intangible_assets_growth_or_amount[]" maxlength="20" minlength="1" />
+								<input type="number" min=0 step=0.001  class="form-control  ptext_input ptext_input_c" name="intangible_assets_growth_or_amount[]" {% if data.intangible_assets_growth_or_amount.f_5 %} value="{{data.intangible_assets_growth_or_amount.f_5}}" {% endif %} maxlength="20" minlength="1" />
 							
 								</div>
 						</div>
@@ -1576,32 +1605,32 @@
 
 						<div class="col">
 							<div class="form-group">
-								<input type="number" min=0 step=0.001  class="form-control  ptext_input" name="long_term_loans_and_advances_growth_or_amount[]" maxlength="20" minlength="1" />
+								<input type="number" min=0 step=0.001  class="form-control  ptext_input" name="long_term_loans_and_advances_growth_or_amount[]" {% if data.long_term_loans_and_advances_growth_or_amount.f_1 %} value="{{data.long_term_loans_and_advances_growth_or_amount.f_1}}" {% endif %} maxlength="20" minlength="1" />
 							
 								</div>
 						</div>
 
                         <div class="col">
 							<div class="form-group">
-								<input type="number" min=0 step=0.001  class="form-control  ptext_input ptext_input_c" name="long_term_loans_and_advances_growth_or_amount[]" maxlength="20" minlength="1" />
+								<input type="number" min=0 step=0.001  class="form-control  ptext_input ptext_input_c" name="long_term_loans_and_advances_growth_or_amount[]" {% if data.long_term_loans_and_advances_growth_or_amount.f_2 %} value="{{data.long_term_loans_and_advances_growth_or_amount.f_2}}" {% endif %} maxlength="20" minlength="1" />
 							
 								</div>
 						</div>
                         <div class="col">
 							<div class="form-group">
-								<input type="number" min=0 step=0.001  class="form-control  ptext_input ptext_input_c" name="long_term_loans_and_advances_growth_or_amount[]" maxlength="20" minlength="1" />
+								<input type="number" min=0 step=0.001  class="form-control  ptext_input ptext_input_c" name="long_term_loans_and_advances_growth_or_amount[]" {% if data.long_term_loans_and_advances_growth_or_amount.f_3 %} value="{{data.long_term_loans_and_advances_growth_or_amount.f_3}}" {% endif %} maxlength="20" minlength="1" />
 							
 								</div>
 						</div>
                         <div class="col">
 							<div class="form-group">
-								<input type="number" min=0 step=0.001  class="form-control  ptext_input ptext_input_c"  name="long_term_loans_and_advances_growth_or_amount[]" maxlength="20" minlength="1" />
+								<input type="number" min=0 step=0.001  class="form-control  ptext_input ptext_input_c"  name="long_term_loans_and_advances_growth_or_amount[]" {% if data.long_term_loans_and_advances_growth_or_amount.f_4 %} value="{{data.long_term_loans_and_advances_growth_or_amount.f_4}}" {% endif %} maxlength="20" minlength="1" />
 							
 								</div>
 						</div>
                         <div class="col">
 							<div class="form-group">
-								<input type="number" min=0 step=0.001  class="form-control  ptext_input ptext_input_c" name="long_term_loans_and_advances_growth_or_amount[]" maxlength="20" minlength="1" />
+								<input type="number" min=0 step=0.001  class="form-control  ptext_input ptext_input_c" name="long_term_loans_and_advances_growth_or_amount[]" {% if data.long_term_loans_and_advances_growth_or_amount.f_5 %} value="{{data.long_term_loans_and_advances_growth_or_amount.f_5}}" {% endif %} maxlength="20" minlength="1" />
 							
 								</div>
 						</div>
@@ -1623,31 +1652,31 @@
 						
 						<div class="col">
 							<div class="form-group">
-								<input type="number" min=0 step=0.001  class="form-control  ptext_input" name="long_term_investments_growth_or_amount[]" maxlength="20" minlength="1" />
+								<input type="number" min=0 step=0.001  class="form-control  ptext_input" name="long_term_investments_growth_or_amount[]" {% if data.long_term_investments_growth_or_amount.f_1 %} value="{{data.long_term_investments_growth_or_amount.f_1}}" {% endif %} maxlength="20" minlength="1" />
 							
 								</div>
 						</div>
                         <div class="col">
 							<div class="form-group">
-								<input type="number" min=0 step=0.001  class="form-control  ptext_input ptext_input_c" name="long_term_investments_growth_or_amount[]" maxlength="20" minlength="1" />
+								<input type="number" min=0 step=0.001  class="form-control  ptext_input ptext_input_c" name="long_term_investments_growth_or_amount[]" {% if data.long_term_investments_growth_or_amount.f_2 %} value="{{data.long_term_investments_growth_or_amount.f_2}}" {% endif %} maxlength="20" minlength="1" />
 							
 								</div>
 						</div>
                         <div class="col">
 							<div class="form-group">
-								<input type="number" min=0 step=0.001  class="form-control  ptext_input ptext_input_c"  name="long_term_investments_growth_or_amount[]" maxlength="20" minlength="1" />
+								<input type="number" min=0 step=0.001  class="form-control  ptext_input ptext_input_c"  name="long_term_investments_growth_or_amount[]" {% if data.long_term_investments_growth_or_amount.f_3 %} value="{{data.long_term_investments_growth_or_amount.f_3}}" {% endif %} maxlength="20" minlength="1" />
 							
 								</div>
 						</div>
                         <div class="col">
 							<div class="form-group">
-								<input type="number" min=0 step=0.001  class="form-control  ptext_input ptext_input_c"  name="long_term_investments_growth_or_amount[]" maxlength="20" minlength="1" />
+								<input type="number" min=0 step=0.001  class="form-control  ptext_input ptext_input_c"  name="long_term_investments_growth_or_amount[]" {% if data.long_term_investments_growth_or_amount.f_4 %} value="{{data.long_term_investments_growth_or_amount.f_4}}" {% endif %} maxlength="20" minlength="1" />
 							
 								</div>
 						</div>
                         <div class="col">
 							<div class="form-group">
-								<input type="number" min=0 step=0.001  class="form-control  ptext_input ptext_input_c" name="long_term_investments_growth_or_amount[]" maxlength="20" minlength="1" />
+								<input type="number" min=0 step=0.001  class="form-control  ptext_input ptext_input_c" name="long_term_investments_growth_or_amount[]" {% if data.long_term_investments_growth_or_amount.f_5 %} value="{{data.long_term_investments_growth_or_amount.f_5}}" {% endif %} maxlength="20" minlength="1" />
 							
 								</div>
 						</div>
@@ -1668,30 +1697,30 @@
 						
 						<div class="col">
 							<div class="form-group">
-								<input type="number" min=0 step=0.001  class="form-control  ptext_input" name="deferred_tax_assets[]" maxlength="20" minlength="1" />
+								<input type="number" min=0 step=0.001  class="form-control  ptext_input" name="deferred_tax_assets[]" {% if data.deferred_tax_assets.f_1 %} value="{{data.deferred_tax_assets.f_1}}" {% endif %} maxlength="20" minlength="1" />
 							</div>
 						</div>
                         <div class="col">
 							<div class="form-group">
-								<input type="number" min=0 step=0.001  class="form-control  ptext_input ptext_input_c" name="deferred_tax_assets[]" maxlength="20" minlength="1" />
+								<input type="number" min=0 step=0.001  class="form-control  ptext_input ptext_input_c" name="deferred_tax_assets[]" {% if data.deferred_tax_assets.f_2 %} value="{{data.deferred_tax_assets.f_2}}" {% endif %} maxlength="20" minlength="1" />
 							
 								</div>
 						</div>
                         <div class="col">
 							<div class="form-group">
-								<input type="number" min=0 step=0.001  class="form-control  ptext_input ptext_input_c"  name="deferred_tax_assets[]" maxlength="20" minlength="1" />
+								<input type="number" min=0 step=0.001  class="form-control  ptext_input ptext_input_c"  name="deferred_tax_assets[]" {% if data.deferred_tax_assets.f_3 %} value="{{data.deferred_tax_assets.f_3}}" {% endif %} maxlength="20" minlength="1" />
 							
 								</div>
 						</div>
                         <div class="col">
 							<div class="form-group">
-								<input type="number" min=0 step=0.001  class="form-control  ptext_input ptext_input_c"  name="deferred_tax_assets[]" maxlength="20" minlength="1" />
+								<input type="number" min=0 step=0.001  class="form-control  ptext_input ptext_input_c"  name="deferred_tax_assets[]" {% if data.deferred_tax_assets.f_4 %} value="{{data.deferred_tax_assets.f_4}}" {% endif %} maxlength="20" minlength="1" />
 							
 								</div>
 						</div>
                         <div class="col">
 							<div class="form-group">
-								<input type="number" min=0 step=0.001  class="form-control  ptext_input ptext_input_c" name="deferred_tax_assets[]" maxlength="20" minlength="1" />
+								<input type="number" min=0 step=0.001  class="form-control  ptext_input ptext_input_c" name="deferred_tax_assets[]" {% if data.deferred_tax_assets.f_5 %} value="{{data.deferred_tax_assets.f_5}}" {% endif %} maxlength="20" minlength="1" />
 							
 								</div>
 						</div>
@@ -1717,31 +1746,31 @@
 						
                         <div class="col">
 							<div class="form-group">
-								<input type="number" min=0 step=0.001  class="form-control  ptext_input" name="other_non_current_assets_growth_or_amount[]" maxlength="20" minlength="1" />
+								<input type="number" min=0 step=0.001  class="form-control  ptext_input" name="other_non_current_assets_growth_or_amount[]" {% if data.other_non_current_assets_growth_or_amount.f_1 %} value="{{data.other_non_current_assets_growth_or_amount.f_1}}" {% endif %} maxlength="20" minlength="1" />
 							
 								</div>
 						</div>
                         <div class="col">
 							<div class="form-group">
-								<input type="number" min=0 step=0.001  class="form-control  ptext_input ptext_input_c"  name="other_non_current_assets_growth_or_amount[]" maxlength="20" minlength="1" />
+								<input type="number" min=0 step=0.001  class="form-control  ptext_input ptext_input_c"  name="other_non_current_assets_growth_or_amount[]" {% if data.other_non_current_assets_growth_or_amount.f_2 %} value="{{data.other_non_current_assets_growth_or_amount.f_2}}" {% endif %} maxlength="20" minlength="1" />
 							
 								</div>
 						</div>
                         <div class="col">
 							<div class="form-group">
-								<input type="number" min=0 step=0.001  class="form-control  ptext_input ptext_input_c"  name="other_non_current_assets_growth_or_amount[]" maxlength="20" minlength="1" />
+								<input type="number" min=0 step=0.001  class="form-control  ptext_input ptext_input_c"  name="other_non_current_assets_growth_or_amount[]" {% if data.other_non_current_assets_growth_or_amount.f_3 %} value="{{data.other_non_current_assets_growth_or_amount.f_3}}" {% endif %} maxlength="20" minlength="1" />
 							
 								</div>
 						</div>
                         <div class="col">
 							<div class="form-group">
-								<input type="number" min=0 step=0.001  class="form-control  ptext_input ptext_input_c"  name="other_non_current_assets_growth_or_amount[]" maxlength="20" minlength="1" />
+								<input type="number" min=0 step=0.001  class="form-control  ptext_input ptext_input_c"  name="other_non_current_assets_growth_or_amount[]" {% if data.other_non_current_assets_growth_or_amount.f_4 %} value="{{data.other_non_current_assets_growth_or_amount.f_4}}" {% endif %} maxlength="20" minlength="1" />
 							
 								</div>
 						</div>
                         <div class="col">
 							<div class="form-group">
-								<input type="number" min=0 step=0.001  class="form-control  ptext_input ptext_input_c"  name="other_non_current_assets_growth_or_amount[]" maxlength="20" minlength="1" />
+								<input type="number" min=0 step=0.001  class="form-control  ptext_input ptext_input_c"  name="other_non_current_assets_growth_or_amount[]" {% if data.other_non_current_assets_growth_or_amount.f_5 %} value="{{data.other_non_current_assets_growth_or_amount.f_5}}" {% endif %} maxlength="20" minlength="1" />
 							
 								</div>
 						</div>
@@ -1839,16 +1868,17 @@
 
 												<tr id="intangible_assets_growth_or_amount">
 													<th scope="row">Intangible assets</th>
-													<td>--</td>
-													<td>--</td>
-													<td>--</td>
-													<td>--</td>
-													<td>--</td>
-													<input hidden name="intangible_assets_growth_or_amount_[]" value=0>
-													<input hidden name="intangible_assets_growth_or_amount_[]" value=0>
-													<input hidden name="intangible_assets_growth_or_amount_[]" value=0>
-													<input hidden name="intangible_assets_growth_or_amount_[]" value=0>
-													<input hidden name="intangible_assets_growth_or_amount_[]" value=0>
+													<td>{% if data.projection_table.blnc_intangible_assets_growth_or_amount.f_1 %} {{data.projection_table.blnc_intangible_assets_growth_or_amount.f_1}} {%else%} -- {% endif %}</td>
+													<td>{% if data.projection_table.blnc_intangible_assets_growth_or_amount.f_2 %} {{data.projection_table.blnc_intangible_assets_growth_or_amount.f_2}} {%else%} -- {% endif %}</td>
+													<td>{% if data.projection_table.blnc_intangible_assets_growth_or_amount.f_3 %} {{data.projection_table.blnc_intangible_assets_growth_or_amount.f_3}} {%else%} -- {% endif %}</td>
+													<td>{% if data.projection_table.blnc_intangible_assets_growth_or_amount.f_4 %} {{data.projection_table.blnc_intangible_assets_growth_or_amount.f_4}} {%else%} -- {% endif %}</td>
+													<td>{% if data.projection_table.blnc_intangible_assets_growth_or_amount.f_5 %} {{data.projection_table.blnc_intangible_assets_growth_or_amount.f_5}} {%else%} -- {% endif %}</td>
+
+													<input hidden name="intangible_assets_growth_or_amount_[]" {% if data.projection_table.blnc_intangible_assets_growth_or_amount.f_1 %} value={{data.projection_table.blnc_intangible_assets_growth_or_amount.f_1}}  {% else %} value=0 {% endif %}>
+													<input hidden name="intangible_assets_growth_or_amount_[]" {% if data.projection_table.blnc_intangible_assets_growth_or_amount.f_2 %} value={{data.projection_table.blnc_intangible_assets_growth_or_amount.f_2}}  {% else %} value=0 {% endif %}>
+													<input hidden name="intangible_assets_growth_or_amount_[]" {% if data.projection_table.blnc_intangible_assets_growth_or_amount.f_3 %} value={{data.projection_table.blnc_intangible_assets_growth_or_amount.f_3}}  {% else %} value=0 {% endif %}>
+													<input hidden name="intangible_assets_growth_or_amount_[]" {% if data.projection_table.blnc_intangible_assets_growth_or_amount.f_4 %} value={{data.projection_table.blnc_intangible_assets_growth_or_amount.f_4}}  {% else %} value=0 {% endif %}>
+													<input hidden name="intangible_assets_growth_or_amount_[]" {% if data.projection_table.blnc_intangible_assets_growth_or_amount.f_5 %} value={{data.projection_table.blnc_intangible_assets_growth_or_amount.f_5}}  {% else %} value=0 {% endif %}>
 												</tr>
 
 
@@ -1856,16 +1886,17 @@
 
 												<tr id="long_term_loans_and_advances_growth_or_amount">
 													<th scope="row">Long Term loans & advances</th>
-													<td>--</td>
-													<td>--</td>
-													<td>--</td>
-													<td>--</td>
-													<td>--</td>
-													<input hidden name="long_term_loans_and_advances_growth_or_amount_[]" value=0>
-													<input hidden name="long_term_loans_and_advances_growth_or_amount_[]" value=0>
-													<input hidden name="long_term_loans_and_advances_growth_or_amount_[]" value=0>
-													<input hidden name="long_term_loans_and_advances_growth_or_amount_[]" value=0>
-													<input hidden name="long_term_loans_and_advances_growth_or_amount_[]" value=0>
+													<td>{% if data.projection_table.blnc_long_term_loans_and_advances_growth_or_amount.f_1 %} {{data.projection_table.blnc_long_term_loans_and_advances_growth_or_amount.f_1}} {%else%} -- {% endif %}</td>
+													<td>{% if data.projection_table.blnc_long_term_loans_and_advances_growth_or_amount.f_2 %} {{data.projection_table.blnc_long_term_loans_and_advances_growth_or_amount.f_2}} {%else%} -- {% endif %}</td>
+													<td>{% if data.projection_table.blnc_long_term_loans_and_advances_growth_or_amount.f_3 %} {{data.projection_table.blnc_long_term_loans_and_advances_growth_or_amount.f_3}} {%else%} -- {% endif %}</td>
+													<td>{% if data.projection_table.blnc_long_term_loans_and_advances_growth_or_amount.f_4 %} {{data.projection_table.blnc_long_term_loans_and_advances_growth_or_amount.f_4}} {%else%} -- {% endif %}</td>
+													<td>{% if data.projection_table.blnc_long_term_loans_and_advances_growth_or_amount.f_5 %} {{data.projection_table.blnc_long_term_loans_and_advances_growth_or_amount.f_5}} {%else%} -- {% endif %}</td>
+
+													<input hidden name="long_term_loans_and_advances_growth_or_amount_[]" {% if data.projection_table.blnc_long_term_loans_and_advances_growth_or_amount.f_1 %} value={{data.projection_table.blnc_long_term_loans_and_advances_growth_or_amount.f_1}}  {% else %} value=0 {% endif %}>
+													<input hidden name="long_term_loans_and_advances_growth_or_amount_[]" {% if data.projection_table.blnc_long_term_loans_and_advances_growth_or_amount.f_2 %} value={{data.projection_table.blnc_long_term_loans_and_advances_growth_or_amount.f_2}}  {% else %} value=0 {% endif %}>
+													<input hidden name="long_term_loans_and_advances_growth_or_amount_[]" {% if data.projection_table.blnc_long_term_loans_and_advances_growth_or_amount.f_3 %} value={{data.projection_table.blnc_long_term_loans_and_advances_growth_or_amount.f_3}}  {% else %} value=0 {% endif %}>
+													<input hidden name="long_term_loans_and_advances_growth_or_amount_[]" {% if data.projection_table.blnc_long_term_loans_and_advances_growth_or_amount.f_4 %} value={{data.projection_table.blnc_long_term_loans_and_advances_growth_or_amount.f_4}}  {% else %} value=0 {% endif %}>
+													<input hidden name="long_term_loans_and_advances_growth_or_amount_[]" {% if data.projection_table.blnc_long_term_loans_and_advances_growth_or_amount.f_5 %} value={{data.projection_table.blnc_long_term_loans_and_advances_growth_or_amount.f_5}}  {% else %} value=0 {% endif %}>
 												</tr>
 
 
@@ -1873,16 +1904,17 @@
 
 												<tr id="long_term_investments_growth_or_amount">
 													<th scope="row">Long term Investments</th>
-													<td>--</td>
-													<td>--</td>
-													<td>--</td>
-													<td>--</td>
-													<td>--</td>
-													<input hidden name="long_term_investments_growth_or_amount_[]" value=0>
-													<input hidden name="long_term_investments_growth_or_amount_[]" value=0>
-													<input hidden name="long_term_investments_growth_or_amount_[]" value=0>
-													<input hidden name="long_term_investments_growth_or_amount_[]" value=0>
-													<input hidden name="long_term_investments_growth_or_amount_[]" value=0>
+													<td>{% if data.projection_table.blnc_long_term_investments_growth_or_amount.f_1 %} {{data.projection_table.blnc_long_term_investments_growth_or_amount.f_1}} {%else%} -- {% endif %}</td>
+													<td>{% if data.projection_table.blnc_long_term_investments_growth_or_amount.f_2 %} {{data.projection_table.blnc_long_term_investments_growth_or_amount.f_2}} {%else%} -- {% endif %}</td>
+													<td>{% if data.projection_table.blnc_long_term_investments_growth_or_amount.f_3 %} {{data.projection_table.blnc_long_term_investments_growth_or_amount.f_3}} {%else%} -- {% endif %}</td>
+													<td>{% if data.projection_table.blnc_long_term_investments_growth_or_amount.f_4 %} {{data.projection_table.blnc_long_term_investments_growth_or_amount.f_4}} {%else%} -- {% endif %}</td>
+													<td>{% if data.projection_table.blnc_long_term_investments_growth_or_amount.f_5 %} {{data.projection_table.blnc_long_term_investments_growth_or_amount.f_5}} {%else%} -- {% endif %}</td>
+
+													<input hidden name="long_term_investments_growth_or_amount_[]" {% if data.projection_table.blnc_long_term_investments_growth_or_amount.f_1 %} value={{data.projection_table.blnc_long_term_investments_growth_or_amount.f_1}}  {% else %} value=0 {% endif %}>
+													<input hidden name="long_term_investments_growth_or_amount_[]" {% if data.projection_table.blnc_long_term_investments_growth_or_amount.f_2 %} value={{data.projection_table.blnc_long_term_investments_growth_or_amount.f_2}}  {% else %} value=0 {% endif %}>
+													<input hidden name="long_term_investments_growth_or_amount_[]" {% if data.projection_table.blnc_long_term_investments_growth_or_amount.f_3 %} value={{data.projection_table.blnc_long_term_investments_growth_or_amount.f_3}}  {% else %} value=0 {% endif %}>
+													<input hidden name="long_term_investments_growth_or_amount_[]" {% if data.projection_table.blnc_long_term_investments_growth_or_amount.f_4 %} value={{data.projection_table.blnc_long_term_investments_growth_or_amount.f_4}}  {% else %} value=0 {% endif %}>
+													<input hidden name="long_term_investments_growth_or_amount_[]" {% if data.projection_table.blnc_long_term_investments_growth_or_amount.f_5 %} value={{data.projection_table.blnc_long_term_investments_growth_or_amount.f_5}}  {% else %} value=0 {% endif %}>
 												</tr>
 
 
@@ -1890,16 +1922,17 @@
 
 												<tr id="deferred_tax_assets">
 													<th scope="row">Deferred tax assets </th>
-													<td>--</td>
-													<td>--</td>
-													<td>--</td>
-													<td>--</td>
-													<td>--</td>
-													<input hidden name="deferred_tax_assets_[]" value=0>
-													<input hidden name="deferred_tax_assets_[]" value=0>
-													<input hidden name="deferred_tax_assets_[]" value=0>
-													<input hidden name="deferred_tax_assets_[]" value=0>
-													<input hidden name="deferred_tax_assets_[]" value=0>
+													<td>{% if data.projection_table.blnc_deferred_tax_assets.f_1 %} {{data.projection_table.blnc_deferred_tax_assets.f_1}} {%else%} -- {% endif %}</td>
+													<td>{% if data.projection_table.blnc_deferred_tax_assets.f_2 %} {{data.projection_table.blnc_deferred_tax_assets.f_2}} {%else%} -- {% endif %}</td>
+													<td>{% if data.projection_table.blnc_deferred_tax_assets.f_3 %} {{data.projection_table.blnc_deferred_tax_assets.f_3}} {%else%} -- {% endif %}</td>
+													<td>{% if data.projection_table.blnc_deferred_tax_assets.f_4 %} {{data.projection_table.blnc_deferred_tax_assets.f_4}} {%else%} -- {% endif %}</td>
+													<td>{% if data.projection_table.blnc_deferred_tax_assets.f_5 %} {{data.projection_table.blnc_deferred_tax_assets.f_5}} {%else%} -- {% endif %}</td>
+
+													<input hidden name="deferred_tax_assets_[]" {% if data.projection_table.blnc_deferred_tax_assets.f_1 %} value={{data.projection_table.blnc_deferred_tax_assets.f_1}}  {% else %} value=0 {% endif %}>
+													<input hidden name="deferred_tax_assets_[]" {% if data.projection_table.blnc_deferred_tax_assets.f_2 %} value={{data.projection_table.blnc_deferred_tax_assets.f_2}}  {% else %} value=0 {% endif %}>
+													<input hidden name="deferred_tax_assets_[]" {% if data.projection_table.blnc_deferred_tax_assets.f_3 %} value={{data.projection_table.blnc_deferred_tax_assets.f_3}}  {% else %} value=0 {% endif %}>
+													<input hidden name="deferred_tax_assets_[]" {% if data.projection_table.blnc_deferred_tax_assets.f_4 %} value={{data.projection_table.blnc_deferred_tax_assets.f_4}}  {% else %} value=0 {% endif %}>
+													<input hidden name="deferred_tax_assets_[]" {% if data.projection_table.blnc_deferred_tax_assets.f_5 %} value={{data.projection_table.blnc_deferred_tax_assets.f_5}}  {% else %} value=0 {% endif %}>
 												</tr>
 
 
@@ -1907,16 +1940,17 @@
 
 												<tr id="other_non_current_assets_growth_or_amount">
 													<th scope="row">Other Non-current assets </th>
-													<td>--</td>
-													<td>--</td>
-													<td>--</td>
-													<td>--</td>
-													<td>--</td>
-													<input hidden name="other_non_current_assets_growth_or_amount_[]" value=0>
-													<input hidden name="other_non_current_assets_growth_or_amount_[]" value=0>
-													<input hidden name="other_non_current_assets_growth_or_amount_[]" value=0>
-													<input hidden name="other_non_current_assets_growth_or_amount_[]" value=0>
-													<input hidden name="other_non_current_assets_growth_or_amount_[]" value=0>
+													<td>{% if data.projection_table.blnc_other_non_current_assets_growth_or_amount.f_1 %} {{data.projection_table.blnc_other_non_current_assets_growth_or_amount.f_1}} {%else%} -- {% endif %}</td>
+													<td>{% if data.projection_table.blnc_other_non_current_assets_growth_or_amount.f_2 %} {{data.projection_table.blnc_other_non_current_assets_growth_or_amount.f_2}} {%else%} -- {% endif %}</td>
+													<td>{% if data.projection_table.blnc_other_non_current_assets_growth_or_amount.f_3 %} {{data.projection_table.blnc_other_non_current_assets_growth_or_amount.f_3}} {%else%} -- {% endif %}</td>
+													<td>{% if data.projection_table.blnc_other_non_current_assets_growth_or_amount.f_4 %} {{data.projection_table.blnc_other_non_current_assets_growth_or_amount.f_4}} {%else%} -- {% endif %}</td>
+													<td>{% if data.projection_table.blnc_other_non_current_assets_growth_or_amount.f_5 %} {{data.projection_table.blnc_other_non_current_assets_growth_or_amount.f_5}} {%else%} -- {% endif %}</td>
+
+													<input hidden name="other_non_current_assets_growth_or_amount_[]" {% if data.projection_table.blnc_other_non_current_assets_growth_or_amount.f_1 %} value={{data.projection_table.blnc_other_non_current_assets_growth_or_amount.f_1}}  {% else %} value=0 {% endif %}>
+													<input hidden name="other_non_current_assets_growth_or_amount_[]" {% if data.projection_table.blnc_other_non_current_assets_growth_or_amount.f_2 %} value={{data.projection_table.blnc_other_non_current_assets_growth_or_amount.f_2}}  {% else %} value=0 {% endif %}>
+													<input hidden name="other_non_current_assets_growth_or_amount_[]" {% if data.projection_table.blnc_other_non_current_assets_growth_or_amount.f_3 %} value={{data.projection_table.blnc_other_non_current_assets_growth_or_amount.f_3}}  {% else %} value=0 {% endif %}>
+													<input hidden name="other_non_current_assets_growth_or_amount_[]" {% if data.projection_table.blnc_other_non_current_assets_growth_or_amount.f_4 %} value={{data.projection_table.blnc_other_non_current_assets_growth_or_amount.f_4}}  {% else %} value=0 {% endif %}>
+													<input hidden name="other_non_current_assets_growth_or_amount_[]" {% if data.projection_table.blnc_other_non_current_assets_growth_or_amount.f_5 %} value={{data.projection_table.blnc_other_non_current_assets_growth_or_amount.f_5}}  {% else %} value=0 {% endif %}>
 												</tr>
 
 
@@ -1924,16 +1958,17 @@
 
 												<tr id="total_noncurrent_asset_a">
 													<th scope="row">Total Non-Current Asset (A)</th>
-													<td>--</td>
-													<td>--</td>
-													<td>--</td>
-													<td>--</td>
-													<td>--</td>
-													<input hidden name="total_noncurrent_asset_a_[]" value=0>
-													<input hidden name="total_noncurrent_asset_a_[]" value=0>
-													<input hidden name="total_noncurrent_asset_a_[]" value=0>
-													<input hidden name="total_noncurrent_asset_a_[]" value=0>
-													<input hidden name="total_noncurrent_asset_a_[]" value=0>
+													<td>{% if data.projection_table.blnc_total_noncurrent_asset_a.f_1 %} {{data.projection_table.blnc_total_noncurrent_asset_a.f_1}} {%else%} -- {% endif %}</td>
+													<td>{% if data.projection_table.blnc_total_noncurrent_asset_a.f_2 %} {{data.projection_table.blnc_total_noncurrent_asset_a.f_2}} {%else%} -- {% endif %}</td>
+													<td>{% if data.projection_table.blnc_total_noncurrent_asset_a.f_3 %} {{data.projection_table.blnc_total_noncurrent_asset_a.f_3}} {%else%} -- {% endif %}</td>
+													<td>{% if data.projection_table.blnc_total_noncurrent_asset_a.f_4 %} {{data.projection_table.blnc_total_noncurrent_asset_a.f_4}} {%else%} -- {% endif %}</td>
+													<td>{% if data.projection_table.blnc_total_noncurrent_asset_a.f_5 %} {{data.projection_table.blnc_total_noncurrent_asset_a.f_5}} {%else%} -- {% endif %}</td>
+
+													<input hidden name="total_noncurrent_asset_a_[]" {% if data.projection_table.blnc_total_noncurrent_asset_a.f_1 %} value={{data.projection_table.blnc_total_noncurrent_asset_a.f_1}}  {% else %} value=0 {% endif %}>
+													<input hidden name="total_noncurrent_asset_a_[]" {% if data.projection_table.blnc_total_noncurrent_asset_a.f_2 %} value={{data.projection_table.blnc_total_noncurrent_asset_a.f_2}}  {% else %} value=0 {% endif %}>
+													<input hidden name="total_noncurrent_asset_a_[]" {% if data.projection_table.blnc_total_noncurrent_asset_a.f_3 %} value={{data.projection_table.blnc_total_noncurrent_asset_a.f_3}}  {% else %} value=0 {% endif %}>
+													<input hidden name="total_noncurrent_asset_a_[]" {% if data.projection_table.blnc_total_noncurrent_asset_a.f_4 %} value={{data.projection_table.blnc_total_noncurrent_asset_a.f_4}}  {% else %} value=0 {% endif %}>
+													<input hidden name="total_noncurrent_asset_a_[]" {% if data.projection_table.blnc_total_noncurrent_asset_a.f_5 %} value={{data.projection_table.blnc_total_noncurrent_asset_a.f_5}}  {% else %} value=0 {% endif %}>
 												</tr>
 
 
@@ -1990,27 +2025,27 @@
 						
 						<div class="col">
 							<div class="form-group">
-								<input type="number"  class="form-control ptext_input_sund_d" name="sundry_debtors_no_of_days[]" maxlength="20" minlength="1" />
+								<input type="number"  class="form-control ptext_input_sund_d" name="sundry_debtors_no_of_days[]" {% if data.sundry_debtors_no_of_days.f_1 %} value="{{data.sundry_debtors_no_of_days.f_1}}" {% endif %} maxlength="20" minlength="1" />
 								</div>
 						</div>
                         <div class="col">
 							<div class="form-group">
-								<input type="number"  class="form-control ptext_input_sund_d" name="sundry_debtors_no_of_days[]" maxlength="20" minlength="1" />
+								<input type="number"  class="form-control ptext_input_sund_d" name="sundry_debtors_no_of_days[]" {% if data.sundry_debtors_no_of_days.f_2 %} value="{{data.sundry_debtors_no_of_days.f_2}}" {% endif %} maxlength="20" minlength="1" />
 								</div>
 						</div>
                         <div class="col">
 							<div class="form-group">
-								<input type="number"  class="form-control ptext_input_sund_d" name="sundry_debtors_no_of_days[]" maxlength="20" minlength="1" />
+								<input type="number"  class="form-control ptext_input_sund_d" name="sundry_debtors_no_of_days[]" {% if data.sundry_debtors_no_of_days.f_3 %} value="{{data.sundry_debtors_no_of_days.f_3}}" {% endif %} maxlength="20" minlength="1" />
 								</div>
 						</div>
                         <div class="col">
 							<div class="form-group">
-								<input type="number"  class="form-control ptext_input_sund_d" name="sundry_debtors_no_of_days[]" maxlength="20" minlength="1" />
+								<input type="number"  class="form-control ptext_input_sund_d" name="sundry_debtors_no_of_days[]" {% if data.sundry_debtors_no_of_days.f_4 %} value="{{data.sundry_debtors_no_of_days.f_4}}" {% endif %} maxlength="20" minlength="1" />
 								</div>
 						</div>
                         <div class="col">
 							<div class="form-group">
-								<input type="number"  class="form-control ptext_input_sund_d" name="sundry_debtors_no_of_days[]" maxlength="20" minlength="1" />
+								<input type="number"  class="form-control ptext_input_sund_d" name="sundry_debtors_no_of_days[]" {% if data.sundry_debtors_no_of_days.f_5 %} value="{{data.sundry_debtors_no_of_days.f_5}}" {% endif %} maxlength="20" minlength="1" />
 								</div>
 						</div>
                         
@@ -2033,27 +2068,27 @@
 						
 						<div class="col">
 							<div class="form-group">
-								<input type="number"   class="form-control ptext_input_inv" name="inventory_no_of_days[]" maxlength="20" minlength="1" />
+								<input type="number"   class="form-control ptext_input_inv" name="inventory_no_of_days[]" {% if data.inventory_no_of_days.f_1 %} value="{{data.inventory_no_of_days.f_1}}" {% endif %} maxlength="20" minlength="1" />
 								</div>
 						</div>
                         <div class="col">
 							<div class="form-group">
-								<input type="number"   class="form-control ptext_input_inv" name="inventory_no_of_days[]" maxlength="20" minlength="1" />
+								<input type="number"   class="form-control ptext_input_inv" name="inventory_no_of_days[]" {% if data.inventory_no_of_days.f_2 %} value="{{data.inventory_no_of_days.f_2}}" {% endif %} maxlength="20" minlength="1" />
 								</div>
 						</div>
                         <div class="col">
 							<div class="form-group">
-								<input type="number"   class="form-control ptext_input_inv" name="inventory_no_of_days[]" maxlength="20" minlength="1" />
+								<input type="number"   class="form-control ptext_input_inv" name="inventory_no_of_days[]" {% if data.inventory_no_of_days.f_3 %} value="{{data.inventory_no_of_days.f_3}}" {% endif %} maxlength="20" minlength="1" />
 								</div>
 						</div>
                         <div class="col">
 							<div class="form-group">
-								<input type="number"   class="form-control ptext_input_inv" name="inventory_no_of_days[]" maxlength="20" minlength="1" />
+								<input type="number"   class="form-control ptext_input_inv" name="inventory_no_of_days[]" {% if data.inventory_no_of_days.f_4 %} value="{{data.inventory_no_of_days.f_4}}" {% endif %} maxlength="20" minlength="1" />
 								</div>
 						</div>
                         <div class="col">
 							<div class="form-group">
-								<input type="number"   class="form-control ptext_input_inv" name="inventory_no_of_days[]" maxlength="20" minlength="1" />
+								<input type="number"   class="form-control ptext_input_inv" name="inventory_no_of_days[]" {% if data.inventory_no_of_days.f_5 %} value="{{data.inventory_no_of_days.f_5}}" {% endif %} maxlength="20" minlength="1" />
 								</div>
 						</div>
                         
@@ -2074,32 +2109,32 @@
 						
 						<div class="col">
 							<div class="form-group">
-								<input type="number" min=0 step=0.001  class="form-control  ptext_input" name="short_term_investments_growth_or_amount[]" maxlength="20" minlength="1" />
+								<input type="number" min=0 step=0.001  class="form-control  ptext_input" name="short_term_investments_growth_or_amount[]" {% if data.short_term_investments_growth_or_amount.f_1 %} value="{{data.short_term_investments_growth_or_amount.f_1}}" {% endif %} maxlength="20" minlength="1" />
 							
 								</div>
 						</div>
                         <div class="col">
 							<div class="form-group">
-								<input type="number" min=0 step=0.001  class="form-control  ptext_input ptext_input_c"  name="short_term_investments_growth_or_amount[]" maxlength="20" minlength="1" />
+								<input type="number" min=0 step=0.001  class="form-control  ptext_input ptext_input_c"  name="short_term_investments_growth_or_amount[]" {% if data.short_term_investments_growth_or_amount.f_2 %} value="{{data.short_term_investments_growth_or_amount.f_2}}" {% endif %} maxlength="20" minlength="1" />
 							
 								</div>
 						</div>
                         <div class="col">
 							<div class="form-group">
 								<input type="number" min=0 step=0.001  class="form-control  ptext_input ptext_input_c"  
-								name="short_term_investments_growth_or_amount[]" maxlength="20" minlength="1" />
+								name="short_term_investments_growth_or_amount[]" {% if data.short_term_investments_growth_or_amount.f_3 %} value="{{data.short_term_investments_growth_or_amount.f_3}}" {% endif %} maxlength="20" minlength="1" />
 							
 								</div>
 						</div>
                         <div class="col">
 							<div class="form-group">
-								<input type="number" min=0 step=0.001  class="form-control  ptext_input ptext_input_c"  name="short_term_investments_growth_or_amount[]" maxlength="20" minlength="1" />
+								<input type="number" min=0 step=0.001  class="form-control  ptext_input ptext_input_c"  name="short_term_investments_growth_or_amount[]" {% if data.short_term_investments_growth_or_amount.f_4 %} value="{{data.short_term_investments_growth_or_amount.f_4}}" {% endif %} maxlength="20" minlength="1" />
 							
 								</div>
 						</div>
                         <div class="col">
 							<div class="form-group">
-								<input type="number" min=0 step=0.001  class="form-control  ptext_input ptext_input_c"  name="short_term_investments_growth_or_amount[]" maxlength="20" minlength="1" />
+								<input type="number" min=0 step=0.001  class="form-control  ptext_input ptext_input_c"  name="short_term_investments_growth_or_amount[]" {% if data.short_term_investments_growth_or_amount.f_5 %} value="{{data.short_term_investments_growth_or_amount.f_5}}" {% endif %} maxlength="20" minlength="1" />
 							
 								</div>
 						</div>
@@ -2122,31 +2157,31 @@
 						
                         <div class="col">
 							<div class="form-group">
-								<input type="number" min=0 step=0.001  class="form-control  ptext_input" name="short_term_loans_and_advances_growth_or_amount[]" maxlength="20" minlength="1" />
+								<input type="number" min=0 step=0.001  class="form-control  ptext_input" name="short_term_loans_and_advances_growth_or_amount[]" {% if data.short_term_loans_and_advances_growth_or_amount.f_1 %} value="{{data.short_term_loans_and_advances_growth_or_amount.f_1}}" {% endif %} maxlength="20" minlength="1" />
 							
 								</div>
 						</div>
                         <div class="col">
 							<div class="form-group">
-								<input type="number" min=0 step=0.001  class="form-control  ptext_input ptext_input_c"  name="short_term_loans_and_advances_growth_or_amount[]" maxlength="20" minlength="1" />
+								<input type="number" min=0 step=0.001  class="form-control  ptext_input ptext_input_c"  name="short_term_loans_and_advances_growth_or_amount[]" {% if data.short_term_loans_and_advances_growth_or_amount.f_2 %} value="{{data.short_term_loans_and_advances_growth_or_amount.f_2}}" {% endif %} maxlength="20" minlength="1" />
 							
 								</div>
 						</div>
                         <div class="col">
 							<div class="form-group">
-								<input type="number" min=0 step=0.001  class="form-control  ptext_input ptext_input_c"  name="short_term_loans_and_advances_growth_or_amount[]" maxlength="20" minlength="1" />
+								<input type="number" min=0 step=0.001  class="form-control  ptext_input ptext_input_c"  name="short_term_loans_and_advances_growth_or_amount[]" {% if data.short_term_loans_and_advances_growth_or_amount.f_3 %} value="{{data.short_term_loans_and_advances_growth_or_amount.f_3}}" {% endif %} maxlength="20" minlength="1" />
 							
 								</div>
 						</div>
                         <div class="col">
 							<div class="form-group">
-								<input type="number" min=0 step=0.001  class="form-control  ptext_input ptext_input_c"  name="short_term_loans_and_advances_growth_or_amount[]" maxlength="20" minlength="1" />
+								<input type="number" min=0 step=0.001  class="form-control  ptext_input ptext_input_c"  name="short_term_loans_and_advances_growth_or_amount[]" {% if data.short_term_loans_and_advances_growth_or_amount.f_4 %} value="{{data.short_term_loans_and_advances_growth_or_amount.f_4}}" {% endif %} maxlength="20" minlength="1" />
 							
 								</div>
 						</div>
                         <div class="col">
 							<div class="form-group">
-								<input type="number" min=0 step=0.001  class="form-control  ptext_input ptext_input_c"  name="short_term_loans_and_advances_growth_or_amount[]" maxlength="20" minlength="1" />
+								<input type="number" min=0 step=0.001  class="form-control  ptext_input ptext_input_c"  name="short_term_loans_and_advances_growth_or_amount[]" {% if data.short_term_loans_and_advances_growth_or_amount.f_5 %} value="{{data.short_term_loans_and_advances_growth_or_amount.f_5}}" {% endif %} maxlength="20" minlength="1" />
 							
 								</div>
 						</div>
@@ -2167,31 +2202,31 @@
 						
 						<div class="col">
 							<div class="form-group">
-								<input type="number" min=0 step=0.001  class="form-control  ptext_input" name="other_current_assets_growth_or_amount[]" maxlength="20" minlength="1" />
+								<input type="number" min=0 step=0.001  class="form-control  ptext_input" name="other_current_assets_growth_or_amount[]" {% if data.other_current_assets_growth_or_amount.f_1 %} value="{{data.other_current_assets_growth_or_amount.f_1}}" {% endif %} maxlength="20" minlength="1" />
 							
 								</div>
 						</div>
                         <div class="col">
 							<div class="form-group">
-								<input type="number" min=0 step=0.001  class="form-control  ptext_input ptext_input_c"  name="other_current_assets_growth_or_amount[]" maxlength="20" minlength="1" />
+								<input type="number" min=0 step=0.001  class="form-control  ptext_input ptext_input_c"  name="other_current_assets_growth_or_amount[]" {% if data.other_current_assets_growth_or_amount.f_2 %} value="{{data.other_current_assets_growth_or_amount.f_2}}" {% endif %} maxlength="20" minlength="1" />
 							
 								</div>
 						</div>
                         <div class="col">
 							<div class="form-group">
-								<input type="number" min=0 step=0.001  class="form-control  ptext_input ptext_input_c"  name="other_current_assets_growth_or_amount[]" maxlength="20" minlength="1" />
+								<input type="number" min=0 step=0.001  class="form-control  ptext_input ptext_input_c"  name="other_current_assets_growth_or_amount[]" {% if data.other_current_assets_growth_or_amount.f_3 %} value="{{data.other_current_assets_growth_or_amount.f_3}}" {% endif %} maxlength="20" minlength="1" />
 							
 								</div>
 						</div>
                         <div class="col">
 							<div class="form-group">
-								<input type="number" min=0 step=0.001  class="form-control  ptext_input ptext_input_c"  name="other_current_assets_growth_or_amount[]" maxlength="20" minlength="1" />
+								<input type="number" min=0 step=0.001  class="form-control  ptext_input ptext_input_c"  name="other_current_assets_growth_or_amount[]" {% if data.other_current_assets_growth_or_amount.f_4 %} value="{{data.other_current_assets_growth_or_amount.f_4}}" {% endif %} maxlength="20" minlength="1" />
 							
 								</div>
 						</div>
                         <div class="col">
 							<div class="form-group">
-								<input type="number" min=0 step=0.001  class="form-control  ptext_input ptext_input_c" name="other_current_assets_growth_or_amount[]" maxlength="20" minlength="1" />
+								<input type="number" min=0 step=0.001  class="form-control  ptext_input ptext_input_c" name="other_current_assets_growth_or_amount[]" {% if data.other_current_assets_growth_or_amount.f_5 %} value="{{data.other_current_assets_growth_or_amount.f_5}}" {% endif %} maxlength="20" minlength="1" />
 							
 								</div>
 						</div>
@@ -2234,128 +2269,137 @@
 
 												<tr id="cash">
 													<th scope="row">Cash</th>
-													<td>--</td>
-													<td>--</td>
-													<td>--</td>
-													<td>--</td>
-													<td>--</td>
-													<input hidden name="cash_[]" value=0>
-													<input hidden name="cash_[]" value=0>
-													<input hidden name="cash_[]" value=0>
-													<input hidden name="cash_[]" value=0>
-													<input hidden name="cash_[]" value=0>
+													<td>{% if data.projection_table.blnc_cash.f_1 %} {{data.projection_table.blnc_cash.f_1}} {%else%} -- {% endif %}</td>
+													<td>{% if data.projection_table.blnc_cash.f_2 %} {{data.projection_table.blnc_cash.f_2}} {%else%} -- {% endif %}</td>
+													<td>{% if data.projection_table.blnc_cash.f_3 %} {{data.projection_table.blnc_cash.f_3}} {%else%} -- {% endif %}</td>
+													<td>{% if data.projection_table.blnc_cash.f_4 %} {{data.projection_table.blnc_cash.f_4}} {%else%} -- {% endif %}</td>
+													<td>{% if data.projection_table.blnc_cash.f_5 %} {{data.projection_table.blnc_cash.f_5}} {%else%} -- {% endif %}</td>
+
+													<input hidden name="cash_[]" {% if data.projection_table.blnc_cash.f_1 %} value={{data.projection_table.blnc_cash.f_1}}  {% else %} value=0 {% endif %}>
+													<input hidden name="cash_[]" {% if data.projection_table.blnc_cash.f_2 %} value={{data.projection_table.blnc_cash.f_2}}  {% else %} value=0 {% endif %}>
+													<input hidden name="cash_[]" {% if data.projection_table.blnc_cash.f_3 %} value={{data.projection_table.blnc_cash.f_3}}  {% else %} value=0 {% endif %}>
+													<input hidden name="cash_[]" {% if data.projection_table.blnc_cash.f_4 %} value={{data.projection_table.blnc_cash.f_4}}  {% else %} value=0 {% endif %}>
+													<input hidden name="cash_[]" {% if data.projection_table.blnc_cash.f_5 %} value={{data.projection_table.blnc_cash.f_5}}  {% else %} value=0 {% endif %}>
 												</tr>
 
 												<tr id="sundry_debtors_no_of_days">
 													<th scope="row">Sundry Debtors</th>
-													<td>--</td>
-													<td>--</td>
-													<td>--</td>
-													<td>--</td>
-													<td>--</td>
-													<input hidden name="sundry_debtors_no_of_days_[]" value=0>
-													<input hidden name="sundry_debtors_no_of_days_[]" value=0>
-													<input hidden name="sundry_debtors_no_of_days_[]" value=0>
-													<input hidden name="sundry_debtors_no_of_days_[]" value=0>
-													<input hidden name="sundry_debtors_no_of_days_[]" value=0>
+													<td>{% if data.projection_table.blnc_sundry_debtors_no_of_days.f_1 %} {{data.projection_table.blnc_sundry_debtors_no_of_days.f_1}} {%else%} -- {% endif %}</td>
+													<td>{% if data.projection_table.blnc_sundry_debtors_no_of_days.f_2 %} {{data.projection_table.blnc_sundry_debtors_no_of_days.f_2}} {%else%} -- {% endif %}</td>
+													<td>{% if data.projection_table.blnc_sundry_debtors_no_of_days.f_3 %} {{data.projection_table.blnc_sundry_debtors_no_of_days.f_3}} {%else%} -- {% endif %}</td>
+													<td>{% if data.projection_table.blnc_sundry_debtors_no_of_days.f_4 %} {{data.projection_table.blnc_sundry_debtors_no_of_days.f_4}} {%else%} -- {% endif %}</td>
+													<td>{% if data.projection_table.blnc_sundry_debtors_no_of_days.f_5 %} {{data.projection_table.blnc_sundry_debtors_no_of_days.f_5}} {%else%} -- {% endif %}</td>
+
+													<input hidden name="sundry_debtors_no_of_days_[]" {% if data.projection_table.blnc_sundry_debtors_no_of_days.f_1 %} value={{data.projection_table.blnc_sundry_debtors_no_of_days.f_1}}  {% else %} value=0 {% endif %}>
+													<input hidden name="sundry_debtors_no_of_days_[]" {% if data.projection_table.blnc_sundry_debtors_no_of_days.f_2 %} value={{data.projection_table.blnc_sundry_debtors_no_of_days.f_2}}  {% else %} value=0 {% endif %}>
+													<input hidden name="sundry_debtors_no_of_days_[]" {% if data.projection_table.blnc_sundry_debtors_no_of_days.f_3 %} value={{data.projection_table.blnc_sundry_debtors_no_of_days.f_3}}  {% else %} value=0 {% endif %}>
+													<input hidden name="sundry_debtors_no_of_days_[]" {% if data.projection_table.blnc_sundry_debtors_no_of_days.f_4 %} value={{data.projection_table.blnc_sundry_debtors_no_of_days.f_4}}  {% else %} value=0 {% endif %}>
+													<input hidden name="sundry_debtors_no_of_days_[]" {% if data.projection_table.blnc_sundry_debtors_no_of_days.f_5 %} value={{data.projection_table.blnc_sundry_debtors_no_of_days.f_5}}  {% else %} value=0 {% endif %}>
 												</tr>
 
 												<tr id="inventory_no_of_days">
 													<th scope="row">Inventory</th>
-													<td>--</td>
-													<td>--</td>
-													<td>--</td>
-													<td>--</td>
-													<td>--</td>
-													<input hidden name="inventory_no_of_days_[]" value=0>
-													<input hidden name="inventory_no_of_days_[]" value=0>
-													<input hidden name="inventory_no_of_days_[]" value=0>
-													<input hidden name="inventory_no_of_days_[]" value=0>
-													<input hidden name="inventory_no_of_days_[]" value=0>
+													<td>{% if data.projection_table.blnc_inventory_no_of_days.f_1 %} {{data.projection_table.blnc_inventory_no_of_days.f_1}} {%else%} -- {% endif %}</td>
+													<td>{% if data.projection_table.blnc_inventory_no_of_days.f_2 %} {{data.projection_table.blnc_inventory_no_of_days.f_2}} {%else%} -- {% endif %}</td>
+													<td>{% if data.projection_table.blnc_inventory_no_of_days.f_3 %} {{data.projection_table.blnc_inventory_no_of_days.f_3}} {%else%} -- {% endif %}</td>
+													<td>{% if data.projection_table.blnc_inventory_no_of_days.f_4 %} {{data.projection_table.blnc_inventory_no_of_days.f_4}} {%else%} -- {% endif %}</td>
+													<td>{% if data.projection_table.blnc_inventory_no_of_days.f_5 %} {{data.projection_table.blnc_inventory_no_of_days.f_5}} {%else%} -- {% endif %}</td>
+
+													<input hidden name="inventory_no_of_days_[]" {% if data.projection_table.blnc_inventory_no_of_days.f_1 %} value={{data.projection_table.blnc_inventory_no_of_days.f_1}}  {% else %} value=0 {% endif %}>
+													<input hidden name="inventory_no_of_days_[]" {% if data.projection_table.blnc_inventory_no_of_days.f_2 %} value={{data.projection_table.blnc_inventory_no_of_days.f_2}}  {% else %} value=0 {% endif %}>
+													<input hidden name="inventory_no_of_days_[]" {% if data.projection_table.blnc_inventory_no_of_days.f_3 %} value={{data.projection_table.blnc_inventory_no_of_days.f_3}}  {% else %} value=0 {% endif %}>
+													<input hidden name="inventory_no_of_days_[]" {% if data.projection_table.blnc_inventory_no_of_days.f_4 %} value={{data.projection_table.blnc_inventory_no_of_days.f_4}}  {% else %} value=0 {% endif %}>
+													<input hidden name="inventory_no_of_days_[]" {% if data.projection_table.blnc_inventory_no_of_days.f_5 %} value={{data.projection_table.blnc_inventory_no_of_days.f_5}}  {% else %} value=0 {% endif %}>
 												</tr>
 
 												<tr id="short_term_investments_growth_or_amount">
 													<th scope="row">Short term Investments</th>
-													<td>--</td>
-													<td>--</td>
-													<td>--</td>
-													<td>--</td>
-													<td>--</td>
-													<input hidden name="short_term_investments_growth_or_amount_[]" value=0>
-													<input hidden name="short_term_investments_growth_or_amount_[]" value=0>
-													<input hidden name="short_term_investments_growth_or_amount_[]" value=0>
-													<input hidden name="short_term_investments_growth_or_amount_[]" value=0>
-													<input hidden name="short_term_investments_growth_or_amount_[]" value=0>
+													<td>{% if data.projection_table.blnc_short_term_investments_growth_or_amount.f_1 %} {{data.projection_table.blnc_short_term_investments_growth_or_amount.f_1}} {%else%} -- {% endif %}</td>
+													<td>{% if data.projection_table.blnc_short_term_investments_growth_or_amount.f_2 %} {{data.projection_table.blnc_short_term_investments_growth_or_amount.f_2}} {%else%} -- {% endif %}</td>
+													<td>{% if data.projection_table.blnc_short_term_investments_growth_or_amount.f_3 %} {{data.projection_table.blnc_short_term_investments_growth_or_amount.f_3}} {%else%} -- {% endif %}</td>
+													<td>{% if data.projection_table.blnc_short_term_investments_growth_or_amount.f_4 %} {{data.projection_table.blnc_short_term_investments_growth_or_amount.f_4}} {%else%} -- {% endif %}</td>
+													<td>{% if data.projection_table.blnc_short_term_investments_growth_or_amount.f_5 %} {{data.projection_table.blnc_short_term_investments_growth_or_amount.f_5}} {%else%} -- {% endif %}</td>
+
+													<input hidden name="short_term_investments_growth_or_amount_[]" {% if data.projection_table.blnc_short_term_investments_growth_or_amount.f_1 %} value={{data.projection_table.blnc_short_term_investments_growth_or_amount.f_1}}  {% else %} value=0 {% endif %}>
+													<input hidden name="short_term_investments_growth_or_amount_[]" {% if data.projection_table.blnc_short_term_investments_growth_or_amount.f_2 %} value={{data.projection_table.blnc_short_term_investments_growth_or_amount.f_2}}  {% else %} value=0 {% endif %}>
+													<input hidden name="short_term_investments_growth_or_amount_[]" {% if data.projection_table.blnc_short_term_investments_growth_or_amount.f_3 %} value={{data.projection_table.blnc_short_term_investments_growth_or_amount.f_3}}  {% else %} value=0 {% endif %}>
+													<input hidden name="short_term_investments_growth_or_amount_[]" {% if data.projection_table.blnc_short_term_investments_growth_or_amount.f_4 %} value={{data.projection_table.blnc_short_term_investments_growth_or_amount.f_4}}  {% else %} value=0 {% endif %}>
+													<input hidden name="short_term_investments_growth_or_amount_[]" {% if data.projection_table.blnc_short_term_investments_growth_or_amount.f_5 %} value={{data.projection_table.blnc_short_term_investments_growth_or_amount.f_5}}  {% else %} value=0 {% endif %}>
 												</tr>
 
 												<tr id="short_term_loans_and_advances_growth_or_amount">
 													<th scope="row">Short term loans & advances</th>
-													<td>--</td>
-													<td>--</td>
-													<td>--</td>
-													<td>--</td>
-													<td>--</td>
-													<input hidden name="short_term_loans_and_advances_growth_or_amount_[]" value=0>
-													<input hidden name="short_term_loans_and_advances_growth_or_amount_[]" value=0>
-													<input hidden name="short_term_loans_and_advances_growth_or_amount_[]" value=0>
-													<input hidden name="short_term_loans_and_advances_growth_or_amount_[]" value=0>
-													<input hidden name="short_term_loans_and_advances_growth_or_amount_[]" value=0>
+													<td>{% if data.projection_table.blnc_short_term_loans_and_advances_growth_or_amount.f_1 %} {{data.projection_table.blnc_short_term_loans_and_advances_growth_or_amount.f_1}} {%else%} -- {% endif %}</td>
+													<td>{% if data.projection_table.blnc_short_term_loans_and_advances_growth_or_amount.f_2 %} {{data.projection_table.blnc_short_term_loans_and_advances_growth_or_amount.f_2}} {%else%} -- {% endif %}</td>
+													<td>{% if data.projection_table.blnc_short_term_loans_and_advances_growth_or_amount.f_3 %} {{data.projection_table.blnc_short_term_loans_and_advances_growth_or_amount.f_3}} {%else%} -- {% endif %}</td>
+													<td>{% if data.projection_table.blnc_short_term_loans_and_advances_growth_or_amount.f_4 %} {{data.projection_table.blnc_short_term_loans_and_advances_growth_or_amount.f_4}} {%else%} -- {% endif %}</td>
+													<td>{% if data.projection_table.blnc_short_term_loans_and_advances_growth_or_amount.f_5 %} {{data.projection_table.blnc_short_term_loans_and_advances_growth_or_amount.f_5}} {%else%} -- {% endif %}</td>
+
+													<input hidden name="short_term_loans_and_advances_growth_or_amount_[]" {% if data.projection_table.blnc_short_term_loans_and_advances_growth_or_amount.f_1 %} value={{data.projection_table.blnc_short_term_loans_and_advances_growth_or_amount.f_1}}  {% else %} value=0 {% endif %}>
+													<input hidden name="short_term_loans_and_advances_growth_or_amount_[]" {% if data.projection_table.blnc_short_term_loans_and_advances_growth_or_amount.f_2 %} value={{data.projection_table.blnc_short_term_loans_and_advances_growth_or_amount.f_2}}  {% else %} value=0 {% endif %}>
+													<input hidden name="short_term_loans_and_advances_growth_or_amount_[]" {% if data.projection_table.blnc_short_term_loans_and_advances_growth_or_amount.f_3 %} value={{data.projection_table.blnc_short_term_loans_and_advances_growth_or_amount.f_3}}  {% else %} value=0 {% endif %}>
+													<input hidden name="short_term_loans_and_advances_growth_or_amount_[]" {% if data.projection_table.blnc_short_term_loans_and_advances_growth_or_amount.f_4 %} value={{data.projection_table.blnc_short_term_loans_and_advances_growth_or_amount.f_4}}  {% else %} value=0 {% endif %}>
+													<input hidden name="short_term_loans_and_advances_growth_or_amount_[]" {% if data.projection_table.blnc_short_term_loans_and_advances_growth_or_amount.f_5 %} value={{data.projection_table.blnc_short_term_loans_and_advances_growth_or_amount.f_5}}  {% else %} value=0 {% endif %}>
 												</tr>
 
 												<tr id="other_current_assets_growth_or_amount">
 													<th scope="row">Other current assets</th>
-													<td>--</td>
-													<td>--</td>
-													<td>--</td>
-													<td>--</td>
-													<td>--</td>
-													<input hidden name="other_current_assets_growth_or_amount_[]" value=0>
-													<input hidden name="other_current_assets_growth_or_amount_[]" value=0>
-													<input hidden name="other_current_assets_growth_or_amount_[]" value=0>
-													<input hidden name="other_current_assets_growth_or_amount_[]" value=0>
-													<input hidden name="other_current_assets_growth_or_amount_[]" value=0>
+													<td>{% if data.projection_table.blnc_other_current_assets_growth_or_amount.f_1 %} {{data.projection_table.blnc_other_current_assets_growth_or_amount.f_1}} {%else%} -- {% endif %}</td>
+													<td>{% if data.projection_table.blnc_other_current_assets_growth_or_amount.f_2 %} {{data.projection_table.blnc_other_current_assets_growth_or_amount.f_2}} {%else%} -- {% endif %}</td>
+													<td>{% if data.projection_table.blnc_other_current_assets_growth_or_amount.f_3 %} {{data.projection_table.blnc_other_current_assets_growth_or_amount.f_3}} {%else%} -- {% endif %}</td>
+													<td>{% if data.projection_table.blnc_other_current_assets_growth_or_amount.f_4 %} {{data.projection_table.blnc_other_current_assets_growth_or_amount.f_4}} {%else%} -- {% endif %}</td>
+													<td>{% if data.projection_table.blnc_other_current_assets_growth_or_amount.f_5 %} {{data.projection_table.blnc_other_current_assets_growth_or_amount.f_5}} {%else%} -- {% endif %}</td>
+
+													<input hidden name="other_current_assets_growth_or_amount_[]" {% if data.projection_table.blnc_other_current_assets_growth_or_amount.f_1 %} value={{data.projection_table.blnc_other_current_assets_growth_or_amount.f_1}}  {% else %} value=0 {% endif %}>
+													<input hidden name="other_current_assets_growth_or_amount_[]" {% if data.projection_table.blnc_other_current_assets_growth_or_amount.f_2 %} value={{data.projection_table.blnc_other_current_assets_growth_or_amount.f_2}}  {% else %} value=0 {% endif %}>
+													<input hidden name="other_current_assets_growth_or_amount_[]" {% if data.projection_table.blnc_other_current_assets_growth_or_amount.f_3 %} value={{data.projection_table.blnc_other_current_assets_growth_or_amount.f_3}}  {% else %} value=0 {% endif %}>
+													<input hidden name="other_current_assets_growth_or_amount_[]" {% if data.projection_table.blnc_other_current_assets_growth_or_amount.f_4 %} value={{data.projection_table.blnc_other_current_assets_growth_or_amount.f_4}}  {% else %} value=0 {% endif %}>
+													<input hidden name="other_current_assets_growth_or_amount_[]" {% if data.projection_table.blnc_other_current_assets_growth_or_amount.f_5 %} value={{data.projection_table.blnc_other_current_assets_growth_or_amount.f_5}}  {% else %} value=0 {% endif %}>
 												</tr>
 
 												<tr id="total_current_assets_b">
 													<th scope="row">Total Current Assets (B)</th>
-													<td>--</td>
-													<td>--</td>
-													<td>--</td>
-													<td>--</td>
-													<td>--</td>
-													<input hidden name="total_current_assets_b_[]" value=0>
-													<input hidden name="total_current_assets_b_[]" value=0>
-													<input hidden name="total_current_assets_b_[]" value=0>
-													<input hidden name="total_current_assets_b_[]" value=0>
-													<input hidden name="total_current_assets_b_[]" value=0>
+													<td>{% if data.projection_table.blnc_total_current_assets_b.f_1 %} {{data.projection_table.blnc_total_current_assets_b.f_1}} {%else%} -- {% endif %}</td>
+													<td>{% if data.projection_table.blnc_total_current_assets_b.f_2 %} {{data.projection_table.blnc_total_current_assets_b.f_2}} {%else%} -- {% endif %}</td>
+													<td>{% if data.projection_table.blnc_total_current_assets_b.f_3 %} {{data.projection_table.blnc_total_current_assets_b.f_3}} {%else%} -- {% endif %}</td>
+													<td>{% if data.projection_table.blnc_total_current_assets_b.f_4 %} {{data.projection_table.blnc_total_current_assets_b.f_4}} {%else%} -- {% endif %}</td>
+													<td>{% if data.projection_table.blnc_total_current_assets_b.f_5 %} {{data.projection_table.blnc_total_current_assets_b.f_5}} {%else%} -- {% endif %}</td>
+
+													<input hidden name="total_current_assets_b_[]" {% if data.projection_table.blnc_total_current_assets_b.f_1 %} value={{data.projection_table.blnc_total_current_assets_b.f_1}}  {% else %} value=0 {% endif %}>
+													<input hidden name="total_current_assets_b_[]" {% if data.projection_table.blnc_total_current_assets_b.f_2 %} value={{data.projection_table.blnc_total_current_assets_b.f_2}}  {% else %} value=0 {% endif %}>
+													<input hidden name="total_current_assets_b_[]" {% if data.projection_table.blnc_total_current_assets_b.f_3 %} value={{data.projection_table.blnc_total_current_assets_b.f_3}}  {% else %} value=0 {% endif %}>
+													<input hidden name="total_current_assets_b_[]" {% if data.projection_table.blnc_total_current_assets_b.f_4 %} value={{data.projection_table.blnc_total_current_assets_b.f_4}}  {% else %} value=0 {% endif %}>
+													<input hidden name="total_current_assets_b_[]" {% if data.projection_table.blnc_total_current_assets_b.f_5 %} value={{data.projection_table.blnc_total_current_assets_b.f_5}}  {% else %} value=0 {% endif %}>
 												</tr>
 
 												<tr id="total_assets_ab" class="bg-dark text-light">
 													<th scope="row">Total Assets (A+B)</th>
-													<td>--</td>
-													<td>--</td>
-													<td>--</td>
-													<td>--</td>
-													<td>--</td>
-													<input hidden name="total_assets_ab_[]" value=0>
-													<input hidden name="total_assets_ab_[]" value=0>
-													<input hidden name="total_assets_ab_[]" value=0>
-													<input hidden name="total_assets_ab_[]" value=0>
-													<input hidden name="total_assets_ab_[]" value=0>
+													<td>{% if data.projection_table.blnc_total_assets_ab.f_1 %} {{data.projection_table.blnc_total_assets_ab.f_1}} {%else%} -- {% endif %}</td>
+													<td>{% if data.projection_table.blnc_total_assets_ab.f_2 %} {{data.projection_table.blnc_total_assets_ab.f_2}} {%else%} -- {% endif %}</td>
+													<td>{% if data.projection_table.blnc_total_assets_ab.f_3 %} {{data.projection_table.blnc_total_assets_ab.f_3}} {%else%} -- {% endif %}</td>
+													<td>{% if data.projection_table.blnc_total_assets_ab.f_4 %} {{data.projection_table.blnc_total_assets_ab.f_4}} {%else%} -- {% endif %}</td>
+													<td>{% if data.projection_table.blnc_total_assets_ab.f_5 %} {{data.projection_table.blnc_total_assets_ab.f_5}} {%else%} -- {% endif %}</td>
+
+													<input hidden name="total_assets_ab_[]" {% if data.projection_table.blnc_total_assets_ab.f_1 %} value={{data.projection_table.blnc_total_assets_ab.f_1}}  {% else %} value=0 {% endif %}>
+													<input hidden name="total_assets_ab_[]" {% if data.projection_table.blnc_total_assets_ab.f_2 %} value={{data.projection_table.blnc_total_assets_ab.f_2}}  {% else %} value=0 {% endif %}>
+													<input hidden name="total_assets_ab_[]" {% if data.projection_table.blnc_total_assets_ab.f_3 %} value={{data.projection_table.blnc_total_assets_ab.f_3}}  {% else %} value=0 {% endif %}>
+													<input hidden name="total_assets_ab_[]" {% if data.projection_table.blnc_total_assets_ab.f_4 %} value={{data.projection_table.blnc_total_assets_ab.f_4}}  {% else %} value=0 {% endif %}>
+													<input hidden name="total_assets_ab_[]" {% if data.projection_table.blnc_total_assets_ab.f_5 %} value={{data.projection_table.blnc_total_assets_ab.f_5}}  {% else %} value=0 {% endif %}>
 												</tr>
 
 												<tr id="check">
 													<th scope="row">Check</th>
-													<td>--</td>
-													<td>--</td>
-													<td>--</td>
-													<td>--</td>
-													<td>--</td>
-													<input hidden name="check_[]" value=0>
-													<input hidden name="check_[]" value=0>
-													<input hidden name="check_[]" value=0>
-													<input hidden name="check_[]" value=0>
-													<input hidden name="check_[]" value=0>
+													<td>{% if data.projection_table.blnc_check.f_1 %} {{data.projection_table.blnc_check.f_1}} {%else%} -- {% endif %}</td>
+													<td>{% if data.projection_table.blnc_check.f_2 %} {{data.projection_table.blnc_check.f_2}} {%else%} -- {% endif %}</td>
+													<td>{% if data.projection_table.blnc_check.f_3 %} {{data.projection_table.blnc_check.f_3}} {%else%} -- {% endif %}</td>
+													<td>{% if data.projection_table.blnc_check.f_4 %} {{data.projection_table.blnc_check.f_4}} {%else%} -- {% endif %}</td>
+													<td>{% if data.projection_table.blnc_check.f_5 %} {{data.projection_table.blnc_check.f_5}} {%else%} -- {% endif %}</td>
+
+													<input hidden name="check_[]" {% if data.projection_table.blnc_check.f_1 %} value={{data.projection_table.blnc_check.f_1}}  {% else %} value=0 {% endif %}>
+													<input hidden name="check_[]" {% if data.projection_table.blnc_check.f_2 %} value={{data.projection_table.blnc_check.f_2}}  {% else %} value=0 {% endif %}>
+													<input hidden name="check_[]" {% if data.projection_table.blnc_check.f_3 %} value={{data.projection_table.blnc_check.f_3}}  {% else %} value=0 {% endif %}>
+													<input hidden name="check_[]" {% if data.projection_table.blnc_check.f_4 %} value={{data.projection_table.blnc_check.f_4}}  {% else %} value=0 {% endif %}>
+													<input hidden name="check_[]" {% if data.projection_table.blnc_check.f_5 %} value={{data.projection_table.blnc_check.f_5}}  {% else %} value=0 {% endif %}>
 												</tr>
 
 
@@ -2421,16 +2465,17 @@
 
 												<tr id="return_on_equity">
 													<th scope="row">Return On Equity (%)</th>
-													<td>--</td>
-													<td>--</td>
-													<td>--</td>
-													<td>--</td>
-													<td>--</td>
-													<input hidden name="return_on_equity_[]" value=0>
-													<input hidden name="return_on_equity_[]" value=0>
-													<input hidden name="return_on_equity_[]" value=0>
-													<input hidden name="return_on_equity_[]" value=0>
-													<input hidden name="return_on_equity_[]" value=0>
+													<td>{% if data.projection_table.blnc_return_on_equity.f_1 %} {{data.projection_table.blnc_return_on_equity.f_1}} {%else%} -- {% endif %}</td>
+													<td>{% if data.projection_table.blnc_return_on_equity.f_2 %} {{data.projection_table.blnc_return_on_equity.f_2}} {%else%} -- {% endif %}</td>
+													<td>{% if data.projection_table.blnc_return_on_equity.f_3 %} {{data.projection_table.blnc_return_on_equity.f_3}} {%else%} -- {% endif %}</td>
+													<td>{% if data.projection_table.blnc_return_on_equity.f_4 %} {{data.projection_table.blnc_return_on_equity.f_4}} {%else%} -- {% endif %}</td>
+													<td>{% if data.projection_table.blnc_return_on_equity.f_5 %} {{data.projection_table.blnc_return_on_equity.f_5}} {%else%} -- {% endif %}</td>
+
+													<input hidden name="return_on_equity_[]" {% if data.projection_table.blnc_return_on_equity.f_1 %} value={{data.projection_table.blnc_return_on_equity.f_1}}  {% else %} value=0 {% endif %}>
+													<input hidden name="return_on_equity_[]" {% if data.projection_table.blnc_return_on_equity.f_2 %} value={{data.projection_table.blnc_return_on_equity.f_2}}  {% else %} value=0 {% endif %}>
+													<input hidden name="return_on_equity_[]" {% if data.projection_table.blnc_return_on_equity.f_3 %} value={{data.projection_table.blnc_return_on_equity.f_3}}  {% else %} value=0 {% endif %}>
+													<input hidden name="return_on_equity_[]" {% if data.projection_table.blnc_return_on_equity.f_4 %} value={{data.projection_table.blnc_return_on_equity.f_4}}  {% else %} value=0 {% endif %}>
+													<input hidden name="return_on_equity_[]" {% if data.projection_table.blnc_return_on_equity.f_5 %} value={{data.projection_table.blnc_return_on_equity.f_5}}  {% else %} value=0 {% endif %}>
 												</tr>
 
 
@@ -2439,62 +2484,66 @@
 
 												<tr id="current_ratio">
 													<th scope="row">Current Ratio</th>
-													<td>--</td>
-													<td>--</td>
-													<td>--</td>
-													<td>--</td>
-													<td>--</td>
-													<input hidden name="current_ratio_[]" value=0>
-													<input hidden name="current_ratio_[]" value=0>
-													<input hidden name="current_ratio_[]" value=0>
-													<input hidden name="current_ratio_[]" value=0>
-													<input hidden name="current_ratio_[]" value=0>
+													<td>{% if data.projection_table.blnc_current_ratio.f_1 %} {{data.projection_table.blnc_current_ratio.f_1 |floatformat}} {%else%} -- {% endif %}</td>
+													<td>{% if data.projection_table.blnc_current_ratio.f_2 %} {{data.projection_table.blnc_current_ratio.f_2 |floatformat}} {%else%} -- {% endif %}</td>
+													<td>{% if data.projection_table.blnc_current_ratio.f_3 %} {{data.projection_table.blnc_current_ratio.f_3 |floatformat}} {%else%} -- {% endif %}</td>
+													<td>{% if data.projection_table.blnc_current_ratio.f_4 %} {{data.projection_table.blnc_current_ratio.f_4 |floatformat}} {%else%} -- {% endif %}</td>
+													<td>{% if data.projection_table.blnc_current_ratio.f_5 %} {{data.projection_table.blnc_current_ratio.f_5 |floatformat}} {%else%} -- {% endif %}</td>
+
+													<input hidden name="current_ratio_[]" {% if data.projection_table.blnc_current_ratio.f_1 %} value={{data.projection_table.blnc_current_ratio.f_1}}  {% else %} value=0 {% endif %}>
+													<input hidden name="current_ratio_[]" {% if data.projection_table.blnc_current_ratio.f_2 %} value={{data.projection_table.blnc_current_ratio.f_2}}  {% else %} value=0 {% endif %}>
+													<input hidden name="current_ratio_[]" {% if data.projection_table.blnc_current_ratio.f_3 %} value={{data.projection_table.blnc_current_ratio.f_3}}  {% else %} value=0 {% endif %}>
+													<input hidden name="current_ratio_[]" {% if data.projection_table.blnc_current_ratio.f_4 %} value={{data.projection_table.blnc_current_ratio.f_4}}  {% else %} value=0 {% endif %}>
+													<input hidden name="current_ratio_[]" {% if data.projection_table.blnc_current_ratio.f_5 %} value={{data.projection_table.blnc_current_ratio.f_5}}  {% else %} value=0 {% endif %}>
 												</tr>
 
 
 												<tr id="quick_ratio">
 													<th scope="row">Quick Ratio</th>
-													<td>--</td>
-													<td>--</td>
-													<td>--</td>
-													<td>--</td>
-													<td>--</td>
-													<input hidden name="quick_ratio_[]" value=0>
-													<input hidden name="quick_ratio_[]" value=0>
-													<input hidden name="quick_ratio_[]" value=0>
-													<input hidden name="quick_ratio_[]" value=0>
-													<input hidden name="quick_ratio_[]" value=0>
+													<td>{% if data.projection_table.blnc_quick_ratio.f_1 %} {{data.projection_table.blnc_quick_ratio.f_1 |floatformat}} {%else%} -- {% endif %}</td>
+													<td>{% if data.projection_table.blnc_quick_ratio.f_2 %} {{data.projection_table.blnc_quick_ratio.f_2 |floatformat}} {%else%} -- {% endif %}</td>
+													<td>{% if data.projection_table.blnc_quick_ratio.f_3 %} {{data.projection_table.blnc_quick_ratio.f_3 |floatformat}} {%else%} -- {% endif %}</td>
+													<td>{% if data.projection_table.blnc_quick_ratio.f_4 %} {{data.projection_table.blnc_quick_ratio.f_4 |floatformat}} {%else%} -- {% endif %}</td>
+													<td>{% if data.projection_table.blnc_quick_ratio.f_5 %} {{data.projection_table.blnc_quick_ratio.f_5 |floatformat}} {%else%} -- {% endif %}</td>
+
+													<input hidden name="quick_ratio_[]" {% if data.projection_table.blnc_quick_ratio.f_1 %} value={{data.projection_table.blnc_quick_ratio.f_1}}  {% else %} value=0 {% endif %}>
+													<input hidden name="quick_ratio_[]" {% if data.projection_table.blnc_quick_ratio.f_2 %} value={{data.projection_table.blnc_quick_ratio.f_2}}  {% else %} value=0 {% endif %}>
+													<input hidden name="quick_ratio_[]" {% if data.projection_table.blnc_quick_ratio.f_3 %} value={{data.projection_table.blnc_quick_ratio.f_3}}  {% else %} value=0 {% endif %}>
+													<input hidden name="quick_ratio_[]" {% if data.projection_table.blnc_quick_ratio.f_4 %} value={{data.projection_table.blnc_quick_ratio.f_4}}  {% else %} value=0 {% endif %}>
+													<input hidden name="quick_ratio_[]" {% if data.projection_table.blnc_quick_ratio.f_5 %} value={{data.projection_table.blnc_quick_ratio.f_5}}  {% else %} value=0 {% endif %}>
 												</tr>
 
 												<thead class="thead text-primary"><tr><th colspan="6" scope="col">Capital Structure ratio</th></tr></thead>
 
 												<tr id="debt_equity_ratiotimes">
 													<th scope="row">Debt Equity Ratio(Times)</th>
-													<td>--</td>
-													<td>--</td>
-													<td>--</td>
-													<td>--</td>
-													<td>--</td>
-													<input hidden name="debt_equity_ratiotimes_[]" value=0>
-													<input hidden name="debt_equity_ratiotimes_[]" value=0>
-													<input hidden name="debt_equity_ratiotimes_[]" value=0>
-													<input hidden name="debt_equity_ratiotimes_[]" value=0>
-													<input hidden name="debt_equity_ratiotimes_[]" value=0>
+													<td>{% if data.projection_table.blnc_debt_equity_ratiotimes.f_1 %} {{data.projection_table.blnc_debt_equity_ratiotimes.f_1 |floatformat}} {%else%} -- {% endif %}</td>
+													<td>{% if data.projection_table.blnc_debt_equity_ratiotimes.f_2 %} {{data.projection_table.blnc_debt_equity_ratiotimes.f_2 |floatformat}} {%else%} -- {% endif %}</td>
+													<td>{% if data.projection_table.blnc_debt_equity_ratiotimes.f_3 %} {{data.projection_table.blnc_debt_equity_ratiotimes.f_3 |floatformat}} {%else%} -- {% endif %}</td>
+													<td>{% if data.projection_table.blnc_debt_equity_ratiotimes.f_4 %} {{data.projection_table.blnc_debt_equity_ratiotimes.f_4 |floatformat}} {%else%} -- {% endif %}</td>
+													<td>{% if data.projection_table.blnc_debt_equity_ratiotimes.f_5 %} {{data.projection_table.blnc_debt_equity_ratiotimes.f_5 |floatformat}} {%else%} -- {% endif %}</td>
+
+													<input hidden name="debt_equity_ratiotimes_[]" {% if data.projection_table.blnc_debt_equity_ratiotimes.f_1 %} value={{data.projection_table.blnc_debt_equity_ratiotimes.f_1}}  {% else %} value=0 {% endif %}>
+													<input hidden name="debt_equity_ratiotimes_[]" {% if data.projection_table.blnc_debt_equity_ratiotimes.f_2 %} value={{data.projection_table.blnc_debt_equity_ratiotimes.f_2}}  {% else %} value=0 {% endif %}>
+													<input hidden name="debt_equity_ratiotimes_[]" {% if data.projection_table.blnc_debt_equity_ratiotimes.f_3 %} value={{data.projection_table.blnc_debt_equity_ratiotimes.f_3}}  {% else %} value=0 {% endif %}>
+													<input hidden name="debt_equity_ratiotimes_[]" {% if data.projection_table.blnc_debt_equity_ratiotimes.f_4 %} value={{data.projection_table.blnc_debt_equity_ratiotimes.f_4}}  {% else %} value=0 {% endif %}>
+													<input hidden name="debt_equity_ratiotimes_[]" {% if data.projection_table.blnc_debt_equity_ratiotimes.f_5 %} value={{data.projection_table.blnc_debt_equity_ratiotimes.f_5}}  {% else %} value=0 {% endif %}>
 												</tr>
 
 
 												<tr id="debt_to_total_funds">
 													<th scope="row">Debt to Total Funds(%)</th>
-													<td>--</td>
-													<td>--</td>
-													<td>--</td>
-													<td>--</td>
-													<td>--</td>
-													<input hidden name="debt_to_total_funds_[]" value=0>
-													<input hidden name="debt_to_total_funds_[]" value=0>
-													<input hidden name="debt_to_total_funds_[]" value=0>
-													<input hidden name="debt_to_total_funds_[]" value=0>
-													<input hidden name="debt_to_total_funds_[]" value=0>
+													<td>{% if data.projection_table.blnc_debt_to_total_funds.f_1 %} {{data.projection_table.blnc_debt_to_total_funds.f_1 |floatformat}}% {%else%} -- {% endif %}</td>
+													<td>{% if data.projection_table.blnc_debt_to_total_funds.f_2 %} {{data.projection_table.blnc_debt_to_total_funds.f_2 |floatformat}}% {%else%} -- {% endif %}</td>
+													<td>{% if data.projection_table.blnc_debt_to_total_funds.f_3 %} {{data.projection_table.blnc_debt_to_total_funds.f_3 |floatformat}}% {%else%} -- {% endif %}</td>
+													<td>{% if data.projection_table.blnc_debt_to_total_funds.f_4 %} {{data.projection_table.blnc_debt_to_total_funds.f_4 |floatformat}}% {%else%} -- {% endif %}</td>
+													<td>{% if data.projection_table.blnc_debt_to_total_funds.f_5 %} {{data.projection_table.blnc_debt_to_total_funds.f_5 |floatformat}}% {%else%} -- {% endif %}</td>
+
+													<input hidden name="debt_to_total_funds_[]" {% if data.projection_table.blnc_debt_to_total_funds.f_1 %} value={{data.projection_table.blnc_debt_to_total_funds.f_1}}  {% else %} value=0 {% endif %}>
+													<input hidden name="debt_to_total_funds_[]" {% if data.projection_table.blnc_debt_to_total_funds.f_2 %} value={{data.projection_table.blnc_debt_to_total_funds.f_2}}  {% else %} value=0 {% endif %}>
+													<input hidden name="debt_to_total_funds_[]" {% if data.projection_table.blnc_debt_to_total_funds.f_3 %} value={{data.projection_table.blnc_debt_to_total_funds.f_3}}  {% else %} value=0 {% endif %}>
+													<input hidden name="debt_to_total_funds_[]" {% if data.projection_table.blnc_debt_to_total_funds.f_4 %} value={{data.projection_table.blnc_debt_to_total_funds.f_4}}  {% else %} value=0 {% endif %}>
+													<input hidden name="debt_to_total_funds_[]" {% if data.projection_table.blnc_debt_to_total_funds.f_5 %} value={{data.projection_table.blnc_debt_to_total_funds.f_5}}  {% else %} value=0 {% endif %}>
 												</tr>
 
 
@@ -2502,16 +2551,17 @@
 												<thead class="thead text-primary"><tr><th colspan="6" scope="col">Turnover Ratio</th></tr></thead>
 												<tr id="asset_turnover">
 													<th scope="row">Asset Turnover</th>
-													<td>--</td>
-													<td>--</td>
-													<td>--</td>
-													<td>--</td>
-													<td>--</td>
-													<input hidden name="asset_turnover_[]" value=0>
-													<input hidden name="asset_turnover_[]" value=0>
-													<input hidden name="asset_turnover_[]" value=0>
-													<input hidden name="asset_turnover_[]" value=0>
-													<input hidden name="asset_turnover_[]" value=0>
+													<td>{% if data.projection_table.blnc_asset_turnover.f_1 %} {{data.projection_table.blnc_asset_turnover.f_1 |floatformat}} {%else%} -- {% endif %}</td>
+													<td>{% if data.projection_table.blnc_asset_turnover.f_2 %} {{data.projection_table.blnc_asset_turnover.f_2 |floatformat}} {%else%} -- {% endif %}</td>
+													<td>{% if data.projection_table.blnc_asset_turnover.f_3 %} {{data.projection_table.blnc_asset_turnover.f_3 |floatformat}} {%else%} -- {% endif %}</td>
+													<td>{% if data.projection_table.blnc_asset_turnover.f_4 %} {{data.projection_table.blnc_asset_turnover.f_4 |floatformat}} {%else%} -- {% endif %}</td>
+													<td>{% if data.projection_table.blnc_asset_turnover.f_5 %} {{data.projection_table.blnc_asset_turnover.f_5 |floatformat}} {%else%} -- {% endif %}</td>
+
+													<input hidden name="asset_turnover_[]" {% if data.projection_table.blnc_asset_turnover.f_1 %} value={{data.projection_table.blnc_asset_turnover.f_1}}  {% else %} value=0 {% endif %}>
+													<input hidden name="asset_turnover_[]" {% if data.projection_table.blnc_asset_turnover.f_2 %} value={{data.projection_table.blnc_asset_turnover.f_2}}  {% else %} value=0 {% endif %}>
+													<input hidden name="asset_turnover_[]" {% if data.projection_table.blnc_asset_turnover.f_3 %} value={{data.projection_table.blnc_asset_turnover.f_3}}  {% else %} value=0 {% endif %}>
+													<input hidden name="asset_turnover_[]" {% if data.projection_table.blnc_asset_turnover.f_4 %} value={{data.projection_table.blnc_asset_turnover.f_4}}  {% else %} value=0 {% endif %}>
+													<input hidden name="asset_turnover_[]" {% if data.projection_table.blnc_asset_turnover.f_5 %} value={{data.projection_table.blnc_asset_turnover.f_5}}  {% else %} value=0 {% endif %}>
 												</tr>
 
 												

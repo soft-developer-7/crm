@@ -4604,7 +4604,7 @@ def user_form_12_submit(request):            # User Form 12 Submit
 
         projection_table.blnc_short_term_borrowings_growth_or_amount = multi_input_insert_projection(request,"short_term_borrowings_growth_or_amount_[]")
         projection_table.blnc_short_term_provisions_growth_or_amount = multi_input_insert_projection(request,"short_term_provisions_growth_or_amount_[]")
-        projection_table.blnc_sundry_creditors_no_of_days = multi_input_insert_projection(request,"sundry_creditors_no_of_days_ []")
+        projection_table.blnc_sundry_creditors_no_of_days = multi_input_insert_projection(request,"sundry_creditors_no_of_days_[]")
         projection_table.blnc_other_current_liabilities_growth_or_amount = multi_input_insert_projection(request,"other_current_liabilities_growth_or_amount_[]")
         projection_table.blnc_total_current_liabilities_c = multi_input_insert_projection(request,"total_current_liabilities_c_[]")
         projection_table.blnc_total_liabilities_abc = multi_input_insert_projection(request,"total_liabilities_abc_[]")
@@ -4641,7 +4641,7 @@ def user_form_12_submit(request):            # User Form 12 Submit
 
 
 
-        book.current_fillup_position = 12
+        #book.current_fillup_position = 12
         book.save()
         return redirect("/successful-purchased")
     else:
@@ -4728,7 +4728,7 @@ def user_template_view_by_get(request,id):                                # User
 def incomplete_superplan_bookings_check(request):                                # User All incomplete superplan form Checking
 
     if(auth_user(request)):
-        data = super_plan_forms.objects.filter(user=request.session['user'],current_fillup_position__lt=13)
+        data = super_plan_forms.objects.filter(user=request.session['user'],current_fillup_position__lt=14)
         if(data):
             return render(request,'user-all-incomplete-superplan-bookings.html',{"bookings":data})
         else:
@@ -4772,7 +4772,7 @@ def user_incomplete_superplan_by_get(request,id):                               
         book=super_plan_forms.objects.filter(id=int(id),user=request.session['user']).get()
         if(book):
             request.session["form"] = book.id
-            form_url = 'user-form'+str((book.current_fillup_position)+1)+'.html'
+            form_url = 'user-form'+str((book.current_fillup_position)-1)+'.html'
 
             ind_types = Industries.objects.all()
 
