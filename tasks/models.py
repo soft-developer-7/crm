@@ -568,6 +568,39 @@ class super_plan_projection(models.Model):
     blnc_asset_turnover = models.ForeignKey(super_plan_forms_multiple_inputs,related_name='blnc_asset_turnover',on_delete=models.SET_NULL, null=True)
 
 
+#************************************** Cash Flow **************************** [csf]
+    csf_ebitda =  models.ForeignKey(super_plan_forms_multiple_inputs,related_name='csf_ebitda',on_delete=models.SET_NULL, null=True)
+    csf_loss_profit_on_sale_of_fixed_assets =  models.ForeignKey(super_plan_forms_multiple_inputs,related_name='csf_loss_profit_on_sale_of_fixed_assets',on_delete=models.SET_NULL, null=True)
+    csf_operating_profit_before_working_capital_changes =  models.ForeignKey(super_plan_forms_multiple_inputs,related_name='csf_operating_profit_before_working_capital_changes',on_delete=models.SET_NULL, null=True)
+    csf_decrease_increase_in_sundry_debtors =  models.ForeignKey(super_plan_forms_multiple_inputs,related_name='csf_decrease_increase_in_sundry_debtors',on_delete=models.SET_NULL, null=True)
+    csf_decrease_increase_in_inventories =  models.ForeignKey(super_plan_forms_multiple_inputs,related_name='csf_decrease_increase_in_inventories',on_delete=models.SET_NULL, null=True)
+    csf_decrease_increase_in_current_liabilities_and_provisions =  models.ForeignKey(super_plan_forms_multiple_inputs,related_name='csf_decrease_increase_in_current_liabilities_and_provisions',on_delete=models.SET_NULL, null=True)
+    csf_decrease_increase_in_other_current_assets =  models.ForeignKey(super_plan_forms_multiple_inputs,related_name='csf_decrease_increase_in_other_current_assets',on_delete=models.SET_NULL, null=True)
+    csf_other_income =  models.ForeignKey(super_plan_forms_multiple_inputs,related_name='csf_other_income',on_delete=models.SET_NULL, null=True)
+    csf_realised_foreign_exchange_gain_loss =  models.ForeignKey(super_plan_forms_multiple_inputs,related_name='csf_realised_foreign_exchange_gain_loss',on_delete=models.SET_NULL, null=True)
+    csf_income_taxes_paid =  models.ForeignKey(super_plan_forms_multiple_inputs,related_name='csf_income_taxes_paid',on_delete=models.SET_NULL, null=True)
+    csf_net_cash_provided_by_used_in_operating_activities =  models.ForeignKey(super_plan_forms_multiple_inputs,related_name='csf_net_cash_provided_by_used_in_operating_activities',on_delete=models.SET_NULL, null=True)
+    
+    csf_purchase_of_fixed_assets =  models.ForeignKey(super_plan_forms_multiple_inputs,related_name='csf_purchase_of_fixed_assets',on_delete=models.SET_NULL, null=True)
+    csf_intangible_assets =  models.ForeignKey(super_plan_forms_multiple_inputs,related_name='csf_intangible_assets',on_delete=models.SET_NULL, null=True)
+    csf_net_cash_provided_used_in_investing_activities =  models.ForeignKey(super_plan_forms_multiple_inputs,related_name='csf_net_cash_provided_used_in_investing_activities',on_delete=models.SET_NULL, null=True)
+    
+    csf_issue_of_share_capital_net_of_issue_expenses_paid =  models.ForeignKey(super_plan_forms_multiple_inputs,related_name='csf_issue_of_share_capital_net_of_issue_expenses_paid',on_delete=models.SET_NULL, null=True)
+    csf_equity_funds_raised =  models.ForeignKey(super_plan_forms_multiple_inputs,related_name='csf_equity_funds_raised',on_delete=models.SET_NULL, null=True)
+    csf_proceeds_repayment_of_loans =  models.ForeignKey(super_plan_forms_multiple_inputs,related_name='csf_proceeds_repayment_of_loans',on_delete=models.SET_NULL, null=True)
+    csf_interest_paid_on_loans =  models.ForeignKey(super_plan_forms_multiple_inputs,related_name='csf_interest_paid_on_loans',on_delete=models.SET_NULL, null=True)
+    csf_net_cash_provided_used_by_financing_activities =  models.ForeignKey(super_plan_forms_multiple_inputs,related_name='csf_net_cash_provided_used_by_financing_activities',on_delete=models.SET_NULL, null=True)
+    
+    csf_effect_of_exchange_differences_on_translation_of_foreign_currency_cash_and_cash_equivalents =  models.ForeignKey(super_plan_forms_multiple_inputs,related_name='csf_effect_of_exchange_differences_on_translation_of_foreign_currency_cash_and_cash_equivalents',on_delete=models.SET_NULL, null=True)
+    csf_net_increase_decrease_in_cash_and_cash_equivalents =  models.ForeignKey(super_plan_forms_multiple_inputs,related_name='csf_net_increase_decrease_in_cash_and_cash_equivalents',on_delete=models.SET_NULL, null=True)
+    csf_cash_and_cash_equivalents_at_the_beginning_of_the_year =  models.ForeignKey(super_plan_forms_multiple_inputs,related_name='csf_cash_and_cash_equivalents_at_the_beginning_of_the_year',on_delete=models.SET_NULL, null=True)
+    csf_cash_and_cash_equivalents_at_the_end_of_the_year =  models.ForeignKey(super_plan_forms_multiple_inputs,related_name='csf_cash_and_cash_equivalents_at_the_end_of_the_year',on_delete=models.SET_NULL, null=True)
+    csf_balancing_figure =  models.ForeignKey(super_plan_forms_multiple_inputs,related_name='csf_balancing_figure',on_delete=models.SET_NULL, null=True)
+    csf_operating_cash_flow =  models.ForeignKey(super_plan_forms_multiple_inputs,related_name='csf_operating_cash_flow',on_delete=models.SET_NULL, null=True)
+    csf_capital_expenditure =  models.ForeignKey(super_plan_forms_multiple_inputs,related_name='csf_capital_expenditure',on_delete=models.SET_NULL, null=True)
+    csf_free_cash_flow =  models.ForeignKey(super_plan_forms_multiple_inputs,related_name='csf_free_cash_flow',on_delete=models.SET_NULL, null=True)
+    csf_operating_cash_flow_sales =  models.ForeignKey(super_plan_forms_multiple_inputs,related_name='csf_operating_cash_flow_sales',on_delete=models.SET_NULL, null=True)
+    csf_free_cash_flow_operating_cash_flow =  models.ForeignKey(super_plan_forms_multiple_inputs,related_name='csf_free_cash_flow_operating_cash_flow',on_delete=models.SET_NULL, null=True)
 
 
 

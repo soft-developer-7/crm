@@ -1179,6 +1179,9 @@ def projection_table_init(request):
     projection_table=super_plan_projection()
     projection_table.form_id=request.session['form']
 
+
+    # income statement table
+
     projection_table.ins_particulars_stream_1 = multi_input_blank(request)
     projection_table.ins_particulars_stream_2 = multi_input_blank(request)
     projection_table.ins_particulars_stream_3 = multi_input_blank(request)
@@ -1248,6 +1251,44 @@ def projection_table_init(request):
     projection_table.ins_analysis_as_of_revenue_earnings_before_tax_ebt = multi_input_blank(request)
     projection_table.ins_analysis_as_of_revenue_provision_for_income_tax = multi_input_blank(request)
     projection_table.ins_analysis_as_of_revenue_profit_after_tax = multi_input_blank(request)
+
+
+    # Cashflow table
+
+
+    projection_table.csf_ebitda = multi_input_blank(request)
+    projection_table.csf_loss_profit_on_sale_of_fixed_assets = multi_input_blank(request)
+    projection_table.csf_operating_profit_before_working_capital_changes = multi_input_blank(request)
+    projection_table.csf_decrease_increase_in_sundry_debtors = multi_input_blank(request)
+    projection_table.csf_decrease_increase_in_inventories = multi_input_blank(request)
+    projection_table.csf_decrease_increase_in_current_liabilities_and_provisions = multi_input_blank(request)
+    projection_table.csf_decrease_increase_in_other_current_assets = multi_input_blank(request)
+    projection_table.csf_other_income = multi_input_blank(request)
+    projection_table.csf_realised_foreign_exchange_gain_loss = multi_input_blank(request)
+    projection_table.csf_income_taxes_paid = multi_input_blank(request)
+    projection_table.csf_net_cash_provided_by_used_in_operating_activities = multi_input_blank(request)
+    projection_table.csf_purchase_of_fixed_assets = multi_input_blank(request)
+    projection_table.csf_intangible_assets = multi_input_blank(request)
+    projection_table.csf_net_cash_provided_used_in_investing_activities = multi_input_blank(request)
+    projection_table.csf_issue_of_share_capital_net_of_issue_expenses_paid = multi_input_blank(request)
+    projection_table.csf_equity_funds_raised = multi_input_blank(request)
+    projection_table.csf_proceeds_repayment_of_loans = multi_input_blank(request)
+    projection_table.csf_interest_paid_on_loans = multi_input_blank(request)
+    projection_table.csf_net_cash_provided_used_by_financing_activities = multi_input_blank(request)
+    projection_table.csf_effect_of_exchange_differences_on_translation_of_foreign_currency_cash_and_cash_equivalents = multi_input_blank(request)
+    projection_table.csf_net_increase_decrease_in_cash_and_cash_equivalents = multi_input_blank(request)
+    projection_table.csf_cash_and_cash_equivalents_at_the_beginning_of_the_year = multi_input_blank(request)
+    projection_table.csf_cash_and_cash_equivalents_at_the_end_of_the_year = multi_input_blank(request)
+    projection_table.csf_balancing_figure = multi_input_blank(request)
+    projection_table.csf_operating_cash_flow = multi_input_blank(request)
+    projection_table.csf_capital_expenditure = multi_input_blank(request)
+    projection_table.csf_free_cash_flow = multi_input_blank(request)
+    projection_table.csf_operating_cash_flow_sales = multi_input_blank(request)
+    projection_table.csf_free_cash_flow_operating_cash_flow = multi_input_blank(request)
+
+
+
+
 
     projection_table.save()
 
@@ -1665,33 +1706,33 @@ def calculate_income_statement(request):                                      # 
 
 
             try:
-                projection_table1.ins_particulars_ebitda_operating_profit.f_1 = ceil(float(projection_table1.ins_particulars_total_operating_expenses.f_1) - float(projection_table1.ins_particulars_total_revenue_from_operations_services.f_1))
+                projection_table1.ins_particulars_ebitda_operating_profit.f_1 = ceil(float(projection_table1.ins_particulars_total_revenue_from_operations_services.f_1) -float(projection_table1.ins_particulars_total_operating_expenses.f_1))
             except:
                 projection_table1.ins_particulars_ebitda_operating_profit.f_1 = None
                 
 
             try:
-                projection_table1.ins_particulars_ebitda_operating_profit.f_2 = ceil(float(projection_table1.ins_particulars_total_operating_expenses.f_2) - float(projection_table1.ins_particulars_total_revenue_from_operations_services.f_2))
+                projection_table1.ins_particulars_ebitda_operating_profit.f_2 = ceil(float(projection_table1.ins_particulars_total_revenue_from_operations_services.f_2)-float(projection_table1.ins_particulars_total_operating_expenses.f_2))
             except:
                 projection_table1.ins_particulars_ebitda_operating_profit.f_2 = None
                 
 
             try:
-                projection_table1.ins_particulars_ebitda_operating_profit.f_3 = ceil(float(projection_table1.ins_particulars_total_operating_expenses.f_3) - float(projection_table1.ins_particulars_total_revenue_from_operations_services.f_3))
+                projection_table1.ins_particulars_ebitda_operating_profit.f_3 = ceil(float(projection_table1.ins_particulars_total_revenue_from_operations_services.f_3)-float(projection_table1.ins_particulars_total_operating_expenses.f_3))
             except:
                 projection_table1.ins_particulars_ebitda_operating_profit.f_3 = None
                 
 
 
             try:
-                projection_table1.ins_particulars_ebitda_operating_profit.f_4 = ceil(float(projection_table1.ins_particulars_total_operating_expenses.f_4) - float(projection_table1.ins_particulars_total_revenue_from_operations_services.f_4))
+                projection_table1.ins_particulars_ebitda_operating_profit.f_4 = ceil(float(projection_table1.ins_particulars_total_revenue_from_operations_services.f_4)-float(projection_table1.ins_particulars_total_operating_expenses.f_4))
             except:
                 projection_table1.ins_particulars_ebitda_operating_profit.f_4 = None
                 
 
 
             try:
-                projection_table1.ins_particulars_ebitda_operating_profit.f_5 = ceil(float(projection_table1.ins_particulars_total_operating_expenses.f_5) - float(projection_table1.ins_particulars_total_revenue_from_operations_services.f_5))
+                projection_table1.ins_particulars_ebitda_operating_profit.f_5 = ceil(float(projection_table1.ins_particulars_total_revenue_from_operations_services.f_5)-float(projection_table1.ins_particulars_total_operating_expenses.f_5))
             except:
                 projection_table1.ins_particulars_ebitda_operating_profit.f_5 = None
 
@@ -3736,7 +3777,7 @@ def calculate_income_statement(request):                                      # 
 
 
 
-def cal_income_statement(request):
+def cal_income_statement(request):                                  # Casf Flow Calculation
 
     if(auth_user(request)):
         book = super_plan_forms.objects.filter(id=request.session['form']).get()
@@ -3758,6 +3799,997 @@ def cal_income_statement(request):
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+def calculate_cashflow(request):                                      # Calculate the Cashflow
+
+    if(auth_user(request)):
+        book = super_plan_forms.objects.filter(id=request.session['form']).get()
+        if(auth_user(request) and book ):
+
+            projection_table = book.projection_table
+
+
+            try:
+                projection_table.csf_ebitda.f_1= projection_table.ins_particulars_ebitda_operating_profit.f_1
+            except:
+                projection_table.csf_ebitda.f_1=0
+            
+            try:
+                projection_table.csf_ebitda.f_2= projection_table.ins_particulars_ebitda_operating_profit.f_2
+            except:
+                projection_table.csf_ebitda.f_2=0
+
+            try:
+                projection_table.csf_ebitda.f_3= projection_table.ins_particulars_ebitda_operating_profit.f_3
+            except:
+                projection_table.csf_ebitda.f_3=0
+
+            try:
+                projection_table.csf_ebitda.f_4= projection_table.ins_particulars_ebitda_operating_profit.f_4
+            except:
+                projection_table.csf_ebitda.f_4=0
+
+            try:
+                projection_table.csf_ebitda.f_5= projection_table.ins_particulars_ebitda_operating_profit.f_5
+            except:
+                projection_table.csf_ebitda.f_5=0
+
+            projection_table.csf_ebitda.save()
+
+
+
+
+
+            try:
+                projection_table.csf_loss_profit_on_sale_of_fixed_assets.f_1=0
+            except:
+                projection_table.csf_loss_profit_on_sale_of_fixed_assets.f_1=0
+            
+            try:
+                projection_table.csf_loss_profit_on_sale_of_fixed_assets.f_2=0
+            except:
+                projection_table.csf_loss_profit_on_sale_of_fixed_assets.f_2=0
+
+            try:
+                projection_table.csf_loss_profit_on_sale_of_fixed_assets.f_3=0
+            except:
+                projection_table.csf_loss_profit_on_sale_of_fixed_assets.f_3=0
+
+            try:
+                projection_table.csf_loss_profit_on_sale_of_fixed_assets.f_4=0
+            except:
+                projection_table.csf_loss_profit_on_sale_of_fixed_assets.f_4=0
+
+            try:
+                projection_table.csf_loss_profit_on_sale_of_fixed_assets.f_5=0
+            except:
+                projection_table.csf_loss_profit_on_sale_of_fixed_assets.f_5=0
+
+            projection_table.csf_loss_profit_on_sale_of_fixed_assets.save()
+
+
+
+
+
+            try:
+                projection_table.csf_operating_profit_before_working_capital_changes.f_1= ceil(float(projection_table.csf_ebitda.f_1) + float(projection_table.csf_loss_profit_on_sale_of_fixed_assets.f_1))
+            except:
+                projection_table.csf_operating_profit_before_working_capital_changes.f_1=0
+
+            try:
+                projection_table.csf_operating_profit_before_working_capital_changes.f_2= ceil(float(projection_table.csf_ebitda.f_2) + float(projection_table.csf_loss_profit_on_sale_of_fixed_assets.f_2))
+            except:
+                projection_table.csf_operating_profit_before_working_capital_changes.f_2=0
+
+            try:
+                projection_table.csf_operating_profit_before_working_capital_changes.f_3= ceil(float(projection_table.csf_ebitda.f_3) + float(projection_table.csf_loss_profit_on_sale_of_fixed_assets.f_3))
+            except:
+                projection_table.csf_operating_profit_before_working_capital_changes.f_3=0
+
+            try:
+                projection_table.csf_operating_profit_before_working_capital_changes.f_4= ceil(float(projection_table.csf_ebitda.f_4) + float(projection_table.csf_loss_profit_on_sale_of_fixed_assets.f_4))
+            except:
+                projection_table.csf_operating_profit_before_working_capital_changes.f_4=0
+
+            try:
+                projection_table.csf_operating_profit_before_working_capital_changes.f_5= ceil(float(projection_table.csf_ebitda.f_5) + float(projection_table.csf_loss_profit_on_sale_of_fixed_assets.f_5))
+            except:
+                projection_table.csf_operating_profit_before_working_capital_changes.f_5=0
+
+            projection_table.csf_operating_profit_before_working_capital_changes.save()
+
+
+
+
+
+
+            try:
+                projection_table.csf_decrease_increase_in_sundry_debtors.f_1=projection_table.blnc_sundry_debtors_no_of_days.f_1
+            except:
+                projection_table.csf_decrease_increase_in_sundry_debtors.f_1=0
+
+            try:
+                projection_table.csf_decrease_increase_in_sundry_debtors.f_2=(ceil(float(projection_table.blnc_sundry_debtors_no_of_days.f_1)-float(projection_table.blnc_sundry_debtors_no_of_days.f_2)))
+            except:
+                projection_table.csf_decrease_increase_in_sundry_debtors.f_2=0
+
+            try:
+                projection_table.csf_decrease_increase_in_sundry_debtors.f_3=(ceil(float(projection_table.blnc_sundry_debtors_no_of_days.f_2)-float(projection_table.blnc_sundry_debtors_no_of_days.f_3)))
+            except:
+                projection_table.csf_decrease_increase_in_sundry_debtors.f_3=0
+
+            try:
+                projection_table.csf_decrease_increase_in_sundry_debtors.f_4=(ceil(float(projection_table.blnc_sundry_debtors_no_of_days.f_3)-float(projection_table.blnc_sundry_debtors_no_of_days.f_4)))
+            except:
+                projection_table.csf_decrease_increase_in_sundry_debtors.f_4=0
+
+            try:
+                projection_table.csf_decrease_increase_in_sundry_debtors.f_5=(ceil(float(projection_table.blnc_sundry_debtors_no_of_days.f_4)-float(projection_table.blnc_sundry_debtors_no_of_days.f_5)))
+            except:
+                projection_table.csf_decrease_increase_in_sundry_debtors.f_5=0
+
+            projection_table.csf_decrease_increase_in_sundry_debtors.save()
+
+
+
+
+
+
+            try:
+                projection_table.csf_decrease_increase_in_inventories.f_1=projection_table.blnc_inventory_no_of_days.f_1
+            except:
+                projection_table.csf_decrease_increase_in_inventories.f_1=0
+
+            try:
+                projection_table.csf_decrease_increase_in_inventories.f_2=(ceil(float(projection_table.blnc_inventory_no_of_days.f_1)-float(projection_table.blnc_inventory_no_of_days.f_2)))
+            except:
+                projection_table.csf_decrease_increase_in_inventories.f_2=0
+
+            try:
+                projection_table.csf_decrease_increase_in_inventories.f_3=(ceil(float(projection_table.blnc_inventory_no_of_days.f_2)-float(projection_table.blnc_inventory_no_of_days.f_3)))
+            except:
+                projection_table.csf_decrease_increase_in_inventories.f_3=0
+
+            try:
+                projection_table.csf_decrease_increase_in_inventories.f_4=(ceil(float(projection_table.blnc_inventory_no_of_days.f_3)-float(projection_table.blnc_inventory_no_of_days.f_4)))
+            except:
+                projection_table.csf_decrease_increase_in_inventories.f_4=0
+
+            try:
+                projection_table.csf_decrease_increase_in_inventories.f_5=(ceil(float(projection_table.blnc_inventory_no_of_days.f_4)-float(projection_table.blnc_inventory_no_of_days.f_5)))
+            except:
+                projection_table.csf_decrease_increase_in_inventories.f_5=0
+
+            projection_table.csf_decrease_increase_in_inventories.save()
+
+
+
+
+
+
+            try:
+                projection_table.csf_decrease_increase_in_current_liabilities_and_provisions.f_1= projection_table.blnc_total_current_liabilities_c.f_1
+            except:
+                projection_table.csf_decrease_increase_in_current_liabilities_and_provisions.f_1=0
+
+            try:
+                projection_table.csf_decrease_increase_in_current_liabilities_and_provisions.f_2= (ceil(float(projection_table.blnc_total_current_liabilities_c.f_1) - float(projection_table.blnc_total_current_liabilities_c.f_2)))
+            except:
+                projection_table.csf_decrease_increase_in_current_liabilities_and_provisions.f_2=0
+
+            try:
+                projection_table.csf_decrease_increase_in_current_liabilities_and_provisions.f_3= (ceil(float(projection_table.blnc_total_current_liabilities_c.f_2) - float(projection_table.blnc_total_current_liabilities_c.f_3)))
+            except:
+                projection_table.csf_decrease_increase_in_current_liabilities_and_provisions.f_3=0
+
+            try:
+                projection_table.csf_decrease_increase_in_current_liabilities_and_provisions.f_4= (ceil(float(projection_table.blnc_total_current_liabilities_c.f_3) - float(projection_table.blnc_total_current_liabilities_c.f_4)))
+            except:
+                projection_table.csf_decrease_increase_in_current_liabilities_and_provisions.f_4=0
+
+            try:
+                projection_table.csf_decrease_increase_in_current_liabilities_and_provisions.f_5= (ceil(float(projection_table.blnc_total_current_liabilities_c.f_4) - float(projection_table.blnc_total_current_liabilities_c.f_5)))
+            except:
+                projection_table.csf_decrease_increase_in_current_liabilities_and_provisions.f_5=0
+
+            projection_table.csf_decrease_increase_in_current_liabilities_and_provisions.save()
+
+
+
+
+
+
+
+
+            try:
+                projection_table.csf_decrease_increase_in_other_current_assets.f_1= ceil(float(projection_table.blnc_short_term_investments_growth_or_amount.f_1)+float(projection_table.blnc_short_term_loans_and_advances_growth_or_amount.f_1)+float(projection_table.blnc_other_current_assets_growth_or_amount.f_1))
+            except:
+                projection_table.csf_decrease_increase_in_other_current_assets.f_1=0
+
+            try:
+                projection_table.csf_decrease_increase_in_other_current_assets.f_2= (ceil(float(projection_table.blnc_short_term_investments_growth_or_amount.f_1)+float(projection_table.blnc_short_term_loans_and_advances_growth_or_amount.f_1)+float(projection_table.blnc_other_current_assets_growth_or_amount.f_1))-ceil(float(projection_table.blnc_short_term_investments_growth_or_amount.f_2)+float(projection_table.blnc_short_term_loans_and_advances_growth_or_amount.f_2)+float(projection_table.blnc_other_current_assets_growth_or_amount.f_2)))
+            except:
+                projection_table.csf_decrease_increase_in_other_current_assets.f_2=0
+
+            try:
+                projection_table.csf_decrease_increase_in_other_current_assets.f_3= (ceil(float(projection_table.blnc_short_term_investments_growth_or_amount.f_2)+float(projection_table.blnc_short_term_loans_and_advances_growth_or_amount.f_2)+float(projection_table.blnc_other_current_assets_growth_or_amount.f_2))-ceil(float(projection_table.blnc_short_term_investments_growth_or_amount.f_3)+float(projection_table.blnc_short_term_loans_and_advances_growth_or_amount.f_3)+float(projection_table.blnc_other_current_assets_growth_or_amount.f_3)))
+            except:
+                projection_table.csf_decrease_increase_in_other_current_assets.f_3=0
+
+            try:
+                projection_table.csf_decrease_increase_in_other_current_assets.f_4= (ceil(float(projection_table.blnc_short_term_investments_growth_or_amount.f_3)+float(projection_table.blnc_short_term_loans_and_advances_growth_or_amount.f_3)+float(projection_table.blnc_other_current_assets_growth_or_amount.f_3))-ceil(float(projection_table.blnc_short_term_investments_growth_or_amount.f_4)+float(projection_table.blnc_short_term_loans_and_advances_growth_or_amount.f_4)+float(projection_table.blnc_other_current_assets_growth_or_amount.f_4)))
+            except:
+                projection_table.csf_decrease_increase_in_other_current_assets.f_4=0
+
+            try:
+                projection_table.csf_decrease_increase_in_other_current_assets.f_5=  (ceil(float(projection_table.blnc_short_term_investments_growth_or_amount.f_4)+float(projection_table.blnc_short_term_loans_and_advances_growth_or_amount.f_4)+float(projection_table.blnc_other_current_assets_growth_or_amount.f_4))-ceil(float(projection_table.blnc_short_term_investments_growth_or_amount.f_5)+float(projection_table.blnc_short_term_loans_and_advances_growth_or_amount.f_5)+float(projection_table.blnc_other_current_assets_growth_or_amount.f_5)))
+            except:
+                projection_table.csf_decrease_increase_in_other_current_assets.f_5=0
+
+            projection_table.csf_decrease_increase_in_other_current_assets.save()
+
+
+
+
+
+
+            try:
+                projection_table.csf_other_income.f_1=projection_table.ins_particulars_other_income.f_1
+            except:
+                projection_table.csf_other_income.f_1=0
+
+            try:
+                projection_table.csf_other_income.f_2=projection_table.ins_particulars_other_income.f_2
+            except:
+                projection_table.csf_other_income.f_2=0
+
+            try:
+                projection_table.csf_other_income.f_3=projection_table.ins_particulars_other_income.f_3
+            except:
+                projection_table.csf_other_income.f_3=0
+
+            try:
+                projection_table.csf_other_income.f_4=projection_table.ins_particulars_other_income.f_4
+            except:
+                projection_table.csf_other_income.f_4=0
+
+            try:
+                projection_table.csf_other_income.f_5=projection_table.ins_particulars_other_income.f_5
+            except:
+                projection_table.csf_other_income.f_5=0
+
+            projection_table.csf_other_income.save()
+
+
+
+
+
+
+            try:
+                projection_table.csf_realised_foreign_exchange_gain_loss.f_1= projection_table.ins_particulars_realised_foreign_exchange_gain_loss.f_1
+            except:
+                projection_table.csf_realised_foreign_exchange_gain_loss.f_1=0
+
+            try:
+                projection_table.csf_realised_foreign_exchange_gain_loss.f_2= projection_table.ins_particulars_realised_foreign_exchange_gain_loss.f_2
+            except:
+                projection_table.csf_realised_foreign_exchange_gain_loss.f_2=0
+
+            try:
+                projection_table.csf_realised_foreign_exchange_gain_loss.f_3= projection_table.ins_particulars_realised_foreign_exchange_gain_loss.f_3
+            except:
+                projection_table.csf_realised_foreign_exchange_gain_loss.f_3=0
+
+            try:
+                projection_table.csf_realised_foreign_exchange_gain_loss.f_4= projection_table.ins_particulars_realised_foreign_exchange_gain_loss.f_4
+            except:
+                projection_table.csf_realised_foreign_exchange_gain_loss.f_4=0
+
+            try:
+                projection_table.csf_realised_foreign_exchange_gain_loss.f_5= projection_table.ins_particulars_realised_foreign_exchange_gain_loss.f_5
+            except:
+                projection_table.csf_realised_foreign_exchange_gain_loss.f_5=0
+
+            projection_table.csf_realised_foreign_exchange_gain_loss.save()
+
+
+
+
+
+            try:
+                projection_table.csf_income_taxes_paid.f_1= projection_table.ins_particulars_provision_for_income_tax.f_1
+            except:
+                projection_table.csf_income_taxes_paid.f_1=0
+
+            try:
+                projection_table.csf_income_taxes_paid.f_2= projection_table.ins_particulars_provision_for_income_tax.f_2
+            except:
+                projection_table.csf_income_taxes_paid.f_2=0
+
+            try:
+                projection_table.csf_income_taxes_paid.f_3= projection_table.ins_particulars_provision_for_income_tax.f_3
+            except:
+                projection_table.csf_income_taxes_paid.f_3=0
+
+            try:
+                projection_table.csf_income_taxes_paid.f_4= projection_table.ins_particulars_provision_for_income_tax.f_4
+            except:
+                projection_table.csf_income_taxes_paid.f_4=0
+
+            try:
+                projection_table.csf_income_taxes_paid.f_5= projection_table.ins_particulars_provision_for_income_tax.f_5
+            except:
+                projection_table.csf_income_taxes_paid.f_5=0
+
+            projection_table.csf_income_taxes_paid.save()
+
+
+
+
+
+            try:
+                projection_table.csf_net_cash_provided_by_used_in_operating_activities.f_1=ceil(float(projection_table.csf_operating_profit_before_working_capital_changes.f_1)+float(projection_table.csf_decrease_increase_in_sundry_debtors.f_1)+float(projection_table.csf_decrease_increase_in_inventories.f_1)+float(projection_table.csf_decrease_increase_in_current_liabilities_and_provisions.f_1)+float(projection_table.csf_decrease_increase_in_other_current_assets.f_1)+float(projection_table.csf_other_income.f_1)+float(projection_table.csf_realised_foreign_exchange_gain_loss.f_1)+float(projection_table.csf_income_taxes_paid.f_1))
+
+            except:
+                projection_table.csf_net_cash_provided_by_used_in_operating_activities.f_1=0
+
+            try:
+                projection_table.csf_net_cash_provided_by_used_in_operating_activities.f_2=ceil(float(projection_table.csf_operating_profit_before_working_capital_changes.f_2)+float(projection_table.csf_decrease_increase_in_sundry_debtors.f_2)+float(projection_table.csf_decrease_increase_in_inventories.f_2)+float(projection_table.csf_decrease_increase_in_current_liabilities_and_provisions.f_2)+float(projection_table.csf_decrease_increase_in_other_current_assets.f_2)+float(projection_table.csf_other_income.f_2)+float(projection_table.csf_realised_foreign_exchange_gain_loss.f_2)+float(projection_table.csf_income_taxes_paid.f_2))
+
+            except:
+                projection_table.csf_net_cash_provided_by_used_in_operating_activities.f_2=0
+
+            try:
+                projection_table.csf_net_cash_provided_by_used_in_operating_activities.f_3=ceil(float(projection_table.csf_operating_profit_before_working_capital_changes.f_3)+float(projection_table.csf_decrease_increase_in_sundry_debtors.f_3)+float(projection_table.csf_decrease_increase_in_inventories.f_3)+float(projection_table.csf_decrease_increase_in_current_liabilities_and_provisions.f_3)+float(projection_table.csf_decrease_increase_in_other_current_assets.f_3)+float(projection_table.csf_other_income.f_3)+float(projection_table.csf_realised_foreign_exchange_gain_loss.f_3)+float(projection_table.csf_income_taxes_paid.f_3))
+
+            except:
+                projection_table.csf_net_cash_provided_by_used_in_operating_activities.f_3=0
+
+            try:
+                projection_table.csf_net_cash_provided_by_used_in_operating_activities.f_4=ceil(float(projection_table.csf_operating_profit_before_working_capital_changes.f_4)+float(projection_table.csf_decrease_increase_in_sundry_debtors.f_4)+float(projection_table.csf_decrease_increase_in_inventories.f_4)+float(projection_table.csf_decrease_increase_in_current_liabilities_and_provisions.f_4)+float(projection_table.csf_decrease_increase_in_other_current_assets.f_4)+float(projection_table.csf_other_income.f_4)+float(projection_table.csf_realised_foreign_exchange_gain_loss.f_4)+float(projection_table.csf_income_taxes_paid.f_4))
+
+            except:
+                projection_table.csf_net_cash_provided_by_used_in_operating_activities.f_4=0
+
+            try:
+                projection_table.csf_net_cash_provided_by_used_in_operating_activities.f_5=ceil(float(projection_table.csf_operating_profit_before_working_capital_changes.f_5)+float(projection_table.csf_decrease_increase_in_sundry_debtors.f_5)+float(projection_table.csf_decrease_increase_in_inventories.f_5)+float(projection_table.csf_decrease_increase_in_current_liabilities_and_provisions.f_5)+float(projection_table.csf_decrease_increase_in_other_current_assets.f_5)+float(projection_table.csf_other_income.f_5)+float(projection_table.csf_realised_foreign_exchange_gain_loss.f_5)+float(projection_table.csf_income_taxes_paid.f_5))
+
+            except:
+                projection_table.csf_net_cash_provided_by_used_in_operating_activities.f_5=0
+
+
+            projection_table.csf_net_cash_provided_by_used_in_operating_activities.save()
+
+
+
+
+
+
+
+            try:
+                projection_table.csf_purchase_of_fixed_assets.f_1=projection_table.p_capex_additions.f_1
+            except:
+                projection_table.csf_purchase_of_fixed_assets.f_1=0
+
+            try:
+                projection_table.csf_purchase_of_fixed_assets.f_2=projection_table.p_capex_additions.f_2
+            except:
+                projection_table.csf_purchase_of_fixed_assets.f_2=0
+
+            try:
+                projection_table.csf_purchase_of_fixed_assets.f_3=projection_table.p_capex_additions.f_3
+            except:
+                projection_table.csf_purchase_of_fixed_assets.f_3=0
+
+            try:
+                projection_table.csf_purchase_of_fixed_assets.f_4=projection_table.p_capex_additions.f_4
+            except:
+                projection_table.csf_purchase_of_fixed_assets.f_4=0
+
+            try:
+                projection_table.csf_purchase_of_fixed_assets.f_5=projection_table.p_capex_additions.f_5
+            except:
+                projection_table.csf_purchase_of_fixed_assets.f_5=0
+
+            projection_table.csf_purchase_of_fixed_assets.save()
+
+
+
+
+
+            try:
+                projection_table.csf_intangible_assets.f_1=projection_table.p_capex_additions_intangible.f_1
+            except:
+                projection_table.csf_intangible_assets.f_1=0
+
+            try:
+                projection_table.csf_intangible_assets.f_2=projection_table.p_capex_additions_intangible.f_2
+            except:
+                projection_table.csf_intangible_assets.f_2=0
+
+            try:
+                projection_table.csf_intangible_assets.f_3=projection_table.p_capex_additions_intangible.f_3
+            except:
+                projection_table.csf_intangible_assets.f_3=0
+
+            try:
+                projection_table.csf_intangible_assets.f_4=projection_table.p_capex_additions_intangible.f_4
+            except:
+                projection_table.csf_intangible_assets.f_4=0
+
+            try:
+                projection_table.csf_intangible_assets.f_5=projection_table.p_capex_additions_intangible.f_5
+            except:
+                projection_table.csf_intangible_assets.f_5=0
+
+            projection_table.csf_intangible_assets.save()
+
+
+
+
+
+            try:
+                projection_table.csf_net_cash_provided_used_in_investing_activities.f_1=ceil(float(projection_table.csf_purchase_of_fixed_assets.f_1)+float(projection_table.csf_intangible_assets.f_1))
+            except:
+                projection_table.csf_net_cash_provided_used_in_investing_activities.f_1=0
+
+            try:
+                projection_table.csf_net_cash_provided_used_in_investing_activities.f_2=ceil(float(projection_table.csf_purchase_of_fixed_assets.f_2)+float(projection_table.csf_intangible_assets.f_2))
+            except:
+                projection_table.csf_net_cash_provided_used_in_investing_activities.f_2=0
+
+            try:
+                projection_table.csf_net_cash_provided_used_in_investing_activities.f_3=ceil(float(projection_table.csf_purchase_of_fixed_assets.f_3)+float(projection_table.csf_intangible_assets.f_3))
+            except:
+                projection_table.csf_net_cash_provided_used_in_investing_activities.f_3=0
+
+            try:
+                projection_table.csf_net_cash_provided_used_in_investing_activities.f_4=ceil(float(projection_table.csf_purchase_of_fixed_assets.f_4)+float(projection_table.csf_intangible_assets.f_4))
+            except:
+                projection_table.csf_net_cash_provided_used_in_investing_activities.f_4=0
+
+            try:
+                projection_table.csf_net_cash_provided_used_in_investing_activities.f_5=ceil(float(projection_table.csf_purchase_of_fixed_assets.f_5)+float(projection_table.csf_intangible_assets.f_5))
+            except:
+                projection_table.csf_net_cash_provided_used_in_investing_activities.f_5=0
+
+            projection_table.csf_net_cash_provided_used_in_investing_activities.save()
+
+
+
+
+
+
+
+
+
+            try:
+                projection_table.csf_issue_of_share_capital_net_of_issue_expenses_paid.f_1=projection_table.blnc_share_capital.f_1
+            except:
+                projection_table.csf_issue_of_share_capital_net_of_issue_expenses_paid.f_1=0
+
+            try:
+                projection_table.csf_issue_of_share_capital_net_of_issue_expenses_paid.f_2=ceil(float(projection_table.blnc_share_capital.f_2)-float(projection_table.blnc_share_capital.f_1))
+            except:
+                projection_table.csf_issue_of_share_capital_net_of_issue_expenses_paid.f_2=0
+
+            try:
+                projection_table.csf_issue_of_share_capital_net_of_issue_expenses_paid.f_3=ceil(float(projection_table.blnc_share_capital.f_3)-float(projection_table.blnc_share_capital.f_2))
+            except:
+                projection_table.csf_issue_of_share_capital_net_of_issue_expenses_paid.f_3=0
+
+            try:
+                projection_table.csf_issue_of_share_capital_net_of_issue_expenses_paid.f_4=ceil(float(projection_table.blnc_share_capital.f_4)-float(projection_table.blnc_share_capital.f_3))
+            except:
+                projection_table.csf_issue_of_share_capital_net_of_issue_expenses_paid.f_4=0
+
+            try:
+                projection_table.csf_issue_of_share_capital_net_of_issue_expenses_paid.f_5=ceil(float(projection_table.blnc_share_capital.f_5)-float(projection_table.blnc_share_capital.f_4))
+            except:
+                projection_table.csf_issue_of_share_capital_net_of_issue_expenses_paid.f_5=0
+
+            projection_table.csf_issue_of_share_capital_net_of_issue_expenses_paid.save()
+
+
+
+
+
+
+
+
+            try:
+                projection_table.csf_equity_funds_raised.f_1=projection_table.blnc_equity_funds_raised.f_1
+            except:
+                projection_table.csf_equity_funds_raised.f_1=0
+
+            try:
+                projection_table.csf_equity_funds_raised.f_2=ceil(float(projection_table.blnc_equity_funds_raised.f_2)-float(projection_table.blnc_equity_funds_raised.f_1))
+            except:
+                projection_table.csf_equity_funds_raised.f_2=0
+
+            try:
+                projection_table.csf_equity_funds_raised.f_3=ceil(float(projection_table.blnc_equity_funds_raised.f_3)-float(projection_table.blnc_equity_funds_raised.f_2))
+            except:
+                projection_table.csf_equity_funds_raised.f_3=0
+
+            try:
+                projection_table.csf_equity_funds_raised.f_4=ceil(float(projection_table.blnc_equity_funds_raised.f_4)-float(projection_table.blnc_equity_funds_raised.f_3))
+            except:
+                projection_table.csf_equity_funds_raised.f_4=0
+
+            try:
+                projection_table.csf_equity_funds_raised.f_5=ceil(float(projection_table.blnc_equity_funds_raised.f_5)-float(projection_table.blnc_equity_funds_raised.f_4))
+            except:
+                projection_table.csf_equity_funds_raised.f_5=0
+
+            projection_table.csf_equity_funds_raised.save()
+
+
+
+
+
+            try:
+                projection_table.csf_proceeds_repayment_of_loans.f_1=ceil(float(projection_table.blnc_total_secured_loans.f_1)+float(projection_table.blnc_unsecured_loans.f_1)+float(projection_table.blnc_short_term_borrowings_growth_or_amount.f_1))
+            except:
+                projection_table.csf_proceeds_repayment_of_loans.f_1=0
+
+            try:
+                projection_table.csf_proceeds_repayment_of_loans.f_2=ceil(float(projection_table.blnc_total_secured_loans.f_2)+float(projection_table.blnc_unsecured_loans.f_2)+float(projection_table.blnc_short_term_borrowings_growth_or_amount.f_2))-ceil(float(projection_table.blnc_total_secured_loans.f_1)+float(projection_table.blnc_unsecured_loans.f_1)+float(projection_table.blnc_short_term_borrowings_growth_or_amount.f_1))
+            except:
+                projection_table.csf_proceeds_repayment_of_loans.f_2=0
+
+            try:
+                projection_table.csf_proceeds_repayment_of_loans.f_3=ceil(float(projection_table.blnc_total_secured_loans.f_3)+float(projection_table.blnc_unsecured_loans.f_3)+float(projection_table.blnc_short_term_borrowings_growth_or_amount.f_3))-ceil(float(projection_table.blnc_total_secured_loans.f_2)+float(projection_table.blnc_unsecured_loans.f_2)+float(projection_table.blnc_short_term_borrowings_growth_or_amount.f_2))
+            except:
+                projection_table.csf_proceeds_repayment_of_loans.f_3=0
+
+            try:
+                projection_table.csf_proceeds_repayment_of_loans.f_4=ceil(float(projection_table.blnc_total_secured_loans.f_4)+float(projection_table.blnc_unsecured_loans.f_4)+float(projection_table.blnc_short_term_borrowings_growth_or_amount.f_4))-ceil(float(projection_table.blnc_total_secured_loans.f_3)+float(projection_table.blnc_unsecured_loans.f_3)+float(projection_table.blnc_short_term_borrowings_growth_or_amount.f_3))
+            except:
+                projection_table.csf_proceeds_repayment_of_loans.f_4=0
+
+            try:
+                projection_table.csf_proceeds_repayment_of_loans.f_5=ceil(float(projection_table.blnc_total_secured_loans.f_5)+float(projection_table.blnc_unsecured_loans.f_5)+float(projection_table.blnc_short_term_borrowings_growth_or_amount.f_5))-ceil(float(projection_table.blnc_total_secured_loans.f_4)+float(projection_table.blnc_unsecured_loans.f_4)+float(projection_table.blnc_short_term_borrowings_growth_or_amount.f_4))
+            except:
+                projection_table.csf_proceeds_repayment_of_loans.f_5=0
+
+
+
+            projection_table.csf_proceeds_repayment_of_loans.save()
+
+
+
+
+
+
+
+
+
+
+
+            try:
+                projection_table.csf_interest_paid_on_loans.f_1=projection_table.ins_particulars_interest_including_finance_charges.f_1
+            except:
+                projection_table.csf_interest_paid_on_loans.f_1=0
+
+            try:
+                projection_table.csf_interest_paid_on_loans.f_2=projection_table.ins_particulars_interest_including_finance_charges.f_2
+            except:
+                projection_table.csf_interest_paid_on_loans.f_2=0
+
+            try:
+                projection_table.csf_interest_paid_on_loans.f_3=projection_table.ins_particulars_interest_including_finance_charges.f_3
+            except:
+                projection_table.csf_interest_paid_on_loans.f_3=0
+
+            try:
+                projection_table.csf_interest_paid_on_loans.f_4=projection_table.ins_particulars_interest_including_finance_charges.f_4
+            except:
+                projection_table.csf_interest_paid_on_loans.f_4=0
+
+            try:
+                projection_table.csf_interest_paid_on_loans.f_5=projection_table.ins_particulars_interest_including_finance_charges.f_5
+            except:
+                projection_table.csf_interest_paid_on_loans.f_5=0
+
+            projection_table.csf_interest_paid_on_loans.save()
+
+
+
+            try:
+                projection_table.csf_net_cash_provided_used_by_financing_activities.f_1=ceil(float(projection_table.csf_issue_of_share_capital_net_of_issue_expenses_paid.f_1)+float(projection_table.csf_equity_funds_raised.f_1)+float(projection_table.csf_proceeds_repayment_of_loans.f_1)+float(projection_table.csf_interest_paid_on_loans.f_1))
+            except:
+                projection_table.csf_net_cash_provided_used_by_financing_activities.f_1=0
+
+            try:
+                projection_table.csf_net_cash_provided_used_by_financing_activities.f_2=ceil(float(projection_table.csf_issue_of_share_capital_net_of_issue_expenses_paid.f_2)+float(projection_table.csf_equity_funds_raised.f_2)+float(projection_table.csf_proceeds_repayment_of_loans.f_2)+float(projection_table.csf_interest_paid_on_loans.f_2))
+            except:
+                projection_table.csf_net_cash_provided_used_by_financing_activities.f_2=0
+
+            try:
+                projection_table.csf_net_cash_provided_used_by_financing_activities.f_3=ceil(float(projection_table.csf_issue_of_share_capital_net_of_issue_expenses_paid.f_3)+float(projection_table.csf_equity_funds_raised.f_3)+float(projection_table.csf_proceeds_repayment_of_loans.f_3)+float(projection_table.csf_interest_paid_on_loans.f_3))
+            except:
+                projection_table.csf_net_cash_provided_used_by_financing_activities.f_3=0
+
+            try:
+                projection_table.csf_net_cash_provided_used_by_financing_activities.f_4=ceil(float(projection_table.csf_issue_of_share_capital_net_of_issue_expenses_paid.f_4)+float(projection_table.csf_equity_funds_raised.f_4)+float(projection_table.csf_proceeds_repayment_of_loans.f_4)+float(projection_table.csf_interest_paid_on_loans.f_4))
+            except:
+                projection_table.csf_net_cash_provided_used_by_financing_activities.f_4=0
+
+            try:
+                projection_table.csf_net_cash_provided_used_by_financing_activities.f_5=ceil(float(projection_table.csf_issue_of_share_capital_net_of_issue_expenses_paid.f_5)+float(projection_table.csf_equity_funds_raised.f_5)+float(projection_table.csf_proceeds_repayment_of_loans.f_5)+float(projection_table.csf_interest_paid_on_loans.f_5))
+            except:
+                projection_table.csf_net_cash_provided_used_by_financing_activities.f_5=0
+
+            projection_table.csf_net_cash_provided_used_by_financing_activities.save()
+
+
+
+            try:
+                projection_table.csf_effect_of_exchange_differences_on_translation_of_foreign_currency_cash_and_cash_equivalents.f_1=0
+            except:
+                projection_table.csf_effect_of_exchange_differences_on_translation_of_foreign_currency_cash_and_cash_equivalents.f_1=0
+
+            try:
+                projection_table.csf_effect_of_exchange_differences_on_translation_of_foreign_currency_cash_and_cash_equivalents.f_2=0
+            except:
+                projection_table.csf_effect_of_exchange_differences_on_translation_of_foreign_currency_cash_and_cash_equivalents.f_2=0
+
+            try:
+                projection_table.csf_effect_of_exchange_differences_on_translation_of_foreign_currency_cash_and_cash_equivalents.f_3=0
+            except:
+                projection_table.csf_effect_of_exchange_differences_on_translation_of_foreign_currency_cash_and_cash_equivalents.f_3=0
+
+            try:
+                projection_table.csf_effect_of_exchange_differences_on_translation_of_foreign_currency_cash_and_cash_equivalents.f_4=0
+            except:
+                projection_table.csf_effect_of_exchange_differences_on_translation_of_foreign_currency_cash_and_cash_equivalents.f_4=0
+
+            try:
+                projection_table.csf_effect_of_exchange_differences_on_translation_of_foreign_currency_cash_and_cash_equivalents.f_5=0
+            except:
+                projection_table.csf_effect_of_exchange_differences_on_translation_of_foreign_currency_cash_and_cash_equivalents.f_5=0
+
+            projection_table.csf_effect_of_exchange_differences_on_translation_of_foreign_currency_cash_and_cash_equivalents.save()
+
+
+
+
+
+            try:
+                projection_table.csf_net_increase_decrease_in_cash_and_cash_equivalents.f_1=ceil(float(projection_table.csf_net_cash_provided_by_used_in_operating_activities.f_1)+float(projection_table.csf_net_cash_provided_used_in_investing_activities.f_1)+float(projection_table.csf_net_cash_provided_used_by_financing_activities.f_1))
+            except:
+                projection_table.csf_net_increase_decrease_in_cash_and_cash_equivalents.f_1=0
+
+            try:
+                projection_table.csf_net_increase_decrease_in_cash_and_cash_equivalents.f_2=ceil(float(projection_table.csf_net_cash_provided_by_used_in_operating_activities.f_2)+float(projection_table.csf_net_cash_provided_used_in_investing_activities.f_2)+float(projection_table.csf_net_cash_provided_used_by_financing_activities.f_2))
+            except:
+                projection_table.csf_net_increase_decrease_in_cash_and_cash_equivalents.f_2=0
+
+            try:
+                projection_table.csf_net_increase_decrease_in_cash_and_cash_equivalents.f_3=ceil(float(projection_table.csf_net_cash_provided_by_used_in_operating_activities.f_3)+float(projection_table.csf_net_cash_provided_used_in_investing_activities.f_3)+float(projection_table.csf_net_cash_provided_used_by_financing_activities.f_3))
+            except:
+                projection_table.csf_net_increase_decrease_in_cash_and_cash_equivalents.f_3=0
+
+            try:
+                projection_table.csf_net_increase_decrease_in_cash_and_cash_equivalents.f_4=ceil(float(projection_table.csf_net_cash_provided_by_used_in_operating_activities.f_4)+float(projection_table.csf_net_cash_provided_used_in_investing_activities.f_4)+float(projection_table.csf_net_cash_provided_used_by_financing_activities.f_4))
+            except:
+                projection_table.csf_net_increase_decrease_in_cash_and_cash_equivalents.f_4=0
+
+            try:
+                projection_table.csf_net_increase_decrease_in_cash_and_cash_equivalents.f_5=ceil(float(projection_table.csf_net_cash_provided_by_used_in_operating_activities.f_5)+float(projection_table.csf_net_cash_provided_used_in_investing_activities.f_5)+float(projection_table.csf_net_cash_provided_used_by_financing_activities.f_5))
+            except:
+                projection_table.csf_net_increase_decrease_in_cash_and_cash_equivalents.f_5=0
+
+            projection_table.csf_net_increase_decrease_in_cash_and_cash_equivalents.save()
+
+
+
+
+            try:
+                projection_table.csf_cash_and_cash_equivalents_at_the_beginning_of_the_year.f_1=0
+            except:
+                projection_table.csf_cash_and_cash_equivalents_at_the_beginning_of_the_year.f_1=0
+
+            try:
+                projection_table.csf_cash_and_cash_equivalents_at_the_beginning_of_the_year.f_2=projection_table.blnc_cash.f_1
+            except:
+                projection_table.csf_cash_and_cash_equivalents_at_the_beginning_of_the_year.f_2=0
+
+            try:
+                projection_table.csf_cash_and_cash_equivalents_at_the_beginning_of_the_year.f_3=projection_table.blnc_cash.f_2
+            except:
+                projection_table.csf_cash_and_cash_equivalents_at_the_beginning_of_the_year.f_3=0
+
+            try:
+                projection_table.csf_cash_and_cash_equivalents_at_the_beginning_of_the_year.f_4=projection_table.blnc_cash.f_3
+            except:
+                projection_table.csf_cash_and_cash_equivalents_at_the_beginning_of_the_year.f_4=0
+
+            try:
+                projection_table.csf_cash_and_cash_equivalents_at_the_beginning_of_the_year.f_5=projection_table.blnc_cash.f_4
+            except:
+                projection_table.csf_cash_and_cash_equivalents_at_the_beginning_of_the_year.f_5=0
+
+
+
+
+            projection_table.csf_cash_and_cash_equivalents_at_the_beginning_of_the_year.save()
+
+
+
+
+
+            try:
+                projection_table.csf_cash_and_cash_equivalents_at_the_end_of_the_year.f_1=ceil(float(projection_table.csf_net_increase_decrease_in_cash_and_cash_equivalents.f_1)+float(projection_table.csf_cash_and_cash_equivalents_at_the_beginning_of_the_year.f_1))
+            except:
+                projection_table.csf_cash_and_cash_equivalents_at_the_end_of_the_year.f_1=0
+
+            try:
+                projection_table.csf_cash_and_cash_equivalents_at_the_end_of_the_year.f_2=ceil(float(projection_table.csf_net_increase_decrease_in_cash_and_cash_equivalents.f_2)+float(projection_table.csf_cash_and_cash_equivalents_at_the_beginning_of_the_year.f_2))
+            except:
+                projection_table.csf_cash_and_cash_equivalents_at_the_end_of_the_year.f_2=0
+
+            try:
+                projection_table.csf_cash_and_cash_equivalents_at_the_end_of_the_year.f_3=ceil(float(projection_table.csf_net_increase_decrease_in_cash_and_cash_equivalents.f_3)+float(projection_table.csf_cash_and_cash_equivalents_at_the_beginning_of_the_year.f_3))
+            except:
+                projection_table.csf_cash_and_cash_equivalents_at_the_end_of_the_year.f_3=0
+
+            try:
+                projection_table.csf_cash_and_cash_equivalents_at_the_end_of_the_year.f_4=ceil(float(projection_table.csf_net_increase_decrease_in_cash_and_cash_equivalents.f_4)+float(projection_table.csf_cash_and_cash_equivalents_at_the_beginning_of_the_year.f_4))
+            except:
+                projection_table.csf_cash_and_cash_equivalents_at_the_end_of_the_year.f_4=0
+
+            try:
+                projection_table.csf_cash_and_cash_equivalents_at_the_end_of_the_year.f_5=ceil(float(projection_table.csf_net_increase_decrease_in_cash_and_cash_equivalents.f_5)+float(projection_table.csf_cash_and_cash_equivalents_at_the_beginning_of_the_year.f_5))
+            except:
+                projection_table.csf_cash_and_cash_equivalents_at_the_end_of_the_year.f_5=0
+
+
+            projection_table.csf_cash_and_cash_equivalents_at_the_end_of_the_year.save()
+
+
+
+
+
+
+            try:
+                projection_table.csf_balancing_figure.f_1=ceil(float(projection_table.csf_cash_and_cash_equivalents_at_the_end_of_the_year.f_1)-float(projection_table.blnc_cash.f_1))
+            except:
+                projection_table.csf_balancing_figure.f_1=0
+
+            try:
+                projection_table.csf_balancing_figure.f_2=ceil(float(projection_table.csf_cash_and_cash_equivalents_at_the_end_of_the_year.f_2)-float(projection_table.blnc_cash.f_2))
+            except:
+                projection_table.csf_balancing_figure.f_2=0
+
+            try:
+                projection_table.csf_balancing_figure.f_3=ceil(float(projection_table.csf_cash_and_cash_equivalents_at_the_end_of_the_year.f_3)-float(projection_table.blnc_cash.f_3))
+            except:
+                projection_table.csf_balancing_figure.f_3=0
+
+            try:
+                projection_table.csf_balancing_figure.f_4=ceil(float(projection_table.csf_cash_and_cash_equivalents_at_the_end_of_the_year.f_4)-float(projection_table.blnc_cash.f_4))
+            except:
+                projection_table.csf_balancing_figure.f_4=0
+
+            try:
+                projection_table.csf_balancing_figure.f_5=ceil(float(projection_table.csf_cash_and_cash_equivalents_at_the_end_of_the_year.f_5)-float(projection_table.blnc_cash.f_5))
+            except:
+                projection_table.csf_balancing_figure.f_5=0
+
+            projection_table.csf_balancing_figure.save()
+
+
+
+
+
+
+            try:
+                projection_table.csf_operating_cash_flow.f_1=projection_table.csf_net_cash_provided_by_used_in_operating_activities.f_1
+            except:
+                projection_table.csf_operating_cash_flow.f_1=0
+
+            try:
+                projection_table.csf_operating_cash_flow.f_2=projection_table.csf_net_cash_provided_by_used_in_operating_activities.f_2
+            except:
+                projection_table.csf_operating_cash_flow.f_2=0
+
+            try:
+                projection_table.csf_operating_cash_flow.f_3=projection_table.csf_net_cash_provided_by_used_in_operating_activities.f_3
+            except:
+                projection_table.csf_operating_cash_flow.f_3=0
+
+            try:
+                projection_table.csf_operating_cash_flow.f_4=projection_table.csf_net_cash_provided_by_used_in_operating_activities.f_4
+            except:
+                projection_table.csf_operating_cash_flow.f_4=0
+
+            try:
+                projection_table.csf_operating_cash_flow.f_5=projection_table.csf_net_cash_provided_by_used_in_operating_activities.f_5
+            except:
+                projection_table.csf_operating_cash_flow.f_5=0
+
+            projection_table.csf_operating_cash_flow.save()
+
+
+
+            try:
+                projection_table.csf_capital_expenditure.f_1=ceil(float(projection_table.csf_purchase_of_fixed_assets.f_1)+float(projection_table.csf_intangible_assets.f_1))
+            except:
+                projection_table.csf_capital_expenditure.f_1=0
+
+            try:
+                projection_table.csf_capital_expenditure.f_2=ceil(float(projection_table.csf_purchase_of_fixed_assets.f_2)+float(projection_table.csf_intangible_assets.f_2))
+            except:
+                projection_table.csf_capital_expenditure.f_2=0
+
+            try:
+                projection_table.csf_capital_expenditure.f_3=ceil(float(projection_table.csf_purchase_of_fixed_assets.f_3)+float(projection_table.csf_intangible_assets.f_3))
+            except:
+                projection_table.csf_capital_expenditure.f_3=0
+
+            try:
+                projection_table.csf_capital_expenditure.f_4=ceil(float(projection_table.csf_purchase_of_fixed_assets.f_4)+float(projection_table.csf_intangible_assets.f_4))
+            except:
+                projection_table.csf_capital_expenditure.f_4=0
+
+            try:
+                projection_table.csf_capital_expenditure.f_5=ceil(float(projection_table.csf_purchase_of_fixed_assets.f_5)+float(projection_table.csf_intangible_assets.f_5))
+            except:
+                projection_table.csf_capital_expenditure.f_5=0
+
+            projection_table.csf_capital_expenditure.save()
+
+
+
+            try:
+                projection_table.csf_free_cash_flow.f_1=ceil(float(projection_table.csf_operating_cash_flow.f_1)+float(projection_table.csf_capital_expenditure.f_1))
+            except:
+                projection_table.csf_free_cash_flow.f_1=0
+
+            try:
+                projection_table.csf_free_cash_flow.f_2=ceil(float(projection_table.csf_operating_cash_flow.f_2)+float(projection_table.csf_capital_expenditure.f_2))
+            except:
+                projection_table.csf_free_cash_flow.f_2=0
+
+            try:
+                projection_table.csf_free_cash_flow.f_3=ceil(float(projection_table.csf_operating_cash_flow.f_3)+float(projection_table.csf_capital_expenditure.f_3))
+            except:
+                projection_table.csf_free_cash_flow.f_3=0
+
+            try:
+                projection_table.csf_free_cash_flow.f_4=ceil(float(projection_table.csf_operating_cash_flow.f_4)+float(projection_table.csf_capital_expenditure.f_4))
+            except:
+                projection_table.csf_free_cash_flow.f_4=0
+
+            try:
+                projection_table.csf_free_cash_flow.f_5=ceil(float(projection_table.csf_operating_cash_flow.f_5)+float(projection_table.csf_capital_expenditure.f_5))
+            except:
+                projection_table.csf_free_cash_flow.f_5=0
+
+            projection_table.csf_free_cash_flow.save()
+
+
+
+
+            try:
+                projection_table.csf_operating_cash_flow_sales.f_1=ceil(float(projection_table.csf_net_cash_provided_by_used_in_operating_activities.f_1)/float(projection_table.ins_particulars_total_revenue_from_operations_services.f_1))
+            except:
+                projection_table.csf_operating_cash_flow_sales.f_1=0
+
+            try:
+                projection_table.csf_operating_cash_flow_sales.f_2=ceil(float(projection_table.csf_net_cash_provided_by_used_in_operating_activities.f_2)/float(projection_table.ins_particulars_total_revenue_from_operations_services.f_2))
+            except:
+                projection_table.csf_operating_cash_flow_sales.f_2=0
+
+            try:
+                projection_table.csf_operating_cash_flow_sales.f_3=ceil(float(projection_table.csf_net_cash_provided_by_used_in_operating_activities.f_3)/float(projection_table.ins_particulars_total_revenue_from_operations_services.f_3))
+            except:
+                projection_table.csf_operating_cash_flow_sales.f_3=0
+
+            try:
+                projection_table.csf_operating_cash_flow_sales.f_4=ceil(float(projection_table.csf_net_cash_provided_by_used_in_operating_activities.f_4)/float(projection_table.ins_particulars_total_revenue_from_operations_services.f_4))
+            except:
+                projection_table.csf_operating_cash_flow_sales.f_4=0
+
+            try:
+                projection_table.csf_operating_cash_flow_sales.f_5=ceil(float(projection_table.csf_net_cash_provided_by_used_in_operating_activities.f_5)/float(projection_table.ins_particulars_total_revenue_from_operations_services.f_5))
+            except:
+                projection_table.csf_operating_cash_flow_sales.f_5=0
+
+            projection_table.csf_operating_cash_flow_sales.save()
+
+
+
+
+
+
+            try:
+                projection_table.csf_free_cash_flow_operating_cash_flow.f_1=ceil(float(projection_table.csf_free_cash_flow.f_1)/float(projection_table.csf_net_cash_provided_by_used_in_operating_activities.f_1))
+            except:
+                projection_table.csf_free_cash_flow_operating_cash_flow.f_1=0
+
+            try:
+                projection_table.csf_free_cash_flow_operating_cash_flow.f_2=ceil(float(projection_table.csf_free_cash_flow.f_2)/float(projection_table.csf_net_cash_provided_by_used_in_operating_activities.f_2))
+            except:
+                projection_table.csf_free_cash_flow_operating_cash_flow.f_2=0
+
+            try:
+                projection_table.csf_free_cash_flow_operating_cash_flow.f_3=ceil(float(projection_table.csf_free_cash_flow.f_3)/float(projection_table.csf_net_cash_provided_by_used_in_operating_activities.f_3))
+            except:
+                projection_table.csf_free_cash_flow_operating_cash_flow.f_3=0
+
+            try:
+                projection_table.csf_free_cash_flow_operating_cash_flow.f_4=ceil(float(projection_table.csf_free_cash_flow.f_4)/float(projection_table.csf_net_cash_provided_by_used_in_operating_activities.f_4))
+            except:
+                projection_table.csf_free_cash_flow_operating_cash_flow.f_4=0
+
+            try:
+                projection_table.csf_free_cash_flow_operating_cash_flow.f_5=ceil(float(projection_table.csf_free_cash_flow.f_5)/float(projection_table.csf_net_cash_provided_by_used_in_operating_activities.f_5))
+            except:
+                projection_table.csf_free_cash_flow_operating_cash_flow.f_5=0
+
+            projection_table.csf_free_cash_flow_operating_cash_flow.save()
+
+
+            
+        else:
+            return redirect('/login')
+    else:
+        return redirect('/login')
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+def cal_cashflow(request):
+
+    if(auth_user(request)):
+        book = super_plan_forms.objects.filter(id=request.session['form']).get()
+        if(auth_user(request) and book ):
+
+             
+            calculate_cashflow(request)
+
+            book = super_plan_forms.objects.filter(id=request.session['form']).get()
+            projection_table = book.projection_table
+            return render(request,'user-form-cashflow.html',{"data":book,"projection_table":projection_table})
+
+        else:
+            return redirect('/login')
+    else:
+        return redirect('/login')
 
 
 
@@ -4522,6 +5554,8 @@ def user_form_11_submit(request):            # User Form 11 Submit
         projection_table.save()
         book.current_fillup_position = 11
         book.save()
+
+        calculate_income_statement(request)
 
 
         return render(request,'user-form12.html',{"data":book})

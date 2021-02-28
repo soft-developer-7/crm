@@ -1,0 +1,416 @@
+{% extends "base-user.html" %}
+{% load static %}
+
+{% block title %}Cash Flow{% endblock%}
+
+{% block style %}
+
+table td{
+	font-size:14px;
+	color:black !important;
+	font-weight:700;
+}
+th{
+	font-size:15px;
+}
+
+{% endblock%}
+
+
+
+{% block page_heading %}Cash Flow{% endblock%}
+
+
+{% block form_nav %}
+{% if request.session.form %}
+
+<div class="col-md-6 text-right">
+            
+            
+            <div class="btn-group">
+              <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Goto Form Number
+              </button>
+                <div class="dropdown-menu">
+                  <a class="dropdown-item" href="/superplan_form_number/1">1. Theme & Currency Selection</a>
+				  <a class="dropdown-item" href="/superplan_form_number/2">2. Basic informations</a>
+				  <a class="dropdown-item" href="/superplan_form_number/3">3. Introduction</a>
+				  <a class="dropdown-item" href="/superplan_form_number/4">4. Challenges & Solutions</a>
+				  <a class="dropdown-item" href="/superplan_form_number/5">5. Company Profile</a>
+				  <a class="dropdown-item" href="/superplan_form_number/6">6. Management Profile</a>
+				  <a class="dropdown-item" href="/superplan_form_number/7">7. Marketing Strategies</a>
+				  <a class="dropdown-item" href="/superplan_form_number/8">8. Growth Strategies</a>
+				  <a class="dropdown-item" href="/superplan_form_number/9">9. Industry & Competitor Analysis</a>
+				  <a class="dropdown-item" href="/superplan_form_number/9-1">9.1. Historical Data</a>
+				  <a class="dropdown-item" href="/superplan_form_number/10">10. Profit & Loss</a>
+				  <a class="dropdown-item" href="/superplan_form_number/11">11. CAPEX Schedule</a>
+				  <a class="dropdown-item" href="/superplan_form_number/12">12. Balance Sheet</a>
+				  <a class="dropdown-item" href="/view_income_statement"> View income statement</a>
+				  <a class="dropdown-item" href="/view_cashflow"> View Cashflow</a>
+                </div>
+            </div>
+            
+            </div> 
+
+
+
+{% endif %}
+{% endblock form_nav %}
+
+{% block content %}
+
+
+
+
+
+<div class="row">
+
+<div class="col-12">
+<table class="table table-bordered bg-white text-dark text-center">
+  <thead>
+    <tr>
+      <th scope="col"></th>
+      <th scope="col" colspan="5">PROJECTION RESULTS </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+	  <th class="text-danger" scope="col">PARTICULARS</th>
+      <th scope="col">{% if data.profit_and_loss_years.f_1 %} {{data.profit_and_loss_years.f_1}} {%else%} Year1 {% endif %} </th>
+	  <th scope="col">{% if data.profit_and_loss_years.f_2 %} {{data.profit_and_loss_years.f_2}} {%else%} Year2 {% endif %} </th>
+	  <th scope="col">{% if data.profit_and_loss_years.f_3 %} {{data.profit_and_loss_years.f_3}} {%else%} Year3 {% endif %} </th>
+	  <th scope="col">{% if data.profit_and_loss_years.f_4 %} {{data.profit_and_loss_years.f_4}} {%else%} Year4 {% endif %} </th>
+	  <th scope="col">{% if data.profit_and_loss_years.f_5 %} {{data.profit_and_loss_years.f_5}} {%else%} Year5 {% endif %} </th>
+    </tr>
+
+    <tr>
+		<th class="text-primary text-left" scope="row" colspan="6" >Cash flows from operating activities </th>
+    </tr>
+
+	<tr>
+		<td  class="text-left">EBITDA</td>
+		<td>{% if projection_table.csf_ebitda.f_1 %} {{projection_table.csf_ebitda.f_1}} {%else%} -- {% endif %}</td>
+		<td>{% if projection_table.csf_ebitda.f_2 %} {{projection_table.csf_ebitda.f_2}} {%else%} -- {% endif %}</td>
+		<td>{% if projection_table.csf_ebitda.f_3 %} {{projection_table.csf_ebitda.f_3}} {%else%} -- {% endif %}</td>
+		<td>{% if projection_table.csf_ebitda.f_4 %} {{projection_table.csf_ebitda.f_4}} {%else%} -- {% endif %}</td>
+		<td>{% if projection_table.csf_ebitda.f_5 %} {{projection_table.csf_ebitda.f_5}} {%else%} -- {% endif %}</td>
+    </tr>
+
+	<tr>
+		<td  class="text-left" colspan="6">Adjustments:</td>
+    </tr>
+
+
+	<tr>
+		<td  class="text-left">Loss /(profit) on sale of fixed assets</td>
+		<td>{% if projection_table.csf_loss_profit_on_sale_of_fixed_assets.f_1 %} {{projection_table.csf_loss_profit_on_sale_of_fixed_assets.f_1}} {%else%} -- {% endif %}</td>
+		<td>{% if projection_table.csf_loss_profit_on_sale_of_fixed_assets.f_2 %} {{projection_table.csf_loss_profit_on_sale_of_fixed_assets.f_2}} {%else%} -- {% endif %}</td>
+		<td>{% if projection_table.csf_loss_profit_on_sale_of_fixed_assets.f_3 %} {{projection_table.csf_loss_profit_on_sale_of_fixed_assets.f_3}} {%else%} -- {% endif %}</td>
+		<td>{% if projection_table.csf_loss_profit_on_sale_of_fixed_assets.f_4 %} {{projection_table.csf_loss_profit_on_sale_of_fixed_assets.f_4}} {%else%} -- {% endif %}</td>
+		<td>{% if projection_table.csf_loss_profit_on_sale_of_fixed_assets.f_5 %} {{projection_table.csf_loss_profit_on_sale_of_fixed_assets.f_5}} {%else%} -- {% endif %}</td>
+    </tr>
+
+
+	<tr>
+		<td  class="text-left">Operating profit before working capital changes</td>
+		<td>{% if projection_table.csf_operating_profit_before_working_capital_changes.f_1 %} {{projection_table.csf_operating_profit_before_working_capital_changes.f_1}} {%else%} -- {% endif %}</td>
+		<td>{% if projection_table.csf_operating_profit_before_working_capital_changes.f_2 %} {{projection_table.csf_operating_profit_before_working_capital_changes.f_2}} {%else%} -- {% endif %}</td>
+		<td>{% if projection_table.csf_operating_profit_before_working_capital_changes.f_3 %} {{projection_table.csf_operating_profit_before_working_capital_changes.f_3}} {%else%} -- {% endif %}</td>
+		<td>{% if projection_table.csf_operating_profit_before_working_capital_changes.f_4 %} {{projection_table.csf_operating_profit_before_working_capital_changes.f_4}} {%else%} -- {% endif %}</td>
+		<td>{% if projection_table.csf_operating_profit_before_working_capital_changes.f_5 %} {{projection_table.csf_operating_profit_before_working_capital_changes.f_5}} {%else%} -- {% endif %}</td>
+    </tr>
+
+
+	<tr>
+		<td  class="text-left">Decrease/(Increase) in sundry debtors</td>
+		<td>{% if projection_table.csf_decrease_increase_in_sundry_debtors.f_1 %} {{projection_table.csf_decrease_increase_in_sundry_debtors.f_1}} {%else%} -- {% endif %}</td>
+		<td>{% if projection_table.csf_decrease_increase_in_sundry_debtors.f_2 %} {{projection_table.csf_decrease_increase_in_sundry_debtors.f_2}} {%else%} -- {% endif %}</td>
+		<td>{% if projection_table.csf_decrease_increase_in_sundry_debtors.f_3 %} {{projection_table.csf_decrease_increase_in_sundry_debtors.f_3}} {%else%} -- {% endif %}</td>
+		<td>{% if projection_table.csf_decrease_increase_in_sundry_debtors.f_4 %} {{projection_table.csf_decrease_increase_in_sundry_debtors.f_4}} {%else%} -- {% endif %}</td>
+		<td>{% if projection_table.csf_decrease_increase_in_sundry_debtors.f_5 %} {{projection_table.csf_decrease_increase_in_sundry_debtors.f_5}} {%else%} -- {% endif %}</td>
+    </tr>
+
+
+	<tr>
+		<td  class="text-left">Decrease/(Increase) in Inventories </td>
+		<td>{% if projection_table.csf_decrease_increase_in_inventories.f_1 %} {{projection_table.csf_decrease_increase_in_inventories.f_1}} {%else%} -- {% endif %}</td>
+		<td>{% if projection_table.csf_decrease_increase_in_inventories.f_2 %} {{projection_table.csf_decrease_increase_in_inventories.f_2}} {%else%} -- {% endif %}</td>
+		<td>{% if projection_table.csf_decrease_increase_in_inventories.f_3 %} {{projection_table.csf_decrease_increase_in_inventories.f_3}} {%else%} -- {% endif %}</td>
+		<td>{% if projection_table.csf_decrease_increase_in_inventories.f_4 %} {{projection_table.csf_decrease_increase_in_inventories.f_4}} {%else%} -- {% endif %}</td>
+		<td>{% if projection_table.csf_decrease_increase_in_inventories.f_5 %} {{projection_table.csf_decrease_increase_in_inventories.f_5}} {%else%} -- {% endif %}</td>
+    </tr>
+
+	<tr>
+		<td  class="text-left">(Decrease)/Increase in current liabilities and provisions</td>
+		<td>{% if projection_table.csf_decrease_increase_in_current_liabilities_and_provisions.f_1 %} {{projection_table.csf_decrease_increase_in_current_liabilities_and_provisions.f_1}} {%else%} -- {% endif %}</td>
+		<td>{% if projection_table.csf_decrease_increase_in_current_liabilities_and_provisions.f_2 %} {{projection_table.csf_decrease_increase_in_current_liabilities_and_provisions.f_2}} {%else%} -- {% endif %}</td>
+		<td>{% if projection_table.csf_decrease_increase_in_current_liabilities_and_provisions.f_3 %} {{projection_table.csf_decrease_increase_in_current_liabilities_and_provisions.f_3}} {%else%} -- {% endif %}</td>
+		<td>{% if projection_table.csf_decrease_increase_in_current_liabilities_and_provisions.f_4 %} {{projection_table.csf_decrease_increase_in_current_liabilities_and_provisions.f_4}} {%else%} -- {% endif %}</td>
+		<td>{% if projection_table.csf_decrease_increase_in_current_liabilities_and_provisions.f_5 %} {{projection_table.csf_decrease_increase_in_current_liabilities_and_provisions.f_5}} {%else%} -- {% endif %}</td>
+    </tr>
+
+
+	<tr>
+		<td  class="text-left">Decrease/(Increase) in Other Current assets </td>
+		<td>{% if projection_table.csf_decrease_increase_in_other_current_assets.f_1 %} {{projection_table.csf_decrease_increase_in_other_current_assets.f_1}} {%else%} -- {% endif %}</td>
+		<td>{% if projection_table.csf_decrease_increase_in_other_current_assets.f_2 %} {{projection_table.csf_decrease_increase_in_other_current_assets.f_2}} {%else%} -- {% endif %}</td>
+		<td>{% if projection_table.csf_decrease_increase_in_other_current_assets.f_3 %} {{projection_table.csf_decrease_increase_in_other_current_assets.f_3}} {%else%} -- {% endif %}</td>
+		<td>{% if projection_table.csf_decrease_increase_in_other_current_assets.f_4 %} {{projection_table.csf_decrease_increase_in_other_current_assets.f_4}} {%else%} -- {% endif %}</td>
+		<td>{% if projection_table.csf_decrease_increase_in_other_current_assets.f_5 %} {{projection_table.csf_decrease_increase_in_other_current_assets.f_5}} {%else%} -- {% endif %}</td>
+    </tr>
+
+	<tr>
+		<td  class="text-left">Other Income</td>
+		<td>{% if projection_table.csf_other_income.f_1 %} {{projection_table.csf_other_income.f_1}} {%else%} -- {% endif %}</td>
+		<td>{% if projection_table.csf_other_income.f_2 %} {{projection_table.csf_other_income.f_2}} {%else%} -- {% endif %}</td>
+		<td>{% if projection_table.csf_other_income.f_3 %} {{projection_table.csf_other_income.f_3}} {%else%} -- {% endif %}</td>
+		<td>{% if projection_table.csf_other_income.f_4 %} {{projection_table.csf_other_income.f_4}} {%else%} -- {% endif %}</td>
+		<td>{% if projection_table.csf_other_income.f_5 %} {{projection_table.csf_other_income.f_5}} {%else%} -- {% endif %}</td>
+    </tr>
+
+	<tr>
+		<td  class="text-left">Realised Foreign Exchange Gain/(Loss) </td>
+		<td>{% if projection_table.csf_realised_foreign_exchange_gain_loss.f_1 %} {{projection_table.csf_realised_foreign_exchange_gain_loss.f_1}} {%else%} -- {% endif %}</td>
+		<td>{% if projection_table.csf_realised_foreign_exchange_gain_loss.f_2 %} {{projection_table.csf_realised_foreign_exchange_gain_loss.f_2}} {%else%} -- {% endif %}</td>
+		<td>{% if projection_table.csf_realised_foreign_exchange_gain_loss.f_3 %} {{projection_table.csf_realised_foreign_exchange_gain_loss.f_3}} {%else%} -- {% endif %}</td>
+		<td>{% if projection_table.csf_realised_foreign_exchange_gain_loss.f_4 %} {{projection_table.csf_realised_foreign_exchange_gain_loss.f_4}} {%else%} -- {% endif %}</td>
+		<td>{% if projection_table.csf_realised_foreign_exchange_gain_loss.f_5 %} {{projection_table.csf_realised_foreign_exchange_gain_loss.f_5}} {%else%} -- {% endif %}</td>
+    </tr>
+
+	<tr>
+		<td  class="text-left">Income taxes paid</td>
+		<td>{% if projection_table.csf_income_taxes_paid.f_1 %} {{projection_table.csf_income_taxes_paid.f_1}} {%else%} -- {% endif %}</td>
+		<td>{% if projection_table.csf_income_taxes_paid.f_2 %} {{projection_table.csf_income_taxes_paid.f_2}} {%else%} -- {% endif %}</td>
+		<td>{% if projection_table.csf_income_taxes_paid.f_3 %} {{projection_table.csf_income_taxes_paid.f_3}} {%else%} -- {% endif %}</td>
+		<td>{% if projection_table.csf_income_taxes_paid.f_4 %} {{projection_table.csf_income_taxes_paid.f_4}} {%else%} -- {% endif %}</td>
+		<td>{% if projection_table.csf_income_taxes_paid.f_5 %} {{projection_table.csf_income_taxes_paid.f_5}} {%else%} -- {% endif %}</td>
+    </tr>
+
+	<tr>
+		<td  class="text-left">Net cash provided by / (used in) operating activities</td>
+		<td>{% if projection_table.csf_net_cash_provided_by_used_in_operating_activities.f_1 %} {{projection_table.csf_net_cash_provided_by_used_in_operating_activities.f_1}} {%else%} -- {% endif %}</td>
+		<td>{% if projection_table.csf_net_cash_provided_by_used_in_operating_activities.f_2 %} {{projection_table.csf_net_cash_provided_by_used_in_operating_activities.f_2}} {%else%} -- {% endif %}</td>
+		<td>{% if projection_table.csf_net_cash_provided_by_used_in_operating_activities.f_3 %} {{projection_table.csf_net_cash_provided_by_used_in_operating_activities.f_3}} {%else%} -- {% endif %}</td>
+		<td>{% if projection_table.csf_net_cash_provided_by_used_in_operating_activities.f_4 %} {{projection_table.csf_net_cash_provided_by_used_in_operating_activities.f_4}} {%else%} -- {% endif %}</td>
+		<td>{% if projection_table.csf_net_cash_provided_by_used_in_operating_activities.f_5 %} {{projection_table.csf_net_cash_provided_by_used_in_operating_activities.f_5}} {%else%} -- {% endif %}</td>
+    </tr>
+
+
+	
+<tr  ><td class="border-0" colspan="6" >&nbsp;</td></tr>
+
+
+
+
+
+    <tr>
+		<th class="text-primary text-left border-0" scope="row" colspan="6" >Cash flows from investing activities</th>
+    </tr>
+
+	<tr>
+		<td  class="text-left">Purchase of fixed assets</td>
+		<td>{% if projection_table.csf_purchase_of_fixed_assets.f_1 %} {{projection_table.csf_purchase_of_fixed_assets.f_1}} {%else%} -- {% endif %}</td>
+		<td>{% if projection_table.csf_purchase_of_fixed_assets.f_2 %} {{projection_table.csf_purchase_of_fixed_assets.f_2}} {%else%} -- {% endif %}</td>
+		<td>{% if projection_table.csf_purchase_of_fixed_assets.f_3 %} {{projection_table.csf_purchase_of_fixed_assets.f_3}} {%else%} -- {% endif %}</td>
+		<td>{% if projection_table.csf_purchase_of_fixed_assets.f_4 %} {{projection_table.csf_purchase_of_fixed_assets.f_4}} {%else%} -- {% endif %}</td>
+		<td>{% if projection_table.csf_purchase_of_fixed_assets.f_5 %} {{projection_table.csf_purchase_of_fixed_assets.f_5}} {%else%} -- {% endif %}</td>
+    </tr>
+
+
+	<tr>
+		<td  class="text-left">Intangible assets </td>
+		<td>{% if projection_table.csf_intangible_assets.f_1 %} {{projection_table.csf_intangible_assets.f_1}} {%else%} -- {% endif %}</td>
+		<td>{% if projection_table.csf_intangible_assets.f_2 %} {{projection_table.csf_intangible_assets.f_2}} {%else%} -- {% endif %}</td>
+		<td>{% if projection_table.csf_intangible_assets.f_3 %} {{projection_table.csf_intangible_assets.f_3}} {%else%} -- {% endif %}</td>
+		<td>{% if projection_table.csf_intangible_assets.f_4 %} {{projection_table.csf_intangible_assets.f_4}} {%else%} -- {% endif %}</td>
+		<td>{% if projection_table.csf_intangible_assets.f_5 %} {{projection_table.csf_intangible_assets.f_5}} {%else%} -- {% endif %}</td>
+    </tr>
+
+
+	<tr>
+		<td  class="text-left">Net cash Provided/ (used) in investing activities</td>
+		<td>{% if projection_table.csf_net_cash_provided_used_in_investing_activities.f_1 %} {{projection_table.csf_net_cash_provided_used_in_investing_activities.f_1}} {%else%} -- {% endif %}</td>
+		<td>{% if projection_table.csf_net_cash_provided_used_in_investing_activities.f_2 %} {{projection_table.csf_net_cash_provided_used_in_investing_activities.f_2}} {%else%} -- {% endif %}</td>
+		<td>{% if projection_table.csf_net_cash_provided_used_in_investing_activities.f_3 %} {{projection_table.csf_net_cash_provided_used_in_investing_activities.f_3}} {%else%} -- {% endif %}</td>
+		<td>{% if projection_table.csf_net_cash_provided_used_in_investing_activities.f_4 %} {{projection_table.csf_net_cash_provided_used_in_investing_activities.f_4}} {%else%} -- {% endif %}</td>
+		<td>{% if projection_table.csf_net_cash_provided_used_in_investing_activities.f_5 %} {{projection_table.csf_net_cash_provided_used_in_investing_activities.f_5}} {%else%} -- {% endif %}</td>
+    </tr>
+
+	<tr  ><td class="border-0" colspan="6" >&nbsp;</td></tr>
+
+	<tr>
+		<th class="text-primary text-left border-0" scope="row" colspan="6" >Cash flow from financing activities</th>
+    </tr>
+
+	<tr>
+		<td  class="text-left">Issue of share capital (net of issue expenses paid)</td>
+		<td>{% if projection_table.csf_issue_of_share_capital_net_of_issue_expenses_paid.f_1 %} {{projection_table.csf_issue_of_share_capital_net_of_issue_expenses_paid.f_1}} {%else%} -- {% endif %}</td>
+		<td>{% if projection_table.csf_issue_of_share_capital_net_of_issue_expenses_paid.f_2 %} {{projection_table.csf_issue_of_share_capital_net_of_issue_expenses_paid.f_2}} {%else%} -- {% endif %}</td>
+		<td>{% if projection_table.csf_issue_of_share_capital_net_of_issue_expenses_paid.f_3 %} {{projection_table.csf_issue_of_share_capital_net_of_issue_expenses_paid.f_3}} {%else%} -- {% endif %}</td>
+		<td>{% if projection_table.csf_issue_of_share_capital_net_of_issue_expenses_paid.f_4 %} {{projection_table.csf_issue_of_share_capital_net_of_issue_expenses_paid.f_4}} {%else%} -- {% endif %}</td>
+		<td>{% if projection_table.csf_issue_of_share_capital_net_of_issue_expenses_paid.f_5 %} {{projection_table.csf_issue_of_share_capital_net_of_issue_expenses_paid.f_5}} {%else%} -- {% endif %}</td>
+    </tr>
+
+
+	<tr>
+		<td  class="text-left">Equity funds raised</td>
+		<td>{% if projection_table.csf_equity_funds_raised.f_1 %} {{projection_table.csf_equity_funds_raised.f_1}} {%else%} -- {% endif %}</td>
+		<td>{% if projection_table.csf_equity_funds_raised.f_2 %} {{projection_table.csf_equity_funds_raised.f_2}} {%else%} -- {% endif %}</td>
+		<td>{% if projection_table.csf_equity_funds_raised.f_3 %} {{projection_table.csf_equity_funds_raised.f_3}} {%else%} -- {% endif %}</td>
+		<td>{% if projection_table.csf_equity_funds_raised.f_4 %} {{projection_table.csf_equity_funds_raised.f_4}} {%else%} -- {% endif %}</td>
+		<td>{% if projection_table.csf_equity_funds_raised.f_5 %} {{projection_table.csf_equity_funds_raised.f_5}} {%else%} -- {% endif %}</td>
+    </tr>
+
+
+	<tr>
+		<td  class="text-left">Proceeds/Repayment of loans</td>
+		<td>{% if projection_table.csf_proceeds_repayment_of_loans.f_1 %} {{projection_table.csf_proceeds_repayment_of_loans.f_1}} {%else%} -- {% endif %}</td>
+		<td>{% if projection_table.csf_proceeds_repayment_of_loans.f_2 %} {{projection_table.csf_proceeds_repayment_of_loans.f_2}} {%else%} -- {% endif %}</td>
+		<td>{% if projection_table.csf_proceeds_repayment_of_loans.f_3 %} {{projection_table.csf_proceeds_repayment_of_loans.f_3}} {%else%} -- {% endif %}</td>
+		<td>{% if projection_table.csf_proceeds_repayment_of_loans.f_4 %} {{projection_table.csf_proceeds_repayment_of_loans.f_4}} {%else%} -- {% endif %}</td>
+		<td>{% if projection_table.csf_proceeds_repayment_of_loans.f_5 %} {{projection_table.csf_proceeds_repayment_of_loans.f_5}} {%else%} -- {% endif %}</td>
+    </tr>
+
+	<tr>
+		<td  class="text-left">Interest paid on loans</td>
+		<td>{% if projection_table.csf_interest_paid_on_loans.f_1 %} {{projection_table.csf_interest_paid_on_loans.f_1}} {%else%} -- {% endif %}</td>
+		<td>{% if projection_table.csf_interest_paid_on_loans.f_2 %} {{projection_table.csf_interest_paid_on_loans.f_2}} {%else%} -- {% endif %}</td>
+		<td>{% if projection_table.csf_interest_paid_on_loans.f_3 %} {{projection_table.csf_interest_paid_on_loans.f_3}} {%else%} -- {% endif %}</td>
+		<td>{% if projection_table.csf_interest_paid_on_loans.f_4 %} {{projection_table.csf_interest_paid_on_loans.f_4}} {%else%} -- {% endif %}</td>
+		<td>{% if projection_table.csf_interest_paid_on_loans.f_5 %} {{projection_table.csf_interest_paid_on_loans.f_5}} {%else%} -- {% endif %}</td>
+    </tr>
+
+	<tr>
+		<td  class="text-left">Net cash Provided/(used) by financing activities</td>
+		<td>{% if projection_table.csf_net_cash_provided_used_by_financing_activities.f_1 %} {{projection_table.csf_net_cash_provided_used_by_financing_activities.f_1}} {%else%} -- {% endif %}</td>
+		<td>{% if projection_table.csf_net_cash_provided_used_by_financing_activities.f_2 %} {{projection_table.csf_net_cash_provided_used_by_financing_activities.f_2}} {%else%} -- {% endif %}</td>
+		<td>{% if projection_table.csf_net_cash_provided_used_by_financing_activities.f_3 %} {{projection_table.csf_net_cash_provided_used_by_financing_activities.f_3}} {%else%} -- {% endif %}</td>
+		<td>{% if projection_table.csf_net_cash_provided_used_by_financing_activities.f_4 %} {{projection_table.csf_net_cash_provided_used_by_financing_activities.f_4}} {%else%} -- {% endif %}</td>
+		<td>{% if projection_table.csf_net_cash_provided_used_by_financing_activities.f_5 %} {{projection_table.csf_net_cash_provided_used_by_financing_activities.f_5}} {%else%} -- {% endif %}</td>
+    </tr>
+
+	<tr>
+		<td  class="text-left">Effect of exchange differences on translation of foreign currency cash and cash equivalents </td>
+		<td>{% if projection_table.csf_effect_of_exchange_differences_on_translation_of_foreign_currency_cash_and_cash_equivalents.f_1 %} {{projection_table.csf_effect_of_exchange_differences_on_translation_of_foreign_currency_cash_and_cash_equivalents.f_1}} {%else%} -- {% endif %}</td>
+		<td>{% if projection_table.csf_effect_of_exchange_differences_on_translation_of_foreign_currency_cash_and_cash_equivalents.f_2 %} {{projection_table.csf_effect_of_exchange_differences_on_translation_of_foreign_currency_cash_and_cash_equivalents.f_2}} {%else%} -- {% endif %}</td>
+		<td>{% if projection_table.csf_effect_of_exchange_differences_on_translation_of_foreign_currency_cash_and_cash_equivalents.f_3 %} {{projection_table.csf_effect_of_exchange_differences_on_translation_of_foreign_currency_cash_and_cash_equivalents.f_3}} {%else%} -- {% endif %}</td>
+		<td>{% if projection_table.csf_effect_of_exchange_differences_on_translation_of_foreign_currency_cash_and_cash_equivalents.f_4 %} {{projection_table.csf_effect_of_exchange_differences_on_translation_of_foreign_currency_cash_and_cash_equivalents.f_4}} {%else%} -- {% endif %}</td>
+		<td>{% if projection_table.csf_effect_of_exchange_differences_on_translation_of_foreign_currency_cash_and_cash_equivalents.f_5 %} {{projection_table.csf_effect_of_exchange_differences_on_translation_of_foreign_currency_cash_and_cash_equivalents.f_5}} {%else%} -- {% endif %}</td>
+    </tr>
+
+	<tr>
+		<td  class="text-left">Net increase/(decrease) in cash and cash equivalents</td>
+		<td>{% if projection_table.csf_net_increase_decrease_in_cash_and_cash_equivalents.f_1 %} {{projection_table.csf_net_increase_decrease_in_cash_and_cash_equivalents.f_1}} {%else%} -- {% endif %}</td>
+		<td>{% if projection_table.csf_net_increase_decrease_in_cash_and_cash_equivalents.f_2 %} {{projection_table.csf_net_increase_decrease_in_cash_and_cash_equivalents.f_2}} {%else%} -- {% endif %}</td>
+		<td>{% if projection_table.csf_net_increase_decrease_in_cash_and_cash_equivalents.f_3 %} {{projection_table.csf_net_increase_decrease_in_cash_and_cash_equivalents.f_3}} {%else%} -- {% endif %}</td>
+		<td>{% if projection_table.csf_net_increase_decrease_in_cash_and_cash_equivalents.f_4 %} {{projection_table.csf_net_increase_decrease_in_cash_and_cash_equivalents.f_4}} {%else%} -- {% endif %}</td>
+		<td>{% if projection_table.csf_net_increase_decrease_in_cash_and_cash_equivalents.f_5 %} {{projection_table.csf_net_increase_decrease_in_cash_and_cash_equivalents.f_5}} {%else%} -- {% endif %}</td>
+    </tr>
+
+	<tr>
+		<td  class="text-left">Cash and cash equivalents at the beginning of the year</td>
+		<td>{% if projection_table.csf_cash_and_cash_equivalents_at_the_beginning_of_the_year.f_1 %} {{projection_table.csf_cash_and_cash_equivalents_at_the_beginning_of_the_year.f_1}} {%else%} -- {% endif %}</td>
+		<td>{% if projection_table.csf_cash_and_cash_equivalents_at_the_beginning_of_the_year.f_2 %} {{projection_table.csf_cash_and_cash_equivalents_at_the_beginning_of_the_year.f_2}} {%else%} -- {% endif %}</td>
+		<td>{% if projection_table.csf_cash_and_cash_equivalents_at_the_beginning_of_the_year.f_3 %} {{projection_table.csf_cash_and_cash_equivalents_at_the_beginning_of_the_year.f_3}} {%else%} -- {% endif %}</td>
+		<td>{% if projection_table.csf_cash_and_cash_equivalents_at_the_beginning_of_the_year.f_4 %} {{projection_table.csf_cash_and_cash_equivalents_at_the_beginning_of_the_year.f_4}} {%else%} -- {% endif %}</td>
+		<td>{% if projection_table.csf_cash_and_cash_equivalents_at_the_beginning_of_the_year.f_5 %} {{projection_table.csf_cash_and_cash_equivalents_at_the_beginning_of_the_year.f_5}} {%else%} -- {% endif %}</td>
+    </tr>
+
+	<tr class="bg-info">
+		<td  class="text-left">Cash and cash equivalents at the end of the year</td>
+		<td>{% if projection_table.csf_cash_and_cash_equivalents_at_the_end_of_the_year.f_1 %} {{projection_table.csf_cash_and_cash_equivalents_at_the_end_of_the_year.f_1}} {%else%} -- {% endif %}</td>
+		<td>{% if projection_table.csf_cash_and_cash_equivalents_at_the_end_of_the_year.f_2 %} {{projection_table.csf_cash_and_cash_equivalents_at_the_end_of_the_year.f_2}} {%else%} -- {% endif %}</td>
+		<td>{% if projection_table.csf_cash_and_cash_equivalents_at_the_end_of_the_year.f_3 %} {{projection_table.csf_cash_and_cash_equivalents_at_the_end_of_the_year.f_3}} {%else%} -- {% endif %}</td>
+		<td>{% if projection_table.csf_cash_and_cash_equivalents_at_the_end_of_the_year.f_4 %} {{projection_table.csf_cash_and_cash_equivalents_at_the_end_of_the_year.f_4}} {%else%} -- {% endif %}</td>
+		<td>{% if projection_table.csf_cash_and_cash_equivalents_at_the_end_of_the_year.f_5 %} {{projection_table.csf_cash_and_cash_equivalents_at_the_end_of_the_year.f_5}} {%else%} -- {% endif %}</td>
+    </tr>
+
+	<tr>
+		<td  class="text-left">Balancing Figure</td>
+		<td>{% if projection_table.csf_balancing_figure.f_1 %} {{projection_table.csf_balancing_figure.f_1}} {%else%} -- {% endif %}</td>
+		<td>{% if projection_table.csf_balancing_figure.f_2 %} {{projection_table.csf_balancing_figure.f_2}} {%else%} -- {% endif %}</td>
+		<td>{% if projection_table.csf_balancing_figure.f_3 %} {{projection_table.csf_balancing_figure.f_3}} {%else%} -- {% endif %}</td>
+		<td>{% if projection_table.csf_balancing_figure.f_4 %} {{projection_table.csf_balancing_figure.f_4}} {%else%} -- {% endif %}</td>
+		<td>{% if projection_table.csf_balancing_figure.f_5 %} {{projection_table.csf_balancing_figure.f_5}} {%else%} -- {% endif %}</td>
+    </tr>
+
+
+
+
+	<tr><td class="border-0" colspan="6" >&nbsp;</td></tr>
+
+	<tr>
+		<th class="text-primary text-left border-0" scope="row" colspan="6" >Calculation of Free Cash Flow</th>
+    </tr>
+
+
+
+	<tr>
+		<td  class="text-left">Operating Cash Flow</td>
+		<td>{% if projection_table.csf_operating_cash_flow.f_1 %} {{projection_table.csf_operating_cash_flow.f_1}} {%else%} -- {% endif %}</td>
+		<td>{% if projection_table.csf_operating_cash_flow.f_2 %} {{projection_table.csf_operating_cash_flow.f_2}} {%else%} -- {% endif %}</td>
+		<td>{% if projection_table.csf_operating_cash_flow.f_3 %} {{projection_table.csf_operating_cash_flow.f_3}} {%else%} -- {% endif %}</td>
+		<td>{% if projection_table.csf_operating_cash_flow.f_4 %} {{projection_table.csf_operating_cash_flow.f_4}} {%else%} -- {% endif %}</td>
+		<td>{% if projection_table.csf_operating_cash_flow.f_5 %} {{projection_table.csf_operating_cash_flow.f_5}} {%else%} -- {% endif %}</td>
+    </tr>
+
+
+	<tr>
+		<td  class="text-left">Capital expenditure</td>
+		<td>{% if projection_table.csf_capital_expenditure.f_1 %} {{projection_table.csf_capital_expenditure.f_1}} {%else%} -- {% endif %}</td>
+		<td>{% if projection_table.csf_capital_expenditure.f_2 %} {{projection_table.csf_capital_expenditure.f_2}} {%else%} -- {% endif %}</td>
+		<td>{% if projection_table.csf_capital_expenditure.f_3 %} {{projection_table.csf_capital_expenditure.f_3}} {%else%} -- {% endif %}</td>
+		<td>{% if projection_table.csf_capital_expenditure.f_4 %} {{projection_table.csf_capital_expenditure.f_4}} {%else%} -- {% endif %}</td>
+		<td>{% if projection_table.csf_capital_expenditure.f_5 %} {{projection_table.csf_capital_expenditure.f_5}} {%else%} -- {% endif %}</td>
+    </tr>
+
+
+	<tr class="bg-info">
+		<td  class="text-left">Free Cash Flow</td>
+		<td>{% if projection_table.csf_free_cash_flow.f_1 %} {{projection_table.csf_free_cash_flow.f_1}} {%else%} -- {% endif %}</td>
+		<td>{% if projection_table.csf_free_cash_flow.f_2 %} {{projection_table.csf_free_cash_flow.f_2}} {%else%} -- {% endif %}</td>
+		<td>{% if projection_table.csf_free_cash_flow.f_3 %} {{projection_table.csf_free_cash_flow.f_3}} {%else%} -- {% endif %}</td>
+		<td>{% if projection_table.csf_free_cash_flow.f_4 %} {{projection_table.csf_free_cash_flow.f_4}} {%else%} -- {% endif %}</td>
+		<td>{% if projection_table.csf_free_cash_flow.f_5 %} {{projection_table.csf_free_cash_flow.f_5}} {%else%} -- {% endif %}</td>
+    </tr>
+
+
+
+
+
+	<tr><td class="border-0" colspan="6" >&nbsp;</td></tr>
+
+	<tr>
+		<th class="text-primary text-left border-0" scope="row" colspan="6" >Cash Flow Ratios</th>
+    </tr>
+
+
+
+	<tr>
+		<td  class="text-left">Operating Cash Flow / Sales </td>
+		<td>{% if projection_table.csf_operating_cash_flow_sales.f_1 %} {{projection_table.csf_operating_cash_flow_sales.f_1}} {%else%} -- {% endif %}</td>
+		<td>{% if projection_table.csf_operating_cash_flow_sales.f_2 %} {{projection_table.csf_operating_cash_flow_sales.f_2}} {%else%} -- {% endif %}</td>
+		<td>{% if projection_table.csf_operating_cash_flow_sales.f_3 %} {{projection_table.csf_operating_cash_flow_sales.f_3}} {%else%} -- {% endif %}</td>
+		<td>{% if projection_table.csf_operating_cash_flow_sales.f_4 %} {{projection_table.csf_operating_cash_flow_sales.f_4}} {%else%} -- {% endif %}</td>
+		<td>{% if projection_table.csf_operating_cash_flow_sales.f_5 %} {{projection_table.csf_operating_cash_flow_sales.f_5}} {%else%} -- {% endif %}</td>
+    </tr>
+
+
+	<tr>
+		<td  class="text-left">Free Cash Flow / Operating Cash Flow</td>
+		<td>{% if projection_table.csf_free_cash_flow_operating_cash_flow.f_1 %} {{projection_table.csf_free_cash_flow_operating_cash_flow.f_1}} {%else%} -- {% endif %}</td>
+		<td>{% if projection_table.csf_free_cash_flow_operating_cash_flow.f_2 %} {{projection_table.csf_free_cash_flow_operating_cash_flow.f_2}} {%else%} -- {% endif %}</td>
+		<td>{% if projection_table.csf_free_cash_flow_operating_cash_flow.f_3 %} {{projection_table.csf_free_cash_flow_operating_cash_flow.f_3}} {%else%} -- {% endif %}</td>
+		<td>{% if projection_table.csf_free_cash_flow_operating_cash_flow.f_4 %} {{projection_table.csf_free_cash_flow_operating_cash_flow.f_4}} {%else%} -- {% endif %}</td>
+		<td>{% if projection_table.csf_free_cash_flow_operating_cash_flow.f_5 %} {{projection_table.csf_free_cash_flow_operating_cash_flow.f_5}} {%else%} -- {% endif %}</td>
+    </tr>
+
+  </tbody>
+</table>
+</div>
+</div>
+
+
+
+
+{% endblock %}

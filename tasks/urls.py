@@ -101,6 +101,7 @@ urlpatterns = [
 
 
     path("view_income_statement",views.cal_income_statement,name="view_income_statement"),
+    path("view_cashflow",views.cal_cashflow,name="view_cashflow"),
     
 
     path("user-all-superplan-bookings",views.user_all_superplan_bookings,name="user-all-superplan-bookings"),
