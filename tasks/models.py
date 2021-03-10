@@ -114,11 +114,9 @@ class super_plan_forms_multiple_images(models.Model):                           
 
 class super_plan_forms_multiple_inputs_xl(models.Model):                   # Multiple input fields
     form_id = models.CharField(max_length=10,null=True)
+    f_1 = models.CharField(max_length=100,null=True)
     f_2 = models.CharField(max_length=100,null=True)
     f_3 = models.CharField(max_length=100,null=True)
-    f_1 = models.CharField(max_length=100,null=True)
-    f_4 = models.CharField(max_length=100,null=True)
-    f_5 = models.CharField(max_length=100,null=True)
     date = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):

@@ -1706,33 +1706,33 @@ def calculate_income_statement(request):                                      # 
 
 
             try:
-                projection_table1.ins_particulars_ebitda_operating_profit.f_1 = ceil(float(projection_table1.ins_particulars_total_revenue_from_operations_services.f_1) -float(projection_table1.ins_particulars_total_operating_expenses.f_1))
+                projection_table1.ins_particulars_ebitda_operating_profit.f_1 = abs(ceil(float(projection_table1.ins_particulars_total_revenue_from_operations_services.f_1) -float(projection_table1.ins_particulars_total_operating_expenses.f_1)))
             except:
                 projection_table1.ins_particulars_ebitda_operating_profit.f_1 = None
                 
 
             try:
-                projection_table1.ins_particulars_ebitda_operating_profit.f_2 = ceil(float(projection_table1.ins_particulars_total_revenue_from_operations_services.f_2)-float(projection_table1.ins_particulars_total_operating_expenses.f_2))
+                projection_table1.ins_particulars_ebitda_operating_profit.f_2 = abs(ceil(float(projection_table1.ins_particulars_total_revenue_from_operations_services.f_2)-float(projection_table1.ins_particulars_total_operating_expenses.f_2)))
             except:
                 projection_table1.ins_particulars_ebitda_operating_profit.f_2 = None
                 
 
             try:
-                projection_table1.ins_particulars_ebitda_operating_profit.f_3 = ceil(float(projection_table1.ins_particulars_total_revenue_from_operations_services.f_3)-float(projection_table1.ins_particulars_total_operating_expenses.f_3))
+                projection_table1.ins_particulars_ebitda_operating_profit.f_3 = abs(ceil(float(projection_table1.ins_particulars_total_revenue_from_operations_services.f_3)-float(projection_table1.ins_particulars_total_operating_expenses.f_3)))
             except:
                 projection_table1.ins_particulars_ebitda_operating_profit.f_3 = None
                 
 
 
             try:
-                projection_table1.ins_particulars_ebitda_operating_profit.f_4 = ceil(float(projection_table1.ins_particulars_total_revenue_from_operations_services.f_4)-float(projection_table1.ins_particulars_total_operating_expenses.f_4))
+                projection_table1.ins_particulars_ebitda_operating_profit.f_4 = abs(ceil(float(projection_table1.ins_particulars_total_revenue_from_operations_services.f_4)-float(projection_table1.ins_particulars_total_operating_expenses.f_4)))
             except:
                 projection_table1.ins_particulars_ebitda_operating_profit.f_4 = None
                 
 
 
             try:
-                projection_table1.ins_particulars_ebitda_operating_profit.f_5 = ceil(float(projection_table1.ins_particulars_total_revenue_from_operations_services.f_5)-float(projection_table1.ins_particulars_total_operating_expenses.f_5))
+                projection_table1.ins_particulars_ebitda_operating_profit.f_5 = abs(ceil(float(projection_table1.ins_particulars_total_revenue_from_operations_services.f_5)-float(projection_table1.ins_particulars_total_operating_expenses.f_5)))
             except:
                 projection_table1.ins_particulars_ebitda_operating_profit.f_5 = None
 
@@ -1845,32 +1845,32 @@ def calculate_income_statement(request):                                      # 
 
 
             try:
-                projection_table1.ins_particulars_ebit.f_1 = ceil(float(projection_table1.ins_particulars_ebitda_operating_profit.f_1) - (float(projection_table1.ins_particulars_depreciation.f_1)+float(projection_table1.ins_particulars_other_income.f_1)+float(projection_table1.ins_particulars_realised_foreign_exchange_gain_loss.f_1)))
+                projection_table1.ins_particulars_ebit.f_1 = abs(ceil(float(projection_table1.ins_particulars_ebitda_operating_profit.f_1) - (float(projection_table1.ins_particulars_depreciation.f_1)+float(projection_table1.ins_particulars_other_income.f_1)+float(projection_table1.ins_particulars_realised_foreign_exchange_gain_loss.f_1))))
             except:
                 projection_table1.ins_particulars_ebit.f_1 = None
                 
 
 
             try:
-                projection_table1.ins_particulars_ebit.f_2 = ceil(float(projection_table1.ins_particulars_ebitda_operating_profit.f_2) - (float(projection_table1.ins_particulars_depreciation.f_2)+float(projection_table1.ins_particulars_other_income.f_2)+float(projection_table1.ins_particulars_realised_foreign_exchange_gain_loss.f_2)))
+                projection_table1.ins_particulars_ebit.f_2 = abs(ceil(float(projection_table1.ins_particulars_ebitda_operating_profit.f_2) - (float(projection_table1.ins_particulars_depreciation.f_2)+float(projection_table1.ins_particulars_other_income.f_2)+float(projection_table1.ins_particulars_realised_foreign_exchange_gain_loss.f_2))))
             except:
                 projection_table1.ins_particulars_ebit.f_2 = None
                 
 
             try:
-                projection_table1.ins_particulars_ebit.f_3 = ceil(float(projection_table1.ins_particulars_ebitda_operating_profit.f_3) - (float(projection_table1.ins_particulars_depreciation.f_3)+float(projection_table1.ins_particulars_other_income.f_3)+float(projection_table1.ins_particulars_realised_foreign_exchange_gain_loss.f_3)))
+                projection_table1.ins_particulars_ebit.f_3 = abs(ceil(float(projection_table1.ins_particulars_ebitda_operating_profit.f_3) - (float(projection_table1.ins_particulars_depreciation.f_3)+float(projection_table1.ins_particulars_other_income.f_3)+float(projection_table1.ins_particulars_realised_foreign_exchange_gain_loss.f_3))))
             except:
                 projection_table1.ins_particulars_ebit.f_3 = None
                 
 
             try:
-                projection_table1.ins_particulars_ebit.f_4 = ceil(float(projection_table1.ins_particulars_ebitda_operating_profit.f_4) - (float(projection_table1.ins_particulars_depreciation.f_4)+float(projection_table1.ins_particulars_other_income.f_4)+float(projection_table1.ins_particulars_realised_foreign_exchange_gain_loss.f_4)))
+                projection_table1.ins_particulars_ebit.f_4 = abs(ceil(float(projection_table1.ins_particulars_ebitda_operating_profit.f_4) - (float(projection_table1.ins_particulars_depreciation.f_4)+float(projection_table1.ins_particulars_other_income.f_4)+float(projection_table1.ins_particulars_realised_foreign_exchange_gain_loss.f_4))))
             except:
                 projection_table1.ins_particulars_ebit.f_4 = None
                 
 
             try:
-                projection_table1.ins_particulars_ebit.f_5 = ceil(float(projection_table1.ins_particulars_ebitda_operating_profit.f_5) - (float(projection_table1.ins_particulars_depreciation.f_5)+float(projection_table1.ins_particulars_other_income.f_5)+float(projection_table1.ins_particulars_realised_foreign_exchange_gain_loss.f_5)))
+                projection_table1.ins_particulars_ebit.f_5 = abs(ceil(float(projection_table1.ins_particulars_ebitda_operating_profit.f_5) - (float(projection_table1.ins_particulars_depreciation.f_5)+float(projection_table1.ins_particulars_other_income.f_5)+float(projection_table1.ins_particulars_realised_foreign_exchange_gain_loss.f_5))))
             except:
                 projection_table1.ins_particulars_ebit.f_5 = None
             projection_table1.ins_particulars_ebit.save()
@@ -1915,31 +1915,31 @@ def calculate_income_statement(request):                                      # 
 
 
             try:
-                projection_table1.ins_particulars_earnings_before_tax_ebt.f_1 = ceil( float(projection_table1.ins_particulars_ebit.f_1)-float(projection_table1.ins_particulars_interest_including_finance_charges.f_1))
+                projection_table1.ins_particulars_earnings_before_tax_ebt.f_1 = abs(ceil( float(projection_table1.ins_particulars_ebit.f_1)-float(projection_table1.ins_particulars_interest_including_finance_charges.f_1)))
             except:
                 projection_table1.ins_particulars_earnings_before_tax_ebt.f_1 = 0
                 
 
             try:
-                projection_table1.ins_particulars_earnings_before_tax_ebt.f_2 = ceil( float(projection_table1.ins_particulars_ebit.f_2)-float(projection_table1.ins_particulars_interest_including_finance_charges.f_2))
+                projection_table1.ins_particulars_earnings_before_tax_ebt.f_2 = abs(ceil( float(projection_table1.ins_particulars_ebit.f_2)-float(projection_table1.ins_particulars_interest_including_finance_charges.f_2)))
             except:
                 projection_table1.ins_particulars_earnings_before_tax_ebt.f_2 = 0
                 
 
             try:
-                projection_table1.ins_particulars_earnings_before_tax_ebt.f_3 = ceil( float(projection_table1.ins_particulars_ebit.f_3)-float(projection_table1.ins_particulars_interest_including_finance_charges.f_3))
+                projection_table1.ins_particulars_earnings_before_tax_ebt.f_3 = abs(ceil( float(projection_table1.ins_particulars_ebit.f_3)-float(projection_table1.ins_particulars_interest_including_finance_charges.f_3)))
             except:
                 projection_table1.ins_particulars_earnings_before_tax_ebt.f_3 = 0
                 
 
             try:
-                projection_table1.ins_particulars_earnings_before_tax_ebt.f_4 = ceil( float(projection_table1.ins_particulars_ebit.f_4)-float(projection_table1.ins_particulars_interest_including_finance_charges.f_4))
+                projection_table1.ins_particulars_earnings_before_tax_ebt.f_4 = abs(ceil( float(projection_table1.ins_particulars_ebit.f_4)-float(projection_table1.ins_particulars_interest_including_finance_charges.f_4)))
             except:
                 projection_table1.ins_particulars_earnings_before_tax_ebt.f_4 = 0
                 
 
             try:
-                projection_table1.ins_particulars_earnings_before_tax_ebt.f_5 = ceil( float(projection_table1.ins_particulars_ebit.f_5)-float(projection_table1.ins_particulars_interest_including_finance_charges.f_5))
+                projection_table1.ins_particulars_earnings_before_tax_ebt.f_5 = abs(ceil( float(projection_table1.ins_particulars_ebit.f_5)-float(projection_table1.ins_particulars_interest_including_finance_charges.f_5)))
             except:
                 projection_table1.ins_particulars_earnings_before_tax_ebt.f_5 = 0
             projection_table1.ins_particulars_earnings_before_tax_ebt.save()
@@ -1991,33 +1991,33 @@ def calculate_income_statement(request):                                      # 
 
 
             try:
-                projection_table1.ins_particulars_profit_after_tax.f_1 = ceil(float(projection_table1.ins_particulars_earnings_before_tax_ebt.f_1)-float(projection_table1.ins_particulars_provision_for_income_tax.f_1))
+                projection_table1.ins_particulars_profit_after_tax.f_1 = abs(ceil(float(projection_table1.ins_particulars_earnings_before_tax_ebt.f_1)-float(projection_table1.ins_particulars_provision_for_income_tax.f_1)))
             except:
                 projection_table1.ins_particulars_profit_after_tax.f_1 =0
                 
 
 
             try:
-                projection_table1.ins_particulars_profit_after_tax.f_2 = ceil(float(projection_table1.ins_particulars_earnings_before_tax_ebt.f_2)-float(projection_table1.ins_particulars_provision_for_income_tax.f_2))
+                projection_table1.ins_particulars_profit_after_tax.f_2 = abs(ceil(float(projection_table1.ins_particulars_earnings_before_tax_ebt.f_2)-float(projection_table1.ins_particulars_provision_for_income_tax.f_2)))
             except:
                 projection_table1.ins_particulars_profit_after_tax.f_2 =0
                 
 
 
             try:
-                projection_table1.ins_particulars_profit_after_tax.f_3 = ceil(float(projection_table1.ins_particulars_earnings_before_tax_ebt.f_3)-float(projection_table1.ins_particulars_provision_for_income_tax.f_3))
+                projection_table1.ins_particulars_profit_after_tax.f_3 =abs(ceil(float(projection_table1.ins_particulars_earnings_before_tax_ebt.f_3)-float(projection_table1.ins_particulars_provision_for_income_tax.f_3)))
             except:
                 projection_table1.ins_particulars_profit_after_tax.f_3 =0
                 
 
             try:
-                projection_table1.ins_particulars_profit_after_tax.f_4 = ceil(float(projection_table1.ins_particulars_earnings_before_tax_ebt.f_4)-float(projection_table1.ins_particulars_provision_for_income_tax.f_4))
+                projection_table1.ins_particulars_profit_after_tax.f_4 = abs(ceil(float(projection_table1.ins_particulars_earnings_before_tax_ebt.f_4)-float(projection_table1.ins_particulars_provision_for_income_tax.f_4)))
             except:
                 projection_table1.ins_particulars_profit_after_tax.f_4 =0
                 
 
             try:
-                projection_table1.ins_particulars_profit_after_tax.f_5 = ceil(float(projection_table1.ins_particulars_earnings_before_tax_ebt.f_5)-float(projection_table1.ins_particulars_provision_for_income_tax.f_5))
+                projection_table1.ins_particulars_profit_after_tax.f_5 = abs(ceil(float(projection_table1.ins_particulars_earnings_before_tax_ebt.f_5)-float(projection_table1.ins_particulars_provision_for_income_tax.f_5)))
             except:
                 projection_table1.ins_particulars_profit_after_tax.f_5 =0
             projection_table1.ins_particulars_profit_after_tax.save()
@@ -2194,22 +2194,22 @@ def calculate_income_statement(request):                                      # 
                         #----------------------------
             
             try:
-                projection_table1.ins_growth_analysis_yoy_stream_1.f_2=ceil(((float(projection_table1.ins_particulars_stream_1.f_2)-float(projection_table1.ins_particulars_stream_1.f_1))/float(projection_table1.ins_particulars_stream_1.f_1))*100)
+                projection_table1.ins_growth_analysis_yoy_stream_1.f_2=abs(ceil(((float(projection_table1.ins_particulars_stream_1.f_2)-float(projection_table1.ins_particulars_stream_1.f_1))/float(projection_table1.ins_particulars_stream_1.f_1))*100))
             except:
                 projection_table1.ins_growth_analysis_yoy_stream_1.f_2=0
                 
             try:
-                projection_table1.ins_growth_analysis_yoy_stream_1.f_3=ceil(((float(projection_table1.ins_particulars_stream_1.f_3)-float(projection_table1.ins_particulars_stream_1.f_2))/float(projection_table1.ins_particulars_stream_1.f_2))*100)
+                projection_table1.ins_growth_analysis_yoy_stream_1.f_3=abs(ceil(((float(projection_table1.ins_particulars_stream_1.f_3)-float(projection_table1.ins_particulars_stream_1.f_2))/float(projection_table1.ins_particulars_stream_1.f_2))*100))
             except:
                 projection_table1.ins_growth_analysis_yoy_stream_1.f_3=0
                 
             try:
-                projection_table1.ins_growth_analysis_yoy_stream_1.f_4=ceil(((float(projection_table1.ins_particulars_stream_1.f_4)-float(projection_table1.ins_particulars_stream_1.f_3))/float(projection_table1.ins_particulars_stream_1.f_3))*100)
+                projection_table1.ins_growth_analysis_yoy_stream_1.f_4=abs(ceil(((float(projection_table1.ins_particulars_stream_1.f_4)-float(projection_table1.ins_particulars_stream_1.f_3))/float(projection_table1.ins_particulars_stream_1.f_3))*100))
             except:
                 projection_table1.ins_growth_analysis_yoy_stream_1.f_4=0
                 
             try:
-                projection_table1.ins_growth_analysis_yoy_stream_1.f_5=ceil(((float(projection_table1.ins_particulars_stream_1.f_5)-float(projection_table1.ins_particulars_stream_1.f_4))/float(projection_table1.ins_particulars_stream_1.f_4))*100)
+                projection_table1.ins_growth_analysis_yoy_stream_1.f_5=abs(ceil(((float(projection_table1.ins_particulars_stream_1.f_5)-float(projection_table1.ins_particulars_stream_1.f_4))/float(projection_table1.ins_particulars_stream_1.f_4))*100))
             except:
                 projection_table1.ins_growth_analysis_yoy_stream_1.f_5=0
 
@@ -2226,25 +2226,25 @@ def calculate_income_statement(request):                                      # 
 
 
             try:
-                projection_table1.ins_growth_analysis_yoy_stream_2.f_2=ceil(((float(projection_table1.ins_particulars_stream_2.f_2)-float(projection_table1.ins_particulars_stream_2.f_1))/float(projection_table1.ins_particulars_stream_2.f_1))*100)
+                projection_table1.ins_growth_analysis_yoy_stream_2.f_2=abs(ceil(((float(projection_table1.ins_particulars_stream_2.f_2)-float(projection_table1.ins_particulars_stream_2.f_1))/float(projection_table1.ins_particulars_stream_2.f_1))*100))
             except:
                 projection_table1.ins_growth_analysis_yoy_stream_2.f_2=0
                 
 
             try:
-                projection_table1.ins_growth_analysis_yoy_stream_2.f_3=ceil(((float(projection_table1.ins_particulars_stream_2.f_3)-float(projection_table1.ins_particulars_stream_2.f_2))/float(projection_table1.ins_particulars_stream_2.f_2))*100)
+                projection_table1.ins_growth_analysis_yoy_stream_2.f_3=abs(ceil(((float(projection_table1.ins_particulars_stream_2.f_3)-float(projection_table1.ins_particulars_stream_2.f_2))/float(projection_table1.ins_particulars_stream_2.f_2))*100))
             except:
                 projection_table1.ins_growth_analysis_yoy_stream_2.f_3=0
                 
 
             try:
-                projection_table1.ins_growth_analysis_yoy_stream_2.f_4=ceil(((float(projection_table1.ins_particulars_stream_2.f_4)-float(projection_table1.ins_particulars_stream_2.f_3))/float(projection_table1.ins_particulars_stream_2.f_3))*100)
+                projection_table1.ins_growth_analysis_yoy_stream_2.f_4=abs(ceil(((float(projection_table1.ins_particulars_stream_2.f_4)-float(projection_table1.ins_particulars_stream_2.f_3))/float(projection_table1.ins_particulars_stream_2.f_3))*100))
             except:
                 projection_table1.ins_growth_analysis_yoy_stream_2.f_4=0
                 
 
             try:
-                projection_table1.ins_growth_analysis_yoy_stream_2.f_5=ceil(((float(projection_table1.ins_particulars_stream_2.f_5)-float(projection_table1.ins_particulars_stream_2.f_4))/float(projection_table1.ins_particulars_stream_2.f_4))*100)
+                projection_table1.ins_growth_analysis_yoy_stream_2.f_5=abs(ceil(((float(projection_table1.ins_particulars_stream_2.f_5)-float(projection_table1.ins_particulars_stream_2.f_4))/float(projection_table1.ins_particulars_stream_2.f_4))*100))
             except:
                 projection_table1.ins_growth_analysis_yoy_stream_2.f_5=0
             projection_table1.ins_growth_analysis_yoy_stream_2.save()
@@ -2258,25 +2258,25 @@ def calculate_income_statement(request):                                      # 
 
 
             try:
-                projection_table1.ins_growth_analysis_yoy_stream_3.f_2=ceil(((float(projection_table1.ins_particulars_stream_3.f_2)-float(projection_table1.ins_particulars_stream_3.f_1))/float(projection_table1.ins_particulars_stream_3.f_1))*100)
+                projection_table1.ins_growth_analysis_yoy_stream_3.f_2=abs(ceil(((float(projection_table1.ins_particulars_stream_3.f_2)-float(projection_table1.ins_particulars_stream_3.f_1))/float(projection_table1.ins_particulars_stream_3.f_1))*100))
             except:
                 projection_table1.ins_growth_analysis_yoy_stream_3.f_2=0
                 
 
             try:
-                projection_table1.ins_growth_analysis_yoy_stream_3.f_3=ceil(((float(projection_table1.ins_particulars_stream_3.f_3)-float(projection_table1.ins_particulars_stream_3.f_2))/float(projection_table1.ins_particulars_stream_3.f_2))*100)
+                projection_table1.ins_growth_analysis_yoy_stream_3.f_3=abs(ceil(((float(projection_table1.ins_particulars_stream_3.f_3)-float(projection_table1.ins_particulars_stream_3.f_2))/float(projection_table1.ins_particulars_stream_3.f_2))*100))
             except:
                 projection_table1.ins_growth_analysis_yoy_stream_3.f_3=0
                 
 
             try:
-                projection_table1.ins_growth_analysis_yoy_stream_3.f_4=ceil(((float(projection_table1.ins_particulars_stream_3.f_4)-float(projection_table1.ins_particulars_stream_3.f_3))/float(projection_table1.ins_particulars_stream_3.f_3))*100)
+                projection_table1.ins_growth_analysis_yoy_stream_3.f_4=abs(ceil(((float(projection_table1.ins_particulars_stream_3.f_4)-float(projection_table1.ins_particulars_stream_3.f_3))/float(projection_table1.ins_particulars_stream_3.f_3))*100))
             except:
                 projection_table1.ins_growth_analysis_yoy_stream_3.f_4=0
                 
 
             try:
-                projection_table1.ins_growth_analysis_yoy_stream_3.f_5=ceil(((float(projection_table1.ins_particulars_stream_3.f_5)-float(projection_table1.ins_particulars_stream_3.f_4))/float(projection_table1.ins_particulars_stream_3.f_4))*100)
+                projection_table1.ins_growth_analysis_yoy_stream_3.f_5=abs(ceil(((float(projection_table1.ins_particulars_stream_3.f_5)-float(projection_table1.ins_particulars_stream_3.f_4))/float(projection_table1.ins_particulars_stream_3.f_4))*100))
             except:
                 projection_table1.ins_growth_analysis_yoy_stream_3.f_5=0
             projection_table1.ins_growth_analysis_yoy_stream_3.save()
@@ -2291,25 +2291,25 @@ def calculate_income_statement(request):                                      # 
 
 
             try:
-                projection_table1.ins_growth_analysis_yoy_stream_4.f_2=ceil(((float(projection_table1.ins_particulars_stream_4.f_2)-float(projection_table1.ins_particulars_stream_4.f_1))/float(projection_table1.ins_particulars_stream_4.f_1))*100)
+                projection_table1.ins_growth_analysis_yoy_stream_4.f_2=abs(ceil(((float(projection_table1.ins_particulars_stream_4.f_2)-float(projection_table1.ins_particulars_stream_4.f_1))/float(projection_table1.ins_particulars_stream_4.f_1))*100))
             except:
                 projection_table1.ins_growth_analysis_yoy_stream_4.f_2=0
                 
 
             try:
-                projection_table1.ins_growth_analysis_yoy_stream_4.f_3=ceil(((float(projection_table1.ins_particulars_stream_4.f_3)-float(projection_table1.ins_particulars_stream_4.f_2))/float(projection_table1.ins_particulars_stream_4.f_2))*100)
+                projection_table1.ins_growth_analysis_yoy_stream_4.f_3=abs(ceil(((float(projection_table1.ins_particulars_stream_4.f_3)-float(projection_table1.ins_particulars_stream_4.f_2))/float(projection_table1.ins_particulars_stream_4.f_2))*100))
             except:
                 projection_table1.ins_growth_analysis_yoy_stream_4.f_3=0
                 
 
             try:
-                projection_table1.ins_growth_analysis_yoy_stream_4.f_4=ceil(((float(projection_table1.ins_particulars_stream_4.f_4)-float(projection_table1.ins_particulars_stream_4.f_3))/float(projection_table1.ins_particulars_stream_4.f_3))*100)
+                projection_table1.ins_growth_analysis_yoy_stream_4.f_4=abs(ceil(((float(projection_table1.ins_particulars_stream_4.f_4)-float(projection_table1.ins_particulars_stream_4.f_3))/float(projection_table1.ins_particulars_stream_4.f_3))*100))
             except:
                 projection_table1.ins_growth_analysis_yoy_stream_4.f_4=0
                 
 
             try:
-                projection_table1.ins_growth_analysis_yoy_stream_4.f_5=ceil(((float(projection_table1.ins_particulars_stream_4.f_5)-float(projection_table1.ins_particulars_stream_4.f_4))/float(projection_table1.ins_particulars_stream_4.f_4))*100)
+                projection_table1.ins_growth_analysis_yoy_stream_4.f_5=abs(ceil(((float(projection_table1.ins_particulars_stream_4.f_5)-float(projection_table1.ins_particulars_stream_4.f_4))/float(projection_table1.ins_particulars_stream_4.f_4))*100))
             except:
                 projection_table1.ins_growth_analysis_yoy_stream_4.f_5=0
             projection_table1.ins_growth_analysis_yoy_stream_4.save()
@@ -2322,25 +2322,25 @@ def calculate_income_statement(request):                                      # 
 
 
             try:
-                projection_table1.ins_growth_analysis_yoy_total_revenue_from_operations_services.f_2=ceil(((float(projection_table1.ins_particulars_total_revenue_from_operations_services.f_2)-float(projection_table1.ins_particulars_total_revenue_from_operations_services.f_1))/float(projection_table1.ins_particulars_total_revenue_from_operations_services.f_1))*100)
+                projection_table1.ins_growth_analysis_yoy_total_revenue_from_operations_services.f_2=abs(ceil(((float(projection_table1.ins_particulars_total_revenue_from_operations_services.f_2)-float(projection_table1.ins_particulars_total_revenue_from_operations_services.f_1))/float(projection_table1.ins_particulars_total_revenue_from_operations_services.f_1))*100))
             except:
                 projection_table1.ins_growth_analysis_yoy_total_revenue_from_operations_services.f_2=0
                 
 
             try:
-                projection_table1.ins_growth_analysis_yoy_total_revenue_from_operations_services.f_3=ceil(((float(projection_table1.ins_particulars_total_revenue_from_operations_services.f_3)-float(projection_table1.ins_particulars_total_revenue_from_operations_services.f_2))/float(projection_table1.ins_particulars_total_revenue_from_operations_services.f_2))*100)
+                projection_table1.ins_growth_analysis_yoy_total_revenue_from_operations_services.f_3=abs(ceil(((float(projection_table1.ins_particulars_total_revenue_from_operations_services.f_3)-float(projection_table1.ins_particulars_total_revenue_from_operations_services.f_2))/float(projection_table1.ins_particulars_total_revenue_from_operations_services.f_2))*100))
             except:
                 projection_table1.ins_growth_analysis_yoy_total_revenue_from_operations_services.f_3=0
                 
 
             try:
-                projection_table1.ins_growth_analysis_yoy_total_revenue_from_operations_services.f_4=ceil(((float(projection_table1.ins_particulars_total_revenue_from_operations_services.f_4)-float(projection_table1.ins_particulars_total_revenue_from_operations_services.f_3))/float(projection_table1.ins_particulars_total_revenue_from_operations_services.f_3))*100)
+                projection_table1.ins_growth_analysis_yoy_total_revenue_from_operations_services.f_4=abs(ceil(((float(projection_table1.ins_particulars_total_revenue_from_operations_services.f_4)-float(projection_table1.ins_particulars_total_revenue_from_operations_services.f_3))/float(projection_table1.ins_particulars_total_revenue_from_operations_services.f_3))*100))
             except:
                 projection_table1.ins_growth_analysis_yoy_total_revenue_from_operations_services.f_4=0
                 
 
             try:
-                projection_table1.ins_growth_analysis_yoy_total_revenue_from_operations_services.f_5=ceil(((float(projection_table1.ins_particulars_total_revenue_from_operations_services.f_5)-float(projection_table1.ins_particulars_total_revenue_from_operations_services.f_4))/float(projection_table1.ins_particulars_total_revenue_from_operations_services.f_4))*100)
+                projection_table1.ins_growth_analysis_yoy_total_revenue_from_operations_services.f_5=abs(ceil(((float(projection_table1.ins_particulars_total_revenue_from_operations_services.f_5)-float(projection_table1.ins_particulars_total_revenue_from_operations_services.f_4))/float(projection_table1.ins_particulars_total_revenue_from_operations_services.f_4))*100))
             except:
                 projection_table1.ins_growth_analysis_yoy_total_revenue_from_operations_services.f_5=0
             projection_table1.ins_growth_analysis_yoy_total_revenue_from_operations_services.save()
@@ -2365,25 +2365,25 @@ def calculate_income_statement(request):                                      # 
 
 
             try:
-                projection_table1.ins_growth_analysis_yoy_product_development_expenses_operating_expenses_raw_material.f_2=ceil(((float(projection_table1.ins_particulars_product_development_expenses_operating_expenses_raw_material.f_2)-float(projection_table1.ins_particulars_product_development_expenses_operating_expenses_raw_material.f_1))/float(projection_table1.ins_particulars_product_development_expenses_operating_expenses_raw_material.f_1))*100)
+                projection_table1.ins_growth_analysis_yoy_product_development_expenses_operating_expenses_raw_material.f_2=abs(ceil(((float(projection_table1.ins_particulars_product_development_expenses_operating_expenses_raw_material.f_2)-float(projection_table1.ins_particulars_product_development_expenses_operating_expenses_raw_material.f_1))/float(projection_table1.ins_particulars_product_development_expenses_operating_expenses_raw_material.f_1))*100))
             except:
                 projection_table1.ins_growth_analysis_yoy_product_development_expenses_operating_expenses_raw_material.f_2=0
                 
 
             try:
-                projection_table1.ins_growth_analysis_yoy_product_development_expenses_operating_expenses_raw_material.f_3=ceil(((float(projection_table1.ins_particulars_product_development_expenses_operating_expenses_raw_material.f_3)-float(projection_table1.ins_particulars_product_development_expenses_operating_expenses_raw_material.f_2))/float(projection_table1.ins_particulars_product_development_expenses_operating_expenses_raw_material.f_2))*100)
+                projection_table1.ins_growth_analysis_yoy_product_development_expenses_operating_expenses_raw_material.f_3=abs(ceil(((float(projection_table1.ins_particulars_product_development_expenses_operating_expenses_raw_material.f_3)-float(projection_table1.ins_particulars_product_development_expenses_operating_expenses_raw_material.f_2))/float(projection_table1.ins_particulars_product_development_expenses_operating_expenses_raw_material.f_2))*100))
             except:
                 projection_table1.ins_growth_analysis_yoy_product_development_expenses_operating_expenses_raw_material.f_3=0
                 
 
             try:
-                projection_table1.ins_growth_analysis_yoy_product_development_expenses_operating_expenses_raw_material.f_4=ceil(((float(projection_table1.ins_particulars_product_development_expenses_operating_expenses_raw_material.f_4)-float(projection_table1.ins_particulars_product_development_expenses_operating_expenses_raw_material.f_3))/float(projection_table1.ins_particulars_product_development_expenses_operating_expenses_raw_material.f_3))*100)
+                projection_table1.ins_growth_analysis_yoy_product_development_expenses_operating_expenses_raw_material.f_4=abs(ceil(((float(projection_table1.ins_particulars_product_development_expenses_operating_expenses_raw_material.f_4)-float(projection_table1.ins_particulars_product_development_expenses_operating_expenses_raw_material.f_3))/float(projection_table1.ins_particulars_product_development_expenses_operating_expenses_raw_material.f_3))*100))
             except:
                 projection_table1.ins_growth_analysis_yoy_product_development_expenses_operating_expenses_raw_material.f_4=0
                 
 
             try:
-                projection_table1.ins_growth_analysis_yoy_product_development_expenses_operating_expenses_raw_material.f_5=ceil(((float(projection_table1.ins_particulars_product_development_expenses_operating_expenses_raw_material.f_5)-float(projection_table1.ins_particulars_product_development_expenses_operating_expenses_raw_material.f_4))/float(projection_table1.ins_particulars_product_development_expenses_operating_expenses_raw_material.f_4))*100)
+                projection_table1.ins_growth_analysis_yoy_product_development_expenses_operating_expenses_raw_material.f_5=abs(ceil(((float(projection_table1.ins_particulars_product_development_expenses_operating_expenses_raw_material.f_5)-float(projection_table1.ins_particulars_product_development_expenses_operating_expenses_raw_material.f_4))/float(projection_table1.ins_particulars_product_development_expenses_operating_expenses_raw_material.f_4))*100))
             except:
                 projection_table1.ins_growth_analysis_yoy_product_development_expenses_operating_expenses_raw_material.f_5=0
             projection_table1.ins_growth_analysis_yoy_product_development_expenses_operating_expenses_raw_material.save()
@@ -2399,25 +2399,25 @@ def calculate_income_statement(request):                                      # 
 
 
             try:
-                projection_table1.ins_growth_analysis_yoy_employee_cost.f_2=ceil(((float(projection_table1.ins_particulars_employee_cost.f_2)-float(projection_table1.ins_particulars_employee_cost.f_1))/float(projection_table1.ins_particulars_employee_cost.f_1))*100)
+                projection_table1.ins_growth_analysis_yoy_employee_cost.f_2=abs(ceil(((float(projection_table1.ins_particulars_employee_cost.f_2)-float(projection_table1.ins_particulars_employee_cost.f_1))/float(projection_table1.ins_particulars_employee_cost.f_1))*100))
             except:
                 projection_table1.ins_growth_analysis_yoy_employee_cost.f_2=0
                 
 
             try:
-                projection_table1.ins_growth_analysis_yoy_employee_cost.f_3=ceil(((float(projection_table1.ins_particulars_employee_cost.f_3)-float(projection_table1.ins_particulars_employee_cost.f_2))/float(projection_table1.ins_particulars_employee_cost.f_2))*100)
+                projection_table1.ins_growth_analysis_yoy_employee_cost.f_3=abs(ceil(((float(projection_table1.ins_particulars_employee_cost.f_3)-float(projection_table1.ins_particulars_employee_cost.f_2))/float(projection_table1.ins_particulars_employee_cost.f_2))*100))
             except:
                 projection_table1.ins_growth_analysis_yoy_employee_cost.f_3=0
                 
 
             try:
-                projection_table1.ins_growth_analysis_yoy_employee_cost.f_4=ceil(((float(projection_table1.ins_particulars_employee_cost.f_4)-float(projection_table1.ins_particulars_employee_cost.f_3))/float(projection_table1.ins_particulars_employee_cost.f_3))*100)
+                projection_table1.ins_growth_analysis_yoy_employee_cost.f_4=abs(ceil(((float(projection_table1.ins_particulars_employee_cost.f_4)-float(projection_table1.ins_particulars_employee_cost.f_3))/float(projection_table1.ins_particulars_employee_cost.f_3))*100))
             except:
                 projection_table1.ins_growth_analysis_yoy_employee_cost.f_4=0
                 
 
             try:
-                projection_table1.ins_growth_analysis_yoy_employee_cost.f_5=ceil(((float(projection_table1.ins_particulars_employee_cost.f_5)-float(projection_table1.ins_particulars_employee_cost.f_4))/float(projection_table1.ins_particulars_employee_cost.f_4))*100)
+                projection_table1.ins_growth_analysis_yoy_employee_cost.f_5=abs(ceil(((float(projection_table1.ins_particulars_employee_cost.f_5)-float(projection_table1.ins_particulars_employee_cost.f_4))/float(projection_table1.ins_particulars_employee_cost.f_4))*100))
             except:
                 projection_table1.ins_growth_analysis_yoy_employee_cost.f_5=0
             projection_table1.ins_growth_analysis_yoy_employee_cost.save()
@@ -2432,25 +2432,25 @@ def calculate_income_statement(request):                                      # 
 
 
             try:
-                projection_table1.ins_growth_analysis_yoy_general_administrative_expenses.f_2=ceil(((float(projection_table1.ins_particulars_general_administrative_expenses.f_2)-float(projection_table1.ins_particulars_general_administrative_expenses.f_1))/float(projection_table1.ins_particulars_general_administrative_expenses.f_1))*100)
+                projection_table1.ins_growth_analysis_yoy_general_administrative_expenses.f_2=abs(ceil(((float(projection_table1.ins_particulars_general_administrative_expenses.f_2)-float(projection_table1.ins_particulars_general_administrative_expenses.f_1))/float(projection_table1.ins_particulars_general_administrative_expenses.f_1))*100))
             except:
                 projection_table1.ins_growth_analysis_yoy_general_administrative_expenses.f_2=0
                 
 
             try:
-                projection_table1.ins_growth_analysis_yoy_general_administrative_expenses.f_3=ceil(((float(projection_table1.ins_particulars_general_administrative_expenses.f_3)-float(projection_table1.ins_particulars_general_administrative_expenses.f_2))/float(projection_table1.ins_particulars_general_administrative_expenses.f_2))*100)
+                projection_table1.ins_growth_analysis_yoy_general_administrative_expenses.f_3=abs(ceil(((float(projection_table1.ins_particulars_general_administrative_expenses.f_3)-float(projection_table1.ins_particulars_general_administrative_expenses.f_2))/float(projection_table1.ins_particulars_general_administrative_expenses.f_2))*100))
             except:
                 projection_table1.ins_growth_analysis_yoy_general_administrative_expenses.f_3=0
                 
 
             try:
-                projection_table1.ins_growth_analysis_yoy_general_administrative_expenses.f_4=ceil(((float(projection_table1.ins_particulars_general_administrative_expenses.f_4)-float(projection_table1.ins_particulars_general_administrative_expenses.f_3))/float(projection_table1.ins_particulars_general_administrative_expenses.f_3))*100)
+                projection_table1.ins_growth_analysis_yoy_general_administrative_expenses.f_4=abs(ceil(((float(projection_table1.ins_particulars_general_administrative_expenses.f_4)-float(projection_table1.ins_particulars_general_administrative_expenses.f_3))/float(projection_table1.ins_particulars_general_administrative_expenses.f_3))*100))
             except:
                 projection_table1.ins_growth_analysis_yoy_general_administrative_expenses.f_4=0
                 
 
             try:
-                projection_table1.ins_growth_analysis_yoy_general_administrative_expenses.f_5=ceil(((float(projection_table1.ins_particulars_general_administrative_expenses.f_5)-float(projection_table1.ins_particulars_general_administrative_expenses.f_4))/float(projection_table1.ins_particulars_general_administrative_expenses.f_4))*100)
+                projection_table1.ins_growth_analysis_yoy_general_administrative_expenses.f_5=abs(ceil(((float(projection_table1.ins_particulars_general_administrative_expenses.f_5)-float(projection_table1.ins_particulars_general_administrative_expenses.f_4))/float(projection_table1.ins_particulars_general_administrative_expenses.f_4))*100))
             except:
                 projection_table1.ins_growth_analysis_yoy_general_administrative_expenses.f_5=0
             projection_table1.ins_growth_analysis_yoy_general_administrative_expenses.save()
@@ -2465,25 +2465,25 @@ def calculate_income_statement(request):                                      # 
 
 
             try:
-                projection_table1.ins_growth_analysis_yoy_selling_marketing_expenses.f_2=ceil(((float(projection_table1.ins_particulars_selling_marketing_expenses.f_2)-float(projection_table1.ins_particulars_selling_marketing_expenses.f_1))/float(projection_table1.ins_particulars_selling_marketing_expenses.f_1))*100)
+                projection_table1.ins_growth_analysis_yoy_selling_marketing_expenses.f_2=abs(ceil(((float(projection_table1.ins_particulars_selling_marketing_expenses.f_2)-float(projection_table1.ins_particulars_selling_marketing_expenses.f_1))/float(projection_table1.ins_particulars_selling_marketing_expenses.f_1))*100))
             except:
                 projection_table1.ins_growth_analysis_yoy_selling_marketing_expenses.f_2=0
                 
 
             try:
-                projection_table1.ins_growth_analysis_yoy_selling_marketing_expenses.f_3=ceil(((float(projection_table1.ins_particulars_selling_marketing_expenses.f_3)-float(projection_table1.ins_particulars_selling_marketing_expenses.f_2))/float(projection_table1.ins_particulars_selling_marketing_expenses.f_2))*100)
+                projection_table1.ins_growth_analysis_yoy_selling_marketing_expenses.f_3=abs(ceil(((float(projection_table1.ins_particulars_selling_marketing_expenses.f_3)-float(projection_table1.ins_particulars_selling_marketing_expenses.f_2))/float(projection_table1.ins_particulars_selling_marketing_expenses.f_2))*100))
             except:
                 projection_table1.ins_growth_analysis_yoy_selling_marketing_expenses.f_3=0
                 
 
             try:
-                projection_table1.ins_growth_analysis_yoy_selling_marketing_expenses.f_4=ceil(((float(projection_table1.ins_particulars_selling_marketing_expenses.f_4)-float(projection_table1.ins_particulars_selling_marketing_expenses.f_3))/float(projection_table1.ins_particulars_selling_marketing_expenses.f_3))*100)
+                projection_table1.ins_growth_analysis_yoy_selling_marketing_expenses.f_4=abs(ceil(((float(projection_table1.ins_particulars_selling_marketing_expenses.f_4)-float(projection_table1.ins_particulars_selling_marketing_expenses.f_3))/float(projection_table1.ins_particulars_selling_marketing_expenses.f_3))*100))
             except:
                 projection_table1.ins_growth_analysis_yoy_selling_marketing_expenses.f_4=0
                 
 
             try:
-                projection_table1.ins_growth_analysis_yoy_selling_marketing_expenses.f_5=ceil(((float(projection_table1.ins_particulars_selling_marketing_expenses.f_5)-float(projection_table1.ins_particulars_selling_marketing_expenses.f_4))/float(projection_table1.ins_particulars_selling_marketing_expenses.f_4))*100)
+                projection_table1.ins_growth_analysis_yoy_selling_marketing_expenses.f_5=abs(ceil(((float(projection_table1.ins_particulars_selling_marketing_expenses.f_5)-float(projection_table1.ins_particulars_selling_marketing_expenses.f_4))/float(projection_table1.ins_particulars_selling_marketing_expenses.f_4))*100))
             except:
                 projection_table1.ins_growth_analysis_yoy_selling_marketing_expenses.f_5=0
             projection_table1.ins_growth_analysis_yoy_selling_marketing_expenses.save()
@@ -2499,25 +2499,25 @@ def calculate_income_statement(request):                                      # 
 
 
             try:
-                projection_table1.ins_growth_analysis_yoy_other_expenses_1.f_2=ceil(((float(projection_table1.ins_particulars_other_expenses_1.f_2)-float(projection_table1.ins_particulars_other_expenses_1.f_1))/float(projection_table1.ins_particulars_other_expenses_1.f_1))*100)
+                projection_table1.ins_growth_analysis_yoy_other_expenses_1.f_2=abs(ceil(((float(projection_table1.ins_particulars_other_expenses_1.f_2)-float(projection_table1.ins_particulars_other_expenses_1.f_1))/float(projection_table1.ins_particulars_other_expenses_1.f_1))*100))
             except:
                 projection_table1.ins_growth_analysis_yoy_other_expenses_1.f_2=0
                 
 
             try:
-                projection_table1.ins_growth_analysis_yoy_other_expenses_1.f_3=ceil(((float(projection_table1.ins_particulars_other_expenses_1.f_3)-float(projection_table1.ins_particulars_other_expenses_1.f_2))/float(projection_table1.ins_particulars_other_expenses_1.f_2))*100)
+                projection_table1.ins_growth_analysis_yoy_other_expenses_1.f_3=abs(ceil(((float(projection_table1.ins_particulars_other_expenses_1.f_3)-float(projection_table1.ins_particulars_other_expenses_1.f_2))/float(projection_table1.ins_particulars_other_expenses_1.f_2))*100))
             except:
                 projection_table1.ins_growth_analysis_yoy_other_expenses_1.f_3=0
                 
 
             try:
-                projection_table1.ins_growth_analysis_yoy_other_expenses_1.f_4=ceil(((float(projection_table1.ins_particulars_other_expenses_1.f_4)-float(projection_table1.ins_particulars_other_expenses_1.f_3))/float(projection_table1.ins_particulars_other_expenses_1.f_3))*100)
+                projection_table1.ins_growth_analysis_yoy_other_expenses_1.f_4=abs(ceil(((float(projection_table1.ins_particulars_other_expenses_1.f_4)-float(projection_table1.ins_particulars_other_expenses_1.f_3))/float(projection_table1.ins_particulars_other_expenses_1.f_3))*100))
             except:
                 projection_table1.ins_growth_analysis_yoy_other_expenses_1.f_4=0
                 
 
             try:
-                projection_table1.ins_growth_analysis_yoy_other_expenses_1.f_5=ceil(((float(projection_table1.ins_particulars_other_expenses_1.f_5)-float(projection_table1.ins_particulars_other_expenses_1.f_4))/float(projection_table1.ins_particulars_other_expenses_1.f_4))*100)
+                projection_table1.ins_growth_analysis_yoy_other_expenses_1.f_5=abs(ceil(((float(projection_table1.ins_particulars_other_expenses_1.f_5)-float(projection_table1.ins_particulars_other_expenses_1.f_4))/float(projection_table1.ins_particulars_other_expenses_1.f_4))*100))
             except:
                 projection_table1.ins_growth_analysis_yoy_other_expenses_1.f_5=0
             projection_table1.ins_growth_analysis_yoy_other_expenses_1.save()
@@ -2537,25 +2537,25 @@ def calculate_income_statement(request):                                      # 
 
 
             try:
-                projection_table1.ins_growth_analysis_yoy_other_expenses_2.f_2=ceil(((float(projection_table1.ins_particulars_other_expenses_2.f_2)-float(projection_table1.ins_particulars_other_expenses_2.f_1))/float(projection_table1.ins_particulars_other_expenses_2.f_1))*100)
+                projection_table1.ins_growth_analysis_yoy_other_expenses_2.f_2=abs(ceil(((float(projection_table1.ins_particulars_other_expenses_2.f_2)-float(projection_table1.ins_particulars_other_expenses_2.f_1))/float(projection_table1.ins_particulars_other_expenses_2.f_1))*100))
             except:
                 projection_table1.ins_growth_analysis_yoy_other_expenses_2.f_2=0
                 
 
             try:
-                projection_table1.ins_growth_analysis_yoy_other_expenses_2.f_3=ceil(((float(projection_table1.ins_particulars_other_expenses_2.f_3)-float(projection_table1.ins_particulars_other_expenses_2.f_2))/float(projection_table1.ins_particulars_other_expenses_2.f_2))*100)
+                projection_table1.ins_growth_analysis_yoy_other_expenses_2.f_3=abs(ceil(((float(projection_table1.ins_particulars_other_expenses_2.f_3)-float(projection_table1.ins_particulars_other_expenses_2.f_2))/float(projection_table1.ins_particulars_other_expenses_2.f_2))*100))
             except:
                 projection_table1.ins_growth_analysis_yoy_other_expenses_2.f_3=0
                 
 
             try:
-                projection_table1.ins_growth_analysis_yoy_other_expenses_2.f_4=ceil(((float(projection_table1.ins_particulars_other_expenses_2.f_4)-float(projection_table1.ins_particulars_other_expenses_2.f_3))/float(projection_table1.ins_particulars_other_expenses_2.f_3))*100)
+                projection_table1.ins_growth_analysis_yoy_other_expenses_2.f_4=abs(ceil(((float(projection_table1.ins_particulars_other_expenses_2.f_4)-float(projection_table1.ins_particulars_other_expenses_2.f_3))/float(projection_table1.ins_particulars_other_expenses_2.f_3))*100))
             except:
                 projection_table1.ins_growth_analysis_yoy_other_expenses_2.f_4=0
                 
 
             try:
-                projection_table1.ins_growth_analysis_yoy_other_expenses_2.f_5=ceil(((float(projection_table1.ins_particulars_other_expenses_2.f_5)-float(projection_table1.ins_particulars_other_expenses_2.f_4))/float(projection_table1.ins_particulars_other_expenses_2.f_4))*100)
+                projection_table1.ins_growth_analysis_yoy_other_expenses_2.f_5=abs(ceil(((float(projection_table1.ins_particulars_other_expenses_2.f_5)-float(projection_table1.ins_particulars_other_expenses_2.f_4))/float(projection_table1.ins_particulars_other_expenses_2.f_4))*100))
             except:
                 projection_table1.ins_growth_analysis_yoy_other_expenses_2.f_5=0
             projection_table1.ins_growth_analysis_yoy_other_expenses_2.save()
@@ -2575,25 +2575,25 @@ def calculate_income_statement(request):                                      # 
 
 
             try:
-                projection_table1.ins_growth_analysis_yoy_total_operating_expenses.f_2=ceil(((float(projection_table1.ins_particulars_total_operating_expenses.f_2)-float(projection_table1.ins_particulars_total_operating_expenses.f_1))/float(projection_table1.ins_particulars_total_operating_expenses.f_1))*100)
+                projection_table1.ins_growth_analysis_yoy_total_operating_expenses.f_2=abs(ceil(((float(projection_table1.ins_particulars_total_operating_expenses.f_2)-float(projection_table1.ins_particulars_total_operating_expenses.f_1))/float(projection_table1.ins_particulars_total_operating_expenses.f_1))*100))
             except:
                 projection_table1.ins_growth_analysis_yoy_total_operating_expenses.f_2=0
                 
 
             try:
-                projection_table1.ins_growth_analysis_yoy_total_operating_expenses.f_3=ceil(((float(projection_table1.ins_particulars_total_operating_expenses.f_3)-float(projection_table1.ins_particulars_total_operating_expenses.f_2))/float(projection_table1.ins_particulars_total_operating_expenses.f_2))*100)
+                projection_table1.ins_growth_analysis_yoy_total_operating_expenses.f_3=abs(ceil(((float(projection_table1.ins_particulars_total_operating_expenses.f_3)-float(projection_table1.ins_particulars_total_operating_expenses.f_2))/float(projection_table1.ins_particulars_total_operating_expenses.f_2))*100))
             except:
                 projection_table1.ins_growth_analysis_yoy_total_operating_expenses.f_3=0
                 
 
             try:
-                projection_table1.ins_growth_analysis_yoy_total_operating_expenses.f_4=ceil(((float(projection_table1.ins_particulars_total_operating_expenses.f_4)-float(projection_table1.ins_particulars_total_operating_expenses.f_3))/float(projection_table1.ins_particulars_total_operating_expenses.f_3))*100)
+                projection_table1.ins_growth_analysis_yoy_total_operating_expenses.f_4=abs(ceil(((float(projection_table1.ins_particulars_total_operating_expenses.f_4)-float(projection_table1.ins_particulars_total_operating_expenses.f_3))/float(projection_table1.ins_particulars_total_operating_expenses.f_3))*100))
             except:
                 projection_table1.ins_growth_analysis_yoy_total_operating_expenses.f_4=0
                 
 
             try:
-                projection_table1.ins_growth_analysis_yoy_total_operating_expenses.f_5=ceil(((float(projection_table1.ins_particulars_total_operating_expenses.f_5)-float(projection_table1.ins_particulars_total_operating_expenses.f_4))/float(projection_table1.ins_particulars_total_operating_expenses.f_4))*100)
+                projection_table1.ins_growth_analysis_yoy_total_operating_expenses.f_5=abs(ceil(((float(projection_table1.ins_particulars_total_operating_expenses.f_5)-float(projection_table1.ins_particulars_total_operating_expenses.f_4))/float(projection_table1.ins_particulars_total_operating_expenses.f_4))*100))
             except:
                 projection_table1.ins_growth_analysis_yoy_total_operating_expenses.f_5=0
             projection_table1.ins_growth_analysis_yoy_total_operating_expenses.save()
@@ -2609,25 +2609,25 @@ def calculate_income_statement(request):                                      # 
 
 
             try:
-                projection_table1.ins_growth_analysis_yoy_ebitda_operating_profit.f_2=ceil(((float(projection_table1.ins_particulars_ebitda_operating_profit.f_2)-float(projection_table1.ins_particulars_ebitda_operating_profit.f_1))/float(projection_table1.ins_particulars_ebitda_operating_profit.f_1))*100)
+                projection_table1.ins_growth_analysis_yoy_ebitda_operating_profit.f_2=abs(ceil(((float(projection_table1.ins_particulars_ebitda_operating_profit.f_2)-float(projection_table1.ins_particulars_ebitda_operating_profit.f_1))/float(projection_table1.ins_particulars_ebitda_operating_profit.f_1))*100))
             except:
                 projection_table1.ins_growth_analysis_yoy_ebitda_operating_profit.f_2=0
                 
 
             try:
-                projection_table1.ins_growth_analysis_yoy_ebitda_operating_profit.f_3=ceil(((float(projection_table1.ins_particulars_ebitda_operating_profit.f_3)-float(projection_table1.ins_particulars_ebitda_operating_profit.f_2))/float(projection_table1.ins_particulars_ebitda_operating_profit.f_2))*100)
+                projection_table1.ins_growth_analysis_yoy_ebitda_operating_profit.f_3=abs(ceil(((float(projection_table1.ins_particulars_ebitda_operating_profit.f_3)-float(projection_table1.ins_particulars_ebitda_operating_profit.f_2))/float(projection_table1.ins_particulars_ebitda_operating_profit.f_2))*100))
             except:
                 projection_table1.ins_growth_analysis_yoy_ebitda_operating_profit.f_3=0
                 
 
             try:
-                projection_table1.ins_growth_analysis_yoy_ebitda_operating_profit.f_4=ceil(((float(projection_table1.ins_particulars_ebitda_operating_profit.f_4)-float(projection_table1.ins_particulars_ebitda_operating_profit.f_3))/float(projection_table1.ins_particulars_ebitda_operating_profit.f_3))*100)
+                projection_table1.ins_growth_analysis_yoy_ebitda_operating_profit.f_4=abs(ceil(((float(projection_table1.ins_particulars_ebitda_operating_profit.f_4)-float(projection_table1.ins_particulars_ebitda_operating_profit.f_3))/float(projection_table1.ins_particulars_ebitda_operating_profit.f_3))*100))
             except:
                 projection_table1.ins_growth_analysis_yoy_ebitda_operating_profit.f_4=0
                 
 
             try:
-                projection_table1.ins_growth_analysis_yoy_ebitda_operating_profit.f_5=ceil(((float(projection_table1.ins_particulars_ebitda_operating_profit.f_5)-float(projection_table1.ins_particulars_ebitda_operating_profit.f_4))/float(projection_table1.ins_particulars_ebitda_operating_profit.f_4))*100)
+                projection_table1.ins_growth_analysis_yoy_ebitda_operating_profit.f_5=abs(ceil(((float(projection_table1.ins_particulars_ebitda_operating_profit.f_5)-float(projection_table1.ins_particulars_ebitda_operating_profit.f_4))/float(projection_table1.ins_particulars_ebitda_operating_profit.f_4))*100))
             except:
                 projection_table1.ins_growth_analysis_yoy_ebitda_operating_profit.f_5=0
             projection_table1.ins_growth_analysis_yoy_ebitda_operating_profit.save()
@@ -2644,25 +2644,25 @@ def calculate_income_statement(request):                                      # 
 
 
             try:
-                projection_table1.ins_growth_analysis_yoy_depreciation.f_2=ceil(((float(projection_table1.ins_particulars_depreciation.f_2)-float(projection_table1.ins_particulars_depreciation.f_1))/float(projection_table1.ins_particulars_depreciation.f_1))*100)
+                projection_table1.ins_growth_analysis_yoy_depreciation.f_2=abs(ceil(((float(projection_table1.ins_particulars_depreciation.f_2)-float(projection_table1.ins_particulars_depreciation.f_1))/float(projection_table1.ins_particulars_depreciation.f_1))*100))
             except:
                 projection_table1.ins_growth_analysis_yoy_depreciation.f_2=0
                 
 
             try:
-                projection_table1.ins_growth_analysis_yoy_depreciation.f_3=ceil(((float(projection_table1.ins_particulars_depreciation.f_3)-float(projection_table1.ins_particulars_depreciation.f_2))/float(projection_table1.ins_particulars_depreciation.f_2))*100)
+                projection_table1.ins_growth_analysis_yoy_depreciation.f_3=abs(ceil(((float(projection_table1.ins_particulars_depreciation.f_3)-float(projection_table1.ins_particulars_depreciation.f_2))/float(projection_table1.ins_particulars_depreciation.f_2))*100))
             except:
                 projection_table1.ins_growth_analysis_yoy_depreciation.f_3=0
                 
 
             try:
-                projection_table1.ins_growth_analysis_yoy_depreciation.f_4=ceil(((float(projection_table1.ins_particulars_depreciation.f_4)-float(projection_table1.ins_particulars_depreciation.f_3))/float(projection_table1.ins_particulars_depreciation.f_3))*100)
+                projection_table1.ins_growth_analysis_yoy_depreciation.f_4=abs(ceil(((float(projection_table1.ins_particulars_depreciation.f_4)-float(projection_table1.ins_particulars_depreciation.f_3))/float(projection_table1.ins_particulars_depreciation.f_3))*100))
             except:
                 projection_table1.ins_growth_analysis_yoy_depreciation.f_4=0
                 
 
             try:
-                projection_table1.ins_growth_analysis_yoy_depreciation.f_5=ceil(((float(projection_table1.ins_particulars_depreciation.f_5)-float(projection_table1.ins_particulars_depreciation.f_4))/float(projection_table1.ins_particulars_depreciation.f_4))*100)
+                projection_table1.ins_growth_analysis_yoy_depreciation.f_5=abs(ceil(((float(projection_table1.ins_particulars_depreciation.f_5)-float(projection_table1.ins_particulars_depreciation.f_4))/float(projection_table1.ins_particulars_depreciation.f_4))*100))
             except:
                 projection_table1.ins_growth_analysis_yoy_depreciation.f_5=0
             projection_table1.ins_growth_analysis_yoy_depreciation.save()
@@ -2678,25 +2678,25 @@ def calculate_income_statement(request):                                      # 
 
 
             try:
-                projection_table1.ins_growth_analysis_yoy_other_income.f_2=ceil(((float(projection_table1.ins_particulars_other_income.f_2)-float(projection_table1.ins_particulars_other_income.f_1))/float(projection_table1.ins_particulars_other_income.f_1))*100)
+                projection_table1.ins_growth_analysis_yoy_other_income.f_2=abs(ceil(((float(projection_table1.ins_particulars_other_income.f_2)-float(projection_table1.ins_particulars_other_income.f_1))/float(projection_table1.ins_particulars_other_income.f_1))*100))
             except:
                 projection_table1.ins_growth_analysis_yoy_other_income.f_2=0
                 
 
             try:
-                projection_table1.ins_growth_analysis_yoy_other_income.f_3=ceil(((float(projection_table1.ins_particulars_other_income.f_3)-float(projection_table1.ins_particulars_other_income.f_2))/float(projection_table1.ins_particulars_other_income.f_2))*100)
+                projection_table1.ins_growth_analysis_yoy_other_income.f_3=abs(ceil(((float(projection_table1.ins_particulars_other_income.f_3)-float(projection_table1.ins_particulars_other_income.f_2))/float(projection_table1.ins_particulars_other_income.f_2))*100))
             except:
                 projection_table1.ins_growth_analysis_yoy_other_income.f_3=0
                 
 
             try:
-                projection_table1.ins_growth_analysis_yoy_other_income.f_4=ceil(((float(projection_table1.ins_particulars_other_income.f_4)-float(projection_table1.ins_particulars_other_income.f_3))/float(projection_table1.ins_particulars_other_income.f_3))*100)
+                projection_table1.ins_growth_analysis_yoy_other_income.f_4=abs(ceil(((float(projection_table1.ins_particulars_other_income.f_4)-float(projection_table1.ins_particulars_other_income.f_3))/float(projection_table1.ins_particulars_other_income.f_3))*100))
             except:
                 projection_table1.ins_growth_analysis_yoy_other_income.f_4=0
                 
 
             try:
-                projection_table1.ins_growth_analysis_yoy_other_income.f_5=ceil(((float(projection_table1.ins_particulars_other_income.f_5)-float(projection_table1.ins_particulars_other_income.f_4))/float(projection_table1.ins_particulars_other_income.f_4))*100)
+                projection_table1.ins_growth_analysis_yoy_other_income.f_5=abs(ceil(((float(projection_table1.ins_particulars_other_income.f_5)-float(projection_table1.ins_particulars_other_income.f_4))/float(projection_table1.ins_particulars_other_income.f_4))*100))
             except:
                 projection_table1.ins_growth_analysis_yoy_other_income.f_5=0
             projection_table1.ins_growth_analysis_yoy_other_income.save()
@@ -2715,25 +2715,25 @@ def calculate_income_statement(request):                                      # 
 
 
             try:
-                projection_table1.ins_growth_analysis_yoy_foreign_exchange_gain_loss.f_2=ceil(((float(projection_table1.ins_particulars_realised_foreign_exchange_gain_loss.f_2)-float(projection_table1.ins_particulars_realised_foreign_exchange_gain_loss.f_1))/float(projection_table1.ins_particulars_realised_foreign_exchange_gain_loss.f_1))*100)
+                projection_table1.ins_growth_analysis_yoy_foreign_exchange_gain_loss.f_2=abs(ceil(((float(projection_table1.ins_particulars_realised_foreign_exchange_gain_loss.f_2)-float(projection_table1.ins_particulars_realised_foreign_exchange_gain_loss.f_1))/float(projection_table1.ins_particulars_realised_foreign_exchange_gain_loss.f_1))*100))
             except:
                 projection_table1.ins_growth_analysis_yoy_foreign_exchange_gain_loss.f_2=0
                 
 
             try:
-                projection_table1.ins_growth_analysis_yoy_foreign_exchange_gain_loss.f_3=ceil(((float(projection_table1.ins_particulars_realised_foreign_exchange_gain_loss.f_3)-float(projection_table1.ins_particulars_realised_foreign_exchange_gain_loss.f_2))/float(projection_table1.ins_particulars_realised_foreign_exchange_gain_loss.f_2))*100)
+                projection_table1.ins_growth_analysis_yoy_foreign_exchange_gain_loss.f_3=abs(ceil(((float(projection_table1.ins_particulars_realised_foreign_exchange_gain_loss.f_3)-float(projection_table1.ins_particulars_realised_foreign_exchange_gain_loss.f_2))/float(projection_table1.ins_particulars_realised_foreign_exchange_gain_loss.f_2))*100))
             except:
                 projection_table1.ins_growth_analysis_yoy_foreign_exchange_gain_loss.f_3=0
                 
 
             try:
-                projection_table1.ins_growth_analysis_yoy_foreign_exchange_gain_loss.f_4=ceil(((float(projection_table1.ins_particulars_realised_foreign_exchange_gain_loss.f_4)-float(projection_table1.ins_particulars_realised_foreign_exchange_gain_loss.f_3))/float(projection_table1.ins_particulars_realised_foreign_exchange_gain_loss.f_3))*100)
+                projection_table1.ins_growth_analysis_yoy_foreign_exchange_gain_loss.f_4=abs(ceil(((float(projection_table1.ins_particulars_realised_foreign_exchange_gain_loss.f_4)-float(projection_table1.ins_particulars_realised_foreign_exchange_gain_loss.f_3))/float(projection_table1.ins_particulars_realised_foreign_exchange_gain_loss.f_3))*100))
             except:
                 projection_table1.ins_growth_analysis_yoy_foreign_exchange_gain_loss.f_4=0
                 
 
             try:
-                projection_table1.ins_growth_analysis_yoy_foreign_exchange_gain_loss.f_5=ceil(((float(projection_table1.ins_particulars_realised_foreign_exchange_gain_loss.f_5)-float(projection_table1.ins_particulars_realised_foreign_exchange_gain_loss.f_4))/float(projection_table1.ins_particulars_realised_foreign_exchange_gain_loss.f_4))*100)
+                projection_table1.ins_growth_analysis_yoy_foreign_exchange_gain_loss.f_5=abs(ceil(((float(projection_table1.ins_particulars_realised_foreign_exchange_gain_loss.f_5)-float(projection_table1.ins_particulars_realised_foreign_exchange_gain_loss.f_4))/float(projection_table1.ins_particulars_realised_foreign_exchange_gain_loss.f_4))*100))
             except:
                 projection_table1.ins_growth_analysis_yoy_foreign_exchange_gain_loss.f_5=0
             projection_table1.ins_growth_analysis_yoy_foreign_exchange_gain_loss.save()
@@ -2750,25 +2750,25 @@ def calculate_income_statement(request):                                      # 
 
 
             try:
-                projection_table1.ins_growth_analysis_yoy_ebit.f_2=ceil(((float(projection_table1.ins_particulars_ebit.f_2)-float(projection_table1.ins_particulars_ebit.f_1))/float(projection_table1.ins_particulars_ebit.f_1))*100)
+                projection_table1.ins_growth_analysis_yoy_ebit.f_2=abs(ceil(((float(projection_table1.ins_particulars_ebit.f_2)-float(projection_table1.ins_particulars_ebit.f_1))/float(projection_table1.ins_particulars_ebit.f_1))*100))
             except:
                 projection_table1.ins_growth_analysis_yoy_ebit.f_2=0
                 
 
             try:
-                projection_table1.ins_growth_analysis_yoy_ebit.f_3=ceil(((float(projection_table1.ins_particulars_ebit.f_3)-float(projection_table1.ins_particulars_ebit.f_2))/float(projection_table1.ins_particulars_ebit.f_2))*100)
+                projection_table1.ins_growth_analysis_yoy_ebit.f_3=abs(ceil(((float(projection_table1.ins_particulars_ebit.f_3)-float(projection_table1.ins_particulars_ebit.f_2))/float(projection_table1.ins_particulars_ebit.f_2))*100))
             except:
                 projection_table1.ins_growth_analysis_yoy_ebit.f_3=0
                 
 
             try:
-                projection_table1.ins_growth_analysis_yoy_ebit.f_4=ceil(((float(projection_table1.ins_particulars_ebit.f_4)-float(projection_table1.ins_particulars_ebit.f_3))/float(projection_table1.ins_particulars_ebit.f_3))*100)
+                projection_table1.ins_growth_analysis_yoy_ebit.f_4=abs(ceil(((float(projection_table1.ins_particulars_ebit.f_4)-float(projection_table1.ins_particulars_ebit.f_3))/float(projection_table1.ins_particulars_ebit.f_3))*100))
             except:
                 projection_table1.ins_growth_analysis_yoy_ebit.f_4=0
                 
 
             try:
-                projection_table1.ins_growth_analysis_yoy_ebit.f_5=ceil(((float(projection_table1.ins_particulars_ebit.f_5)-float(projection_table1.ins_particulars_ebit.f_4))/float(projection_table1.ins_particulars_ebit.f_4))*100)
+                projection_table1.ins_growth_analysis_yoy_ebit.f_5=abs(ceil(((float(projection_table1.ins_particulars_ebit.f_5)-float(projection_table1.ins_particulars_ebit.f_4))/float(projection_table1.ins_particulars_ebit.f_4))*100))
             except:
                 projection_table1.ins_growth_analysis_yoy_ebit.f_5=0
             projection_table1.ins_growth_analysis_yoy_ebit.save()
@@ -2783,25 +2783,25 @@ def calculate_income_statement(request):                                      # 
 
 
             try:
-                projection_table1.ins_growth_analysis_yoy_interest_including_finance_charges.f_2=ceil(((float(projection_table1.ins_particulars_interest_including_finance_charges.f_2)-float(projection_table1.ins_particulars_interest_including_finance_charges.f_1))/float(projection_table1.ins_particulars_interest_including_finance_charges.f_1))*100)
+                projection_table1.ins_growth_analysis_yoy_interest_including_finance_charges.f_2=abs(ceil(((float(projection_table1.ins_particulars_interest_including_finance_charges.f_2)-float(projection_table1.ins_particulars_interest_including_finance_charges.f_1))/float(projection_table1.ins_particulars_interest_including_finance_charges.f_1))*100))
             except:
                 projection_table1.ins_growth_analysis_yoy_interest_including_finance_charges.f_2=0
                 
 
             try:
-                projection_table1.ins_growth_analysis_yoy_interest_including_finance_charges.f_3=ceil(((float(projection_table1.ins_particulars_interest_including_finance_charges.f_3)-float(projection_table1.ins_particulars_interest_including_finance_charges.f_2))/float(projection_table1.ins_particulars_interest_including_finance_charges.f_2))*100)
+                projection_table1.ins_growth_analysis_yoy_interest_including_finance_charges.f_3=abs(ceil(((float(projection_table1.ins_particulars_interest_including_finance_charges.f_3)-float(projection_table1.ins_particulars_interest_including_finance_charges.f_2))/float(projection_table1.ins_particulars_interest_including_finance_charges.f_2))*100))
             except:
                 projection_table1.ins_growth_analysis_yoy_interest_including_finance_charges.f_3=0
                 
 
             try:
-                projection_table1.ins_growth_analysis_yoy_interest_including_finance_charges.f_4=ceil(((float(projection_table1.ins_particulars_interest_including_finance_charges.f_4)-float(projection_table1.ins_particulars_interest_including_finance_charges.f_3))/float(projection_table1.ins_particulars_interest_including_finance_charges.f_3))*100)
+                projection_table1.ins_growth_analysis_yoy_interest_including_finance_charges.f_4=abs(ceil(((float(projection_table1.ins_particulars_interest_including_finance_charges.f_4)-float(projection_table1.ins_particulars_interest_including_finance_charges.f_3))/float(projection_table1.ins_particulars_interest_including_finance_charges.f_3))*100))
             except:
                 projection_table1.ins_growth_analysis_yoy_interest_including_finance_charges.f_4=0
                 
 
             try:
-                projection_table1.ins_growth_analysis_yoy_interest_including_finance_charges.f_5=ceil(((float(projection_table1.ins_particulars_interest_including_finance_charges.f_5)-float(projection_table1.ins_particulars_interest_including_finance_charges.f_4))/float(projection_table1.ins_particulars_interest_including_finance_charges.f_4))*100)
+                projection_table1.ins_growth_analysis_yoy_interest_including_finance_charges.f_5=abs(ceil(((float(projection_table1.ins_particulars_interest_including_finance_charges.f_5)-float(projection_table1.ins_particulars_interest_including_finance_charges.f_4))/float(projection_table1.ins_particulars_interest_including_finance_charges.f_4))*100))
             except:
                 projection_table1.ins_growth_analysis_yoy_interest_including_finance_charges.f_5=0
             projection_table1.ins_growth_analysis_yoy_interest_including_finance_charges.save()
@@ -2817,25 +2817,25 @@ def calculate_income_statement(request):                                      # 
 
 
             try:
-                projection_table1.ins_growth_analysis_yoy_earnings_before_tax_ebt.f_2=ceil(((float(projection_table1.ins_particulars_earnings_before_tax_ebt.f_2)-float(projection_table1.ins_particulars_earnings_before_tax_ebt.f_1))/float(projection_table1.ins_particulars_earnings_before_tax_ebt.f_1))*100)
+                projection_table1.ins_growth_analysis_yoy_earnings_before_tax_ebt.f_2=abs(ceil(((float(projection_table1.ins_particulars_earnings_before_tax_ebt.f_2)-float(projection_table1.ins_particulars_earnings_before_tax_ebt.f_1))/float(projection_table1.ins_particulars_earnings_before_tax_ebt.f_1))*100))
             except:
                 projection_table1.ins_growth_analysis_yoy_earnings_before_tax_ebt.f_2=0
                 
 
             try:
-                projection_table1.ins_growth_analysis_yoy_earnings_before_tax_ebt.f_3=ceil(((float(projection_table1.ins_particulars_earnings_before_tax_ebt.f_3)-float(projection_table1.ins_particulars_earnings_before_tax_ebt.f_2))/float(projection_table1.ins_particulars_earnings_before_tax_ebt.f_2))*100)
+                projection_table1.ins_growth_analysis_yoy_earnings_before_tax_ebt.f_3=abs(ceil(((float(projection_table1.ins_particulars_earnings_before_tax_ebt.f_3)-float(projection_table1.ins_particulars_earnings_before_tax_ebt.f_2))/float(projection_table1.ins_particulars_earnings_before_tax_ebt.f_2))*100))
             except:
                 projection_table1.ins_growth_analysis_yoy_earnings_before_tax_ebt.f_3=0
                 
 
             try:
-                projection_table1.ins_growth_analysis_yoy_earnings_before_tax_ebt.f_4=ceil(((float(projection_table1.ins_particulars_earnings_before_tax_ebt.f_4)-float(projection_table1.ins_particulars_earnings_before_tax_ebt.f_3))/float(projection_table1.ins_particulars_earnings_before_tax_ebt.f_3))*100)
+                projection_table1.ins_growth_analysis_yoy_earnings_before_tax_ebt.f_4=abs(ceil(((float(projection_table1.ins_particulars_earnings_before_tax_ebt.f_4)-float(projection_table1.ins_particulars_earnings_before_tax_ebt.f_3))/float(projection_table1.ins_particulars_earnings_before_tax_ebt.f_3))*100))
             except:
                 projection_table1.ins_growth_analysis_yoy_earnings_before_tax_ebt.f_4=0
                 
 
             try:
-                projection_table1.ins_growth_analysis_yoy_earnings_before_tax_ebt.f_5=ceil(((float(projection_table1.ins_particulars_earnings_before_tax_ebt.f_5)-float(projection_table1.ins_particulars_earnings_before_tax_ebt.f_4))/float(projection_table1.ins_particulars_earnings_before_tax_ebt.f_4))*100)
+                projection_table1.ins_growth_analysis_yoy_earnings_before_tax_ebt.f_5=abs(ceil(((float(projection_table1.ins_particulars_earnings_before_tax_ebt.f_5)-float(projection_table1.ins_particulars_earnings_before_tax_ebt.f_4))/float(projection_table1.ins_particulars_earnings_before_tax_ebt.f_4))*100))
             except:
                 projection_table1.ins_growth_analysis_yoy_earnings_before_tax_ebt.f_5=0
             projection_table1.ins_growth_analysis_yoy_earnings_before_tax_ebt.save()
@@ -2848,25 +2848,25 @@ def calculate_income_statement(request):                                      # 
 
 
             try:
-                projection_table1.ins_growth_analysis_yoy_provision_for_income_tax.f_2=ceil(((float(projection_table1.ins_particulars_provision_for_income_tax.f_2)-float(projection_table1.ins_particulars_provision_for_income_tax.f_1))/float(projection_table1.ins_particulars_provision_for_income_tax.f_1))*100)
+                projection_table1.ins_growth_analysis_yoy_provision_for_income_tax.f_2=abs(ceil(((float(projection_table1.ins_particulars_provision_for_income_tax.f_2)-float(projection_table1.ins_particulars_provision_for_income_tax.f_1))/float(projection_table1.ins_particulars_provision_for_income_tax.f_1))*100))
             except:
                 projection_table1.ins_growth_analysis_yoy_provision_for_income_tax.f_2=0
                 
 
             try:
-                projection_table1.ins_growth_analysis_yoy_provision_for_income_tax.f_3=ceil(((float(projection_table1.ins_particulars_provision_for_income_tax.f_3)-float(projection_table1.ins_particulars_provision_for_income_tax.f_2))/float(projection_table1.ins_particulars_provision_for_income_tax.f_2))*100)
+                projection_table1.ins_growth_analysis_yoy_provision_for_income_tax.f_3=abs(ceil(((float(projection_table1.ins_particulars_provision_for_income_tax.f_3)-float(projection_table1.ins_particulars_provision_for_income_tax.f_2))/float(projection_table1.ins_particulars_provision_for_income_tax.f_2))*100))
             except:
                 projection_table1.ins_growth_analysis_yoy_provision_for_income_tax.f_3=0
                 
 
             try:
-                projection_table1.ins_growth_analysis_yoy_provision_for_income_tax.f_4=ceil(((float(projection_table1.ins_particulars_provision_for_income_tax.f_4)-float(projection_table1.ins_particulars_provision_for_income_tax.f_3))/float(projection_table1.ins_particulars_provision_for_income_tax.f_3))*100)
+                projection_table1.ins_growth_analysis_yoy_provision_for_income_tax.f_4=abs(ceil(((float(projection_table1.ins_particulars_provision_for_income_tax.f_4)-float(projection_table1.ins_particulars_provision_for_income_tax.f_3))/float(projection_table1.ins_particulars_provision_for_income_tax.f_3))*100))
             except:
                 projection_table1.ins_growth_analysis_yoy_provision_for_income_tax.f_4=0
                 
 
             try:
-                projection_table1.ins_growth_analysis_yoy_provision_for_income_tax.f_5=ceil(((float(projection_table1.ins_particulars_provision_for_income_tax.f_5)-float(projection_table1.ins_particulars_provision_for_income_tax.f_4))/float(projection_table1.ins_particulars_provision_for_income_tax.f_4))*100)
+                projection_table1.ins_growth_analysis_yoy_provision_for_income_tax.f_5=abs(ceil(((float(projection_table1.ins_particulars_provision_for_income_tax.f_5)-float(projection_table1.ins_particulars_provision_for_income_tax.f_4))/float(projection_table1.ins_particulars_provision_for_income_tax.f_4))*100))
             except:
                 projection_table1.ins_growth_analysis_yoy_provision_for_income_tax.f_5=0
             projection_table1.ins_growth_analysis_yoy_provision_for_income_tax.save()
@@ -2883,25 +2883,25 @@ def calculate_income_statement(request):                                      # 
 
 
             try:
-                projection_table1.ins_growth_analysis_yoy_profit_after_tax.f_2=ceil(((float(projection_table1.ins_particulars_profit_after_tax.f_2)-float(projection_table1.ins_particulars_profit_after_tax.f_1))/float(projection_table1.ins_particulars_profit_after_tax.f_1))*100)
+                projection_table1.ins_growth_analysis_yoy_profit_after_tax.f_2=abs(ceil(((float(projection_table1.ins_particulars_profit_after_tax.f_2)-float(projection_table1.ins_particulars_profit_after_tax.f_1))/float(projection_table1.ins_particulars_profit_after_tax.f_1))*100))
             except:
                 projection_table1.ins_growth_analysis_yoy_profit_after_tax.f_2=0
                 
 
             try:
-                projection_table1.ins_growth_analysis_yoy_profit_after_tax.f_3=ceil(((float(projection_table1.ins_particulars_profit_after_tax.f_3)-float(projection_table1.ins_particulars_profit_after_tax.f_2))/float(projection_table1.ins_particulars_profit_after_tax.f_2))*100)
+                projection_table1.ins_growth_analysis_yoy_profit_after_tax.f_3=abs(ceil(((float(projection_table1.ins_particulars_profit_after_tax.f_3)-float(projection_table1.ins_particulars_profit_after_tax.f_2))/float(projection_table1.ins_particulars_profit_after_tax.f_2))*100))
             except:
                 projection_table1.ins_growth_analysis_yoy_profit_after_tax.f_3=0
                 
 
             try:
-                projection_table1.ins_growth_analysis_yoy_profit_after_tax.f_4=ceil(((float(projection_table1.ins_particulars_profit_after_tax.f_4)-float(projection_table1.ins_particulars_profit_after_tax.f_3))/float(projection_table1.ins_particulars_profit_after_tax.f_3))*100)
+                projection_table1.ins_growth_analysis_yoy_profit_after_tax.f_4=abs(ceil(((float(projection_table1.ins_particulars_profit_after_tax.f_4)-float(projection_table1.ins_particulars_profit_after_tax.f_3))/float(projection_table1.ins_particulars_profit_after_tax.f_3))*100))
             except:
                 projection_table1.ins_growth_analysis_yoy_profit_after_tax.f_4=0
                 
 
             try:
-                projection_table1.ins_growth_analysis_yoy_profit_after_tax.f_5=ceil(((float(projection_table1.ins_particulars_profit_after_tax.f_5)-float(projection_table1.ins_particulars_profit_after_tax.f_4))/float(projection_table1.ins_particulars_profit_after_tax.f_4))*100)
+                projection_table1.ins_growth_analysis_yoy_profit_after_tax.f_5=abs(ceil(((float(projection_table1.ins_particulars_profit_after_tax.f_5)-float(projection_table1.ins_particulars_profit_after_tax.f_4))/float(projection_table1.ins_particulars_profit_after_tax.f_4))*100))
             except:
                 projection_table1.ins_growth_analysis_yoy_profit_after_tax.f_5=0
             projection_table1.ins_growth_analysis_yoy_profit_after_tax.save()
@@ -3925,22 +3925,22 @@ def calculate_cashflow(request):                                      # Calculat
                 projection_table.csf_decrease_increase_in_sundry_debtors.f_1=0
 
             try:
-                projection_table.csf_decrease_increase_in_sundry_debtors.f_2=(ceil(float(projection_table.blnc_sundry_debtors_no_of_days.f_1)-float(projection_table.blnc_sundry_debtors_no_of_days.f_2)))
+                projection_table.csf_decrease_increase_in_sundry_debtors.f_2=abs(ceil(float(projection_table.blnc_sundry_debtors_no_of_days.f_1)-float(projection_table.blnc_sundry_debtors_no_of_days.f_2)))
             except:
                 projection_table.csf_decrease_increase_in_sundry_debtors.f_2=0
 
             try:
-                projection_table.csf_decrease_increase_in_sundry_debtors.f_3=(ceil(float(projection_table.blnc_sundry_debtors_no_of_days.f_2)-float(projection_table.blnc_sundry_debtors_no_of_days.f_3)))
+                projection_table.csf_decrease_increase_in_sundry_debtors.f_3=abs(ceil(float(projection_table.blnc_sundry_debtors_no_of_days.f_2)-float(projection_table.blnc_sundry_debtors_no_of_days.f_3)))
             except:
                 projection_table.csf_decrease_increase_in_sundry_debtors.f_3=0
 
             try:
-                projection_table.csf_decrease_increase_in_sundry_debtors.f_4=(ceil(float(projection_table.blnc_sundry_debtors_no_of_days.f_3)-float(projection_table.blnc_sundry_debtors_no_of_days.f_4)))
+                projection_table.csf_decrease_increase_in_sundry_debtors.f_4=abs(ceil(float(projection_table.blnc_sundry_debtors_no_of_days.f_3)-float(projection_table.blnc_sundry_debtors_no_of_days.f_4)))
             except:
                 projection_table.csf_decrease_increase_in_sundry_debtors.f_4=0
 
             try:
-                projection_table.csf_decrease_increase_in_sundry_debtors.f_5=(ceil(float(projection_table.blnc_sundry_debtors_no_of_days.f_4)-float(projection_table.blnc_sundry_debtors_no_of_days.f_5)))
+                projection_table.csf_decrease_increase_in_sundry_debtors.f_5=abs(ceil(float(projection_table.blnc_sundry_debtors_no_of_days.f_4)-float(projection_table.blnc_sundry_debtors_no_of_days.f_5)))
             except:
                 projection_table.csf_decrease_increase_in_sundry_debtors.f_5=0
 
@@ -3957,22 +3957,22 @@ def calculate_cashflow(request):                                      # Calculat
                 projection_table.csf_decrease_increase_in_inventories.f_1=0
 
             try:
-                projection_table.csf_decrease_increase_in_inventories.f_2=(ceil(float(projection_table.blnc_inventory_no_of_days.f_1)-float(projection_table.blnc_inventory_no_of_days.f_2)))
+                projection_table.csf_decrease_increase_in_inventories.f_2=abs(ceil(float(projection_table.blnc_inventory_no_of_days.f_1)-float(projection_table.blnc_inventory_no_of_days.f_2)))
             except:
                 projection_table.csf_decrease_increase_in_inventories.f_2=0
 
             try:
-                projection_table.csf_decrease_increase_in_inventories.f_3=(ceil(float(projection_table.blnc_inventory_no_of_days.f_2)-float(projection_table.blnc_inventory_no_of_days.f_3)))
+                projection_table.csf_decrease_increase_in_inventories.f_3=abs(ceil(float(projection_table.blnc_inventory_no_of_days.f_2)-float(projection_table.blnc_inventory_no_of_days.f_3)))
             except:
                 projection_table.csf_decrease_increase_in_inventories.f_3=0
 
             try:
-                projection_table.csf_decrease_increase_in_inventories.f_4=(ceil(float(projection_table.blnc_inventory_no_of_days.f_3)-float(projection_table.blnc_inventory_no_of_days.f_4)))
+                projection_table.csf_decrease_increase_in_inventories.f_4=abs(ceil(float(projection_table.blnc_inventory_no_of_days.f_3)-float(projection_table.blnc_inventory_no_of_days.f_4)))
             except:
                 projection_table.csf_decrease_increase_in_inventories.f_4=0
 
             try:
-                projection_table.csf_decrease_increase_in_inventories.f_5=(ceil(float(projection_table.blnc_inventory_no_of_days.f_4)-float(projection_table.blnc_inventory_no_of_days.f_5)))
+                projection_table.csf_decrease_increase_in_inventories.f_5=abs(ceil(float(projection_table.blnc_inventory_no_of_days.f_4)-float(projection_table.blnc_inventory_no_of_days.f_5)))
             except:
                 projection_table.csf_decrease_increase_in_inventories.f_5=0
 
@@ -3989,22 +3989,22 @@ def calculate_cashflow(request):                                      # Calculat
                 projection_table.csf_decrease_increase_in_current_liabilities_and_provisions.f_1=0
 
             try:
-                projection_table.csf_decrease_increase_in_current_liabilities_and_provisions.f_2= (ceil(float(projection_table.blnc_total_current_liabilities_c.f_1) - float(projection_table.blnc_total_current_liabilities_c.f_2)))
+                projection_table.csf_decrease_increase_in_current_liabilities_and_provisions.f_2=abs(ceil(float(projection_table.blnc_total_current_liabilities_c.f_1) - float(projection_table.blnc_total_current_liabilities_c.f_2)))
             except:
                 projection_table.csf_decrease_increase_in_current_liabilities_and_provisions.f_2=0
 
             try:
-                projection_table.csf_decrease_increase_in_current_liabilities_and_provisions.f_3= (ceil(float(projection_table.blnc_total_current_liabilities_c.f_2) - float(projection_table.blnc_total_current_liabilities_c.f_3)))
+                projection_table.csf_decrease_increase_in_current_liabilities_and_provisions.f_3= abs(ceil(float(projection_table.blnc_total_current_liabilities_c.f_2) - float(projection_table.blnc_total_current_liabilities_c.f_3)))
             except:
                 projection_table.csf_decrease_increase_in_current_liabilities_and_provisions.f_3=0
 
             try:
-                projection_table.csf_decrease_increase_in_current_liabilities_and_provisions.f_4= (ceil(float(projection_table.blnc_total_current_liabilities_c.f_3) - float(projection_table.blnc_total_current_liabilities_c.f_4)))
+                projection_table.csf_decrease_increase_in_current_liabilities_and_provisions.f_4= abs(ceil(float(projection_table.blnc_total_current_liabilities_c.f_3) - float(projection_table.blnc_total_current_liabilities_c.f_4)))
             except:
                 projection_table.csf_decrease_increase_in_current_liabilities_and_provisions.f_4=0
 
             try:
-                projection_table.csf_decrease_increase_in_current_liabilities_and_provisions.f_5= (ceil(float(projection_table.blnc_total_current_liabilities_c.f_4) - float(projection_table.blnc_total_current_liabilities_c.f_5)))
+                projection_table.csf_decrease_increase_in_current_liabilities_and_provisions.f_5= abs(ceil(float(projection_table.blnc_total_current_liabilities_c.f_4) - float(projection_table.blnc_total_current_liabilities_c.f_5)))
             except:
                 projection_table.csf_decrease_increase_in_current_liabilities_and_provisions.f_5=0
 
@@ -4023,22 +4023,22 @@ def calculate_cashflow(request):                                      # Calculat
                 projection_table.csf_decrease_increase_in_other_current_assets.f_1=0
 
             try:
-                projection_table.csf_decrease_increase_in_other_current_assets.f_2= (ceil(float(projection_table.blnc_short_term_investments_growth_or_amount.f_1)+float(projection_table.blnc_short_term_loans_and_advances_growth_or_amount.f_1)+float(projection_table.blnc_other_current_assets_growth_or_amount.f_1))-ceil(float(projection_table.blnc_short_term_investments_growth_or_amount.f_2)+float(projection_table.blnc_short_term_loans_and_advances_growth_or_amount.f_2)+float(projection_table.blnc_other_current_assets_growth_or_amount.f_2)))
+                projection_table.csf_decrease_increase_in_other_current_assets.f_2= abs(ceil(float(projection_table.blnc_short_term_investments_growth_or_amount.f_1)+float(projection_table.blnc_short_term_loans_and_advances_growth_or_amount.f_1)+float(projection_table.blnc_other_current_assets_growth_or_amount.f_1))-ceil(float(projection_table.blnc_short_term_investments_growth_or_amount.f_2)+float(projection_table.blnc_short_term_loans_and_advances_growth_or_amount.f_2)+float(projection_table.blnc_other_current_assets_growth_or_amount.f_2)))
             except:
                 projection_table.csf_decrease_increase_in_other_current_assets.f_2=0
 
             try:
-                projection_table.csf_decrease_increase_in_other_current_assets.f_3= (ceil(float(projection_table.blnc_short_term_investments_growth_or_amount.f_2)+float(projection_table.blnc_short_term_loans_and_advances_growth_or_amount.f_2)+float(projection_table.blnc_other_current_assets_growth_or_amount.f_2))-ceil(float(projection_table.blnc_short_term_investments_growth_or_amount.f_3)+float(projection_table.blnc_short_term_loans_and_advances_growth_or_amount.f_3)+float(projection_table.blnc_other_current_assets_growth_or_amount.f_3)))
+                projection_table.csf_decrease_increase_in_other_current_assets.f_3= abs(ceil(float(projection_table.blnc_short_term_investments_growth_or_amount.f_2)+float(projection_table.blnc_short_term_loans_and_advances_growth_or_amount.f_2)+float(projection_table.blnc_other_current_assets_growth_or_amount.f_2))-ceil(float(projection_table.blnc_short_term_investments_growth_or_amount.f_3)+float(projection_table.blnc_short_term_loans_and_advances_growth_or_amount.f_3)+float(projection_table.blnc_other_current_assets_growth_or_amount.f_3)))
             except:
                 projection_table.csf_decrease_increase_in_other_current_assets.f_3=0
 
             try:
-                projection_table.csf_decrease_increase_in_other_current_assets.f_4= (ceil(float(projection_table.blnc_short_term_investments_growth_or_amount.f_3)+float(projection_table.blnc_short_term_loans_and_advances_growth_or_amount.f_3)+float(projection_table.blnc_other_current_assets_growth_or_amount.f_3))-ceil(float(projection_table.blnc_short_term_investments_growth_or_amount.f_4)+float(projection_table.blnc_short_term_loans_and_advances_growth_or_amount.f_4)+float(projection_table.blnc_other_current_assets_growth_or_amount.f_4)))
+                projection_table.csf_decrease_increase_in_other_current_assets.f_4= abs(ceil(float(projection_table.blnc_short_term_investments_growth_or_amount.f_3)+float(projection_table.blnc_short_term_loans_and_advances_growth_or_amount.f_3)+float(projection_table.blnc_other_current_assets_growth_or_amount.f_3))-ceil(float(projection_table.blnc_short_term_investments_growth_or_amount.f_4)+float(projection_table.blnc_short_term_loans_and_advances_growth_or_amount.f_4)+float(projection_table.blnc_other_current_assets_growth_or_amount.f_4)))
             except:
                 projection_table.csf_decrease_increase_in_other_current_assets.f_4=0
 
             try:
-                projection_table.csf_decrease_increase_in_other_current_assets.f_5=  (ceil(float(projection_table.blnc_short_term_investments_growth_or_amount.f_4)+float(projection_table.blnc_short_term_loans_and_advances_growth_or_amount.f_4)+float(projection_table.blnc_other_current_assets_growth_or_amount.f_4))-ceil(float(projection_table.blnc_short_term_investments_growth_or_amount.f_5)+float(projection_table.blnc_short_term_loans_and_advances_growth_or_amount.f_5)+float(projection_table.blnc_other_current_assets_growth_or_amount.f_5)))
+                projection_table.csf_decrease_increase_in_other_current_assets.f_5=  abs(ceil(float(projection_table.blnc_short_term_investments_growth_or_amount.f_4)+float(projection_table.blnc_short_term_loans_and_advances_growth_or_amount.f_4)+float(projection_table.blnc_other_current_assets_growth_or_amount.f_4))-ceil(float(projection_table.blnc_short_term_investments_growth_or_amount.f_5)+float(projection_table.blnc_short_term_loans_and_advances_growth_or_amount.f_5)+float(projection_table.blnc_other_current_assets_growth_or_amount.f_5)))
             except:
                 projection_table.csf_decrease_increase_in_other_current_assets.f_5=0
 
@@ -4285,22 +4285,22 @@ def calculate_cashflow(request):                                      # Calculat
                 projection_table.csf_issue_of_share_capital_net_of_issue_expenses_paid.f_1=0
 
             try:
-                projection_table.csf_issue_of_share_capital_net_of_issue_expenses_paid.f_2=ceil(float(projection_table.blnc_share_capital.f_2)-float(projection_table.blnc_share_capital.f_1))
+                projection_table.csf_issue_of_share_capital_net_of_issue_expenses_paid.f_2=abs(ceil(float(projection_table.blnc_share_capital.f_2)-float(projection_table.blnc_share_capital.f_1)))
             except:
                 projection_table.csf_issue_of_share_capital_net_of_issue_expenses_paid.f_2=0
 
             try:
-                projection_table.csf_issue_of_share_capital_net_of_issue_expenses_paid.f_3=ceil(float(projection_table.blnc_share_capital.f_3)-float(projection_table.blnc_share_capital.f_2))
+                projection_table.csf_issue_of_share_capital_net_of_issue_expenses_paid.f_3=abs(ceil(float(projection_table.blnc_share_capital.f_3)-float(projection_table.blnc_share_capital.f_2)))
             except:
                 projection_table.csf_issue_of_share_capital_net_of_issue_expenses_paid.f_3=0
 
             try:
-                projection_table.csf_issue_of_share_capital_net_of_issue_expenses_paid.f_4=ceil(float(projection_table.blnc_share_capital.f_4)-float(projection_table.blnc_share_capital.f_3))
+                projection_table.csf_issue_of_share_capital_net_of_issue_expenses_paid.f_4=abs(ceil(float(projection_table.blnc_share_capital.f_4)-float(projection_table.blnc_share_capital.f_3)))
             except:
                 projection_table.csf_issue_of_share_capital_net_of_issue_expenses_paid.f_4=0
 
             try:
-                projection_table.csf_issue_of_share_capital_net_of_issue_expenses_paid.f_5=ceil(float(projection_table.blnc_share_capital.f_5)-float(projection_table.blnc_share_capital.f_4))
+                projection_table.csf_issue_of_share_capital_net_of_issue_expenses_paid.f_5=abs(ceil(float(projection_table.blnc_share_capital.f_5)-float(projection_table.blnc_share_capital.f_4)))
             except:
                 projection_table.csf_issue_of_share_capital_net_of_issue_expenses_paid.f_5=0
 
@@ -4319,22 +4319,22 @@ def calculate_cashflow(request):                                      # Calculat
                 projection_table.csf_equity_funds_raised.f_1=0
 
             try:
-                projection_table.csf_equity_funds_raised.f_2=ceil(float(projection_table.blnc_equity_funds_raised.f_2)-float(projection_table.blnc_equity_funds_raised.f_1))
+                projection_table.csf_equity_funds_raised.f_2=abs(ceil(float(projection_table.blnc_equity_funds_raised.f_2)-float(projection_table.blnc_equity_funds_raised.f_1)))
             except:
                 projection_table.csf_equity_funds_raised.f_2=0
 
             try:
-                projection_table.csf_equity_funds_raised.f_3=ceil(float(projection_table.blnc_equity_funds_raised.f_3)-float(projection_table.blnc_equity_funds_raised.f_2))
+                projection_table.csf_equity_funds_raised.f_3=abs(ceil(float(projection_table.blnc_equity_funds_raised.f_3)-float(projection_table.blnc_equity_funds_raised.f_2)))
             except:
                 projection_table.csf_equity_funds_raised.f_3=0
 
             try:
-                projection_table.csf_equity_funds_raised.f_4=ceil(float(projection_table.blnc_equity_funds_raised.f_4)-float(projection_table.blnc_equity_funds_raised.f_3))
+                projection_table.csf_equity_funds_raised.f_4=abs(ceil(float(projection_table.blnc_equity_funds_raised.f_4)-float(projection_table.blnc_equity_funds_raised.f_3)))
             except:
                 projection_table.csf_equity_funds_raised.f_4=0
 
             try:
-                projection_table.csf_equity_funds_raised.f_5=ceil(float(projection_table.blnc_equity_funds_raised.f_5)-float(projection_table.blnc_equity_funds_raised.f_4))
+                projection_table.csf_equity_funds_raised.f_5=abs(ceil(float(projection_table.blnc_equity_funds_raised.f_5)-float(projection_table.blnc_equity_funds_raised.f_4)))
             except:
                 projection_table.csf_equity_funds_raised.f_5=0
 
@@ -4350,22 +4350,22 @@ def calculate_cashflow(request):                                      # Calculat
                 projection_table.csf_proceeds_repayment_of_loans.f_1=0
 
             try:
-                projection_table.csf_proceeds_repayment_of_loans.f_2=ceil(float(projection_table.blnc_total_secured_loans.f_2)+float(projection_table.blnc_unsecured_loans.f_2)+float(projection_table.blnc_short_term_borrowings_growth_or_amount.f_2))-ceil(float(projection_table.blnc_total_secured_loans.f_1)+float(projection_table.blnc_unsecured_loans.f_1)+float(projection_table.blnc_short_term_borrowings_growth_or_amount.f_1))
+                projection_table.csf_proceeds_repayment_of_loans.f_2=abs(ceil(float(projection_table.blnc_total_secured_loans.f_2)+float(projection_table.blnc_unsecured_loans.f_2)+float(projection_table.blnc_short_term_borrowings_growth_or_amount.f_2))-ceil(float(projection_table.blnc_total_secured_loans.f_1)+float(projection_table.blnc_unsecured_loans.f_1)+float(projection_table.blnc_short_term_borrowings_growth_or_amount.f_1)))
             except:
                 projection_table.csf_proceeds_repayment_of_loans.f_2=0
 
             try:
-                projection_table.csf_proceeds_repayment_of_loans.f_3=ceil(float(projection_table.blnc_total_secured_loans.f_3)+float(projection_table.blnc_unsecured_loans.f_3)+float(projection_table.blnc_short_term_borrowings_growth_or_amount.f_3))-ceil(float(projection_table.blnc_total_secured_loans.f_2)+float(projection_table.blnc_unsecured_loans.f_2)+float(projection_table.blnc_short_term_borrowings_growth_or_amount.f_2))
+                projection_table.csf_proceeds_repayment_of_loans.f_3=abs(ceil(float(projection_table.blnc_total_secured_loans.f_3)+float(projection_table.blnc_unsecured_loans.f_3)+float(projection_table.blnc_short_term_borrowings_growth_or_amount.f_3))-ceil(float(projection_table.blnc_total_secured_loans.f_2)+float(projection_table.blnc_unsecured_loans.f_2)+float(projection_table.blnc_short_term_borrowings_growth_or_amount.f_2)))
             except:
                 projection_table.csf_proceeds_repayment_of_loans.f_3=0
 
             try:
-                projection_table.csf_proceeds_repayment_of_loans.f_4=ceil(float(projection_table.blnc_total_secured_loans.f_4)+float(projection_table.blnc_unsecured_loans.f_4)+float(projection_table.blnc_short_term_borrowings_growth_or_amount.f_4))-ceil(float(projection_table.blnc_total_secured_loans.f_3)+float(projection_table.blnc_unsecured_loans.f_3)+float(projection_table.blnc_short_term_borrowings_growth_or_amount.f_3))
+                projection_table.csf_proceeds_repayment_of_loans.f_4=abs(ceil(float(projection_table.blnc_total_secured_loans.f_4)+float(projection_table.blnc_unsecured_loans.f_4)+float(projection_table.blnc_short_term_borrowings_growth_or_amount.f_4))-ceil(float(projection_table.blnc_total_secured_loans.f_3)+float(projection_table.blnc_unsecured_loans.f_3)+float(projection_table.blnc_short_term_borrowings_growth_or_amount.f_3)))
             except:
                 projection_table.csf_proceeds_repayment_of_loans.f_4=0
 
             try:
-                projection_table.csf_proceeds_repayment_of_loans.f_5=ceil(float(projection_table.blnc_total_secured_loans.f_5)+float(projection_table.blnc_unsecured_loans.f_5)+float(projection_table.blnc_short_term_borrowings_growth_or_amount.f_5))-ceil(float(projection_table.blnc_total_secured_loans.f_4)+float(projection_table.blnc_unsecured_loans.f_4)+float(projection_table.blnc_short_term_borrowings_growth_or_amount.f_4))
+                projection_table.csf_proceeds_repayment_of_loans.f_5=abs(ceil(float(projection_table.blnc_total_secured_loans.f_5)+float(projection_table.blnc_unsecured_loans.f_5)+float(projection_table.blnc_short_term_borrowings_growth_or_amount.f_5))-ceil(float(projection_table.blnc_total_secured_loans.f_4)+float(projection_table.blnc_unsecured_loans.f_4)+float(projection_table.blnc_short_term_borrowings_growth_or_amount.f_4)))
             except:
                 projection_table.csf_proceeds_repayment_of_loans.f_5=0
 
@@ -4570,27 +4570,27 @@ def calculate_cashflow(request):                                      # Calculat
 
 
             try:
-                projection_table.csf_balancing_figure.f_1=ceil(float(projection_table.csf_cash_and_cash_equivalents_at_the_end_of_the_year.f_1)-float(projection_table.blnc_cash.f_1))
+                projection_table.csf_balancing_figure.f_1=abs(ceil(float(projection_table.csf_cash_and_cash_equivalents_at_the_end_of_the_year.f_1)-float(projection_table.blnc_cash.f_1)))
             except:
                 projection_table.csf_balancing_figure.f_1=0
 
             try:
-                projection_table.csf_balancing_figure.f_2=ceil(float(projection_table.csf_cash_and_cash_equivalents_at_the_end_of_the_year.f_2)-float(projection_table.blnc_cash.f_2))
+                projection_table.csf_balancing_figure.f_2=abs(ceil(float(projection_table.csf_cash_and_cash_equivalents_at_the_end_of_the_year.f_2)-float(projection_table.blnc_cash.f_2)))
             except:
                 projection_table.csf_balancing_figure.f_2=0
 
             try:
-                projection_table.csf_balancing_figure.f_3=ceil(float(projection_table.csf_cash_and_cash_equivalents_at_the_end_of_the_year.f_3)-float(projection_table.blnc_cash.f_3))
+                projection_table.csf_balancing_figure.f_3=abs(ceil(float(projection_table.csf_cash_and_cash_equivalents_at_the_end_of_the_year.f_3)-float(projection_table.blnc_cash.f_3)))
             except:
                 projection_table.csf_balancing_figure.f_3=0
 
             try:
-                projection_table.csf_balancing_figure.f_4=ceil(float(projection_table.csf_cash_and_cash_equivalents_at_the_end_of_the_year.f_4)-float(projection_table.blnc_cash.f_4))
+                projection_table.csf_balancing_figure.f_4=abs(ceil(float(projection_table.csf_cash_and_cash_equivalents_at_the_end_of_the_year.f_4)-float(projection_table.blnc_cash.f_4)))
             except:
                 projection_table.csf_balancing_figure.f_4=0
 
             try:
-                projection_table.csf_balancing_figure.f_5=ceil(float(projection_table.csf_cash_and_cash_equivalents_at_the_end_of_the_year.f_5)-float(projection_table.blnc_cash.f_5))
+                projection_table.csf_balancing_figure.f_5=abs(ceil(float(projection_table.csf_cash_and_cash_equivalents_at_the_end_of_the_year.f_5)-float(projection_table.blnc_cash.f_5)))
             except:
                 projection_table.csf_balancing_figure.f_5=0
 
@@ -5208,8 +5208,8 @@ def user_form_9_1_historical_submit(request):          #XLSX input form
 
             book = super_plan_forms.objects.filter(id=request.session['form']).get()
 
-            data = get_data(settings.MEDIA_ROOT+book.historical_xl.url[7:])
-
+            #data = get_data(settings.MEDIA_ROOT+book.historical_xl.url[7:])
+            data = get_data(book.historical_xl.url[1:])
             try:
                 c=0
                 for i in range(3,122):

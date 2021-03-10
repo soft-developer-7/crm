@@ -190,7 +190,7 @@
 
 						<div class="col">
 							<div class="form-group">
-								<input type="number" min=0 step=0.001  class="form-control  ptext_input" name="capex_additions[]" {% if data.capex_additions.f_1 %} value="{{data.capex_additions.f_1}}" {% endif %}   maxlength="20" minlength="1"  />
+								<input type="number" min=0 step=0.001  class="form-control  ptext_input {% if data.historical_xl_data.capex_schedule_additions.f_3 %} ptext_input_c {% endif %}" name="capex_additions[]" {% if data.capex_additions.f_1 %} value="{{data.capex_additions.f_1}}" {% endif %}   maxlength="20" minlength="1"  />
 								
 								</div>
 						</div>
@@ -242,7 +242,7 @@
 
 						<div class="col">
 							<div class="form-group">
-								<input type="number" min=0 step=0.001  class="form-control  ptext_input" name="capex_additions_intangible[]" {% if data.capex_additions_intangible.f_1 %} value="{{data.capex_additions_intangible.f_1}}" {% endif %}   maxlength="20" minlength="1"  />
+								<input type="number" min=0 step=0.001  class="form-control  ptext_input {% if data.historical_xl_data.capex_schedule_additions_intangible.f_3 %} ptext_input_c {% endif %}" name="capex_additions_intangible[]" {% if data.capex_additions_intangible.f_1 %} value="{{data.capex_additions_intangible.f_1}}" {% endif %}   maxlength="20" minlength="1"  />
 								
 								</div>
 						</div>
@@ -293,7 +293,7 @@
 
 						<div class="col">
 							<div class="form-group">
-								<input type="number" min=0 step=0.001  class="form-control  ptext_input" name="capex_deletions[]" {% if data.capex_deletions.f_1 %} value="{{data.capex_deletions.f_1}}" {% endif %}   maxlength="20" minlength="1"  />
+								<input type="number" min=0 step=0.001  class="form-control  ptext_input {% if data.historical_xl_data.capex_schedule_deletions.f_3 %} ptext_input_c {% endif %}" name="capex_deletions[]" {% if data.capex_deletions.f_1 %} value="{{data.capex_deletions.f_1}}" {% endif %}   maxlength="20" minlength="1"  />
 								
 								</div>
 						</div>
@@ -585,6 +585,7 @@
 
 /******************************************* Scripts ************************************************************/
 function numberWithCommas(x) {
+	x=x.toFixed(3);
 	var mon="{{data.denomination}}";
 	if(mon && mon=="Lakh"){
 		nfObject = new Intl.NumberFormat('en-IN'); 
@@ -601,6 +602,9 @@ $(".ptext_input").on("input",function(){
 	var inp_name = $(this).attr("name");
 	var all_inps = $('input[name="'+inp_name+'"]');
 
+
+
+
 	var prev=$(all_inps[0]).val();
 	if(prev && !isNaN(prev))
 		{
@@ -611,6 +615,19 @@ $(".ptext_input").on("input",function(){
 	{
 		prev=0;
 	}
+
+
+
+
+	var his = find_historicals(inp_name);
+	if(his!=null)
+	{
+		var prev=his+parseInt(his*(prev/100));
+	}
+
+
+
+
 
 	var temp_array =[prev];
 
@@ -699,7 +716,51 @@ $("input[name='capex_opening_gross[]']").on("input",function(){
 
 	closing_gross();
 });
-1
+
+
+
+
+function find_historicals(col_name){
+	var col_val;
+
+	if(col_name)
+	{
+		if(col_name=="capex_opening_gross[]")
+		{
+			col_val="{{data.historical_xl_data.capex_schedule_opening_gross.f_3}}";
+		}
+
+		else if(col_name=="capex_additions[]")
+		{
+			col_val="{{data.historical_xl_data.capex_schedule_additions.f_3}}";
+		}
+
+		else if(col_name=="capex_additions_intangible[]")
+		{
+			col_val="{{data.historical_xl_data.capex_schedule_additions_intangible.f_3}}";
+		}
+
+		else if(col_name=="capex_deletions[]")
+		{
+			col_val="{{data.historical_xl_data.capex_schedule_deletions.f_3}}";
+		}
+
+		else if(col_name=="capex_average_depreciation_rate[]")
+		{
+			col_val="{{data.historical_xl_data.capex_schedule_average_depreciation_rate.f_3}}";
+		}
+
+	}
+
+	if(col_val){
+		return parseFloat(col_val);
+	}
+	else{
+		return null;
+	}
+	
+}
+
 
 
 
